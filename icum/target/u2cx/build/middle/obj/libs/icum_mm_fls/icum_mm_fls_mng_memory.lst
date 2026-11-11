@@ -1,0 +1,566 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_mng_memory.dbo -source=icum_mm_fls_mng_memory.c -comp -o ..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\gh_0000vb81.o -list=..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_mng_memory.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+Source File: icum_mm_fls_mng_memory.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\common\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\middle\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           8 --		-I..\..\icum\target\u2cx\include\device\
+                           9 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          10 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          11 --		-I..\..\icum\target\u2cx\include\driver
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          15 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          16 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          17 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          18 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          19 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          20 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          21 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          22 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          23 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          24 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          25 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          26 --		-list -cpu=rh850g3k -G -section .text=.icum_middle.text -section
+                          27 --		.rodata=.icum_middle.rodata -section .bss=.icum_middle.bss
+                          28 --		-section .data=.icum_middle.data -Osize -inline_prologue
+                          29 --		-prepare_dispose -filetype.c
+                          30 --		..\..\icum\generic\src\middle\mm_fls\icum_mm_fls_mng_memory.c -o
+                          31 --		..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_mng_memory.o
+                          32 --Source File:   ..\..\icum\generic\src\middle\mm_fls\icum_mm_fls_mng_memory.c
+                          33 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          34 --Compile Date:  Wed Nov 11 14:08:30 2026
+                          35 --Host OS:       Win64
+                          36 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          37 --Release:       Compiler v2023.5.4
+                          38 --Revision Date: Wed Sep 06 02:44:56 2023
+                          39 --Release Date:  Wed Sep 06 02:00:00 2023
+                          40 -- ecom  -g -w -OS
+                          41 	.section ".icum_middle.text","ax"
+                          42 
+                          43 --1: /******************************************************************************/
+                          44 --2: /* Component Name  Flash Manager  memory related                              */
+                          45 --3: /******************************************************************************/
+                          46 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          47 --5: /******************************************************************************/
+                          48 --6: /***********************************************************************************************************************
+                          49 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          50 --8: * 
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                          51 --9: * DISCLAIMER
+                          52 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          53 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          54 --12: * applicable laws, including copyright laws.
+                          55 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          56 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          57 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          58 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          59 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          60 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          61 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          62 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          63 --21: * following link:
+                          64 --22: * www.renesas.com/disclaimer
+                          65 --23: *
+                          66 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          67 --25: ***********************************************************************************************************************/
+                          68 --26: /*******************************************************************************
+                          69 --27: * Header files
+                          70 --28: ********************************************************************************/
+                          71 --29: #include "renesas_types.h"
+                          72 --30: #include "icum_d_misc_pub.h"
+                          73 --31: #include MM_FLASH_PUBLIC_H
+                          74 --32: /* For used defines of issd kernel. */
+                          75 --33: #include    "icum_k_issd_pub.h"
+                          76 --35: /*******************************************************************************
+                          77 --36: * Local defines
+                          78 --37: ********************************************************************************/
+                          79 --39: /*******************************************************************************
+                          80 --40: * Type definition
+                          81 --41: ********************************************************************************/
+                          82 --43: /*******************************************************************************
+                          83 --44: * Local variables
+                          84 --45: ********************************************************************************/
+                          85 --47: /*******************************************************************************
+                          86 --48: * Functions
+                          87 --49: ********************************************************************************/
+                          88 --51: CHANGE_SEC(text, ".icum_middle.text")
+                          89 --52: CHANGE_SEC(rodata, ".icum_middle.rodata")
+                          90 --54: /***************************************************************************************
+                          91 --55: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0067]:[ICUMFW_UD_MM_FlashMNG_0067]
+                          92 --56: * Function name: MM_FLS_IsChangeCFPE
+                          93 --57: * Description  : Check to see if switching to CF_PE MODE
+                          94 --58: * Arguments    : (out) p_result   : check result
+                          95 --59: *                                    = FLS_CHK_OK : can switch to CF_P/E mode.
+                          96 --60: *                                    = FLS_CHK_NG : cannot switch to CF_P/E mode.
+                          97 --61: * Return Value : ER_OK
+                          98 --62: *                ER_PARAM
+                          99 --63: ***************************************************************************************/
+                         100 	.align	2
+                         101 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_mng_memory...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065F..0::
+                         102 	.align	2
+                         103 	.align	2
+                         104 ..gh.f.a.2.e.0:
+                         105 	.type	..gh.f.a.2.e.0,@object
+                         106 	.size	..gh.f.a.2.e.0,0
+                         107 	.global	_MM_FLS_IsChangeCFPE
+                         108 _MM_FLS_IsChangeCFPE:
+00000000 06f0            109 	mov	r6,ep
+                         110 --	    .bf
+                         111 .LDW01:
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         112 --64: uint32_t MM_FLS_IsChangeCFPE(uint8_t *p_result)
+                         113 --65: {
+                         114 --66:     /* This function is unnecessary and deleted processing contents.*/
+                         115 --67:     *p_result = FLS_CHK_OK;
+00000002 010a            116 	mov	1,r1
+00000004 800b            117 	sst.b	r1,0[ep]
+                         118 --68:     return (ER_OK);
+00000006 0052            119 	mov	0,r10
+                         120 --	    .ef
+                         121 .LDW11:
+                         122 .L55:
+                         123 	.jumptype return
+00000008 7f00            124 	jmp	[lp]
+                         125 --line65
+                         126 ..lin.fc714e46..fec164c1.0_1::
+                         127 	.type	_MM_FLS_IsChangeCFPE,@function
+                         128 	.size	_MM_FLS_IsChangeCFPE,.-_MM_FLS_IsChangeCFPE
+                         129 	.align	2
+                         130 
+                         131 --_p_result	ep	param
+                         132 
+                         133 	.section ".bss","awb"
+                         134 .L36:
+                         135 	.type	.L36,@object
+                         136 	.size	.L36,0
+                         137 	.section ".ghrettbl",""
+                         138 	.align	4
+00000000 00000000*       139 .L56:	.word	.L55
+                         140 	.type	.L56,@object
+                         141 	.size	.L56,4
+                         142 	.data
+                         143 	.section ".icum_middle.text","ax"
+                         144 
+                         145 --69: }
+                         146 	.section ".icum_middle_ram","ax"
+                         147 
+                         148 --71: CHANGE_SEC(text, ".icum_middle_ram")
+                         149 --72: CHANGE_SEC(rodata, ".icum_middle_const_ram")
+                         150 --74: /***************************************************************************************
+                         151 --75: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0068]:[ICUMFW_UD_MM_FlashMNG_0068]
+                         152 --76: * Function name: MM_FLS_GetMemBoundary
+                         153 --77: * Description  : retrieve the address boundary of the memory region specified
+                         154 --78: * Arguments    : boundary       : The specified boundary
+                         155 --79: *                p_addr         : Retrieve the boundary address
+                         156 --80: * Return Value : ER_OK
+                         157 --81: *                ER_PARAM
+                         158 --82: ***************************************************************************************/
+                         159 	.align	2
+                         160 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_mng_memory...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065F..1::
+                         161 	.align	2
+                         162 	.align	2
+                         163 ..gh.f.a.2.e.1:
+                         164 	.type	..gh.f.a.2.e.1,@object
+                         165 	.size	..gh.f.a.2.e.1,0
+                         166 	.global	_MM_FLS_GetMemBoundary
+                         167 _MM_FLS_GetMemBoundary:
+00000000 8600            168 	zxb	r6
+                         169 --	    .bf
+                         170 .LDW21:
+                         171 --83: uint32_t MM_FLS_GetMemBoundary(const uint8_t boundary, uint32_t *p_addr)
+                         172 --84: {
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         173 --85:     uint32_t err;
+                         174 --87:     err = L_FLS_GetMemBoundary(boundary, p_addr);
+                         175 .L104:
+00000002 80070000*       176 	jr	_L_FLS_GetMemBoundary
+                         177 --	    .ef
+                         178 .LDW31:
+                         179 --line84
+                         180 ..lin.fc714e46..243a1264.1_2::
+                         181 	.type	_MM_FLS_GetMemBoundary,@function
+                         182 	.size	_MM_FLS_GetMemBoundary,.-_MM_FLS_GetMemBoundary
+                         183 	.align	2
+                         184 
+                         185 --_boundary	r6	param
+                         186 --_p_addr	r7	param
+                         187 
+                         188 	.section ".bss","awb"
+                         189 .L84:
+                         190 	.type	.L84,@object
+                         191 	.size	.L84,0
+                         192 	.section ".ghtailcalltbl",""
+                         193 	.align	4
+00000000 00000000*       194 .L105:	.word	.L104
+                         195 	.type	.L105,@object
+                         196 	.size	.L105,4
+                         197 	.data
+                         198 	.section ".icum_middle_ram","ax"
+                         199 
+                         200 --90: }
+                         201 
+                         202 --92: /***************************************************************************************
+                         203 --93: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0064]:[ICUMFW_UD_MM_FlashMNG_0064]
+                         204 --94: * Function name: MM_FLS_CheckMemory
+                         205 --95: * Description  : Check of memory address
+                         206 --96: * Arguments    : start_addr     : Address to be checked
+                         207 --97: *                size           : Data size
+                         208 --98: *                direction      : Direction to check
+                         209 --99: *                p_result       : Check result
+                         210 --100: * Return Value : ER_OK
+                         211 --101: *                ER_PARAM
+                         212 --102: ***************************************************************************************/
+                         213 	.align	2
+                         214 	.align	2
+                         215 	.align	2
+                         216 ..gh.f.a.2.e.2:
+                         217 	.type	..gh.f.a.2.e.2,@object
+                         218 	.size	..gh.f.a.2.e.2,0
+                         219 	.global	_MM_FLS_CheckMemory
+                         220 _MM_FLS_CheckMemory:
+00000006 80072100        221 	prepare	{r31},0
+0000000a 0910            222 	mov	r9,r2
+0000000c 8800            223 	zxb	r8
+0000000e 234f0500        224 	ld.w	4[sp],r9
+                         225 --	    .bf
+                         226 .LDW41:
+                         227 --103: uint32_t MM_FLS_CheckMemory(const uint32_t start_addr, const uint32_t size, const uint8_t direction,
+                         228 --104:                             uint8_t ex_service, uint8_t *p_result)
+                         229 --105: {
+                         230 --106:     uint32_t err;
+                         231 --108:     if ((uint32_t)FROM_NATIVE_SERVICE == (uint32_t)ex_service)
+00000012 d812            232 	shl	24,r2
+00000014 ca05*           233 	bne	.L108
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         234 --109:     {
+                         235 --110:         err = L_FLS_CheckMemory(start_addr, size, direction, p_result);
+                         236 .L199:
+                         237 --line110
+                         238 ..lin.fc714e46..cf33898.1_3::
+                         239 .LDWlin3:
+                         240 	jarl	_L_FLS_CheckMemory,lp
+                         240 <EXPANSION BEGIN>
+                         240 jarl22 _L_FLS_CheckMemory , lp 
+00000016 80ff0000*       240 <EXPANSION END>
+0000001a b505*           241 	br	.L106
+                         242 .L108:
+                         243 --111:     }
+                         244 --112:     else
+                         245 --113:     {
+                         246 --114:         err = L_FLS_CheckMemoryCISM(start_addr, size, direction, p_result);
+                         247 .L201:
+                         248 --line114
+                         249 ..lin.fc714e46..cf33898.1_4::
+                         250 .LDWlin4:
+                         251 	jarl	_L_FLS_CheckMemoryCISM,lp
+                         251 <EXPANSION BEGIN>
+                         251 jarl22 _L_FLS_CheckMemoryCISM , lp 
+0000001c 80ff0000*       251 <EXPANSION END>
+                         252 --115:     }
+                         253 --117:     return (err);
+                         254 .L106:
+                         255 --	    .ef
+                         256 .LDW51:
+                         257 .L203:
+                         258 --line117
+                         259 ..lin.fc714e46..cf33898.1_5::
+                         260 .LDWlin5:
+00000020 40063f00        261 	dispose	0,{r31},[lp]
+                         262 --line117
+                         263 ..lin.fc714e46..cf33898.1_6::
+                         264 	.type	_MM_FLS_CheckMemory,@function
+                         265 	.size	_MM_FLS_CheckMemory,.-_MM_FLS_CheckMemory
+                         266 	.align	2
+                         267 --_err	r10	local
+                         268 
+                         269 --_start_addr	r6	param
+                         270 --_size	r7	param
+                         271 --_direction	r8	param
+                         272 --_ex_service	r2	param
+                         273 --_p_result	r1	param
+                         274 
+                         275 	.section ".bss","awb"
+                         276 .L150:
+                         277 	.type	.L150,@object
+                         278 	.size	.L150,0
+                         279 	.section ".ghcalltbl",""
+                         280 	.align	4
+00000000 00000000*       281 .L200:	.word	.L199
+                         282 	.type	.L200,@object
+                         283 	.size	.L200,4
+00000004 00000000*       284 .L202:	.word	.L201
+                         285 	.type	.L202,@object
+                         286 	.size	.L202,4
+                         287 	.section ".ghrettbl",""
+00000004 00000000*       288 .L204:	.word	.L203
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         289 	.type	.L204,@object
+                         290 	.size	.L204,4
+                         291 	.data
+                         292 	.section ".icum_middle_ram","ax"
+                         293 
+                         294 --118: }
+                         295 	.section ".icum_middle.text","ax"
+                         296 
+                         297 --120: CHANGE_SEC(text, ".icum_middle.text")
+                         298 --121: CHANGE_SEC(rodata, ".icum_middle.rodata")
+                         299 --123: /***************************************************************************************
+                         300 --124: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0071]:[ICUMFW_UD_MM_FlashMNG_0071]
+                         301 --125: * Function name: MM_FLS_CheckMemoryUserBoot
+                         302 --126: * Description  : Check of memory address
+                         303 --127: * Arguments    : start_addr     : Address to be checked
+                         304 --128: *                size           : Data size
+                         305 --129: *                direction      : Direction to check
+                         306 --130: *                p_result       : Check result
+                         307 --131: * Return Value : ER_OK
+                         308 --132: *                ER_PARAM
+                         309 --133: ***************************************************************************************/
+                         310 	.align	2
+                         311 	.align	2
+                         312 	.align	2
+                         313 ..gh.f.a.2.e.3:
+                         314 	.type	..gh.f.a.2.e.3,@object
+                         315 	.size	..gh.f.a.2.e.3,0
+                         316 	.global	_MM_FLS_CheckMemoryUserBoot
+                         317 _MM_FLS_CheckMemoryUserBoot:
+0000000a 8800            318 	zxb	r8
+                         319 --	    .bf
+                         320 .LDW61:
+                         321 --134: uint32_t MM_FLS_CheckMemoryUserBoot(uint32_t start_addr, uint32_t size, uint8_t direction, uint8_t *p_result)
+                         322 --135: {
+                         323 --136:     uint32_t err;
+                         324 --138:     err = L_FLS_CheckMemoryUserBoot(start_addr, size, direction, p_result);
+                         325 .L248:
+0000000c 80070000*       326 	jr	_L_FLS_CheckMemoryUserBoot
+                         327 --	    .ef
+                         328 .LDW71:
+                         329 --line135
+                         330 ..lin.fc714e46..aca152eb.0_7::
+                         331 	.type	_MM_FLS_CheckMemoryUserBoot,@function
+                         332 	.size	_MM_FLS_CheckMemoryUserBoot,.-_MM_FLS_CheckMemoryUserBoot
+                         333 	.align	2
+                         334 
+                         335 --_start_addr	r6	param
+                         336 --_size	r7	param
+                         337 --_direction	r8	param
+                         338 --_p_result	r9	param
+                         339 
+                         340 	.section ".bss","awb"
+                         341 .L228:
+                         342 	.type	.L228,@object
+                         343 	.size	.L228,0
+                         344 	.section ".ghtailcalltbl",""
+00000004 00000000*       345 .L249:	.word	.L248
+                         346 	.type	.L249,@object
+                         347 	.size	.L249,4
+                         348 	.data
+                         349 	.section ".icum_middle.text","ax"
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         350 
+                         351 --141: }
+                         352 
+                         353 --143: /***************************************************************************************
+                         354 --144: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0072]:[ICUMFW_UD_MM_FlashMNG_0072]
+                         355 --145: * Function name: MM_FLS_CheckMemoryCISMUserBoot
+                         356 --146: * Description  : Check of memory address
+                         357 --147: * Arguments    : start_addr     : Address to be checked
+                         358 --148: *                size           : Data size
+                         359 --149: *                direction      : Direction to check
+                         360 --150: *                p_result       : Check result
+                         361 --151: * Return Value : ER_OK
+                         362 --152: *                ER_PARAM
+                         363 --153: ***************************************************************************************/
+                         364 	.align	2
+                         365 	.align	2
+                         366 	.align	2
+                         367 ..gh.f.a.2.e.4:
+                         368 	.type	..gh.f.a.2.e.4,@object
+                         369 	.size	..gh.f.a.2.e.4,0
+                         370 	.global	_MM_FLS_CheckMemoryCISMUserBoot
+                         371 _MM_FLS_CheckMemoryCISMUserBoot:
+00000010 8800            372 	zxb	r8
+                         373 --	    .bf
+                         374 .LDW81:
+                         375 --154: uint32_t MM_FLS_CheckMemoryCISMUserBoot(uint32_t start_addr, uint32_t size, uint8_t direction, uint8_t *p_result)
+                         376 --155: {
+                         377 --156:     uint32_t err;
+                         378 --158:     err = L_FLS_CheckMemoryCISMUserBoot(start_addr, size, direction, p_result);
+                         379 .L296:
+00000012 80070000*       380 	jr	_L_FLS_CheckMemoryCISMUserBoot
+                         381 --	    .ef
+                         382 .LDW91:
+                         383 --line155
+                         384 ..lin.fc714e46..260409d7.0_8::
+                         385 	.type	_MM_FLS_CheckMemoryCISMUserBoot,@function
+                         386 	.size	_MM_FLS_CheckMemoryCISMUserBoot,.-_MM_FLS_CheckMemoryCISMUserBoot
+                         387 	.align	2
+                         388 
+                         389 --_start_addr	r6	param
+                         390 --_size	r7	param
+                         391 --_direction	r8	param
+                         392 --_p_result	r9	param
+                         393 
+                         394 	.section ".bss","awb"
+                         395 .L276:
+                         396 	.type	.L276,@object
+                         397 	.size	.L276,0
+                         398 	.section ".ghtailcalltbl",""
+00000008 00000000*       399 .L297:	.word	.L296
+                         400 	.type	.L297,@object
+                         401 	.size	.L297,4
+                         402 	.data
+                         403 	.section ".icum_middle.text","ax"
+                         404 
+                         405 --161: }
+                         406 
+                         407 --163: /***************************************************************************************
+                         408 --164: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0073]:[ICUMFW_UD_MM_FlashMNG_0073]
+                         409 --165: * Function name: MM_FLS_IsUserBootArea
+                         410 --166: * Description  : Check of memory address for UserBoot or not
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         411 --167: * Arguments    : start_addr     : Address to be checked
+                         412 --168: *                size           : Data size
+                         413 --169: * Return Value : ER_OK
+                         414 --170: *                ER_PARAM
+                         415 --171: ***************************************************************************************/
+                         416 	.align	2
+                         417 	.align	2
+                         418 	.align	2
+                         419 ..gh.f.a.2.e.5:
+                         420 	.type	..gh.f.a.2.e.5,@object
+                         421 	.size	..gh.f.a.2.e.5,0
+                         422 	.global	_MM_FLS_IsUserBootArea
+                         423 _MM_FLS_IsUserBootArea:
+                         424 --	    .bf
+                         425 .LDW02:
+                         426 --172: uint32_t MM_FLS_IsUserBootArea(const uint32_t start_addr, const uint32_t size)
+                         427 --173: {
+                         428 --174:     uint32_t err;
+                         429 --176:     err = L_FLS_IsUserBootArea(start_addr, size);
+                         430 .L344:
+00000016 80070000*       431 	jr	_L_FLS_IsUserBootArea
+                         432 --	    .ef
+                         433 .LDW12:
+                         434 --line173
+                         435 ..lin.fc714e46..9008d29.0_9::
+                         436 	.type	_MM_FLS_IsUserBootArea,@function
+                         437 	.size	_MM_FLS_IsUserBootArea,.-_MM_FLS_IsUserBootArea
+                         438 	.align	2
+                         439 
+                         440 --_start_addr	r6	param
+                         441 --_size	r7	param
+                         442 
+                         443 	.section ".bss","awb"
+                         444 .L324:
+                         445 	.type	.L324,@object
+                         446 	.size	.L324,0
+                         447 	.section ".ghtailcalltbl",""
+0000000c 00000000*       448 .L345:	.word	.L344
+                         449 	.type	.L345,@object
+                         450 	.size	.L345,4
+                         451 	.data
+                         452 	.section ".icum_middle.text","ax"
+                         453 
+                         454 --179: }
+                         455 
+                         456 --181: /***************************************************************************************
+                         457 --182: * Function ID  : [ICUMFW_CD_MM_FlashMNG_0066]:[ICUMFW_UD_MM_FlashMNG_0066]
+                         458 --183: * Function name: L_FLS_CheckMemoryCISM
+                         459 --184: * Description  : Check of memory source address for CISM
+                         460 --185: * Arguments    : start_addr     : address to be checked
+                         461 --186: *                size           : data size
+                         462 --187: *                direction      : direction to check
+                         463 --188: *                p_result       : check result
+                         464 --189: * Return Value : ER_OK
+                         465 --190: *                ER_PARAM
+                         466 --191: ***************************************************************************************/
+                         467 	.align	2
+                         468 	.align	2
+                         469 	.align	2
+                         470 ..gh.f.a.2.e.6:
+                         471 	.type	..gh.f.a.2.e.6,@object
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb81.si
+                         472 	.size	..gh.f.a.2.e.6,0
+                         473 	.global	_MM_FLS_CheckMemoryCISM
+                         474 _MM_FLS_CheckMemoryCISM:
+0000001a 8800            475 	zxb	r8
+                         476 --	    .bf
+                         477 .LDW22:
+                         478 --192: uint32_t MM_FLS_CheckMemoryCISM(const uint32_t start_addr, const uint32_t size, const uint8_t direction,
+                         479 --193:                                 uint8_t *p_result)
+                         480 --194: {
+                         481 --195:     uint32_t err;
+                         482 --197:     err = L_FLS_CheckMemoryCISM(start_addr, size, direction, p_result);
+                         483 .L392:
+0000001c 80070000*       484 	jr	_L_FLS_CheckMemoryCISM
+                         485 --	    .ef
+                         486 .LDW32:
+                         487 --line194
+                         488 ..lin.fc714e46..4eb3c384.0_10::
+                         489 	.type	_MM_FLS_CheckMemoryCISM,@function
+                         490 	.size	_MM_FLS_CheckMemoryCISM,.-_MM_FLS_CheckMemoryCISM
+                         491 	.align	2
+                         492 
+                         493 --_start_addr	r6	param
+                         494 --_size	r7	param
+                         495 --_direction	r8	param
+                         496 --_p_result	r9	param
+                         497 
+                         498 	.section ".bss","awb"
+                         499 .L372:
+                         500 	.type	.L372,@object
+                         501 	.size	.L372,0
+                         502 	.section ".ghtailcalltbl",""
+00000010 00000000*       503 .L393:	.word	.L392
+                         504 	.type	.L393,@object
+                         505 	.size	.L393,4
+                         506 	.data
+                         507 	.section ".icum_middle.text","ax"
+                         508 
+                         509 --200: }
+                         510 	.align	2
+                         511 
+                         512 	.data
+                         513 	.ghsnote version,30
+                         514 	.ghsnote tools,3
+                         515 	.ghsnote options,656
+                         516 	.section ".icum_middle.text","ax"
+                         517 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_mng_memory...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065F..0::
+                         518 	.section ".icum_middle_ram","ax"
+                         519 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_mng_memory...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065F..1::
+                         520 	.section ".icum_middle.text","ax"
+                         521 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

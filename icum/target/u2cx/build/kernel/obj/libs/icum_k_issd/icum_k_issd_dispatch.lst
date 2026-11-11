@@ -1,0 +1,1760 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\generic\include\device\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_dispatch.dbo -source=icum_k_issd_dispatch.c -comp -o ..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\gh_0000c2o1.o -list=..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_dispatch.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+Source File: icum_k_issd_dispatch.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\generic\include\device\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\kernel\
+                           5 --		-I..\..\icum\sal\include\library\
+                           6 --		-I..\..\icum\generic\include\middle\
+                           7 --		-I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\
+                           8 --		-I..\..\icum\generic\include\
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\device\
+                          11 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          13 --		-I..\..\icum\target\u2cx\include\driver
+                          14 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          17 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          18 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          19 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          20 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          21 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          22 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          23 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          24 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          25 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          26 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          27 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          28 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          29 --		.text=.icum_kernel.text -section .rodata=.icum_kernel.rodata
+                          30 --		-section .bss=.icum_kernel.bss -section .data=.icum_kernel.data
+                          31 --		-filetype.c
+                          32 --		..\..\icum\generic\src\kernel\k_issd\icum_k_issd_dispatch.c -o
+                          33 --		..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_dispatch.o
+                          34 --Source File:   ..\..\icum\generic\src\kernel\k_issd\icum_k_issd_dispatch.c
+                          35 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          36 --Compile Date:  Wed Nov 11 14:08:01 2026
+                          37 --Host OS:       Win64
+                          38 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          39 --Release:       Compiler v2023.5.4
+                          40 --Revision Date: Wed Sep 06 02:44:56 2023
+                          41 --Release Date:  Wed Sep 06 02:00:00 2023
+                          42 -- ecom  -g -w
+                          43 	.section ".icum_kernel_ram","ax"
+                          44 
+                          45 --1: /******************************************************************************/
+                          46 --2: /* Component Name   ISSD (ICU-M Start-up & Service Dispatcher)                */
+                          47 --3: /******************************************************************************/
+                          48 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          49 --5: /******************************************************************************/
+                          50 --6: /***********************************************************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                          51 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          52 --8: * 
+                          53 --9: * DISCLAIMER
+                          54 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          55 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          56 --12: * applicable laws, including copyright laws.
+                          57 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          58 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          59 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          60 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          61 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          62 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          63 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          64 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          65 --21: * following link:
+                          66 --22: * www.renesas.com/disclaimer
+                          67 --23: *
+                          68 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          69 --25: ***********************************************************************************************************************/
+                          70 --27: /* Header files                     */
+                          71 --28: #include "renesas_types.h"
+                          72 --29: #include "r_icumif_api.h"
+                          73 --30: #include "icum_common_pub.h"
+                          74 --31: #include "icum_d_misc_pub.h"
+                          75 --32: #include "icum_d_comm_pub.h"
+                          76 --33: #include "icum_d_int_pub.h"
+                          77 --34: #include "icum_d_wdt_pub.h"
+                          78 --35: #include "icum_d_cr_pub.h"
+                          79 --36: #include MM_FLASH_PUBLIC_H
+                          80 --37: #include "icum_k_issd_pub.h"
+                          81 --38: #include "icum_k_issd.h"
+                          82 --40: /***************************************************************************************
+                          83 --41: * Local Definition                                                                     *
+                          84 --42: ***************************************************************************************/
+                          85 --43: #define EXT_DEBUGGER_CONNECT   0x00000001uL
+                          86 --45: #pragma ghs section text   = ".icum_kernel_ram"
+                          87 --46: #pragma ghs section rodata = ".icum_kernel_const_ram"
+                          88 --47: /***************************************************************************************
+                          89 --48: * Function ID  : [ICUMFW_CD_K_ISSD_0025]:[ICUMFW_UD_K_ISSD_0025]
+                          90 --49: * Function name: k_ISSD_CheckNVMWarning
+                          91 --50: * Description  : Check the NVM Warning
+                          92 --51: * Arguments    : (IN) : *p_isd
+                          93 --52: * Return Value : ER_OK
+                          94 --53: ***************************************************************************************/
+                          95 --54: uint32_t k_ISSD_CheckNVMWarning(r_icumif_isd_t *p_isd)
+                          96 	.align	2
+                          97 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..0::
+                          98 	.align	2
+                          99 	.align	2
+                         100 ..gh.f.a.2.e.0:
+                         101 	.type	..gh.f.a.2.e.0,@object
+                         102 	.size	..gh.f.a.2.e.0,0
+                         103 	.global	_k_ISSD_CheckNVMWarning
+                         104 _k_ISSD_CheckNVMWarning:
+00000000 501a            105 	add	-16,sp
+00000002 63ff0d00        106 	st.w	lp,12[sp]
+00000006 63ef0500        107 	st.w	r29,4[sp]
+0000000a 63e70900        108 	st.w	r28,8[sp]
+0000000e 06e8            109 	mov	r6,r29
+                         110 --	    .bf
+                         111 .LDW01:
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         112 --55: {
+                         113 --56:     uint32_t result = ER_OK;
+00000010 00e2            114 	mov	0,r28
+                         115 --57:     uint8_t nvm_warn_state;
+                         116 --59:     if(SERV_OK == p_isd->service_result)
+00000012 3d0f0d00        117 	ld.w	12[r29],r1
+00000016 e009            118 	cmp	zero,r1
+00000018 fa25*           119 	bne	.L15
+                         120 --60:     {
+                         121 --61:         /* get of NVM Warning state */
+                         122 --62:         nvm_warn_state = NVM_DATA_NO_WARNING;
+                         123 --line62
+                         124 ..lin.75ec962c..125f6ae5.0_1::
+                         125 .LDWlin1:
+0000001a 43070300        126 	st.b	zero,3[sp]
+                         127 --63:         (void)MM_FLS_GetNVMWarnFlg(&nvm_warn_state);
+0000001e 23360300        128 	movea	3,sp,r6
+                         129 .L133:
+                         130 	jarl	_MM_FLS_GetNVMWarnFlg,lp
+                         130 <EXPANSION BEGIN>
+                         130 jarl22 _MM_FLS_GetNVMWarnFlg , lp 
+00000022 80ff0000*       130 <EXPANSION END>
+                         131 --64:         /* set to service result, if NVM Warning */
+                         132 --65:         if((uint32_t)NVM_DATA_WARNING == (uint32_t)nvm_warn_state)
+                         133 --line65
+                         134 ..lin.75ec962c..125f6ae5.0_2::
+                         135 .LDWlin2:
+00000026 a30f0300        136 	ld.bu	3[sp],r1
+0000002a 610a            137 	cmp	1,r1
+0000002c 8a0d*           138 	bne	.L6
+                         139 --66:         {
+                         140 --67:             p_isd->service_result = SERV_NVM_DATA_WARNING;
+                         141 --line67
+                         142 ..lin.75ec962c..125f6ae5.0_3::
+                         143 .LDWlin3:
+0000002e 200e1800        144 	movea	24,zero,r1
+00000032 7d0f0d00        145 	st.w	r1,12[r29]
+                         146 --68:             /* clear the NVM Warning */
+                         147 --69:             (void)MM_FLS_ClrNVMWarnFlg();
+                         148 .L135:
+                         149 	jarl	_MM_FLS_ClrNVMWarnFlg,lp
+                         149 <EXPANSION BEGIN>
+                         149 jarl22 _MM_FLS_ClrNVMWarnFlg , lp 
+00000036 80ff0000*       149 <EXPANSION END>
+0000003a e515*           150 	br	.L15
+                         151 .L6:
+                         152 --70:         }
+                         153 --71:         else if((uint32_t)FLS_FULL_WARNING1 == (uint32_t)nvm_warn_state)
+                         154 --line71
+                         155 ..lin.75ec962c..125f6ae5.0_4::
+                         156 .LDWlin4:
+0000003c a30f0300        157 	ld.bu	3[sp],r1
+00000040 620a            158 	cmp	2,r1
+00000042 8a0d*           159 	bne	.L9
+                         160 --72:         {
+                         161 --73:             p_isd->service_result = SERV_NVM_DATA_FULL_WARNING1;
+                         162 --line73
+                         163 ..lin.75ec962c..125f6ae5.0_5::
+                         164 .LDWlin5:
+00000044 200e3800        165 	movea	56,zero,r1
+00000048 7d0f0d00        166 	st.w	r1,12[r29]
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         167 --74:             /* clear the NVM Warning */
+                         168 --75:             (void)MM_FLS_ClrNVMWarnFlg();
+                         169 .L137:
+                         170 	jarl	_MM_FLS_ClrNVMWarnFlg,lp
+                         170 <EXPANSION BEGIN>
+                         170 jarl22 _MM_FLS_ClrNVMWarnFlg , lp 
+0000004c 80ff0000*       170 <EXPANSION END>
+00000050 b50d*           171 	br	.L15
+                         172 .L9:
+                         173 --76:         }
+                         174 --77:         else if((uint32_t)FLS_FULL_WARNING2 == (uint32_t)nvm_warn_state)
+                         175 --line77
+                         176 ..lin.75ec962c..125f6ae5.0_6::
+                         177 .LDWlin6:
+00000052 a30f0300        178 	ld.bu	3[sp],r1
+00000056 630a            179 	cmp	3,r1
+00000058 fa05*           180 	bne	.L15
+                         181 --78:         {
+                         182 --79:             p_isd->service_result = SERV_NVM_DATA_FULL_WARNING2;
+                         183 --line79
+                         184 ..lin.75ec962c..125f6ae5.0_7::
+                         185 .LDWlin7:
+0000005a 200e3900        186 	movea	57,zero,r1
+0000005e 7d0f0d00        187 	st.w	r1,12[r29]
+                         188 --80:             /* clear the NVM Warning */
+                         189 --81:             (void)MM_FLS_ClrNVMWarnFlg();
+                         190 .L139:
+                         191 	jarl	_MM_FLS_ClrNVMWarnFlg,lp
+                         191 <EXPANSION BEGIN>
+                         191 jarl22 _MM_FLS_ClrNVMWarnFlg , lp 
+00000062 80ff0000*       191 <EXPANSION END>
+                         192 .L15:
+                         193 --82:         }
+                         194 --83:         else
+                         195 --84:         {
+                         196 --85:             /* Do nothing */
+                         197 --86:         }
+                         198 --87:     }
+                         199 --88:     else
+                         200 --89:     {
+                         201 --90:         /* Do nothing */
+                         202 --91:     }
+                         203 --92:     return(result);
+                         204 --line92
+                         205 ..lin.75ec962c..125f6ae5.0_8::
+                         206 .LDWlin8:
+00000066 1c50            207 	mov	r28,r10
+                         208 --	    .ef
+                         209 .LDW11:
+00000068 23ff0d00        210 	ld.w	12[sp],lp
+0000006c 23ef0500        211 	ld.w	4[sp],r29
+00000070 23e70900        212 	ld.w	8[sp],r28
+00000074 031e1000        213 	addi	16,sp,sp
+                         214 .L141:
+                         215 	.jumptype return
+00000078 7f00            216 	jmp	[lp]
+                         217 --line92
+                         218 ..lin.75ec962c..125f6ae5.0_9::
+                         219 	.type	_k_ISSD_CheckNVMWarning,@function
+                         220 	.size	_k_ISSD_CheckNVMWarning,.-_k_ISSD_CheckNVMWarning
+                         221 	.align	2
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         222 --_result	r28	local
+                         223 --_nvm_warn_state	3[sp]	local
+                         224 
+                         225 --_p_isd	r29	param
+                         226 
+                         227 	.section ".bss","awb"
+                         228 .L82:
+                         229 	.type	.L82,@object
+                         230 	.size	.L82,0
+                         231 	.section ".ghcalltbl",""
+                         232 	.align	4
+00000000 00000000*       233 .L134:	.word	.L133
+                         234 	.type	.L134,@object
+                         235 	.size	.L134,4
+00000004 00000000*       236 .L136:	.word	.L135
+                         237 	.type	.L136,@object
+                         238 	.size	.L136,4
+00000008 00000000*       239 .L138:	.word	.L137
+                         240 	.type	.L138,@object
+                         241 	.size	.L138,4
+0000000c 00000000*       242 .L140:	.word	.L139
+                         243 	.type	.L140,@object
+                         244 	.size	.L140,4
+                         245 	.section ".ghrettbl",""
+                         246 	.align	4
+00000000 00000000*       247 .L142:	.word	.L141
+                         248 	.type	.L142,@object
+                         249 	.size	.L142,4
+                         250 	.data
+                         251 	.section ".icum_kernel_ram","ax"
+                         252 
+                         253 --93: }
+                         254 
+                         255 --95: /***************************************************************************************
+                         256 --96: * Function ID  : [ICUMFW_CD_K_ISSD_0021]:[ICUMFW_UD_K_ISSD_0021]
+                         257 --97: * Function name: k_ISSD_HandleResponse
+                         258 --98: * Description  : Trigger response to host
+                         259 --99: * Arguments    : (IN) : *p_isd
+                         260 --100: * Return Value : ER_OK : if the response has been set in the response queue
+                         261 --101: *                        and p_ISD->host_int_ch is different from 0xff
+                         262 --102: *                ER_PARAM :
+                         263 --103: ***************************************************************************************/
+                         264 --104: uint32_t k_ISSD_HandleResponse(r_icumif_isd_t *p_isd)
+                         265 	.align	2
+                         266 	.align	2
+                         267 	.align	2
+                         268 ..gh.f.a.2.e.1:
+                         269 	.type	..gh.f.a.2.e.1,@object
+                         270 	.size	..gh.f.a.2.e.1,0
+                         271 	.global	_k_ISSD_HandleResponse
+                         272 _k_ISSD_HandleResponse:
+0000007a 541a            273 	add	-12,sp
+0000007c 63ff0900        274 	st.w	lp,8[sp]
+00000080 63e70500        275 	st.w	r28,4[sp]
+00000084 63ef0100        276 	st.w	r29,0[sp]
+00000088 06e0            277 	mov	r6,r28
+                         278 --	    .bf
+                         279 .LDW21:
+                         280 --105: {
+                         281 --106:     uint32_t rtn = ER_OK;
+0000008a 00ea            282 	mov	0,r29
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         283 --108:     /* 1. NULL check */
+                         284 --109:     if (NULL != p_isd)
+0000008c e0e1            285 	cmp	zero,r28
+0000008e a21d*           286 	be	.L145
+                         287 --110:     {
+                         288 --111:         /* 2. request from PE */
+                         289 --112:         if(((int32_t)p_isd->requester_id >= (int32_t)MISC_PEID_PE0) &&
+                         290 --line112
+                         291 ..lin.75ec962c..3955421b.0_10::
+                         292 .LDWlin10:
+00000090 9c0f0500        293 	ld.bu	4[r28],r1
+00000094 9c0f0500        294 	ld.bu	4[r28],r1
+00000098 620a            295 	cmp	2,r1
+0000009a e90d*           296 	bnl	.L147
+                         297 --113:            ((int32_t)p_isd->requester_id < (int32_t)TOTAL_PE_NUM))
+                         298 --114:         {
+                         299 --115:             if((uint32_t)0xFFu != (uint32_t)p_isd->host_int_ch)
+                         300 --line115
+                         301 ..lin.75ec962c..3955421b.0_11::
+                         302 .LDWlin11:
+0000009c 9c0f0700        303 	ld.bu	6[r28],r1
+000000a0 010601ff        304 	addi	-255,r1,zero
+000000a4 8215*           305 	be	.L166
+                         306 --116:             {
+                         307 --117:                 /* Check the NVM Warning */
+                         308 --118:                 //zxhk (void)k_ISSD_CheckNVMWarning(p_isd);
+                         309 --119:                 /* response in queue: trigger host interrupt */
+                         310 --120:                 rtn = D_COMM_TriggerInterruptToPE((uint32_t)p_isd->requester_id, ICUM_COMM_ICH_TO_SERV_RESPONSE, p_isd);
+                         311 --line120
+                         312 ..lin.75ec962c..3955421b.0_12::
+                         313 .LDWlin12:
+000000a6 9c370500        314 	ld.bu	4[r28],r6
+000000aa 1c40            315 	mov	r28,r8
+000000ac 023a            316 	mov	2,r7
+                         317 .L297:
+                         318 	jarl	_D_COMM_TriggerInterruptToPE,lp
+                         318 <EXPANSION BEGIN>
+                         318 jarl22 _D_COMM_TriggerInterruptToPE , lp 
+000000ae 80ff0000*       318 <EXPANSION END>
+000000b2 0ae8            319 	mov	r10,r29
+000000b4 850d*           320 	br	.L166
+                         321 .L147:
+                         322 --121:             }
+                         323 --122:             else
+                         324 --123:             {
+                         325 --124:                 /* Do nothing */
+                         326 --125:             }
+                         327 --126:         }
+                         328 --127:         /* 3. request from ICUP */
+                         329 --128:         else if((uint32_t)p_isd->requester_id == (uint32_t)MISC_PEID_ICUP)
+                         330 --line128
+                         331 ..lin.75ec962c..3955421b.0_13::
+                         332 .LDWlin13:
+000000b6 9c0f0500        333 	ld.bu	4[r28],r1
+000000ba 670a            334 	cmp	7,r1
+000000bc c205*           335 	be	.L166
+                         336 --129:         {
+                         337 --130:             /* internal service request: no response to trigger */
+                         338 --131:         }
+                         339 --132:         /* 4. illegal request */
+                         340 --133:         else
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         341 --134:         {
+                         342 --135:             rtn = ER_PARAM;
+                         343 --line135
+                         344 ..lin.75ec962c..3955421b.0_14::
+                         345 .LDWlin14:
+000000be 01ea            346 	mov	1,r29
+                         347 --136:             /* should never occur */
+                         348 --137:             ASSERT(0);
+                         349 .L163:
+000000c0 8505*           350 	br	.L163
+                         351 .L145:
+                         352 --138:         }
+                         353 --139:     }
+                         354 --140:     else
+                         355 --141:     {
+                         356 --142:         rtn = ER_PARAM;
+                         357 --line142
+                         358 ..lin.75ec962c..3955421b.0_15::
+                         359 .LDWlin15:
+000000c2 01ea            360 	mov	1,r29
+                         361 .L166:
+                         362 --143:     }
+                         363 --145:     return(rtn);
+000000c4 1d50            364 	mov	r29,r10
+                         365 --	    .ef
+                         366 .LDW31:
+000000c6 23ff0900        367 	ld.w	8[sp],lp
+000000ca 23ef0100        368 	ld.w	0[sp],r29
+000000ce 23e70500        369 	ld.w	4[sp],r28
+000000d2 4c1a            370 	add	12,sp
+                         371 .L299:
+                         372 	.jumptype return
+000000d4 7f00            373 	jmp	[lp]
+                         374 --line142
+                         375 ..lin.75ec962c..3955421b.0_16::
+                         376 	.type	_k_ISSD_HandleResponse,@function
+                         377 	.size	_k_ISSD_HandleResponse,.-_k_ISSD_HandleResponse
+                         378 	.align	2
+                         379 --_rtn	r29	local
+                         380 
+                         381 --_p_isd	r28	param
+                         382 
+                         383 	.section ".bss","awb"
+                         384 .L252:
+                         385 	.type	.L252,@object
+                         386 	.size	.L252,0
+                         387 	.section ".ghcalltbl",""
+00000010 00000000*       388 .L298:	.word	.L297
+                         389 	.type	.L298,@object
+                         390 	.size	.L298,4
+                         391 	.section ".ghrettbl",""
+00000004 00000000*       392 .L300:	.word	.L299
+                         393 	.type	.L300,@object
+                         394 	.size	.L300,4
+                         395 	.data
+                         396 	.section ".icum_kernel_ram","ax"
+                         397 
+                         398 --146: }
+                         399 
+                         400 --148: /***************************************************************************************
+                         401 --149: * Function ID  : [ICUMFW_CD_K_ISSD_0026]:[ICUMFW_UD_K_ISSD_0026]
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         402 --150: * Function name: k_ISSD_CheckDebuggerConnection
+                         403 --151: * Description  : check debugger connection and set EXT_DEBUGGER
+                         404 --152: * Arguments    : none
+                         405 --153: * Return Value : none
+                         406 --154: ***************************************************************************************/
+                         407 --155: void k_ISSD_CheckDebuggerConnection(void)
+                         408 	.align	2
+                         409 	.align	2
+                         410 	.align	2
+                         411 ..gh.f.a.2.e.2:
+                         412 	.type	..gh.f.a.2.e.2,@object
+                         413 	.size	..gh.f.a.2.e.2,0
+                         414 	.global	_k_ISSD_CheckDebuggerConnection
+                         415 _k_ISSD_CheckDebuggerConnection:
+000000d6 541a            416 	add	-12,sp
+000000d8 63ff0900        417 	st.w	lp,8[sp]
+000000dc 63ef0500        418 	st.w	r29,4[sp]
+                         419 --	    .bf
+                         420 .LDW41:
+                         421 --156: {
+                         422 --157:     uint32_t debugger_status;
+                         423 --158:     uint32_t rtn;
+                         424 --160:     /* Ext debugger check */
+                         425 --161:     rtn = D_CR_GetDCS(&debugger_status);
+000000e0 23360000        426 	movea	0,sp,r6
+                         427 .L367:
+                         428 	jarl	_D_CR_GetDCS,lp
+                         428 <EXPANSION BEGIN>
+                         428 jarl22 _D_CR_GetDCS , lp 
+000000e4 80ff0000*       428 <EXPANSION END>
+000000e8 0ae8            429 	mov	r10,r29
+                         430 --162:     if(ER_OK == rtn)
+                         431 --line162
+                         432 ..lin.75ec962c..9f030eb3.0_17::
+                         433 .LDWlin17:
+000000ea e0e9            434 	cmp	zero,r29
+000000ec aa0d*           435 	bne	.L301
+                         436 --163:     {
+                         437 --164:         if(EXT_DEBUGGER_CONNECT == debugger_status)
+                         438 --line164
+                         439 ..lin.75ec962c..9f030eb3.0_18::
+                         440 .LDWlin18:
+000000ee 230f0100        441 	ld.w	0[sp],r1
+000000f2 610a            442 	cmp	1,r1
+000000f4 ea05*           443 	bne	.L301
+                         444 --165:         {
+                         445 --166:             /* Set EXT_DEBUGGER bit - ICU2PES register */
+                         446 --167:             (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_EXT_DEBUG , ICU_STATUS_ON);
+                         447 --line167
+                         448 ..lin.75ec962c..9f030eb3.0_19::
+                         449 .LDWlin19:
+000000f6 20364000        450 	movea	64,zero,r6
+000000fa 013a            451 	mov	1,r7
+                         452 .L369:
+                         453 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         453 <EXPANSION BEGIN>
+                         453 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000000fc 80ff0000*       453 <EXPANSION END>
+                         454 .L301:
+                         455 --168:         }
+                         456 --169:         else
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         457 --170:         {
+                         458 --171:             /* Do nothing */
+                         459 --172:         }
+                         460 --173:     }
+                         461 --174:     else
+                         462 --175:     {
+                         463 --176:         /* Do nothing */
+                         464 --177:     }
+                         465 --178: }
+                         466 --	    .ef
+                         467 .LDW51:
+                         468 --line178
+                         469 ..lin.75ec962c..9f030eb3.0_20::
+                         470 .LDWlin20:
+00000100 23ff0900        471 	ld.w	8[sp],lp
+00000104 23ef0500        472 	ld.w	4[sp],r29
+00000108 4c1a            473 	add	12,sp
+                         474 .L371:
+                         475 	.jumptype return
+0000010a 7f00            476 	jmp	[lp]
+                         477 --line178
+                         478 ..lin.75ec962c..9f030eb3.0_21::
+                         479 	.type	_k_ISSD_CheckDebuggerConnection,@function
+                         480 	.size	_k_ISSD_CheckDebuggerConnection,.-_k_ISSD_CheckDebuggerConnection
+                         481 	.align	2
+                         482 --_debugger_status	0[sp]	local
+                         483 --_rtn	r29	local
+                         484 
+                         485 	.section ".bss","awb"
+                         486 .L346:
+                         487 	.type	.L346,@object
+                         488 	.size	.L346,0
+                         489 	.section ".ghcalltbl",""
+00000014 00000000*       490 .L368:	.word	.L367
+                         491 	.type	.L368,@object
+                         492 	.size	.L368,4
+00000018 00000000*       493 .L370:	.word	.L369
+                         494 	.type	.L370,@object
+                         495 	.size	.L370,4
+                         496 	.section ".ghrettbl",""
+00000008 00000000*       497 .L372:	.word	.L371
+                         498 	.type	.L372,@object
+                         499 	.size	.L372,4
+                         500 	.data
+                         501 	.section ".icum_kernel_ram","ax"
+                         502 
+                         503 
+                         504 --180: /***************************************************************************************
+                         505 --181: * Function ID  : [ICUMFW_CD_K_ISSD_0024]:[ICUMFW_UD_K_ISSD_0024]
+                         506 --182: * Function name: K_ISSD_HandleRequest
+                         507 --183: * Description  : Service dispatcher
+                         508 --184: *                This function is triggered via the inter-PE exception
+                         509 --185: * Arguments    : (IN) : channel
+                         510 --186: *                       *p_isd
+                         511 --187: * Return Value : ER_OK :
+                         512 --188: *                SERV_REQUESTER_ID_ERROR : wrong requester ID
+                         513 --189: *                SERV_UNAVAILABLE : service unavailable
+                         514 --190: *                SERV_JOB_QUEUE_FULL : cannot accept another service request
+                         515 --191: *                SERV_REQUEST :
+                         516 --192: ***************************************************************************************/
+                         517 --193: uint32_t K_ISSD_HandleRequest(icum_comm_int_from_channel_t channel, r_icumif_isd_t *p_isd)
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         518 	.align	2
+                         519 	.align	2
+                         520 	.align	2
+                         521 ..gh.f.a.2.e.3:
+                         522 	.type	..gh.f.a.2.e.3,@object
+                         523 	.size	..gh.f.a.2.e.3,0
+                         524 	.global	_K_ISSD_HandleRequest
+                         525 _K_ISSD_HandleRequest:
+0000010c 031ed8ff        526 	addi	-40,sp,sp
+00000110 63ff2500        527 	st.w	lp,36[sp]
+00000114 63cf2100        528 	st.w	r25,32[sp]
+00000118 63ef1100        529 	st.w	r29,16[sp]
+0000011c 63d71d00        530 	st.w	r26,28[sp]
+00000120 63df1900        531 	st.w	r27,24[sp]
+00000124 63e71500        532 	st.w	r28,20[sp]
+00000128 06c8            533 	mov	r6,r25
+0000012a 07e8            534 	mov	r7,r29
+                         535 --	    .bf
+                         536 .LDW61:
+                         537 --194: {
+                         538 --195:     icum_job_t         *p_ghost_job;
+                         539 --196:     p_service_func_t   p_service_func;
+                         540 --197:     r_icumif_job_id_t  new_job_id = 0u;
+0000012c 63070e00        541 	st.h	zero,14[sp]
+                         542 --198:     r_icumif_service_result_t err = SERV_OK;
+00000130 00e2            543 	mov	0,r28
+                         544 --199:     uint32_t rtn = ER_OK;
+00000132 00da            545 	mov	0,r27
+                         546 --200:     bool highest_job_executed = (bool)false;
+00000134 43070300        547 	st.b	zero,3[sp]
+                         548 --201:     uint32_t result;
+                         549 --203:     /* Check channel number */
+                         550 --204:     if (ICUM_COMM_ICH_FM_SERV_REQUEST == channel)
+00000138 62ca            551 	cmp	2,r25
+0000013a ca75*           552 	bne	.L423
+                         553 --205:     {
+                         554 --206:         /* NULL check */
+                         555 --207:         if (NULL != p_isd)
+                         556 --line207
+                         557 ..lin.75ec962c..6d3179d5.0_22::
+                         558 .LDWlin22:
+0000013c e0e9            559 	cmp	zero,r29
+0000013e 9275*           560 	be	.L377
+                         561 --208:         {
+                         562 --209:             /* is the requester ID valid? */
+                         563 --210:             if(((int32_t)MISC_PEID_PE0 > (int32_t)p_isd->requester_id) ||
+                         564 --line210
+                         565 ..lin.75ec962c..6d3179d5.0_23::
+                         566 .LDWlin23:
+00000140 9d0f0500        567 	ld.bu	4[r29],r1
+00000144 9d0f0500        568 	ld.bu	4[r29],r1
+00000148 620a            569 	cmp	2,r1
+0000014a d105*           570 	bl	.L379
+                         571 --211:                ((int32_t)TOTAL_PE_NUM <= (int32_t)p_isd->requester_id))
+                         572 --212:             {
+                         573 --213:                 err = SERV_REQUESTER_ID_ERROR;
+                         574 --line213
+                         575 ..lin.75ec962c..6d3179d5.0_24::
+                         576 .LDWlin24:
+0000014c 03e2            577 	mov	3,r28
+                         578 --214:                 /* choose an arbitrary target for the error response */
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         579 --215:                 p_isd->requester_id = MISC_PEID_PE0;
+0000014e 5d070400        580 	st.b	zero,4[r29]
+00000152 9525*           581 	br	.L382
+                         582 .L379:
+                         583 --216:             }
+                         584 --217:             /* requester ID is valid */
+                         585 --218:             else
+                         586 --219:             {
+                         587 --220:                 if ((uint32_t)R_ICUMIF_SERV_PRIORITY_HIGHEST == (uint32_t)p_isd->service_priority)
+                         588 --line220
+                         589 ..lin.75ec962c..6d3179d5.0_25::
+                         590 .LDWlin25:
+00000154 9d0f0900        591 	ld.bu	8[r29],r1
+00000158 e009            592 	cmp	zero,r1
+0000015a ea05*           593 	bne	.L385
+                         594 --221:                 {
+                         595 --222:                     /* Dispatcher of highest priority service request */
+                         596 --223:                     k_ISSD_HighestDispatch(p_isd, &highest_job_executed);
+                         597 --line223
+                         598 ..lin.75ec962c..6d3179d5.0_26::
+                         599 .LDWlin26:
+0000015c 1d30            600 	mov	r29,r6
+0000015e 233e0300        601 	movea	3,sp,r7
+                         602 .L739:
+                         603 	jarl	_k_ISSD_HighestDispatch,lp
+                         603 <EXPANSION BEGIN>
+                         603 jarl22 _k_ISSD_HighestDispatch , lp 
+00000162 80ff0000*       603 <EXPANSION END>
+                         604 .L385:
+                         605 --224:                 }
+                         606 --225:                 else
+                         607 --226:                 {
+                         608 --227:                     /* Do nothing */
+                         609 --228:                 }
+                         610 --230:                 if((uint32_t)false == (uint32_t)highest_job_executed)
+                         611 --line230
+                         612 ..lin.75ec962c..6d3179d5.0_27::
+                         613 .LDWlin27:
+00000166 a30f0300        614 	ld.bu	3[sp],r1
+0000016a e009            615 	cmp	zero,r1
+0000016c ca15*           616 	bne	.L382
+                         617 --231:                 {
+                         618 --232:                     /* retrieve the pointer to the service function */
+                         619 --233:                     result = k_ISSD_GetServiceFunc(p_isd->service_id, &p_service_func);
+                         620 --line233
+                         621 ..lin.75ec962c..6d3179d5.0_28::
+                         622 .LDWlin28:
+0000016e 3d370100        623 	ld.w	0[r29],r6
+00000172 233e0800        624 	movea	8,sp,r7
+                         625 .L741:
+                         626 	jarl	_k_ISSD_GetServiceFunc,lp
+                         626 <EXPANSION BEGIN>
+                         626 jarl22 _k_ISSD_GetServiceFunc , lp 
+00000176 80ff0000*       626 <EXPANSION END>
+0000017a 0ad0            627 	mov	r10,r26
+                         628 --235:                     if(ER_SERV_ID_ERROR == result)
+                         629 --line235
+                         630 ..lin.75ec962c..6d3179d5.0_29::
+                         631 .LDWlin29:
+0000017c 61d2            632 	cmp	1,r26
+0000017e ba05*           633 	bne	.L388
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         634 --236:                     {
+                         635 --237:                         /* service ID provided is invalid */
+                         636 --238:                         err = SERV_ID_ERROR;
+                         637 --line238
+                         638 ..lin.75ec962c..6d3179d5.0_30::
+                         639 .LDWlin30:
+00000180 02e2            640 	mov	2,r28
+00000182 950d*           641 	br	.L382
+                         642 .L388:
+                         643 --239:                     }
+                         644 --240:                     else if(ER_SERV_UNAVAILABLE == result)
+                         645 --line240
+                         646 ..lin.75ec962c..6d3179d5.0_31::
+                         647 .LDWlin31:
+00000184 62d2            648 	cmp	2,r26
+00000186 ba05*           649 	bne	.L391
+                         650 --241:                     {
+                         651 --242:                         /* Conditions for service execution not satisfied */
+                         652 --243:                         err = SERV_UNAVAILABLE;
+                         653 --line243
+                         654 ..lin.75ec962c..6d3179d5.0_32::
+                         655 .LDWlin32:
+00000188 0fe2            656 	mov	15,r28
+0000018a d505*           657 	br	.L382
+                         658 .L391:
+                         659 --244:                     }
+                         660 --245:                     else if(ER_SERV_SYS_ERROR == result)
+                         661 --line245
+                         662 ..lin.75ec962c..6d3179d5.0_33::
+                         663 .LDWlin33:
+0000018c 63d2            664 	cmp	3,r26
+0000018e ba05*           665 	bne	.L382
+                         666 --246:                     {
+                         667 --247:                         err = SERV_SYS_ERROR;
+                         668 --line247
+                         669 ..lin.75ec962c..6d3179d5.0_34::
+                         670 .LDWlin34:
+00000190 20e61100        671 	movea	17,zero,r28
+                         672 .L382:
+                         673 --248:                     }
+                         674 --249:                     else
+                         675 --250:                     {
+                         676 --251:                         /* do nothing */
+                         677 --252:                     }
+                         678 --253:                 }
+                         679 --254:                 else
+                         680 --255:                 {
+                         681 --256:                     /* Do nothing */
+                         682 --257:                 }
+                         683 --258:             }
+                         684 --259:             /* No error occurred */
+                         685 --260:             if((SERV_OK == err) &&
+00000194 e0e1            686 	cmp	zero,r28
+00000196 da2d*           687 	bne	.L412
+                         688 --line261
+                         689 ..lin.75ec962c..6d3179d5.0_35::
+                         690 .LDWlin35:
+00000198 a30f0300        691 	ld.bu	3[sp],r1
+0000019c e009            692 	cmp	zero,r1
+0000019e 9a2d*           693 	bne	.L412
+                         694 --261:                ((uint32_t)false == (uint32_t)highest_job_executed))
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         695 --262:             {
+                         696 --263:                 /* is this the continuation of a previous job? */
+                         697 --264:                 p_ghost_job = NULL;
+                         698 --line264
+                         699 ..lin.75ec962c..6d3179d5.0_36::
+                         700 .LDWlin36:
+000001a0 63070500        701 	st.w	zero,4[sp]
+                         702 --266:                 if((uint32_t)0u != (uint32_t)p_isd->job_id)
+000001a4 fd0f1300        703 	ld.hu	18[r29],r1
+000001a8 e009            704 	cmp	zero,r1
+000001aa 8215*           705 	be	.L408
+                         706 --267:                 {
+                         707 --268:                     switch(p_isd->service_id)
+                         708 --line268
+                         709 ..lin.75ec962c..6d3179d5.0_37::
+                         710 .LDWlin37:
+000001ac 3d0f0100        711 	ld.w	0[r29],r1
+000001b0 500a            712 	add	-16,r1
+000001b2 620a            713 	cmp	2,r1
+000001b4 b305*           714 	bnh	.L404
+000001b6 6a0a            715 	cmp	10,r1
+000001b8 8a0d*           716 	bne	.L405
+                         717 .L404:
+                         718 --269:                     {
+                         719 --270:                         case SERVICE_01_AES_CIPHER:
+                         720 --271:                         case SERVICE_01_AES_AUTH_CIPHER:
+                         721 --272:                         case SERVICE_01_AES_CMAC:
+                         722 --273:                         case SERVICE_01_HASH:
+                         723 --274:                             /* retrieve job ghost */
+                         724 --275:                             k_ISSD_GetJob(p_isd->job_id, &p_ghost_job);
+                         725 --line275
+                         726 ..lin.75ec962c..6d3179d5.0_38::
+                         727 .LDWlin38:
+000001ba fd371300        728 	ld.hu	18[r29],r6
+000001be 233e0400        729 	movea	4,sp,r7
+                         730 .L743:
+                         731 	jarl	_k_ISSD_GetJob,lp
+                         731 <EXPANSION BEGIN>
+                         731 jarl22 _k_ISSD_GetJob , lp 
+000001c2 80ff0000*       731 <EXPANSION END>
+                         732 --276:                             break;
+                         733 --277:                         default:
+                         734 --line276
+                         735 ..lin.75ec962c..6d3179d5.0_39::
+                         736 .LDWlin39:
+000001c6 a505*           737 	br	.L408
+                         738 .L405:
+                         739 --278:                             /* job continuation not supported */
+                         740 --279:                             break;
+                         741 --line279
+                         742 ..lin.75ec962c..6d3179d5.0_40::
+                         743 .LDWlin40:
+000001c8 0000            744 	nop
+                         745 .L408:
+                         746 --280:                     }
+                         747 --281:                 }
+                         748 --282:                 else
+                         749 --283:                 {
+                         750 --284:                     /* Do nothing */
+                         751 --285:                 }
+                         752 --286:                 /* add job in queue */
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         753 --287:                 k_ISSD_AddJobQueue(p_isd, p_ghost_job, &new_job_id);
+000001ca 233f0500        754 	ld.w	4[sp],r7
+000001ce 1d30            755 	mov	r29,r6
+000001d0 23460e00        756 	movea	14,sp,r8
+                         757 .L745:
+                         758 	jarl	_k_ISSD_AddJobQueue,lp
+                         758 <EXPANSION BEGIN>
+                         758 jarl22 _k_ISSD_AddJobQueue , lp 
+000001d4 80ff0000*       758 <EXPANSION END>
+                         759 --288:                 if((uint32_t)0u == (uint32_t)new_job_id)
+                         760 --line288
+                         761 ..lin.75ec962c..6d3179d5.0_41::
+                         762 .LDWlin41:
+000001d8 e30f0f00        763 	ld.hu	14[sp],r1
+000001dc e009            764 	cmp	zero,r1
+000001de ba05*           765 	bne	.L409
+                         766 --289:                 {
+                         767 --290:                     /* indicate impossibility to add to job queue */
+                         768 --291:                     err = SERV_JOB_QUEUE_FULL;
+                         769 --line291
+                         770 ..lin.75ec962c..6d3179d5.0_42::
+                         771 .LDWlin42:
+000001e0 0ee2            772 	mov	14,r28
+000001e2 f505*           773 	br	.L412
+                         774 .L409:
+                         775 --292:                 }
+                         776 --293:                 else
+                         777 --294:                 {
+                         778 --295:                     /* request acknowledged */
+                         779 --296:                     p_isd->job_id = new_job_id;
+                         780 --line296
+                         781 ..lin.75ec962c..6d3179d5.0_43::
+                         782 .LDWlin43:
+000001e4 e30f0f00        783 	ld.hu	14[sp],r1
+000001e8 7d0f1200        784 	st.h	r1,18[r29]
+                         785 --297:                     err = SERV_REQUEST;
+000001ec 80e6f0ff        786 	ori	65520,zero,r28
+                         787 .L412:
+                         788 --298:                 }
+                         789 --299:             }
+                         790 --300:             else
+                         791 --301:             {
+                         792 --302:                 /* Do nothing */
+                         793 --303:             }
+                         794 --305:             if ((uint32_t)false == (uint32_t)highest_job_executed)
+000001f0 a30f0300        795 	ld.bu	3[sp],r1
+000001f4 e009            796 	cmp	zero,r1
+000001f6 ba05*           797 	bne	.L415
+                         798 --306:             {
+                         799 --307:                 p_isd->service_result = err;
+                         800 --line307
+                         801 ..lin.75ec962c..6d3179d5.0_44::
+                         802 .LDWlin44:
+000001f8 7de70d00        803 	st.w	r28,12[r29]
+                         804 .L415:
+                         805 --308:             }
+                         806 --309:             else
+                         807 --310:             {
+                         808 --311:                 /* Do nothing */
+                         809 --312:             }
+                         810 --313:             /* check service result */
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         811 --314:             if(SERV_REQUEST > p_isd->service_result)
+000001fc 3d170d00        812 	ld.w	12[r29],r2
+00000200 800ef0ff        813 	ori	65520,zero,r1
+00000204 e111            814 	cmp	r1,r2
+00000206 ee0d*           815 	bge	.L423
+                         816 --315:             {
+                         817 --316:                 /* provide the error back to the caller */
+                         818 --317:                 /* note: in this case, no job created (see above) */
+                         819 --318:                 if((uint32_t)0xFFu != (uint32_t)p_isd->host_int_ch)
+                         820 --line318
+                         821 ..lin.75ec962c..6d3179d5.0_45::
+                         822 .LDWlin45:
+00000208 9d0f0700        823 	ld.bu	6[r29],r1
+0000020c 010601ff        824 	addi	-255,r1,zero
+00000210 920d*           825 	be	.L423
+                         826 --319:                 {
+                         827 --320:                     /* response in queue: trigger host interrupt */
+                         828 --321:                     rtn = D_COMM_ServiceResponseToPE((uint32_t)p_isd->requester_id, p_isd);
+                         829 --line321
+                         830 ..lin.75ec962c..6d3179d5.0_46::
+                         831 .LDWlin46:
+00000212 9d370500        832 	ld.bu	4[r29],r6
+00000216 1d38            833 	mov	r29,r7
+                         834 .L747:
+                         835 	jarl	_D_COMM_ServiceResponseToPE,lp
+                         835 <EXPANSION BEGIN>
+                         835 jarl22 _D_COMM_ServiceResponseToPE , lp 
+00000218 80ff0000*       835 <EXPANSION END>
+0000021c 0ad8            836 	mov	r10,r27
+0000021e a505*           837 	br	.L423
+                         838 .L377:
+                         839 --322:                 }
+                         840 --323:                 else
+                         841 --324:                 {
+                         842 --325:                     /* Do nothing */
+                         843 --326:                 }
+                         844 --327:             }
+                         845 --328:             else
+                         846 --329:             {
+                         847 --330:                 /* Do nothing */
+                         848 --331:             }
+                         849 --332:         }
+                         850 --333:         else
+                         851 --334:         {
+                         852 --335:             rtn = ER_PARAM;
+                         853 --line335
+                         854 ..lin.75ec962c..6d3179d5.0_47::
+                         855 .LDWlin47:
+00000220 01da            856 	mov	1,r27
+                         857 .L423:
+                         858 --336:         }
+                         859 --337:     }
+                         860 --338:     else
+                         861 --339:     {
+                         862 --340:         /* Do nothing */
+                         863 --341:     }
+                         864 --343:     return(rtn);
+00000222 1b50            865 	mov	r27,r10
+                         866 --	    .ef
+                         867 .LDW71:
+00000224 23ff2500        868 	ld.w	36[sp],lp
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+00000228 23ef1100        869 	ld.w	16[sp],r29
+0000022c 23e71500        870 	ld.w	20[sp],r28
+00000230 23df1900        871 	ld.w	24[sp],r27
+00000234 23d71d00        872 	ld.w	28[sp],r26
+00000238 23cf2100        873 	ld.w	32[sp],r25
+0000023c 031e2800        874 	addi	40,sp,sp
+                         875 .L749:
+                         876 	.jumptype return
+00000240 7f00            877 	jmp	[lp]
+                         878 --line335
+                         879 ..lin.75ec962c..6d3179d5.0_48::
+                         880 	.type	_K_ISSD_HandleRequest,@function
+                         881 	.size	_K_ISSD_HandleRequest,.-_K_ISSD_HandleRequest
+                         882 	.align	2
+                         883 --_p_ghost_job	4[sp]	local
+                         884 --_p_service_func	8[sp]	local
+                         885 --_new_job_id	14[sp]	local
+                         886 --_err	r28	local
+                         887 --_rtn	r27	local
+                         888 --_highest_job_executed	3[sp]	local
+                         889 --_result	r26	local
+                         890 
+                         891 --_channel	r25	param
+                         892 --_p_isd	r29	param
+                         893 
+                         894 	.section ".bss","awb"
+                         895 .L602:
+                         896 	.type	.L602,@object
+                         897 	.size	.L602,0
+                         898 	.section ".ghcalltbl",""
+0000001c 00000000*       899 .L740:	.word	.L739
+                         900 	.type	.L740,@object
+                         901 	.size	.L740,4
+00000020 00000000*       902 .L742:	.word	.L741
+                         903 	.type	.L742,@object
+                         904 	.size	.L742,4
+00000024 00000000*       905 .L744:	.word	.L743
+                         906 	.type	.L744,@object
+                         907 	.size	.L744,4
+00000028 00000000*       908 .L746:	.word	.L745
+                         909 	.type	.L746,@object
+                         910 	.size	.L746,4
+0000002c 00000000*       911 .L748:	.word	.L747
+                         912 	.type	.L748,@object
+                         913 	.size	.L748,4
+                         914 	.section ".ghrettbl",""
+0000000c 00000000*       915 .L750:	.word	.L749
+                         916 	.type	.L750,@object
+                         917 	.size	.L750,4
+                         918 	.data
+                         919 	.section ".icum_kernel_ram","ax"
+                         920 
+                         921 --344: }
+                         922 
+                         923 --346: /***************************************************************************************
+                         924 --347: * Function ID  : [ICUMFW_CD_K_ISSD_0022]:[ICUMFW_UD_K_ISSD_0022]
+                         925 --348: * Function name: k_ISSD_ProcessJob
+                         926 --349: * Description  : Calling the service function for the job given in parameter
+                         927 --350: * Arguments    : (IN) : *p_job
+                         928 --351: * Return Value : none
+                         929 --352: ***************************************************************************************/
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                         930 --353: void k_ISSD_ProcessJob(icum_job_t *p_job)
+                         931 	.align	2
+                         932 	.align	2
+                         933 	.align	2
+                         934 ..gh.f.a.2.e.4:
+                         935 	.type	..gh.f.a.2.e.4,@object
+                         936 	.size	..gh.f.a.2.e.4,0
+                         937 	.global	_k_ISSD_ProcessJob
+                         938 _k_ISSD_ProcessJob:
+00000242 501a            939 	add	-16,sp
+00000244 63ff0d00        940 	st.w	lp,12[sp]
+00000248 63ef0500        941 	st.w	r29,4[sp]
+0000024c 63e70900        942 	st.w	r28,8[sp]
+00000250 06e8            943 	mov	r6,r29
+                         944 --	    .bf
+                         945 .LDW81:
+                         946 --354: {
+                         947 --355:     p_service_func_t p_service_func;
+                         948 --356:     uint32_t result;
+                         949 --358:     /* 1. retrieve the pointer to the service function */
+                         950 --359:     result = k_ISSD_GetServiceFunc(p_job->p_ISD->service_id, &p_service_func);
+00000252 3df70100        951 	ld.w	0[r29],ep
+00000256 233e0000        952 	movea	0,sp,r7
+0000025a 0035            953 	sld.w	0[ep],r6
+                         954 .L843:
+                         955 	jarl	_k_ISSD_GetServiceFunc,lp
+                         955 <EXPANSION BEGIN>
+                         955 jarl22 _k_ISSD_GetServiceFunc , lp 
+0000025c 80ff0000*       955 <EXPANSION END>
+00000260 0ae0            956 	mov	r10,r28
+                         957 --361:     /* 2. jump to corresponding service handler */
+                         958 --362:     if(ER_OK == result)
+                         959 --line362
+                         960 ..lin.75ec962c..ecb87fda.0_49::
+                         961 .LDWlin49:
+00000262 e0e1            962 	cmp	zero,r28
+00000264 fa05*           963 	bne	.L753
+                         964 --363:     {
+                         965 --364:         /* process the function associated to the current job */
+                         966 --365:         p_service_func(p_job);
+                         967 --line365
+                         968 ..lin.75ec962c..ecb87fda.0_50::
+                         969 .LDWlin50:
+00000266 230f0100        970 	ld.w	0[sp],r1
+0000026a 1d30            971 	mov	r29,r6
+                         972 .L845:
+0000026c e1c760f9        973 	jarl	[r1],lp
+00000270 c515*           974 	br	.L751
+                         975 .L753:
+                         976 --366:     }
+                         977 --367:     else if(ER_SERV_ID_ERROR == result)
+                         978 --line367
+                         979 ..lin.75ec962c..ecb87fda.0_51::
+                         980 .LDWlin51:
+00000272 61e2            981 	cmp	1,r28
+00000274 ea05*           982 	bne	.L756
+                         983 --368:     {
+                         984 --369:         p_job->p_ISD->service_result = SERV_ID_ERROR;
+                         985 --line369
+                         986 ..lin.75ec962c..ecb87fda.0_52::
+                         987 .LDWlin52:
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+00000276 3df70100        988 	ld.w	0[r29],ep
+0000027a 020a            989 	mov	2,r1
+0000027c 070d            990 	sst.w	r1,12[ep]
+0000027e d50d*           991 	br	.L751
+                         992 .L756:
+                         993 --370:     }
+                         994 --371:     else if (ER_SERV_SYS_ERROR == result)
+                         995 --line371
+                         996 ..lin.75ec962c..ecb87fda.0_53::
+                         997 .LDWlin53:
+00000280 63e2            998 	cmp	3,r28
+00000282 fa05*           999 	bne	.L759
+                        1000 --372:     {
+                        1001 --373:         p_job->p_ISD->service_result = SERV_SYS_ERROR;
+                        1002 --line373
+                        1003 ..lin.75ec962c..ecb87fda.0_54::
+                        1004 .LDWlin54:
+00000284 3df70100       1005 	ld.w	0[r29],ep
+00000288 200e1100       1006 	movea	17,zero,r1
+0000028c 070d           1007 	sst.w	r1,12[ep]
+0000028e d505*          1008 	br	.L751
+                        1009 .L759:
+                        1010 --374:     }
+                        1011 --375:     else
+                        1012 --376:     {
+                        1013 --377:         /* 3. this situation is possible when the service request */
+                        1014 --378:         /* is triggered in between 2 mode changes */
+                        1015 --379:         /* in this case, a job has been created referring to a */
+                        1016 --380:         /* service that is not available anymore (change in */
+                        1017 --381:         /* dispatch table) */
+                        1018 --382:         /* action: simply return that the service is unavailable */
+                        1019 --383:         p_job->p_ISD->service_result = SERV_UNAVAILABLE;
+                        1020 --line383
+                        1021 ..lin.75ec962c..ecb87fda.0_55::
+                        1022 .LDWlin55:
+00000290 3df70100       1023 	ld.w	0[r29],ep
+00000294 0f0a           1024 	mov	15,r1
+00000296 070d           1025 	sst.w	r1,12[ep]
+                        1026 .L751:
+                        1027 --384:     }
+                        1028 --385: }
+                        1029 --	    .ef
+                        1030 .LDW91:
+00000298 23ff0d00       1031 	ld.w	12[sp],lp
+0000029c 23ef0500       1032 	ld.w	4[sp],r29
+000002a0 23e70900       1033 	ld.w	8[sp],r28
+000002a4 031e1000       1034 	addi	16,sp,sp
+                        1035 .L847:
+                        1036 	.jumptype return
+000002a8 7f00           1037 	jmp	[lp]
+                        1038 --line383
+                        1039 ..lin.75ec962c..ecb87fda.0_56::
+                        1040 	.type	_k_ISSD_ProcessJob,@function
+                        1041 	.size	_k_ISSD_ProcessJob,.-_k_ISSD_ProcessJob
+                        1042 	.align	2
+                        1043 --_p_service_func	0[sp]	local
+                        1044 --_result	r28	local
+                        1045 
+                        1046 --_p_job	r29	param
+                        1047 
+                        1048 	.section ".bss","awb"
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1049 .L810:
+                        1050 	.type	.L810,@object
+                        1051 	.size	.L810,0
+                        1052 	.section ".ghcalltbl",""
+00000030 00000000*      1053 .L844:	.word	.L843
+                        1054 	.type	.L844,@object
+                        1055 	.size	.L844,4
+00000034 00000000*      1056 .L846:	.word	.L845
+                        1057 	.type	.L846,@object
+                        1058 	.size	.L846,4
+                        1059 	.section ".ghrettbl",""
+00000010 00000000*      1060 .L848:	.word	.L847
+                        1061 	.type	.L848,@object
+                        1062 	.size	.L848,4
+                        1063 	.data
+                        1064 	.section ".icum_kernel_ram","ax"
+                        1065 
+                        1066 	.section ".icum_kernel.text","ax"
+                        1067 
+                        1068 --387: #pragma ghs section text    = default
+                        1069 --388: #pragma ghs section rodata  = default
+                        1070 --390: /***************************************************************************************
+                        1071 --391: * Function ID  : [ICUMFW_CD_K_ISSD_0023]:[ICUMFW_UD_K_ISSD_0023]
+                        1072 --392: * Function name: k_ISSD_MainDispatch
+                        1073 --393: * Description  : Main dispatch loop
+                        1074 --394: * Arguments    : none
+                        1075 --395: * Return Value : none
+                        1076 --396: ***************************************************************************************/
+                        1077 --397: void k_ISSD_MainDispatch(void)
+                        1078 	.align	2
+                        1079 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..1::
+                        1080 	.align	2
+                        1081 	.align	2
+                        1082 ..gh.f.a.2.e.5:
+                        1083 	.type	..gh.f.a.2.e.5,@object
+                        1084 	.size	..gh.f.a.2.e.5,0
+                        1085 	.global	_k_ISSD_MainDispatch
+                        1086 _k_ISSD_MainDispatch:
+00000000 031eecff       1087 	addi	-20,sp,sp
+00000004 63ff1100       1088 	st.w	lp,16[sp]
+00000008 63ef0d00       1089 	st.w	r29,12[sp]
+                        1090 --	    .bf
+                        1091 .LDW02:
+                        1092 --398: {
+                        1093 --399:     icum_job_t *p_job;
+                        1094 --400:     bool wdt_flag;
+                        1095 --401:     bool mode_change;
+                        1096 --402:     bool boot_mode;
+                        1097 --403:     bool gen_request;
+                        1098 --404:     uint32_t job_count;
+                        1099 --405:     uint32_t saved_psw = 0UL;
+0000000c 00ea           1100 	mov	0,r29
+                        1101 --407:     /* loop until a execution mode change is requested */
+                        1102 --408:     k_ISSD_ModeChangeRequested(&mode_change);
+0000000e 23360100       1103 	movea	1,sp,r6
+                        1104 .L1274:
+                        1105 	jarl	_k_ISSD_ModeChangeRequested,lp
+                        1105 <EXPANSION BEGIN>
+                        1105 jarl22 _k_ISSD_ModeChangeRequested , lp 
+00000012 80ff0000*      1105 <EXPANSION END>
+                        1106 --409:     while((uint32_t)false == (uint32_t)mode_change)
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1107 --line409
+                        1108 ..lin.75ec962c..454b035.1_57::
+                        1109 .LDWlin57:
+00000016 80071801*      1110 	br	.L851
+                        1111 .L853:
+                        1112 --410:     {
+                        1113 --411:         do
+                        1114 --line411
+                        1115 ..lin.75ec962c..454b035.1_58::
+                        1116 .LDWlin58:
+0000001a 0000           1117 	nop
+                        1118 .L859:
+                        1119 --412:         {
+                        1120 --413:             /* re-enable interrupts (if necessary) */
+                        1121 --414:             ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+0000001c 1d08           1122 	mov	r29,r1
+0000001e 860a           1123 	shr	6,r1
+00000020 b105*          1124 	bl	.L862
+                        1125 --line414
+                        1126 ..lin.75ec962c..454b035.1_59::
+                        1127 .LDWlin59:
+                        1128 ..gh.beginasm.6:
+                        1129 	.type	..gh.beginasm.6,@object
+                        1130 	.size	..gh.beginasm.6,0
+                        1131 --ASM MACRO: Start
+                        1132 
+00000022 e0876001       1133     ei
+                        1134 --ASM MACRO: End
+                        1135 ..gh.endasm.7:
+                        1136 	.type	..gh.endasm.7,@object
+                        1137 	.size	..gh.endasm.7,0
+                        1138 .L862:
+                        1139 --line414
+                        1140 ..lin.75ec962c..454b035.1_60::
+                        1141 .LDWlin60:
+00000026 0000           1142 	nop
+                        1143 --416:             /* get next job in queue */
+                        1144 --417:             k_ISSD_GetNextJob(&p_job);
+00000028 23360400       1145 	movea	4,sp,r6
+                        1146 .L1276:
+                        1147 	jarl	_k_ISSD_GetNextJob,lp
+                        1147 <EXPANSION BEGIN>
+                        1147 jarl22 _k_ISSD_GetNextJob , lp 
+0000002c 80ff0000*      1147 <EXPANSION END>
+                        1148 --419:             /* next job to process? */
+                        1149 --420:             if(NULL != p_job)
+                        1150 --line420
+                        1151 ..lin.75ec962c..454b035.1_61::
+                        1152 .LDWlin61:
+00000030 230f0500       1153 	ld.w	4[sp],r1
+00000034 e009           1154 	cmp	zero,r1
+00000036 c22d*          1155 	be	.L872
+                        1156 --421:             {
+                        1157 --422:                 /* check debugger connection and set EXT_DEBUGGER */
+                        1158 --423:                 k_ISSD_CheckDebuggerConnection();
+                        1159 .L1278:
+                        1160 --line423
+                        1161 ..lin.75ec962c..454b035.1_62::
+                        1162 .LDWlin62:
+                        1163 	jarl	_k_ISSD_CheckDebuggerConnection,lp
+                        1163 <EXPANSION BEGIN>
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1163 jarl22 _k_ISSD_CheckDebuggerConnection , lp 
+00000038 80ff0000*      1163 <EXPANSION END>
+                        1164 --425:                 /* run the job */
+                        1165 --426:                 /* note: using a function call in order to enjoy */
+                        1166 --427:                 k_ISSD_ProcessJob(p_job);
+                        1167 --line427
+                        1168 ..lin.75ec962c..454b035.1_63::
+                        1169 .LDWlin63:
+0000003c 23370500       1170 	ld.w	4[sp],r6
+                        1171 .L1280:
+                        1172 	jarl	_k_ISSD_ProcessJob,lp
+                        1172 <EXPANSION BEGIN>
+                        1172 jarl22 _k_ISSD_ProcessJob , lp 
+00000040 80ff0000*      1172 <EXPANSION END>
+                        1173 --429:                 /* are we done yet? */
+                        1174 --430:                 if((SERV_REQUEST > p_job->p_ISD->service_result) ||
+                        1175 --line430
+                        1176 ..lin.75ec962c..454b035.1_64::
+                        1177 .LDWlin64:
+00000044 23f70500       1178 	ld.w	4[sp],ep
+00000048 800ef0ff       1179 	ori	65520,zero,r1
+0000004c 00f5           1180 	sld.w	0[ep],ep
+0000004e 0615           1181 	sld.w	12[ep],r2
+00000050 e111           1182 	cmp	r1,r2
+00000052 960d*          1183 	blt	.L866
+                        1184 --line431
+                        1185 ..lin.75ec962c..454b035.1_65::
+                        1186 .LDWlin65:
+00000054 23f70500       1187 	ld.w	4[sp],ep
+00000058 800effff       1188 	ori	65535,zero,r1
+0000005c 00f5           1189 	sld.w	0[ep],ep
+0000005e 0615           1190 	sld.w	12[ep],r2
+00000060 e111           1191 	cmp	r1,r2
+00000062 e715*          1192 	ble	.L872
+                        1193 .L866:
+                        1194 --431:                    (SERV_IN_PROCESS < p_job->p_ISD->service_result))
+                        1195 --432:                 {
+                        1196 --433:                     /* convert undefined result code to SYSTEM ERROR */
+                        1197 --434:                     if(SERV_IN_PROCESS < p_job->p_ISD->service_result)
+                        1198 --line434
+                        1199 ..lin.75ec962c..454b035.1_66::
+                        1200 .LDWlin66:
+00000064 23f70500       1201 	ld.w	4[sp],ep
+00000068 800effff       1202 	ori	65535,zero,r1
+0000006c 00f5           1203 	sld.w	0[ep],ep
+0000006e 0615           1204 	sld.w	12[ep],r2
+00000070 e111           1205 	cmp	r1,r2
+00000072 f705*          1206 	ble	.L870
+                        1207 --435:                     {
+                        1208 --436:                         p_job->p_ISD->service_result = SERV_SYS_ERROR;
+                        1209 --line436
+                        1210 ..lin.75ec962c..454b035.1_67::
+                        1211 .LDWlin67:
+00000074 23f70500       1212 	ld.w	4[sp],ep
+00000078 200e1100       1213 	movea	17,zero,r1
+0000007c 00f5           1214 	sld.w	0[ep],ep
+0000007e 070d           1215 	sst.w	r1,12[ep]
+                        1216 .L870:
+                        1217 --437:                     }
+                        1218 --438:                     else
+                        1219 --439:                     {
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1220 --440:                         /* Do nothing */
+                        1221 --441:                     }
+                        1222 --442:                     /* provide the service result to the caller */
+                        1223 --443:                     (void)k_ISSD_HandleResponse(p_job->p_ISD);
+00000080 23f70500       1224 	ld.w	4[sp],ep
+00000084 0035           1225 	sld.w	0[ep],r6
+                        1226 .L1282:
+                        1227 	jarl	_k_ISSD_HandleResponse,lp
+                        1227 <EXPANSION BEGIN>
+                        1227 jarl22 _k_ISSD_HandleResponse , lp 
+00000086 80ff0000*      1227 <EXPANSION END>
+                        1228 --444:                     /* remove the current job from the queue */
+                        1229 --445:                     k_ISSD_RemoveCurrentJob();
+                        1230 .L1284:
+                        1231 --line445
+                        1232 ..lin.75ec962c..454b035.1_68::
+                        1233 .LDWlin68:
+                        1234 	jarl	_k_ISSD_RemoveCurrentJob,lp
+                        1234 <EXPANSION BEGIN>
+                        1234 jarl22 _k_ISSD_RemoveCurrentJob , lp 
+0000008a 80ff0000*      1234 <EXPANSION END>
+                        1235 .L872:
+                        1236 --446:                 }
+                        1237 --447:                 else
+                        1238 --448:                 {
+                        1239 --449:                     /* Do nothing */
+                        1240 --450:                 }
+                        1241 --451:             }
+                        1242 --452:             else
+                        1243 --453:             {
+                        1244 --454:                 /* Do nothing */
+                        1245 --455:             }
+                        1246 --457:             /* check need restart watchdog timer */
+                        1247 --458:             D_WDT_GetIntRequest(&wdt_flag);
+                        1248 --line458
+                        1249 ..lin.75ec962c..454b035.1_69::
+                        1250 .LDWlin69:
+0000008e 23360000       1251 	movea	0,sp,r6
+                        1252 .L1286:
+                        1253 	jarl	_D_WDT_GetIntRequest,lp
+                        1253 <EXPANSION BEGIN>
+                        1253 jarl22 _D_WDT_GetIntRequest , lp 
+00000092 80ff0000*      1253 <EXPANSION END>
+                        1254 --459:             /* restart watchdog timer */
+                        1255 --460:             D_WDT_Start();
+                        1256 .L1288:
+                        1257 --line460
+                        1258 ..lin.75ec962c..454b035.1_70::
+                        1259 .LDWlin70:
+                        1260 	jarl	_D_WDT_Start,lp
+                        1260 <EXPANSION BEGIN>
+                        1260 jarl22 _D_WDT_Start , lp 
+00000096 80ff0000*      1260 <EXPANSION END>
+                        1261 --462:             /* disable interrupts (if not already disabled) */
+                        1262 --463:             DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                        1263 --line463
+                        1264 ..lin.75ec962c..454b035.1_71::
+                        1265 .LDWlin71:
+                        1266 ..gh.beginasm.8:
+                        1267 	.type	..gh.beginasm.8,@object
+                        1268 	.size	..gh.beginasm.8,0
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1269 --ASM MACRO: Start
+0000009a e5574000       1270     stsr    5, r10, 0
+                        1271 --ASM MACRO: End
+                        1272 ..gh.endasm.9:
+                        1273 	.type	..gh.endasm.9,@object
+                        1274 	.size	..gh.endasm.9,0
+0000009e 0ae8           1275 	mov	r10,r29
+                        1276 --line463
+                        1277 ..lin.75ec962c..454b035.1_72::
+                        1278 .LDWlin72:
+000000a0 1d08           1279 	mov	r29,r1
+000000a2 860a           1280 	shr	6,r1
+000000a4 b105*          1281 	bl	.L878
+                        1282 --line463
+                        1283 ..lin.75ec962c..454b035.1_73::
+                        1284 .LDWlin73:
+                        1285 ..gh.beginasm.10:
+                        1286 	.type	..gh.beginasm.10,@object
+                        1287 	.size	..gh.beginasm.10,0
+                        1288 --ASM MACRO: Start
+                        1289 
+000000a6 e0076001       1290     di
+                        1291 --ASM MACRO: End
+                        1292 ..gh.endasm.11:
+                        1293 	.type	..gh.endasm.11,@object
+                        1294 	.size	..gh.endasm.11,0
+                        1295 .L878:
+                        1296 --line463
+                        1297 ..lin.75ec962c..454b035.1_74::
+                        1298 .LDWlin74:
+000000aa 0000           1299 	nop
+                        1300 --465:             /* get job counter */
+                        1301 --466:             (void)k_ISSD_GetAllJobCount(&job_count);
+000000ac 23360800       1302 	movea	8,sp,r6
+                        1303 .L1290:
+                        1304 	jarl	_k_ISSD_GetAllJobCount,lp
+                        1304 <EXPANSION BEGIN>
+                        1304 jarl22 _k_ISSD_GetAllJobCount , lp 
+000000b0 80ff0000*      1304 <EXPANSION END>
+                        1305 --467:             /* get request of mode change */
+                        1306 --468:             k_ISSD_ModeChangeRequested(&mode_change);
+                        1307 --line468
+                        1308 ..lin.75ec962c..454b035.1_75::
+                        1309 .LDWlin75:
+000000b4 23360100       1310 	movea	1,sp,r6
+                        1311 .L1292:
+                        1312 	jarl	_k_ISSD_ModeChangeRequested,lp
+                        1312 <EXPANSION BEGIN>
+                        1312 jarl22 _k_ISSD_ModeChangeRequested , lp 
+000000b8 80ff0000*      1312 <EXPANSION END>
+                        1313 --469:             /* get request of service generate */
+                        1314 --470:             (void)k_ISSD_IsRegistGenService(&gen_request);
+                        1315 --line470
+                        1316 ..lin.75ec962c..454b035.1_76::
+                        1317 .LDWlin76:
+000000bc 23360300       1318 	movea	3,sp,r6
+                        1319 .L1294:
+                        1320 	jarl	_k_ISSD_IsRegistGenService,lp
+                        1320 <EXPANSION BEGIN>
+                        1320 jarl22 _k_ISSD_IsRegistGenService , lp 
+000000c0 80ff0000*      1320 <EXPANSION END>
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1321 --line472
+                        1322 ..lin.75ec962c..454b035.1_77::
+                        1323 .LDWlin77:
+000000c4 a30f0100       1324 	ld.bu	1[sp],r1
+000000c8 e009           1325 	cmp	zero,r1
+000000ca 9a0d*          1326 	bne	.L854
+000000cc a30f0300       1327 	ld.bu	3[sp],r1
+000000d0 e009           1328 	cmp	zero,r1
+000000d2 da05*          1329 	bne	.L854
+000000d4 230f0900       1330 	ld.w	8[sp],r1
+000000d8 e009           1331 	cmp	zero,r1
+000000da 9aa5*          1332 	bne	.L859
+                        1333 .L854:
+                        1334 --471:         }
+                        1335 --472:         while(((uint32_t)false == (uint32_t)mode_change) && ((uint32_t)false == (uint32_t)gen_request) && (0uL != job_count));
+                        1336 --474:         /* secure boot/background verify executing */
+                        1337 --475:         k_ISSD_IsBootMode(&boot_mode);
+                        1338 --line475
+                        1339 ..lin.75ec962c..454b035.1_78::
+                        1340 .LDWlin78:
+000000dc 23360200       1341 	movea	2,sp,r6
+                        1342 .L1296:
+                        1343 	jarl	_k_ISSD_IsBootMode,lp
+                        1343 <EXPANSION BEGIN>
+                        1343 jarl22 _k_ISSD_IsBootMode , lp 
+000000e0 80ff0000*      1343 <EXPANSION END>
+                        1344 --477:         /* do not go in HALT mode if a mode change has been requested or 
+                        1345 --478:            requested generate service or auto verify mode */
+                        1346 --479:         if(((uint32_t)false != (uint32_t)mode_change) || ((uint32_t)false != (uint32_t)gen_request) || ((uint32_t)false != (uint32_t)boot_mode))
+                        1347 --line479
+                        1348 ..lin.75ec962c..454b035.1_79::
+                        1349 .LDWlin79:
+000000e4 a30f0100       1350 	ld.bu	1[sp],r1
+000000e8 e009           1351 	cmp	zero,r1
+000000ea 9a0d*          1352 	bne	.L882
+000000ec a30f0300       1353 	ld.bu	3[sp],r1
+000000f0 e009           1354 	cmp	zero,r1
+000000f2 da05*          1355 	bne	.L882
+000000f4 830f0300       1356 	ld.bu	2[sp],r1
+000000f8 e009           1357 	cmp	zero,r1
+000000fa a205*          1358 	be	.L887
+                        1359 .L882:
+                        1360 --480:         {
+                        1361 --481:             break;
+                        1362 --line481
+                        1363 ..lin.75ec962c..454b035.1_80::
+                        1364 .LDWlin80:
+000000fc e51d*          1365 	br	.L896
+                        1366 .L887:
+                        1367 --482:         }
+                        1368 --483:         else
+                        1369 --484:         {
+                        1370 --485:             /* Do nothing */
+                        1371 --486:         }
+                        1372 --488:         /* update firmware status */
+                        1373 --489:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BUSY, ICU_STATUS_OFF);
+                        1374 --line489
+                        1375 ..lin.75ec962c..454b035.1_81::
+                        1376 .LDWlin81:
+000000fe 0132           1377 	mov	1,r6
+00000100 003a           1378 	mov	0,r7
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1379 .L1298:
+                        1380 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1380 <EXPANSION BEGIN>
+                        1380 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000102 80ff0000*      1380 <EXPANSION END>
+                        1381 --491:         /* go in stand-by, wait for next service request */
+                        1382 --492:         SET_HALT();
+                        1383 --line492
+                        1384 ..lin.75ec962c..454b035.1_82::
+                        1385 .LDWlin82:
+                        1386 ..gh.beginasm.12:
+                        1387 	.type	..gh.beginasm.12,@object
+                        1388 	.size	..gh.beginasm.12,0
+                        1389 --ASM MACRO: Start
+                        1390 
+00000106 0000           1391     nop
+                        1392 --ASM MACRO: End
+                        1393 ..gh.endasm.13:
+                        1394 	.type	..gh.endasm.13,@object
+                        1395 	.size	..gh.endasm.13,0
+                        1396 --493:         NOPS(5U);
+                        1397 --line493
+                        1398 ..lin.75ec962c..454b035.1_83::
+                        1399 .LDWlin83:
+                        1400 ..gh.beginasm.14:
+                        1401 	.type	..gh.beginasm.14,@object
+                        1402 	.size	..gh.beginasm.14,0
+                        1403 --ASM MACRO: Start
+                        1404 .rept 5
+                        1405     nop
+00000108 0000           1406 .endr
+0000010a 0000 
+0000010c 0000 
+0000010e 0000 
+00000110 0000 
+                        1407 --ASM MACRO: End
+                        1408 ..gh.endasm.15:
+                        1409 	.type	..gh.endasm.15,@object
+                        1410 	.size	..gh.endasm.15,0
+                        1411 --495:         /* re-enable interrupts (if necessary) */
+                        1412 --496:         ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                        1413 --line496
+                        1414 ..lin.75ec962c..454b035.1_84::
+                        1415 .LDWlin84:
+00000112 1d08           1416 	mov	r29,r1
+00000114 860a           1417 	shr	6,r1
+00000116 b105*          1418 	bl	.L893
+                        1419 --line496
+                        1420 ..lin.75ec962c..454b035.1_85::
+                        1421 .LDWlin85:
+                        1422 ..gh.beginasm.16:
+                        1423 	.type	..gh.beginasm.16,@object
+                        1424 	.size	..gh.beginasm.16,0
+                        1425 --ASM MACRO: Start
+                        1426 
+00000118 e0876001       1427     ei
+                        1428 --ASM MACRO: End
+                        1429 ..gh.endasm.17:
+                        1430 	.type	..gh.endasm.17,@object
+                        1431 	.size	..gh.endasm.17,0
+                        1432 .L893:
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1433 --line496
+                        1434 ..lin.75ec962c..454b035.1_86::
+                        1435 .LDWlin86:
+0000011c 0000           1436 	nop
+                        1437 --498:         /* update firmware status */
+                        1438 --499:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BUSY, ICU_STATUS_ON);
+0000011e 0132           1439 	mov	1,r6
+00000120 013a           1440 	mov	1,r7
+                        1441 .L1300:
+                        1442 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1442 <EXPANSION BEGIN>
+                        1442 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000122 80ff0000*      1442 <EXPANSION END>
+                        1443 --501:         /* loop until a execution mode change is requested */
+                        1444 --502:         k_ISSD_ModeChangeRequested(&mode_change);
+                        1445 --line502
+                        1446 ..lin.75ec962c..454b035.1_87::
+                        1447 .LDWlin87:
+00000126 23360100       1448 	movea	1,sp,r6
+                        1449 .L1302:
+                        1450 	jarl	_k_ISSD_ModeChangeRequested,lp
+                        1450 <EXPANSION BEGIN>
+                        1450 jarl22 _k_ISSD_ModeChangeRequested , lp 
+0000012a 80ff0000*      1450 <EXPANSION END>
+                        1451 .L851:
+                        1452 --line409
+                        1453 ..lin.75ec962c..454b035.1_88::
+                        1454 .LDWlin88:
+0000012e a30f0100       1455 	ld.bu	1[sp],r1
+00000132 e009           1456 	cmp	zero,r1
+00000134 f207e7fe*      1457 	be	.L853
+                        1458 .L896:
+                        1459 --503:     }
+                        1460 --504:     /* re-enable interrupts (if necessary) */
+                        1461 --505:     ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                        1462 --line505
+                        1463 ..lin.75ec962c..454b035.1_89::
+                        1464 .LDWlin89:
+00000138 1d08           1465 	mov	r29,r1
+0000013a 860a           1466 	shr	6,r1
+0000013c b105*          1467 	bl	.L899
+                        1468 --line505
+                        1469 ..lin.75ec962c..454b035.1_90::
+                        1470 .LDWlin90:
+                        1471 ..gh.beginasm.18:
+                        1472 	.type	..gh.beginasm.18,@object
+                        1473 	.size	..gh.beginasm.18,0
+                        1474 --ASM MACRO: Start
+                        1475 
+0000013e e0876001       1476     ei
+                        1477 --ASM MACRO: End
+                        1478 ..gh.endasm.19:
+                        1479 	.type	..gh.endasm.19,@object
+                        1480 	.size	..gh.endasm.19,0
+                        1481 .L899:
+                        1482 --line505
+                        1483 ..lin.75ec962c..454b035.1_91::
+                        1484 .LDWlin91:
+00000142 0000           1485 	nop
+                        1486 --506: }
+                        1487 --	    .ef
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+                        1488 .LDW12:
+00000144 23ff1100       1489 	ld.w	16[sp],lp
+00000148 23ef0d00       1490 	ld.w	12[sp],r29
+0000014c 031e1400       1491 	addi	20,sp,sp
+                        1492 .L1304:
+                        1493 	.jumptype return
+00000150 7f00           1494 	jmp	[lp]
+                        1495 --line505
+                        1496 ..lin.75ec962c..454b035.1_92::
+                        1497 	.type	_k_ISSD_MainDispatch,@function
+                        1498 	.size	_k_ISSD_MainDispatch,.-_k_ISSD_MainDispatch
+                        1499 	.align	2
+                        1500 --_p_job	4[sp]	local
+                        1501 --_wdt_flag	0[sp]	local
+                        1502 --_mode_change	1[sp]	local
+                        1503 --_boot_mode	2[sp]	local
+                        1504 --_gen_request	3[sp]	local
+                        1505 --_job_count	8[sp]	local
+                        1506 --_saved_psw	r29	local
+                        1507 
+                        1508 	.section ".bss","awb"
+                        1509 .L1118:
+                        1510 	.type	.L1118,@object
+                        1511 	.size	.L1118,0
+                        1512 	.section ".ghcalltbl",""
+00000038 00000000*      1513 .L1275:	.word	.L1274
+                        1514 	.type	.L1275,@object
+                        1515 	.size	.L1275,4
+0000003c 00000000*      1516 .L1277:	.word	.L1276
+                        1517 	.type	.L1277,@object
+                        1518 	.size	.L1277,4
+00000040 00000000*      1519 .L1279:	.word	.L1278
+                        1520 	.type	.L1279,@object
+                        1521 	.size	.L1279,4
+00000044 00000000*      1522 .L1281:	.word	.L1280
+                        1523 	.type	.L1281,@object
+                        1524 	.size	.L1281,4
+00000048 00000000*      1525 .L1283:	.word	.L1282
+                        1526 	.type	.L1283,@object
+                        1527 	.size	.L1283,4
+0000004c 00000000*      1528 .L1285:	.word	.L1284
+                        1529 	.type	.L1285,@object
+                        1530 	.size	.L1285,4
+00000050 00000000*      1531 .L1287:	.word	.L1286
+                        1532 	.type	.L1287,@object
+                        1533 	.size	.L1287,4
+00000054 00000000*      1534 .L1289:	.word	.L1288
+                        1535 	.type	.L1289,@object
+                        1536 	.size	.L1289,4
+00000058 00000000*      1537 .L1291:	.word	.L1290
+                        1538 	.type	.L1291,@object
+                        1539 	.size	.L1291,4
+0000005c 00000000*      1540 .L1293:	.word	.L1292
+                        1541 	.type	.L1293,@object
+                        1542 	.size	.L1293,4
+00000060 00000000*      1543 .L1295:	.word	.L1294
+                        1544 	.type	.L1295,@object
+                        1545 	.size	.L1295,4
+00000064 00000000*      1546 .L1297:	.word	.L1296
+                        1547 	.type	.L1297,@object
+                        1548 	.size	.L1297,4
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000c2o1.si
+00000068 00000000*      1549 .L1299:	.word	.L1298
+                        1550 	.type	.L1299,@object
+                        1551 	.size	.L1299,4
+0000006c 00000000*      1552 .L1301:	.word	.L1300
+                        1553 	.type	.L1301,@object
+                        1554 	.size	.L1301,4
+00000070 00000000*      1555 .L1303:	.word	.L1302
+                        1556 	.type	.L1303,@object
+                        1557 	.size	.L1303,4
+                        1558 	.section ".ghrettbl",""
+00000014 00000000*      1559 .L1305:	.word	.L1304
+                        1560 	.type	.L1305,@object
+                        1561 	.size	.L1305,4
+                        1562 	.data
+                        1563 	.section ".icum_kernel.text","ax"
+                        1564 
+                        1565 	.align	2
+                        1566 
+                        1567 	.data
+                        1568 	.ghsnote version,30
+                        1569 	.ghsnote tools,8195
+                        1570 	.ghsnote options,656
+                        1571 	.section ".icum_kernel.text","ax"
+                        1572 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..1::
+                        1573 	.section ".icum_kernel_ram","ax"
+                        1574 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..0::
+                        1575 	.section ".icum_kernel.text","ax"
+                        1576 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

@@ -1,0 +1,21 @@
+#!gbuild
+[Merged Library]
+	:binDirRelative=..\..\..\..\..\build\driver\out
+	:outputDirRelative=..\..\..\..\..\build\driver\obj
+
+	-I${cfg_rfd_root}/include
+	-I${cfg_rfd_root}/include/rfd
+	-I${cfg_rfd_root}/source/include
+
+	-o rfd28f.a
+	-inline_prologue
+	-prepare_dispose
+
+	-Osize
+	
+${cfg_rfd_root}/source/cf/r_rfd_cf_api.c
+${cfg_rfd_root}/source/cf/r_rfd_cf_definition.c
+${cfg_rfd_root}/source/common/r_rfd_common_api.c
+${cfg_rfd_root}/source/common/r_rfd_common_definition.c
+${cfg_rfd_root}/source/df/r_rfd_df_api.c
+${cfg_rfd_root}/userown/r_rfd_userown.c

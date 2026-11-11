@@ -1,0 +1,284 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash_lwfl.dbo -source=pe1_flash_lwfl.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000uoc1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash_lwfl.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+Source File: pe1_flash_lwfl.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\src\l_vrun\l_vrun_cmd
+                           4 --		-I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\target\u2cx\src\driver\comm_drv
+                           6 --		-I..\..\pe\target\u2cx\src\shared\src
+                           7 --		-I..\..\pe\target\u2cx\src\l_vrun
+                           8 --		-I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include
+                           9 --		-I..\..\pe\generic
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          12 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          13 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          14 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          15 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          16 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          17 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
+                          21 --		-D_TARG_=U2C4 -filetype.c
+                          22 --		..\..\pe\generic\src\pe1\src\pe1_flash_lwfl.c -o
+                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash_lwfl.o
+                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_flash_lwfl.c
+                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          26 --Compile Date:  Wed Nov 11 11:21:41 2026
+                          27 --Host OS:       Win64
+                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          29 --Release:       Compiler v2023.5.4
+                          30 --Revision Date: Wed Sep 06 02:44:56 2023
+                          31 --Release Date:  Wed Sep 06 02:00:00 2023
+                          32 -- ecom  -g -w
+                          33 
+                          34 --1: /******************************************************************************/
+                          35 --2: /* Component Name   Testing the ICU-M                                         */
+                          36 --3: /******************************************************************************/
+                          37 --4: /* Product      : ICU-M Firmware                                              */
+                          38 --5: /******************************************************************************/
+                          39 --6: /*******************************************************************************
+                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          41 --8: *                                                                               
+                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          43 --10: *                                                                               
+                          44 --11: * These instructions, statements, and programs are the confidential information 
+                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
+                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          49 --16: *******************************************************************************/
+                          50 --18: // ********************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+                          51 --19: // Headers
+                          52 --20: // ********************************************************************************
+                          53 --22: #include <stdio.h>
+                          54 --23: #include <string.h>
+                          55 --25: #undef NULL
+                          56 --26: #include "pe1.h"
+                          57 --27: #include "pe1.int.h"
+                          58 --28: #include "shared.h"
+                          59 --30: #include "vrun.api.h"
+                          60 --32: // ********************************************************************************
+                          61 --33: // Local constants
+                          62 --34: // ********************************************************************************
+                          63 --36: #pragma ghs section rodata=".testconst0"
+                          64 --37: #pragma ghs section rodata=default
+                          65 --39: // ********************************************************************************
+                          66 --40: // Link to external symbols
+                          67 --41: // ********************************************************************************
+                          68 --43: extern uint8_t __ghsbegin_start_DF_BANK_A[];
+                          69 --45: // ********************************************************************************
+                          70 --46: // Local variables
+                          71 --47: // ********************************************************************************
+                          72 --49: uint8_t fpsys_init = 0;
+                          73 --51: // ********************************************************************************
+                          74 --52: // Test functions
+                          75 --53: // ********************************************************************************
+                          76 --55: // ------------------------------------
+                          77 --56: // Flash init
+                          78 --57: // ------------------------------------
+                          79 --58: void icum_init_fcu_fw(void)
+                          80 	.text
+                          81 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_flash_lwfl...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF46..0::
+                          82 	.align	2
+                          83 	.align	2
+                          84 ..gh.f.a.2.e.0:
+                          85 	.type	..gh.f.a.2.e.0,@object
+                          86 	.size	..gh.f.a.2.e.0,0
+                          87 	.global	_icum_init_fcu_fw
+                          88 _icum_init_fcu_fw:
+                          89 --	    .bf
+                          90 .LDW01:
+                          91 --59: {
+                          92 --60:     /* Not available on PE1 core */
+                          93 --61: }
+                          94 --	    .ef
+                          95 .LDW11:
+                          96 .L35:
+                          97 	.jumptype return
+00000000 7f00             98 	jmp	[lp]
+                          99 --line59
+                         100 ..lin.c16d1a2..f11ec55e.0_1::
+                         101 	.type	_icum_init_fcu_fw,@function
+                         102 	.size	_icum_init_fcu_fw,.-_icum_init_fcu_fw
+                         103 	.align	2
+                         104 
+                         105 	.section ".ghrettbl",""
+                         106 	.align	4
+00000000 00000000*       107 .L36:	.word	.L35
+                         108 	.type	.L36,@object
+                         109 	.size	.L36,4
+                         110 	.data
+                         111 	.text
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+                         112 
+                         113 
+                         114 --63: // ------------------------------------
+                         115 --64: // testing DF write
+                         116 --65: // ------------------------------------
+                         117 --66: #ifdef UNUSED
+                         118 --67: static void test_df_write(void)
+                         119 --68: {
+                         120 --69:     /* Not available on PE1 core */
+                         121 --70: }
+                         122 --72: // ------------------------------------
+                         123 --73: // testing CF read
+                         124 --74: // ------------------------------------
+                         125 --75: static void test_cf_read(void)
+                         126 --76: {
+                         127 --77:     /* Not available on PE1 core */
+                         128 --78: }
+                         129 --80: // ------------------------------------
+                         130 --81: // testing CF write
+                         131 --82: // ------------------------------------
+                         132 --83: static void test_cf_write(void)
+                         133 --84: {
+                         134 --85:     /* Not available on PE1 core */
+                         135 --86: }
+                         136 --87: #endif
+                         137 --89: // ------------------------------------
+                         138 --90: // test sub routine
+                         139 --91: // ------------------------------------
+                         140 --92: void sub_flash_test(void)
+                         141 	.align	2
+                         142 	.align	2
+                         143 	.align	2
+                         144 ..gh.f.a.2.e.1:
+                         145 	.type	..gh.f.a.2.e.1,@object
+                         146 	.size	..gh.f.a.2.e.1,0
+                         147 	.global	_sub_flash_test
+                         148 _sub_flash_test:
+                         149 --	    .bf
+                         150 .LDW21:
+                         151 --93: {
+                         152 --94:     
+                         153 --95:     /* Not available on PE1 core */
+                         154 --96: }
+                         155 --	    .ef
+                         156 .LDW31:
+                         157 .L67:
+                         158 	.jumptype return
+00000002 7f00            159 	jmp	[lp]
+                         160 --line93
+                         161 ..lin.c16d1a2..2322903a.0_2::
+                         162 	.type	_sub_flash_test,@function
+                         163 	.size	_sub_flash_test,.-_sub_flash_test
+                         164 	.align	2
+                         165 
+                         166 	.section ".ghrettbl",""
+00000004 00000000*       167 .L68:	.word	.L67
+                         168 	.type	.L68,@object
+                         169 	.size	.L68,4
+                         170 	.data
+                         171 	.text
+                         172 
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+                         173 
+                         174 --98: // ------------------------------------
+                         175 --99: // test sub routine
+                         176 --100: // ------------------------------------
+                         177 --101: void sub_flash_test_2(void)
+                         178 	.align	2
+                         179 	.align	2
+                         180 	.align	2
+                         181 ..gh.f.a.2.e.2:
+                         182 	.type	..gh.f.a.2.e.2,@object
+                         183 	.size	..gh.f.a.2.e.2,0
+                         184 	.global	_sub_flash_test_2
+                         185 _sub_flash_test_2:
+                         186 --	    .bf
+                         187 .LDW41:
+                         188 --102: {
+                         189 --103:     /* Not available on PE1 core */
+                         190 --104: }
+                         191 --	    .ef
+                         192 .LDW51:
+                         193 .L99:
+                         194 	.jumptype return
+00000004 7f00            195 	jmp	[lp]
+                         196 --line102
+                         197 ..lin.c16d1a2..7607932b.0_3::
+                         198 	.type	_sub_flash_test_2,@function
+                         199 	.size	_sub_flash_test_2,.-_sub_flash_test_2
+                         200 	.align	2
+                         201 
+                         202 	.section ".ghrettbl",""
+00000008 00000000*       203 .L100:	.word	.L99
+                         204 	.type	.L100,@object
+                         205 	.size	.L100,4
+                         206 	.data
+                         207 	.text
+                         208 
+                         209 
+                         210 --106: // ------------------------------------
+                         211 --107: // test entry point
+                         212 --108: // ------------------------------------
+                         213 --109: void flash_test(void)
+                         214 	.align	2
+                         215 	.align	2
+                         216 	.align	2
+                         217 ..gh.f.a.2.e.3:
+                         218 	.type	..gh.f.a.2.e.3,@object
+                         219 	.size	..gh.f.a.2.e.3,0
+                         220 	.global	_flash_test
+                         221 _flash_test:
+                         222 --	    .bf
+                         223 .LDW61:
+                         224 --110: {
+                         225 --111:     /* Not available on PE1 core */
+                         226 --112: }
+                         227 --	    .ef
+                         228 .LDW71:
+                         229 .L131:
+                         230 	.jumptype return
+00000006 7f00            231 	jmp	[lp]
+                         232 --line110
+                         233 ..lin.c16d1a2..3c7270b1.0_4::
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000uoc1.si
+                         234 	.type	_flash_test,@function
+                         235 	.size	_flash_test,.-_flash_test
+                         236 	.align	2
+                         237 
+                         238 	.section ".ghrettbl",""
+0000000c 00000000*       239 .L132:	.word	.L131
+                         240 	.type	.L132,@object
+                         241 	.size	.L132,4
+                         242 	.data
+                         243 	.text
+                         244 
+                         245 	.align	2
+                         246 
+                         247 	.data
+                         248 	.global	_fpsys_init
+00000000 00              249 _fpsys_init:	.byte	0
+                         250 	.type	_fpsys_init,@object
+                         251 	.size	_fpsys_init,1
+                         252 	.ghsnote version,30
+                         253 	.ghsnote tools,3
+                         254 	.ghsnote options,656
+                         255 	.text
+                         256 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_flash_lwfl...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF46..0::
+                         257 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

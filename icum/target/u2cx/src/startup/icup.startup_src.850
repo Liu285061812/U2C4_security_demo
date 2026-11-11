@@ -1,0 +1,348 @@
+--/******************************************************************************/
+--/* Component Name   ICUP startup code                                         */
+--/******************************************************************************/
+--/* Product      : ICU-M Low Level Driver (Demo Part)                          */
+--/******************************************************************************/
+--/***********************************************************************************************************************
+--* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+--* 
+--* DISCLAIMER
+--* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+--* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+--* applicable laws, including copyright laws.
+--* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+--* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+--* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+--* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+--* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+--* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+--* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+--* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+--* following link:
+--* www.renesas.com/disclaimer
+--*
+--* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+--***********************************************************************************************************************/
+
+--/*******************************************************************************
+-- Macro definitions
+--*******************************************************************************/
+#define ICUM_DFECCCTL                   (0xFFC63400UL)
+#define ICUM_DFSERSTR                   (0xFFC63404UL)
+#define ICUM_DFDERSTR                   (0xFFC63408UL)
+#define ICUM_DFSERSTC                   (0xFFC6340CUL)
+#define ICUM_DFDERSTC                   (0xFFC63410UL)
+#define ICUM_DFERRINT                   (0xFFC6341CUL)
+#define ICUM_DFKCPROT                   (0xFFC634FCUL)
+#define UNLOCK_DATA                     (0xA5A5A501UL)
+#define LOCK_DATA                       (0xA5A5A500UL)
+#define ICUM_CMDREGICUM_ICU2PES0        (0xFF1F0010UL)
+#define ICUM_CMDREGICUM_ICU2PES1        (0xFF1F0128UL)
+#define ICUM_CMDREGICUM_ICU2PES2        (0xFF1F0158UL)
+#define ICUM_COMM_INF_ICU_ST_BOOTERR    (0x00800000UL)
+
+--/*******************************************************************************
+-- Local variables
+--*******************************************************************************/
+  .section ".icum_startup.bss","awb"
+  .align 4
+_g_firmware_entry:  .space 4
+  .size     _g_firmware_entry, 4
+
+----------------------------------------------------------------------------------
+
+    .global   RESET_ICUP
+
+    .section ".startup.text", .text
+--/*************************************************************************************************
+--* Function ID   : [ICUMFW_CD_MH_INIT_MNG_0006]:[ICUMFW_UD_MH_INIT_MNG_0006]
+--* Function Name : RESET_ICUP
+--* Description   : ICU-M firmware startup routine
+--* Arguments     : none
+--* Return Value  : none
+--**************************************************************************************************/
+RESET_ICUP:
+
+    mov     0xFF986300, r6  -- STAC_ICUM_LRAM (RZEROMD 1 to 0) settings of ICUM_LRAM_Initialization
+    mov     0x00000003, r7
+
+    ld.w    0[r6], r10      -- optb5 -> STAC_ICUM_LRAM
+    and     r7, r10
+    cmp     r7, r10         -- if H/W Ram CLEAR Enable
+    be      ram_clear_end   -- skip RAM CLEAR
+
+    -- ***************
+    -- RAM CLEAR
+    -- ***************
+ram_clear:
+
+    -- clear secure RAM
+    mov     ___ghsbegin_start_iRAM_Self, r6
+    mov     ___ghsbegin_end_iRAM_Self, r7
+    mov     r0, r1
+loop_clear:
+    st.dw   r0, 0[r6]
+    addi    8, r6, r6
+    cmp     r7, r6
+    bl      loop_clear
+ram_clear_end:
+
+    -- ***************
+    -- INTERRUPTS
+    -- ***************
+
+    -- disable interrupt on mis-aligned accesses
+    ori     0x02, r0, r1
+    ldsr    r1, 5, 1                    -- MCTL is 5, 1
+
+    -- ***************
+    -- LOW INIT
+    -- ***************
+
+    -- clear some control registers to 0
+    ldsr    r0, EIPC
+    ldsr    r0, FEPC
+    ldsr    r0, FEIC
+    ldsr    r0, CTBP
+    ldsr    r0, CTPC
+    ldsr    r0, EIWR
+    ldsr    r0, FEWR
+    ldsr    r0, MEA
+
+    -- CF PreLoad ON for Section Initialize  (ROM->RAM)
+    -- ICUM_FLPLCTL.XPL = 1;
+    -- Note: Make it PreLoad OFF at the beginning of main()
+
+    jarl    _copy_icum_startup_ram, lp
+    jarl    _preload_on, lp
+
+    -- ******************************
+    -- Determine active partition
+    -- ******************************
+select_partition:
+
+    -- Unlock the access protection of Data Flash ECC registers.
+    mov     ICUM_DFKCPROT, r6
+    mov     UNLOCK_DATA, r7
+    st.w    r7, 0[r6]
+
+    -- Enable Data Flash ECC 1-bit error correction.
+    -- ICUM_DFECCCTL.SECDIS = 0 : Correct is enabled when 1-bit error is detected
+    -- ICUM_DFECCCTL.ECCDIS = 0 : ECC error detection/correction is enabled.
+    mov     ICUM_DFECCCTL, r6
+    mov     0, r7
+    st.w    r7, 0[r6]
+
+    -- Disable data flash ECC error detection and notification
+    -- ICUM_DFERRINT.EOVFIE = 0 : Error address overflow report disabled
+    -- ICUM_DFERRINT.DEDIE = 0 : Disables notification of the ECC 2-bit error.
+    -- ICUM_DFERRINT.SEDIE = 0 : Disables notification of the ECC 1-bit error.
+    mov     ICUM_DFERRINT, r6
+    mov     0, r7
+    st.w    r7, 0[r6]
+
+    -- Lock the access protection of Data Flash ECC registers.
+    mov     ICUM_DFKCPROT, r6
+    mov     LOCK_DATA, r7
+    st.w    r7, 0[r6]
+
+    -- Read partition 1
+    mov     ___ghsbegin_icum_inf_1, r6      -- Set start address
+    mov     ___ghsbegin_icum_inf_2, r9      -- Set end address
+    jarl    _read_info, lp
+    mov     r10, r13                        -- Save counter value
+
+    -- Read partition 2
+    mov     ___ghsbegin_icum_inf_2, r6      -- Set start address
+    mov     ___ghsbegin_icum_inf_end, r9    -- Set end address
+    jarl    _read_info, lp
+    mov     r10, r14                        -- Save counter value
+
+    -- If partition 1 is invalid, go to chk_2_only
+    cmp     -1, r13
+    be      chk_2_only
+
+    -- If partition 2 is invalid, select side A
+    cmp     -1, r14
+    be      jmp_side_a
+
+    -- If partition 1 < partition 2, select side B
+    cmp     r13, r14
+    bgt     jmp_side_b
+
+    -- ******************************
+    -- Jump to Firmware Side A
+    -- ******************************
+jmp_side_a:
+    mov     ___ghsbegin_start_firmware_a, r8
+    mov     _g_firmware_entry, r6
+    st.dw   r8, 0[r6]
+    jmp     [r8]
+
+chk_2_only:
+    -- If partition 2 is invalid, go to boot_err
+    cmp     -1, r14
+    be      boot_err
+
+    -- ******************************
+    -- Jump to Firmware Side B
+    -- ******************************
+jmp_side_b:
+    mov     ___ghsbegin_start_firmware_b, r8
+    mov     _g_firmware_entry, r6
+    st.dw   r8, 0[r6]
+    jmp     [r8]
+
+    -- ******************************
+    -- Boot failure
+    -- ******************************
+boot_err:
+    -- partition info 1/2 is invalid, set BOOTERR status
+    mov     ICUM_CMDREGICUM_ICU2PES0, r6
+    mov     ICUM_COMM_INF_ICU_ST_BOOTERR, r7
+    ld.w    0[r6], r8
+    or      r7, r8
+    st.w    r8, 0[r6]
+    jr      __startup_unused_isr
+
+----------------------------------------------------------------------------------
+-------------  Read partition info
+
+    .section ".startup.text", .text
+
+_read_info:
+    -- Clear Data Flash Error Status
+--    mov     ICUM_DFSERSTC, r8
+--    mov     0xF, r7
+--    st.w    r7, 0[r8]
+
+    mov     ICUM_DFDERSTC, r8
+    set1    0, 0[r8]
+
+    -- Initialize return counter value
+    mov     -1, r10
+
+_read_info_loop:
+    -- Set blank check area address to ep
+    movhi   32, r6, ep
+
+    -- Check revoke status
+    -- If revoke status is non-blank, read next block.
+    sld.w   8[ep], r7
+    shr     16, r7
+    bnc     _read_info_next
+
+    -- Check invalid status
+    -- If invalid status is non-blank, read next block.
+    sld.w   12[ep], r7
+    shr     16, r7
+    bnc     _read_info_next
+
+    -- Check active status
+    -- If active status is blank, finish processing.
+    sld.w   4[ep], r7
+    shr     16, r7
+    bc      _read_info_end
+
+    -- Check partition counter
+    -- If partition counter is blank, finish processing.
+    sld.w   0[ep], r7
+    shr     16, r7
+    bc      _read_info_end
+
+    -- Read a partition counter from Data Flash
+    ld.w    0[r6], r7
+
+    -- Check ECC 2-bit error detection (ICUM_DFERSTR.DEDF)
+    -- If occurring ECC 2-bit error, finish processing.
+    mov     ICUM_DFDERSTR, r11
+    ld.w    0[r11], r8
+    mov     ICUM_DFDERSTC, r11
+    set1    0, 0[r11]
+    shr     1, r8
+    bc      _read_info_next
+    -- If correctly read, save a counter value.
+    mov     r7, r10
+
+_read_info_next:
+    addi    16, r6, r6
+    cmp     r9, r6
+    blt     _read_info_loop -- If next block < end address
+
+_read_info_end:
+    -- Clear Data Flash Error Status
+--    mov     ICUM_DFSERSTC, r8
+--    mov     0xF, r7
+--    st.w    r7, 0[r8]
+
+    mov     ICUM_DFDERSTC, r8
+    set1    0, 0[r8]
+    jmp     [lp]
+
+----------------------------------------------------------------------------------
+    .section ".startup.text", .text
+_copy_icum_startup_ram:
+    mov     ___ghsbegin_icum_startup_d, r6      -- src
+    mov     ___ghsbegin_icum_startup_ram, r7    -- dest
+    mov     ___ghssize_icum_startup_ram, r8     -- size
+    shr     2, r8
+    add     -1, r8
+
+_L10:
+    mov     r6, ep
+    add     4, r6
+    sld.w   0[ep], r10
+
+    mov     r7, ep
+    add     4, r7
+    sst.w   r10, 0[ep]
+    loop    r8, _L10
+
+    jmp     [lp]
+
+----------------------------------------------------------------------------------
+
+    .global  _preload_on
+
+    .section .icum_startup_ram
+_preload_on:
+    mov     0xFFFEE504, ep  -- ICUM_FLPLCTL
+    mov     1, r7
+    sst.w   r7, 0[ep]
+    syncm
+
+    jmp     [lp]
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of unused interrupts
+
+    .global  __startup_unused_isr
+
+    .section ".startup.text", .text
+__startup_unused_isr:
+    halt
+    br      __startup_unused_isr
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of unused interrupts
+
+    .global  __STARTUP_SYSERR
+
+    .section ".startup.text", .text
+__STARTUP_SYSERR:
+    mov     _g_firmware_entry, r6
+    ld.dw   0[r6], r8
+    addi    0x10, r8, r8
+    jmp     [r8]
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of FENMI interrupts
+
+    .global  __STARTUP_FENMI
+
+    .section ".startup.text", .text
+__STARTUP_FENMI:
+    mov     _g_firmware_entry, r6
+    ld.dw   0[r6], r8
+    addi    0xe0, r8, r8
+    jmp     [r8]

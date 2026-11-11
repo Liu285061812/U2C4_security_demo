@@ -1,0 +1,137 @@
+--/******************************************************************************/
+--/* Component Name   PEs startup code                                          */
+--/******************************************************************************/
+--/* Product      : ICU-M Low Level Driver (Demo Part)                          */
+--/******************************************************************************/
+--/***********************************************************************************************************************
+--* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+--* 
+--* DISCLAIMER
+--* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+--* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+--* applicable laws, including copyright laws.
+--* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+--* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+--* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+--* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+--* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+--* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+--* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+--* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+--* following link:
+--* www.renesas.com/disclaimer
+--*
+--* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+--***********************************************************************************************************************/
+
+#define PASTER(x, y)        x ## y
+#define EVALUATOR(x, y)     PASTER(x, y)
+
+// the symbol _PEID_ is defined at gpj level
+
+#if !defined (_PEID_)
+    #define RESET_PEx   _RESET
+#else
+    #define RESET_PEx   EVALUATOR(_RESET_PE, _PEID_)
+#endif
+
+    .weak     ___lowinit
+    
+    .global   RESET_PEx
+    
+    .section .text
+RESET_PEx:
+    
+    -- ***************
+    -- RAM CLEAR
+    -- ***************
+
+    -- clear self RAM
+    mov ___ghsbegin_start_iRAM_Self, r6
+    mov ___ghsbegin_end_iRAM_Self, r7
+    mov r0, r1
+loop_clear:
+    st.dw   r0, 0[r6]
+    addi    8, r6, r6
+    cmp r7, r6
+    bl  loop_clear
+
+    -- ***************
+    -- COPROCESSOR
+    -- ***************
+
+    stsr    PSW,    r6
+    or      0x00010000, r6
+    ldsr    r6,     PSW         -- PSW.CU0 = 1
+    synci
+    mov     0x00020000, r6  
+    ldsr    r6,     FPSR        -- FPSR.FS = 1
+    syncp
+    stsr    PSW,    r6
+
+    -- ***************
+    -- GHS POINTERS
+    -- ***************
+
+    -- set global pointer
+    mov     ___ghsbegin_sdabase, gp
+
+    -- set text pointer
+    mov     ___ghsbegin_robase, tp
+
+    -- set stack pointer and align on 32-bit word
+    mov     (___ghsend_stack-4), sp
+    mov     -4,r1
+    and     r1,sp
+
+    -- ***************
+    -- INTERRUPTS
+    -- ***************
+    
+    -- set EBASE
+    mov     ___ghsbegin_intvect, r6
+    ldsr    r6, EBASE
+    
+    -- PSW.EBV = 1
+    stsr    PSW,    r6
+    or      0x00008000, r6
+    ldsr    r6,     PSW         -- PSW.EBV = 1
+
+    -- set interrupt base pointer
+    mov     __irqTbl, r1
+    ldsr    r1, INTBP, 1
+    
+    -- disable interrupt on mis-aligned accesses
+    ori     0x02, r0, r1
+    ldsr    r1, 5, 1                    -- MCTL is 5, 1
+    
+    -- ***************
+    -- LOW INIT
+    -- ***************
+
+    -- clear some control registers to 0
+    ldsr    r0, EIPC
+    ldsr    r0, FEPC
+    ldsr    r0, FEIC
+    ldsr    r0, CTBP
+    ldsr    r0, CTPC
+    ldsr    r0, EIWR
+    ldsr    r0, FEWR
+    ldsr    r0, MEA
+
+    -- jump to the HW initialisation function
+    jarl    ___lowinit, lp
+
+    -- ***************
+    -- START
+    -- ***************
+
+    -- jump to the initialisation functions of the library
+    -- and from there to main()
+    jr    __start
+
+    -- Measures against the occurrence of ECC errors due to undefined memory
+    -- Necessary to output the specified section to the execution image
+    .section ".dummy_area"
+    nop
+

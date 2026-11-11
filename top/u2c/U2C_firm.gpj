@@ -1,0 +1,113 @@
+#!gbuild
+##############################################################################
+# Component Name   U2C_firm
+##############################################################################
+# Product      : ICU-M Low Level Driver (Demo Part)
+##############################################################################
+########################################################################################################################
+# RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+# 
+# DISCLAIMER
+# This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+# other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+# applicable laws, including copyright laws.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+# THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+# EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+# SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+# SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+# Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+# this software. By using this software, you agree to the additional terms and conditions found by accessing the
+# following link:
+# www.renesas.com/disclaimer
+#
+# Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+########################################################################################################################
+
+
+
+macro generic_folder=/generic
+macro icum_build_folder=../../icum/target/${cfg_family}/build
+macro icum_folder=../../icum
+macro link_options=-Mna -Ml -delete -DTARGET_DEVICE_U2C4 -checksum
+macro pe_build_folder=${pe_folder}${target_folder}/build
+macro pe_folder=../../pe
+macro pe_relative=..
+macro target_folder=/target/${cfg_family}
+[MultiCoreArchive]
+
+	-bsp generic
+	-o ${cfg_target}_firm.mca
+	-I${cfg_device_include}
+	-I${icum_folder}/target/${cfg_family}/include/driver
+	-list
+	-map
+	-keepmap
+	-passsource
+	-preprocess_assembly_files
+	-shared_imports
+
+	-DICUM_DEVICE_FILE="u2c4_device.h"
+#@todo    -DDEVICE_FILE="${cfg_dev}I.dvf.h"
+	-DDEVICE_FILE="DR7F702613AI.dvf.h"
+
+	-DFSW_PKCC_ECC
+	-DFSW_PKCC_RSA
+	-DFSW_ECC_CURVE_ED
+	-DFSW_SHAA_HASH
+	-DFSW_DVC_HASH
+	-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h" -DL_FLASH_PUBLIC_H="icum_l_flash_pub.h"
+	-DFSW_AESKEY_256
+	-D__RH850_U2C4__
+	-D__RH850_U2C__
+	-DTARGET_DEVICE_U2C4
+	-DDEBUG
+
+	--preprocess_linker_directive_full ${link_options}
+
+	-DIRQ_TABLE_START=0x200
+    
+	-DFW_VERSION=""
+
+	{ streq(cfg_build_fw_type, "dbg") } -common '{ --preprocess_linker_directive_full                  ${link_options} }'
+	{ streq(cfg_build_fw_type, "ev") } -common '{ --preprocess_linker_directive_full -D_RELEASE_EVAL_ ${link_options} }'
+	{ streq(cfg_build_fw_type, "mp") } -common '{ --preprocess_linker_directive_full -D_RELEASE_MP_   ${link_options} }'
+	{ !cfg_build_fw } -common '{ --preprocess_linker_directive_full                  ${link_options} }'
+
+	{ cfg_build_fw && cfg_build_test } :postexecSafe="gsrec -hex386 -o ${pe_build_folder}/_release/test_${cfg_target}_${cfg_build_version}.hex ${cfg_target}_firm.mca"
+	{ cfg_build_fw && cfg_build_test } :postexecSafe="gsrec         -o ${pe_build_folder}/_release/test_${cfg_target}_${cfg_build_version}.mot ${cfg_target}_firm.mca"
+
+	{ cfg_build_fw } :postexecSafe="gsize -nobss ${icum_build_folder}/out/icup_B"
+	{ cfg_build_fw } :postexecSafe="gsize -nodata -notext ${icum_build_folder}/out/icup_B"
+	{ cfg_build_fw && !streq(cfg_build_fw_type, "mp") } :postexecSafe="gsrec -hex386 -skip .cism.rodata -skip .cism.text -o ${icum_build_folder}/_release/r_icumfw_${cfg_build_fw_type}_${cfg_target}_${cfg_build_version}.hex ${icum_build_folder}/out/icup_B"
+	{ cfg_build_fw && !streq(cfg_build_fw_type, "mp") } :postexecSafe="gsrec         -skip .cism.rodata -skip .cism.text -o ${icum_build_folder}/_release/r_icumfw_${cfg_build_fw_type}_${cfg_target}_${cfg_build_version}.srec ${icum_build_folder}/out/icup_B"
+	{ cfg_build_fw &&  streq(cfg_build_fw_type, "mp") } :postexecSafe="gsrec -hex386 -skip .cism.rodata -skip .cism.text -o ${icum_build_folder}/_release/r_icumfw_${cfg_build_fw_type}_${cfg_target}.hex ${icum_build_folder}/out/icup_B"
+	{ cfg_build_fw &&  streq(cfg_build_fw_type, "mp") } :postexecSafe="gsrec         -skip .cism.rodata -skip .cism.text -o ${icum_build_folder}/_release/r_icumfw_${cfg_build_fw_type}_${cfg_target}.srec ${icum_build_folder}/out/icup_B"
+
+	{ cfg_build_test } :postexecSafe="gsize -nobss ${pe_build_folder}/out/pe1/pe1"
+	{ cfg_build_test } :postexecSafe="gsize -nodata -notext ${pe_build_folder}/out/pe1/pe1"
+	{ cfg_build_test } :postexecSafe="gsrec -hex386 -o ${pe_build_folder}/_release/pe1_${cfg_target}_${cfg_build_version}.hex ${pe_build_folder}/out/pe1/pe1"
+	{ cfg_build_test } :postexecSafe="gsrec         -o ${pe_build_folder}/_release/pe1_${cfg_target}_${cfg_build_version}.mot ${pe_build_folder}/out/pe1/pe1"
+
+	{ cfg_build_test } :postexecSafe="gsize -nobss ${pe_build_folder}/out/pe2/pe2"
+	{ cfg_build_test } :postexecSafe="gsize -nodata -notext ${pe_build_folder}/out/pe2/pe2"
+	{ cfg_build_test } :postexecSafe="gsrec -hex386 -o ${pe_build_folder}/_release/pe2_${cfg_target}_${cfg_build_version}.hex ${pe_build_folder}/out/pe2/pe2"
+	{ cfg_build_test } :postexecSafe="gsrec         -o ${pe_build_folder}/_release/pe2_${cfg_target}_${cfg_build_version}.mot ${pe_build_folder}/out/pe2/pe2"
+
+	{ cfg_build_test } :postexecSafe="gsize -nobss ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsize -nodata -notext ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsrec -hex386 -o ${pe_build_folder}/_release/shared_${cfg_target}_${cfg_build_version}.hex ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsrec         -o ${pe_build_folder}/_release/shared_${cfg_target}_${cfg_build_version}.mot ${pe_build_folder}/out/shared/shared.so"
+
+	{ cfg_build_test } :postexecSafe="gsize -nobss ${pe_build_folder}/out/pe1/pe1 ${pe_build_folder}/out/pe2/pe2 ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsize -nodata -notext ${pe_build_folder}/out/pe1/pe1 ${pe_build_folder}/out/pe2/pe2 ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsrec -hex386 -o ${pe_build_folder}/_release/pe_IT_${cfg_target}_${cfg_build_version}.hex ${pe_build_folder}/out/pe1/pe1 ${pe_build_folder}/out/pe2/pe2 ${pe_build_folder}/out/shared/shared.so"
+	{ cfg_build_test } :postexecSafe="gsrec         -o ${pe_build_folder}/_release/pe_IT_${cfg_target}_${cfg_build_version}.mot ${pe_build_folder}/out/pe1/pe1 ${pe_build_folder}/out/pe2/pe2 ${pe_build_folder}/out/shared/shared.so"
+
+	-large_sda
+	-large_zda
+{ cfg_build_test } ${pe_folder}${generic_folder}/pe1.gpj		[Core]
+{ cfg_build_test } ${pe_folder}${generic_folder}/pe2.gpj		[Core]
+{ cfg_build_test } ${pe_folder}${target_folder}/src/shared/shared.gpj		[SharedMemory]
+{ cfg_build_fw } ${icum_folder}/icup_B.gpj		[Core]

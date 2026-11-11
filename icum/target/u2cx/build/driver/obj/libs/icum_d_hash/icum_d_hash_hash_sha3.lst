@@ -1,0 +1,1991 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\ -I..\..\icum\sal\include\library\ -I..\..\icum\target\u2cx\include\driver\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\icum_d_hash_hash_sha3.dbo -source=icum_d_hash_hash_sha3.c -comp -o ..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\gh_0000u2o1.o -list=..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\icum_d_hash_hash_sha3.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+Source File: icum_d_hash_hash_sha3.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\icumif\
+                           2 --		-I..\..\icum\generic\include\common\
+                           3 --		-I..\..\icum\sal\include\library\
+                           4 --		-I..\..\icum\target\u2cx\include\driver\
+                           5 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           6 --		-I..\..\icum\target\u2cx\include\device\
+                           7 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           8 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                           9 --		-I..\..\icum\target\u2cx\include\driver
+                          10 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          11 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          13 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          14 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          15 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          16 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          17 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          18 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          19 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          20 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          21 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          22 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          23 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          24 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          25 --		.text=.icum_driver.text -section .rodata=.icum_driver.rodata
+                          26 --		-section .bss=.icum_driver.bss -section .data=.icum_driver.data
+                          27 --		-filetype.c
+                          28 --		..\..\icum\target\u2cx\src\driver\d_hash\icum_d_hash_hash_sha3.c
+                          29 --		-o
+                          30 --		..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\icum_d_hash_hash_sha3.o
+                          31 --Source File:   ..\..\icum\target\u2cx\src\driver\d_hash\icum_d_hash_hash_sha3.c
+                          32 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          33 --Compile Date:  Wed Nov 11 11:22:20 2026
+                          34 --Host OS:       Win64
+                          35 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          36 --Release:       Compiler v2023.5.4
+                          37 --Revision Date: Wed Sep 06 02:44:56 2023
+                          38 --Release Date:  Wed Sep 06 02:00:00 2023
+                          39 -- ecom  -g -w
+                          40 	.section ".icum_driver.text","ax"
+                          41 
+                          42 --1: /******************************************************************************/
+                          43 --2: /* Component Name   ICU-M HASH Driver                                         */
+                          44 --3: /******************************************************************************/
+                          45 --4: /* Product      : ICU-M Low Level Driver                                      */
+                          46 --5: /******************************************************************************/
+                          47 --6: /***********************************************************************************************************************
+                          48 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          49 --8: * 
+                          50 --9: * DISCLAIMER
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                          51 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          52 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          53 --12: * applicable laws, including copyright laws.
+                          54 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          55 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          56 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          57 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          58 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          59 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          60 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          61 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          62 --21: * following link:
+                          63 --22: * www.renesas.com/disclaimer
+                          64 --23: *
+                          65 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          66 --25: ***********************************************************************************************************************/
+                          67 --26: /**************************************************************************************/
+                          68 --27: /* Header files                                                                       */
+                          69 --28: /**************************************************************************************/
+                          70 --29: #include "r_icum_hash_api.h"
+                          71 --30: #include "r_icum_hash_cmn.h"
+                          72 --31: #include "icum_d_hash_cmn_sha3.h"
+                          73 --32: #include "icum_d_hash_hash_sha3.h"
+                          74 --34: /**************************************************************************************/
+                          75 --35: /* Prototypes                                                                         */
+                          76 --36: /**************************************************************************************/
+                          77 --37: static void d_hash_hash_sha3_set_middle(const uint32_t* const p_im_data, const uint32_t* const p_im_len);
+                          78 --39: /***************************************************************************************
+                          79 --40: * Function ID  : [ICUMFW_CD_S4_D_HASH_0037]:[ICUMFW_UD_S4_D_HASH_0037]
+                          80 --41: * Function name: d_hash_hash_sha3_chk_begin_arg
+                          81 --42: * Description  : HASHBegin API argument check
+                          82 --43: * Arguments    : (IN) const st_r_hash_ctx_t* const p_ctx,
+                          83 --44: *                     const e_r_hash_type_t type,
+                          84 --45: *                     const st_r_hash_opt_t* const p_opt
+                          85 --46: * Return Value : HASH_RET_OK
+                          86 --47: *                HASH_RET_PARAMERR
+                          87 --48: ***************************************************************************************/
+                          88 --49: e_r_hash_ret_t d_hash_hash_sha3_chk_begin_arg(const st_r_hash_ctx_t* const p_ctx,
+                          89 	.align	2
+                          90 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF6C..0::
+                          91 	.align	2
+                          92 	.align	2
+                          93 ..gh.f.a.2.e.0:
+                          94 	.type	..gh.f.a.2.e.0,@object
+                          95 	.size	..gh.f.a.2.e.0,0
+                          96 	.global	_d_hash_hash_sha3_chk_begin_arg
+                          97 _d_hash_hash_sha3_chk_begin_arg:
+00000000 0610             98 	mov	r6,r2
+00000002 07f0             99 	mov	r7,ep
+                         100 --	    .bf
+                         101 .LDW01:
+                         102 --50:                                               const st_r_hash_opt_t* const p_opt)
+                         103 --51: {
+                         104 --52:     e_r_hash_ret_t ret;
+                         105 --54:     ret = HASH_RET_OK;
+00000004 000a            106 	mov	0,r1
+                         107 --56:     /* NULL check */
+                         108 --57:     if ((NULL != p_ctx) && (NULL != p_opt))
+00000006 e011            109 	cmp	zero,r2
+00000008 d20d*           110 	be	.L4
+0000000a e0f1            111 	cmp	zero,ep
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+0000000c b20d*           112 	be	.L4
+                         113 --58:     {
+                         114 --59:         if ((HASH_USE_ICUP_TRANSFER == p_opt->use_dma_transfer) ||
+                         115 --line59
+                         116 ..lin.4469218d..9aed37ce.0_1::
+                         117 .LDWlin1:
+0000000e 009d            118 	sld.w	0[ep],r19
+00000010 e099            119 	cmp	zero,r19
+00000012 b20d*           120 	be	.L11
+                         121 --line60
+                         122 ..lin.4469218d..9aed37ce.0_2::
+                         123 .LDWlin2:
+00000014 009d            124 	sld.w	0[ep],r19
+00000016 619a            125 	cmp	1,r19
+00000018 820d*           126 	be	.L11
+                         127 --60:             (HASH_USE_DMA_TRANSFER == p_opt->use_dma_transfer))
+                         128 --61:         {
+                         129 --62:             /* do nothing */
+                         130 --63:         }
+                         131 --64:         else
+                         132 --65:         {
+                         133 --66:             ret = HASH_RET_PARAMERR;
+                         134 --line66
+                         135 ..lin.4469218d..9aed37ce.0_3::
+                         136 .LDWlin3:
+0000001a 210601000800    137 	mov	524289,r1
+00000020 c505*           138 	br	.L11
+                         139 .L4:
+                         140 --67:         }
+                         141 --68:     }
+                         142 --69:     else
+                         143 --70:     {
+                         144 --71:         ret = HASH_RET_PARAMERR;
+                         145 --line71
+                         146 ..lin.4469218d..9aed37ce.0_4::
+                         147 .LDWlin4:
+00000022 210601000800    148 	mov	524289,r1
+                         149 .L11:
+                         150 --72:     }
+                         151 --74:     return (ret);
+                         152 --line74
+                         153 ..lin.4469218d..9aed37ce.0_5::
+                         154 .LDWlin5:
+00000028 0150            155 	mov	r1,r10
+                         156 --	    .ef
+                         157 .LDW11:
+                         158 .L91:
+                         159 	.jumptype return
+0000002a 7f00            160 	jmp	[lp]
+                         161 --line74
+                         162 ..lin.4469218d..9aed37ce.0_6::
+                         163 	.type	_d_hash_hash_sha3_chk_begin_arg,@function
+                         164 	.size	_d_hash_hash_sha3_chk_begin_arg,.-_d_hash_hash_sha3_chk_begin_arg
+                         165 	.align	2
+                         166 --_ret	r1	local
+                         167 
+                         168 --_p_ctx	r2	param
+                         169 --_p_opt	ep	param
+                         170 
+                         171 	.section ".bss","awb"
+                         172 .L58:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         173 	.type	.L58,@object
+                         174 	.size	.L58,0
+                         175 	.section ".ghrettbl",""
+                         176 	.align	4
+00000000 00000000*       177 .L92:	.word	.L91
+                         178 	.type	.L92,@object
+                         179 	.size	.L92,4
+                         180 	.data
+                         181 	.section ".icum_driver.text","ax"
+                         182 
+                         183 --75: }
+                         184 
+                         185 --77: /***************************************************************************************
+                         186 --78: * Function ID  : [ICUMFW_CD_S4_D_HASH_0038]:[ICUMFW_UD_S4_D_HASH_0038]
+                         187 --79: * Function name: d_hash_hash_sha3_begin
+                         188 --80: * Description  : HASH Initialize
+                         189 --81: * Arguments    : (IN)     const e_r_hash_type_t type
+                         190 --82: *                         const st_r_hash_opt_t* const p_opt
+                         191 --83: *                (IN-OUT) const st_r_hash_ctx_t* const p_ctx
+                         192 --84: * Return Value : HASH_RET_OK
+                         193 --85: *                HASH_RET_PARAMERR
+                         194 --86: *                HASH_RET_LENGTHERR
+                         195 --87: ***************************************************************************************/
+                         196 --88: e_r_hash_ret_t d_hash_hash_sha3_begin(st_r_hash_ctx_t* const p_ctx,
+                         197 	.align	2
+                         198 	.align	2
+                         199 	.align	2
+                         200 ..gh.f.a.2.e.1:
+                         201 	.type	..gh.f.a.2.e.1,@object
+                         202 	.size	..gh.f.a.2.e.1,0
+                         203 	.global	_d_hash_hash_sha3_begin
+                         204 _d_hash_hash_sha3_begin:
+0000002c 031ee8ff        205 	addi	-24,sp,sp
+00000030 63ff1500        206 	st.w	lp,20[sp]
+00000034 63d70d00        207 	st.w	r26,12[sp]
+00000038 63df0900        208 	st.w	r27,8[sp]
+0000003c 63e70500        209 	st.w	r28,4[sp]
+00000040 63cf1100        210 	st.w	r25,16[sp]
+00000044 63ef0100        211 	st.w	r29,0[sp]
+00000048 06e0            212 	mov	r6,r28
+0000004a 07d0            213 	mov	r7,r26
+0000004c 08d8            214 	mov	r8,r27
+                         215 --	    .bf
+                         216 .LDW21:
+                         217 --89:                                       const e_r_hash_type_t type,
+                         218 --90:                                       const st_r_hash_opt_t* const p_opt)
+                         219 --91: {
+                         220 --92:     e_r_hash_ret_t ret;
+                         221 --93:     uint32_t msg_total_len;
+                         222 --95:     ret = HASH_RET_OK;
+0000004e 00ea            223 	mov	0,r29
+                         224 --97:     /* NULL check */
+                         225 --98:     if ((NULL != p_ctx) && (NULL != p_opt))
+00000050 e0e1            226 	cmp	zero,r28
+00000052 8235*           227 	be	.L95
+00000054 e0d9            228 	cmp	zero,r27
+00000056 e22d*           229 	be	.L95
+                         230 --99:     {
+                         231 --100:         msg_total_len = p_ctx->msg_total_len;
+                         232 --line100
+                         233 ..lin.4469218d..2657f4e0.0_7::
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         234 .LDWlin7:
+00000058 3ccf0900        235 	ld.w	8[r28],r25
+                         236 --102:         /* Initialize param */
+                         237 --103:         r_hash_cmn_set_byte((uint8_t*)p_ctx, ZERO_CLEAR, sizeof(st_r_hash_ctx_t));
+0000005c 1c30            238 	mov	r28,r6
+0000005e 003a            239 	mov	0,r7
+00000060 20469801        240 	movea	408,zero,r8
+                         241 .L257:
+                         242 	jarl	_r_hash_cmn_set_byte,lp
+                         242 <EXPANSION BEGIN>
+                         242 jarl22 _r_hash_cmn_set_byte , lp 
+00000064 80ff0000*       242 <EXPANSION END>
+                         243 --105:         /* set HASH total message length */
+                         244 --106:         p_ctx->msg_total_len = msg_total_len;
+                         245 --line106
+                         246 ..lin.4469218d..2657f4e0.0_8::
+                         247 .LDWlin8:
+00000068 7ccf0900        248 	st.w	r25,8[r28]
+                         249 --108:         /* set HASH type */
+                         250 --109:         p_ctx->type = type;
+0000006c 7cd70100        251 	st.w	r26,0[r28]
+                         252 --111:         if (HASH_USE_DMA_TRANSFER == p_opt->use_dma_transfer)
+00000070 3b0f0100        253 	ld.w	0[r27],r1
+00000074 610a            254 	cmp	1,r1
+00000076 8a15*           255 	bne	.L103
+                         256 --112:         {
+                         257 --113:             /* DMA transfer status setting */
+                         258 --114:             ret = d_hash_cmn_set_dma_status(type, DMA_STATUS_RUNNING);
+                         259 --line114
+                         260 ..lin.4469218d..2657f4e0.0_9::
+                         261 .LDWlin9:
+00000078 1a30            262 	mov	r26,r6
+0000007a 013a            263 	mov	1,r7
+                         264 .L259:
+                         265 	jarl	_d_hash_cmn_set_dma_status,lp
+                         265 <EXPANSION BEGIN>
+                         265 jarl22 _d_hash_cmn_set_dma_status , lp 
+0000007c 80ff0000*       265 <EXPANSION END>
+00000080 0ae8            266 	mov	r10,r29
+                         267 --116:             if (HASH_RET_OK == ret)
+                         268 --line116
+                         269 ..lin.4469218d..2657f4e0.0_10::
+                         270 .LDWlin10:
+00000082 e0e9            271 	cmp	zero,r29
+00000084 ea05*           272 	bne	.L100
+                         273 --117:             {
+                         274 --118:                 /* set use DMA transfer */
+                         275 --119:                 p_ctx->use_dma_transfer = p_opt->use_dma_transfer;
+                         276 --line119
+                         277 ..lin.4469218d..2657f4e0.0_11::
+                         278 .LDWlin11:
+00000086 3b0f0100        279 	ld.w	0[r27],r1
+0000008a 7c0fe900        280 	st.w	r1,232[r28]
+0000008e c505*           281 	br	.L103
+                         282 .L100:
+                         283 --120:             }
+                         284 --121:             else
+                         285 --122:             {
+                         286 --123:                 /* set use ICUP transfer */
+                         287 --124:                 p_ctx->use_dma_transfer = HASH_USE_ICUP_TRANSFER;
+                         288 --line124
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         289 ..lin.4469218d..2657f4e0.0_12::
+                         290 .LDWlin12:
+00000090 7c07e900        291 	st.w	zero,232[r28]
+                         292 --126:                 ret = HASH_RET_OK;
+00000094 00ea            293 	mov	0,r29
+                         294 .L103:
+                         295 --127:             }
+                         296 --128:         } /* end if if (HASH_USE_DMA_TRANSFER == p_opt->use_dma_transfer) */
+                         297 --129:         else
+                         298 --130:         {
+                         299 --131:             /* do nothing */
+                         300 --132:         }
+                         301 --134:         /* set HASH length */
+                         302 --135:         p_ctx->hash_len = d_hash_cmn_sha3_get_length(p_ctx->type);
+00000096 3c370100        303 	ld.w	0[r28],r6
+                         304 .L261:
+                         305 	jarl	_d_hash_cmn_sha3_get_length,lp
+                         305 <EXPANSION BEGIN>
+                         305 jarl22 _d_hash_cmn_sha3_get_length , lp 
+0000009a 80ff0000*       305 <EXPANSION END>
+0000009e 7c570500        306 	st.w	r10,4[r28]
+                         307 --137:         if (LENGTH_ERR == p_ctx->hash_len)
+                         308 --line137
+                         309 ..lin.4469218d..2657f4e0.0_13::
+                         310 .LDWlin13:
+000000a2 3c0f0500        311 	ld.w	4[r28],r1
+000000a6 e009            312 	cmp	zero,r1
+000000a8 8a0d*           313 	bne	.L107
+                         314 --138:         {
+                         315 --139:             ret = HASH_RET_LENGTHERR;
+                         316 --line139
+                         317 ..lin.4469218d..2657f4e0.0_14::
+                         318 .LDWlin14:
+000000aa 3d0602000800    319 	mov	524290,r29
+000000b0 c505*           320 	br	.L107
+                         321 .L95:
+                         322 --140:         }
+                         323 --141:         else
+                         324 --142:         {
+                         325 --143:             /* do nothing */
+                         326 --144:         }
+                         327 --145:     } /* end of if ((NULL != p_ctx) && (NULL != p_opt)) */
+                         328 --146:     else
+                         329 --147:     {
+                         330 --148:         ret = HASH_RET_PARAMERR;
+                         331 --line148
+                         332 ..lin.4469218d..2657f4e0.0_15::
+                         333 .LDWlin15:
+000000b2 3d0601000800    334 	mov	524289,r29
+                         335 .L107:
+                         336 --149:     }
+                         337 --151:     return (ret);
+                         338 --line151
+                         339 ..lin.4469218d..2657f4e0.0_16::
+                         340 .LDWlin16:
+000000b8 1d50            341 	mov	r29,r10
+                         342 --	    .ef
+                         343 .LDW31:
+000000ba 23ff1500        344 	ld.w	20[sp],lp
+000000be 23ef0100        345 	ld.w	0[sp],r29
+000000c2 23e70500        346 	ld.w	4[sp],r28
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+000000c6 23df0900        347 	ld.w	8[sp],r27
+000000ca 23d70d00        348 	ld.w	12[sp],r26
+000000ce 23cf1100        349 	ld.w	16[sp],r25
+000000d2 031e1800        350 	addi	24,sp,sp
+                         351 .L263:
+                         352 	.jumptype return
+000000d6 7f00            353 	jmp	[lp]
+                         354 --line151
+                         355 ..lin.4469218d..2657f4e0.0_17::
+                         356 	.type	_d_hash_hash_sha3_begin,@function
+                         357 	.size	_d_hash_hash_sha3_begin,.-_d_hash_hash_sha3_begin
+                         358 	.align	2
+                         359 --_ret	r29	local
+                         360 --_msg_total_len	r25	local
+                         361 
+                         362 --_p_ctx	r28	param
+                         363 --_type	r26	param
+                         364 --_p_opt	r27	param
+                         365 
+                         366 	.section ".bss","awb"
+                         367 .L194:
+                         368 	.type	.L194,@object
+                         369 	.size	.L194,0
+                         370 	.section ".ghcalltbl",""
+                         371 	.align	4
+00000000 00000000*       372 .L258:	.word	.L257
+                         373 	.type	.L258,@object
+                         374 	.size	.L258,4
+00000004 00000000*       375 .L260:	.word	.L259
+                         376 	.type	.L260,@object
+                         377 	.size	.L260,4
+00000008 00000000*       378 .L262:	.word	.L261
+                         379 	.type	.L262,@object
+                         380 	.size	.L262,4
+                         381 	.section ".ghrettbl",""
+00000004 00000000*       382 .L264:	.word	.L263
+                         383 	.type	.L264,@object
+                         384 	.size	.L264,4
+                         385 	.data
+                         386 	.section ".icum_driver.text","ax"
+                         387 
+                         388 --152: }
+                         389 
+                         390 --154: /***************************************************************************************
+                         391 --155: * Function ID  : [ICUMFW_CD_S4_D_HASH_0039]:[ICUMFW_UD_S4_D_HASH_0039]
+                         392 --156: * Function name: d_hash_hash_sha3_chk_update_arg
+                         393 --157: * Description  : HASHUpdate API argument check
+                         394 --158: * Arguments    : (IN) const st_r_hash_ctx_t* const p_ctx,
+                         395 --159: * Return Value : HASH_RET_OK
+                         396 --160: *                HASH_RET_PARAMERR
+                         397 --161: ***************************************************************************************/
+                         398 --162: e_r_hash_ret_t d_hash_hash_sha3_chk_update_arg(const st_r_hash_ctx_t* const p_ctx)
+                         399 	.align	2
+                         400 	.align	2
+                         401 	.align	2
+                         402 ..gh.f.a.2.e.2:
+                         403 	.type	..gh.f.a.2.e.2,@object
+                         404 	.size	..gh.f.a.2.e.2,0
+                         405 	.global	_d_hash_hash_sha3_chk_update_arg
+                         406 _d_hash_hash_sha3_chk_update_arg:
+000000d8 541a            407 	add	-12,sp
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+000000da 63ff0900        408 	st.w	lp,8[sp]
+000000de 63e70500        409 	st.w	r28,4[sp]
+000000e2 63ef0100        410 	st.w	r29,0[sp]
+000000e6 06e0            411 	mov	r6,r28
+                         412 --	    .bf
+                         413 .LDW41:
+                         414 --163: {
+                         415 --164:     e_r_hash_ret_t ret;
+                         416 --166:     ret = HASH_RET_OK;
+000000e8 00ea            417 	mov	0,r29
+                         418 --168:     /* check the context */
+                         419 --169:     ret = d_hash_cmn_sha3_context_chk_arg(p_ctx);
+000000ea 1c30            420 	mov	r28,r6
+                         421 .L312:
+                         422 	jarl	_d_hash_cmn_sha3_context_chk_arg,lp
+                         422 <EXPANSION BEGIN>
+                         422 jarl22 _d_hash_cmn_sha3_context_chk_arg , lp 
+000000ec 80ff0000*       422 <EXPANSION END>
+000000f0 0ae8            423 	mov	r10,r29
+                         424 --171:     return ret;
+                         425 --line171
+                         426 ..lin.4469218d..288894ec.0_18::
+                         427 .LDWlin18:
+000000f2 1d50            428 	mov	r29,r10
+                         429 --	    .ef
+                         430 .LDW51:
+000000f4 23ff0900        431 	ld.w	8[sp],lp
+000000f8 23ef0100        432 	ld.w	0[sp],r29
+000000fc 23e70500        433 	ld.w	4[sp],r28
+00000100 4c1a            434 	add	12,sp
+                         435 .L314:
+                         436 	.jumptype return
+00000102 7f00            437 	jmp	[lp]
+                         438 --line171
+                         439 ..lin.4469218d..288894ec.0_19::
+                         440 	.type	_d_hash_hash_sha3_chk_update_arg,@function
+                         441 	.size	_d_hash_hash_sha3_chk_update_arg,.-_d_hash_hash_sha3_chk_update_arg
+                         442 	.align	2
+                         443 --_ret	r29	local
+                         444 
+                         445 --_p_ctx	r28	param
+                         446 
+                         447 	.section ".bss","awb"
+                         448 .L294:
+                         449 	.type	.L294,@object
+                         450 	.size	.L294,0
+                         451 	.section ".ghcalltbl",""
+0000000c 00000000*       452 .L313:	.word	.L312
+                         453 	.type	.L313,@object
+                         454 	.size	.L313,4
+                         455 	.section ".ghrettbl",""
+00000008 00000000*       456 .L315:	.word	.L314
+                         457 	.type	.L315,@object
+                         458 	.size	.L315,4
+                         459 	.data
+                         460 	.section ".icum_driver.text","ax"
+                         461 
+                         462 --172: }
+                         463 
+                         464 --174: /***************************************************************************************
+                         465 --175: * Function ID  : [ICUMFW_CD_S4_D_HASH_0040]:[ICUMFW_UD_S4_D_HASH_0040]
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         466 --176: * Function name: d_hash_hash_sha3_update
+                         467 --177: * Description  : HASH UPDATE processing(hash)
+                         468 --178: * Arguments    : (IN)     const uint8_t* const p_msg,
+                         469 --179: *                         const uint32_t msg_len
+                         470 --180: *                (IN-OUT) st_r_hash_ctx_t* const p_ctx
+                         471 --181: * Return Value : HASH_RET_OK
+                         472 --182: *                HASH_RET_PARAMERR
+                         473 --183: *                HASH_RET_LENGTHERR
+                         474 --184: ***************************************************************************************/
+                         475 --185: e_r_hash_ret_t d_hash_hash_sha3_update(st_r_hash_ctx_t* const p_ctx,
+                         476 	.align	2
+                         477 	.align	2
+                         478 	.align	2
+                         479 ..gh.f.a.2.e.3:
+                         480 	.type	..gh.f.a.2.e.3,@object
+                         481 	.size	..gh.f.a.2.e.3,0
+                         482 	.global	_d_hash_hash_sha3_update
+                         483 _d_hash_hash_sha3_update:
+00000104 031ee8ff        484 	addi	-24,sp,sp
+00000108 63ff1500        485 	st.w	lp,20[sp]
+0000010c 63cf1100        486 	st.w	r25,16[sp]
+00000110 63df0900        487 	st.w	r27,8[sp]
+00000114 63e70500        488 	st.w	r28,4[sp]
+00000118 63d70d00        489 	st.w	r26,12[sp]
+0000011c 63ef0100        490 	st.w	r29,0[sp]
+00000120 06e0            491 	mov	r6,r28
+00000122 07c8            492 	mov	r7,r25
+00000124 08d8            493 	mov	r8,r27
+                         494 --	    .bf
+                         495 .LDW61:
+                         496 --186:                                        const uint8_t* const p_msg, const uint32_t msg_len)
+                         497 --187: {
+                         498 --188:     e_r_hash_ret_t ret;
+                         499 --189:     uint32_t       hash_block_size;
+                         500 --191:     ret = HASH_RET_OK;
+00000126 00ea            501 	mov	0,r29
+                         502 --192:     hash_block_size = VARIABLE_INIT;
+00000128 00d2            503 	mov	0,r26
+                         504 --194:     /* NULL check */
+                         505 --195:     if (NULL != p_ctx)
+0000012a e0e1            506 	cmp	zero,r28
+0000012c f245*           507 	be	.L318
+                         508 --196:     {
+                         509 --197:         if (HASH_USE_DMA_TRANSFER == p_ctx->use_dma_transfer)
+                         510 --line197
+                         511 ..lin.4469218d..1e6ddc5e.0_20::
+                         512 .LDWlin20:
+0000012e 3c0fe900        513 	ld.w	232[r28],r1
+00000132 610a            514 	cmp	1,r1
+00000134 aa0d*           515 	bne	.L320
+                         516 --198:         {
+                         517 --199:             /* Preparing the DMA input channel for use */
+                         518 --200:             ret = d_hash_cmn_prepare_dma(p_msg, msg_len, p_ctx->type, DMA_INPUT_CHANNEL);
+                         519 --line200
+                         520 ..lin.4469218d..1e6ddc5e.0_21::
+                         521 .LDWlin21:
+00000136 3c470100        522 	ld.w	0[r28],r8
+0000013a 1930            523 	mov	r25,r6
+0000013c 1b38            524 	mov	r27,r7
+0000013e 004a            525 	mov	0,r9
+                         526 .L488:
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         527 	jarl	_d_hash_cmn_prepare_dma,lp
+                         527 <EXPANSION BEGIN>
+                         527 jarl22 _d_hash_cmn_prepare_dma , lp 
+00000140 80ff0000*       527 <EXPANSION END>
+00000144 0ae8            528 	mov	r10,r29
+00000146 d53d*           529 	br	.L336
+                         530 .L320:
+                         531 --201:         }
+                         532 --202:         else
+                         533 --203:         {
+                         534 --204:             /* Buffer overflow prevention range check */
+                         535 --205:             if (HASH_LEFTOVER_MAX > p_ctx->transfer_prm.icup.leftover_msg_len)
+                         536 --line205
+                         537 ..lin.4469218d..1e6ddc5e.0_22::
+                         538 .LDWlin22:
+00000148 3c0fed00        539 	ld.w	236[r28],r1
+0000014c 010658ff        540 	addi	-168,r1,zero
+00000150 9135*           541 	bl	.L323
+                         542 --206:             {
+                         543 --207:                 /* get block size */
+                         544 --208:                 hash_block_size = d_hash_cmn_sha3_get_block_size(p_ctx->type);
+                         545 --line208
+                         546 ..lin.4469218d..1e6ddc5e.0_23::
+                         547 .LDWlin23:
+00000152 3c370100        548 	ld.w	0[r28],r6
+                         549 .L490:
+                         550 	jarl	_d_hash_cmn_sha3_get_block_size,lp
+                         550 <EXPANSION BEGIN>
+                         550 jarl22 _d_hash_cmn_sha3_get_block_size , lp 
+00000156 80ff0000*       550 <EXPANSION END>
+0000015a 0ad0            551 	mov	r10,r26
+                         552 --210:                 if (BLOCK_SIZE_ERR == hash_block_size)
+                         553 --line210
+                         554 ..lin.4469218d..1e6ddc5e.0_24::
+                         555 .LDWlin24:
+0000015c e0d1            556 	cmp	zero,r26
+0000015e da05*           557 	bne	.L325
+                         558 --211:                 {
+                         559 --212:                     ret = HASH_RET_LENGTHERR;
+                         560 --line212
+                         561 ..lin.4469218d..1e6ddc5e.0_25::
+                         562 .LDWlin25:
+00000160 3d0602000800    563 	mov	524290,r29
+00000166 d52d*           564 	br	.L336
+                         565 .L325:
+                         566 --213:                 }
+                         567 --214:                 /* when the processing data size is smaller than the block size */
+                         568 --215:                 else if ((msg_len <= hash_block_size) &&
+                         569 --line215
+                         570 ..lin.4469218d..1e6ddc5e.0_26::
+                         571 .LDWlin26:
+00000168 fad9            572 	cmp	r26,r27
+0000016a db15*           573 	bh	.L328
+                         574 --line216
+                         575 ..lin.4469218d..1e6ddc5e.0_27::
+                         576 .LDWlin27:
+0000016c 3c0fed00        577 	ld.w	236[r28],r1
+00000170 db09            578 	add	r27,r1
+00000172 fa09            579 	cmp	r26,r1
+00000174 8b15*           580 	bh	.L328
+                         581 --216:                         ((p_ctx->transfer_prm.icup.leftover_msg_len + msg_len) <= hash_block_size))
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         582 --217:                 {
+                         583 --218:                     r_hash_cmn_cpy_byte(&p_ctx->transfer_prm.icup.leftover_msg
+                         584 --line218
+                         585 ..lin.4469218d..1e6ddc5e.0_28::
+                         586 .LDWlin28:
+00000176 3c0fed00        587 	ld.w	236[r28],r1
+0000017a 1c36f000        588 	addi	240,r28,r6
+0000017e 1938            589 	mov	r25,r7
+00000180 1b40            590 	mov	r27,r8
+00000182 c131            591 	add	r1,r6
+                         592 .L492:
+                         593 	jarl	_r_hash_cmn_cpy_byte,lp
+                         593 <EXPANSION BEGIN>
+                         593 jarl22 _r_hash_cmn_cpy_byte , lp 
+00000184 80ff0000*       593 <EXPANSION END>
+                         594 --219:                                                                         [p_ctx->transfer_prm.icup.leftover_msg_len],
+                         595 --220:                                         p_msg, msg_len);
+                         596 --221:                     p_ctx->transfer_prm.icup.leftover_msg_len += msg_len;
+                         597 --line221
+                         598 ..lin.4469218d..1e6ddc5e.0_29::
+                         599 .LDWlin29:
+00000188 3c0fed00        600 	ld.w	236[r28],r1
+0000018c db09            601 	add	r27,r1
+0000018e 7c0fed00        602 	st.w	r1,236[r28]
+00000192 f515*           603 	br	.L336
+                         604 .L328:
+                         605 --223:                     /* End without input processing */
+                         606 --224:                 }
+                         607 --225:                 else
+                         608 --226:                 {
+                         609 --227:                     /* block preprocessing */
+                         610 --228:                     ret = d_hash_hash_sha3_prepare_block(p_ctx, msg_len);
+                         611 --line228
+                         612 ..lin.4469218d..1e6ddc5e.0_30::
+                         613 .LDWlin30:
+00000194 1c30            614 	mov	r28,r6
+00000196 1b38            615 	mov	r27,r7
+                         616 .L494:
+                         617 	jarl	_d_hash_hash_sha3_prepare_block,lp
+                         617 <EXPANSION BEGIN>
+                         617 jarl22 _d_hash_hash_sha3_prepare_block , lp 
+00000198 80ff4800*       617 <EXPANSION END>
+0000019c 0ae8            618 	mov	r10,r29
+                         619 --230:                     if (HASH_RET_OK == ret)
+                         620 --line230
+                         621 ..lin.4469218d..1e6ddc5e.0_31::
+                         622 .LDWlin31:
+0000019e e0e9            623 	cmp	zero,r29
+000001a0 8a15*           624 	bne	.L336
+                         625 --231:                     {
+                         626 --232:                         ret = d_hash_cmn_sha3_exec_block(p_ctx, p_msg, msg_len, hash_block_size);
+                         627 --line232
+                         628 ..lin.4469218d..1e6ddc5e.0_32::
+                         629 .LDWlin32:
+000001a2 1c30            630 	mov	r28,r6
+000001a4 1938            631 	mov	r25,r7
+000001a6 1b40            632 	mov	r27,r8
+000001a8 1a48            633 	mov	r26,r9
+                         634 .L496:
+                         635 	jarl	_d_hash_cmn_sha3_exec_block,lp
+                         635 <EXPANSION BEGIN>
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         635 jarl22 _d_hash_cmn_sha3_exec_block , lp 
+000001aa 80ff0000*       635 <EXPANSION END>
+000001ae 0ae8            636 	mov	r10,r29
+000001b0 850d*           637 	br	.L336
+                         638 .L323:
+                         639 --233:                     }
+                         640 --234:                     else
+                         641 --235:                     {
+                         642 --236:                         /* do nothing */
+                         643 --237:                     }
+                         644 --238:                 } /* end of else */
+                         645 --239:             } /* end of if(HASH_LEFTOVER_MAX > p_ctx->transfer_prm.icup.leftover_msg_len) */
+                         646 --240:             else
+                         647 --241:             {
+                         648 --242:                 ret = HASH_RET_LENGTHERR;
+                         649 --line242
+                         650 ..lin.4469218d..1e6ddc5e.0_33::
+                         651 .LDWlin33:
+000001b2 3d0602000800    652 	mov	524290,r29
+000001b8 c505*           653 	br	.L336
+                         654 .L318:
+                         655 --243:             }
+                         656 --244:         } /* end of else */
+                         657 --245:     } /* end of if (NULL != p_ctx) */
+                         658 --246:     else
+                         659 --247:     {
+                         660 --248:         ret = HASH_RET_PARAMERR;
+                         661 --line248
+                         662 ..lin.4469218d..1e6ddc5e.0_34::
+                         663 .LDWlin34:
+000001ba 3d0601000800    664 	mov	524289,r29
+                         665 .L336:
+                         666 --249:     }
+                         667 --251:     return (ret);
+                         668 --line251
+                         669 ..lin.4469218d..1e6ddc5e.0_35::
+                         670 .LDWlin35:
+000001c0 1d50            671 	mov	r29,r10
+                         672 --	    .ef
+                         673 .LDW71:
+000001c2 23ff1500        674 	ld.w	20[sp],lp
+000001c6 23ef0100        675 	ld.w	0[sp],r29
+000001ca 23e70500        676 	ld.w	4[sp],r28
+000001ce 23df0900        677 	ld.w	8[sp],r27
+000001d2 23d70d00        678 	ld.w	12[sp],r26
+000001d6 23cf1100        679 	ld.w	16[sp],r25
+000001da 031e1800        680 	addi	24,sp,sp
+                         681 .L498:
+                         682 	.jumptype return
+000001de 7f00            683 	jmp	[lp]
+                         684 --line251
+                         685 ..lin.4469218d..1e6ddc5e.0_36::
+                         686 	.type	_d_hash_hash_sha3_update,@function
+                         687 	.size	_d_hash_hash_sha3_update,.-_d_hash_hash_sha3_update
+                         688 	.align	2
+                         689 --_ret	r29	local
+                         690 --_hash_block_size	r26	local
+                         691 
+                         692 --_p_ctx	r28	param
+                         693 --_p_msg	r25	param
+                         694 --_msg_len	r27	param
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         695 
+                         696 	.section ".bss","awb"
+                         697 .L422:
+                         698 	.type	.L422,@object
+                         699 	.size	.L422,0
+                         700 	.section ".ghcalltbl",""
+00000010 00000000*       701 .L489:	.word	.L488
+                         702 	.type	.L489,@object
+                         703 	.size	.L489,4
+00000014 00000000*       704 .L491:	.word	.L490
+                         705 	.type	.L491,@object
+                         706 	.size	.L491,4
+00000018 00000000*       707 .L493:	.word	.L492
+                         708 	.type	.L493,@object
+                         709 	.size	.L493,4
+0000001c 00000000*       710 .L495:	.word	.L494
+                         711 	.type	.L495,@object
+                         712 	.size	.L495,4
+00000020 00000000*       713 .L497:	.word	.L496
+                         714 	.type	.L497,@object
+                         715 	.size	.L497,4
+                         716 	.section ".ghrettbl",""
+0000000c 00000000*       717 .L499:	.word	.L498
+                         718 	.type	.L499,@object
+                         719 	.size	.L499,4
+                         720 	.data
+                         721 	.section ".icum_driver.text","ax"
+                         722 
+                         723 --252: }
+                         724 
+                         725 --254: /***************************************************************************************
+                         726 --255: * Function ID  : [ICUMFW_CD_S4_D_HASH_0041]:[ICUMFW_UD_S4_D_HASH_0041]
+                         727 --256: * Function name: d_hash_cmn_sha3_prepare_block
+                         728 --257: * Description  : Intermediate data setting confirmation
+                         729 --258: * Arguments    : (IN) st_r_hash_ctx_t* const p_ctx,
+                         730 --259: *                     const uint32_t msg_len
+                         731 --260: * Return Value : HASH_RET_OK
+                         732 --261: *                HASH_RET_PARAMERR
+                         733 --262: *                HASH_RET_TIMEOUTERR
+                         734 --263: *                HASH_RET_LENGTHERR
+                         735 --264: ***************************************************************************************/
+                         736 --265: e_r_hash_ret_t d_hash_hash_sha3_prepare_block(st_r_hash_ctx_t* const p_ctx, const uint32_t msg_len)
+                         737 	.align	2
+                         738 	.align	2
+                         739 	.align	2
+                         740 ..gh.f.a.2.e.4:
+                         741 	.type	..gh.f.a.2.e.4,@object
+                         742 	.size	..gh.f.a.2.e.4,0
+                         743 	.global	_d_hash_hash_sha3_prepare_block
+                         744 _d_hash_hash_sha3_prepare_block:
+000001e0 031ed8ff        745 	addi	-40,sp,sp
+000001e4 63ff2500        746 	st.w	lp,36[sp]
+000001e8 63af2100        747 	st.w	r21,32[sp]
+000001ec 63bf1900        748 	st.w	r23,24[sp]
+000001f0 63df0900        749 	st.w	r27,8[sp]
+000001f4 63b71d00        750 	st.w	r22,28[sp]
+000001f8 63c71500        751 	st.w	r24,20[sp]
+000001fc 63cf1100        752 	st.w	r25,16[sp]
+00000200 63d70d00        753 	st.w	r26,12[sp]
+00000204 63e70500        754 	st.w	r28,4[sp]
+00000208 63ef0100        755 	st.w	r29,0[sp]
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+0000020c 06d8            756 	mov	r6,r27
+0000020e 07a8            757 	mov	r7,r21
+00000210 37060c00e0fe    758 	mov	-18874356,r23
+                         759 --	    .bf
+                         760 .LDW81:
+                         761 --266: {
+                         762 --267:     e_r_hash_ret_t ret;
+                         763 --268:     uint32_t       cnt_mode;
+                         764 --269:     uint64_t       set_msg_len;
+                         765 --270:     uint64_t       check_msg_len;
+                         766 --272:     ret = HASH_RET_OK;
+                         767 --line272
+                         768 ..lin.4469218d..898b3ff4.0_37::
+                         769 .LDWlin37:
+00000216 00d2            770 	mov	0,r26
+                         771 --273:     cnt_mode = VARIABLE_INIT;
+00000218 00b2            772 	mov	0,r22
+                         773 --274:     set_msg_len = VARIABLE_INIT;
+0000021a 00c2            774 	mov	0,r24
+0000021c 00ca            775 	mov	0,r25
+                         776 --275:     check_msg_len = VARIABLE_INIT;
+0000021e 00e2            777 	mov	0,r28
+00000220 00ea            778 	mov	0,r29
+                         779 --277:     /* NULL check */
+                         780 --278:     if (NULL != p_ctx)
+00000222 e0d9            781 	cmp	zero,r27
+00000224 d265*           782 	be	.L502
+                         783 --279:     {
+                         784 --280:         if (INIT_STATE_EXECUTION != (p_ctx->driver_control_state & INIT_STATE_CONT_MASK))
+                         785 --line280
+                         786 ..lin.4469218d..898b3ff4.0_38::
+                         787 .LDWlin38:
+00000226 dbc70c00        788 	tst1	0,12[r27]
+0000022a da2d*           789 	bne	.L515
+                         790 --281:         {
+                         791 --282:             /* get mode for Control Register */
+                         792 --283:             cnt_mode = d_hash_cmn_sha3_get_mode(p_ctx->type);
+                         793 --line283
+                         794 ..lin.4469218d..898b3ff4.0_39::
+                         795 .LDWlin39:
+0000022c 3b370100        796 	ld.w	0[r27],r6
+                         797 .L794:
+                         798 	jarl	_d_hash_cmn_sha3_get_mode,lp
+                         798 <EXPANSION BEGIN>
+                         798 jarl22 _d_hash_cmn_sha3_get_mode , lp 
+00000230 80ff0000*       798 <EXPANSION END>
+00000234 0ab0            799 	mov	r10,r22
+                         800 --285:             if (UNSUPPORTED_TYPE == cnt_mode)
+                         801 --line285
+                         802 ..lin.4469218d..898b3ff4.0_40::
+                         803 .LDWlin40:
+00000236 7fb2            804 	cmp	-1,r22
+00000238 da05*           805 	bne	.L506
+                         806 --286:             {
+                         807 --287:                 ret = HASH_RET_PARAMERR;
+                         808 --line287
+                         809 ..lin.4469218d..898b3ff4.0_41::
+                         810 .LDWlin41:
+0000023a 3a0601000800    811 	mov	524289,r26
+00000240 a525*           812 	br	.L515
+                         813 .L506:
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         814 --288:             }
+                         815 --289:             else
+                         816 --290:             {
+                         817 --291:                 /* software initialize */
+                         818 --292:                 ret = d_hash_cmn_sha3_init_register(cnt_mode);
+                         819 --line292
+                         820 ..lin.4469218d..898b3ff4.0_42::
+                         821 .LDWlin42:
+00000242 1630            822 	mov	r22,r6
+                         823 .L796:
+                         824 	jarl	_d_hash_cmn_sha3_init_register,lp
+                         824 <EXPANSION BEGIN>
+                         824 jarl22 _d_hash_cmn_sha3_init_register , lp 
+00000244 80ff0000*       824 <EXPANSION END>
+00000248 0ad0            825 	mov	r10,r26
+                         826 --294:                 if (HASH_RET_OK == ret)
+                         827 --line294
+                         828 ..lin.4469218d..898b3ff4.0_43::
+                         829 .LDWlin43:
+0000024a e0d1            830 	cmp	zero,r26
+0000024c ca1d*           831 	bne	.L515
+                         832 --295:                 {
+                         833 --296:                     if (MESSAGE_LENGTH_CHECK_0 != p_ctx->msg_total_len)
+                         834 --line296
+                         835 ..lin.4469218d..898b3ff4.0_44::
+                         836 .LDWlin44:
+0000024e 3b0f0900        837 	ld.w	8[r27],r1
+00000252 e009            838 	cmp	zero,r1
+00000254 c215*           839 	be	.L511
+                         840 --297:                     {
+                         841 --298:                         set_msg_len = p_ctx->msg_total_len;
+                         842 --line298
+                         843 ..lin.4469218d..898b3ff4.0_45::
+                         844 .LDWlin45:
+00000256 3b0f0900        845 	ld.w	8[r27],r1
+0000025a 00ca            846 	mov	0,r25
+0000025c 01c0            847 	mov	r1,r24
+                         848 --299:                         set_msg_len = (set_msg_len * MESSAGE_SIZE_BIT);
+0000025e c3ca            849 	shl	3,r25
+00000260 1808            850 	mov	r24,r1
+00000262 9d0a            851 	shr	29,r1
+00000264 01c9            852 	or	r1,r25
+00000266 c3c2            853 	shl	3,r24
+                         854 --301:                         /* Set the total length of the message */
+                         855 --302:                         ICUM_SHA3A0ILEN0 = (set_msg_len & ICUM_ILEN0_MASK);
+00000268 1f12            856 	mov	-1,r2
+0000026a 17f60400        857 	addi	4,r23,ep
+0000026e 5811            858 	and	r24,r2
+00000270 0115            859 	sst.w	r2,0[ep]
+                         860 --303:                         ICUM_SHA3A0ILEN1 = (set_msg_len >> ICUM_ILEN1_SHIFT);
+00000272 17f60800        861 	addi	8,r23,ep
+00000276 1908            862 	mov	r25,r1
+00000278 010d            863 	sst.w	r1,0[ep]
+0000027a d505*           864 	br	.L515
+                         865 .L511:
+                         866 --304:                     }
+                         867 --305:                     else
+                         868 --306:                     {
+                         869 --307:                         ICUM_SHA3AOS = (REGISTER_SET_1 << OS_IDATA_ZERO_POS_SHA3);
+                         870 --line307
+                         871 ..lin.4469218d..898b3ff4.0_46::
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         872 .LDWlin46:
+0000027c 200e0001        873 	movea	256,zero,r1
+00000280 770f0100        874 	st.w	r1,0[r23]
+                         875 .L515:
+                         876 --308:                     }
+                         877 --309:                 } /* end of if (HASH_RET_OK == ret) */
+                         878 --310:                 else
+                         879 --311:                 {
+                         880 --312:                     /* do nothing */
+                         881 --313:                 }
+                         882 --314:             } /* end of else */
+                         883 --315:         } /* end of if (INIT_STATE_EXECUTION != (p_ctx->driver_control_state & INIT_STATE_CONT_MASK)) */
+                         884 --316:         else
+                         885 --317:         {
+                         886 --318:             /* do nothing */
+                         887 --319:         }
+                         888 --321:         if (HASH_RET_OK == ret)
+00000284 e0d1            889 	cmp	zero,r26
+00000286 9a1d*           890 	bne	.L521
+                         891 --322:         {
+                         892 --323:             check_msg_len = ICUM_SHA3A0ILEN1;
+                         893 --line323
+                         894 ..lin.4469218d..898b3ff4.0_47::
+                         895 .LDWlin47:
+00000288 17f60800        896 	addi	8,r23,ep
+0000028c 000d            897 	sld.w	0[ep],r1
+0000028e 00ea            898 	mov	0,r29
+00000290 01e0            899 	mov	r1,r28
+                         900 --324:             check_msg_len = (check_msg_len << ICUM_ILEN1_SHIFT);
+00000292 1c08            901 	mov	r28,r1
+00000294 01e8            902 	mov	r1,r29
+00000296 00e2            903 	mov	0,r28
+                         904 --325:             check_msg_len = (check_msg_len | ICUM_SHA3A0ILEN0);
+00000298 17f60400        905 	addi	4,r23,ep
+0000029c 000d            906 	sld.w	0[ep],r1
+0000029e 01e1            907 	or	r1,r28
+                         908 --327:             check_msg_len = (check_msg_len / MESSAGE_SIZE_BIT);
+000002a0 83e2            909 	shr	3,r28
+000002a2 1d08            910 	mov	r29,r1
+000002a4 dd0a            911 	shl	29,r1
+000002a6 01e1            912 	or	r1,r28
+000002a8 83ea            913 	shr	3,r29
+                         914 --329:             if (check_msg_len >= (uint64_t)msg_len)
+000002aa f5e1            915 	cmp	r21,r28
+000002ac e0ef8203        916 	sbfl	zero,r29,zero
+000002b0 c905*           917 	bnl	.L521
+                         918 --330:             {
+                         919 --331:                 /* do nothing */
+                         920 --332:             }
+                         921 --333:             else
+                         922 --334:             {
+                         923 --335:                 ret = HASH_RET_LENGTHERR;
+                         924 --line335
+                         925 ..lin.4469218d..898b3ff4.0_48::
+                         926 .LDWlin48:
+000002b2 3a0602000800    927 	mov	524290,r26
+                         928 .L521:
+                         929 --336:             }
+                         930 --337:         } /* end of if (HASH_RET_OK == ret) */
+                         931 --338:         else
+                         932 --339:         {
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         933 --340:             /* do nothing */
+                         934 --341:         }
+                         935 --343:         if (HASH_RET_OK == ret)
+                         936 --line343
+                         937 ..lin.4469218d..898b3ff4.0_49::
+                         938 .LDWlin49:
+000002b8 e0d1            939 	cmp	zero,r26
+000002ba fa15*           940 	bne	.L530
+                         941 --344:         {
+                         942 --345:             /* set intermediate data in register */
+                         943 --346:             if ((MIDDLE_DATA_CHECK_0 != p_ctx->intermediate_len[0]) ||
+                         944 --line346
+                         945 ..lin.4469218d..898b3ff4.0_50::
+                         946 .LDWlin50:
+000002bc 3b0f1100        947 	ld.w	16[r27],r1
+000002c0 e009            948 	cmp	zero,r1
+000002c2 da0d*           949 	bne	.L525
+                         950 --line347
+                         951 ..lin.4469218d..898b3ff4.0_51::
+                         952 .LDWlin51:
+000002c4 3b0f1500        953 	ld.w	20[r27],r1
+000002c8 e009            954 	cmp	zero,r1
+000002ca 9a0d*           955 	bne	.L525
+                         956 --line348
+                         957 ..lin.4469218d..898b3ff4.0_52::
+                         958 .LDWlin52:
+000002cc 3b0f1900        959 	ld.w	24[r27],r1
+000002d0 e009            960 	cmp	zero,r1
+000002d2 da05*           961 	bne	.L525
+                         962 --line349
+                         963 ..lin.4469218d..898b3ff4.0_53::
+                         964 .LDWlin53:
+000002d4 3b0f1d00        965 	ld.w	28[r27],r1
+000002d8 e009            966 	cmp	zero,r1
+000002da f205*           967 	be	.L530
+                         968 .L525:
+                         969 --347:                 (MIDDLE_DATA_CHECK_0 != p_ctx->intermediate_len[1]) ||
+                         970 --348:                 (MIDDLE_DATA_CHECK_0 != p_ctx->intermediate_len[2]) ||
+                         971 --349:                 (MIDDLE_DATA_CHECK_0 != p_ctx->intermediate_len[3]))
+                         972 --350:             {
+                         973 --351:                 d_hash_hash_sha3_set_middle(p_ctx->intermediate_data, p_ctx->intermediate_len);
+                         974 --line351
+                         975 ..lin.4469218d..898b3ff4.0_54::
+                         976 .LDWlin54:
+000002dc 1b362000        977 	addi	32,r27,r6
+000002e0 1b3e1000        978 	addi	16,r27,r7
+                         979 .L798:
+                         980 	jarl	_d_hash_hash_sha3_set_middle,lp
+                         980 <EXPANSION BEGIN>
+                         980 jarl22 _d_hash_hash_sha3_set_middle , lp 
+000002e4 80ff3602*       980 <EXPANSION END>
+                         981 .L530:
+                         982 --352:             }
+                         983 --353:             else
+                         984 --354:             {
+                         985 --355:                 /* do nothing */
+                         986 --356:             }
+                         987 --357:         } /* end of if (HASH_RET_OK == ret) */
+                         988 --358:         else
+                         989 --359:         {
+                         990 --360:             /* do nothing */
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                         991 --361:         }
+                         992 --362:         p_ctx->driver_control_state = (p_ctx->driver_control_state | INIT_STATE_EXECUTION);
+                         993 --line362
+                         994 ..lin.4469218d..898b3ff4.0_55::
+                         995 .LDWlin55:
+000002e8 db070c00        996 	set1	0,12[r27]
+000002ec c505*           997 	br	.L531
+                         998 .L502:
+                         999 --363:     } /* end of if (NULL != p_ctx) */
+                        1000 --364:     else
+                        1001 --365:     {
+                        1002 --366:         ret = HASH_RET_PARAMERR;
+                        1003 --line366
+                        1004 ..lin.4469218d..898b3ff4.0_56::
+                        1005 .LDWlin56:
+000002ee 3a0601000800   1006 	mov	524289,r26
+                        1007 .L531:
+                        1008 --367:     }
+                        1009 --369:     return (ret);
+                        1010 --line369
+                        1011 ..lin.4469218d..898b3ff4.0_57::
+                        1012 .LDWlin57:
+000002f4 1a50           1013 	mov	r26,r10
+                        1014 --	    .ef
+                        1015 .LDW91:
+000002f6 23ff2500       1016 	ld.w	36[sp],lp
+000002fa 23ef0100       1017 	ld.w	0[sp],r29
+000002fe 23e70500       1018 	ld.w	4[sp],r28
+00000302 23df0900       1019 	ld.w	8[sp],r27
+00000306 23d70d00       1020 	ld.w	12[sp],r26
+0000030a 23cf1100       1021 	ld.w	16[sp],r25
+0000030e 23c71500       1022 	ld.w	20[sp],r24
+00000312 23bf1900       1023 	ld.w	24[sp],r23
+00000316 23b71d00       1024 	ld.w	28[sp],r22
+0000031a 23af2100       1025 	ld.w	32[sp],r21
+0000031e 031e2800       1026 	addi	40,sp,sp
+                        1027 .L800:
+                        1028 	.jumptype return
+00000322 7f00           1029 	jmp	[lp]
+                        1030 --line369
+                        1031 ..lin.4469218d..898b3ff4.0_58::
+                        1032 	.type	_d_hash_hash_sha3_prepare_block,@function
+                        1033 	.size	_d_hash_hash_sha3_prepare_block,.-_d_hash_hash_sha3_prepare_block
+                        1034 	.align	2
+                        1035 --_ret	r26	local
+                        1036 --_cnt_mode	r22	local
+                        1037 --_set_msg_len	r24	local
+                        1038 --_check_msg_len	r28	local
+                        1039 
+                        1040 --_p_ctx	r27	param
+                        1041 --_msg_len	r21	param
+                        1042 
+                        1043 	.section ".bss","awb"
+                        1044 .L686:
+                        1045 	.type	.L686,@object
+                        1046 	.size	.L686,0
+                        1047 	.section ".ghcalltbl",""
+00000024 00000000*      1048 .L795:	.word	.L794
+                        1049 	.type	.L795,@object
+                        1050 	.size	.L795,4
+00000028 00000000*      1051 .L797:	.word	.L796
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1052 	.type	.L797,@object
+                        1053 	.size	.L797,4
+0000002c 00000000*      1054 .L799:	.word	.L798
+                        1055 	.type	.L799,@object
+                        1056 	.size	.L799,4
+                        1057 	.section ".ghrettbl",""
+00000010 00000000*      1058 .L801:	.word	.L800
+                        1059 	.type	.L801,@object
+                        1060 	.size	.L801,4
+                        1061 	.data
+                        1062 	.section ".icum_driver.text","ax"
+                        1063 
+                        1064 --370: }
+                        1065 
+                        1066 --372: /***************************************************************************************
+                        1067 --373: * Function ID  : [ICUMFW_CD_S4_D_HASH_0042]:[ICUMFW_UD_S4_D_HASH_0042]
+                        1068 --374: * Function name: d_hash_hash_sha3_chk_end_arg
+                        1069 --375: * Description  : HASHEnd API argument check
+                        1070 --376: * Arguments    : (IN) const st_r_hash_ctx_t* const p_ctx,
+                        1071 --377: *                     const uint8_t* const p_digest
+                        1072 --378: * Return Value : HASH_RET_OK
+                        1073 --379: *                HASH_RET_PARAMERR
+                        1074 --380: ***************************************************************************************/
+                        1075 --381: e_r_hash_ret_t d_hash_hash_sha3_chk_end_arg(const st_r_hash_ctx_t* const p_ctx, const uint8_t* const p_digest)
+                        1076 	.align	2
+                        1077 	.align	2
+                        1078 	.align	2
+                        1079 ..gh.f.a.2.e.5:
+                        1080 	.type	..gh.f.a.2.e.5,@object
+                        1081 	.size	..gh.f.a.2.e.5,0
+                        1082 	.global	_d_hash_hash_sha3_chk_end_arg
+                        1083 _d_hash_hash_sha3_chk_end_arg:
+00000324 501a           1084 	add	-16,sp
+00000326 63ff0d00       1085 	st.w	lp,12[sp]
+0000032a 63df0900       1086 	st.w	r27,8[sp]
+0000032e 63e70500       1087 	st.w	r28,4[sp]
+00000332 63ef0100       1088 	st.w	r29,0[sp]
+00000336 06e0           1089 	mov	r6,r28
+00000338 07d8           1090 	mov	r7,r27
+                        1091 --	    .bf
+                        1092 .LDW02:
+                        1093 --382: {
+                        1094 --383:     e_r_hash_ret_t ret;
+                        1095 --385:     ret = HASH_RET_OK;
+0000033a 00ea           1096 	mov	0,r29
+                        1097 --387:     /* check the context */
+                        1098 --388:     ret = d_hash_cmn_sha3_context_chk_arg(p_ctx);
+0000033c 1c30           1099 	mov	r28,r6
+                        1100 .L877:
+                        1101 	jarl	_d_hash_cmn_sha3_context_chk_arg,lp
+                        1101 <EXPANSION BEGIN>
+                        1101 jarl22 _d_hash_cmn_sha3_context_chk_arg , lp 
+0000033e 80ff0000*      1101 <EXPANSION END>
+00000342 0ae8           1102 	mov	r10,r29
+                        1103 --390:     if (HASH_RET_OK == ret)
+                        1104 --line390
+                        1105 ..lin.4469218d..a462a140.0_59::
+                        1106 .LDWlin59:
+00000344 e0e9           1107 	cmp	zero,r29
+00000346 ea05*          1108 	bne	.L809
+                        1109 --391:     {
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1110 --392:         /* NULL check */
+                        1111 --393:         if (NULL != p_digest)
+                        1112 --line393
+                        1113 ..lin.4469218d..a462a140.0_60::
+                        1114 .LDWlin60:
+00000348 e0d9           1115 	cmp	zero,r27
+0000034a ca05*          1116 	bne	.L809
+                        1117 --394:         {
+                        1118 --395:             /* do nothing */
+                        1119 --396:         }
+                        1120 --397:         else
+                        1121 --398:         {
+                        1122 --399:             ret = HASH_RET_PARAMERR;
+                        1123 --line399
+                        1124 ..lin.4469218d..a462a140.0_61::
+                        1125 .LDWlin61:
+0000034c 3d0601000800   1126 	mov	524289,r29
+                        1127 .L809:
+                        1128 --400:         }
+                        1129 --401:     }
+                        1130 --402:     else
+                        1131 --403:     {
+                        1132 --404:         /* do nothing */
+                        1133 --405:     }
+                        1134 --407:     return ret;
+                        1135 --line407
+                        1136 ..lin.4469218d..a462a140.0_62::
+                        1137 .LDWlin62:
+00000352 1d50           1138 	mov	r29,r10
+                        1139 --	    .ef
+                        1140 .LDW12:
+00000354 23ff0d00       1141 	ld.w	12[sp],lp
+00000358 23ef0100       1142 	ld.w	0[sp],r29
+0000035c 23e70500       1143 	ld.w	4[sp],r28
+00000360 23df0900       1144 	ld.w	8[sp],r27
+00000364 031e1000       1145 	addi	16,sp,sp
+                        1146 .L879:
+                        1147 	.jumptype return
+00000368 7f00           1148 	jmp	[lp]
+                        1149 --line407
+                        1150 ..lin.4469218d..a462a140.0_63::
+                        1151 	.type	_d_hash_hash_sha3_chk_end_arg,@function
+                        1152 	.size	_d_hash_hash_sha3_chk_end_arg,.-_d_hash_hash_sha3_chk_end_arg
+                        1153 	.align	2
+                        1154 --_ret	r29	local
+                        1155 
+                        1156 --_p_ctx	r28	param
+                        1157 --_p_digest	r27	param
+                        1158 
+                        1159 	.section ".bss","awb"
+                        1160 .L850:
+                        1161 	.type	.L850,@object
+                        1162 	.size	.L850,0
+                        1163 	.section ".ghcalltbl",""
+00000030 00000000*      1164 .L878:	.word	.L877
+                        1165 	.type	.L878,@object
+                        1166 	.size	.L878,4
+                        1167 	.section ".ghrettbl",""
+00000014 00000000*      1168 .L880:	.word	.L879
+                        1169 	.type	.L880,@object
+                        1170 	.size	.L880,4
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1171 	.data
+                        1172 	.section ".icum_driver.text","ax"
+                        1173 
+                        1174 --408: }
+                        1175 
+                        1176 --410: /***************************************************************************************
+                        1177 --411: * Function ID  : [ICUMFW_CD_S4_D_HASH_0043]:[ICUMFW_UD_S4_D_HASH_0043]
+                        1178 --412: * Function name: d_hash_hash_sha3_end
+                        1179 --413: * Description  : Perform hash block final processing and get digest
+                        1180 --414: * Arguments    : (IN)  st_r_hash_ctx_t* const p_ctx
+                        1181 --415: *                (OUT) uint8_t* const p_digest
+                        1182 --416: * Return Value : HASH_RET_OK
+                        1183 --417: *                HASH_RET_PARAMERR
+                        1184 --418: *                HASH_RET_LENGTHERR
+                        1185 --419: *                HASH_RET_TIMEOUTERR
+                        1186 --420: *                HASH_RET_DMAERR
+                        1187 --421: ***************************************************************************************/
+                        1188 --422: e_r_hash_ret_t d_hash_hash_sha3_end(st_r_hash_ctx_t* const p_ctx, uint8_t* const p_digest)
+                        1189 	.align	2
+                        1190 	.align	2
+                        1191 	.align	2
+                        1192 ..gh.f.a.2.e.6:
+                        1193 	.type	..gh.f.a.2.e.6,@object
+                        1194 	.size	..gh.f.a.2.e.6,0
+                        1195 	.global	_d_hash_hash_sha3_end
+                        1196 _d_hash_hash_sha3_end:
+0000036a 031ee4ff       1197 	addi	-28,sp,sp
+0000036e 63ff1900       1198 	st.w	lp,24[sp]
+00000372 63c71500       1199 	st.w	r24,20[sp]
+00000376 63e70500       1200 	st.w	r28,4[sp]
+0000037a 63cf1100       1201 	st.w	r25,16[sp]
+0000037e 63d70d00       1202 	st.w	r26,12[sp]
+00000382 63df0900       1203 	st.w	r27,8[sp]
+00000386 63ef0100       1204 	st.w	r29,0[sp]
+0000038a 06e0           1205 	mov	r6,r28
+0000038c 07c0           1206 	mov	r7,r24
+                        1207 --	    .bf
+                        1208 .LDW22:
+                        1209 --423: {
+                        1210 --424:     e_r_hash_ret_t ret;
+                        1211 --425:     uint64_t       check_msg_len;
+                        1212 --426:     uint32_t       dma_status;
+                        1213 --428:     ret = HASH_RET_OK;
+0000038e 00ea           1214 	mov	0,r29
+                        1215 --429:     check_msg_len = VARIABLE_INIT;
+00000390 00d2           1216 	mov	0,r26
+00000392 00da           1217 	mov	0,r27
+                        1218 --430:     dma_status = VARIABLE_INIT;
+00000394 00ca           1219 	mov	0,r25
+                        1220 --432:     /* NULL check */
+                        1221 --433:     if (NULL != p_ctx)
+00000396 e0e1           1222 	cmp	zero,r28
+00000398 a275*          1223 	be	.L883
+                        1224 --434:     {
+                        1225 --435:         if (HASH_USE_DMA_TRANSFER == p_ctx->use_dma_transfer)
+                        1226 --line435
+                        1227 ..lin.4469218d..de2f2692.0_64::
+                        1228 .LDWlin64:
+0000039a 3c0fe900       1229 	ld.w	232[r28],r1
+0000039e 610a           1230 	cmp	1,r1
+000003a0 ba35*          1231 	bne	.L885
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1232 --436:         {
+                        1233 --437:             /* Preparing the DMA output channel for use */
+                        1234 --438:             ret = d_hash_cmn_prepare_dma(p_digest, DMA_OUTPUT_LEN, p_ctx->type, DMA_OUTPUT_CHANNEL);
+                        1235 --line438
+                        1236 ..lin.4469218d..de2f2692.0_65::
+                        1237 .LDWlin65:
+000003a2 3c470100       1238 	ld.w	0[r28],r8
+000003a6 1830           1239 	mov	r24,r6
+000003a8 203e4000       1240 	movea	64,zero,r7
+000003ac 014a           1241 	mov	1,r9
+                        1242 .L1156:
+                        1243 	jarl	_d_hash_cmn_prepare_dma,lp
+                        1243 <EXPANSION BEGIN>
+                        1243 jarl22 _d_hash_cmn_prepare_dma , lp 
+000003ae 80ff0000*      1243 <EXPANSION END>
+000003b2 0ae8           1244 	mov	r10,r29
+                        1245 --440:             if (HASH_RET_OK == ret)
+                        1246 --line440
+                        1247 ..lin.4469218d..de2f2692.0_66::
+                        1248 .LDWlin66:
+000003b4 e0e9           1249 	cmp	zero,r29
+000003b6 aa25*          1250 	bne	.L898
+                        1251 --441:             {
+                        1252 --442:                 /* DMA execution */
+                        1253 --443:                 ret = d_hash_hash_sha3_transfer_dma(p_ctx);
+                        1254 --line443
+                        1255 ..lin.4469218d..de2f2692.0_67::
+                        1256 .LDWlin67:
+000003b8 1c30           1257 	mov	r28,r6
+                        1258 .L1158:
+                        1259 	jarl	_d_hash_hash_sha3_transfer_dma,lp
+                        1259 <EXPANSION BEGIN>
+                        1259 jarl22 _d_hash_hash_sha3_transfer_dma , lp 
+000003ba 80ffec00*      1259 <EXPANSION END>
+000003be 0ae8           1260 	mov	r10,r29
+                        1261 --445:                 if (HASH_RET_OK == ret)
+                        1262 --line445
+                        1263 ..lin.4469218d..de2f2692.0_68::
+                        1264 .LDWlin68:
+000003c0 e0e9           1265 	cmp	zero,r29
+000003c2 ca1d*          1266 	bne	.L898
+                        1267 --446:                 {
+                        1268 --447:                     /* Checking the status of DMA operation */
+                        1269 --448:                     dma_status = d_hash_cmn_wait_sts_dma(p_ctx->type);
+                        1270 --line448
+                        1271 ..lin.4469218d..de2f2692.0_69::
+                        1272 .LDWlin69:
+000003c4 3c370100       1273 	ld.w	0[r28],r6
+                        1274 .L1160:
+                        1275 	jarl	_d_hash_cmn_wait_sts_dma,lp
+                        1275 <EXPANSION BEGIN>
+                        1275 jarl22 _d_hash_cmn_wait_sts_dma , lp 
+000003c8 80ff0000*      1275 <EXPANSION END>
+000003cc 0ac8           1276 	mov	r10,r25
+                        1277 --450:                     switch (dma_status)
+                        1278 --line450
+                        1279 ..lin.4469218d..de2f2692.0_70::
+                        1280 .LDWlin70:
+000003ce 1908           1281 	mov	r25,r1
+000003d0 2b0600100800   1282 	mov	528384,r11
+000003d6 eb09           1283 	cmp	r11,r1
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+000003d8 d10d*          1284 	bl	.L894
+000003da f205*          1285 	be	.L892
+000003dc 2b0602100800   1286 	mov	528386,r11
+000003e2 eb09           1287 	cmp	r11,r1
+000003e4 b305*          1288 	bnh	.L893
+000003e6 e505*          1289 	br	.L894
+                        1290 .L892:
+                        1291 --451:                     {
+                        1292 --452:                         case DMA_STATUS_NORMAL_END:
+                        1293 --453:                             /* do nothing */
+                        1294 --454:                             break;
+                        1295 --456:                         case DMA_STATUS_ADDR_ERR:
+                        1296 --line454
+                        1297 ..lin.4469218d..de2f2692.0_71::
+                        1298 .LDWlin71:
+000003e8 950d*          1299 	br	.L898
+                        1300 .L893:
+                        1301 --457:                         case DMA_STATUS_TIMEOUT_ERR:
+                        1302 --458:                             ret = HASH_RET_DMAERR;
+                        1303 --line458
+                        1304 ..lin.4469218d..de2f2692.0_72::
+                        1305 .LDWlin72:
+000003ea 3d0601100800   1306 	mov	528385,r29
+                        1307 --459:                             break;
+                        1308 --461:                         default:
+                        1309 --line459
+                        1310 ..lin.4469218d..de2f2692.0_73::
+                        1311 .LDWlin73:
+000003f0 d505*          1312 	br	.L898
+                        1313 .L894:
+                        1314 --462:                             ret = HASH_RET_PARAMERR;
+                        1315 --line462
+                        1316 ..lin.4469218d..de2f2692.0_74::
+                        1317 .LDWlin74:
+000003f2 3d0601000800   1318 	mov	524289,r29
+                        1319 --463:                             break;
+                        1320 --line463
+                        1321 ..lin.4469218d..de2f2692.0_75::
+                        1322 .LDWlin75:
+000003f8 0000           1323 	nop
+                        1324 .L898:
+                        1325 --464:                     } /* end of switch (dma_status) */
+                        1326 --465:                 }
+                        1327 --466:                 else
+                        1328 --467:                 {
+                        1329 --468:                     /* do nothing */
+                        1330 --469:                 }
+                        1331 --470:             } /* end of if (HASH_RET_OK == ret) */
+                        1332 --471:             else
+                        1333 --472:             {
+                        1334 --473:                 /* do nothing */
+                        1335 --474:             }
+                        1336 --476:             /* Initialize DMA management table */
+                        1337 --477:             /* Hash type is already checked, so return value is not checked */
+                        1338 --478:             (void)d_hash_cmn_set_dma_status(p_ctx->type, DMA_STATUS_NON_EXEC);
+000003fa 3c370100       1339 	ld.w	0[r28],r6
+000003fe 003a           1340 	mov	0,r7
+                        1341 .L1162:
+                        1342 	jarl	_d_hash_cmn_set_dma_status,lp
+                        1342 <EXPANSION BEGIN>
+                        1342 jarl22 _d_hash_cmn_set_dma_status , lp 
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+00000400 80ff0000*      1342 <EXPANSION END>
+00000404 d535*          1343 	br	.L899
+                        1344 .L885:
+                        1345 --480:         } /* end of if (HASH_USE_DMA_TRANSFER == p_ctx->use_dma_transfer) */
+                        1346 --481:         else
+                        1347 --482:         {
+                        1348 --483:             /* preprocessing */
+                        1349 --484:             ret = d_hash_hash_sha3_prepare_block(p_ctx, p_ctx->transfer_prm.icup.leftover_msg_len);
+                        1350 --line484
+                        1351 ..lin.4469218d..de2f2692.0_76::
+                        1352 .LDWlin76:
+00000406 3c3fed00       1353 	ld.w	236[r28],r7
+0000040a 1c30           1354 	mov	r28,r6
+                        1355 .L1164:
+                        1356 	jarl	_d_hash_hash_sha3_prepare_block,lp
+                        1356 <EXPANSION BEGIN>
+                        1356 jarl22 _d_hash_hash_sha3_prepare_block , lp 
+0000040c bfffd4fd*      1356 <EXPANSION END>
+00000410 0ae8           1357 	mov	r10,r29
+                        1358 --486:             if (HASH_RET_OK == ret)
+                        1359 --line486
+                        1360 ..lin.4469218d..de2f2692.0_77::
+                        1361 .LDWlin77:
+00000412 e0e9           1362 	cmp	zero,r29
+00000414 da2d*          1363 	bne	.L899
+                        1364 --487:             {
+                        1365 --488:                 check_msg_len = ICUM_SHA3A0ILEN1;
+                        1366 --line488
+                        1367 ..lin.4469218d..de2f2692.0_78::
+                        1368 .LDWlin78:
+00000416 400ee0fe       1369 	movhi	65248,zero,r1
+0000041a 210f1500       1370 	ld.w	20[r1],r1
+0000041e 00da           1371 	mov	0,r27
+00000420 01d0           1372 	mov	r1,r26
+                        1373 --489:                 check_msg_len = (check_msg_len << ICUM_ILEN1_SHIFT);
+                        1374 --line489
+                        1375 ..lin.4469218d..de2f2692.0_79::
+                        1376 .LDWlin79:
+00000422 1a08           1377 	mov	r26,r1
+00000424 01d8           1378 	mov	r1,r27
+00000426 00d2           1379 	mov	0,r26
+                        1380 --490:                 check_msg_len = (check_msg_len | ICUM_SHA3A0ILEN0);
+00000428 400ee0fe       1381 	movhi	65248,zero,r1
+0000042c 210f1100       1382 	ld.w	16[r1],r1
+00000430 01d1           1383 	or	r1,r26
+                        1384 --492:                 check_msg_len = (check_msg_len / MESSAGE_SIZE_BIT);
+                        1385 --line492
+                        1386 ..lin.4469218d..de2f2692.0_80::
+                        1387 .LDWlin80:
+00000432 83d2           1388 	shr	3,r26
+00000434 1b08           1389 	mov	r27,r1
+00000436 dd0a           1390 	shl	29,r1
+00000438 01d1           1391 	or	r1,r26
+0000043a 83da           1392 	shr	3,r27
+                        1393 --494:                 if (check_msg_len == p_ctx->transfer_prm.icup.leftover_msg_len)
+0000043c 3c0fed00       1394 	ld.w	236[r28],r1
+00000440 3a09           1395 	xor	r26,r1
+00000442 1b09           1396 	or	r27,r1
+00000444 aa15*          1397 	bne	.L902
+                        1398 --495:                 {
+                        1399 --496:                     /* set input data */
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1400 --497:                     if (REMAINING_DATA_CHECK_0 == p_ctx->transfer_prm.icup.leftover_msg_len)
+                        1401 --line497
+                        1402 ..lin.4469218d..de2f2692.0_81::
+                        1403 .LDWlin81:
+00000446 3c0fed00       1404 	ld.w	236[r28],r1
+0000044a e009           1405 	cmp	zero,r1
+0000044c f205*          1406 	be	.L906
+                        1407 --498:                     {
+                        1408 --499:                        /* do nothing */
+                        1409 --500:                     }
+                        1410 --501:                     else
+                        1411 --502:                     {
+                        1412 --503:                         d_hash_cmn_sha3_set_idat(p_ctx->transfer_prm.icup.leftover_msg,
+                        1413 --line503
+                        1414 ..lin.4469218d..de2f2692.0_82::
+                        1415 .LDWlin82:
+0000044e 3c3fed00       1416 	ld.w	236[r28],r7
+00000452 1c36f000       1417 	addi	240,r28,r6
+                        1418 .L1166:
+                        1419 	jarl	_d_hash_cmn_sha3_set_idat,lp
+                        1419 <EXPANSION BEGIN>
+                        1419 jarl22 _d_hash_cmn_sha3_set_idat , lp 
+00000456 80ff0000*      1419 <EXPANSION END>
+                        1420 .L906:
+                        1421 --504:                                                  p_ctx->transfer_prm.icup.leftover_msg_len);
+                        1422 --505:                     }
+                        1423 --507:                     /* get output data */
+                        1424 --508:                     ret = d_hash_cmn_sha3_get_output_data(p_ctx->hash_len, p_digest);
+                        1425 --line508
+                        1426 ..lin.4469218d..de2f2692.0_83::
+                        1427 .LDWlin83:
+0000045a 3c370500       1428 	ld.w	4[r28],r6
+0000045e 1838           1429 	mov	r24,r7
+                        1430 .L1168:
+                        1431 	jarl	_d_hash_cmn_sha3_get_output_data,lp
+                        1431 <EXPANSION BEGIN>
+                        1431 jarl22 _d_hash_cmn_sha3_get_output_data , lp 
+00000460 80ff0000*      1431 <EXPANSION END>
+00000464 0ae8           1432 	mov	r10,r29
+00000466 c505*          1433 	br	.L899
+                        1434 .L902:
+                        1435 --509:                 } /* end of if (check_msg_len == p_ctx->transfer_prm.icup.leftover_msg_len) */
+                        1436 --510:                 else
+                        1437 --511:                 {
+                        1438 --512:                     ret = HASH_RET_LENGTHERR;
+                        1439 --line512
+                        1440 ..lin.4469218d..de2f2692.0_84::
+                        1441 .LDWlin84:
+00000468 3d0602000800   1442 	mov	524290,r29
+                        1443 .L899:
+                        1444 --513:                 }
+                        1445 --515:             } /* end of if (HASH_RET_OK == ret) */
+                        1446 --516:             else
+                        1447 --517:             {
+                        1448 --518:                 /* do nothing */
+                        1449 --519:             }
+                        1450 --520:         } /* end of else */
+                        1451 --522:         /* context clear */
+                        1452 --523:         r_hash_cmn_set_byte((uint8_t*)p_ctx, ZERO_CLEAR, sizeof(st_r_hash_ctx_t));
+                        1453 --line523
+                        1454 ..lin.4469218d..de2f2692.0_85::
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1455 .LDWlin85:
+0000046e 1c30           1456 	mov	r28,r6
+00000470 003a           1457 	mov	0,r7
+00000472 20469801       1458 	movea	408,zero,r8
+                        1459 .L1170:
+                        1460 	jarl	_r_hash_cmn_set_byte,lp
+                        1460 <EXPANSION BEGIN>
+                        1460 jarl22 _r_hash_cmn_set_byte , lp 
+00000476 80ff0000*      1460 <EXPANSION END>
+0000047a c505*          1461 	br	.L909
+                        1462 .L883:
+                        1463 --524:     } /* end of if (NULL != p_ctx) */
+                        1464 --525:     else
+                        1465 --526:     {
+                        1466 --527:         ret = HASH_RET_PARAMERR;
+                        1467 --line527
+                        1468 ..lin.4469218d..de2f2692.0_86::
+                        1469 .LDWlin86:
+0000047c 3d0601000800   1470 	mov	524289,r29
+                        1471 .L909:
+                        1472 --528:     }
+                        1473 --530:     return (ret);
+                        1474 --line530
+                        1475 ..lin.4469218d..de2f2692.0_87::
+                        1476 .LDWlin87:
+00000482 1d50           1477 	mov	r29,r10
+                        1478 --	    .ef
+                        1479 .LDW32:
+00000484 23ff1900       1480 	ld.w	24[sp],lp
+00000488 23ef0100       1481 	ld.w	0[sp],r29
+0000048c 23e70500       1482 	ld.w	4[sp],r28
+00000490 23df0900       1483 	ld.w	8[sp],r27
+00000494 23d70d00       1484 	ld.w	12[sp],r26
+00000498 23cf1100       1485 	ld.w	16[sp],r25
+0000049c 23c71500       1486 	ld.w	20[sp],r24
+000004a0 031e1c00       1487 	addi	28,sp,sp
+                        1488 .L1172:
+                        1489 	.jumptype return
+000004a4 7f00           1490 	jmp	[lp]
+                        1491 --line530
+                        1492 ..lin.4469218d..de2f2692.0_88::
+                        1493 	.type	_d_hash_hash_sha3_end,@function
+                        1494 	.size	_d_hash_hash_sha3_end,.-_d_hash_hash_sha3_end
+                        1495 	.align	2
+                        1496 --_ret	r29	local
+                        1497 --_check_msg_len	r26	local
+                        1498 --_dma_status	r25	local
+                        1499 
+                        1500 --_p_ctx	r28	param
+                        1501 --_p_digest	r24	param
+                        1502 
+                        1503 	.section ".bss","awb"
+                        1504 .L1046:
+                        1505 	.type	.L1046,@object
+                        1506 	.size	.L1046,0
+                        1507 	.section ".ghcalltbl",""
+00000034 00000000*      1508 .L1157:	.word	.L1156
+                        1509 	.type	.L1157,@object
+                        1510 	.size	.L1157,4
+00000038 00000000*      1511 .L1159:	.word	.L1158
+                        1512 	.type	.L1159,@object
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1513 	.size	.L1159,4
+0000003c 00000000*      1514 .L1161:	.word	.L1160
+                        1515 	.type	.L1161,@object
+                        1516 	.size	.L1161,4
+00000040 00000000*      1517 .L1163:	.word	.L1162
+                        1518 	.type	.L1163,@object
+                        1519 	.size	.L1163,4
+00000044 00000000*      1520 .L1165:	.word	.L1164
+                        1521 	.type	.L1165,@object
+                        1522 	.size	.L1165,4
+00000048 00000000*      1523 .L1167:	.word	.L1166
+                        1524 	.type	.L1167,@object
+                        1525 	.size	.L1167,4
+0000004c 00000000*      1526 .L1169:	.word	.L1168
+                        1527 	.type	.L1169,@object
+                        1528 	.size	.L1169,4
+00000050 00000000*      1529 .L1171:	.word	.L1170
+                        1530 	.type	.L1171,@object
+                        1531 	.size	.L1171,4
+                        1532 	.section ".ghrettbl",""
+00000018 00000000*      1533 .L1173:	.word	.L1172
+                        1534 	.type	.L1173,@object
+                        1535 	.size	.L1173,4
+                        1536 	.data
+                        1537 	.section ".icum_driver.text","ax"
+                        1538 
+                        1539 --531: }
+                        1540 
+                        1541 --533: /***************************************************************************************
+                        1542 --534: * Function ID  : [ICUMFW_CD_S4_D_HASH_0066]:[ICUMFW_UD_S4_D_HASH_0066]
+                        1543 --535: * Function name: d_hash_hash_sha3_transfer_dma
+                        1544 --536: * Description  : Start of DMA operation
+                        1545 --537: * Arguments    : (IN) st_r_hash_ctx_t* const p_ctx
+                        1546 --538: * Return Value : HASH_RET_OK
+                        1547 --539: *                HASH_RET_PARAMERR
+                        1548 --540: ***************************************************************************************/
+                        1549 --541: e_r_hash_ret_t d_hash_hash_sha3_transfer_dma(st_r_hash_ctx_t* const p_ctx)
+                        1550 	.align	2
+                        1551 	.align	2
+                        1552 	.align	2
+                        1553 ..gh.f.a.2.e.7:
+                        1554 	.type	..gh.f.a.2.e.7,@object
+                        1555 	.size	..gh.f.a.2.e.7,0
+                        1556 	.global	_d_hash_hash_sha3_transfer_dma
+                        1557 _d_hash_hash_sha3_transfer_dma:
+000004a6 031eecff       1558 	addi	-20,sp,sp
+000004aa 63ff1100       1559 	st.w	lp,16[sp]
+000004ae 63d70d00       1560 	st.w	r26,12[sp]
+000004b2 63e70500       1561 	st.w	r28,4[sp]
+000004b6 63df0900       1562 	st.w	r27,8[sp]
+000004ba 63ef0100       1563 	st.w	r29,0[sp]
+000004be 06d0           1564 	mov	r6,r26
+000004c0 3c066000e0fe   1565 	mov	-18874272,r28
+                        1566 --	    .bf
+                        1567 .LDW42:
+                        1568 --542: {
+                        1569 --543:     e_r_hash_ret_t ret;
+                        1570 --544:     uint32_t       cnt_mode;
+                        1571 --546:     ret      = HASH_RET_PARAMERR;
+                        1572 --line546
+                        1573 ..lin.4469218d..d8d36a51.0_89::
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1574 .LDWlin89:
+000004c6 3b0601000800   1575 	mov	524289,r27
+                        1576 --547:     cnt_mode = VARIABLE_INIT;
+                        1577 --line547
+                        1578 ..lin.4469218d..d8d36a51.0_90::
+                        1579 .LDWlin90:
+000004cc 00ea           1580 	mov	0,r29
+                        1581 --549:     /* NULL check */
+                        1582 --550:     if (NULL != p_ctx)
+000004ce e0d1           1583 	cmp	zero,r26
+000004d0 f215*          1584 	be	.L1181
+                        1585 --551:     {
+                        1586 --552:         /* get mode for Control Register */
+                        1587 --553:         cnt_mode = d_hash_cmn_sha3_get_mode(p_ctx->type);
+                        1588 --line553
+                        1589 ..lin.4469218d..d8d36a51.0_91::
+                        1590 .LDWlin91:
+000004d2 3a370100       1591 	ld.w	0[r26],r6
+                        1592 .L1280:
+                        1593 	jarl	_d_hash_cmn_sha3_get_mode,lp
+                        1593 <EXPANSION BEGIN>
+                        1593 jarl22 _d_hash_cmn_sha3_get_mode , lp 
+000004d6 80ff0000*      1593 <EXPANSION END>
+000004da 0ae8           1594 	mov	r10,r29
+                        1595 --555:         if (UNSUPPORTED_TYPE != cnt_mode)
+                        1596 --line555
+                        1597 ..lin.4469218d..d8d36a51.0_92::
+                        1598 .LDWlin92:
+000004dc 7fea           1599 	cmp	-1,r29
+000004de 8215*          1600 	be	.L1181
+                        1601 --556:         {
+                        1602 --557:             /* ICUMX_SHA3A0DMA initialize */
+                        1603 --558:             d_hash_cmn_sha3_init_reg_dma(cnt_mode);
+                        1604 --line558
+                        1605 ..lin.4469218d..d8d36a51.0_93::
+                        1606 .LDWlin93:
+000004e0 1d30           1607 	mov	r29,r6
+                        1608 .L1282:
+                        1609 	jarl	_d_hash_cmn_sha3_init_reg_dma,lp
+                        1609 <EXPANSION BEGIN>
+                        1609 jarl22 _d_hash_cmn_sha3_init_reg_dma , lp 
+000004e2 80ff0000*      1609 <EXPANSION END>
+                        1610 --560:             /* ICUMX_SHA3A0DMA transfer size set */
+                        1611 --561:             ICUM_SHA3A0DMAITS = p_ctx->msg_total_len;
+                        1612 --line561
+                        1613 ..lin.4469218d..d8d36a51.0_94::
+                        1614 .LDWlin94:
+000004e6 3a0f0900       1615 	ld.w	8[r26],r1
+000004ea 7c0f0100       1616 	st.w	r1,0[r28]
+                        1617 --562:             
+                        1618 --563:             /* ICUMX_SHA3A0DMA valid bit length for the last input byte set */
+                        1619 --564:             ICUM_SHA3A0DMALB = (REGISTER_SET_0 << DMALB_ILB_POS_SHA3);
+000004ee 1cf60800       1620 	addi	8,r28,ep
+000004f2 0105           1621 	sst.w	zero,0[ep]
+                        1622 --566:             /* ICUMX_SHA3A0DMA DMA start set */
+                        1623 --567:             ICUM_SHA3A0DMASTT = (REGISTER_SET_1 << DMASTT_START_POS_SHA3);
+000004f4 1cf62000       1624 	addi	32,r28,ep
+000004f8 010a           1625 	mov	1,r1
+000004fa 010d           1626 	sst.w	r1,0[ep]
+                        1627 --569:             ret = HASH_RET_OK;
+000004fc 00da           1628 	mov	0,r27
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1629 .L1181:
+                        1630 --570:         }
+                        1631 --571:         else
+                        1632 --572:         {
+                        1633 --573:             /* do nothing */
+                        1634 --574:         }
+                        1635 --575:     }
+                        1636 --576:     else
+                        1637 --577:     {
+                        1638 --578:         /* do nothing */
+                        1639 --579:     }
+                        1640 --581:     return (ret);
+000004fe 1b50           1641 	mov	r27,r10
+                        1642 --	    .ef
+                        1643 .LDW52:
+00000500 23ff1100       1644 	ld.w	16[sp],lp
+00000504 23ef0100       1645 	ld.w	0[sp],r29
+00000508 23e70500       1646 	ld.w	4[sp],r28
+0000050c 23df0900       1647 	ld.w	8[sp],r27
+00000510 23d70d00       1648 	ld.w	12[sp],r26
+00000514 031e1400       1649 	addi	20,sp,sp
+                        1650 .L1284:
+                        1651 	.jumptype return
+00000518 7f00           1652 	jmp	[lp]
+                        1653 --line561
+                        1654 ..lin.4469218d..d8d36a51.0_95::
+                        1655 	.type	_d_hash_hash_sha3_transfer_dma,@function
+                        1656 	.size	_d_hash_hash_sha3_transfer_dma,.-_d_hash_hash_sha3_transfer_dma
+                        1657 	.align	2
+                        1658 --_ret	r27	local
+                        1659 --_cnt_mode	r29	local
+                        1660 
+                        1661 --_p_ctx	r26	param
+                        1662 
+                        1663 	.section ".bss","awb"
+                        1664 .L1238:
+                        1665 	.type	.L1238,@object
+                        1666 	.size	.L1238,0
+                        1667 	.section ".ghcalltbl",""
+00000054 00000000*      1668 .L1281:	.word	.L1280
+                        1669 	.type	.L1281,@object
+                        1670 	.size	.L1281,4
+00000058 00000000*      1671 .L1283:	.word	.L1282
+                        1672 	.type	.L1283,@object
+                        1673 	.size	.L1283,4
+                        1674 	.section ".ghrettbl",""
+0000001c 00000000*      1675 .L1285:	.word	.L1284
+                        1676 	.type	.L1285,@object
+                        1677 	.size	.L1285,4
+                        1678 	.data
+                        1679 	.section ".icum_driver.text","ax"
+                        1680 
+                        1681 --582: }
+                        1682 
+                        1683 --584: /***************************************************************************************
+                        1684 --585: * Function ID  : [ICUMFW_CD_S4_D_HASH_0044]:[ICUMFW_UD_S4_D_HASH_0044]
+                        1685 --586: * Function name: d_hash_hash_sha3_set_middle
+                        1686 --587: * Description  : Set intermediate data in register
+                        1687 --588: * Arguments    : (IN) const uint32_t* const p_im_data,
+                        1688 --589: *                     const uint32_t* const p_im_len
+                        1689 --590: * Return Value : none
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1690 --591: ***************************************************************************************/
+                        1691 --592: static void d_hash_hash_sha3_set_middle(const uint32_t* const p_im_data, const uint32_t* const p_im_len)
+                        1692 	.align	2
+                        1693 	.align	2
+                        1694 	.align	2
+                        1695 ..gh.f.a.2.e.8:
+                        1696 	.type	..gh.f.a.2.e.8,@object
+                        1697 	.size	..gh.f.a.2.e.8,0
+                        1698 	.global	_d_hash_hash_sha3_set_middle..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3.
+                        1699 _d_hash_hash_sha3_set_middle..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3.:
+                        1700 _d_hash_hash_sha3_set_middle:
+0000051a 0688           1701 	mov	r6,r17
+0000051c 0790           1702 	mov	r7,r18
+0000051e 400ee0fe       1703 	movhi	hi(-18874368),zero,r1
+                        1704 --	    .bf
+                        1705 .LDW62:
+                        1706 --593: {
+                        1707 --594:     uint32_t read_register;
+                        1708 --595:     uint32_t i;
+                        1709 --597:     read_register = VARIABLE_INIT;
+                        1710 --line597
+                        1711 ..lin.4469218d..318885d5.0_96::
+                        1712 .LDWlin96:
+00000522 009a           1713 	mov	0,r19
+                        1714 --598:     i = VARIABLE_INIT;
+00000524 0012           1715 	mov	0,r2
+                        1716 --600:     /* NULL check */
+                        1717 --601:     if ((NULL != p_im_data) && (NULL != p_im_len))
+00000526 e089           1718 	cmp	zero,r17
+00000528 d225*          1719 	be	.L1295
+0000052a e091           1720 	cmp	zero,r18
+0000052c b225*          1721 	be	.L1295
+                        1722 --602:     {
+                        1723 --603:         read_register = ICUM_SHA3A0CNT0;
+                        1724 --line603
+                        1725 ..lin.4469218d..318885d5.0_97::
+                        1726 .LDWlin97:
+0000052e 01f60400       1727 	addi	4,r1,ep
+00000532 009d           1728 	sld.w	0[ep],r19
+                        1729 --605:         /* ICUMX_SHA3A0 initialize and mode set and endian set */
+                        1730 --606:         ICUM_SHA3A0INT = (REGISTER_SET_1 << INIT_INIT_POS_SHA3);
+00000534 0182           1731 	mov	1,r16
+00000536 61870100       1732 	st.w	r16,0[r1]
+                        1733 --608:         ICUM_SHA3A0CNT0 = (REGISTER_SET_1 << CNT0_ISI_EN_POS_SHA3) |
+0000053a 01f60400       1734 	addi	4,r1,ep
+0000053e 93860010       1735 	ori	4096,r19,r16
+00000542 0185           1736 	sst.w	r16,0[ep]
+                        1737 --609:                           read_register;
+                        1738 --611:         ICUM_SHA3A0ILEN0 = p_im_len[0];
+00000544 32870100       1739 	ld.w	0[r18],r16
+00000548 01f61000       1740 	addi	16,r1,ep
+0000054c 0185           1741 	sst.w	r16,0[ep]
+                        1742 --613:         ICUM_SHA3A0ILEN1 = p_im_len[1];
+0000054e 32870500       1743 	ld.w	4[r18],r16
+00000552 01f61400       1744 	addi	20,r1,ep
+00000556 0185           1745 	sst.w	r16,0[ep]
+                        1746 --615:         for (; i < REMAINING_DATA_SET; i++)
+00000558 a50d*          1747 	br	.L1294
+                        1748 .L1293:
+                        1749 --616:         {
+                        1750 --617:             ICUM_SHA3A0ISI = p_im_data[i];
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1751 --line617
+                        1752 ..lin.4469218d..318885d5.0_98::
+                        1753 .LDWlin98:
+0000055a 0280           1754 	mov	r2,r16
+0000055c c282           1755 	shl	2,r16
+0000055e d181           1756 	add	r17,r16
+00000560 30870100       1757 	ld.w	0[r16],r16
+00000564 01f63800       1758 	addi	56,r1,ep
+00000568 0185           1759 	sst.w	r16,0[ep]
+0000056a 4112           1760 	add	1,r2
+                        1761 .L1294:
+0000056c 0206ceff       1762 	addi	-50,r2,zero
+00000570 d9f5*          1763 	bnl	.L1293
+                        1764 .L1295:
+                        1765 --618:         }
+                        1766 --619:     } /* end of if ((NULL != p_im_data) && (NULL != p_im_len)) */
+                        1767 --620:     else
+                        1768 --621:     {
+                        1769 --622:         /* do nothing */
+                        1770 --623:     }
+                        1771 --625:     return;
+                        1772 --line625
+                        1773 ..lin.4469218d..318885d5.0_99::
+                        1774 .LDWlin99:
+00000572 0000           1775 	nop
+                        1776 --	    .ef
+                        1777 .LDW72:
+                        1778 .L1413:
+                        1779 	.jumptype return
+00000574 7f00           1780 	jmp	[lp]
+                        1781 --line625
+                        1782 ..lin.4469218d..318885d5.0_100::
+                        1783 	.type	_d_hash_hash_sha3_set_middle,@function
+                        1784 	.size	_d_hash_hash_sha3_set_middle,.-_d_hash_hash_sha3_set_middle
+                        1785 	.type	_d_hash_hash_sha3_set_middle..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3.,@function
+                        1786 	.size	_d_hash_hash_sha3_set_middle..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3.,.-_d_hash_hash_sha3_set_middle..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3.
+                        1787 	.align	2
+                        1788 --_read_register	r19	local
+                        1789 --_i	r2	local
+                        1790 
+                        1791 --_p_im_data	r17	param
+                        1792 --_p_im_len	r18	param
+                        1793 
+                        1794 	.section ".bss","awb"
+                        1795 .L1362:
+                        1796 	.type	.L1362,@object
+                        1797 	.size	.L1362,0
+                        1798 	.section ".ghrettbl",""
+00000020 00000000*      1799 .L1414:	.word	.L1413
+                        1800 	.type	.L1414,@object
+                        1801 	.size	.L1414,4
+                        1802 	.data
+                        1803 	.section ".icum_driver.text","ax"
+                        1804 
+                        1805 --626: }
+                        1806 	.align	2
+                        1807 
+                        1808 	.data
+                        1809 	.ghsnote version,30
+                        1810 	.ghsnote tools,3
+                        1811 	.ghsnote options,656
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000u2o1.si
+                        1812 	.section ".icum_driver.text","ax"
+                        1813 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cicum_d_hash_hash_sha3...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF6C..0::
+                        1814 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

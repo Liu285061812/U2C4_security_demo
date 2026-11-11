@@ -1,0 +1,251 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\common\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\startup\obj\libs\icum_startup\icup.startup.dbo -source=..\..\icum\target\u2cx\src\startup\icup.startup.850 --gh_oname=..\..\icum\target\u2cx\build\startup\obj\libs\icum_startup\icup.startup.o --gh_md_append=..\..\icum\target\u2cx\build\startup\obj\libs\icum_startup\icup.startup.dtmp -o ..\..\icum\target\u2cx\build\startup\obj\libs\icum_startup\gh_0000afc1.o -list=..\..\icum\target\u2cx\build\startup\obj\libs\icum_startup\icup.startup.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si
+Source File: ..\..\icum\target\u2cx\src\startup\icup.startup.850
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           0 #line 1 "..\\..\\icum\\target\\u2cx\\src\\startup\\icup.startup.850"
+                           1 -- 
+                           2 -- 
+                           3 -- 
+                           4 -- 
+                           5 -- 
+                           6 --
+                           7 
+                           8 
+                           9 
+                          10 
+                          11 
+                          12 
+                          13 
+                          14 
+                          15 
+                          16 
+                          17 
+                          18 
+                          19 
+                          20 
+                          21 
+                          22 
+                          23 
+                          24 
+                          25  
+                          26 
+                          27 --
+                          28 
+                          29  
+                          30 
+                          31 
+                          32 
+                          33 
+                          34 
+                          35 
+                          36 
+                          37 
+                          38 
+                          39 
+                          40 
+                          41 
+                          42 
+                          43 
+                          44 --
+                          45 
+                          46  
+                          47   .section ".icum_startup.bss","awb"
+                          48   .align 4
+00000000 00000000         49 _g_firmware_entry:  .space 4
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si
+                          50   .size     _g_firmware_entry, 4
+                          51 
+                          52 ----------------------------------------------------------------------------------
+                          53 
+                          54     .global   RESET_ICUP
+                          55 
+                          56     .section ".startup.text", .text
+                          57 --
+                          58 
+                          59 
+                          60 
+                          61 
+                          62 
+                          63  
+                          64 RESET_ICUP:
+                          65 
+00000000 2606006398ff     66     mov     0xFF986300, r6  -- STAC_ICUM_LRAM (RZEROMD 1 to 0) settings of ICUM_LRAM_Initialization
+00000006 033a             67     mov     0x00000003, r7
+                          68 
+00000008 26570100         69     ld.w    0[r6], r10      -- optb5 -> STAC_ICUM_LRAM
+0000000c 4751             70     and     r7, r10
+0000000e e751             71     cmp     r7, r10         -- if H/W Ram CLEAR Enable
+00000010 f20d*            72     be      ram_clear_end   -- skip RAM CLEAR
+                          73 
+                          74     -- ***************
+                          75     -- RAM CLEAR
+                          76     -- ***************
+                          77 ram_clear:
+                          78 
+                          79     -- clear secure RAM
+00000012 260600000000*    80     mov     ___ghsbegin_start_iRAM_Self, r6
+00000018 270600000000*    81     mov     ___ghsbegin_end_iRAM_Self, r7
+0000001e 0008             82     mov     r0, r1
+                          83 loop_clear:
+00000020 a6070f000000     84     st.dw   r0, 0[r6]
+00000026 06360800         85     addi    8, r6, r6
+0000002a e731             86     cmp     r7, r6
+0000002c a1fd*            87     bl      loop_clear
+                          88 ram_clear_end:
+                          89 
+                          90     -- ***************
+                          91     -- INTERRUPTS
+                          92     -- ***************
+                          93 
+                          94     -- disable interrupt on mis-aligned accesses
+0000002e 800e0200         95     ori     0x02, r0, r1
+00000032 e12f2008         96     ldsr    r1, 5, 1                    -- MCTL is 5, 1
+                          97 
+                          98     -- ***************
+                          99     -- LOW INIT
+                         100     -- ***************
+                         101 
+                         102     -- clear some control registers to 0
+                         103     ldsr    r0, EIPC
+                         103 <EXPANSION BEGIN>
+                         103 ldsr r0 , EIPC , 0
+00000036 e0072000        103 <EXPANSION END>
+                         104     ldsr    r0, FEPC
+                         104 <EXPANSION BEGIN>
+                         104 ldsr r0 , FEPC , 0
+0000003a e0172000        104 <EXPANSION END>
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si
+                         105     ldsr    r0, FEIC
+                         105 <EXPANSION BEGIN>
+                         105 ldsr r0 , FEIC , 0
+0000003e e0772000        105 <EXPANSION END>
+                         106     ldsr    r0, CTBP
+                         106 <EXPANSION BEGIN>
+                         106 ldsr r0 , CTBP , 0
+00000042 e0a72000        106 <EXPANSION END>
+                         107     ldsr    r0, CTPC
+                         107 <EXPANSION BEGIN>
+                         107 ldsr r0 , CTPC , 0
+00000046 e0872000        107 <EXPANSION END>
+                         108     ldsr    r0, EIWR
+                         108 <EXPANSION BEGIN>
+                         108 ldsr r0 , EIWR , 0
+0000004a e0e72000        108 <EXPANSION END>
+                         109     ldsr    r0, FEWR
+                         109 <EXPANSION BEGIN>
+                         109 ldsr r0 , FEWR , 0
+0000004e e0ef2000        109 <EXPANSION END>
+                         110     ldsr    r0, MEA
+                         110 <EXPANSION BEGIN>
+                         110 ldsr r0 , MEA , 2
+00000052 e0372010        110 <EXPANSION END>
+                         111 
+                         112     -- CF PreLoad ON for Section Initialize  (ROM->RAM)
+                         113     -- ICUM_FLPLCTL.XPL = 1;
+                         114     -- Note: Make it PreLoad OFF at the beginning of main()
+                         115 
+                         116     jarl    _copy_icum_startup_ram, lp
+                         116 <EXPANSION BEGIN>
+                         116 jarl22 _copy_icum_startup_ram , lp 
+00000056 80ff2000*       116 <EXPANSION END>
+                         117     jarl    _preload_on, lp
+                         117 <EXPANSION BEGIN>
+                         117 jarl22 _preload_on , lp 
+0000005a 80ff0000*       117 <EXPANSION END>
+                         118 
+                         119     -- ******************************
+                         120     -- Determine active partition
+                         121     -- ******************************
+                         122 select_partition:
+0000005e 80070400*       123     jr      jmp_side_b
+                         124 
+                         125 jmp_side_b:
+00000062 280600000000*   126     mov     ___ghsbegin_start_firmware_b, r8
+00000068 260600000000*   127     mov     _g_firmware_entry, r6
+0000006e a6070f400000    128     st.dw   r8, 0[r6]
+00000074 6800            129     jmp     [r8]
+                         130 
+                         131     .section ".startup.text", .text
+                         132 _copy_icum_startup_ram:
+00000076 260600000000*   133     mov     ___ghsbegin_icum_startup_d, r6      -- src
+0000007c 270600000000*   134     mov     ___ghsbegin_icum_startup_ram, r7    -- dest
+00000082 280600000000*   135     mov     ___ghssize_icum_startup_ram, r8     -- size
+00000088 8242            136     shr     2, r8
+0000008a 5f42            137     add     -1, r8
+                         138 
+                         139 _L10:
+0000008c 06f0            140     mov     r6, ep
+0000008e 4432            141     add     4, r6
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000afc1.si
+00000090 0055            142     sld.w   0[ep], r10
+                         143 
+00000092 07f0            144     mov     r7, ep
+00000094 443a            145     add     4, r7
+00000096 0155            146     sst.w   r10, 0[ep]
+00000098 e8060d00*       147     loop    r8, _L10
+                         148 
+0000009c 7f00            149     jmp     [lp]
+                         150 
+                         151 ----------------------------------------------------------------------------------
+                         152 
+                         153     .global  _preload_on
+                         154 
+                         155     .section .icum_startup_ram
+                         156 _preload_on:
+00000000 3e0604e5feff    157     mov     0xFFFEE504, ep  -- ICUM_FLPLCTL
+00000006 013a            158     mov     1, r7
+00000008 013d            159     sst.w   r7, 0[ep]
+0000000a 1e00            160     syncm
+                         161 
+0000000c 7f00            162     jmp     [lp]
+                         163 
+                         164 ----------------------------------------------------------------------------------
+                         165 -------------  Interrupt service routine of unused interrupts
+                         166 
+                         167     .global  __startup_unused_isr
+                         168 
+                         169     .section ".startup.text", .text
+                         170 __startup_unused_isr:
+0000009e e0072001        171     halt
+000000a2 e5fd*           172     br      __startup_unused_isr
+                         173 
+                         174 ----------------------------------------------------------------------------------
+                         175 -------------  Interrupt service routine of unused interrupts
+                         176 
+                         177     .global  __STARTUP_SYSERR
+                         178 
+                         179     .section ".startup.text", .text
+                         180 __STARTUP_SYSERR:
+000000a4 260600000000*   181     mov     _g_firmware_entry, r6
+000000aa a60709400000    182     ld.dw   0[r6], r8
+000000b0 08461000        183     addi    0x10, r8, r8
+000000b4 6800            184     jmp     [r8]
+                         185 
+                         186 ----------------------------------------------------------------------------------
+                         187 -------------  Interrupt service routine of FENMI interrupts
+                         188 
+                         189     .global  __STARTUP_FENMI
+                         190 
+                         191     .section ".startup.text", .text
+                         192 __STARTUP_FENMI:
+000000b6 260600000000*   193     mov     _g_firmware_entry, r6
+000000bc a60709400000    194     ld.dw   0[r6], r8
+000000c2 0846e000        195     addi    0xe0, r8, r8
+000000c6 6800            196     jmp     [r8]

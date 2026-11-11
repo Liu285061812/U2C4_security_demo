@@ -1,0 +1,2789 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_ecdh.dbo -source=icum_s_01_ecdh.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\gh_0000m9c1.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_ecdh.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+Source File: icum_s_01_ecdh.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\
+                           7 --		-I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          28 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          29 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          30 --		-filetype.c ..\..\icum\generic\src\service\s_01\icum_s_01_ecdh.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_ecdh.o
+                          33 --Source File:   ..\..\icum\generic\src\service\s_01\icum_s_01_ecdh.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 14:08:36 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_service.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICU-M Service                                             */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /**********************************************************************************
+                          70 --28: * Header files
+                          71 --29: ***********************************************************************************/
+                          72 --30: #include "r_icumif_api.h"
+                          73 --31: #include "renesas_types.h"
+                          74 --32: #include "icum_common_pub.h"
+                          75 --34: #include "icum_d_comm_pub.h"
+                          76 --35: #include "icum_l_toolbox_pub.h"
+                          77 --36: #include "icum_l_cry_pk_pub.h"
+                          78 --37: #include "icum_ml_ctx_pub.h"
+                          79 --38: /* For call functions of remap driver. */
+                          80 --39: #include "icum_d_remap_pub.h"
+                          81 --40: #include MM_FLASH_PUBLIC_H
+                          82 --41: #include "icum_mh_key_pub.h"
+                          83 --42: #include "icum_mh_sysinfo_pub.h"
+                          84 --43: #include "icum_s_pub.h"
+                          85 --44: #include "icum_k_issd_pub.h"
+                          86 --46: #include "icum_s_01_common.h"
+                          87 --47: #include "icum_service_common.h"
+                          88 --49: /* Common */
+                          89 --50: #define NUM16           ((uint32_t)16)      /* value : 16 */
+                          90 --51: #define NUM24           ((uint32_t)24)      /* value : 24 */
+                          91 --52: #define NUM32           ((uint32_t)32)      /* value : 32 */
+                          92 --54: /* process phase */
+                          93 --55: #define ON_HOLD    (0u)
+                          94 --56: #define PHASE_1    (1u)
+                          95 --57: #define PHASE_2a   (2u)
+                          96 --58: #define PHASE_2    (3u)
+                          97 --59: #define PHASE_3    (4u)
+                          98 --61: /* resource control */
+                          99 --62: #define GET_CTX_NONE        (0x00u)
+                         100 --63: #define GET_CTX_ECC         (0x01u)
+                         101 --64: #define GET_PUB_KEY_ECC     (0x04u)
+                         102 --66: /**********************************************************************************
+                         103 --67: * Function
+                         104 --68: ***********************************************************************************/
+                         105 --69: static uint32_t s_01_ParamCheckJobEcdh(icum_job_t *p_job, uint32_t *p_skip_flg);
+                         106 --70: static uint32_t s_01_InitializeJobEcdh(icum_job_t *p_job);
+                         107 --71: static uint32_t s_01_ECDH_Init(icum_job_t *p_job);
+                         108 --72: static uint32_t s_01_ECDH_CalcScalar(icum_job_t *p_job);
+                         109 --73: static uint32_t s_01_ECDH_DeriveSharedKey(icum_job_t *p_job);
+                         110 --74: static void s_01_ECDH_Finish(icum_job_t *p_job, const uint32_t err);
+                         111 --76: /****************************************************************************************
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         112 --77: * Function ID  : [ICUMFW_CD_S_01_ECDH_0008]:[ICUMFW_UD_S_01_ECDH_0008]
+                         113 --78: * Function name: s_01_ParamCheckJobEcdh
+                         114 --79: * Description  : Parameter check for the initialization processing
+                         115 --80: * Arguments    : (IN)   p_job
+                         116 --81: * Arguments    : (OUT)  p_skip_flg
+                         117 --82: * Return Value : ER_OK
+                         118 --83: *                ER_PARAM
+                         119 --84: *                ER_PENDING
+                         120 --85: *                ER_MH_KEY_SLOT_EMPTY
+                         121 --86: *                ER_MH_KEY_INVALID_KEY_GROUP
+                         122 --87: *                ER_MH_KEY_INVALID_KEY_INDEX
+                         123 --88: *                ER_MH_KEY_IN_USE
+                         124 --89: *                ER_MH_KEY_NOT_USABLE
+                         125 --90: *                ER_MH_KEY_NVM_SYS_CRITICAL
+                         126 --91: *                ER_MH_KEY_NVM_SYS
+                         127 --92: *                ER_MH_KEY_DATA_INVALID
+                         128 --93: *                ER_MH_KEY_SYS_ERROR
+                         129 --94: *                ER_MH_KEY_NVM_UNAVAILABLE
+                         130 --95: *                ER_MH_KEY_NVM_SIZE
+                         131 --96: *                ER_MH_KEY_SRC_MEM_ERROR
+                         132 --97: *                ER_MH_KEY_AES_TIMEOUT_ERROR
+                         133 --98: *                ER_MH_KEY_AES_PRM_ERROR
+                         134 --99: ****************************************************************************************/
+                         135 --100: static uint32_t s_01_ParamCheckJobEcdh(icum_job_t *p_job, uint32_t *p_skip_flg)
+                         136 	.align	2
+                         137 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40664..0::
+                         138 	.align	2
+                         139 	.align	2
+                         140 ..gh.f.a.2.e.0:
+                         141 	.type	..gh.f.a.2.e.0,@object
+                         142 	.size	..gh.f.a.2.e.0,0
+                         143 	.global	_s_01_ParamCheckJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                         144 _s_01_ParamCheckJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                         145 _s_01_ParamCheckJobEcdh:
+00000000 031ec4ff        146 	addi	-60,sp,sp
+00000004 63ff3900        147 	st.w	lp,56[sp]
+00000008 63b73500        148 	st.w	r22,52[sp]
+0000000c 63bf3100        149 	st.w	r23,48[sp]
+00000010 63cf2900        150 	st.w	r25,40[sp]
+00000014 63d72500        151 	st.w	r26,36[sp]
+00000018 63c72d00        152 	st.w	r24,44[sp]
+0000001c 63df2100        153 	st.w	r27,32[sp]
+00000020 63e71d00        154 	st.w	r28,28[sp]
+00000024 63ef1900        155 	st.w	r29,24[sp]
+00000028 06c8            156 	mov	r6,r25
+0000002a 07b0            157 	mov	r7,r22
+0000002c 3a0602009000    158 	mov	9437186,r26
+00000032 40be0001        159 	movhi	hi(16777216),zero,r23
+                         160 --	    .bf
+                         161 .LDW01:
+                         162 --101: {
+                         163 --102:     r_icumif_isd_t     *p_isd;
+                         164 --103:     ISD_ECDH_t         *p_isd_param;
+                         165 --105:     aes_key_t          *p_aes_key;
+                         166 --106:     kdf_type_t          kdf_type;
+                         167 --107:     hash_type_t         hash_type;
+                         168 --108:     uint16_t            hash_size;
+                         169 --109:     uint8_t             mem_check_result;
+                         170 --110:     uint32_t            err;
+                         171 --111:     uint32_t            skip_flg;
+                         172 --113:     p_isd       = p_job->p_ISD;
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         173 --line113
+                         174 ..lin.92e61a6c..b41ff254.0_1::
+                         175 .LDWlin1:
+00000036 39c70100        176 	ld.w	0[r25],r24
+                         177 --114:     p_isd_param = &p_isd->prm.ECDH;
+0000003a 18de2000        178 	addi	32,r24,r27
+                         179 --115:     
+                         180 --116:     kdf_type = E_LAST_ITEM_KDF_TYPE;
+0000003e 63bf0d00        181 	st.w	r23,12[sp]
+                         182 --117:     err = ER_OK;
+00000042 00ea            183 	mov	0,r29
+                         184 --118:     skip_flg = FLG_OFF;
+00000044 00e2            185 	mov	0,r28
+                         186 --120:     (void)L_ECC_ToInternalKdfType(p_isd_param->kdf_algo, &kdf_type);
+00000046 3b371900        187 	ld.w	24[r27],r6
+0000004a 233e0c00        188 	movea	12,sp,r7
+                         189 .L358:
+                         190 	jarl	_L_ECC_ToInternalKdfType,lp
+                         190 <EXPANSION BEGIN>
+                         190 jarl22 _L_ECC_ToInternalKdfType , lp 
+0000004e 80ff0000*       190 <EXPANSION END>
+                         191 --121:     if (E_LAST_ITEM_KDF_TYPE == kdf_type)
+                         192 --line121
+                         193 ..lin.92e61a6c..b41ff254.0_2::
+                         194 .LDWlin2:
+00000052 230f0d00        195 	ld.w	12[sp],r1
+00000056 f709            196 	cmp	r23,r1
+00000058 ca05*           197 	bne	.L4
+                         198 --122:     {
+                         199 --123:         err = ER_PARAM;
+                         200 --line123
+                         201 ..lin.92e61a6c..b41ff254.0_3::
+                         202 .LDWlin3:
+0000005a 01ea            203 	mov	1,r29
+                         204 --124:         skip_flg = FLG_ON;
+0000005c 01e2            205 	mov	1,r28
+0000005e f50d*           206 	br	.L6
+                         207 .L4:
+                         208 --125:     }
+                         209 --126:     else
+                         210 --127:     {
+                         211 --128:         (void)L_HASH_GetInternalHashType(p_isd_param->hash_primitive, &hash_type, &hash_size);
+                         212 --line128
+                         213 ..lin.92e61a6c..b41ff254.0_4::
+                         214 .LDWlin4:
+00000060 3b371d00        215 	ld.w	28[r27],r6
+00000064 233e1000        216 	movea	16,sp,r7
+00000068 23461600        217 	movea	22,sp,r8
+                         218 .L360:
+                         219 	jarl	_L_HASH_GetInternalHashType,lp
+                         219 <EXPANSION BEGIN>
+                         219 jarl22 _L_HASH_GetInternalHashType , lp 
+0000006c 80ff0000*       219 <EXPANSION END>
+                         220 --129:         if (NUM0 == (uint32_t)hash_size)
+                         221 --line129
+                         222 ..lin.92e61a6c..b41ff254.0_5::
+                         223 .LDWlin5:
+00000070 e30f1700        224 	ld.hu	22[sp],r1
+00000074 e009            225 	cmp	zero,r1
+00000076 ba05*           226 	bne	.L6
+                         227 --130:         {
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         228 --131:             /* error on hash type */
+                         229 --132:             err = ER_PARAM;
+                         230 --line132
+                         231 ..lin.92e61a6c..b41ff254.0_6::
+                         232 .LDWlin6:
+00000078 01ea            233 	mov	1,r29
+                         234 --133:             skip_flg = FLG_ON;
+0000007a 01e2            235 	mov	1,r28
+                         236 .L6:
+                         237 --134:         }
+                         238 --135:         else
+                         239 --136:         {
+                         240 --137:             /* Do nothing */
+                         241 --138:         }
+                         242 --139:     }
+                         243 --140:     if (FLG_OFF == skip_flg)
+0000007c e0e1            244 	cmp	zero,r28
+0000007e aa15*           245 	bne	.L19
+                         246 --141:     {
+                         247 --142:         if (NUM16 == (uint32_t)p_isd_param->key_size_in_bytes)
+                         248 --line142
+                         249 ..lin.92e61a6c..b41ff254.0_7::
+                         250 .LDWlin7:
+00000080 fb0f3500        251 	ld.hu	52[r27],r1
+00000084 0106f0ff        252 	addi	-16,r1,zero
+00000088 d20d*           253 	be	.L19
+                         254 --143:         {
+                         255 --144:             /* Do nothing */
+                         256 --145:         }
+                         257 --146: #if defined(FSW_AESKEY_256)
+                         258 --147:         else if ((NUM24 == (uint32_t)p_isd_param->key_size_in_bytes) ||
+                         259 --line147
+                         260 ..lin.92e61a6c..b41ff254.0_8::
+                         261 .LDWlin8:
+0000008a fb0f3500        262 	ld.hu	52[r27],r1
+0000008e 0106e8ff        263 	addi	-24,r1,zero
+00000092 820d*           264 	be	.L19
+                         265 --line148
+                         266 ..lin.92e61a6c..b41ff254.0_9::
+                         267 .LDWlin9:
+00000094 fb0f3500        268 	ld.hu	52[r27],r1
+00000098 0106e0ff        269 	addi	-32,r1,zero
+0000009c b205*           270 	be	.L19
+                         271 --148:                  (NUM32 == (uint32_t)p_isd_param->key_size_in_bytes))
+                         272 --149:         {
+                         273 --150:             /* Do nothing */
+                         274 --151:         }
+                         275 --152: #endif /* FSW_AESKEY_256 */
+                         276 --153:         else
+                         277 --154:         {
+                         278 --155:             err = ER_PARAM;
+                         279 --line155
+                         280 ..lin.92e61a6c..b41ff254.0_10::
+                         281 .LDWlin10:
+0000009e 01ea            282 	mov	1,r29
+                         283 --156:             skip_flg = FLG_ON;
+000000a0 01e2            284 	mov	1,r28
+                         285 .L19:
+                         286 --157:         }
+                         287 --158:     }
+                         288 --159:     else
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         289 --160:     {
+                         290 --161:         /* Do nothing */
+                         291 --162:     }
+                         292 --164:     if (FLG_OFF == skip_flg)
+000000a2 e0e1            293 	cmp	zero,r28
+000000a4 9a1d*           294 	bne	.L28
+                         295 --165:     {
+                         296 --166:         if (NUM0 < (uint32_t)p_isd_param->info_size_in_bytes)
+                         297 --line166
+                         298 ..lin.92e61a6c..b41ff254.0_11::
+                         299 .LDWlin11:
+000000a6 9b0f3300        300 	ld.bu	50[r27],r1
+000000aa e009            301 	cmp	zero,r1
+000000ac d215*           302 	be	.L28
+                         303 --167:         {
+                         304 --168:             /* make sure the source address range is valid */
+                         305 --169:             (void)MM_FLS_CheckMemory((uint32_t)p_isd_param->p_info, (uint32_t)p_isd_param->info_size_in_bytes,
+                         306 --line169
+                         307 ..lin.92e61a6c..b41ff254.0_12::
+                         308 .LDWlin12:
+000000ae 3b372900        309 	ld.w	40[r27],r6
+000000b2 9b3f3300        310 	ld.bu	50[r27],r7
+000000b6 994f0d00        311 	ld.bu	12[r25],r9
+000000ba 230e0700        312 	movea	7,sp,r1
+000000be 630f0100        313 	st.w	r1,0[sp]
+000000c2 0042            314 	mov	0,r8
+                         315 .L362:
+                         316 	jarl	_MM_FLS_CheckMemory,lp
+                         316 <EXPANSION BEGIN>
+                         316 jarl22 _MM_FLS_CheckMemory , lp 
+000000c4 80ff0000*       316 <EXPANSION END>
+                         317 --170:                                     FLS_CHK_MEM_SOURCE, p_job->expansion_service, &mem_check_result);
+                         318 --171:             if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check_result)
+                         319 --line171
+                         320 ..lin.92e61a6c..b41ff254.0_13::
+                         321 .LDWlin13:
+000000c8 a30f0700        322 	ld.bu	7[sp],r1
+000000cc 610a            323 	cmp	1,r1
+000000ce c205*           324 	be	.L28
+                         325 --172:             {
+                         326 --173:                 err = ER_MH_KEY_SRC_MEM_ERROR;
+                         327 --line173
+                         328 ..lin.92e61a6c..b41ff254.0_14::
+                         329 .LDWlin14:
+000000d0 1aee1000        330 	addi	16,r26,r29
+                         331 --174:                 skip_flg = FLG_ON;
+000000d4 01e2            332 	mov	1,r28
+                         333 .L28:
+                         334 --175:             }
+                         335 --176:             else
+                         336 --177:             {
+                         337 --178:                 /* Do nothing */
+                         338 --179:             }
+                         339 --180:         } /* end of if (0u < (uint32_t)p_ISD_PARAM->info_size_in_bytes) */
+                         340 --181:         else
+                         341 --182:         {
+                         342 --183:             /* Do nothing */
+                         343 --184:         }
+                         344 --185:     } /* end of if (FLG_OFF == skip_flg) */
+                         345 --186:     else
+                         346 --187:     {
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         347 --188:         /* do nothing */
+                         348 --189:     }
+                         349 --190:     
+                         350 --191:     if (FLG_OFF == skip_flg)
+000000d6 e0e1            351 	cmp	zero,r28
+000000d8 ca1d*           352 	bne	.L40
+                         353 --192:     {
+                         354 --193:         /* retrieve the shared key to initialize (i.e. to calculate) */
+                         355 --194:         switch (p_isd_param->shared_key_group)
+                         356 --line194
+                         357 ..lin.92e61a6c..b41ff254.0_15::
+                         358 .LDWlin15:
+000000da 3b0f1100        359 	ld.w	16[r27],r1
+000000de 620a            360 	cmp	2,r1
+000000e0 da0d*           361 	bne	.L33
+                         362 --195:         {
+                         363 --196:             case KEY_GRP_AES_RAM:
+                         364 --197:                 err = MH_KEY_GetAesKey(p_job, KEY_GRP_AES_RAM, p_isd_param->shared_key_id, &p_aes_key, FALSE);
+                         365 --line197
+                         366 ..lin.92e61a6c..b41ff254.0_16::
+                         367 .LDWlin16:
+000000e2 9b471500        368 	ld.bu	20[r27],r8
+000000e6 1930            369 	mov	r25,r6
+000000e8 63070100        370 	st.w	zero,0[sp]
+000000ec 023a            371 	mov	2,r7
+000000ee 234e0800        372 	movea	8,sp,r9
+                         373 .L364:
+                         374 	jarl	_MH_KEY_GetAesKey,lp
+                         374 <EXPANSION BEGIN>
+                         374 jarl22 _MH_KEY_GetAesKey , lp 
+000000f2 80ff0000*       374 <EXPANSION END>
+000000f6 0ae8            375 	mov	r10,r29
+                         376 --198:                 break;
+                         377 --199:             default:
+                         378 --line198
+                         379 ..lin.92e61a6c..b41ff254.0_17::
+                         380 .LDWlin17:
+000000f8 d505*           381 	br	.L35
+                         382 .L33:
+                         383 --200:                 /* invalid key group: stop here */
+                         384 --201:                 err = ER_MH_KEY_INVALID_KEY_GROUP;
+                         385 --line201
+                         386 ..lin.92e61a6c..b41ff254.0_18::
+                         387 .LDWlin18:
+000000fa 3d0602009000    388 	mov	9437186,r29
+                         389 --202:                 break;
+                         390 --line202
+                         391 ..lin.92e61a6c..b41ff254.0_19::
+                         392 .LDWlin19:
+00000100 0000            393 	nop
+                         394 .L35:
+                         395 --203:         }
+                         396 --204:         if ((ER_MH_KEY_INVALID_KEY_INDEX == err) || (ER_MH_KEY_INVALID_KEY_GROUP == err))
+00000102 1a0e0100        397 	addi	1,r26,r1
+00000106 e1e9            398 	cmp	r1,r29
+00000108 b205*           399 	be	.L37
+0000010a fae9            400 	cmp	r26,r29
+0000010c aa05*           401 	bne	.L40
+                         402 .L37:
+                         403 --205:         {
+                         404 --206:             skip_flg = FLG_ON;
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         405 --line206
+                         406 ..lin.92e61a6c..b41ff254.0_20::
+                         407 .LDWlin20:
+0000010e 01e2            408 	mov	1,r28
+                         409 .L40:
+                         410 --207:         }
+                         411 --208:         else
+                         412 --209:         {
+                         413 --210:             /* Do nothing */
+                         414 --211:         }
+                         415 --212:     } /* end of if (FLG_OFF == skip_flg) */
+                         416 --213:     else
+                         417 --214:     {
+                         418 --215:         /* do nothing */
+                         419 --216:     }
+                         420 --218:     if (FLG_OFF == skip_flg)
+00000110 e0e1            421 	cmp	zero,r28
+00000112 8a15*           422 	bne	.L47
+                         423 --219:     {
+                         424 --220:         /* make sure the ECC public key and the private key are different */
+                         425 --221:         if((p_isd_param->ecc_priv_key_group == p_isd_param->ecc_pub_key_group) &&
+                         426 --line221
+                         427 ..lin.92e61a6c..b41ff254.0_21::
+                         428 .LDWlin21:
+00000114 3b0f0900        429 	ld.w	8[r27],r1
+00000118 3b170100        430 	ld.w	0[r27],r2
+0000011c e111            431 	cmp	r1,r2
+0000011e aa0d*           432 	bne	.L47
+                         433 --line222
+                         434 ..lin.92e61a6c..b41ff254.0_22::
+                         435 .LDWlin22:
+00000120 9b0f0d00        436 	ld.bu	12[r27],r1
+00000124 9b170500        437 	ld.bu	4[r27],r2
+00000128 e111            438 	cmp	r1,r2
+0000012a ca05*           439 	bne	.L47
+                         440 --222:            ((uint32_t)p_isd_param->ecc_priv_key_id == (uint32_t)p_isd_param->ecc_pub_key_id))
+                         441 --223:         {
+                         442 --224:             err = ER_MH_KEY_INVALID_KEY_INDEX;
+                         443 --line224
+                         444 ..lin.92e61a6c..b41ff254.0_23::
+                         445 .LDWlin23:
+0000012c 1aee0100        446 	addi	1,r26,r29
+                         447 --225:             skip_flg = FLG_ON;
+00000130 01e2            448 	mov	1,r28
+                         449 .L47:
+                         450 --226:         }
+                         451 --227:         else
+                         452 --228:         {
+                         453 --229:             /* Do nothing */
+                         454 --230:         }
+                         455 --231:     } /* end of if (FLG_OFF == skip_flg) */
+                         456 --232:     else
+                         457 --233:     {
+                         458 --234:         /* do nothing */
+                         459 --235:     }
+                         460 --237:     *p_skip_flg = skip_flg;
+00000132 76e70100        461 	st.w	r28,0[r22]
+                         462 --239:     return err;
+00000136 1d50            463 	mov	r29,r10
+                         464 --	    .ef
+                         465 .LDW11:
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+00000138 23ff3900        466 	ld.w	56[sp],lp
+0000013c 23ef1900        467 	ld.w	24[sp],r29
+00000140 23e71d00        468 	ld.w	28[sp],r28
+00000144 23df2100        469 	ld.w	32[sp],r27
+00000148 23d72500        470 	ld.w	36[sp],r26
+0000014c 23cf2900        471 	ld.w	40[sp],r25
+00000150 23c72d00        472 	ld.w	44[sp],r24
+00000154 23bf3100        473 	ld.w	48[sp],r23
+00000158 23b73500        474 	ld.w	52[sp],r22
+0000015c 031e3c00        475 	addi	60,sp,sp
+                         476 .L366:
+                         477 	.jumptype return
+00000160 7f00            478 	jmp	[lp]
+                         479 --line224
+                         480 ..lin.92e61a6c..b41ff254.0_24::
+                         481 	.type	_s_01_ParamCheckJobEcdh,@function
+                         482 	.size	_s_01_ParamCheckJobEcdh,.-_s_01_ParamCheckJobEcdh
+                         483 	.type	_s_01_ParamCheckJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                         484 	.size	_s_01_ParamCheckJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_ParamCheckJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                         485 	.align	2
+                         486 --_p_isd	r24	local
+                         487 --_p_isd_param	r27	local
+                         488 --_p_aes_key	8[sp]	local
+                         489 --_kdf_type	12[sp]	local
+                         490 --_hash_type	16[sp]	local
+                         491 --_hash_size	22[sp]	local
+                         492 --_mem_check_result	7[sp]	local
+                         493 --_err	r29	local
+                         494 --_skip_flg	r28	local
+                         495 
+                         496 --_p_job	r25	param
+                         497 --_p_skip_flg	r22	param
+                         498 
+                         499 	.section ".bss","awb"
+                         500 .L222:
+                         501 	.type	.L222,@object
+                         502 	.size	.L222,0
+                         503 	.section ".ghcalltbl",""
+                         504 	.align	4
+00000000 00000000*       505 .L359:	.word	.L358
+                         506 	.type	.L359,@object
+                         507 	.size	.L359,4
+00000004 00000000*       508 .L361:	.word	.L360
+                         509 	.type	.L361,@object
+                         510 	.size	.L361,4
+00000008 00000000*       511 .L363:	.word	.L362
+                         512 	.type	.L363,@object
+                         513 	.size	.L363,4
+0000000c 00000000*       514 .L365:	.word	.L364
+                         515 	.type	.L365,@object
+                         516 	.size	.L365,4
+                         517 	.section ".ghrettbl",""
+                         518 	.align	4
+00000000 00000000*       519 .L367:	.word	.L366
+                         520 	.type	.L367,@object
+                         521 	.size	.L367,4
+                         522 	.data
+                         523 	.section ".icum_service.text","ax"
+                         524 
+                         525 --240: }
+                         526 
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         527 --242: /****************************************************************************************
+                         528 --243: * Function ID  : [ICUMFW_CD_S_01_ECDH_0002]:[ICUMFW_UD_S_01_ECDH_0002]
+                         529 --244: * Function name: s_01_InitializeJobEcdh
+                         530 --245: * Description  : Initialization processing
+                         531 --246: * Arguments    : hash_primitive          :[in]
+                         532 --247: *                *p_info                 :[in]
+                         533 --248: *                info_size_in_bytes      :[in]
+                         534 --249: *                shared_key_group        :[in]
+                         535 --250: *                shared_key_id           :[in]
+                         536 --251: *                ecc_pub_key_group       :[in]
+                         537 --252: *                ecc_pub_key_id          :[in]
+                         538 --253: *                ecc_priv_key_group      :[in]
+                         539 --254: *                ecc_priv_key_id         :[in]
+                         540 --255: *                r_job_slice_t job_slice :[in]
+                         541 --256: * Return Value : ER_OK
+                         542 --257: *                ER_PARAM
+                         543 --258: *                ER_PENDING
+                         544 --259: *                ER_MH_KEY_SLOT_EMPTY
+                         545 --260: *                ER_MH_KEY_INVALID_KEY_GROUP
+                         546 --261: *                ER_MH_KEY_INVALID_KEY_INDEX
+                         547 --262: *                ER_MH_KEY_IN_USE
+                         548 --263: *                ER_MH_KEY_NOT_USABLE
+                         549 --264: *                ER_MH_KEY_NVM_SYS_CRITICAL
+                         550 --265: *                ER_MH_KEY_NVM_SYS
+                         551 --266: *                ER_MH_KEY_DATA_INVALID
+                         552 --267: *                ER_MH_KEY_SYS_ERROR
+                         553 --268: *                ER_MH_KEY_NVM_UNAVAILABLE
+                         554 --269: *                ER_MH_KEY_NVM_SIZE
+                         555 --270: *                ER_MH_KEY_SRC_MEM_ERROR
+                         556 --271: *                ER_MH_KEY_AES_TIMEOUT_ERROR
+                         557 --272: *                ER_MH_KEY_AES_PRM_ERROR
+                         558 --273: *                ER_MH_KEY_USER_OVER
+                         559 --274: *                ER_MH_KEY_INVALID_CURVE_ID
+                         560 --275: ****************************************************************************************/
+                         561 --276: static uint32_t s_01_InitializeJobEcdh(icum_job_t *p_job)
+                         562 	.align	2
+                         563 	.align	2
+                         564 	.align	2
+                         565 ..gh.f.a.2.e.1:
+                         566 	.type	..gh.f.a.2.e.1,@object
+                         567 	.size	..gh.f.a.2.e.1,0
+                         568 	.global	_s_01_InitializeJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                         569 _s_01_InitializeJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                         570 _s_01_InitializeJobEcdh:
+00000162 031ed0ff        571 	addi	-48,sp,sp
+00000166 63ff2d00        572 	st.w	lp,44[sp]
+0000016a 63df1900        573 	st.w	r27,24[sp]
+0000016e 63e71500        574 	st.w	r28,20[sp]
+00000172 63bf2900        575 	st.w	r23,40[sp]
+00000176 63c72500        576 	st.w	r24,36[sp]
+0000017a 63cf2100        577 	st.w	r25,32[sp]
+0000017e 63d71d00        578 	st.w	r26,28[sp]
+00000182 63ef1100        579 	st.w	r29,16[sp]
+00000186 06d8            580 	mov	r6,r27
+00000188 3c0602009000    581 	mov	9437186,r28
+                         582 --	    .bf
+                         583 .LDW21:
+                         584 --277: {
+                         585 --278:     r_icumif_isd_t     *p_isd;
+                         586 --279:     job_ecc_t          *p_job_param;
+                         587 --280:     ISD_ECDH_t         *p_isd_param;
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         588 --282:     ecc_key_t          *p_ecc_key;
+                         589 --283:     ecc_key_t          *p_pub_ecc_key;
+                         590 --284:     r_ecc_curve_t       priv_ecc_curve_id;
+                         591 --285:     uint8_t             is_allowed;
+                         592 --286:     uint32_t            err;
+                         593 --287:     uint32_t            skip_flg;
+                         594 --289:     p_isd       = p_job->p_ISD;
+                         595 --line289
+                         596 ..lin.92e61a6c..89682a97.0_25::
+                         597 .LDWlin25:
+0000018e 3bc70100        598 	ld.w	0[r27],r24
+                         599 --290:     p_job_param = &p_job->prm.job_ecc;
+00000192 1bbe1000        600 	addi	16,r27,r23
+                         601 --291:     p_isd_param = &p_isd->prm.ECDH;
+00000196 18d62000        602 	addi	32,r24,r26
+                         603 --293:     p_ecc_key     = NULL;
+0000019a 63070500        604 	st.w	zero,4[sp]
+                         605 --294:     p_pub_ecc_key = NULL;
+0000019e 63070900        606 	st.w	zero,8[sp]
+                         607 --295:     skip_flg = FLG_OFF;
+000001a2 63070d00        608 	st.w	zero,12[sp]
+                         609 --296:     
+                         610 --297:     /* parameter check */
+                         611 --298:     err = s_01_ParamCheckJobEcdh(p_job, &skip_flg);
+000001a6 1b30            612 	mov	r27,r6
+000001a8 233e0c00        613 	movea	12,sp,r7
+                         614 .L729:
+                         615 	jarl	_s_01_ParamCheckJobEcdh,lp
+                         615 <EXPANSION BEGIN>
+                         615 jarl22 _s_01_ParamCheckJobEcdh , lp 
+000001ac bfff54fe*       615 <EXPANSION END>
+000001b0 0ae8            616 	mov	r10,r29
+                         617 --300:     if (FLG_OFF == skip_flg)
+                         618 --line300
+                         619 ..lin.92e61a6c..89682a97.0_26::
+                         620 .LDWlin26:
+000001b2 230f0d00        621 	ld.w	12[sp],r1
+000001b6 e009            622 	cmp	zero,r1
+000001b8 8a15*           623 	bne	.L375
+                         624 --301:     {
+                         625 --302:         /* retrieve the ECC private key to be used */
+                         626 --303:         err = MH_KEY_GetEccKey(p_job, p_isd_param->ecc_priv_key_group, p_isd_param->ecc_priv_key_id, &p_ecc_key);
+                         627 --line303
+                         628 ..lin.92e61a6c..89682a97.0_27::
+                         629 .LDWlin27:
+000001ba 3a3f0100        630 	ld.w	0[r26],r7
+000001be 9a470500        631 	ld.bu	4[r26],r8
+000001c2 1b30            632 	mov	r27,r6
+000001c4 234e0400        633 	movea	4,sp,r9
+                         634 .L731:
+                         635 	jarl	_MH_KEY_GetEccKey,lp
+                         635 <EXPANSION BEGIN>
+                         635 jarl22 _MH_KEY_GetEccKey , lp 
+000001c8 80ff0000*       635 <EXPANSION END>
+000001cc 0ae8            636 	mov	r10,r29
+                         637 --304:         if (ER_OK != err)
+                         638 --line304
+                         639 ..lin.92e61a6c..89682a97.0_28::
+                         640 .LDWlin28:
+000001ce e0e9            641 	cmp	zero,r29
+000001d0 c205*           642 	be	.L375
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         643 --305:         {
+                         644 --306:             /* key not available: abort */
+                         645 --307:             skip_flg = FLG_ON;
+                         646 --line307
+                         647 ..lin.92e61a6c..89682a97.0_29::
+                         648 .LDWlin29:
+000001d2 010a            649 	mov	1,r1
+000001d4 630f0d00        650 	st.w	r1,12[sp]
+                         651 .L375:
+                         652 --308:         }
+                         653 --309:         else
+                         654 --310:         {
+                         655 --311:             /* Do nothing */
+                         656 --312:         }
+                         657 --313:     } /* end of if (FLG_OFF == skip_flg) */
+                         658 --314:     else
+                         659 --315:     {
+                         660 --316:         /* do nothing */
+                         661 --317:     }
+                         662 --319:     if (FLG_OFF == skip_flg)
+000001d8 230f0d00        663 	ld.w	12[sp],r1
+000001dc e009            664 	cmp	zero,r1
+000001de 8a0d*           665 	bne	.L378
+                         666 --320:     {
+                         667 --321:         /* --- Free ECC_Priv Key -------- */
+                         668 --322:         (void)MH_KEY_FreeKeyCache(p_job, p_isd_param->ecc_priv_key_group, p_isd_param->ecc_priv_key_id);
+                         669 --line322
+                         670 ..lin.92e61a6c..89682a97.0_30::
+                         671 .LDWlin30:
+000001e0 3a3f0100        672 	ld.w	0[r26],r7
+000001e4 9a470500        673 	ld.bu	4[r26],r8
+000001e8 1b30            674 	mov	r27,r6
+                         675 .L733:
+                         676 	jarl	_MH_KEY_FreeKeyCache,lp
+                         676 <EXPANSION BEGIN>
+                         676 jarl22 _MH_KEY_FreeKeyCache , lp 
+000001ea 80ff0000*       676 <EXPANSION END>
+                         677 .L378:
+                         678 --323:     }
+                         679 --324:     else
+                         680 --325:     {
+                         681 --326:         /* do nothing */
+                         682 --327:     }
+                         683 --329:     if (FLG_OFF == skip_flg)
+                         684 --line329
+                         685 ..lin.92e61a6c..89682a97.0_31::
+                         686 .LDWlin31:
+000001ee 230f0d00        687 	ld.w	12[sp],r1
+000001f2 e009            688 	cmp	zero,r1
+000001f4 ca15*           689 	bne	.L384
+                         690 --330:     {
+                         691 --331:         (void)s_01_CanUseKeyIfDbgConnected((key_flags_t)p_ecc_key->p_properties->flags.disable_on_debug,
+                         692 --line331
+                         693 ..lin.92e61a6c..89682a97.0_32::
+                         694 .LDWlin32:
+000001f6 23f70500        695 	ld.w	4[sp],ep
+000001fa 233e0300        696 	movea	3,sp,r7
+000001fe 06f5            697 	sld.w	12[ep],ep
+00000200 6c30            698 	sld.bu	12[ep],r6
+00000202 de32            699 	shl	30,r6
+00000204 9f32            700 	shr	31,r6
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         701 .L735:
+                         702 	jarl	_s_01_CanUseKeyIfDbgConnected,lp
+                         702 <EXPANSION BEGIN>
+                         702 jarl22 _s_01_CanUseKeyIfDbgConnected , lp 
+00000206 80ff0000*       702 <EXPANSION END>
+                         703 --332:                                            &is_allowed);
+                         704 --333:         if (FALSE == (uint32_t)is_allowed)
+                         705 --line333
+                         706 ..lin.92e61a6c..89682a97.0_33::
+                         707 .LDWlin33:
+0000020a a30f0300        708 	ld.bu	3[sp],r1
+0000020e e009            709 	cmp	zero,r1
+00000210 ea05*           710 	bne	.L384
+                         711 --334:         {
+                         712 --335:             /* key not usable: abort */
+                         713 --336:             err = ER_MH_KEY_NOT_USABLE;
+                         714 --line336
+                         715 ..lin.92e61a6c..89682a97.0_34::
+                         716 .LDWlin34:
+00000212 1cee0700        717 	addi	7,r28,r29
+                         718 --337:             skip_flg = FLG_ON;
+00000216 010a            719 	mov	1,r1
+00000218 630f0d00        720 	st.w	r1,12[sp]
+                         721 .L384:
+                         722 --338:         }
+                         723 --339:         else
+                         724 --340:         {
+                         725 --341:             /* Do nothing */
+                         726 --342:         }
+                         727 --343:     } /* end of if (FLG_OFF == skip_flg) */
+                         728 --344:     else
+                         729 --345:     {
+                         730 --346:         /* do nothing */
+                         731 --347:     }
+                         732 --348:     
+                         733 --349:     if (FLG_OFF == skip_flg)
+0000021c 230f0d00        734 	ld.w	12[sp],r1
+00000220 e009            735 	cmp	zero,r1
+00000222 9a25*           736 	bne	.L393
+                         737 --350:     {
+                         738 --351:         /* make sure the key has a private scalar */
+                         739 --352:         if (NUM0 != (uint32_t)p_ecc_key->p_properties->priv_scalar_size_in_bits)
+                         740 --line352
+                         741 ..lin.92e61a6c..89682a97.0_35::
+                         742 .LDWlin35:
+00000224 23f70500        743 	ld.w	4[sp],ep
+00000228 06f5            744 	sld.w	12[ep],ep
+0000022a 7208            745 	sld.hu	4[ep],r1
+0000022c e009            746 	cmp	zero,r1
+0000022e d215*           747 	be	.L387
+                         748 --353:         {
+                         749 --354:             priv_ecc_curve_id = p_ecc_key->p_properties->ecc_curve;
+                         750 --line354
+                         751 ..lin.92e61a6c..89682a97.0_36::
+                         752 .LDWlin36:
+00000230 23f70500        753 	ld.w	4[sp],ep
+00000234 06f5            754 	sld.w	12[ep],ep
+00000236 04cd            755 	sld.w	8[ep],r25
+                         756 --356:             err = MH_KEY_GetEccKey(p_job,
+00000238 3a3f0900        757 	ld.w	8[r26],r7
+0000023c 9a470d00        758 	ld.bu	12[r26],r8
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+00000240 1b30            759 	mov	r27,r6
+00000242 234e0800        760 	movea	8,sp,r9
+                         761 .L737:
+                         762 	jarl	_MH_KEY_GetEccKey,lp
+                         762 <EXPANSION BEGIN>
+                         762 jarl22 _MH_KEY_GetEccKey , lp 
+00000246 80ff0000*       762 <EXPANSION END>
+0000024a 0ae8            763 	mov	r10,r29
+                         764 --357:                                    p_isd_param->ecc_pub_key_group,
+                         765 --358:                                    p_isd_param->ecc_pub_key_id,
+                         766 --359:                                    &p_pub_ecc_key);
+                         767 --360:             if (ER_OK != err)
+                         768 --line360
+                         769 ..lin.92e61a6c..89682a97.0_37::
+                         770 .LDWlin37:
+0000024c e0e9            771 	cmp	zero,r29
+0000024e b20d*           772 	be	.L393
+                         773 --361:             {
+                         774 --362:                 /* key not available: abort */
+                         775 --363:                 skip_flg = FLG_ON;
+                         776 --line363
+                         777 ..lin.92e61a6c..89682a97.0_38::
+                         778 .LDWlin38:
+00000250 010a            779 	mov	1,r1
+00000252 630f0d00        780 	st.w	r1,12[sp]
+00000256 f505*           781 	br	.L393
+                         782 .L387:
+                         783 --364:             }
+                         784 --365:             else
+                         785 --366:             {
+                         786 --367:                 /* Do nothing */
+                         787 --368:             }
+                         788 --369:         } /* end of if (NUM0 != p_ecc_key->p_properties->priv_scalar_size_in_bits) */
+                         789 --370:         else
+                         790 --371:         {
+                         791 --372:             /* key invalidated: abort */
+                         792 --373:             err = ER_MH_KEY_INVALID_KEY_GROUP;
+                         793 --line373
+                         794 ..lin.92e61a6c..89682a97.0_39::
+                         795 .LDWlin39:
+00000258 3d0602009000    796 	mov	9437186,r29
+                         797 --374:             skip_flg = FLG_ON;
+                         798 --line374
+                         799 ..lin.92e61a6c..89682a97.0_40::
+                         800 .LDWlin40:
+0000025e 010a            801 	mov	1,r1
+00000260 630f0d00        802 	st.w	r1,12[sp]
+                         803 .L393:
+                         804 --375:         } /* end of else */
+                         805 --376:     } /* end of if (FLG_OFF == skip_flg) */
+                         806 --377:         else
+                         807 --378:         {
+                         808 --379:         /* do nothing */
+                         809 --380:     }
+                         810 --382:     if (FLG_OFF == skip_flg)
+00000264 230f0d00        811 	ld.w	12[sp],r1
+00000268 e009            812 	cmp	zero,r1
+0000026a ea15*           813 	bne	.L399
+                         814 --383:     {
+                         815 --384:         p_job_param->resource_ctrl |= GET_PUB_KEY_ECC;
+                         816 --line384
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         817 ..lin.92e61a6c..89682a97.0_41::
+                         818 .LDWlin41:
+0000026c d7171000        819 	set1	2,16[r23]
+                         820 --385:         
+                         821 --386:         (void)s_01_CanUseKeyIfDbgConnected((key_flags_t)p_pub_ecc_key->p_properties->flags.disable_on_debug,
+00000270 23f70900        822 	ld.w	8[sp],ep
+00000274 233e0300        823 	movea	3,sp,r7
+00000278 06f5            824 	sld.w	12[ep],ep
+0000027a 6c30            825 	sld.bu	12[ep],r6
+0000027c de32            826 	shl	30,r6
+0000027e 9f32            827 	shr	31,r6
+                         828 .L739:
+                         829 	jarl	_s_01_CanUseKeyIfDbgConnected,lp
+                         829 <EXPANSION BEGIN>
+                         829 jarl22 _s_01_CanUseKeyIfDbgConnected , lp 
+00000280 80ff0000*       829 <EXPANSION END>
+                         830 --387:                                            &is_allowed);
+                         831 --388:         if (FALSE == (uint32_t)is_allowed)
+                         832 --line388
+                         833 ..lin.92e61a6c..89682a97.0_42::
+                         834 .LDWlin42:
+00000284 a30f0300        835 	ld.bu	3[sp],r1
+00000288 e009            836 	cmp	zero,r1
+0000028a ea05*           837 	bne	.L399
+                         838 --389:         {
+                         839 --390:             /* key not usable: abort */
+                         840 --391:             err = ER_MH_KEY_NOT_USABLE;
+                         841 --line391
+                         842 ..lin.92e61a6c..89682a97.0_43::
+                         843 .LDWlin43:
+0000028c 1cee0700        844 	addi	7,r28,r29
+                         845 --392:             skip_flg = FLG_ON;
+00000290 010a            846 	mov	1,r1
+00000292 630f0d00        847 	st.w	r1,12[sp]
+                         848 .L399:
+                         849 --393:         }
+                         850 --394:         else
+                         851 --395:         {
+                         852 --396:             /* Do nothing */
+                         853 --397:         }
+                         854 --398:     } /* end of if (FLG_OFF == skip_flg) */
+                         855 --399:     else
+                         856 --400:     {
+                         857 --401:         /* do nothing */
+                         858 --402:     }
+                         859 --404:     if (FLG_OFF == skip_flg)
+00000296 230f0d00        860 	ld.w	12[sp],r1
+0000029a e009            861 	cmp	zero,r1
+0000029c fa1d*           862 	bne	.L409
+                         863 --405:     {
+                         864 --406:         /* make sure the public and the private keys are on the same curve */
+                         865 --407:         if (priv_ecc_curve_id != p_pub_ecc_key->p_properties->ecc_curve)
+                         866 --line407
+                         867 ..lin.92e61a6c..89682a97.0_44::
+                         868 .LDWlin44:
+0000029e 23f70900        869 	ld.w	8[sp],ep
+000002a2 06f5            870 	sld.w	12[ep],ep
+000002a4 040d            871 	sld.w	8[ep],r1
+000002a6 e1c9            872 	cmp	r1,r25
+000002a8 c205*           873 	be	.L402
+                         874 --408:         {
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         875 --409:             err = ER_MH_KEY_INVALID_CURVE_ID;
+                         876 --line409
+                         877 ..lin.92e61a6c..89682a97.0_45::
+                         878 .LDWlin45:
+000002aa 1cee1400        879 	addi	20,r28,r29
+000002ae e515*           880 	br	.L409
+                         881 .L402:
+                         882 --410:         }
+                         883 --411:         /* ED25519 and Ed448 can use by only eddsa service */
+                         884 --412:         else if ((ECC_CURVE_ED25519 == priv_ecc_curve_id) ||
+                         885 --line412
+                         886 ..lin.92e61a6c..89682a97.0_46::
+                         887 .LDWlin46:
+000002b0 1906efff        888 	addi	-17,r25,zero
+000002b4 c205*           889 	be	.L406
+                         890 --line413
+                         891 ..lin.92e61a6c..89682a97.0_47::
+                         892 .LDWlin47:
+000002b6 1906eeff        893 	addi	-18,r25,zero
+000002ba ca05*           894 	bne	.L405
+                         895 .L406:
+                         896 --413:                      (ECC_CURVE_ED448 == priv_ecc_curve_id))
+                         897 --414:         {
+                         898 --415:             err = ER_MH_KEY_INVALID_KEY_INDEX;
+                         899 --line415
+                         900 ..lin.92e61a6c..89682a97.0_48::
+                         901 .LDWlin48:
+000002bc 1cee0100        902 	addi	1,r28,r29
+000002c0 d50d*           903 	br	.L409
+                         904 .L405:
+                         905 --416:         }
+                         906 --417:         else
+                         907 --418:         {
+                         908 --419:             /* init the job slice */
+                         909 --420:             p_job->prm.job_ecc.job_slice = p_isd_param->job_slice;
+                         910 --line420
+                         911 ..lin.92e61a6c..89682a97.0_49::
+                         912 .LDWlin49:
+000002c2 fa0f2100        913 	ld.hu	32[r26],r1
+000002c6 7b0f2400        914 	st.h	r1,36[r27]
+                         915 --422:             /* save the keys */
+                         916 --423:             p_job->prm.job_ecc.p_priv_key = (uint8_t *)p_ecc_key;
+000002ca 230f0500        917 	ld.w	4[sp],r1
+000002ce 7b0f1100        918 	st.w	r1,16[r27]
+                         919 --424:             p_job->prm.job_ecc.p_pub_key  = (uint8_t *)p_pub_ecc_key;
+000002d2 230f0900        920 	ld.w	8[sp],r1
+000002d6 7b0f1500        921 	st.w	r1,20[r27]
+                         922 .L409:
+                         923 --425:         }
+                         924 --426:     } /* end of if (FLG_OFF == skip_flg) */
+                         925 --427:     else
+                         926 --428:     {
+                         927 --429:         /* do nothing */
+                         928 --430:     }
+                         929 --432:     return (err);
+000002da 1d50            930 	mov	r29,r10
+                         931 --	    .ef
+                         932 .LDW31:
+000002dc 23ff2d00        933 	ld.w	44[sp],lp
+000002e0 23ef1100        934 	ld.w	16[sp],r29
+000002e4 23e71500        935 	ld.w	20[sp],r28
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+000002e8 23df1900        936 	ld.w	24[sp],r27
+000002ec 23d71d00        937 	ld.w	28[sp],r26
+000002f0 23cf2100        938 	ld.w	32[sp],r25
+000002f4 23c72500        939 	ld.w	36[sp],r24
+000002f8 23bf2900        940 	ld.w	40[sp],r23
+000002fc 031e3000        941 	addi	48,sp,sp
+                         942 .L741:
+                         943 	.jumptype return
+00000300 7f00            944 	jmp	[lp]
+                         945 --line420
+                         946 ..lin.92e61a6c..89682a97.0_50::
+                         947 	.type	_s_01_InitializeJobEcdh,@function
+                         948 	.size	_s_01_InitializeJobEcdh,.-_s_01_InitializeJobEcdh
+                         949 	.type	_s_01_InitializeJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                         950 	.size	_s_01_InitializeJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_InitializeJobEcdh..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                         951 	.align	2
+                         952 --_p_isd	r24	local
+                         953 --_p_job_param	r23	local
+                         954 --_p_isd_param	r26	local
+                         955 --_p_ecc_key	4[sp]	local
+                         956 --_p_pub_ecc_key	8[sp]	local
+                         957 --_priv_ecc_curve_id	r25	local
+                         958 --_is_allowed	3[sp]	local
+                         959 --_err	r29	local
+                         960 --_skip_flg	12[sp]	local
+                         961 
+                         962 --_p_job	r27	param
+                         963 
+                         964 	.section ".bss","awb"
+                         965 .L594:
+                         966 	.type	.L594,@object
+                         967 	.size	.L594,0
+                         968 	.section ".ghcalltbl",""
+00000010 00000000*       969 .L730:	.word	.L729
+                         970 	.type	.L730,@object
+                         971 	.size	.L730,4
+00000014 00000000*       972 .L732:	.word	.L731
+                         973 	.type	.L732,@object
+                         974 	.size	.L732,4
+00000018 00000000*       975 .L734:	.word	.L733
+                         976 	.type	.L734,@object
+                         977 	.size	.L734,4
+0000001c 00000000*       978 .L736:	.word	.L735
+                         979 	.type	.L736,@object
+                         980 	.size	.L736,4
+00000020 00000000*       981 .L738:	.word	.L737
+                         982 	.type	.L738,@object
+                         983 	.size	.L738,4
+00000024 00000000*       984 .L740:	.word	.L739
+                         985 	.type	.L740,@object
+                         986 	.size	.L740,4
+                         987 	.section ".ghrettbl",""
+00000004 00000000*       988 .L742:	.word	.L741
+                         989 	.type	.L742,@object
+                         990 	.size	.L742,4
+                         991 	.data
+                         992 	.section ".icum_service.text","ax"
+                         993 
+                         994 --433: }
+                         995 
+                         996 --436: /****************************************************************************************
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                         997 --437: * Function ID  : [ICUMFW_CD_S_01_ECDH_0007]:[ICUMFW_UD_S_01_ECDH_0007]
+                         998 --438: * Function name: s_01_ECDH_Init
+                         999 --439: * Description  : Initialization part of generating ECDH secret key
+                        1000 --440: * Arguments    : p_job :[in-out]
+                        1001 --441: * Return Value : ER_OK
+                        1002 --442: *                ER_PARAM
+                        1003 --443: *                ER_PENDING
+                        1004 --444: *                ER_ML_CTX_ALL_USE
+                        1005 --445: *                ER_MH_KEY_SLOT_EMPTY
+                        1006 --446: *                ER_MH_KEY_INVALID_KEY_GROUP
+                        1007 --447: *                ER_MH_KEY_INVALID_KEY_INDEX
+                        1008 --448: *                ER_MH_KEY_IN_USE
+                        1009 --449: *                ER_MH_KEY_NOT_USABLE
+                        1010 --450: *                ER_MH_KEY_NVM_SYS_CRITICAL
+                        1011 --451: *                ER_MH_KEY_NVM_SYS
+                        1012 --452: *                ER_MH_KEY_DATA_INVALID
+                        1013 --453: *                ER_MH_KEY_SYS_ERROR
+                        1014 --454: *                ER_MH_KEY_NVM_UNAVAILABLE
+                        1015 --455: *                ER_MH_KEY_NVM_SIZE
+                        1016 --456: *                ER_MH_KEY_SRC_MEM_ERROR
+                        1017 --457: *                ER_MH_KEY_AES_TIMEOUT_ERROR
+                        1018 --458: *                ER_MH_KEY_AES_PRM_ERROR
+                        1019 --459: *                ER_MH_KEY_USER_OVER
+                        1020 --460: *                ER_MH_KEY_INVALID_CURVE_ID
+                        1021 --461: *                SERV_SYS_ERROR
+                        1022 --462: ****************************************************************************************/
+                        1023 --463: static uint32_t s_01_ECDH_Init(icum_job_t *p_job)
+                        1024 	.align	2
+                        1025 	.align	2
+                        1026 	.align	2
+                        1027 ..gh.f.a.2.e.2:
+                        1028 	.type	..gh.f.a.2.e.2,@object
+                        1029 	.size	..gh.f.a.2.e.2,0
+                        1030 	.global	_s_01_ECDH_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        1031 _s_01_ECDH_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                        1032 _s_01_ECDH_Init:
+00000302 031eecff       1033 	addi	-20,sp,sp
+00000306 63ff1100       1034 	st.w	lp,16[sp]
+0000030a 63e70500       1035 	st.w	r28,4[sp]
+0000030e 63d70d00       1036 	st.w	r26,12[sp]
+00000312 63df0900       1037 	st.w	r27,8[sp]
+00000316 63ef0100       1038 	st.w	r29,0[sp]
+0000031a 06e0           1039 	mov	r6,r28
+                        1040 --	    .bf
+                        1041 .LDW41:
+                        1042 --464: {
+                        1043 --465:     r_icumif_isd_t     *p_ISD;
+                        1044 --466:     job_ecc_t          *p_JOB_PARAM;
+                        1045 --468:     uint32_t            err;
+                        1046 --470:     p_ISD         = p_job->p_ISD;
+0000031c 3cd70100       1047 	ld.w	0[r28],r26
+                        1048 --471:     p_JOB_PARAM   = &p_job->prm.job_ecc;
+00000320 1cde1000       1049 	addi	16,r28,r27
+                        1050 --473:     switch((uint32_t)p_job->process_phase)
+00000324 9c0f0b00       1051 	ld.bu	10[r28],r1
+00000328 e009           1052 	cmp	zero,r1
+0000032a ea1d*          1053 	bne	.L747
+                        1054 --474:     {
+                        1055 --475:         case ON_HOLD:
+                        1056 --476:             if (GET_CTX_NONE == ((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_ECC))
+                        1057 --line476
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1058 ..lin.92e61a6c..d323243d.0_51::
+                        1059 .LDWlin51:
+0000032c dbc71000       1060 	tst1	0,16[r27]
+00000330 8a15*          1061 	bne	.L756
+                        1062 --477:             {
+                        1063 --478:                 /* get ecc context */
+                        1064 --479:                 err = ML_CTX_Get(CTX_TYPE_ECC, &p_JOB_PARAM->p_ecc_ctx);
+                        1065 --line479
+                        1066 ..lin.92e61a6c..d323243d.0_52::
+                        1067 .LDWlin52:
+00000332 1b3e0800       1068 	addi	8,r27,r7
+00000336 0232           1069 	mov	2,r6
+                        1070 .L910:
+                        1071 	jarl	_ML_CTX_Get,lp
+                        1071 <EXPANSION BEGIN>
+                        1071 jarl22 _ML_CTX_Get , lp 
+00000338 80ff0000*      1071 <EXPANSION END>
+0000033c 0ae8           1072 	mov	r10,r29
+                        1073 --480:                 if (ER_OK != err)
+                        1074 --line480
+                        1075 ..lin.92e61a6c..d323243d.0_53::
+                        1076 .LDWlin53:
+0000033e e0e9           1077 	cmp	zero,r29
+00000340 a205*          1078 	be	.L755
+                        1079 --481:                 {
+                        1080 --482:                     break;
+                        1081 --line482
+                        1082 ..lin.92e61a6c..d323243d.0_54::
+                        1083 .LDWlin54:
+00000342 d515*          1084 	br	.L753
+                        1085 .L755:
+                        1086 --483:                 }
+                        1087 --484:                 else
+                        1088 --485:                 {
+                        1089 --486:                     /* Do nothing */
+                        1090 --487:                 }
+                        1091 --488:                 p_JOB_PARAM->resource_ctrl |= GET_CTX_ECC;
+                        1092 --line488
+                        1093 ..lin.92e61a6c..d323243d.0_55::
+                        1094 .LDWlin55:
+00000344 db071000       1095 	set1	0,16[r27]
+                        1096 --489:                 p_ISD->service_result = SERV_IN_PROCESS;
+00000348 800effff       1097 	ori	65535,zero,r1
+0000034c 7a0f0d00       1098 	st.w	r1,12[r26]
+                        1099 .L756:
+                        1100 --490:             }
+                        1101 --491:             else
+                        1102 --492:             {
+                        1103 --493:                 /* Do nothing */
+                        1104 --494:             }
+                        1105 --496:             /* ************************************************************************* */
+                        1106 --497:             /* Initialization                                                        */
+                        1107 --498:             /* ************************************************************************* */
+                        1108 --499:             err = s_01_InitializeJobEcdh(p_job);
+00000350 1c30           1109 	mov	r28,r6
+                        1110 .L912:
+                        1111 	jarl	_s_01_InitializeJobEcdh,lp
+                        1111 <EXPANSION BEGIN>
+                        1111 jarl22 _s_01_InitializeJobEcdh , lp 
+00000352 bfff10fe*      1111 <EXPANSION END>
+00000356 0ae8           1112 	mov	r10,r29
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1113 --500:             if ((uint32_t)SERV_OK != err)
+                        1114 --line500
+                        1115 ..lin.92e61a6c..d323243d.0_56::
+                        1116 .LDWlin56:
+00000358 e0e9           1117 	cmp	zero,r29
+0000035a a205*          1118 	be	.L760
+                        1119 --501:             {
+                        1120 --502:                 /* init error - break here */
+                        1121 --503:                 break;
+                        1122 --line503
+                        1123 ..lin.92e61a6c..d323243d.0_57::
+                        1124 .LDWlin57:
+0000035c 850d*          1125 	br	.L753
+                        1126 .L760:
+                        1127 --504:             }
+                        1128 --505:             else
+                        1129 --506:             {
+                        1130 --507:                 /* Do nothing */
+                        1131 --508:             }
+                        1132 --510:             p_job->process_phase = PHASE_1;
+                        1133 --line510
+                        1134 ..lin.92e61a6c..d323243d.0_58::
+                        1135 .LDWlin58:
+0000035e 010a           1136 	mov	1,r1
+00000360 5c0f0a00       1137 	st.b	r1,10[r28]
+                        1138 --511:             break;
+                        1139 --512:         default:
+00000364 c505*          1140 	br	.L753
+                        1141 .L747:
+                        1142 --513:             /* should never occur */
+                        1143 --514:             err = (uint32_t)SERV_SYS_ERROR;
+                        1144 --line514
+                        1145 ..lin.92e61a6c..d323243d.0_59::
+                        1146 .LDWlin59:
+00000366 20ee1100       1147 	movea	17,zero,r29
+                        1148 --515:             break;
+0000036a 0000           1149 	nop
+                        1150 .L753:
+                        1151 --516:     }
+                        1152 --518:     return (err);
+0000036c 1d50           1153 	mov	r29,r10
+                        1154 --	    .ef
+                        1155 .LDW51:
+0000036e 23ff1100       1156 	ld.w	16[sp],lp
+00000372 23ef0100       1157 	ld.w	0[sp],r29
+00000376 23e70500       1158 	ld.w	4[sp],r28
+0000037a 23df0900       1159 	ld.w	8[sp],r27
+0000037e 23d70d00       1160 	ld.w	12[sp],r26
+00000382 031e1400       1161 	addi	20,sp,sp
+                        1162 .L914:
+                        1163 	.jumptype return
+00000386 7f00           1164 	jmp	[lp]
+                        1165 --line514
+                        1166 ..lin.92e61a6c..d323243d.0_60::
+                        1167 	.type	_s_01_ECDH_Init,@function
+                        1168 	.size	_s_01_ECDH_Init,.-_s_01_ECDH_Init
+                        1169 	.type	_s_01_ECDH_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                        1170 	.size	_s_01_ECDH_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_ECDH_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        1171 	.align	2
+                        1172 --_p_ISD	r26	local
+                        1173 --_p_JOB_PARAM	r27	local
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1174 --_err	r29	local
+                        1175 
+                        1176 --_p_job	r28	param
+                        1177 
+                        1178 	.section ".bss","awb"
+                        1179 .L846:
+                        1180 	.type	.L846,@object
+                        1181 	.size	.L846,0
+                        1182 	.section ".ghcalltbl",""
+00000028 00000000*      1183 .L911:	.word	.L910
+                        1184 	.type	.L911,@object
+                        1185 	.size	.L911,4
+0000002c 00000000*      1186 .L913:	.word	.L912
+                        1187 	.type	.L913,@object
+                        1188 	.size	.L913,4
+                        1189 	.section ".ghrettbl",""
+00000008 00000000*      1190 .L915:	.word	.L914
+                        1191 	.type	.L915,@object
+                        1192 	.size	.L915,4
+                        1193 	.data
+                        1194 	.section ".icum_service.text","ax"
+                        1195 
+                        1196 --519: }
+                        1197 
+                        1198 --522: /****************************************************************************************
+                        1199 --523: * Function ID  : [ICUMFW_CD_S_01_ECDH_0004]:[ICUMFW_UD_S_01_ECDH_0004]
+                        1200 --524: * Function name: s_01_ECDH_CalcScalar
+                        1201 --525: * Description  : Calculation part of generating ECDH secret key
+                        1202 --526: * Arguments    : p_job :[in-out]
+                        1203 --527: * Return Value : ER_OK
+                        1204 --528: *                ER_PARAM
+                        1205 --529: *                ER_PENDING
+                        1206 --530: *                ER_IN_PROCESS
+                        1207 --531: *                ER_L_ECC_ERROR
+                        1208 --532: *                ER_L_ECC_INVALID_ARG
+                        1209 --533: *                ER_L_ECC_LENGTHERR
+                        1210 --534: *                ER_L_ECC_SYS_ERROR
+                        1211 --535: *                ER_ML_ABTR_EMPTY
+                        1212 --536: *                ER_ML_ABTR_NOT_RELEASED
+                        1213 --537: *                ER_ML_ABTR_NOT_INITIALIZED
+                        1214 --538: *                ER_ML_ABTR_TIMER_SET_FAILURE
+                        1215 --539: *                ER_ML_ABTR_SYS_ERROR
+                        1216 --540: *                ER_ML_PRNG_OK
+                        1217 --541: *                ER_ML_PRNG_TIMEOUT
+                        1218 --542: *                ER_ML_PRNG_RESEED
+                        1219 --543: *                ER_ML_PRNG_STATUS
+                        1220 --544: *                ER_ML_PRNG_PARAMETER
+                        1221 --545: *                ER_ML_PRNG_AES_PRM
+                        1222 --546: *                SERV_SYS_ERROR
+                        1223 --547: ****************************************************************************************/
+                        1224 --548: static uint32_t s_01_ECDH_CalcScalar(icum_job_t *p_job)
+                        1225 	.align	2
+                        1226 	.align	2
+                        1227 	.align	2
+                        1228 ..gh.f.a.2.e.3:
+                        1229 	.type	..gh.f.a.2.e.3,@object
+                        1230 	.size	..gh.f.a.2.e.3,0
+                        1231 	.global	_s_01_ECDH_CalcScalar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        1232 _s_01_ECDH_CalcScalar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                        1233 _s_01_ECDH_CalcScalar:
+00000388 031ec4ff       1234 	addi	-60,sp,sp
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+0000038c 63ff3900       1235 	st.w	lp,56[sp]
+00000390 63df1d00       1236 	st.w	r27,28[sp]
+00000394 63af3500       1237 	st.w	r21,52[sp]
+00000398 63b73100       1238 	st.w	r22,48[sp]
+0000039c 63bf2d00       1239 	st.w	r23,44[sp]
+000003a0 63c72900       1240 	st.w	r24,40[sp]
+000003a4 63cf2500       1241 	st.w	r25,36[sp]
+000003a8 63d72100       1242 	st.w	r26,32[sp]
+000003ac 63e71900       1243 	st.w	r28,24[sp]
+000003b0 63ef1500       1244 	st.w	r29,20[sp]
+000003b4 06d8           1245 	mov	r6,r27
+                        1246 --	    .bf
+                        1247 .LDW61:
+                        1248 --549: {
+                        1249 --550:     r_icumif_isd_t     *p_isd;
+                        1250 --551:     job_ecc_t          *p_job_param;
+                        1251 --552:     ISD_ECDH_t         *p_isd_param;
+                        1252 --553:     ecc_key_t          *p_ecc_key;
+                        1253 --554:     ecc_key_t          *p_pub_ecc_key;
+                        1254 --555:     ecc_ctx_t          *p_ecc_ctx;
+                        1255 --556:     uint32_t            err;
+                        1256 --557:     kdf_type_t          kdf_type;
+                        1257 --558:     uint32_t            byte_size;
+                        1258 --559:     hash_type_t         hash_type;
+                        1259 --560:     uint16_t            hash_size;
+                        1260 --561:     remap_ptr_manip_t   p_info_logical;
+                        1261 --562:     uint32_t            processing_bits;
+                        1262 --563:     e_pkc_sync_opt_t    sync_opt;
+                        1263 --565:     /* Initialize parameter */
+                        1264 --566:     p_isd         = p_job->p_ISD;
+000003b6 3baf0100       1265 	ld.w	0[r27],r21
+                        1266 --567:     p_job_param   = &p_job->prm.job_ecc;
+000003ba 1bce1000       1267 	addi	16,r27,r25
+                        1268 --568:     p_isd_param   = &p_isd->prm.ECDH;
+000003be 15d62000       1269 	addi	32,r21,r26
+                        1270 --569:     kdf_type      = E_LAST_ITEM_KDF_TYPE;
+000003c2 400e0001       1271 	movhi	hi(16777216),zero,r1
+000003c6 630f0100       1272 	st.w	r1,0[sp]
+                        1273 --571:     /* get the pointer the the ECC public key used */
+                        1274 --572:     p_ecc_key     = (ecc_key_t  *)p_job_param->p_priv_key;
+                        1275 --line572
+                        1276 ..lin.92e61a6c..57f79f32.0_61::
+                        1277 .LDWlin61:
+000003ca 39bf0100       1278 	ld.w	0[r25],r23
+                        1279 --573:     p_pub_ecc_key = (ecc_key_t  *)p_job_param->p_pub_key;
+000003ce 39c70500       1280 	ld.w	4[r25],r24
+                        1281 --574:     p_ecc_ctx     = (ecc_ctx_t  *)p_job_param->p_ecc_ctx;
+000003d2 39ef0900       1282 	ld.w	8[r25],r29
+                        1283 --576:     switch((uint32_t)p_job->process_phase)
+000003d6 9b0f0b00       1284 	ld.bu	10[r27],r1
+000003da 610a           1285 	cmp	1,r1
+000003dc e107fb01*      1286 	bl	.L922
+000003e0 820d*          1287 	be	.L919
+000003e2 630a           1288 	cmp	3,r1
+000003e4 e1073f01*      1289 	bl	.L920
+000003e8 e207b501*      1290 	be	.L921
+000003ec 8007ea01*      1291 	br	.L922
+                        1292 .L919:
+                        1293 --577:     {
+                        1294 --578:         case PHASE_1:
+                        1295 --579:             /* Get Ecc key size (Invalid curve id error does not occur because checked when update the key) */
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1296 --580:             (void)MH_KEY_GetEccKeySize(p_ecc_key->p_properties->ecc_curve, &byte_size);
+                        1297 --line580
+                        1298 ..lin.92e61a6c..57f79f32.0_62::
+                        1299 .LDWlin62:
+000003f0 37f70d00       1300 	ld.w	12[r23],ep
+000003f4 233e0400       1301 	movea	4,sp,r7
+000003f8 0435           1302 	sld.w	8[ep],r6
+                        1303 .L1514:
+                        1304 	jarl	_MH_KEY_GetEccKeySize,lp
+                        1304 <EXPANSION BEGIN>
+                        1304 jarl22 _MH_KEY_GetEccKeySize , lp 
+000003fa 80ff0000*      1304 <EXPANSION END>
+                        1305 --581:             /* convert internal Enum(kdf type) */
+                        1306 --582:             (void)L_ECC_ToInternalKdfType(p_isd_param->kdf_algo, &kdf_type);
+                        1307 --line582
+                        1308 ..lin.92e61a6c..57f79f32.0_63::
+                        1309 .LDWlin63:
+000003fe 3a371900       1310 	ld.w	24[r26],r6
+00000402 233e0000       1311 	movea	0,sp,r7
+                        1312 .L1516:
+                        1313 	jarl	_L_ECC_ToInternalKdfType,lp
+                        1313 <EXPANSION BEGIN>
+                        1313 jarl22 _L_ECC_ToInternalKdfType , lp 
+00000406 80ff0000*      1313 <EXPANSION END>
+                        1314 --583:             /* convert internal Enum(hash type) */
+                        1315 --584:             (void)L_HASH_GetInternalHashType(p_isd_param->hash_primitive, &hash_type, &hash_size);
+                        1316 --line584
+                        1317 ..lin.92e61a6c..57f79f32.0_64::
+                        1318 .LDWlin64:
+0000040a 3a371d00       1319 	ld.w	28[r26],r6
+0000040e 233e0800       1320 	movea	8,sp,r7
+00000412 23460e00       1321 	movea	14,sp,r8
+                        1322 .L1518:
+                        1323 	jarl	_L_HASH_GetInternalHashType,lp
+                        1323 <EXPANSION BEGIN>
+                        1323 jarl22 _L_HASH_GetInternalHashType , lp 
+00000416 80ff0000*      1323 <EXPANSION END>
+                        1324 --585:             /* Get Remap(Convert Physical address -> Logical Address) */
+                        1325 --586:             (void)D_REMAP_GetLogicalAddrs((uint32_t)p_isd_param->p_info, &p_info_logical.val);
+                        1326 --line586
+                        1327 ..lin.92e61a6c..57f79f32.0_65::
+                        1328 .LDWlin65:
+0000041a 3a372900       1329 	ld.w	40[r26],r6
+0000041e 233e1000       1330 	movea	16,sp,r7
+                        1331 .L1520:
+                        1332 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        1332 <EXPANSION BEGIN>
+                        1332 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+00000422 80ff0000*      1332 <EXPANSION END>
+                        1333 --588:             /* Set KDF parameter */
+                        1334 --589:             p_ecc_ctx->kdf_ctx.kdf_algo = kdf_type;
+                        1335 --line589
+                        1336 ..lin.92e61a6c..57f79f32.0_66::
+                        1337 .LDWlin66:
+00000426 230f0100       1338 	ld.w	0[sp],r1
+0000042a 7d0fb902       1339 	st.w	r1,696[r29]
+                        1340 --590:             p_ecc_ctx->kdf_ctx.hash_type = hash_type;
+0000042e 230f0900       1341 	ld.w	8[sp],r1
+00000432 7d0fbd02       1342 	st.w	r1,700[r29]
+                        1343 --591:             p_ecc_ctx->kdf_ctx.secret.shared_secret.size_in_bytes = byte_size;
+00000436 230f0500       1344 	ld.w	4[sp],r1
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+0000043a 7d0fc502       1345 	st.w	r1,708[r29]
+                        1346 --592:             p_ecc_ctx->kdf_ctx.addition.info.p_data = p_info_logical.p_ptr;
+0000043e 230f1100       1347 	ld.w	16[sp],r1
+00000442 7d0fc902       1348 	st.w	r1,712[r29]
+                        1349 --593:             p_ecc_ctx->kdf_ctx.addition.info.size_in_bytes = p_isd_param->info_size_in_bytes;
+00000446 9a0f3300       1350 	ld.bu	50[r26],r1
+0000044a 7d0fcd02       1351 	st.w	r1,716[r29]
+                        1352 --594:             p_ecc_ctx->kdf_ctx.count.counter = p_isd_param->counter;
+0000044e fa0f3100       1353 	ld.hu	48[r26],r1
+00000452 7d0fd002       1354 	st.h	r1,720[r29]
+                        1355 --595:             p_ecc_ctx->kdf_ctx.deriv_key_size_in_bytes = (uint8_t)p_isd_param->key_size_in_bytes;
+00000456 fa0f3500       1356 	ld.hu	52[r26],r1
+0000045a 5d0fd802       1357 	st.b	r1,728[r29]
+                        1358 --596:             /* The following parameters are set in the PKC library */
+                        1359 --597:             p_ecc_ctx->kdf_ctx.secret.shared_secret.p_data = NULL;
+0000045e 7d07c102       1360 	st.w	zero,704[r29]
+                        1361 --598:             p_ecc_ctx->kdf_ctx.p_deriv_key = NULL;
+00000462 7d07d502       1362 	st.w	zero,724[r29]
+                        1363 --599:             /* Set ecc curve id */
+                        1364 --600:             p_ecc_ctx->curve_id = p_ecc_key->p_properties->ecc_curve;
+00000466 37f70d00       1365 	ld.w	12[r23],ep
+0000046a 040d           1366 	sld.w	8[ep],r1
+0000046c 7d0f0100       1367 	st.w	r1,0[r29]
+                        1368 --601:             /* Set ecc private key */
+                        1369 --602:             p_ecc_ctx->scalar_bin.key_length = p_ecc_key->p_priv_scalar->size;
+00000470 37f71100       1370 	ld.w	16[r23],ep
+00000474 000d           1371 	sld.w	0[ep],r1
+00000476 7d0fed02       1372 	st.w	r1,748[r29]
+                        1373 --603:             p_ecc_ctx->scalar_bin.p_d = (uint8_t *)&p_ecc_key->p_priv_scalar->value[0u];
+0000047a 370f1100       1374 	ld.w	16[r23],r1
+0000047e 440a           1375 	add	4,r1
+00000480 7d0ff102       1376 	st.w	r1,752[r29]
+                        1377 --604:             p_ecc_ctx->scalar_bin.p_qx = (uint8_t *)&p_pub_ecc_key->p_pub_point->x.value[0u];
+00000484 380f1500       1378 	ld.w	20[r24],r1
+00000488 440a           1379 	add	4,r1
+0000048a 7d0ff502       1380 	st.w	r1,756[r29]
+                        1381 --605:             p_ecc_ctx->scalar_bin.p_qy = (uint8_t *)&p_pub_ecc_key->p_pub_point->y.value[0u];
+0000048e 380f1500       1382 	ld.w	20[r24],r1
+00000492 010eb000       1383 	addi	176,r1,r1
+00000496 7d0ff902       1384 	st.w	r1,760[r29]
+                        1385 --606:             /* Set ecc public key */
+                        1386 --607:             p_ecc_ctx->point_bin.key_length = p_pub_ecc_key->p_pub_point->x.size;
+0000049a 38f71500       1387 	ld.w	20[r24],ep
+0000049e 000d           1388 	sld.w	0[ep],r1
+000004a0 7d0ffd02       1389 	st.w	r1,764[r29]
+                        1390 --608:             p_ecc_ctx->point_bin.p_d = NULL;
+000004a4 7d070103       1391 	st.w	zero,768[r29]
+                        1392 --609:             p_ecc_ctx->point_bin.p_qx = (uint8_t *)&p_pub_ecc_key->p_pub_point->x.value[0u];
+000004a8 380f1500       1393 	ld.w	20[r24],r1
+000004ac 440a           1394 	add	4,r1
+000004ae 7d0f0503       1395 	st.w	r1,772[r29]
+                        1396 --610:             p_ecc_ctx->point_bin.p_qy = (uint8_t *)&p_pub_ecc_key->p_pub_point->y.value[0u];
+000004b2 380f1500       1397 	ld.w	20[r24],r1
+000004b6 010eb000       1398 	addi	176,r1,r1
+000004ba 7d0f0903       1399 	st.w	r1,776[r29]
+                        1400 --612:             if ((ECC_CURVE_CURVE25519 == p_ecc_ctx->curve_id) ||
+000004be 3d0f0100       1401 	ld.w	0[r29],r1
+000004c2 6f0a           1402 	cmp	15,r1
+000004c4 e205*          1403 	be	.L925
+                        1404 --line613
+                        1405 ..lin.92e61a6c..57f79f32.0_67::
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1406 .LDWlin67:
+000004c6 3d0f0100       1407 	ld.w	0[r29],r1
+000004ca 0106f0ff       1408 	addi	-16,r1,zero
+000004ce ba15*          1409 	bne	.L924
+                        1410 .L925:
+                        1411 --613:                 (ECC_CURVE_CURVE448 == p_ecc_ctx->curve_id))
+                        1412 --614:             {
+                        1413 --615:                 /* Setup the base parameter of ECDHx for PKC library */
+                        1414 --616:                 err = L_PKC_EcdhXSetup(p_ecc_ctx, &p_ecc_ctx->kdf_info);
+                        1415 --line616
+                        1416 ..lin.92e61a6c..57f79f32.0_68::
+                        1417 .LDWlin68:
+000004d0 1d30           1418 	mov	r29,r6
+000004d2 1d3eac02       1419 	addi	684,r29,r7
+                        1420 .L1522:
+                        1421 	jarl	_L_PKC_EcdhXSetup,lp
+                        1421 <EXPANSION BEGIN>
+                        1421 jarl22 _L_PKC_EcdhXSetup , lp 
+000004d6 80ff0000*      1421 <EXPANSION END>
+000004da 0ae0           1422 	mov	r10,r28
+                        1423 --617:                 if (ER_OK == err)
+                        1424 --line617
+                        1425 ..lin.92e61a6c..57f79f32.0_69::
+                        1426 .LDWlin69:
+000004dc e0e1           1427 	cmp	zero,r28
+000004de ca1d*          1428 	bne	.L930
+                        1429 --618:                 {
+                        1430 --619:                     /* Perform ECDHX initial processing for PKC library */
+                        1431 --620:                     err = L_PKC_EcdhXInit(&p_ecc_ctx->scalar_bin,
+                        1432 --line620
+                        1433 ..lin.92e61a6c..57f79f32.0_70::
+                        1434 .LDWlin70:
+000004e0 1d36ec02       1435 	addi	748,r29,r6
+000004e4 1d3efc02       1436 	addi	764,r29,r7
+000004e8 1d460400       1437 	addi	4,r29,r8
+                        1438 .L1524:
+                        1439 	jarl	_L_PKC_EcdhXInit,lp
+                        1439 <EXPANSION BEGIN>
+                        1439 jarl22 _L_PKC_EcdhXInit , lp 
+000004ec 80ff0000*      1439 <EXPANSION END>
+000004f0 0ae0           1440 	mov	r10,r28
+000004f2 a515*          1441 	br	.L930
+                        1442 .L924:
+                        1443 --621:                                         &p_ecc_ctx->point_bin,
+                        1444 --622:                                         &p_ecc_ctx->ctx.ecdhx);
+                        1445 --623:                 }
+                        1446 --624:                 else
+                        1447 --625:                 {
+                        1448 --626:                     /* abort error */
+                        1449 --627:                 }
+                        1450 --628:             }
+                        1451 --629:             else
+                        1452 --630:             {
+                        1453 --631:                 /* Setup the base parameter of ECDH for PKC library */
+                        1454 --632:                 err = L_PKC_EcdhSetup(p_ecc_ctx, &p_ecc_ctx->kdf_info);
+                        1455 --line632
+                        1456 ..lin.92e61a6c..57f79f32.0_71::
+                        1457 .LDWlin71:
+000004f4 1d30           1458 	mov	r29,r6
+000004f6 1d3eac02       1459 	addi	684,r29,r7
+                        1460 .L1526:
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1461 	jarl	_L_PKC_EcdhSetup,lp
+                        1461 <EXPANSION BEGIN>
+                        1461 jarl22 _L_PKC_EcdhSetup , lp 
+000004fa 80ff0000*      1461 <EXPANSION END>
+000004fe 0ae0           1462 	mov	r10,r28
+                        1463 --633:                 if (ER_OK == err)
+                        1464 --line633
+                        1465 ..lin.92e61a6c..57f79f32.0_72::
+                        1466 .LDWlin72:
+00000500 e0e1           1467 	cmp	zero,r28
+00000502 aa0d*          1468 	bne	.L930
+                        1469 --634:                 {
+                        1470 --635:                     /* Perform ECDH initial processing for PKC library */
+                        1471 --636:                     err = L_PKC_EcdhInit(&p_ecc_ctx->scalar_bin,
+                        1472 --line636
+                        1473 ..lin.92e61a6c..57f79f32.0_73::
+                        1474 .LDWlin73:
+00000504 1d36ec02       1475 	addi	748,r29,r6
+00000508 1d3efc02       1476 	addi	764,r29,r7
+0000050c 1d460400       1477 	addi	4,r29,r8
+                        1478 .L1528:
+                        1479 	jarl	_L_PKC_EcdhInit,lp
+                        1479 <EXPANSION BEGIN>
+                        1479 jarl22 _L_PKC_EcdhInit , lp 
+00000510 80ff0000*      1479 <EXPANSION END>
+00000514 0ae0           1480 	mov	r10,r28
+                        1481 .L930:
+                        1482 --637:                                         &p_ecc_ctx->point_bin,
+                        1483 --638:                                         &p_ecc_ctx->ctx.ec);
+                        1484 --639:                 }
+                        1485 --640:                 else
+                        1486 --641:                 {
+                        1487 --642:                     /* abort error */
+                        1488 --643:                 }
+                        1489 --644:             }
+                        1490 --646:             if (ER_OK == err)
+                        1491 --line646
+                        1492 ..lin.92e61a6c..57f79f32.0_74::
+                        1493 .LDWlin74:
+00000516 e0e1           1494 	cmp	zero,r28
+00000518 ca05*          1495 	bne	.L936
+                        1496 --647:                     {
+                        1497 --648:                         p_job->process_phase = PHASE_2a;
+                        1498 --line648
+                        1499 ..lin.92e61a6c..57f79f32.0_75::
+                        1500 .LDWlin75:
+0000051a 020a           1501 	mov	2,r1
+0000051c 5b0f0a00       1502 	st.b	r1,10[r27]
+                        1503 .L936:
+                        1504 --649:                     }
+                        1505 --650:                     else
+                        1506 --651:                     {
+                        1507 --652:                 /* Do nothing */
+                        1508 --653:                     }
+                        1509 --654:                     break;
+                        1510 --656:         case PHASE_2a:
+00000520 e55d*          1511 	br	.L937
+                        1512 .L920:
+                        1513 --657:             if ((ECC_CURVE_CURVE25519 == p_ecc_ctx->curve_id) ||
+                        1514 --line657
+                        1515 ..lin.92e61a6c..57f79f32.0_76::
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1516 .LDWlin76:
+00000522 3d0f0100       1517 	ld.w	0[r29],r1
+00000526 6f0a           1518 	cmp	15,r1
+00000528 e205*          1519 	be	.L939
+                        1520 --line658
+                        1521 ..lin.92e61a6c..57f79f32.0_77::
+                        1522 .LDWlin77:
+0000052a 3d0f0100       1523 	ld.w	0[r29],r1
+0000052e 0106f0ff       1524 	addi	-16,r1,zero
+00000532 ca1d*          1525 	bne	.L938
+                        1526 .L939:
+                        1527 --658:                 (ECC_CURVE_CURVE448 == p_ecc_ctx->curve_id))
+                        1528 --659:             {
+                        1529 --660:                 if (NUM0 == (uint32_t)p_job_param->job_slice)
+                        1530 --line660
+                        1531 ..lin.92e61a6c..57f79f32.0_78::
+                        1532 .LDWlin78:
+00000534 f90f1500       1533 	ld.hu	20[r25],r1
+00000538 e009           1534 	cmp	zero,r1
+0000053a ca05*          1535 	bne	.L941
+                        1536 --661:                 {
+                        1537 --662:                     processing_bits = L_PKC_PROCESSING_BITS_MAX;
+                        1538 --line662
+                        1539 ..lin.92e61a6c..57f79f32.0_79::
+                        1540 .LDWlin79:
+0000053c 80b6ffff       1541 	ori	65535,zero,r22
+00000540 a505*          1542 	br	.L943
+                        1543 .L941:
+                        1544 --663:                 }
+                        1545 --664:                 else
+                        1546 --665:                 {
+                        1547 --666:                     processing_bits = NUM1;
+                        1548 --line666
+                        1549 ..lin.92e61a6c..57f79f32.0_80::
+                        1550 .LDWlin80:
+00000542 01b2           1551 	mov	1,r22
+                        1552 .L943:
+                        1553 --667:                 }
+                        1554 --668:                 /* Perform ECDHX processing for PKC library */
+                        1555 --669:                 err = L_PKC_EcdhXOperate(&p_ecc_ctx->ctx.ecdhx, processing_bits);
+00000544 1d360400       1556 	addi	4,r29,r6
+00000548 1638           1557 	mov	r22,r7
+                        1558 .L1530:
+                        1559 	jarl	_L_PKC_EcdhXOperate,lp
+                        1559 <EXPANSION BEGIN>
+                        1559 jarl22 _L_PKC_EcdhXOperate , lp 
+0000054a 80ff0000*      1559 <EXPANSION END>
+0000054e 0ae0           1560 	mov	r10,r28
+                        1561 --670:                 if (ER_OK == err)
+                        1562 --line670
+                        1563 ..lin.92e61a6c..57f79f32.0_81::
+                        1564 .LDWlin81:
+00000550 e0e1           1565 	cmp	zero,r28
+00000552 da05*          1566 	bne	.L944
+                        1567 --671:                 {
+                        1568 --672:                     p_job->process_phase = PHASE_3;
+                        1569 --line672
+                        1570 ..lin.92e61a6c..57f79f32.0_82::
+                        1571 .LDWlin82:
+00000554 040a           1572 	mov	4,r1
+00000556 5b0f0a00       1573 	st.b	r1,10[r27]
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+0000055a 8525*          1574 	br	.L950
+                        1575 .L944:
+                        1576 --673:                 }
+                        1577 --674:                 else if (ER_IN_PROCESS == err)
+                        1578 --line674
+                        1579 ..lin.92e61a6c..57f79f32.0_83::
+                        1580 .LDWlin83:
+0000055c 64e2           1581 	cmp	4,r28
+0000055e ea1d*          1582 	bne	.L950
+                        1583 --675:                 {
+                        1584 --676:                     p_job->process_phase = PHASE_2;
+                        1585 --line676
+                        1586 ..lin.92e61a6c..57f79f32.0_84::
+                        1587 .LDWlin84:
+00000560 030a           1588 	mov	3,r1
+00000562 5b0f0a00       1589 	st.b	r1,10[r27]
+                        1590 --677:                     err = ER_OK;
+00000566 00e2           1591 	mov	0,r28
+00000568 951d*          1592 	br	.L950
+                        1593 .L938:
+                        1594 --678:                 }
+                        1595 --679:                 else
+                        1596 --680:                 {
+                        1597 --681:                     /* Do nothing */
+                        1598 --682:                 }
+                        1599 --683:             }
+                        1600 --684:             else
+                        1601 --685:             {
+                        1602 --686:                 if (NUM0 == (uint32_t)p_job_param->job_slice)
+                        1603 --line686
+                        1604 ..lin.92e61a6c..57f79f32.0_85::
+                        1605 .LDWlin85:
+0000056a f90f1500       1606 	ld.hu	20[r25],r1
+0000056e e009           1607 	cmp	zero,r1
+00000570 ba05*          1608 	bne	.L951
+                        1609 --687:                 {
+                        1610 --688:                     sync_opt = PKC_SYNC_OPT_SYNC;
+                        1611 --line688
+                        1612 ..lin.92e61a6c..57f79f32.0_86::
+                        1613 .LDWlin86:
+00000572 00b2           1614 	mov	0,r22
+00000574 a505*          1615 	br	.L953
+                        1616 .L951:
+                        1617 --689:                 }
+                        1618 --690:                 else
+                        1619 --691:                 {
+                        1620 --692:                     sync_opt = PKC_SYNC_OPT_ASYNC;
+                        1621 --line692
+                        1622 ..lin.92e61a6c..57f79f32.0_87::
+                        1623 .LDWlin87:
+00000576 01b2           1624 	mov	1,r22
+                        1625 .L953:
+                        1626 --693:                 }
+                        1627 --694:                 /* Perform ECDH processing for PKC library */
+                        1628 --695:                 err = L_PKC_EcdhOperate(&p_ecc_ctx->ctx.ec, sync_opt);
+00000578 1d360400       1629 	addi	4,r29,r6
+0000057c 1638           1630 	mov	r22,r7
+                        1631 .L1532:
+                        1632 	jarl	_L_PKC_EcdhOperate,lp
+                        1632 <EXPANSION BEGIN>
+                        1632 jarl22 _L_PKC_EcdhOperate , lp 
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+0000057e 80ff0000*      1632 <EXPANSION END>
+00000582 0ae0           1633 	mov	r10,r28
+                        1634 --696:                 if (ER_OK == err)
+                        1635 --line696
+                        1636 ..lin.92e61a6c..57f79f32.0_88::
+                        1637 .LDWlin88:
+00000584 e0e1           1638 	cmp	zero,r28
+00000586 aa0d*          1639 	bne	.L950
+                        1640 --697:                 {
+                        1641 --698:                     if (PKC_SYNC_OPT_SYNC == sync_opt)
+                        1642 --line698
+                        1643 ..lin.92e61a6c..57f79f32.0_89::
+                        1644 .LDWlin89:
+00000588 e0b1           1645 	cmp	zero,r22
+0000058a da05*          1646 	bne	.L956
+                        1647 --699:                     {
+                        1648 --700:                         p_job->process_phase = PHASE_3;
+                        1649 --line700
+                        1650 ..lin.92e61a6c..57f79f32.0_90::
+                        1651 .LDWlin90:
+0000058c 040a           1652 	mov	4,r1
+0000058e 5b0f0a00       1653 	st.b	r1,10[r27]
+00000592 c505*          1654 	br	.L950
+                        1655 .L956:
+                        1656 --701:                     }
+                        1657 --702:                     else
+                        1658 --703:                     {
+                        1659 --704:                         p_job->process_phase = PHASE_2;
+                        1660 --line704
+                        1661 ..lin.92e61a6c..57f79f32.0_91::
+                        1662 .LDWlin91:
+00000594 030a           1663 	mov	3,r1
+00000596 5b0f0a00       1664 	st.b	r1,10[r27]
+                        1665 .L950:
+                        1666 --705:                     }
+                        1667 --706:                 }
+                        1668 --707:                 else
+                        1669 --708:                 {
+                        1670 --709:                     /* Do nothing */
+                        1671 --710:                 }
+                        1672 --711:             }
+                        1673 --712:             break;
+                        1674 --714:         case PHASE_2:
+0000059a 9525*          1675 	br	.L937
+                        1676 .L921:
+                        1677 --715:             if ((ECC_CURVE_CURVE25519 == p_ecc_ctx->curve_id) ||
+                        1678 --line715
+                        1679 ..lin.92e61a6c..57f79f32.0_92::
+                        1680 .LDWlin92:
+0000059c 3d0f0100       1681 	ld.w	0[r29],r1
+000005a0 6f0a           1682 	cmp	15,r1
+000005a2 e205*          1683 	be	.L961
+                        1684 --line716
+                        1685 ..lin.92e61a6c..57f79f32.0_93::
+                        1686 .LDWlin93:
+000005a4 3d0f0100       1687 	ld.w	0[r29],r1
+000005a8 0106f0ff       1688 	addi	-16,r1,zero
+000005ac 8a0d*          1689 	bne	.L960
+                        1690 .L961:
+                        1691 --716:                 (ECC_CURVE_CURVE448 == p_ecc_ctx->curve_id))
+                        1692 --717:             {
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1693 --718:                 /* Perform ECDHX processing for PKC library */
+                        1694 --719:                 err = L_PKC_EcdhXOperate(&p_ecc_ctx->ctx.ecdhx, NUM1);
+                        1695 --line719
+                        1696 ..lin.92e61a6c..57f79f32.0_94::
+                        1697 .LDWlin94:
+000005ae 1d360400       1698 	addi	4,r29,r6
+000005b2 013a           1699 	mov	1,r7
+                        1700 .L1534:
+                        1701 	jarl	_L_PKC_EcdhXOperate,lp
+                        1701 <EXPANSION BEGIN>
+                        1701 jarl22 _L_PKC_EcdhXOperate , lp 
+000005b4 80ff0000*      1701 <EXPANSION END>
+000005b8 0ae0           1702 	mov	r10,r28
+000005ba c505*          1703 	br	.L963
+                        1704 .L960:
+                        1705 --720:             }
+                        1706 --721:             else
+                        1707 --722:             {
+                        1708 --723:                 /* Perform ECDH processing for PKC library */
+                        1709 --724:                 err = L_PKC_EccChkPkccBusy();
+                        1710 .L1536:
+                        1711 --line724
+                        1712 ..lin.92e61a6c..57f79f32.0_95::
+                        1713 .LDWlin95:
+                        1714 	jarl	_L_PKC_EccChkPkccBusy,lp
+                        1714 <EXPANSION BEGIN>
+                        1714 jarl22 _L_PKC_EccChkPkccBusy , lp 
+000005bc 80ff0000*      1714 <EXPANSION END>
+000005c0 0ae0           1715 	mov	r10,r28
+                        1716 .L963:
+                        1717 --725:             }
+                        1718 --726:             if (ER_IN_PROCESS == err)
+                        1719 --line726
+                        1720 ..lin.92e61a6c..57f79f32.0_96::
+                        1721 .LDWlin96:
+000005c2 64e2           1722 	cmp	4,r28
+000005c4 ba05*          1723 	bne	.L964
+                        1724 --727:             {
+                        1725 --728:                 err = ER_OK;
+                        1726 --line728
+                        1727 ..lin.92e61a6c..57f79f32.0_97::
+                        1728 .LDWlin97:
+000005c6 00e2           1729 	mov	0,r28
+000005c8 e505*          1730 	br	.L966
+                        1731 .L964:
+                        1732 --729:             }
+                        1733 --730:             else if (ER_OK == err)
+                        1734 --line730
+                        1735 ..lin.92e61a6c..57f79f32.0_98::
+                        1736 .LDWlin98:
+000005ca e0e1           1737 	cmp	zero,r28
+000005cc ca05*          1738 	bne	.L966
+                        1739 --731:             {
+                        1740 --732:                 p_job->process_phase = PHASE_3;
+                        1741 --line732
+                        1742 ..lin.92e61a6c..57f79f32.0_99::
+                        1743 .LDWlin99:
+000005ce 040a           1744 	mov	4,r1
+000005d0 5b0f0a00       1745 	st.b	r1,10[r27]
+                        1746 .L966:
+                        1747 --733:             }
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1748 --734:             else
+                        1749 --735:             {
+                        1750 --736:                 /* Do nothing */
+                        1751 --737:             }
+                        1752 --738:             break;
+                        1753 --740:         default:
+000005d4 c505*          1754 	br	.L937
+                        1755 .L922:
+                        1756 --741:             /* should never occur */
+                        1757 --742:             err = (uint32_t)SERV_SYS_ERROR;
+                        1758 --line742
+                        1759 ..lin.92e61a6c..57f79f32.0_100::
+                        1760 .LDWlin100:
+000005d6 20e61100       1761 	movea	17,zero,r28
+                        1762 --743:             break;
+000005da 0000           1763 	nop
+                        1764 .L937:
+                        1765 --744:     }
+                        1766 --745:     return (err);
+000005dc 1c50           1767 	mov	r28,r10
+                        1768 --	    .ef
+                        1769 .LDW71:
+000005de 23ff3900       1770 	ld.w	56[sp],lp
+000005e2 23ef1500       1771 	ld.w	20[sp],r29
+000005e6 23e71900       1772 	ld.w	24[sp],r28
+000005ea 23df1d00       1773 	ld.w	28[sp],r27
+000005ee 23d72100       1774 	ld.w	32[sp],r26
+000005f2 23cf2500       1775 	ld.w	36[sp],r25
+000005f6 23c72900       1776 	ld.w	40[sp],r24
+000005fa 23bf2d00       1777 	ld.w	44[sp],r23
+000005fe 23b73100       1778 	ld.w	48[sp],r22
+00000602 23af3500       1779 	ld.w	52[sp],r21
+00000606 031e3c00       1780 	addi	60,sp,sp
+                        1781 .L1538:
+                        1782 	.jumptype return
+0000060a 7f00           1783 	jmp	[lp]
+                        1784 --line742
+                        1785 ..lin.92e61a6c..57f79f32.0_101::
+                        1786 	.type	_s_01_ECDH_CalcScalar,@function
+                        1787 	.size	_s_01_ECDH_CalcScalar,.-_s_01_ECDH_CalcScalar
+                        1788 	.type	_s_01_ECDH_CalcScalar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                        1789 	.size	_s_01_ECDH_CalcScalar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_ECDH_CalcScalar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        1790 	.align	2
+                        1791 --_p_isd	r21	local
+                        1792 --_p_job_param	r25	local
+                        1793 --_p_isd_param	r26	local
+                        1794 --_p_ecc_key	r23	local
+                        1795 --_p_pub_ecc_key	r24	local
+                        1796 --_p_ecc_ctx	r29	local
+                        1797 --_err	r28	local
+                        1798 --_kdf_type	0[sp]	local
+                        1799 --_byte_size	4[sp]	local
+                        1800 --_hash_type	8[sp]	local
+                        1801 --_hash_size	14[sp]	local
+                        1802 --_p_info_logical	16[sp]	local
+                        1803 --_processing_bits	r22	local
+                        1804 --_sync_opt	r22	local
+                        1805 
+                        1806 --_p_job	r27	param
+                        1807 
+                        1808 	.section ".bss","awb"
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1809 .L1278:
+                        1810 	.type	.L1278,@object
+                        1811 	.size	.L1278,0
+                        1812 	.section ".ghcalltbl",""
+00000030 00000000*      1813 .L1515:	.word	.L1514
+                        1814 	.type	.L1515,@object
+                        1815 	.size	.L1515,4
+00000034 00000000*      1816 .L1517:	.word	.L1516
+                        1817 	.type	.L1517,@object
+                        1818 	.size	.L1517,4
+00000038 00000000*      1819 .L1519:	.word	.L1518
+                        1820 	.type	.L1519,@object
+                        1821 	.size	.L1519,4
+0000003c 00000000*      1822 .L1521:	.word	.L1520
+                        1823 	.type	.L1521,@object
+                        1824 	.size	.L1521,4
+00000040 00000000*      1825 .L1523:	.word	.L1522
+                        1826 	.type	.L1523,@object
+                        1827 	.size	.L1523,4
+00000044 00000000*      1828 .L1525:	.word	.L1524
+                        1829 	.type	.L1525,@object
+                        1830 	.size	.L1525,4
+00000048 00000000*      1831 .L1527:	.word	.L1526
+                        1832 	.type	.L1527,@object
+                        1833 	.size	.L1527,4
+0000004c 00000000*      1834 .L1529:	.word	.L1528
+                        1835 	.type	.L1529,@object
+                        1836 	.size	.L1529,4
+00000050 00000000*      1837 .L1531:	.word	.L1530
+                        1838 	.type	.L1531,@object
+                        1839 	.size	.L1531,4
+00000054 00000000*      1840 .L1533:	.word	.L1532
+                        1841 	.type	.L1533,@object
+                        1842 	.size	.L1533,4
+00000058 00000000*      1843 .L1535:	.word	.L1534
+                        1844 	.type	.L1535,@object
+                        1845 	.size	.L1535,4
+0000005c 00000000*      1846 .L1537:	.word	.L1536
+                        1847 	.type	.L1537,@object
+                        1848 	.size	.L1537,4
+                        1849 	.section ".ghrettbl",""
+0000000c 00000000*      1850 .L1539:	.word	.L1538
+                        1851 	.type	.L1539,@object
+                        1852 	.size	.L1539,4
+                        1853 	.data
+                        1854 	.section ".icum_service.text","ax"
+                        1855 
+                        1856 --746: }
+                        1857 
+                        1858 --749: /****************************************************************************************
+                        1859 --750: * Function ID  : [ICUMFW_CD_S_01_ECDH_0005]:[ICUMFW_UD_S_01_ECDH_0005]
+                        1860 --751: * Function name: s_01_ECDH_DeriveSharedKey
+                        1861 --752: * Description  : Key derivation part of generating ECDH secret key
+                        1862 --753: * Arguments    : p_job :[in-out]
+                        1863 --754: * Return Value : ER_OK
+                        1864 --755: *                ER_PARAM
+                        1865 --756: *                ER_PENDING
+                        1866 --757: *                ER_IN_PROCESS
+                        1867 --758: *                ER_L_ECC_SYS_ERROR
+                        1868 --759: *                ER_L_ECC_ERROR
+                        1869 --760: *                ER_L_ECC_INVALID_ARG
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1870 --761: *                ER_L_ECC_LENGTHERR
+                        1871 --762: *                ER_MH_KEY_INVALID_KEY_GROUP
+                        1872 --763: *                ER_MH_KEY_INVALID_KEY_INDEX
+                        1873 --764: *                ER_MH_KEY_IN_USE
+                        1874 --765: *                ER_MH_KEY_NOT_USABLE
+                        1875 --766: *                ER_MH_KEY_WRITE_PROTECTED
+                        1876 --767: *                ER_MH_KEY_WRITING
+                        1877 --768: *                ER_MH_KEY_NVM_SYS_CRITICAL
+                        1878 --769: *                ER_MH_KEY_NVM_SYS
+                        1879 --770: *                ER_MH_KEY_NVM_PROG
+                        1880 --771: *                ER_MH_KEY_DATA_INVALID
+                        1881 --772: *                ER_MH_KEY_SYS_ERROR
+                        1882 --773: *                ER_MH_KEY_NVM_UNAVAILABLE
+                        1883 --774: *                ER_MH_KEY_NVM_SIZE
+                        1884 --775: *                ER_MH_KEY_SRC_MEM_ERROR
+                        1885 --776: *                ER_MH_KEY_DEST_MEM_ERROR
+                        1886 --777: *                ER_MH_KEY_AES_TIMEOUT_ERROR
+                        1887 --778: *                ER_MH_KEY_AES_PRM_ERROR
+                        1888 --779: *                SERV_CRYPT_ERROR
+                        1889 --780: ****************************************************************************************/
+                        1890 --781: static uint32_t s_01_ECDH_DeriveSharedKey(icum_job_t *p_job)
+                        1891 	.align	2
+                        1892 	.align	2
+                        1893 	.align	2
+                        1894 ..gh.f.a.2.e.4:
+                        1895 	.type	..gh.f.a.2.e.4,@object
+                        1896 	.size	..gh.f.a.2.e.4,0
+                        1897 	.global	_s_01_ECDH_DeriveSharedKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        1898 _s_01_ECDH_DeriveSharedKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                        1899 _s_01_ECDH_DeriveSharedKey:
+0000060c 031e64ff       1900 	addi	-156,sp,sp
+00000610 63ff9900       1901 	st.w	lp,152[sp]
+00000614 63df8900       1902 	st.w	r27,136[sp]
+00000618 63c79500       1903 	st.w	r24,148[sp]
+0000061c 63cf9100       1904 	st.w	r25,144[sp]
+00000620 63d78d00       1905 	st.w	r26,140[sp]
+00000624 63e78500       1906 	st.w	r28,132[sp]
+00000628 63ef8100       1907 	st.w	r29,128[sp]
+0000062c 06d8           1908 	mov	r6,r27
+                        1909 --	    .bf
+                        1910 .LDW81:
+                        1911 --782: {
+                        1912 --783:     r_icumif_isd_t     *p_isd;
+                        1913 --784:     job_ecc_t          *p_job_param;
+                        1914 --785:     ISD_ECDH_t         *p_isd_param;
+                        1915 --786:     ecc_ctx_t          *p_ecc_ctx;
+                        1916 --787:     aes_key_t           aes_key;
+                        1917 --788:     uint8_t             shared_key[R_CRYPT_SMALLBIGNUM_BYTESIZE];
+                        1918 --789:     uint32_t            err;
+                        1919 --790:     st_pkc_data_t       shared_key_data;
+                        1920 --792:     /* Initialize parameter */
+                        1921 --793:     p_isd         = p_job->p_ISD;
+0000062e 3bc70100       1922 	ld.w	0[r27],r24
+                        1923 --794:     p_job_param   = &p_job->prm.job_ecc;
+00000632 1bd61000       1924 	addi	16,r27,r26
+                        1925 --795:     p_isd_param   = &p_isd->prm.ECDH;
+00000636 18ce2000       1926 	addi	32,r24,r25
+                        1927 --796:     L_Toolbox_MemSet((uint8_t *)&aes_key, DATA_ZERO, (int16_t)sizeof(aes_key_t));
+0000063a 23364c00       1928 	movea	76,sp,r6
+0000063e 003a           1929 	mov	0,r7
+00000640 20463400       1930 	movea	52,zero,r8
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1931 .L1809:
+                        1932 	jarl	_L_Toolbox_MemSet,lp
+                        1932 <EXPANSION BEGIN>
+                        1932 jarl22 _L_Toolbox_MemSet , lp 
+00000644 80ff0000*      1932 <EXPANSION END>
+                        1933 --797:     L_Toolbox_MemSet(&shared_key[0],      DATA_ZERO, (int16_t)sizeof(shared_key));
+                        1934 --line797
+                        1935 ..lin.92e61a6c..10b3e1e8.0_102::
+                        1936 .LDWlin102:
+00000648 23360800       1937 	movea	8,sp,r6
+0000064c 003a           1938 	mov	0,r7
+0000064e 20464400       1939 	movea	68,zero,r8
+                        1940 .L1811:
+                        1941 	jarl	_L_Toolbox_MemSet,lp
+                        1941 <EXPANSION BEGIN>
+                        1941 jarl22 _L_Toolbox_MemSet , lp 
+00000652 80ff0000*      1941 <EXPANSION END>
+                        1942 --798:     p_ecc_ctx     = (ecc_ctx_t  *)p_job_param->p_ecc_ctx;
+                        1943 --line798
+                        1944 ..lin.92e61a6c..10b3e1e8.0_103::
+                        1945 .LDWlin103:
+00000656 3ae70900       1946 	ld.w	8[r26],r28
+                        1947 --800:     /* Set shared key */
+                        1948 --801:     shared_key_data.len = sizeof(shared_key);
+0000065a 200e4400       1949 	movea	68,zero,r1
+0000065e 630f0100       1950 	st.w	r1,0[sp]
+                        1951 --802:     shared_key_data.p_data = shared_key;
+00000662 230e0800       1952 	movea	8,sp,r1
+00000666 630f0500       1953 	st.w	r1,4[sp]
+                        1954 --804:     if ((ECC_CURVE_CURVE25519 == p_ecc_ctx->curve_id) ||
+0000066a 3c0f0100       1955 	ld.w	0[r28],r1
+0000066e 6f0a           1956 	cmp	15,r1
+00000670 e205*          1957 	be	.L1543
+                        1958 --line805
+                        1959 ..lin.92e61a6c..10b3e1e8.0_104::
+                        1960 .LDWlin104:
+00000672 3c0f0100       1961 	ld.w	0[r28],r1
+00000676 0106f0ff       1962 	addi	-16,r1,zero
+0000067a 9a0d*          1963 	bne	.L1542
+                        1964 .L1543:
+                        1965 --805:         (ECC_CURVE_CURVE448 == p_ecc_ctx->curve_id))
+                        1966 --806:     {
+                        1967 --807:         /* Perform ECDHX termination processing for PKC library */
+                        1968 --808:         err = L_PKC_EcdhXFinal(&p_ecc_ctx->ctx.ecdhx, &shared_key_data);
+                        1969 --line808
+                        1970 ..lin.92e61a6c..10b3e1e8.0_105::
+                        1971 .LDWlin105:
+0000067c 1c360400       1972 	addi	4,r28,r6
+00000680 233e0000       1973 	movea	0,sp,r7
+                        1974 .L1813:
+                        1975 	jarl	_L_PKC_EcdhXFinal,lp
+                        1975 <EXPANSION BEGIN>
+                        1975 jarl22 _L_PKC_EcdhXFinal , lp 
+00000684 80ff0000*      1975 <EXPANSION END>
+00000688 0ae8           1976 	mov	r10,r29
+0000068a 850d*          1977 	br	.L1545
+                        1978 .L1542:
+                        1979 --809:     }
+                        1980 --810:     else
+                        1981 --811:     {
+                        1982 --812:         /* Perform ECDH termination processing for PKC library */
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        1983 --813:         err = L_PKC_EcdhFinal(&p_ecc_ctx->ctx.ec, &shared_key_data);
+                        1984 --line813
+                        1985 ..lin.92e61a6c..10b3e1e8.0_106::
+                        1986 .LDWlin106:
+0000068c 1c360400       1987 	addi	4,r28,r6
+00000690 233e0000       1988 	movea	0,sp,r7
+                        1989 .L1815:
+                        1990 	jarl	_L_PKC_EcdhFinal,lp
+                        1990 <EXPANSION BEGIN>
+                        1990 jarl22 _L_PKC_EcdhFinal , lp 
+00000694 80ff0000*      1990 <EXPANSION END>
+00000698 0ae8           1991 	mov	r10,r29
+                        1992 .L1545:
+                        1993 --814:     }
+                        1994 --816:     if (ER_OK == err)
+                        1995 --line816
+                        1996 ..lin.92e61a6c..10b3e1e8.0_107::
+                        1997 .LDWlin107:
+0000069a e0e9           1998 	cmp	zero,r29
+0000069c 9a45*          1999 	bne	.L1546
+                        2000 --817:     {
+                        2001 --818:             /* ************************************************************************* */
+                        2002 --819:             /* Initialize the RAM key */
+                        2003 --820:             /* ************************************************************************* */
+                        2004 --821:         aes_key.key_group    = p_isd_param->shared_key_group;
+                        2005 --line821
+                        2006 ..lin.92e61a6c..10b3e1e8.0_108::
+                        2007 .LDWlin108:
+0000069e 390f1100       2008 	ld.w	16[r25],r1
+000006a2 630f5100       2009 	st.w	r1,80[sp]
+                        2010 --822:         aes_key.key_id       = p_isd_param->shared_key_id;
+000006a6 990f1500       2011 	ld.bu	20[r25],r1
+000006aa 430f5400       2012 	st.b	r1,84[sp]
+                        2013 --823:         L_Toolbox_MemCpy((uint8_t *)aes_key.value, shared_key_data.p_data,
+000006ae 233f0500       2014 	ld.w	4[sp],r7
+000006b2 9c47d902       2015 	ld.bu	728[r28],r8
+000006b6 23366000       2016 	movea	96,sp,r6
+                        2017 .L1817:
+                        2018 	jarl	_L_Toolbox_MemCpy,lp
+                        2018 <EXPANSION BEGIN>
+                        2018 jarl22 _L_Toolbox_MemCpy , lp 
+000006ba 80ff0000*      2018 <EXPANSION END>
+                        2019 --824:                             (int16_t)p_ecc_ctx->kdf_ctx.deriv_key_size_in_bytes);
+                        2020 --826:         aes_key.properties.size_in_bytes           = (key_size_t)shared_key_data.len;
+                        2021 --line826
+                        2022 ..lin.92e61a6c..10b3e1e8.0_109::
+                        2023 .LDWlin109:
+000006be 230f0100       2024 	ld.w	0[sp],r1
+000006c2 630f5c00       2025 	st.h	r1,92[sp]
+                        2026 --827:         aes_key.properties.flags.encryption        = 1u;
+000006c6 c3075e00       2027 	set1	0,94[sp]
+                        2028 --828:         aes_key.properties.flags.decryption        = 1u;
+000006ca c30f5e00       2029 	set1	1,94[sp]
+                        2030 --829:         aes_key.properties.flags.cmac_generation   = 1u;
+000006ce c3175e00       2031 	set1	2,94[sp]
+                        2032 --830:         aes_key.properties.flags.cmac_verification = 1u;
+000006d2 c31f5e00       2033 	set1	3,94[sp]
+                        2034 --831:         aes_key.properties.flags.disable_on_debug  = 0u;
+000006d6 c3af5e00       2035 	clr1	5,94[sp]
+                        2036 --832:         aes_key.properties.flags.no_wild_card      = 0u;
+000006da c3b75e00       2037 	clr1	6,94[sp]
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2038 --833:         aes_key.properties.flags.write_protected   = 0u;
+000006de c3a75e00       2039 	clr1	4,94[sp]
+                        2040 --834:         aes_key.properties.flags.invalidate        = 0u;
+000006e2 c3bf5e00       2041 	clr1	7,94[sp]
+                        2042 --835:         aes_key.properties.flags.plain_key         = 1u;
+000006e6 c3075f00       2043 	set1	0,95[sp]
+                        2044 --836:         err = MH_KEY_SetAesKey(p_job, E_KEY_OPE_FIRST, &aes_key);
+000006ea 1b30           2045 	mov	r27,r6
+000006ec 003a           2046 	mov	0,r7
+000006ee 23464c00       2047 	movea	76,sp,r8
+                        2048 .L1819:
+                        2049 	jarl	_MH_KEY_SetAesKey,lp
+                        2049 <EXPANSION BEGIN>
+                        2049 jarl22 _MH_KEY_SetAesKey , lp 
+000006f2 80ff0000*      2049 <EXPANSION END>
+000006f6 0ae8           2050 	mov	r10,r29
+                        2051 --837:         /* ************************************************************************* */
+                        2052 --838:         /* Finished */
+                        2053 --839:         /* ************************************************************************* */
+                        2054 --840:         /* --- Free ECC_Context ---- */
+                        2055 --841:         (void)ML_CTX_Free(CTX_TYPE_ECC, p_job_param->p_ecc_ctx);
+                        2056 --line841
+                        2057 ..lin.92e61a6c..10b3e1e8.0_110::
+                        2058 .LDWlin110:
+000006f8 3a3f0900       2059 	ld.w	8[r26],r7
+000006fc 0232           2060 	mov	2,r6
+                        2061 .L1821:
+                        2062 	jarl	_ML_CTX_Free,lp
+                        2062 <EXPANSION BEGIN>
+                        2062 jarl22 _ML_CTX_Free , lp 
+000006fe 80ff0000*      2062 <EXPANSION END>
+                        2063 --842:         p_job_param->resource_ctrl &= ~GET_CTX_ECC;
+                        2064 --line842
+                        2065 ..lin.92e61a6c..10b3e1e8.0_111::
+                        2066 .LDWlin111:
+00000702 da871000       2067 	clr1	0,16[r26]
+                        2068 --844:         /* --- Free ECC_Pub Key -------- */
+                        2069 --845:         (void)MH_KEY_FreeKeyCache(p_job, p_isd_param->ecc_pub_key_group, p_isd_param->ecc_pub_key_id);
+00000706 393f0900       2070 	ld.w	8[r25],r7
+0000070a 99470d00       2071 	ld.bu	12[r25],r8
+0000070e 1b30           2072 	mov	r27,r6
+                        2073 .L1823:
+                        2074 	jarl	_MH_KEY_FreeKeyCache,lp
+                        2074 <EXPANSION BEGIN>
+                        2074 jarl22 _MH_KEY_FreeKeyCache , lp 
+00000710 80ff0000*      2074 <EXPANSION END>
+                        2075 --846:         p_job_param->resource_ctrl &= ~GET_PUB_KEY_ECC;
+                        2076 --line846
+                        2077 ..lin.92e61a6c..10b3e1e8.0_112::
+                        2078 .LDWlin112:
+00000714 da971000       2079 	clr1	2,16[r26]
+                        2080 --848:         p_job->process_phase = ON_HOLD;
+00000718 5b070a00       2081 	st.b	zero,10[r27]
+0000071c b505*          2082 	br	.L1548
+                        2083 .L1546:
+                        2084 --849:     }
+                        2085 --850:     /* end of if (ER_OK == err) */
+                        2086 --851:     else
+                        2087 --852:     {
+                        2088 --853:         err = (uint32_t)SERV_CRYPT_ERROR;
+                        2089 --line853
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2090 ..lin.92e61a6c..10b3e1e8.0_113::
+                        2091 .LDWlin113:
+0000071e 20ee1a00       2092 	movea	26,zero,r29
+                        2093 .L1548:
+                        2094 --854:     }
+                        2095 --856:     return (err);
+00000722 1d50           2096 	mov	r29,r10
+                        2097 --	    .ef
+                        2098 .LDW91:
+00000724 23ff9900       2099 	ld.w	152[sp],lp
+00000728 23ef8100       2100 	ld.w	128[sp],r29
+0000072c 23e78500       2101 	ld.w	132[sp],r28
+00000730 23df8900       2102 	ld.w	136[sp],r27
+00000734 23d78d00       2103 	ld.w	140[sp],r26
+00000738 23cf9100       2104 	ld.w	144[sp],r25
+0000073c 23c79500       2105 	ld.w	148[sp],r24
+00000740 031e9c00       2106 	addi	156,sp,sp
+                        2107 .L1825:
+                        2108 	.jumptype return
+00000744 7f00           2109 	jmp	[lp]
+                        2110 --line853
+                        2111 ..lin.92e61a6c..10b3e1e8.0_114::
+                        2112 	.type	_s_01_ECDH_DeriveSharedKey,@function
+                        2113 	.size	_s_01_ECDH_DeriveSharedKey,.-_s_01_ECDH_DeriveSharedKey
+                        2114 	.type	_s_01_ECDH_DeriveSharedKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                        2115 	.size	_s_01_ECDH_DeriveSharedKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_ECDH_DeriveSharedKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        2116 	.align	2
+                        2117 --_p_isd	r24	local
+                        2118 --_p_job_param	r26	local
+                        2119 --_p_isd_param	r25	local
+                        2120 --_p_ecc_ctx	r28	local
+                        2121 --_aes_key	76[sp]	local
+                        2122 --_shared_key	8[sp]	local
+                        2123 --_err	r29	local
+                        2124 --_shared_key_data	0[sp]	local
+                        2125 
+                        2126 --_p_job	r27	param
+                        2127 
+                        2128 	.section ".bss","awb"
+                        2129 .L1698:
+                        2130 	.type	.L1698,@object
+                        2131 	.size	.L1698,0
+                        2132 	.section ".ghcalltbl",""
+00000060 00000000*      2133 .L1810:	.word	.L1809
+                        2134 	.type	.L1810,@object
+                        2135 	.size	.L1810,4
+00000064 00000000*      2136 .L1812:	.word	.L1811
+                        2137 	.type	.L1812,@object
+                        2138 	.size	.L1812,4
+00000068 00000000*      2139 .L1814:	.word	.L1813
+                        2140 	.type	.L1814,@object
+                        2141 	.size	.L1814,4
+0000006c 00000000*      2142 .L1816:	.word	.L1815
+                        2143 	.type	.L1816,@object
+                        2144 	.size	.L1816,4
+00000070 00000000*      2145 .L1818:	.word	.L1817
+                        2146 	.type	.L1818,@object
+                        2147 	.size	.L1818,4
+00000074 00000000*      2148 .L1820:	.word	.L1819
+                        2149 	.type	.L1820,@object
+                        2150 	.size	.L1820,4
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+00000078 00000000*      2151 .L1822:	.word	.L1821
+                        2152 	.type	.L1822,@object
+                        2153 	.size	.L1822,4
+0000007c 00000000*      2154 .L1824:	.word	.L1823
+                        2155 	.type	.L1824,@object
+                        2156 	.size	.L1824,4
+                        2157 	.section ".ghrettbl",""
+00000010 00000000*      2158 .L1826:	.word	.L1825
+                        2159 	.type	.L1826,@object
+                        2160 	.size	.L1826,4
+                        2161 	.data
+                        2162 	.section ".icum_service.text","ax"
+                        2163 
+                        2164 --857: }
+                        2165 
+                        2166 --860: /****************************************************************************************
+                        2167 --861: * Function ID  : [ICUMFW_CD_S_01_ECDH_0006]:[ICUMFW_UD_S_01_ECDH_0006]
+                        2168 --862: * Function name: s_01_ECDH_Finish
+                        2169 --863: * Description  : Finish part of generating ECDH secret key
+                        2170 --864: * Arguments    : p_job :[in-out]
+                        2171 --865: *                err :[in]
+                        2172 --866: * Return Value : none
+                        2173 --867: ****************************************************************************************/
+                        2174 --868: static void s_01_ECDH_Finish(icum_job_t *p_job, const uint32_t err)
+                        2175 	.align	2
+                        2176 	.align	2
+                        2177 	.align	2
+                        2178 ..gh.f.a.2.e.5:
+                        2179 	.type	..gh.f.a.2.e.5,@object
+                        2180 	.size	..gh.f.a.2.e.5,0
+                        2181 	.global	_s_01_ECDH_Finish..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        2182 _s_01_ECDH_Finish..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.:
+                        2183 _s_01_ECDH_Finish:
+00000746 031ee8ff       2184 	addi	-24,sp,sp
+0000074a 63ff1500       2185 	st.w	lp,20[sp]
+0000074e 63cf1100       2186 	st.w	r25,16[sp]
+00000752 63ef0100       2187 	st.w	r29,0[sp]
+00000756 63d70d00       2188 	st.w	r26,12[sp]
+0000075a 63df0900       2189 	st.w	r27,8[sp]
+0000075e 63e70500       2190 	st.w	r28,4[sp]
+00000762 06e8           2191 	mov	r6,r29
+00000764 07c8           2192 	mov	r7,r25
+                        2193 --	    .bf
+                        2194 .LDW02:
+                        2195 --869: {
+                        2196 --870:     r_icumif_isd_t     *p_ISD;
+                        2197 --871:     job_ecc_t          *p_JOB_PARAM;
+                        2198 --872:     ISD_ECDH_t         *p_ISD_PARAM;
+                        2199 --874:     p_ISD         = p_job->p_ISD;
+00000766 3de70100       2200 	ld.w	0[r29],r28
+                        2201 --875:     p_JOB_PARAM   = &p_job->prm.job_ecc;
+0000076a 1dde1000       2202 	addi	16,r29,r27
+                        2203 --876:     p_ISD_PARAM   = &p_ISD->prm.ECDH;
+0000076e 1cd62000       2204 	addi	32,r28,r26
+                        2205 --878:     if ((uint32_t)SERV_OK != err)
+00000772 e0c9           2206 	cmp	zero,r25
+00000774 d21d*          2207 	be	.L1829
+                        2208 --879:     {
+                        2209 --880:         /* error: terminate the service */
+                        2210 --881:         (void)s_01_ConvertErr(err, &p_ISD->service_result);
+                        2211 --line881
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2212 ..lin.92e61a6c..2125d16a.0_115::
+                        2213 .LDWlin115:
+00000776 1930           2214 	mov	r25,r6
+00000778 1c3e0c00       2215 	addi	12,r28,r7
+                        2216 .L1950:
+                        2217 	jarl	_s_01_ConvertErr,lp
+                        2217 <EXPANSION BEGIN>
+                        2217 jarl22 _s_01_ConvertErr , lp 
+0000077c 80ff0000*      2217 <EXPANSION END>
+                        2218 --882:         p_job->process_phase = ON_HOLD;
+                        2219 --line882
+                        2220 ..lin.92e61a6c..2125d16a.0_116::
+                        2221 .LDWlin116:
+00000780 5d070a00       2222 	st.b	zero,10[r29]
+                        2223 --884:         /* free context when illegal end */
+                        2224 --885:         if (GET_CTX_ECC == ((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_ECC))
+00000784 dbc71000       2225 	tst1	0,16[r27]
+00000788 e205*          2226 	be	.L1833
+                        2227 --886:         {
+                        2228 --887:             (void)ML_CTX_Free(CTX_TYPE_ECC, p_JOB_PARAM->p_ecc_ctx);
+                        2229 --line887
+                        2230 ..lin.92e61a6c..2125d16a.0_117::
+                        2231 .LDWlin117:
+0000078a 3b3f0900       2232 	ld.w	8[r27],r7
+0000078e 0232           2233 	mov	2,r6
+                        2234 .L1952:
+                        2235 	jarl	_ML_CTX_Free,lp
+                        2235 <EXPANSION BEGIN>
+                        2235 jarl22 _ML_CTX_Free , lp 
+00000790 80ff0000*      2235 <EXPANSION END>
+                        2236 .L1833:
+                        2237 --888:         }
+                        2238 --889:         else
+                        2239 --890:         {
+                        2240 --891:             /* Do nothing */
+                        2241 --892:         }
+                        2242 --894:         if (GET_PUB_KEY_ECC == ((uint32_t)p_JOB_PARAM->resource_ctrl & GET_PUB_KEY_ECC))
+                        2243 --line894
+                        2244 ..lin.92e61a6c..2125d16a.0_118::
+                        2245 .LDWlin118:
+00000794 dbd71000       2246 	tst1	2,16[r27]
+00000798 820d*          2247 	be	.L1836
+                        2248 --895:         {
+                        2249 --896:             (void)MH_KEY_FreeKeyCache(p_job, p_ISD_PARAM->ecc_pub_key_group, p_ISD_PARAM->ecc_pub_key_id);
+                        2250 --line896
+                        2251 ..lin.92e61a6c..2125d16a.0_119::
+                        2252 .LDWlin119:
+0000079a 3a3f0900       2253 	ld.w	8[r26],r7
+0000079e 9a470d00       2254 	ld.bu	12[r26],r8
+000007a2 1d30           2255 	mov	r29,r6
+                        2256 .L1954:
+                        2257 	jarl	_MH_KEY_FreeKeyCache,lp
+                        2257 <EXPANSION BEGIN>
+                        2257 jarl22 _MH_KEY_FreeKeyCache , lp 
+000007a4 80ff0000*      2257 <EXPANSION END>
+                        2258 .L1836:
+                        2259 --897:         }
+                        2260 --898:         else
+                        2261 --899:         {
+                        2262 --900:             /* Do nothing */
+                        2263 --901:         }
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2264 --902:         p_JOB_PARAM->resource_ctrl = GET_CTX_NONE;
+                        2265 --line902
+                        2266 ..lin.92e61a6c..2125d16a.0_120::
+                        2267 .LDWlin120:
+000007a8 7b071100       2268 	st.w	zero,16[r27]
+000007ac f505*          2269 	br	.L1827
+                        2270 .L1829:
+                        2271 --903:     }
+                        2272 --904:     else
+                        2273 --905:     {
+                        2274 --906:         /* all good - terminate the service or keep it alive */
+                        2275 --907:         /* depending on the processing phase */
+                        2276 --908:         if (ON_HOLD == (uint32_t)p_job->process_phase)
+                        2277 --line908
+                        2278 ..lin.92e61a6c..2125d16a.0_121::
+                        2279 .LDWlin121:
+000007ae 9d0f0b00       2280 	ld.bu	10[r29],r1
+000007b2 e009           2281 	cmp	zero,r1
+000007b4 ba05*          2282 	bne	.L1827
+                        2283 --909:         {
+                        2284 --910:             p_ISD->service_result = SERV_OK;
+                        2285 --line910
+                        2286 ..lin.92e61a6c..2125d16a.0_122::
+                        2287 .LDWlin122:
+000007b6 7c070d00       2288 	st.w	zero,12[r28]
+                        2289 .L1827:
+                        2290 --911:         }
+                        2291 --912:         else
+                        2292 --913:         {
+                        2293 --914:             /* Do nothing */
+                        2294 --915:         }
+                        2295 --916:     }
+                        2296 --917: }
+                        2297 --	    .ef
+                        2298 .LDW12:
+000007ba 23ff1500       2299 	ld.w	20[sp],lp
+000007be 23ef0100       2300 	ld.w	0[sp],r29
+000007c2 23e70500       2301 	ld.w	4[sp],r28
+000007c6 23df0900       2302 	ld.w	8[sp],r27
+000007ca 23d70d00       2303 	ld.w	12[sp],r26
+000007ce 23cf1100       2304 	ld.w	16[sp],r25
+000007d2 031e1800       2305 	addi	24,sp,sp
+                        2306 .L1956:
+                        2307 	.jumptype return
+000007d6 7f00           2308 	jmp	[lp]
+                        2309 --line910
+                        2310 ..lin.92e61a6c..2125d16a.0_123::
+                        2311 	.type	_s_01_ECDH_Finish,@function
+                        2312 	.size	_s_01_ECDH_Finish,.-_s_01_ECDH_Finish
+                        2313 	.type	_s_01_ECDH_Finish..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,@function
+                        2314 	.size	_s_01_ECDH_Finish..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.,.-_s_01_ECDH_Finish..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh.
+                        2315 	.align	2
+                        2316 --_p_ISD	r28	local
+                        2317 --_p_JOB_PARAM	r27	local
+                        2318 --_p_ISD_PARAM	r26	local
+                        2319 
+                        2320 --_p_job	r29	param
+                        2321 --_err	r25	param
+                        2322 
+                        2323 	.section ".bss","awb"
+                        2324 .L1902:
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2325 	.type	.L1902,@object
+                        2326 	.size	.L1902,0
+                        2327 	.section ".ghcalltbl",""
+00000080 00000000*      2328 .L1951:	.word	.L1950
+                        2329 	.type	.L1951,@object
+                        2330 	.size	.L1951,4
+00000084 00000000*      2331 .L1953:	.word	.L1952
+                        2332 	.type	.L1953,@object
+                        2333 	.size	.L1953,4
+00000088 00000000*      2334 .L1955:	.word	.L1954
+                        2335 	.type	.L1955,@object
+                        2336 	.size	.L1955,4
+                        2337 	.section ".ghrettbl",""
+00000014 00000000*      2338 .L1957:	.word	.L1956
+                        2339 	.type	.L1957,@object
+                        2340 	.size	.L1957,4
+                        2341 	.data
+                        2342 	.section ".icum_service.text","ax"
+                        2343 
+                        2344 
+                        2345 --920: /****************************************************************************************
+                        2346 --921: * Function ID  : [ICUMFW_CD_S_01_ECDH_0001]:[ICUMFW_UD_S_01_ECDH_0001]
+                        2347 --922: * Function name: S_01_MakeEcdhSecretKey
+                        2348 --923: * Description  : Using the key agreement protocol ECDH, a shared secret key between the 
+                        2349 --924: *                two parties is generated and the AES RAM key is updated.
+                        2350 --925: * Arguments    : ecc_priv_key_group :[in]
+                        2351 --926: *                ecc_priv_key_id    :[in]
+                        2352 --927: *                ecc_pub_key_group  :[in]
+                        2353 --928: *                ecc_pub_key_id     :[in]
+                        2354 --929: *                shared_key_group   :[in]
+                        2355 --930: *                shared_key_id      :[in]
+                        2356 --931: *                kdf_algo           :[in]
+                        2357 --932: *                hash_primitive     :[in]
+                        2358 --933: *                job_slice          :[in]
+                        2359 --934: *                *p_info            :[in]
+                        2360 --935: *                counter            :[in]
+                        2361 --936: *                info_size_in_bytes :[in]
+                        2362 --937: *                service_result     :[out]
+                        2363 --938: * Return Value : none
+                        2364 --939: ****************************************************************************************/
+                        2365 --940: void S_01_MakeEcdhSecretKey(icum_job_t *p_job)
+                        2366 	.align	2
+                        2367 	.align	2
+                        2368 	.align	2
+                        2369 ..gh.f.a.2.e.6:
+                        2370 	.type	..gh.f.a.2.e.6,@object
+                        2371 	.size	..gh.f.a.2.e.6,0
+                        2372 	.global	_S_01_MakeEcdhSecretKey
+                        2373 _S_01_MakeEcdhSecretKey:
+000007d8 501a           2374 	add	-16,sp
+000007da 63ff0d00       2375 	st.w	lp,12[sp]
+000007de 63e70500       2376 	st.w	r28,4[sp]
+000007e2 63df0900       2377 	st.w	r27,8[sp]
+000007e6 63ef0100       2378 	st.w	r29,0[sp]
+000007ea 06e0           2379 	mov	r6,r28
+                        2380 --	    .bf
+                        2381 .LDW22:
+                        2382 --941: {
+                        2383 --942:     r_icumif_isd_t     *p_ISD;
+                        2384 --943:     uint32_t            err;
+                        2385 --945:     p_ISD         = p_job->p_ISD;
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+000007ec 3cdf0100       2386 	ld.w	0[r28],r27
+                        2387 --947:     /* retrieve the service handler */
+                        2388 --948:     p_ISD = p_job->p_ISD;
+000007f0 3cdf0100       2389 	ld.w	0[r28],r27
+                        2390 --950:     /**********************************************************************************
+                        2391 --951:     * Initialization phase
+                        2392 --952:     ***********************************************************************************/
+                        2393 --954:     /* indicate service is in process */
+                        2394 --955:     p_ISD->service_result = SERV_IN_PROCESS;
+000007f4 800effff       2395 	ori	65535,zero,r1
+000007f8 7b0f0d00       2396 	st.w	r1,12[r27]
+                        2397 --957:     switch ((uint32_t)p_job->process_phase)
+000007fc 9c0f0b00       2398 	ld.bu	10[r28],r1
+00000800 e009           2399 	cmp	zero,r1
+00000802 d205*          2400 	be	.L1961
+00000804 640a           2401 	cmp	4,r1
+00000806 810d*          2402 	bl	.L1962
+00000808 c20d*          2403 	be	.L1963
+0000080a 8515*          2404 	br	.L1964
+                        2405 .L1961:
+                        2406 --958:     {
+                        2407 --959:         case ON_HOLD:
+                        2408 --960:             err = s_01_ECDH_Init(p_job);
+                        2409 --line960
+                        2410 ..lin.92e61a6c..84c1f197.0_124::
+                        2411 .LDWlin124:
+0000080c 1c30           2412 	mov	r28,r6
+                        2413 .L2093:
+                        2414 	jarl	_s_01_ECDH_Init,lp
+                        2414 <EXPANSION BEGIN>
+                        2414 jarl22 _s_01_ECDH_Init , lp 
+0000080e bffff4fa*      2414 <EXPANSION END>
+00000812 0ae8           2415 	mov	r10,r29
+                        2416 --961:             break;
+                        2417 --962:         case PHASE_1:
+                        2418 --line961
+                        2419 ..lin.92e61a6c..84c1f197.0_125::
+                        2420 .LDWlin125:
+00000814 e50d*          2421 	br	.L1966
+                        2422 .L1962:
+                        2423 --963:         case PHASE_2a:
+                        2424 --964:         case PHASE_2:
+                        2425 --965:             err = s_01_ECDH_CalcScalar(p_job);
+                        2426 --line965
+                        2427 ..lin.92e61a6c..84c1f197.0_126::
+                        2428 .LDWlin126:
+00000816 1c30           2429 	mov	r28,r6
+                        2430 .L2095:
+                        2431 	jarl	_s_01_ECDH_CalcScalar,lp
+                        2431 <EXPANSION BEGIN>
+                        2431 jarl22 _s_01_ECDH_CalcScalar , lp 
+00000818 bfff70fb*      2431 <EXPANSION END>
+0000081c 0ae8           2432 	mov	r10,r29
+                        2433 --966:             break;
+                        2434 --967:         case PHASE_3:
+                        2435 --line966
+                        2436 ..lin.92e61a6c..84c1f197.0_127::
+                        2437 .LDWlin127:
+0000081e 950d*          2438 	br	.L1966
+                        2439 .L1963:
+                        2440 --968:             err = s_01_ECDH_DeriveSharedKey(p_job);
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2441 --line968
+                        2442 ..lin.92e61a6c..84c1f197.0_128::
+                        2443 .LDWlin128:
+00000820 1c30           2444 	mov	r28,r6
+                        2445 .L2097:
+                        2446 	jarl	_s_01_ECDH_DeriveSharedKey,lp
+                        2446 <EXPANSION BEGIN>
+                        2446 jarl22 _s_01_ECDH_DeriveSharedKey , lp 
+00000822 bfffeafd*      2446 <EXPANSION END>
+00000826 0ae8           2447 	mov	r10,r29
+                        2448 --969:             break;
+                        2449 --970:         default:
+                        2450 --line969
+                        2451 ..lin.92e61a6c..84c1f197.0_129::
+                        2452 .LDWlin129:
+00000828 c505*          2453 	br	.L1966
+                        2454 .L1964:
+                        2455 --971:             /* should never occur */
+                        2456 --972:             err = (uint32_t)SERV_SYS_ERROR;
+                        2457 --line972
+                        2458 ..lin.92e61a6c..84c1f197.0_130::
+                        2459 .LDWlin130:
+0000082a 20ee1100       2460 	movea	17,zero,r29
+                        2461 --973:             break;
+0000082e 0000           2462 	nop
+                        2463 .L1966:
+                        2464 --974:     }
+                        2465 --976:     s_01_ECDH_Finish(p_job, err);
+00000830 1c30           2466 	mov	r28,r6
+00000832 1d38           2467 	mov	r29,r7
+                        2468 .L2099:
+                        2469 	jarl	_s_01_ECDH_Finish,lp
+                        2469 <EXPANSION BEGIN>
+                        2469 jarl22 _s_01_ECDH_Finish , lp 
+00000834 bfff12ff*      2469 <EXPANSION END>
+                        2470 --978:     return;
+                        2471 --line978
+                        2472 ..lin.92e61a6c..84c1f197.0_131::
+                        2473 .LDWlin131:
+00000838 0000           2474 	nop
+                        2475 --	    .ef
+                        2476 .LDW32:
+0000083a 23ff0d00       2477 	ld.w	12[sp],lp
+0000083e 23ef0100       2478 	ld.w	0[sp],r29
+00000842 23e70500       2479 	ld.w	4[sp],r28
+00000846 23df0900       2480 	ld.w	8[sp],r27
+0000084a 031e1000       2481 	addi	16,sp,sp
+                        2482 .L2101:
+                        2483 	.jumptype return
+0000084e 7f00           2484 	jmp	[lp]
+                        2485 --line978
+                        2486 ..lin.92e61a6c..84c1f197.0_132::
+                        2487 	.type	_S_01_MakeEcdhSecretKey,@function
+                        2488 	.size	_S_01_MakeEcdhSecretKey,.-_S_01_MakeEcdhSecretKey
+                        2489 	.align	2
+                        2490 --_p_ISD	r27	local
+                        2491 --_err	r29	local
+                        2492 
+                        2493 --_p_job	r28	param
+                        2494 
+                        2495 	.section ".bss","awb"
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000m9c1.si
+                        2496 .L2034:
+                        2497 	.type	.L2034,@object
+                        2498 	.size	.L2034,0
+                        2499 	.section ".ghcalltbl",""
+0000008c 00000000*      2500 .L2094:	.word	.L2093
+                        2501 	.type	.L2094,@object
+                        2502 	.size	.L2094,4
+00000090 00000000*      2503 .L2096:	.word	.L2095
+                        2504 	.type	.L2096,@object
+                        2505 	.size	.L2096,4
+00000094 00000000*      2506 .L2098:	.word	.L2097
+                        2507 	.type	.L2098,@object
+                        2508 	.size	.L2098,4
+00000098 00000000*      2509 .L2100:	.word	.L2099
+                        2510 	.type	.L2100,@object
+                        2511 	.size	.L2100,4
+                        2512 	.section ".ghrettbl",""
+00000018 00000000*      2513 .L2102:	.word	.L2101
+                        2514 	.type	.L2102,@object
+                        2515 	.size	.L2102,4
+                        2516 	.data
+                        2517 	.section ".icum_service.text","ax"
+                        2518 
+                        2519 --979: }
+                        2520 	.align	2
+                        2521 
+                        2522 	.data
+                        2523 	.ghsnote version,30
+                        2524 	.ghsnote tools,3
+                        2525 	.ghsnote options,656
+                        2526 	.section ".icum_service.text","ax"
+                        2527 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_ecdh...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40664..0::
+                        2528 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

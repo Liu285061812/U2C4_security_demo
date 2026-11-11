@@ -1,0 +1,1220 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\target\u2cx\src\driver\d_fls\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\ -I..\..\icum\sal\include\library\ -I..\..\icum\target\u2cx\include\common\ -I..\..\icum\target\u2cx\include\driver\ -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_df_flash.dbo -source=icum_d_df_flash.c -comp -o ..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\gh_0000geg1.o -list=..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_df_flash.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+Source File: icum_d_df_flash.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\target\u2cx\src\driver\d_fls\
+                           2 --		-I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\
+                           3 --		-I..\..\icum\sal\include\library\
+                           4 --		-I..\..\icum\target\u2cx\include\common\
+                           5 --		-I..\..\icum\target\u2cx\include\driver\
+                           6 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                           7 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -G -section .text=.icum_driver.text -section
+                          28 --		.rodata=.icum_driver.rodata -section .bss=.icum_driver.bss
+                          29 --		-section .data=.icum_driver.data -Osize -inline_prologue
+                          30 --		-prepare_dispose -filetype.c
+                          31 --		..\..\icum\target\u2cx\src\driver\d_fls\icum_d_df_flash.c -o
+                          32 --		..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_df_flash.o
+                          33 --Source File:   ..\..\icum\target\u2cx\src\driver\d_fls\icum_d_df_flash.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:09 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w -OS
+                          42 	.section ".icum_driver.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICUM Flash Driver                                         */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /********************************************************************************
+                          70 --28: Includes <System Includes> , Project Includes
+                          71 --29: ********************************************************************************/
+                          72 --30: #include "r_icumif_api.h"
+                          73 --31: #include "renesas_types.h"
+                          74 --32: #include "icum_d_misc_pub.h"
+                          75 --33: #include "icum_d_flash_pub.h"
+                          76 --34: #include "icum_d_flash.h"
+                          77 --35: #include "icum_d_ost_pub.h"
+                          78 --37: #include "r_rfd_constant.h"
+                          79 --38: #include "r_rfd_common.h"
+                          80 --39: #include "r_rfd_df.h"
+                          81 --40: /********************************************************************************
+                          82 --41:  QAC Suppression message list
+                          83 --42: *********************************************************************************/
+                          84 --44: /********************************************************************************
+                          85 --45:  Memory allocation section specification
+                          86 --46: ********************************************************************************/
+                          87 --47: /* Code executed on ROM             */
+                          88 --48: CHANGE_SEC(text, ".icum_driver.text")
+                          89 --49: /* Read only data referenced on ROM */
+                          90 --50: CHANGE_SEC(rodata, ".icum_driver.rodata")
+                          91 --51: CHANGE_SEC(data, ".icum_driver.data")
+                          92 --52: CHANGE_SEC(bss, ".icum_driver.bss")
+                          93 --55: /********************************************************************************
+                          94 --56:  Macro definitions
+                          95 --57: ********************************************************************************/
+                          96 --59: /********************************************************************************
+                          97 --60:  Typedef definitions
+                          98 --61: ********************************************************************************/
+                          99 --63: /********************************************************************************
+                         100 --64:  Exported global variables (to be accessed by other files)
+                         101 --65: ********************************************************************************/
+                         102 --67: /********************************************************************************
+                         103 --68:  Private global variables
+                         104 --69: ********************************************************************************/
+                         105 --71: /********************************************************************************
+                         106 --72:  Private function prototypes
+                         107 --73: ********************************************************************************/
+                         108 --74: STATIC uint32_t d_FLS_PreProcessingDf(void);
+                         109 --75: STATIC uint32_t d_FLS_GetDfEraseWriteSize(UNUSED const uint32_t flash_addr, uint32_t *p_size);
+                         110 --76: STATIC uint32_t d_FLS_GetDfMultiProgramSize(UNUSED const uint32_t flash_addr, uint32_t *p_size);
+                         111 --78: /********************************************************************************
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         112 --79:  API Function definition
+                         113 --80: *********************************************************************************/
+                         114 --81: /*************************************************************************************************
+                         115 --82: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0056]:[ICUMFW_UD_U2B_D_FLS_0056]
+                         116 --83: * Function Name : D_FLS_ProgramDf
+                         117 --84: * Description   : Request write to the data flash area.
+                         118 --85: * Arguments     : flash_addr
+                         119 --86: *                   Start address of the data flash area to be written (4-byte boundary).
+                         120 --87: *                   It is specified by a relative address with the head address of the block 0
+                         121 --88: *                   of the flash set to 0x0000_0000.
+                         122 --89: *                 p_data
+                         123 --90: *                   data to be written.
+                         124 --91: *                 data_size_in_bytes
+                         125 --92: *                   Number of bytes to write (in 4-byte units).
+                         126 --93: * Return Value  :   ER_OK
+                         127 --94: *                   ER_IN_PROCESS
+                         128 --95: *                   ER_D_FLS_INTERNAL
+                         129 --96: *                   ER_D_FLS_SETOPRDYTOUT
+                         130 --97: *                   ER_D_FLS_REJECTED
+                         131 --98: *                   ER_D_FLS_SETOPMODTOUT
+                         132 --99: *                   ER_D_FLS_FSTOPTOUT
+                         133 --100: *                   ER_D_FLS_NON_BLANK
+                         134 --101: *                   ER_D_FLS_PROTECTION
+                         135 --102: *                   ER_D_FLS_WRITE
+                         136 --103: *                   ER_D_FLS_ERASE
+                         137 --104: *                   ER_D_FLS_FACITOUT
+                         138 --105: **************************************************************************************************/
+                         139 --106: uint32_t D_FLS_ProgramDf(const uint32_t flash_addr, const uint8_t *p_data, const uint32_t data_size_in_bytes)
+                         140 --107: {
+                         141 --108:     uint32_t    lul_fls_status;
+                         142 --109:     fls_ctrl_t  *p_fls_ctrl;
+                         143 --111:     /* FACI number setteing */
+                         144 --112:     (void)d_FLS_SelectFpsys_ram(flash_addr);
+                         145 --113:     p_fls_ctrl = &g_fls_ctrl[g_fls_selected_fpsys];
+                         146 --115:     /* control variable setting */
+                         147 --116:     p_fls_ctrl->prm.d_status               = ER_D_FLS_REQUEST;
+                         148 --117:     p_fls_ctrl->prm.ope_mode               = (uint16_t)R_RFD_MODE_DFPE;
+                         149 --118:     p_fls_ctrl->prm.commad_req             = D_FLS_CMDREQ_ON;
+                         150 --119:     if (DF_MULTIW8_SIZE <= (data_size_in_bytes - DF_WBUFFER_SIZE))
+                         151 --120:     {
+                         152 --121:         p_fls_ctrl->prm.command_code           = D_FACI_CMD_MULTI_PROGRAM;
+                         153 --122:         p_fls_ctrl->prm.p_write_size_in_bytes  = &d_FLS_GetDfMultiProgramSize;
+                         154 --123:     }
+                         155 --124:     else
+                         156 --125:     {
+                         157 --126:         p_fls_ctrl->prm.command_code           = D_FACI_CMD_PROGRAM;
+                         158 --127:         p_fls_ctrl->prm.p_write_size_in_bytes  = &D_FLS_GetDfProgramWriteSize;
+                         159 --128:     }
+                         160 --129:     p_fls_ctrl->prm.flash_addr             = flash_addr;
+                         161 --130:     p_fls_ctrl->prm.p_data                 = p_data;
+                         162 --131:     p_fls_ctrl->prm.data_size_in_bytes     = data_size_in_bytes;
+                         163 --132:     p_fls_ctrl->prm.p_pre_processing       = &d_FLS_PreProcessingDf;
+                         164 --133:     p_fls_ctrl->prm.p_faci_commad_set      = &d_FLS_IssueCommand_ram;
+                         165 --134:     p_fls_ctrl->prm.p_error_check          = &d_FLS_CheckFaciErrors_ram;
+                         166 --135:     p_fls_ctrl->prm.success_resp           = ER_OK;
+                         167 --136:     p_fls_ctrl->prm.p_num                  = D_FLS_ZERO_U32;
+                         168 --138:     /* Set Max FACI command time + Margin time */
+                         169 --139:     p_fls_ctrl->prm.max_time               = TIMEOUT_PROGRAM_DF;
+                         170 --141:     lul_fls_status = d_FLS_Handler_ram(g_fls_selected_fpsys);
+                         171 --143:     return (lul_fls_status);
+                         172 --144: }
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         173 --146: /*********************************************************************************************
+                         174 --147: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0057]:[ICUMFW_UD_U2B_D_FLS_0057]
+                         175 --148: * Function Name : D_FLS_EraseDf
+                         176 --149: * Description   : Request erase of data flash area.
+                         177 --150: * Arguments     : flash_addr
+                         178 --151: *                   Start address of the data flash area to be erase.
+                         179 --152: *                   Designated by physical address.
+                         180 --153: *                 data_size_in_bytes
+                         181 --154: *                   Number of bytes to erase (in 4-byte units).
+                         182 --155: * Return Value  :   ER_OK
+                         183 --156: *                   ER_IN_PROCESS
+                         184 --157: *                   ER_D_FLS_INTERNAL
+                         185 --158: *                   ER_D_FLS_SETOPRDYTOUT
+                         186 --159: *                   ER_D_FLS_REJECTED
+                         187 --160: *                   ER_D_FLS_SETOPMODTOUT
+                         188 --161: *                   ER_D_FLS_FSTOPTOUT
+                         189 --162: *                   ER_D_FLS_NON_BLANK
+                         190 --163: *                   ER_D_FLS_PROTECTION
+                         191 --164: *                   ER_D_FLS_WRITE
+                         192 --165: *                   ER_D_FLS_ERASE
+                         193 --166: *                   ER_D_FLS_FACITOUT
+                         194 --167: **********************************************************************************************/
+                         195 --168: uint32_t D_FLS_EraseDf(const uint32_t flash_addr, const uint32_t data_size_in_bytes)
+                         196 --169: {
+                         197 --170:     uint32_t    lul_fls_status;
+                         198 --171:     fls_ctrl_t  *p_fls_ctrl;
+                         199 --173:     /* FACI number setteing */
+                         200 --174:     (void)d_FLS_SelectFpsys_ram(flash_addr);
+                         201 --175:     p_fls_ctrl = &g_fls_ctrl[g_fls_selected_fpsys];
+                         202 --177:     /* control variable setting */
+                         203 --178:     p_fls_ctrl->prm.d_status               = ER_D_FLS_REQUEST;
+                         204 --179:     p_fls_ctrl->prm.ope_mode               = (uint16_t)R_RFD_MODE_DFPE;
+                         205 --180:     p_fls_ctrl->prm.commad_req             = D_FLS_CMDREQ_ON;
+                         206 --181:     p_fls_ctrl->prm.command_code           = D_FACI_CMD_BLOCK_ERASE;
+                         207 --182:     p_fls_ctrl->prm.flash_addr             = flash_addr;
+                         208 --183:     p_fls_ctrl->prm.p_data                 = NULL;
+                         209 --184:     p_fls_ctrl->prm.data_size_in_bytes     = data_size_in_bytes;
+                         210 --185:     p_fls_ctrl->prm.p_pre_processing       = &d_FLS_PreProcessingDf;
+                         211 --186:     p_fls_ctrl->prm.p_faci_commad_set      = &d_FLS_IssueCommand_ram;
+                         212 --187:     p_fls_ctrl->prm.p_write_size_in_bytes  = &d_FLS_GetDfEraseWriteSize;
+                         213 --188:     p_fls_ctrl->prm.p_error_check          = &d_FLS_CheckFaciErrors_ram;
+                         214 --189:     p_fls_ctrl->prm.success_resp           = ER_OK;
+                         215 --190:     p_fls_ctrl->prm.p_num                  = D_FLS_ZERO_U32;
+                         216 --192:     /* Set Max FACI command time + Margin time */
+                         217 --193:     p_fls_ctrl->prm.max_time               = TIMEOUT_ERASE_DF;
+                         218 --195:     lul_fls_status = d_FLS_Handler_ram(g_fls_selected_fpsys);
+                         219 --197:     return (lul_fls_status);
+                         220 --198: }
+                         221 --200: /********************************************************************************
+                         222 --201:  private Function definition
+                         223 --202: *********************************************************************************/
+                         224 --203: /******************************************************************************
+                         225 --204: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0058]:[ICUMFW_UD_U2B_D_FLS_0058]
+                         226 --205: * Function Name : d_FLS_PreProcessingDf
+                         227 --206: * Description   : Preprocessing of PE operation
+                         228 --207: * Arguments     : none
+                         229 --208: * Return Value  :   FLS_ERR_NONE
+                         230 --209: ******************************************************************************/
+                         231 --210: STATIC uint32_t d_FLS_PreProcessingDf(void)
+                         232 --211: {
+                         233 --212:     /* No preprocessing */
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         234 --213:     return (FLS_ERR_NONE);
+                         235 --214: }
+                         236 --216: /******************************************************************************
+                         237 --217: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0059]:[ICUMFW_UD_U2B_D_FLS_0059]
+                         238 --218: * Function Name : D_FLS_GetDfEraseBlockSize
+                         239 --219: * Description   : get flash erase block size (byte)
+                         240 --220: * Arguments     : flash_addr
+                         241 --221: *                   data flash address(dummy not use)
+                         242 --222: *               : *p_size
+                         243 --223: *                   erase size
+                         244 --224: * Return Value  :   ER_OK : No error detected
+                         245 --225: ******************************************************************************/
+                         246 --226: uint32_t D_FLS_GetDfEraseBlockSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         247 --227: {
+                         248 --228:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         249 --229:     {
+                         250 --230:         /* Normal */
+                         251 --231:     }
+                         252 --232:     else
+                         253 --233:     {
+                         254 --234:         /* Abnormal */
+                         255 --235:     }
+                         256 --237:     *p_size = DF_ERASE_BLOCK_SIZE;
+                         257 --239:     return (ER_OK);
+                         258 --240: }
+                         259 --242: /******************************************************************************
+                         260 --243: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0061]:[ICUMFW_UD_U2B_D_FLS_0061]
+                         261 --244: * Function Name : D_FLS_GetDfProgramWriteSize
+                         262 --245: * Description   : get flash program write size (byte)
+                         263 --246: * Arguments     : flash_addr
+                         264 --247: *                   data flash address(dummy not use)
+                         265 --248: *               : *p_size
+                         266 --249: *                   write size
+                         267 --250: * Return Value  : uint32_t
+                         268 --251: *                   ER_OK : No error detected
+                         269 --252: ******************************************************************************/
+                         270 --253: uint32_t D_FLS_GetDfProgramWriteSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         271 --254: {
+                         272 --255:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         273 --256:     {
+                         274 --257:         /* Normal */
+                         275 --258:     }
+                         276 --259:     else
+                         277 --260:     {
+                         278 --261:         /* Abnormal */
+                         279 --262:     }
+                         280 --264:     *p_size = DF_WBUFFER_SIZE;
+                         281 --266:     return (ER_OK);
+                         282 --267: }
+                         283 --269: /******************************************************************************
+                         284 --270: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0062]:[ICUMFW_UD_U2B_D_FLS_0062]
+                         285 --271: * Function Name : D_FLS_GetDfMultiProgramSize
+                         286 --272: * Description   : get flash multi program write size (byte)
+                         287 --273: * Arguments     : flash_addr
+                         288 --274: *                   data flash address(dummy not use)
+                         289 --275: *               : *p_size
+                         290 --276: *                   write size
+                         291 --277: * Return Value  : uint32_t
+                         292 --278: *                   ER_OK : No error detected
+                         293 --279: ******************************************************************************/
+                         294 	.align	2
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         295 	.align	2
+                         296 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..0::
+                         297 	.align	2
+                         298 	.align	2
+                         299 ..gh.f.a.2.e.0:
+                         300 	.type	..gh.f.a.2.e.0,@object
+                         301 	.size	..gh.f.a.2.e.0,0
+                         302 	.global	_d_FLS_GetDfMultiProgramSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         303 _d_FLS_GetDfMultiProgramSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.:
+                         304 _d_FLS_GetDfMultiProgramSize:
+                         305 --	    .bf
+                         306 .LDW01:
+                         307 --280: STATIC uint32_t d_FLS_GetDfMultiProgramSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         308 --281: {
+                         309 --282:     uint32_t lus_leftover_size;
+                         310 --284:     lus_leftover_size =
+00000000 40f60000*       311 	movhi	hi(_g_fls_selected_fpsys),zero,ep
+00000004 3ef70000*       312 	ld.h	lo(_g_fls_selected_fpsys)[ep],ep
+00000008 210600000000*   313 	mov	_g_fls_ctrl,r1
+0000000e fef65000        314 	mulhi	80,ep,ep
+00000012 c1f1            315 	add	r1,ep
+00000014 120d            316 	sld.w	36[ep],r1
+00000016 1e15            317 	sld.w	60[ep],r2
+00000018 a209            318 	sub	r2,r1
+0000001a 5c0a            319 	add	-4,r1
+                         320 --285:         g_fls_ctrl[g_fls_selected_fpsys].prm.data_size_in_bytes - g_fls_ctrl[g_fls_selected_fpsys].prm.p_num;
+                         321 --286:     lus_leftover_size -= DF_WBUFFER_SIZE;
+                         322 --287:     g_fls_ctrl[g_fls_selected_fpsys].prm.command_code = D_FACI_CMD_MULTI_PROGRAM;
+                         323 --line287
+                         324 ..lin.b9226ff0..783e7a53.0_1::
+                         325 .LDWlin1:
+0000001c 2016edff        326 	movea	-19,zero,r2
+00000020 9713            327 	sst.b	r2,23[ep]
+                         328 --289:     if ((DF_MULTIW128_SIZE <= lus_leftover_size) && ( ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_128)))
+00000022 010680ff        329 	addi	-128,r1,zero
+00000026 f905*           330 	bnl	.L4
+00000028 c6067f00        331 	andi	127,r6,zero
+0000002c ca05*           332 	bne	.L4
+                         333 --290:     {
+                         334 --291:         *p_size = DF_MULTIW128_SIZE;
+                         335 --line291
+                         336 ..lin.b9226ff0..783e7a53.0_2::
+                         337 .LDWlin2:
+0000002e 200e8000        338 	movea	128,zero,r1
+00000032 e525*           339 	br	.L7
+                         340 .L4:
+                         341 --292:     }
+                         342 --293:     else if ((DF_MULTIW64_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_64)))
+                         343 --line293
+                         344 ..lin.b9226ff0..783e7a53.0_3::
+                         345 .LDWlin3:
+00000034 0106c0ff        346 	addi	-64,r1,zero
+00000038 f905*           347 	bnl	.L8
+0000003a c6063f00        348 	andi	63,r6,zero
+0000003e ca05*           349 	bne	.L8
+                         350 --294:     {
+                         351 --295:         *p_size = DF_MULTIW64_SIZE;
+                         352 --line295
+                         353 ..lin.b9226ff0..783e7a53.0_4::
+                         354 .LDWlin4:
+00000040 200e4000        355 	movea	64,zero,r1
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+00000044 d51d*           356 	br	.L7
+                         357 .L8:
+                         358 --296:     }
+                         359 --297:     else if ((DF_MULTIW32_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_32)))
+                         360 --line297
+                         361 ..lin.b9226ff0..783e7a53.0_5::
+                         362 .LDWlin5:
+00000046 0106e0ff        363 	addi	-32,r1,zero
+0000004a f905*           364 	bnl	.L12
+0000004c c6061f00        365 	andi	31,r6,zero
+00000050 ca05*           366 	bne	.L12
+                         367 --298:     {
+                         368 --299:         *p_size = DF_MULTIW32_SIZE;
+                         369 --line299
+                         370 ..lin.b9226ff0..783e7a53.0_6::
+                         371 .LDWlin6:
+00000052 200e2000        372 	movea	32,zero,r1
+00000056 c515*           373 	br	.L7
+                         374 .L12:
+                         375 --300:     }
+                         376 --301:     else if ((DF_MULTIW16_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_16)))
+                         377 --line301
+                         378 ..lin.b9226ff0..783e7a53.0_7::
+                         379 .LDWlin7:
+00000058 0106f0ff        380 	addi	-16,r1,zero
+0000005c f905*           381 	bnl	.L16
+0000005e c6060f00        382 	andi	15,r6,zero
+00000062 ca05*           383 	bne	.L16
+                         384 --302:     {
+                         385 --303:         *p_size = DF_MULTIW16_SIZE;
+                         386 --line303
+                         387 ..lin.b9226ff0..783e7a53.0_8::
+                         388 .LDWlin8:
+00000064 200e1000        389 	movea	16,zero,r1
+00000068 b50d*           390 	br	.L7
+                         391 .L16:
+                         392 --304:     }
+                         393 --305:     else if ((DF_MULTIW8_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_8)))
+                         394 --line305
+                         395 ..lin.b9226ff0..783e7a53.0_9::
+                         396 .LDWlin9:
+0000006a 680a            397 	cmp	8,r1
+0000006c d105*           398 	bl	.L20
+0000006e c6060700        399 	andi	7,r6,zero
+                         400 --306:     {
+                         401 --307:         *p_size = DF_MULTIW8_SIZE;
+                         402 --line307
+                         403 ..lin.b9226ff0..783e7a53.0_10::
+                         404 .LDWlin10:
+00000072 080a            405 	mov	8,r1
+00000074 d205*           406 	be	.L7
+                         407 .L20:
+                         408 --308:     }
+                         409 --309:     else
+                         410 --310:     {
+                         411 --311:         g_fls_ctrl[g_fls_selected_fpsys].prm.command_code = D_FACI_CMD_PROGRAM;
+                         412 --line311
+                         413 ..lin.b9226ff0..783e7a53.0_11::
+                         414 .LDWlin11:
+00000076 200ee8ff        415 	movea	-24,zero,r1
+0000007a 970b            416 	sst.b	r1,23[ep]
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         417 --312:         *p_size = DF_WBUFFER_SIZE;
+0000007c 040a            418 	mov	4,r1
+                         419 .L7:
+                         420 --313:     }
+                         421 --315:     return (ER_OK);
+0000007e 670f0100        422 	st.w	r1,0[r7]
+00000082 0052            423 	mov	0,r10
+                         424 --	    .ef
+                         425 .LDW11:
+                         426 .L379:
+                         427 	.jumptype return
+00000084 7f00            428 	jmp	[lp]
+                         429 --line311
+                         430 ..lin.b9226ff0..783e7a53.0_12::
+                         431 	.type	_d_FLS_GetDfMultiProgramSize,@function
+                         432 	.size	_d_FLS_GetDfMultiProgramSize,.-_d_FLS_GetDfMultiProgramSize
+                         433 	.type	_d_FLS_GetDfMultiProgramSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,@function
+                         434 	.size	_d_FLS_GetDfMultiProgramSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,.-_d_FLS_GetDfMultiProgramSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         435 	.align	2
+                         436 --_lus_leftover_size	r1	local
+                         437 
+                         438 --_flash_addr	r6	param
+                         439 --_p_size	r7	param
+                         440 
+                         441 	.section ".bss","awb"
+                         442 .L205:
+                         443 	.type	.L205,@object
+                         444 	.size	.L205,0
+                         445 	.section ".ghrettbl",""
+                         446 	.align	4
+00000000 00000000*       447 .L380:	.word	.L379
+                         448 	.type	.L380,@object
+                         449 	.size	.L380,4
+                         450 	.data
+                         451 	.section ".icum_driver.text","ax"
+                         452 
+                         453 --316: }
+                         454 
+                         455 	.align	2
+                         456 	.align	2
+                         457 	.align	2
+                         458 ..gh.f.a.2.e.1:
+                         459 	.type	..gh.f.a.2.e.1,@object
+                         460 	.size	..gh.f.a.2.e.1,0
+                         461 	.global	_D_FLS_GetDfProgramWriteSize
+                         462 _D_FLS_GetDfProgramWriteSize:
+00000086 07f0            463 	mov	r7,ep
+                         464 --	    .bf
+                         465 .LDW21:
+                         466 --253: uint32_t D_FLS_GetDfProgramWriteSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         467 --254: {
+                         468 --255:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         469 --256:     {
+                         470 --257:         /* Normal */
+                         471 --258:     }
+                         472 --259:     else
+                         473 --260:     {
+                         474 --261:         /* Abnormal */
+                         475 --262:     }
+                         476 --264:     *p_size = DF_WBUFFER_SIZE;
+00000088 040a            477 	mov	4,r1
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+0000008a 010d            478 	sst.w	r1,0[ep]
+                         479 --266:     return (ER_OK);
+0000008c 0052            480 	mov	0,r10
+                         481 --	    .ef
+                         482 .LDW31:
+                         483 .L445:
+                         484 	.jumptype return
+0000008e 7f00            485 	jmp	[lp]
+                         486 --line254
+                         487 ..lin.b9226ff0..1f7212b3.0_13::
+                         488 	.type	_D_FLS_GetDfProgramWriteSize,@function
+                         489 	.size	_D_FLS_GetDfProgramWriteSize,.-_D_FLS_GetDfProgramWriteSize
+                         490 	.align	2
+                         491 
+                         492 --_flash_addr	none	param
+                         493 --_p_size	ep	param
+                         494 
+                         495 	.section ".bss","awb"
+                         496 .L426:
+                         497 	.type	.L426,@object
+                         498 	.size	.L426,0
+                         499 	.section ".ghrettbl",""
+00000004 00000000*       500 .L446:	.word	.L445
+                         501 	.type	.L446,@object
+                         502 	.size	.L446,4
+                         503 	.data
+                         504 	.section ".icum_driver.text","ax"
+                         505 
+                         506 --267: }
+                         507 
+                         508 	.align	2
+                         509 	.align	2
+                         510 	.align	2
+                         511 ..gh.f.a.2.e.2:
+                         512 	.type	..gh.f.a.2.e.2,@object
+                         513 	.size	..gh.f.a.2.e.2,0
+                         514 	.global	_d_FLS_PreProcessingDf..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         515 _d_FLS_PreProcessingDf..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.:
+                         516 _d_FLS_PreProcessingDf:
+                         517 --	    .bf
+                         518 .LDW41:
+                         519 --210: STATIC uint32_t d_FLS_PreProcessingDf(void)
+                         520 --211: {
+                         521 --212:     /* No preprocessing */
+                         522 --213:     return (FLS_ERR_NONE);
+00000090 0052            523 	mov	0,r10
+                         524 --	    .ef
+                         525 .LDW51:
+                         526 .L487:
+                         527 	.jumptype return
+00000092 7f00            528 	jmp	[lp]
+                         529 --line211
+                         530 ..lin.b9226ff0..8b07fed9.0_14::
+                         531 	.type	_d_FLS_PreProcessingDf,@function
+                         532 	.size	_d_FLS_PreProcessingDf,.-_d_FLS_PreProcessingDf
+                         533 	.type	_d_FLS_PreProcessingDf..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,@function
+                         534 	.size	_d_FLS_PreProcessingDf..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,.-_d_FLS_PreProcessingDf..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         535 	.align	2
+                         536 
+                         537 	.section ".bss","awb"
+                         538 .L468:
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         539 	.type	.L468,@object
+                         540 	.size	.L468,0
+                         541 	.section ".ghrettbl",""
+00000008 00000000*       542 .L488:	.word	.L487
+                         543 	.type	.L488,@object
+                         544 	.size	.L488,4
+                         545 	.data
+                         546 	.section ".icum_driver.text","ax"
+                         547 
+                         548 --214: }
+                         549 
+                         550 	.align	2
+                         551 	.align	2
+                         552 	.align	2
+                         553 ..gh.f.a.2.e.3:
+                         554 	.type	..gh.f.a.2.e.3,@object
+                         555 	.size	..gh.f.a.2.e.3,0
+                         556 	.global	_D_FLS_ProgramDf
+                         557 _D_FLS_ProgramDf:
+00000094 8007e110        558 	prepare	{r27,r28,r29,r31},0
+00000098 06e0            559 	mov	r6,r28
+0000009a 07d8            560 	mov	r7,r27
+0000009c 08e8            561 	mov	r8,r29
+                         562 --	    .bf
+                         563 .LDW61:
+                         564 --106: uint32_t D_FLS_ProgramDf(const uint32_t flash_addr, const uint8_t *p_data, const uint32_t data_size_in_bytes)
+                         565 --107: {
+                         566 --108:     uint32_t    lul_fls_status;
+                         567 --109:     fls_ctrl_t  *p_fls_ctrl;
+                         568 --111:     /* FACI number setteing */
+                         569 --112:     (void)d_FLS_SelectFpsys_ram(flash_addr);
+                         570 .L595:
+                         571 	jarl	_d_FLS_SelectFpsys_ram,lp
+                         571 <EXPANSION BEGIN>
+                         571 jarl22 _d_FLS_SelectFpsys_ram , lp 
+0000009e 80ff0000*       571 <EXPANSION END>
+                         572 --113:     p_fls_ctrl = &g_fls_ctrl[g_fls_selected_fpsys];
+                         573 --line113
+                         574 ..lin.b9226ff0..8fc7c8ed.0_15::
+                         575 .LDWlin15:
+000000a2 40360000*       576 	movhi	hi(_g_fls_selected_fpsys),zero,r6
+000000a6 26370100*       577 	ld.w	lo(_g_fls_selected_fpsys)[r6],r6
+000000aa 210600000000*   578 	mov	_g_fls_ctrl,r1
+000000b0 e6f65000        579 	mulhi	80,r6,ep
+000000b4 c1f1            580 	add	r1,ep
+                         581 --115:     /* control variable setting */
+                         582 --116:     p_fls_ctrl->prm.d_status               = ER_D_FLS_REQUEST;
+                         583 --line116
+                         584 ..lin.b9226ff0..8fc7c8ed.0_16::
+                         585 .LDWlin16:
+000000b6 200eff03        586 	movea	1023,zero,r1
+000000ba 090d            587 	sst.w	r1,16[ep]
+                         588 --117:     p_fls_ctrl->prm.ope_mode               = (uint16_t)R_RFD_MODE_DFPE;
+000000bc 200e8000        589 	movea	128,zero,r1
+000000c0 8a0c            590 	sst.h	r1,20[ep]
+                         591 --118:     p_fls_ctrl->prm.commad_req             = D_FLS_CMDREQ_ON;
+000000c2 010a            592 	mov	1,r1
+000000c4 960b            593 	sst.b	r1,22[ep]
+                         594 --119:     if (DF_MULTIW8_SIZE <= (data_size_in_bytes - DF_WBUFFER_SIZE))
+000000c6 1d0efcff        595 	addi	-4,r29,r1
+000000ca 680a            596 	cmp	8,r1
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+000000cc f105*           597 	bl	.L491
+                         598 --120:     {
+                         599 --121:         p_fls_ctrl->prm.command_code           = D_FACI_CMD_MULTI_PROGRAM;
+                         600 --line121
+                         601 ..lin.b9226ff0..8fc7c8ed.0_17::
+                         602 .LDWlin17:
+000000ce 2016edff        603 	movea	-19,zero,r2
+                         604 --122:         p_fls_ctrl->prm.p_write_size_in_bytes  = &d_FLS_GetDfMultiProgramSize;
+000000d2 210600000000*   605 	mov	_d_FLS_GetDfMultiProgramSize,r1
+000000d8 e505*           606 	br	.L493
+                         607 .L491:
+                         608 --123:     }
+                         609 --124:     else
+                         610 --125:     {
+                         611 --126:         p_fls_ctrl->prm.command_code           = D_FACI_CMD_PROGRAM;
+                         612 --line126
+                         613 ..lin.b9226ff0..8fc7c8ed.0_18::
+                         614 .LDWlin18:
+000000da 2016e8ff        615 	movea	-24,zero,r2
+                         616 --127:         p_fls_ctrl->prm.p_write_size_in_bytes  = &D_FLS_GetDfProgramWriteSize;
+000000de 210600000000*   617 	mov	_D_FLS_GetDfProgramWriteSize,r1
+                         618 .L493:
+                         619 --128:     }
+                         620 --129:     p_fls_ctrl->prm.flash_addr             = flash_addr;
+                         621 --line129
+                         622 ..lin.b9226ff0..8fc7c8ed.0_19::
+                         623 .LDWlin19:
+000000e4 190d            624 	sst.w	r1,48[ep]
+                         625 --132:     p_fls_ctrl->prm.p_pre_processing       = &d_FLS_PreProcessingDf;
+000000e6 210600000000*   626 	mov	_d_FLS_PreProcessingDf,r1
+000000ec 150d            627 	sst.w	r1,40[ep]
+                         628 --133:     p_fls_ctrl->prm.p_faci_commad_set      = &d_FLS_IssueCommand_ram;
+                         629 --line133
+                         630 ..lin.b9226ff0..8fc7c8ed.0_20::
+                         631 .LDWlin20:
+000000ee 210600000000*   632 	mov	_d_FLS_IssueCommand_ram,r1
+000000f4 170d            633 	sst.w	r1,44[ep]
+                         634 --134:     p_fls_ctrl->prm.p_error_check          = &d_FLS_CheckFaciErrors_ram;
+                         635 --line134
+                         636 ..lin.b9226ff0..8fc7c8ed.0_21::
+                         637 .LDWlin21:
+000000f6 210600000000*   638 	mov	_d_FLS_CheckFaciErrors_ram,r1
+000000fc 1b0d            639 	sst.w	r1,52[ep]
+                         640 --138:     /* Set Max FACI command time + Margin time */
+                         641 --139:     p_fls_ctrl->prm.max_time               = TIMEOUT_PROGRAM_DF;
+                         642 --line139
+                         643 ..lin.b9226ff0..8fc7c8ed.0_22::
+                         644 .LDWlin22:
+000000fe 210650340300    645 	mov	210000,r1
+00000104 9713            646 	sst.b	r2,23[ep]
+00000106 0fe5            647 	sst.w	r28,28[ep]
+                         648 --130:     p_fls_ctrl->prm.p_data                 = p_data;
+                         649 --line130
+                         650 ..lin.b9226ff0..8fc7c8ed.0_23::
+                         651 .LDWlin23:
+00000108 11dd            652 	sst.w	r27,32[ep]
+                         653 --131:     p_fls_ctrl->prm.data_size_in_bytes     = data_size_in_bytes;
+0000010a 13ed            654 	sst.w	r29,36[ep]
+                         655 --135:     p_fls_ctrl->prm.success_resp           = ER_OK;
+0000010c 1d05            656 	sst.w	zero,56[ep]
+                         657 --136:     p_fls_ctrl->prm.p_num                  = D_FLS_ZERO_U32;
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+0000010e 1f05            658 	sst.w	zero,60[ep]
+00000110 250d            659 	sst.w	r1,72[ep]
+                         660 --141:     lul_fls_status = d_FLS_Handler_ram(g_fls_selected_fpsys);
+                         661 .L597:
+                         662 	jarl	_d_FLS_Handler_ram,lp
+                         662 <EXPANSION BEGIN>
+                         662 jarl22 _d_FLS_Handler_ram , lp 
+00000112 80ff0000*       662 <EXPANSION END>
+                         663 --143:     return (lul_fls_status);
+                         664 --	    .ef
+                         665 .LDW71:
+                         666 .L599:
+                         667 --line143
+                         668 ..lin.b9226ff0..8fc7c8ed.0_24::
+                         669 .LDWlin24:
+00000116 4006ff10        670 	dispose	0,{r27,r28,r29,r31},[lp]
+                         671 --line143
+                         672 ..lin.b9226ff0..8fc7c8ed.0_25::
+                         673 	.type	_D_FLS_ProgramDf,@function
+                         674 	.size	_D_FLS_ProgramDf,.-_D_FLS_ProgramDf
+                         675 	.align	2
+                         676 --_p_fls_ctrl	ep	local
+                         677 
+                         678 --_flash_addr	r28	param
+                         679 --_p_data	r27	param
+                         680 --_data_size_in_bytes	r29	param
+                         681 
+                         682 	.section ".bss","awb"
+                         683 .L546:
+                         684 	.type	.L546,@object
+                         685 	.size	.L546,0
+                         686 	.section ".ghcalltbl",""
+                         687 	.align	4
+00000000 00000000*       688 .L596:	.word	.L595
+                         689 	.type	.L596,@object
+                         690 	.size	.L596,4
+00000004 00000000*       691 .L598:	.word	.L597
+                         692 	.type	.L598,@object
+                         693 	.size	.L598,4
+                         694 	.section ".ghrettbl",""
+0000000c 00000000*       695 .L600:	.word	.L599
+                         696 	.type	.L600,@object
+                         697 	.size	.L600,4
+                         698 	.data
+                         699 	.section ".icum_driver.text","ax"
+                         700 
+                         701 --144: }
+                         702 
+                         703 --146: /*********************************************************************************************
+                         704 --147: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0057]:[ICUMFW_UD_U2B_D_FLS_0057]
+                         705 --148: * Function Name : D_FLS_EraseDf
+                         706 --149: * Description   : Request erase of data flash area.
+                         707 --150: * Arguments     : flash_addr
+                         708 --151: *                   Start address of the data flash area to be erase.
+                         709 --152: *                   Designated by physical address.
+                         710 --153: *                 data_size_in_bytes
+                         711 --154: *                   Number of bytes to erase (in 4-byte units).
+                         712 --155: * Return Value  :   ER_OK
+                         713 --156: *                   ER_IN_PROCESS
+                         714 --157: *                   ER_D_FLS_INTERNAL
+                         715 --158: *                   ER_D_FLS_SETOPRDYTOUT
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         716 --159: *                   ER_D_FLS_REJECTED
+                         717 --160: *                   ER_D_FLS_SETOPMODTOUT
+                         718 --161: *                   ER_D_FLS_FSTOPTOUT
+                         719 --162: *                   ER_D_FLS_NON_BLANK
+                         720 --163: *                   ER_D_FLS_PROTECTION
+                         721 --164: *                   ER_D_FLS_WRITE
+                         722 --165: *                   ER_D_FLS_ERASE
+                         723 --166: *                   ER_D_FLS_FACITOUT
+                         724 --167: **********************************************************************************************/
+                         725 --168: uint32_t D_FLS_EraseDf(const uint32_t flash_addr, const uint32_t data_size_in_bytes)
+                         726 --169: {
+                         727 --170:     uint32_t    lul_fls_status;
+                         728 --171:     fls_ctrl_t  *p_fls_ctrl;
+                         729 --173:     /* FACI number setteing */
+                         730 --174:     (void)d_FLS_SelectFpsys_ram(flash_addr);
+                         731 --175:     p_fls_ctrl = &g_fls_ctrl[g_fls_selected_fpsys];
+                         732 --177:     /* control variable setting */
+                         733 --178:     p_fls_ctrl->prm.d_status               = ER_D_FLS_REQUEST;
+                         734 --179:     p_fls_ctrl->prm.ope_mode               = (uint16_t)R_RFD_MODE_DFPE;
+                         735 --180:     p_fls_ctrl->prm.commad_req             = D_FLS_CMDREQ_ON;
+                         736 --181:     p_fls_ctrl->prm.command_code           = D_FACI_CMD_BLOCK_ERASE;
+                         737 --182:     p_fls_ctrl->prm.flash_addr             = flash_addr;
+                         738 --183:     p_fls_ctrl->prm.p_data                 = NULL;
+                         739 --184:     p_fls_ctrl->prm.data_size_in_bytes     = data_size_in_bytes;
+                         740 --185:     p_fls_ctrl->prm.p_pre_processing       = &d_FLS_PreProcessingDf;
+                         741 --186:     p_fls_ctrl->prm.p_faci_commad_set      = &d_FLS_IssueCommand_ram;
+                         742 --187:     p_fls_ctrl->prm.p_write_size_in_bytes  = &d_FLS_GetDfEraseWriteSize;
+                         743 --188:     p_fls_ctrl->prm.p_error_check          = &d_FLS_CheckFaciErrors_ram;
+                         744 --189:     p_fls_ctrl->prm.success_resp           = ER_OK;
+                         745 --190:     p_fls_ctrl->prm.p_num                  = D_FLS_ZERO_U32;
+                         746 --192:     /* Set Max FACI command time + Margin time */
+                         747 --193:     p_fls_ctrl->prm.max_time               = TIMEOUT_ERASE_DF;
+                         748 --195:     lul_fls_status = d_FLS_Handler_ram(g_fls_selected_fpsys);
+                         749 --197:     return (lul_fls_status);
+                         750 --198: }
+                         751 --200: /********************************************************************************
+                         752 --201:  private Function definition
+                         753 --202: *********************************************************************************/
+                         754 --203: /******************************************************************************
+                         755 --204: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0058]:[ICUMFW_UD_U2B_D_FLS_0058]
+                         756 --205: * Function Name : d_FLS_PreProcessingDf
+                         757 --206: * Description   : Preprocessing of PE operation
+                         758 --207: * Arguments     : none
+                         759 --208: * Return Value  :   FLS_ERR_NONE
+                         760 --209: ******************************************************************************/
+                         761 --210: STATIC uint32_t d_FLS_PreProcessingDf(void)
+                         762 --211: {
+                         763 --212:     /* No preprocessing */
+                         764 --213:     return (FLS_ERR_NONE);
+                         765 --214: }
+                         766 --216: /******************************************************************************
+                         767 --217: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0059]:[ICUMFW_UD_U2B_D_FLS_0059]
+                         768 --218: * Function Name : D_FLS_GetDfEraseBlockSize
+                         769 --219: * Description   : get flash erase block size (byte)
+                         770 --220: * Arguments     : flash_addr
+                         771 --221: *                   data flash address(dummy not use)
+                         772 --222: *               : *p_size
+                         773 --223: *                   erase size
+                         774 --224: * Return Value  :   ER_OK : No error detected
+                         775 --225: ******************************************************************************/
+                         776 --226: uint32_t D_FLS_GetDfEraseBlockSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         777 --227: {
+                         778 --228:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         779 --229:     {
+                         780 --230:         /* Normal */
+                         781 --231:     }
+                         782 --232:     else
+                         783 --233:     {
+                         784 --234:         /* Abnormal */
+                         785 --235:     }
+                         786 --237:     *p_size = DF_ERASE_BLOCK_SIZE;
+                         787 --239:     return (ER_OK);
+                         788 --240: }
+                         789 --242: /******************************************************************************
+                         790 --243: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0061]:[ICUMFW_UD_U2B_D_FLS_0061]
+                         791 --244: * Function Name : D_FLS_GetDfProgramWriteSize
+                         792 --245: * Description   : get flash program write size (byte)
+                         793 --246: * Arguments     : flash_addr
+                         794 --247: *                   data flash address(dummy not use)
+                         795 --248: *               : *p_size
+                         796 --249: *                   write size
+                         797 --250: * Return Value  : uint32_t
+                         798 --251: *                   ER_OK : No error detected
+                         799 --252: ******************************************************************************/
+                         800 --253: uint32_t D_FLS_GetDfProgramWriteSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         801 --254: {
+                         802 --255:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         803 --256:     {
+                         804 --257:         /* Normal */
+                         805 --258:     }
+                         806 --259:     else
+                         807 --260:     {
+                         808 --261:         /* Abnormal */
+                         809 --262:     }
+                         810 --264:     *p_size = DF_WBUFFER_SIZE;
+                         811 --266:     return (ER_OK);
+                         812 --267: }
+                         813 --269: /******************************************************************************
+                         814 --270: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0062]:[ICUMFW_UD_U2B_D_FLS_0062]
+                         815 --271: * Function Name : D_FLS_GetDfMultiProgramSize
+                         816 --272: * Description   : get flash multi program write size (byte)
+                         817 --273: * Arguments     : flash_addr
+                         818 --274: *                   data flash address(dummy not use)
+                         819 --275: *               : *p_size
+                         820 --276: *                   write size
+                         821 --277: * Return Value  : uint32_t
+                         822 --278: *                   ER_OK : No error detected
+                         823 --279: ******************************************************************************/
+                         824 --280: STATIC uint32_t d_FLS_GetDfMultiProgramSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         825 --281: {
+                         826 --282:     uint32_t lus_leftover_size;
+                         827 --284:     lus_leftover_size =
+                         828 --285:         g_fls_ctrl[g_fls_selected_fpsys].prm.data_size_in_bytes - g_fls_ctrl[g_fls_selected_fpsys].prm.p_num;
+                         829 --286:     lus_leftover_size -= DF_WBUFFER_SIZE;
+                         830 --287:     g_fls_ctrl[g_fls_selected_fpsys].prm.command_code = D_FACI_CMD_MULTI_PROGRAM;
+                         831 --289:     if ((DF_MULTIW128_SIZE <= lus_leftover_size) && ( ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_128)))
+                         832 --290:     {
+                         833 --291:         *p_size = DF_MULTIW128_SIZE;
+                         834 --292:     }
+                         835 --293:     else if ((DF_MULTIW64_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_64)))
+                         836 --294:     {
+                         837 --295:         *p_size = DF_MULTIW64_SIZE;
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         838 --296:     }
+                         839 --297:     else if ((DF_MULTIW32_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_32)))
+                         840 --298:     {
+                         841 --299:         *p_size = DF_MULTIW32_SIZE;
+                         842 --300:     }
+                         843 --301:     else if ((DF_MULTIW16_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_16)))
+                         844 --302:     {
+                         845 --303:         *p_size = DF_MULTIW16_SIZE;
+                         846 --304:     }
+                         847 --305:     else if ((DF_MULTIW8_SIZE <= lus_leftover_size) && (ALIGN_CHK_OK == (flash_addr & ALIGN_CHK_8)))
+                         848 --306:     {
+                         849 --307:         *p_size = DF_MULTIW8_SIZE;
+                         850 --308:     }
+                         851 --309:     else
+                         852 --310:     {
+                         853 --311:         g_fls_ctrl[g_fls_selected_fpsys].prm.command_code = D_FACI_CMD_PROGRAM;
+                         854 --312:         *p_size = DF_WBUFFER_SIZE;
+                         855 --313:     }
+                         856 --315:     return (ER_OK);
+                         857 --316: }
+                         858 --318: /******************************************************************************
+                         859 --319: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0060]:[ICUMFW_UD_U2B_D_FLS_0060]
+                         860 --320: * Function Name : d_FLS_GetDfEraseWriteSize
+                         861 --321: * Description   : get flash erase write size (byte) dummy function
+                         862 --322: * Arguments     : flash_addr
+                         863 --323: *                   data flash address(dummy not use)
+                         864 --324: *               : *p_size
+                         865 --325: *                   erase size
+                         866 --326: * Return Value  :   FLS_ERR_NONE : No error detected
+                         867 --327: ******************************************************************************/
+                         868 	.align	2
+                         869 	.align	2
+                         870 	.align	2
+                         871 ..gh.f.a.2.e.4:
+                         872 	.type	..gh.f.a.2.e.4,@object
+                         873 	.size	..gh.f.a.2.e.4,0
+                         874 	.global	_d_FLS_GetDfEraseWriteSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         875 _d_FLS_GetDfEraseWriteSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.:
+                         876 _d_FLS_GetDfEraseWriteSize:
+0000011a 07f0            877 	mov	r7,ep
+                         878 --	    .bf
+                         879 .LDW81:
+                         880 --328: STATIC uint32_t d_FLS_GetDfEraseWriteSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                         881 --329: {
+                         882 --330:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                         883 --331:     {
+                         884 --332:         /* Normal */
+                         885 --333:     }
+                         886 --334:     else
+                         887 --335:     {
+                         888 --336:         /* Abnormal */
+                         889 --337:     }
+                         890 --339:     *p_size = DF_ERASE_BLOCK_SIZE;
+0000011c 200e0010        891 	movea	4096,zero,r1
+00000120 010d            892 	sst.w	r1,0[ep]
+                         893 --341:     return (FLS_ERR_NONE);
+00000122 0052            894 	mov	0,r10
+                         895 --	    .ef
+                         896 .LDW91:
+                         897 .L653:
+                         898 	.jumptype return
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+00000124 7f00            899 	jmp	[lp]
+                         900 --line329
+                         901 ..lin.b9226ff0..4845298b.0_26::
+                         902 	.type	_d_FLS_GetDfEraseWriteSize,@function
+                         903 	.size	_d_FLS_GetDfEraseWriteSize,.-_d_FLS_GetDfEraseWriteSize
+                         904 	.type	_d_FLS_GetDfEraseWriteSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,@function
+                         905 	.size	_d_FLS_GetDfEraseWriteSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.,.-_d_FLS_GetDfEraseWriteSize..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash.
+                         906 	.align	2
+                         907 
+                         908 --_flash_addr	none	param
+                         909 --_p_size	ep	param
+                         910 
+                         911 	.section ".bss","awb"
+                         912 .L634:
+                         913 	.type	.L634,@object
+                         914 	.size	.L634,0
+                         915 	.section ".ghrettbl",""
+00000010 00000000*       916 .L654:	.word	.L653
+                         917 	.type	.L654,@object
+                         918 	.size	.L654,4
+                         919 	.data
+                         920 	.section ".icum_driver.text","ax"
+                         921 
+                         922 --342: }
+                         923 
+                         924 	.align	2
+                         925 	.align	2
+                         926 	.align	2
+                         927 ..gh.f.a.2.e.5:
+                         928 	.type	..gh.f.a.2.e.5,@object
+                         929 	.size	..gh.f.a.2.e.5,0
+                         930 	.global	_D_FLS_EraseDf
+                         931 _D_FLS_EraseDf:
+00000126 8007e100        932 	prepare	{r28,r29,r31},0
+0000012a 06e8            933 	mov	r6,r29
+0000012c 07e0            934 	mov	r7,r28
+                         935 --	    .bf
+                         936 .LDW02:
+                         937 --168: uint32_t D_FLS_EraseDf(const uint32_t flash_addr, const uint32_t data_size_in_bytes)
+                         938 --169: {
+                         939 --170:     uint32_t    lul_fls_status;
+                         940 --171:     fls_ctrl_t  *p_fls_ctrl;
+                         941 --173:     /* FACI number setteing */
+                         942 --174:     (void)d_FLS_SelectFpsys_ram(flash_addr);
+                         943 .L698:
+                         944 	jarl	_d_FLS_SelectFpsys_ram,lp
+                         944 <EXPANSION BEGIN>
+                         944 jarl22 _d_FLS_SelectFpsys_ram , lp 
+0000012e 80ff0000*       944 <EXPANSION END>
+                         945 --175:     p_fls_ctrl = &g_fls_ctrl[g_fls_selected_fpsys];
+                         946 --line175
+                         947 ..lin.b9226ff0..34875925.0_27::
+                         948 .LDWlin27:
+00000132 40360000*       949 	movhi	hi(_g_fls_selected_fpsys),zero,r6
+00000136 26370100*       950 	ld.w	lo(_g_fls_selected_fpsys)[r6],r6
+0000013a 210600000000*   951 	mov	_g_fls_ctrl,r1
+00000140 e6f65000        952 	mulhi	80,r6,ep
+00000144 c1f1            953 	add	r1,ep
+                         954 --177:     /* control variable setting */
+                         955 --178:     p_fls_ctrl->prm.d_status               = ER_D_FLS_REQUEST;
+                         956 --line178
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                         957 ..lin.b9226ff0..34875925.0_28::
+                         958 .LDWlin28:
+00000146 200eff03        959 	movea	1023,zero,r1
+0000014a 090d            960 	sst.w	r1,16[ep]
+0000014c 210680000120    961 	mov	536936576,r1
+00000152 0b0d            962 	sst.w	r1,20[ep]
+                         963 --185:     p_fls_ctrl->prm.p_pre_processing       = &d_FLS_PreProcessingDf;
+                         964 --line185
+                         965 ..lin.b9226ff0..34875925.0_29::
+                         966 .LDWlin29:
+00000154 210600000000*   967 	mov	_d_FLS_PreProcessingDf,r1
+0000015a 150d            968 	sst.w	r1,40[ep]
+                         969 --186:     p_fls_ctrl->prm.p_faci_commad_set      = &d_FLS_IssueCommand_ram;
+                         970 --line186
+                         971 ..lin.b9226ff0..34875925.0_30::
+                         972 .LDWlin30:
+0000015c 210600000000*   973 	mov	_d_FLS_IssueCommand_ram,r1
+00000162 170d            974 	sst.w	r1,44[ep]
+                         975 --187:     p_fls_ctrl->prm.p_write_size_in_bytes  = &d_FLS_GetDfEraseWriteSize;
+                         976 --line187
+                         977 ..lin.b9226ff0..34875925.0_31::
+                         978 .LDWlin31:
+00000164 210600000000*   979 	mov	_d_FLS_GetDfEraseWriteSize,r1
+0000016a 190d            980 	sst.w	r1,48[ep]
+                         981 --188:     p_fls_ctrl->prm.p_error_check          = &d_FLS_CheckFaciErrors_ram;
+                         982 --line188
+                         983 ..lin.b9226ff0..34875925.0_32::
+                         984 .LDWlin32:
+0000016c 210600000000*   985 	mov	_d_FLS_CheckFaciErrors_ram,r1
+00000172 1b0d            986 	sst.w	r1,52[ep]
+                         987 --192:     /* Set Max FACI command time + Margin time */
+                         988 --193:     p_fls_ctrl->prm.max_time               = TIMEOUT_ERASE_DF;
+                         989 --line193
+                         990 ..lin.b9226ff0..34875925.0_33::
+                         991 .LDWlin33:
+00000174 2106c03ae501    992 	mov	31800000,r1
+                         993 --182:     p_fls_ctrl->prm.flash_addr             = flash_addr;
+                         994 --line182
+                         995 ..lin.b9226ff0..34875925.0_34::
+                         996 .LDWlin34:
+0000017a 0fed            997 	sst.w	r29,28[ep]
+                         998 --183:     p_fls_ctrl->prm.p_data                 = NULL;
+0000017c 1105            999 	sst.w	zero,32[ep]
+                        1000 --184:     p_fls_ctrl->prm.data_size_in_bytes     = data_size_in_bytes;
+0000017e 13e5           1001 	sst.w	r28,36[ep]
+                        1002 --189:     p_fls_ctrl->prm.success_resp           = ER_OK;
+00000180 1d05           1003 	sst.w	zero,56[ep]
+                        1004 --190:     p_fls_ctrl->prm.p_num                  = D_FLS_ZERO_U32;
+00000182 1f05           1005 	sst.w	zero,60[ep]
+00000184 250d           1006 	sst.w	r1,72[ep]
+                        1007 --195:     lul_fls_status = d_FLS_Handler_ram(g_fls_selected_fpsys);
+                        1008 .L700:
+                        1009 	jarl	_d_FLS_Handler_ram,lp
+                        1009 <EXPANSION BEGIN>
+                        1009 jarl22 _d_FLS_Handler_ram , lp 
+00000186 80ff0000*      1009 <EXPANSION END>
+                        1010 --197:     return (lul_fls_status);
+                        1011 --	    .ef
+                        1012 .LDW12:
+                        1013 .L702:
+                        1014 --line197
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                        1015 ..lin.b9226ff0..34875925.0_35::
+                        1016 .LDWlin35:
+0000018a 4006ff00       1017 	dispose	0,{r28,r29,r31},[lp]
+                        1018 --line197
+                        1019 ..lin.b9226ff0..34875925.0_36::
+                        1020 	.type	_D_FLS_EraseDf,@function
+                        1021 	.size	_D_FLS_EraseDf,.-_D_FLS_EraseDf
+                        1022 	.align	2
+                        1023 --_p_fls_ctrl	ep	local
+                        1024 
+                        1025 --_flash_addr	r29	param
+                        1026 --_data_size_in_bytes	r28	param
+                        1027 
+                        1028 	.section ".bss","awb"
+                        1029 .L679:
+                        1030 	.type	.L679,@object
+                        1031 	.size	.L679,0
+                        1032 	.section ".ghcalltbl",""
+00000008 00000000*      1033 .L699:	.word	.L698
+                        1034 	.type	.L699,@object
+                        1035 	.size	.L699,4
+0000000c 00000000*      1036 .L701:	.word	.L700
+                        1037 	.type	.L701,@object
+                        1038 	.size	.L701,4
+                        1039 	.section ".ghrettbl",""
+00000014 00000000*      1040 .L703:	.word	.L702
+                        1041 	.type	.L703,@object
+                        1042 	.size	.L703,4
+                        1043 	.data
+                        1044 	.section ".icum_driver.text","ax"
+                        1045 
+                        1046 --198: }
+                        1047 
+                        1048 --200: /********************************************************************************
+                        1049 --201:  private Function definition
+                        1050 --202: *********************************************************************************/
+                        1051 --203: /******************************************************************************
+                        1052 --204: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0058]:[ICUMFW_UD_U2B_D_FLS_0058]
+                        1053 --205: * Function Name : d_FLS_PreProcessingDf
+                        1054 --206: * Description   : Preprocessing of PE operation
+                        1055 --207: * Arguments     : none
+                        1056 --208: * Return Value  :   FLS_ERR_NONE
+                        1057 --209: ******************************************************************************/
+                        1058 --210: STATIC uint32_t d_FLS_PreProcessingDf(void)
+                        1059 --211: {
+                        1060 --212:     /* No preprocessing */
+                        1061 --213:     return (FLS_ERR_NONE);
+                        1062 --214: }
+                        1063 --216: /******************************************************************************
+                        1064 --217: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0059]:[ICUMFW_UD_U2B_D_FLS_0059]
+                        1065 --218: * Function Name : D_FLS_GetDfEraseBlockSize
+                        1066 --219: * Description   : get flash erase block size (byte)
+                        1067 --220: * Arguments     : flash_addr
+                        1068 --221: *                   data flash address(dummy not use)
+                        1069 --222: *               : *p_size
+                        1070 --223: *                   erase size
+                        1071 --224: * Return Value  :   ER_OK : No error detected
+                        1072 --225: ******************************************************************************/
+                        1073 	.align	2
+                        1074 	.align	2
+                        1075 	.align	2
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si
+                        1076 ..gh.f.a.2.e.6:
+                        1077 	.type	..gh.f.a.2.e.6,@object
+                        1078 	.size	..gh.f.a.2.e.6,0
+                        1079 	.global	_D_FLS_GetDfEraseBlockSize
+                        1080 _D_FLS_GetDfEraseBlockSize:
+0000018e 07f0           1081 	mov	r7,ep
+                        1082 --	    .bf
+                        1083 .LDW22:
+                        1084 --226: uint32_t D_FLS_GetDfEraseBlockSize(UNUSED const uint32_t flash_addr, uint32_t *p_size)
+                        1085 --227: {
+                        1086 --228:     if (D_FLS_DF_BANKA_START_ADDRESS <= flash_addr)
+                        1087 --229:     {
+                        1088 --230:         /* Normal */
+                        1089 --231:     }
+                        1090 --232:     else
+                        1091 --233:     {
+                        1092 --234:         /* Abnormal */
+                        1093 --235:     }
+                        1094 --237:     *p_size = DF_ERASE_BLOCK_SIZE;
+00000190 200e0010       1095 	movea	4096,zero,r1
+00000194 010d           1096 	sst.w	r1,0[ep]
+                        1097 --239:     return (ER_OK);
+00000196 0052           1098 	mov	0,r10
+                        1099 --	    .ef
+                        1100 .LDW32:
+                        1101 .L765:
+                        1102 	.jumptype return
+00000198 7f00           1103 	jmp	[lp]
+                        1104 --line227
+                        1105 ..lin.b9226ff0..541cd3eb.0_37::
+                        1106 	.type	_D_FLS_GetDfEraseBlockSize,@function
+                        1107 	.size	_D_FLS_GetDfEraseBlockSize,.-_D_FLS_GetDfEraseBlockSize
+                        1108 	.align	2
+                        1109 
+                        1110 --_flash_addr	none	param
+                        1111 --_p_size	ep	param
+                        1112 
+                        1113 	.section ".bss","awb"
+                        1114 .L746:
+                        1115 	.type	.L746,@object
+                        1116 	.size	.L746,0
+                        1117 	.section ".ghrettbl",""
+00000018 00000000*      1118 .L766:	.word	.L765
+                        1119 	.type	.L766,@object
+                        1120 	.size	.L766,4
+                        1121 	.data
+                        1122 	.section ".icum_driver.text","ax"
+                        1123 
+                        1124 --240: }
+                        1125 	.align	2
+                        1126 --___ghsbegin_start_DF_BANK_A	___ghsbegin_start_DF_BANK_A	import
+                        1127 --_g_fls_selected_fpsys	_g_fls_selected_fpsys	import
+                        1128 --_g_fls_ctrl	_g_fls_ctrl	import
+                        1129 
+                        1130 	.data
+                        1131 	.ghsnote version,30
+                        1132 	.ghsnote tools,3
+                        1133 	.ghsnote options,656
+                        1134 	.section ".icum_driver.text","ax"
+                        1135 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_df_flash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..0::
+                        1136 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000geg1.si

@@ -1,0 +1,938 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common -I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif -I..\..\icum\sal\include\library -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_fp_shiftright.dbo -source=icum_l_fp_shiftright.c -comp -o ..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\gh_00013e41.o -list=..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_fp_shiftright.lst C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+Source File: icum_l_fp_shiftright.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common
+                           2 --		-I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif
+                           3 --		-I..\..\icum\sal\include\library
+                           4 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common
+                           5 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\device\
+                           8 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           9 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          10 --		-I..\..\icum\target\u2cx\include\driver
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          14 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          15 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          16 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          17 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          18 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          19 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          20 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          21 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          22 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          23 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          24 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          25 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          26 --		.text=.icum_library.text -section .rodata=.icum_library.rodata
+                          27 --		-section .bss=.icum_library.bss -section .data=.icum_library.data
+                          28 --		-DTFM_ALREADY_SET -DTFM_TIMING_RESISTANT -DENDIAN_LITTLE
+                          29 --		-DENDIAN_32BITWORD -DLTC_RH850 -filetype.c
+                          30 --		..\..\icum\sal\src\library\l_cry\cry_pk\cry_bignum\icum_l_fp_shiftright.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_fp_shiftright.o
+                          33 --Source File:   ..\..\icum\sal\src\library\l_cry\cry_pk\cry_bignum\icum_l_fp_shiftright.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:24 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_library.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   Cryptographic Library BIGNUM                              */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: #include "icum_l_bignum.h"
+                          70 --31: /***************************************************************************************
+                          71 --32: * Function ID  : [ICUMFW_CD_L_CRY_BignumMath_0020]:[ICUMFW_UD_L_CRY_BignumMath_0020]
+                          72 --33: * Function name: l_BIGNUM_DivideByPowerOf2
+                          73 --34: * Description  : quotient = a / (2**exponent)
+                          74 --35: *                Divide 2 by a value raised to the power of exponent to find 
+                          75 --36: *                the quotient and remainder.
+                          76 --37: * Arguments    : *p_a        : Address of dividend
+                          77 --38: *                              Range : 0x0 - 0xFFFFFFFF
+                          78 --39: *                 exponent   : The exponent of 2 which is the divisor
+                          79 --40: *                              Range : -2147483648 - 2147483647
+                          80 --41: *                *p_quotient : The address of the quotient obtained by multiplying a by a power of 2
+                          81 --42: *                              Range : 0x0 - 0xFFFFFFFF
+                          82 --43: *                *p_remainder: The address of the remainder obtained by multiplying a by a power of 2
+                          83 --44: *                              Range : 0x0 - 0xFFFFFFFF
+                          84 --45: * Return Value : ER_OK
+                          85 --46: ***************************************************************************************/
+                          86 --47: uint32_t l_BIGNUM_DivideByPowerOf2(big_num_t *p_a, uint32_t exponent, big_num_t *p_quotient, big_num_t *p_remainder)
+                          87 	.align	2
+                          88 	.align	2
+                          89 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_fp_shiftright...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF70..0::
+                          90 	.align	2
+                          91 	.align	2
+                          92 ..gh.f.a.2.e.0:
+                          93 	.type	..gh.f.a.2.e.0,@object
+                          94 	.size	..gh.f.a.2.e.0,0
+                          95 	.global	_l_BIGNUM_DivideByPowerOf2
+                          96 _l_BIGNUM_DivideByPowerOf2:
+00000000 031ee8ff         97 	addi	-24,sp,sp
+00000004 63ff1500         98 	st.w	lp,20[sp]
+00000008 63cf1100         99 	st.w	r25,16[sp]
+0000000c 63d70d00        100 	st.w	r26,12[sp]
+00000010 63df0900        101 	st.w	r27,8[sp]
+00000014 63e70500        102 	st.w	r28,4[sp]
+00000018 63ef0100        103 	st.w	r29,0[sp]
+0000001c 06e0            104 	mov	r6,r28
+0000001e 07d0            105 	mov	r7,r26
+00000020 08e8            106 	mov	r8,r29
+00000022 09d8            107 	mov	r9,r27
+00000024 390600000000*   108 	mov	_g_crypt_fp_size,r25
+                         109 --	    .bf
+                         110 .LDW01:
+                         111 --48: {
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         112 --49:     fp_digit    D, r, rr;
+                         113 --50:     int32_t     x;
+                         114 --	    .bs
+                         115 .LDW11:
+                         116 --52:     /* if the shift count is <= 0 then we do no work */
+                         117 --53:     if (exponent <= 0u)
+                         118 --line53
+                         119 ..lin.3a8d8bc6..40cbf234.0_1::
+                         120 .LDWlin1:
+0000002a e0d1            121 	cmp	zero,r26
+0000002c cb25*           122 	bh	.L4
+                         123 --54:     {
+                         124 --55:         FP_COPY (p_a, p_quotient);
+                         125 --line55
+                         126 ..lin.3a8d8bc6..40cbf234.0_2::
+                         127 .LDWlin2:
+0000002e fde1            128 	cmp	r29,r28
+00000030 a215*           129 	be	.L11
+                         130 --line55
+                         131 ..lin.3a8d8bc6..40cbf234.0_3::
+                         132 .LDWlin3:
+00000032 3c0f0100        133 	ld.w	0[r28],r1
+00000036 7d0f0100        134 	st.w	r1,0[r29]
+0000003a 3c0f0500        135 	ld.w	4[r28],r1
+0000003e 7d0f0500        136 	st.w	r1,4[r29]
+00000042 39470100        137 	ld.w	0[r25],r8
+00000046 1d360800        138 	addi	8,r29,r6
+0000004a 1c3e0800        139 	addi	8,r28,r7
+0000004e c242            140 	shl	2,r8
+                         141 .L397:
+                         142 	jarl	_l_CMN_MemCpy,lp
+                         142 <EXPANSION BEGIN>
+                         142 jarl22 _l_CMN_MemCpy , lp 
+00000050 80ff0000*       142 <EXPANSION END>
+                         143 .L11:
+                         144 --line55
+                         145 ..lin.3a8d8bc6..40cbf234.0_4::
+                         146 .LDWlin4:
+00000054 0000            147 	nop
+                         148 --56:         if (p_remainder != NULL)
+00000056 e0d9            149 	cmp	zero,r27
+00000058 c275*           150 	be	.L18
+                         151 --57:         {
+                         152 --58:             FP_INIT (p_remainder);
+                         153 --line58
+                         154 ..lin.3a8d8bc6..40cbf234.0_5::
+                         155 .LDWlin5:
+0000005a 7b070100        156 	st.w	zero,0[r27]
+0000005e 7b070500        157 	st.w	zero,4[r27]
+00000062 39470100        158 	ld.w	0[r25],r8
+00000066 1b360800        159 	addi	8,r27,r6
+0000006a 003a            160 	mov	0,r7
+0000006c c242            161 	shl	2,r8
+                         162 .L399:
+                         163 	jarl	_l_CMN_MemSet,lp
+                         163 <EXPANSION BEGIN>
+                         163 jarl22 _l_CMN_MemSet , lp 
+0000006e 80ff0000*       163 <EXPANSION END>
+                         164 --line58
+                         165 ..lin.3a8d8bc6..40cbf234.0_6::
+                         166 .LDWlin6:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+00000072 f565*           167 	br	.L18
+                         168 .L4:
+                         169 --59:         }
+                         170 --60:         else
+                         171 --61:         {
+                         172 --62:             /* Do nothing */
+                         173 --63:         }
+                         174 --64:     }
+                         175 --65:     else
+                         176 --66:     {
+                         177 --	    .bs
+                         178 .LDW21:
+                         179 --67:         /* get the remainder */
+                         180 --68:         if (p_remainder != NULL)
+                         181 --line68
+                         182 ..lin.3a8d8bc6..40cbf234.0_7::
+                         183 .LDWlin7:
+00000074 e0d9            184 	cmp	zero,r27
+00000076 e205*           185 	be	.L24
+                         186 --69:         {
+                         187 --70:             (void)l_BIGNUM_ModByPowerOf2(p_a, exponent, p_remainder);
+                         188 --line70
+                         189 ..lin.3a8d8bc6..40cbf234.0_8::
+                         190 .LDWlin8:
+00000078 1c30            191 	mov	r28,r6
+0000007a 1a38            192 	mov	r26,r7
+0000007c 1b40            193 	mov	r27,r8
+                         194 .L401:
+                         195 	jarl	_l_BIGNUM_ModByPowerOf2,lp
+                         195 <EXPANSION BEGIN>
+                         195 jarl22 _l_BIGNUM_ModByPowerOf2 , lp 
+0000007e 80ffaa01*       195 <EXPANSION END>
+                         196 .L24:
+                         197 --71:         }
+                         198 --72:         else
+                         199 --73:         {
+                         200 --74:             /* Do nothing */
+                         201 --75:         }
+                         202 --77:         /* copy */
+                         203 --78:         FP_COPY(p_a, p_quotient);
+                         204 --line78
+                         205 ..lin.3a8d8bc6..40cbf234.0_9::
+                         206 .LDWlin9:
+00000082 fde1            207 	cmp	r29,r28
+00000084 a215*           208 	be	.L27
+                         209 --line78
+                         210 ..lin.3a8d8bc6..40cbf234.0_10::
+                         211 .LDWlin10:
+00000086 3c0f0100        212 	ld.w	0[r28],r1
+0000008a 7d0f0100        213 	st.w	r1,0[r29]
+0000008e 3c0f0500        214 	ld.w	4[r28],r1
+00000092 7d0f0500        215 	st.w	r1,4[r29]
+00000096 39470100        216 	ld.w	0[r25],r8
+0000009a 1d360800        217 	addi	8,r29,r6
+0000009e 1c3e0800        218 	addi	8,r28,r7
+000000a2 c242            219 	shl	2,r8
+                         220 .L403:
+                         221 	jarl	_l_CMN_MemCpy,lp
+                         221 <EXPANSION BEGIN>
+                         221 jarl22 _l_CMN_MemCpy , lp 
+000000a4 80ff0000*       221 <EXPANSION END>
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         222 .L27:
+                         223 --line78
+                         224 ..lin.3a8d8bc6..40cbf234.0_11::
+                         225 .LDWlin11:
+000000a8 0000            226 	nop
+                         227 --80:         /* shift by as many digits in the bit count */
+                         228 --81:         if (exponent >= DIGIT_BIT)
+000000aa 1a06e0ff        229 	addi	-32,r26,zero
+000000ae e905*           230 	bnl	.L30
+                         231 --82:         {
+                         232 --83:             (void)l_BIGNUM_ShiftRight(p_quotient, (int32_t)(exponent / DIGIT_BIT));
+                         233 --line83
+                         234 ..lin.3a8d8bc6..40cbf234.0_12::
+                         235 .LDWlin12:
+000000b0 1d30            236 	mov	r29,r6
+000000b2 1a38            237 	mov	r26,r7
+000000b4 853a            238 	shr	5,r7
+                         239 .L405:
+                         240 	jarl	_l_BIGNUM_ShiftRight,lp
+                         240 <EXPANSION BEGIN>
+                         240 jarl22 _l_BIGNUM_ShiftRight , lp 
+000000b6 80ffaa00*       240 <EXPANSION END>
+                         241 .L30:
+                         242 --84:         }
+                         243 --85:         else
+                         244 --86:         {
+                         245 --87:             /* Do nothing */
+                         246 --88:         }
+                         247 --90:         /* shift any bit count < DIGIT_BIT */
+                         248 --91:         D = (fp_digit) ((fp_digit)exponent % (fp_digit)DIGIT_BIT);
+                         249 --line91
+                         250 ..lin.3a8d8bc6..40cbf234.0_13::
+                         251 .LDWlin13:
+000000ba da0e1f00        252 	andi	31,r26,r1
+                         253 --	    .bs
+                         254 .LDW31:
+                         255 --92:         if (D != 0u)
+000000be e009            256 	cmp	zero,r1
+000000c0 f225*           257 	be	.L37
+                         258 --93:         {
+                         259 --	    .bs
+                         260 .LDW41:
+                         261 --94:             register fp_digit *tmpc, mask, shift;
+                         262 --96:             /* mask */
+                         263 --97:             mask = (((fp_digit)1) << D) - 1u;
+                         264 --line97
+                         265 ..lin.3a8d8bc6..40cbf234.0_14::
+                         266 .LDWlin14:
+000000c2 0112            267 	mov	1,r2
+000000c4 e117c000        268 	shl	r1,r2
+000000c8 028effff        269 	addi	-1,r2,r17
+                         270 --99:             /* shift for lsb */
+                         271 --100:             shift = (fp_digit)DIGIT_BIT - D;
+000000cc 20162000        272 	movea	32,zero,r2
+000000d0 0280            273 	mov	r2,r16
+000000d2 a181            274 	sub	r1,r16
+                         275 --102:             /* alias */
+                         276 --103:             tmpc = &p_quotient->value[p_quotient->used - 1u];
+000000d4 3d170100        277 	ld.w	0[r29],r2
+000000d8 1d9e0800        278 	addi	8,r29,r19
+000000dc 5f12            279 	add	-1,r2
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+000000de c212            280 	shl	2,r2
+000000e0 02f0            281 	mov	r2,ep
+000000e2 d3f1            282 	add	r19,ep
+                         283 --105:             /* carry */
+                         284 --106:             r = 0;
+000000e4 009a            285 	mov	0,r19
+                         286 --107:             for (x = (int32_t)(p_quotient->used - 1u); x >= 0; x--)
+000000e6 3d970100        287 	ld.w	0[r29],r18
+000000ea 1216ffff        288 	addi	-1,r18,r2
+000000ee e50d*           289 	br	.L36
+                         290 .L35:
+                         291 --108:             {
+                         292 --109:                 /* get the lower  bits of this word in a temp */
+                         293 --110:                 rr = *tmpc & mask;
+                         294 --line110
+                         295 ..lin.3a8d8bc6..40cbf234.0_15::
+                         296 .LDWlin15:
+000000f0 007d            297 	sld.w	0[ep],r15
+000000f2 1190            298 	mov	r17,r18
+000000f4 4f91            299 	and	r15,r18
+                         300 --112:                 /* shift the current word and mix in the carry bits from the previous word */
+                         301 --113:                 *tmpc = (*tmpc >> D) | (r << shift);
+000000f6 007d            302 	sld.w	0[ep],r15
+000000f8 f09fc270        303 	shl	r16,r19,r14
+000000fc e17f8000        304 	shr	r1,r15
+00000100 0e79            305 	or	r14,r15
+00000102 017d            306 	sst.w	r15,0[ep]
+                         307 --114:                 tmpc--;
+00000104 5cf2            308 	add	-4,ep
+                         309 --116:                 /* set the carry to the carry bits of the current word found above */
+                         310 --117:                 r = rr;
+00000106 1298            311 	mov	r18,r19
+00000108 5f12            312 	add	-1,r2
+                         313 .L36:
+0000010a e011            314 	cmp	zero,r2
+0000010c aef5*           315 	bge	.L35
+                         316 --	    .es
+                         317 .LDW51:
+                         318 .L37:
+                         319 --118:             }
+                         320 --119:         }
+                         321 --120:         else
+                         322 --121:         {
+                         323 --	    .es
+                         324 .LDW61:
+                         325 --122:             /* Do nothing */
+                         326 --123:         }
+                         327 --125:         FP_CLAMP (p_quotient);
+                         328 --line125
+                         329 ..lin.3a8d8bc6..40cbf234.0_16::
+                         330 .LDWlin16:
+0000010e e505*           331 	br	.L41
+                         332 .L43:
+                         333 --line125
+                         334 ..lin.3a8d8bc6..40cbf234.0_17::
+                         335 .LDWlin17:
+00000110 3d7f0100        336 	ld.w	0[r29],r15
+00000114 5f7a            337 	add	-1,r15
+00000116 7d7f0100        338 	st.w	r15,0[r29]
+                         339 .L41:
+0000011a 3d7f0100        340 	ld.w	0[r29],r15
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+0000011e e079            341 	cmp	zero,r15
+00000120 a20d*           342 	be	.L42
+00000122 5f7a            343 	add	-1,r15
+00000124 c27a            344 	shl	2,r15
+00000126 1d760800        345 	addi	8,r29,r14
+0000012a ce79            346 	add	r14,r15
+0000012c 2f7f0100        347 	ld.w	0[r15],r15
+00000130 e079            348 	cmp	zero,r15
+00000132 f2ed*           349 	be	.L43
+                         350 .L42:
+                         351 --line125
+                         352 ..lin.3a8d8bc6..40cbf234.0_18::
+                         353 .LDWlin18:
+00000134 3d7f0100        354 	ld.w	0[r29],r15
+00000138 e079            355 	cmp	zero,r15
+0000013a ba05*           356 	bne	.L98
+0000013c 7d070500        357 	st.w	zero,4[r29]
+                         358 .L98:
+                         359 --	    .es
+                         360 .LDW71:
+                         361 .L18:
+                         362 --	    .es
+                         363 .LDW81:
+                         364 --126:     }
+                         365 --128:     return (ER_OK);
+                         366 --line128
+                         367 ..lin.3a8d8bc6..40cbf234.0_19::
+                         368 .LDWlin19:
+00000140 0052            369 	mov	0,r10
+                         370 --	    .ef
+                         371 .LDW91:
+00000142 23ff1500        372 	ld.w	20[sp],lp
+00000146 23ef0100        373 	ld.w	0[sp],r29
+0000014a 23e70500        374 	ld.w	4[sp],r28
+0000014e 23df0900        375 	ld.w	8[sp],r27
+00000152 23d70d00        376 	ld.w	12[sp],r26
+00000156 23cf1100        377 	ld.w	16[sp],r25
+0000015a 031e1800        378 	addi	24,sp,sp
+                         379 .L407:
+                         380 	.jumptype return
+0000015e 7f00            381 	jmp	[lp]
+                         382 --line128
+                         383 ..lin.3a8d8bc6..40cbf234.0_20::
+                         384 	.type	_l_BIGNUM_DivideByPowerOf2,@function
+                         385 	.size	_l_BIGNUM_DivideByPowerOf2,.-_l_BIGNUM_DivideByPowerOf2
+                         386 	.align	2
+                         387 --_D	r1	local
+                         388 --_r	r19	local
+                         389 --_rr	r18	local
+                         390 --_x	r2	local
+                         391 --_tmpc	ep	local
+                         392 --_mask	r17	local
+                         393 --_shift	r16	local
+                         394 
+                         395 --_p_a	r28	param
+                         396 --_exponent	r26	param
+                         397 --_p_quotient	r29	param
+                         398 --_p_remainder	r27	param
+                         399 
+                         400 	.section ".bss","awb"
+                         401 .L246:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         402 	.type	.L246,@object
+                         403 	.size	.L246,0
+                         404 	.section ".ghcalltbl",""
+                         405 	.align	4
+00000000 00000000*       406 .L398:	.word	.L397
+                         407 	.type	.L398,@object
+                         408 	.size	.L398,4
+00000004 00000000*       409 .L400:	.word	.L399
+                         410 	.type	.L400,@object
+                         411 	.size	.L400,4
+00000008 00000000*       412 .L402:	.word	.L401
+                         413 	.type	.L402,@object
+                         414 	.size	.L402,4
+0000000c 00000000*       415 .L404:	.word	.L403
+                         416 	.type	.L404,@object
+                         417 	.size	.L404,4
+00000010 00000000*       418 .L406:	.word	.L405
+                         419 	.type	.L406,@object
+                         420 	.size	.L406,4
+                         421 	.section ".ghrettbl",""
+                         422 	.align	4
+00000000 00000000*       423 .L408:	.word	.L407
+                         424 	.type	.L408,@object
+                         425 	.size	.L408,4
+                         426 	.data
+                         427 	.section ".icum_library.text","ax"
+                         428 
+                         429 --129: }
+                         430 
+                         431 --132: /***************************************************************************************
+                         432 --133: * Function ID  : [ICUMFW_CD_L_CRY_BignumMath_0021]:[ICUMFW_UD_L_CRY_BignumMath_0021]
+                         433 --134: * Function name: l_BIGNUM_ShiftRight
+                         434 --135: * Description  : Shift "a" to the right by "x".
+                         435 --136: * Arguments    : *p_a : Address of data to be shifted
+                         436 --137: *                       Range : 0x0 - 0xFFFFFFFF
+                         437 --138: *                 x   : Number of right shift bits
+                         438 --139: *                       Range : -2147483648 - 2147483647
+                         439 --140: * Return Value : ER_OK
+                         440 --141: ***************************************************************************************/
+                         441 --142: uint32_t l_BIGNUM_ShiftRight(big_num_t *p_a, int32_t x)
+                         442 	.align	2
+                         443 	.align	2
+                         444 	.align	2
+                         445 ..gh.f.a.2.e.1:
+                         446 	.type	..gh.f.a.2.e.1,@object
+                         447 	.size	..gh.f.a.2.e.1,0
+                         448 	.global	_l_BIGNUM_ShiftRight
+                         449 _l_BIGNUM_ShiftRight:
+00000160 541a            450 	add	-12,sp
+00000162 63ff0900        451 	st.w	lp,8[sp]
+00000166 63e70500        452 	st.w	r28,4[sp]
+0000016a 63ef0100        453 	st.w	r29,0[sp]
+0000016e 06e8            454 	mov	r6,r29
+00000170 07e0            455 	mov	r7,r28
+                         456 --	    .bf
+                         457 .LDW02:
+                         458 --143: {
+                         459 --144:     int32_t y;
+                         460 --146:     /* too many digits just zero and return */
+                         461 --147:     if ((uint32_t)x >= p_a->used)
+00000172 3d0f0100        462 	ld.w	0[r29],r1
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+00000176 e1e1            463 	cmp	r1,r28
+00000178 9115*           464 	bl	.L411
+                         465 --148:     {
+                         466 --149:         FP_INIT(p_a);
+                         467 --line149
+                         468 ..lin.3a8d8bc6..e6dc24ac.0_21::
+                         469 .LDWlin21:
+0000017a 7d070100        470 	st.w	zero,0[r29]
+0000017e 7d070500        471 	st.w	zero,4[r29]
+00000182 280600000000*   472 	mov	_g_crypt_fp_size,r8
+00000188 28470100        473 	ld.w	0[r8],r8
+0000018c 1d360800        474 	addi	8,r29,r6
+00000190 003a            475 	mov	0,r7
+00000192 c242            476 	shl	2,r8
+                         477 .L650:
+                         478 	jarl	_l_CMN_MemSet,lp
+                         478 <EXPANSION BEGIN>
+                         478 jarl22 _l_CMN_MemSet , lp 
+00000194 80ff0000*       478 <EXPANSION END>
+                         479 --line149
+                         480 ..lin.3a8d8bc6..e6dc24ac.0_22::
+                         481 .LDWlin22:
+00000198 f53d*           482 	br	.L416
+                         483 .L411:
+                         484 --150:     }
+                         485 --151:     else
+                         486 --152:     {
+                         487 --153:         /* shift */
+                         488 --154:         for (y = 0; (uint32_t)y < p_a->used - (uint32_t)x; y++)
+                         489 --line154
+                         490 ..lin.3a8d8bc6..e6dc24ac.0_23::
+                         491 .LDWlin23:
+0000019a 000a            492 	mov	0,r1
+0000019c e50d*           493 	br	.L420
+                         494 .L419:
+                         495 --155:         {
+                         496 --156:             p_a->value[y] = p_a->value[y + x];
+                         497 --line156
+                         498 ..lin.3a8d8bc6..e6dc24ac.0_24::
+                         499 .LDWlin24:
+0000019e 1c10            500 	mov	r28,r2
+000001a0 c111            501 	add	r1,r2
+000001a2 1d9e0800        502 	addi	8,r29,r19
+000001a6 c212            503 	shl	2,r2
+000001a8 d311            504 	add	r19,r2
+000001aa 22170100        505 	ld.w	0[r2],r2
+000001ae 01f0            506 	mov	r1,ep
+000001b0 c2f2            507 	shl	2,ep
+000001b2 d3f1            508 	add	r19,ep
+000001b4 0115            509 	sst.w	r2,0[ep]
+000001b6 410a            510 	add	1,r1
+                         511 .L420:
+000001b8 3d170100        512 	ld.w	0[r29],r2
+000001bc bc11            513 	sub	r28,r2
+000001be e209            514 	cmp	r2,r1
+000001c0 f1ed*           515 	bl	.L419
+                         516 --157:         }
+                         517 --159:         /* zero rest */
+                         518 --160:         for (; (uint32_t)y < p_a->used; y++)
+                         519 --line160
+                         520 ..lin.3a8d8bc6..e6dc24ac.0_25::
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         521 .LDWlin25:
+000001c2 850d*           522 	br	.L424
+                         523 .L423:
+                         524 --161:         {
+                         525 --162:             p_a->value[y] = 0;
+                         526 --line162
+                         527 ..lin.3a8d8bc6..e6dc24ac.0_26::
+                         528 .LDWlin26:
+000001c4 01f0            529 	mov	r1,ep
+000001c6 c2f2            530 	shl	2,ep
+000001c8 1d9e0800        531 	addi	8,r29,r19
+000001cc d3f1            532 	add	r19,ep
+000001ce 0105            533 	sst.w	zero,0[ep]
+000001d0 410a            534 	add	1,r1
+                         535 .L424:
+000001d2 3d170100        536 	ld.w	0[r29],r2
+000001d6 e209            537 	cmp	r2,r1
+000001d8 e1f5*           538 	bl	.L423
+                         539 --163:         }
+                         540 --164:         
+                         541 --165:         /* decrement count */
+                         542 --166:         p_a->used -= (uint32_t)x;
+                         543 --line166
+                         544 ..lin.3a8d8bc6..e6dc24ac.0_27::
+                         545 .LDWlin27:
+000001da 3d170100        546 	ld.w	0[r29],r2
+000001de bc11            547 	sub	r28,r2
+000001e0 7d170100        548 	st.w	r2,0[r29]
+                         549 --167:         FP_CLAMP(p_a);
+000001e4 e505*           550 	br	.L428
+                         551 .L430:
+                         552 --line167
+                         553 ..lin.3a8d8bc6..e6dc24ac.0_28::
+                         554 .LDWlin28:
+000001e6 3d170100        555 	ld.w	0[r29],r2
+000001ea 5f12            556 	add	-1,r2
+000001ec 7d170100        557 	st.w	r2,0[r29]
+                         558 .L428:
+000001f0 3df70100        559 	ld.w	0[r29],ep
+000001f4 e0f1            560 	cmp	zero,ep
+000001f6 920d*           561 	be	.L429
+000001f8 5ff2            562 	add	-1,ep
+000001fa c2f2            563 	shl	2,ep
+000001fc 1d9e0800        564 	addi	8,r29,r19
+00000200 d3f1            565 	add	r19,ep
+00000202 0015            566 	sld.w	0[ep],r2
+00000204 e011            567 	cmp	zero,r2
+00000206 82f5*           568 	be	.L430
+                         569 .L429:
+                         570 --line167
+                         571 ..lin.3a8d8bc6..e6dc24ac.0_29::
+                         572 .LDWlin29:
+00000208 3d170100        573 	ld.w	0[r29],r2
+0000020c e011            574 	cmp	zero,r2
+0000020e ba05*           575 	bne	.L477
+00000210 7d070500        576 	st.w	zero,4[r29]
+                         577 .L477:
+                         578 --line167
+                         579 ..lin.3a8d8bc6..e6dc24ac.0_30::
+                         580 .LDWlin30:
+00000214 0000            581 	nop
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         582 .L416:
+                         583 --168:     }
+                         584 --170:     return (ER_OK);
+00000216 0052            585 	mov	0,r10
+                         586 --	    .ef
+                         587 .LDW12:
+00000218 23ff0900        588 	ld.w	8[sp],lp
+0000021c 23ef0100        589 	ld.w	0[sp],r29
+00000220 23e70500        590 	ld.w	4[sp],r28
+00000224 4c1a            591 	add	12,sp
+                         592 .L652:
+                         593 	.jumptype return
+00000226 7f00            594 	jmp	[lp]
+                         595 --line167
+                         596 ..lin.3a8d8bc6..e6dc24ac.0_31::
+                         597 	.type	_l_BIGNUM_ShiftRight,@function
+                         598 	.size	_l_BIGNUM_ShiftRight,.-_l_BIGNUM_ShiftRight
+                         599 	.align	2
+                         600 --_y	r1	local
+                         601 
+                         602 --_p_a	r29	param
+                         603 --_x	r28	param
+                         604 
+                         605 	.section ".bss","awb"
+                         606 .L562:
+                         607 	.type	.L562,@object
+                         608 	.size	.L562,0
+                         609 	.section ".ghcalltbl",""
+00000014 00000000*       610 .L651:	.word	.L650
+                         611 	.type	.L651,@object
+                         612 	.size	.L651,4
+                         613 	.section ".ghrettbl",""
+00000004 00000000*       614 .L653:	.word	.L652
+                         615 	.type	.L653,@object
+                         616 	.size	.L653,4
+                         617 	.data
+                         618 	.section ".icum_library.text","ax"
+                         619 
+                         620 --171: }
+                         621 
+                         622 --174: /***************************************************************************************
+                         623 --175: * Function ID  : [ICUMFW_CD_L_CRY_BignumMath_0022]:[ICUMFW_UD_L_CRY_BignumMath_0022]
+                         624 --176: * Function name: l_BIGNUM_ModByPowerOf2
+                         625 --177: * Description  : result = a mod 2**exponent
+                         626 --178: * Arguments    : *p_a       : Address of modulo calculation target data
+                         627 --179: *                             Range : 0x0 - 0xFFFFFFFF
+                         628 --180: *                 exponent  : The exponent of 2 which is the modulo value
+                         629 --181: *                             Range : -2147483648 - 2147483647
+                         630 --182: *                *p_result  : Modulo calculation result storage address
+                         631 --183: *                             Range : 0x0 - 0xFFFFFFFF
+                         632 --184: * Return Value : ER_OK
+                         633 --185: ***************************************************************************************/
+                         634 --186: uint32_t l_BIGNUM_ModByPowerOf2(big_num_t *p_a, uint32_t exponent, big_num_t *p_result)
+                         635 	.align	2
+                         636 	.align	2
+                         637 	.align	2
+                         638 ..gh.f.a.2.e.2:
+                         639 	.type	..gh.f.a.2.e.2,@object
+                         640 	.size	..gh.f.a.2.e.2,0
+                         641 	.global	_l_BIGNUM_ModByPowerOf2
+                         642 _l_BIGNUM_ModByPowerOf2:
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+00000228 031eecff        643 	addi	-20,sp,sp
+0000022c 63ff1100        644 	st.w	lp,16[sp]
+00000230 63d70d00        645 	st.w	r26,12[sp]
+00000234 63df0900        646 	st.w	r27,8[sp]
+00000238 63e70500        647 	st.w	r28,4[sp]
+0000023c 63ef0100        648 	st.w	r29,0[sp]
+00000240 06e0            649 	mov	r6,r28
+00000242 07d8            650 	mov	r7,r27
+00000244 08e8            651 	mov	r8,r29
+00000246 3a0600000000*   652 	mov	_g_crypt_fp_size,r26
+                         653 --	    .bf
+                         654 .LDW22:
+                         655 --187: {
+                         656 --188:     uint32_t    x;
+                         657 --190:     /* zero if count less than or equal to zero */
+                         658 --191:     if (exponent <= 0u)
+                         659 --line191
+                         660 ..lin.3a8d8bc6..8c7dd3df.0_32::
+                         661 .LDWlin32:
+0000024c e0d9            662 	cmp	zero,r27
+0000024e eb0d*           663 	bh	.L664
+                         664 --192:     {
+                         665 --193:         FP_INIT(p_result);
+                         666 --line193
+                         667 ..lin.3a8d8bc6..8c7dd3df.0_33::
+                         668 .LDWlin33:
+00000250 7d070100        669 	st.w	zero,0[r29]
+00000254 7d070500        670 	st.w	zero,4[r29]
+00000258 3a470100        671 	ld.w	0[r26],r8
+0000025c 1d360800        672 	addi	8,r29,r6
+00000260 003a            673 	mov	0,r7
+00000262 c242            674 	shl	2,r8
+                         675 .L904:
+                         676 	jarl	_l_CMN_MemSet,lp
+                         676 <EXPANSION BEGIN>
+                         676 jarl22 _l_CMN_MemSet , lp 
+00000264 80ff0000*       676 <EXPANSION END>
+                         677 --line193
+                         678 ..lin.3a8d8bc6..8c7dd3df.0_34::
+                         679 .LDWlin34:
+00000268 e555*           680 	br	.L661
+                         681 .L664:
+                         682 --194:     }
+                         683 --195:     else
+                         684 --196:     {
+                         685 --197:         /* get copy of input */
+                         686 --198:         FP_COPY(p_a, p_result);
+                         687 --line198
+                         688 ..lin.3a8d8bc6..8c7dd3df.0_35::
+                         689 .LDWlin35:
+0000026a fde1            690 	cmp	r29,r28
+0000026c a215*           691 	be	.L667
+                         692 --line198
+                         693 ..lin.3a8d8bc6..8c7dd3df.0_36::
+                         694 .LDWlin36:
+0000026e 3c0f0100        695 	ld.w	0[r28],r1
+00000272 7d0f0100        696 	st.w	r1,0[r29]
+00000276 3c0f0500        697 	ld.w	4[r28],r1
+0000027a 7d0f0500        698 	st.w	r1,4[r29]
+0000027e 3a470100        699 	ld.w	0[r26],r8
+00000282 1d360800        700 	addi	8,r29,r6
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+00000286 1c3e0800        701 	addi	8,r28,r7
+0000028a c242            702 	shl	2,r8
+                         703 .L906:
+                         704 	jarl	_l_CMN_MemCpy,lp
+                         704 <EXPANSION BEGIN>
+                         704 jarl22 _l_CMN_MemCpy , lp 
+0000028c 80ff0000*       704 <EXPANSION END>
+                         705 .L667:
+                         706 --line198
+                         707 ..lin.3a8d8bc6..8c7dd3df.0_37::
+                         708 .LDWlin37:
+00000290 0000            709 	nop
+                         710 --200:         /* if 2**exponent is larger than we just return */
+                         711 --201:         if (exponent >= (DIGIT_BIT * p_a->used))
+00000292 3c0f0100        712 	ld.w	0[r28],r1
+00000296 c50a            713 	shl	5,r1
+00000298 e1d9            714 	cmp	r1,r27
+0000029a d93d*           715 	bnl	.L661
+                         716 --202:         {
+                         717 --203:             /* Do nothing */
+                         718 --204:         }
+                         719 --205:         else
+                         720 --206:         {
+                         721 --207:             /* zero digits above the last digit of the modulus */
+                         722 --208:             x = (exponent / DIGIT_BIT) + ((exponent % DIGIT_BIT) == 0u ? 0u : 1u);
+                         723 --line208
+                         724 ..lin.3a8d8bc6..8c7dd3df.0_38::
+                         725 .LDWlin38:
+0000029c 1b10            726 	mov	r27,r2
+0000029e 8512            727 	shr	5,r2
+000002a0 db061f00        728 	andi	31,r27,zero
+000002a4 ea9f0000        729 	setfne	r19
+000002a8 1308            730 	mov	r19,r1
+000002aa c209            731 	add	r2,r1
+                         732 --209:             for (; x < p_result->used; x++)
+000002ac 850d*           733 	br	.L674
+                         734 .L673:
+                         735 --210:             {
+                         736 --211:                 p_result->value[x] = 0;
+                         737 --line211
+                         738 ..lin.3a8d8bc6..8c7dd3df.0_39::
+                         739 .LDWlin39:
+000002ae 01f0            740 	mov	r1,ep
+000002b0 c2f2            741 	shl	2,ep
+000002b2 1d9e0800        742 	addi	8,r29,r19
+000002b6 d3f1            743 	add	r19,ep
+000002b8 0105            744 	sst.w	zero,0[ep]
+000002ba 410a            745 	add	1,r1
+                         746 .L674:
+000002bc 3d170100        747 	ld.w	0[r29],r2
+000002c0 e209            748 	cmp	r2,r1
+000002c2 e1f5*           749 	bl	.L673
+                         750 --212:             }
+                         751 --213:             /* clear the digit that is not completely outside/inside the modulus */
+                         752 --214:             /* result->value[exponent / DIGIT_BIT] &= ~(0u) >> (DIGIT_BIT - exponent); */
+                         753 --215:             p_result->value[exponent / DIGIT_BIT] &= 0xFFFFFFFFu >> (DIGIT_BIT - exponent); 
+                         754 --line215
+                         755 ..lin.3a8d8bc6..8c7dd3df.0_40::
+                         756 .LDWlin40:
+000002c4 20162000        757 	movea	32,zero,r2
+000002c8 1bf0            758 	mov	r27,ep
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+000002ca 85f2            759 	shr	5,ep
+000002cc bb11            760 	sub	r27,r2
+000002ce 1f9a            761 	mov	-1,r19
+000002d0 c2f2            762 	shl	2,ep
+000002d2 1d960800        763 	addi	8,r29,r18
+000002d6 e29f8000        764 	shr	r2,r19
+000002da d2f1            765 	add	r18,ep
+000002dc 0015            766 	sld.w	0[ep],r2
+000002de 5311            767 	and	r19,r2
+000002e0 0115            768 	sst.w	r2,0[ep]
+                         769 --216:             FP_CLAMP (p_result);
+000002e2 e505*           770 	br	.L678
+                         771 .L680:
+                         772 --line216
+                         773 ..lin.3a8d8bc6..8c7dd3df.0_41::
+                         774 .LDWlin41:
+000002e4 3d170100        775 	ld.w	0[r29],r2
+000002e8 5f12            776 	add	-1,r2
+000002ea 7d170100        777 	st.w	r2,0[r29]
+                         778 .L678:
+000002ee 3df70100        779 	ld.w	0[r29],ep
+000002f2 e0f1            780 	cmp	zero,ep
+000002f4 920d*           781 	be	.L679
+000002f6 5ff2            782 	add	-1,ep
+000002f8 c2f2            783 	shl	2,ep
+000002fa 1d9e0800        784 	addi	8,r29,r19
+000002fe d3f1            785 	add	r19,ep
+00000300 0015            786 	sld.w	0[ep],r2
+00000302 e011            787 	cmp	zero,r2
+00000304 82f5*           788 	be	.L680
+                         789 .L679:
+                         790 --line216
+                         791 ..lin.3a8d8bc6..8c7dd3df.0_42::
+                         792 .LDWlin42:
+00000306 3d170100        793 	ld.w	0[r29],r2
+0000030a e011            794 	cmp	zero,r2
+0000030c ba05*           795 	bne	.L719
+0000030e 7d070500        796 	st.w	zero,4[r29]
+                         797 .L719:
+                         798 --line216
+                         799 ..lin.3a8d8bc6..8c7dd3df.0_43::
+                         800 .LDWlin43:
+00000312 0000            801 	nop
+                         802 .L661:
+                         803 --217:         }
+                         804 --218:     }
+                         805 --220:     return (ER_OK);
+00000314 0052            806 	mov	0,r10
+                         807 --	    .ef
+                         808 .LDW32:
+00000316 23ff1100        809 	ld.w	16[sp],lp
+0000031a 23ef0100        810 	ld.w	0[sp],r29
+0000031e 23e70500        811 	ld.w	4[sp],r28
+00000322 23df0900        812 	ld.w	8[sp],r27
+00000326 23d70d00        813 	ld.w	12[sp],r26
+0000032a 031e1400        814 	addi	20,sp,sp
+                         815 .L908:
+                         816 	.jumptype return
+0000032e 7f00            817 	jmp	[lp]
+                         818 --line216
+                         819 ..lin.3a8d8bc6..8c7dd3df.0_44::
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013e41.si
+                         820 	.type	_l_BIGNUM_ModByPowerOf2,@function
+                         821 	.size	_l_BIGNUM_ModByPowerOf2,.-_l_BIGNUM_ModByPowerOf2
+                         822 	.align	2
+                         823 --_x	r1	local
+                         824 
+                         825 --_p_a	r28	param
+                         826 --_exponent	r27	param
+                         827 --_p_result	r29	param
+                         828 
+                         829 	.section ".bss","awb"
+                         830 .L810:
+                         831 	.type	.L810,@object
+                         832 	.size	.L810,0
+                         833 	.section ".ghcalltbl",""
+00000018 00000000*       834 .L905:	.word	.L904
+                         835 	.type	.L905,@object
+                         836 	.size	.L905,4
+0000001c 00000000*       837 .L907:	.word	.L906
+                         838 	.type	.L907,@object
+                         839 	.size	.L907,4
+                         840 	.section ".ghrettbl",""
+00000008 00000000*       841 .L909:	.word	.L908
+                         842 	.type	.L909,@object
+                         843 	.size	.L909,4
+                         844 	.data
+                         845 	.section ".icum_library.text","ax"
+                         846 
+                         847 --221: }
+                         848 	.align	2
+                         849 --_g_crypt_fp_size	_g_crypt_fp_size	import
+                         850 
+                         851 	.data
+                         852 	.ghsnote version,30
+                         853 	.ghsnote tools,3
+                         854 	.ghsnote options,656
+                         855 	.section ".icum_library.text","ax"
+                         856 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_fp_shiftright...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF70..0::
+                         857 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

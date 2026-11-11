@@ -1,0 +1,66 @@
+#!gbuild
+#******************************************************************************
+#* Component Name   icup_B.gpj                                                *
+#******************************************************************************
+#* Product      : ICU-M Low Level Driver (Demo Part)                          *
+#******************************************************************************
+#***********************************************************************************************************************
+#* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+#* 
+#* DISCLAIMER
+#* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+#* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+#* applicable laws, including copyright laws.
+#* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+#* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+#* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+#* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+#* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+#* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+#* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+#* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+#* following link:
+#* www.renesas.com/disclaimer
+#*
+#* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+#***********************************************************************************************************************
+
+macro cfg_peid=0x07
+macro  lib_icumfw=r_icumfw_${cfg_build_fw_type}_${cfg_target}.a
+[Core]
+    :binDirRelative=./target/${cfg_family}/build/out/
+    :outputDirRelative=./target/${cfg_family}/build/obj/
+
+    { isdefined(cfg_peid) }                 -D_PEID_=${cfg_peid}
+    { isdefined(cfg_cf_bank_num) }          -DD_CF_BANK_NUM=${cfg_cf_bank_num}
+    { isdefined(cfg_df_block_num) }         -DD_DF_BLOCK_NUM=${cfg_df_block_num}
+    { streq(cfg_build_fw_type, "dbg")}      -D_DEBUG_
+    { streq(cfg_build_fw_type, "ev") }      -D_RELEASE_EVAL_
+    { streq(cfg_build_fw_type, "mp") }      -D_RELEASE_MP_
+    
+#   { streq(cfg_build_fw_type, "dbg")}      -G -Omaxdebug
+    { streq(cfg_build_fw_type, "dbg")}      -G -Ospeed
+#   { streq(cfg_build_fw_type, "dbg")}      -G -Osize -inline_prologue -prepare_dispose
+    { streq(cfg_build_fw_type, "ev") }      -Ospeed    --no_debug
+#   { streq(cfg_build_fw_type, "ev") }      -Osize -inline_prologue -prepare_dispose    --no_debug
+    { streq(cfg_build_fw_type, "mp") }      -Ospeed    --no_debug
+#   { streq(cfg_build_fw_type, "mp") }      -Osize -inline_prologue -prepare_dispose    --no_debug
+
+    -I.
+    -list
+    -map
+    -cpu=rh850g3k
+
+    -u _main
+    -u __FW_ENTRY
+    -u __ICUP_ENTRY
+    -u RESET_ICUP
+    -u __unused_isr
+
+    -L./target/${cfg_family}/icumfw_lib/
+    -l${lib_icumfw}
+    -Ma
+
+{ cfg_build_fw } icumfw_lib.gpj             [Merged Library]
+
+target/${cfg_family}/config/${target_device}/icup_B.ld

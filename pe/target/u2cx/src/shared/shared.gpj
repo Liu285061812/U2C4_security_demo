@@ -1,0 +1,56 @@
+#!gbuild
+#******************************************************************************
+#* Component Name   shared.gpj                                                *
+#******************************************************************************
+#* Product      : ICU-M Low Level Driver (Demo Part)                          *
+#***********************************************************************************************************************
+#* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+#* 
+#* DISCLAIMER
+#* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+#* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+#* applicable laws, including copyright laws.
+#* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+#* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+#* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+#* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+#* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+#* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+#* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+#* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+#* following link:
+#* www.renesas.com/disclaimer
+#*
+#* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+#***********************************************************************************************************************
+
+
+macro cfg_cpu=rh850g4kh
+[SharedMemory]
+	:binDirRelative=../../build/out/shared/
+	:outputDirRelative=../../build/obj/shared/
+
+	-G -Omaxdebug
+	-nothreshold
+	-nochecksum
+    
+	{ !cfg_build_hello } -I../../../../generic/icumif
+	{ cfg_build_hello  } -I../../icumif
+	{ !cfg_build_hello } -I../../../../generic/include
+	-I../../include
+	-I./src
+
+	{optgroup=GhsCompilerOptions} -cpu=${cfg_cpu}
+
+{ !cfg_build_hello } ../../../../generic/src/shared/src/lorem_ipsum.c
+{ !cfg_build_hello } ../../../../generic/src/shared/src/shared_data.c
+{ cfg_build_hello  } src/shared_data.c
+{ cfg_build_hello  } src/lorem_ipsum.c
+../startup/shared.startup.850
+#src/opbt_tbl.c
+
+## -------------------------------------------------------------------------
+## Linker directive file (memory block & section declaration)
+## -------------------------------------------------------------------------
+{ !cfg_build_hello } ../../config/${target_device}/shared.ld
+{ cfg_build_hello  } ../../config/shared.ld

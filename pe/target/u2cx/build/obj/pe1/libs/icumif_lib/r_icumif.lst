@@ -1,0 +1,2069 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\icumif\ -I..\..\pe\generic\include\ -I..\..\pe\target\u2cx\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\icumif_lib\r_icumif.dbo -source=r_icumif.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\icumif_lib\gh_0000kc01.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\icumif_lib\r_icumif.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+Source File: r_icumif.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\icumif\
+                           2 --		-I..\..\pe\generic\include\ -I..\..\pe\target\u2cx\include
+                           3 --		-I..\..\pe\generic
+                           4 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           5 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                           6 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                           7 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                           8 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                           9 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          10 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          11 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          12 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          13 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          14 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle -section
+                          15 --		.text=.icumif.text -section .rodata=.icumif.rodata -section
+                          16 --		.bss=.icumif.bss -section .data=.icumif.data -filetype.c
+                          17 --		..\..\pe\generic\src\icumif_lib\r_icumif.c -o
+                          18 --		..\..\pe\target\u2cx\build\obj\pe1\libs\icumif_lib\r_icumif.o
+                          19 --Source File:   ..\..\pe\generic\src\icumif_lib\r_icumif.c
+                          20 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          21 --Compile Date:  Wed Nov 11 11:21:46 2026
+                          22 --Host OS:       Win64
+                          23 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          24 --Release:       Compiler v2023.5.4
+                          25 --Revision Date: Wed Sep 06 02:44:56 2023
+                          26 --Release Date:  Wed Sep 06 02:00:00 2023
+                          27 -- ecom  -g -w
+                          28 	.section ".icumif_rom","ax"
+                          29 
+                          30 --1: /******************************************************************************/
+                          31 --2: /* Component Name   ICU-M Interface Library (ICUMIF)                          */
+                          32 --3: /******************************************************************************/
+                          33 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          34 --5: /******************************************************************************/
+                          35 --6: /***********************************************************************************************************************
+                          36 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          37 --8: * 
+                          38 --9: * DISCLAIMER
+                          39 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          40 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          41 --12: * applicable laws, including copyright laws.
+                          42 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          43 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          44 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          45 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          46 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          47 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          48 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          49 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          50 --21: * following link:
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                          51 --22: * www.renesas.com/disclaimer
+                          52 --23: *
+                          53 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          54 --25: ***********************************************************************************************************************/
+                          55 --27: /**************************************************************************************/
+                          56 --28: /* Header files                                                                       */
+                          57 --29: /**************************************************************************************/
+                          58 --30: #include "r_icumif_api.h"
+                          59 --31: #include "r_icumif_pub.h"
+                          60 --32: #include "icum_d_comm_pe_pub.h"
+                          61 --34: #include "r_icumif.h"
+                          62 --36: /**************************************************************************************/
+                          63 --37: /* Interface functions                                                                */
+                          64 --38: /**************************************************************************************/
+                          65 --40: #pragma ghs section text   = ".icumif_rom"
+                          66 --41: #pragma ghs section rodata = ".icumif.rodata"
+                          67 --43: /***************************************************************************************
+                          68 --44: * Function ID  : [ICUMFW_CD_L_IF_0001]:[ICUMFW_UD_L_IF_0001]
+                          69 --45: * Function name: R_ICUMIF_Init
+                          70 --46: * Description  : Initialize the ICU-M interface library
+                          71 --47: * Arguments    : uint32_t       *p_request_queue : Pointer to service request queue
+                          72 --48: * Return Value : int32_t Library initialization result
+                          73 --49: *                   0               : Successful
+                          74 --50: *                   Negative values : Parameter error
+                          75 --51: ***************************************************************************************/
+                          76 --52: int32_t R_ICUMIF_Init(uint32_t *p_request_queue)
+                          77 	.align	2
+                          78 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cicumif_lib.5Cr_icumif...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF4A..0::
+                          79 	.align	2
+                          80 	.align	2
+                          81 ..gh.f.a.2.e.0:
+                          82 	.type	..gh.f.a.2.e.0,@object
+                          83 	.size	..gh.f.a.2.e.0,0
+                          84 	.global	_R_ICUMIF_Init
+                          85 _R_ICUMIF_Init:
+00000000 501a             86 	add	-16,sp
+00000002 63ff0d00         87 	st.w	lp,12[sp]
+00000006 63df0900         88 	st.w	r27,8[sp]
+0000000a 63e70500         89 	st.w	r28,4[sp]
+0000000e 63ef0100         90 	st.w	r29,0[sp]
+00000012 06d8             91 	mov	r6,r27
+                          92 --	    .bf
+                          93 .LDW01:
+                          94 --53: {
+                          95 --54:     int32_t     ret_val = R_ICUMIF_ER_OK;
+00000014 00ea             96 	mov	0,r29
+                          97 --55:     uint32_t    call_comm_ret;
+                          98 --57:     /* 1. address check using Cluster RAM area check function */
+                          99 --58:     if (0UL != ((uint32_t)((volatile void *)p_request_queue) & ALIGNMENT_4BYTE_CHECK_PATTERN))
+00000016 db0e0300        100 	andi	3,r27,r1
+0000001a e009            101 	cmp	zero,r1
+0000001c b205*           102 	be	.L4
+                         103 --59:     {
+                         104 --60:             ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                         105 --line60
+                         106 ..lin.4b6a9f96..10d3b785.0_1::
+                         107 .LDWlin1:
+0000001e 1fea            108 	mov	-1,r29
+00000020 a515*           109 	br	.L6
+                         110 .L4:
+                         111 --61:     }
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         112 --62:     else
+                         113 --63:     {
+                         114 --64:         /* 3. Execute COMM(PE) driver initialization to initialize service queue */
+                         115 --65:         call_comm_ret = D_COMM_PE_Init(p_request_queue);
+                         116 --line65
+                         117 ..lin.4b6a9f96..10d3b785.0_2::
+                         118 .LDWlin2:
+00000022 1b30            119 	mov	r27,r6
+                         120 .L80:
+                         121 	jarl	_D_COMM_PE_Init,lp
+                         121 <EXPANSION BEGIN>
+                         121 jarl22 _D_COMM_PE_Init , lp 
+00000024 80ff0000*       121 <EXPANSION END>
+00000028 0ae0            122 	mov	r10,r28
+                         123 --67:         /* 4. According to result of COMM (PE) driver initialization process, */
+                         124 --68:         /*    execute respective corresponding processes                      */
+                         125 --69:         if (ER_D_COMM_PARAM_NOT_G_RAM == call_comm_ret)
+                         126 --line69
+                         127 ..lin.4b6a9f96..10d3b785.0_3::
+                         128 .LDWlin3:
+0000002a 1c06fbfb        129 	addi	-1029,r28,zero
+0000002e ba05*           130 	bne	.L7
+                         131 --70:         {
+                         132 --71:             /* 4-1. Parameters other than shared RAM area, process is terminated */
+                         133 --72:             ret_val = R_ICUMIF_ER_ADDR_NOT_G_RAM;
+                         134 --line72
+                         135 ..lin.4b6a9f96..10d3b785.0_4::
+                         136 .LDWlin4:
+00000030 1dea            137 	mov	-3,r29
+00000032 950d*           138 	br	.L6
+                         139 .L7:
+                         140 --73:         }
+                         141 --74:         else if (ER_D_COMM_QUE_NOT_ACCESS == call_comm_ret)
+                         142 --line74
+                         143 ..lin.4b6a9f96..10d3b785.0_5::
+                         144 .LDWlin5:
+00000034 1c06fafb        145 	addi	-1030,r28,zero
+00000038 ca05*           146 	bne	.L10
+                         147 --75:         {
+                         148 --76:             /* 4-2. */
+                         149 --77:             ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                         150 --line77
+                         151 ..lin.4b6a9f96..10d3b785.0_6::
+                         152 .LDWlin6:
+0000003a 20ee9dff        153 	movea	-99,zero,r29
+0000003e b505*           154 	br	.L6
+                         155 .L10:
+                         156 --78:         }
+                         157 --79:         else
+                         158 --80:         {
+                         159 --81:             /* 5. Execute interrupt enable process to enable interrupts from ICUP */
+                         160 --82:             D_COMM_SetInterruptEnable();
+                         161 .L82:
+                         162 --line82
+                         163 ..lin.4b6a9f96..10d3b785.0_7::
+                         164 .LDWlin7:
+                         165 	jarl	_D_COMM_SetInterruptEnable,lp
+                         165 <EXPANSION BEGIN>
+                         165 jarl22 _D_COMM_SetInterruptEnable , lp 
+00000040 80ff0000*       165 <EXPANSION END>
+                         166 .L6:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         167 --83:         }
+                         168 --84:     }
+                         169 --86:     /* 7. */
+                         170 --87:     return (ret_val);
+                         171 --line87
+                         172 ..lin.4b6a9f96..10d3b785.0_8::
+                         173 .LDWlin8:
+00000044 1d50            174 	mov	r29,r10
+                         175 --	    .ef
+                         176 .LDW11:
+00000046 23ff0d00        177 	ld.w	12[sp],lp
+0000004a 23ef0100        178 	ld.w	0[sp],r29
+0000004e 23e70500        179 	ld.w	4[sp],r28
+00000052 23df0900        180 	ld.w	8[sp],r27
+00000056 031e1000        181 	addi	16,sp,sp
+                         182 .L84:
+                         183 	.jumptype return
+0000005a 7f00            184 	jmp	[lp]
+                         185 --line87
+                         186 ..lin.4b6a9f96..10d3b785.0_9::
+                         187 	.type	_R_ICUMIF_Init,@function
+                         188 	.size	_R_ICUMIF_Init,.-_R_ICUMIF_Init
+                         189 	.align	2
+                         190 --_ret_val	r29	local
+                         191 --_call_comm_ret	r28	local
+                         192 
+                         193 --_p_request_queue	r27	param
+                         194 
+                         195 	.section ".ghcalltbl",""
+                         196 	.align	4
+00000000 00000000*       197 .L81:	.word	.L80
+                         198 	.type	.L81,@object
+                         199 	.size	.L81,4
+00000004 00000000*       200 .L83:	.word	.L82
+                         201 	.type	.L83,@object
+                         202 	.size	.L83,4
+                         203 	.section ".ghrettbl",""
+                         204 	.align	4
+00000000 00000000*       205 .L85:	.word	.L84
+                         206 	.type	.L85,@object
+                         207 	.size	.L85,4
+                         208 	.data
+                         209 	.section ".icumif_rom","ax"
+                         210 
+                         211 --88: }
+                         212 
+                         213 --90: /***************************************************************************************
+                         214 --91: * Function ID  : [ICUMFW_CD_L_IF_0002]:[ICUMFW_UD_L_IF_0002]
+                         215 --92: * Function name: R_ICUMIF_ServiceRequest
+                         216 --93: * Description  : Requests ICU-M to execute the service
+                         217 --94: * Arguments    : r_icumif_isd_t *p_ISD : Pointer to ISD where request parameter is set
+                         218 --95: * Return Value : int32_t Service execution request result
+                         219 --96: *                   0               : Successful
+                         220 --97: *                   Negative values : Parameter error, Interface library uninitialized
+                         221 --98: ***************************************************************************************/
+                         222 --99: int32_t R_ICUMIF_ServiceRequest(r_icumif_isd_t *p_ISD)
+                         223 	.align	2
+                         224 	.align	2
+                         225 	.align	2
+                         226 ..gh.f.a.2.e.1:
+                         227 	.type	..gh.f.a.2.e.1,@object
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         228 	.size	..gh.f.a.2.e.1,0
+                         229 	.global	_R_ICUMIF_ServiceRequest
+                         230 _R_ICUMIF_ServiceRequest:
+0000005c 501a            231 	add	-16,sp
+0000005e 63ff0d00        232 	st.w	lp,12[sp]
+00000062 63df0900        233 	st.w	r27,8[sp]
+00000066 63e70500        234 	st.w	r28,4[sp]
+0000006a 63ef0100        235 	st.w	r29,0[sp]
+0000006e 06e0            236 	mov	r6,r28
+                         237 --	    .bf
+                         238 .LDW21:
+                         239 --100: {
+                         240 --101:     int32_t     ret_val = R_ICUMIF_ER_OK;
+00000070 00ea            241 	mov	0,r29
+                         242 --102:     uint32_t    call_comm_ret;
+                         243 --104:     /* 1. address check using Cluster RAM area check function */
+                         244 --105:     if (0UL != ((uint32_t)((volatile void *)p_ISD) & ALIGNMENT_4BYTE_CHECK_PATTERN))
+00000072 dc0e0300        245 	andi	3,r28,r1
+00000076 e009            246 	cmp	zero,r1
+00000078 b205*           247 	be	.L88
+                         248 --106:     {
+                         249 --107:         ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                         250 --line107
+                         251 ..lin.4b6a9f96..d32ea9ab.0_10::
+                         252 .LDWlin10:
+0000007a 1fea            253 	mov	-1,r29
+0000007c c535*           254 	br	.L90
+                         255 .L88:
+                         256 --108:     }
+                         257 --109:     else
+                         258 --110:     {
+                         259 --111:         /* ---- These lines should be left unchanged.   Start ---- */
+                         260 --112:         /* 3-1. Set ID of service request PE */
+                         261 --113:         p_ISD->requester_id = (r_icumif_requester_id_t)GET_MY_PEID;
+                         262 --line113
+                         263 ..lin.4b6a9f96..d32ea9ab.0_11::
+                         264 .LDWlin11:
+                         265 ..gh.beginasm.2:
+                         266 	.type	..gh.beginasm.2,@object
+                         267 	.size	..gh.beginasm.2,0
+                         268 --ASM MACRO: Start
+0000007e e0574010        269     stsr    0, r10, 2
+                         270 --ASM MACRO: End
+                         271 ..gh.endasm.3:
+                         272 	.type	..gh.endasm.3,@object
+                         273 	.size	..gh.endasm.3,0
+00000082 8a00            274 	zxb	r10
+00000084 5c570400        275 	st.b	r10,4[r28]
+                         276 --115:         /* 3-2. Set channel of service execution response interrupt */
+                         277 --116:         p_ISD->host_int_ch = ICUM_COMM_ICH_FM_SERV_RESPONSE;
+                         278 --line116
+                         279 ..lin.4b6a9f96..d32ea9ab.0_12::
+                         280 .LDWlin12:
+00000088 010a            281 	mov	1,r1
+0000008a 5c0f0600        282 	st.b	r1,6[r28]
+                         283 --118:         /* 3-3. Set initial state to service processing state */
+                         284 --119:         p_ISD->service_result = SERV_NEW_REQUEST;
+0000008e 800ef1ff        285 	ori	65521,zero,r1
+00000092 7c0f0d00        286 	st.w	r1,12[r28]
+                         287 --120:         /* ---- These lines should be left unchanged.   End   ---- */
+                         288 --122:         /* 4. In order to check whether area indicated by p_ISD exists in RAM, */
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         289 --123:         /*    it checks whether service processing state is SERV_NEW_REQUEST   */
+                         290 --124:         if (SERV_NEW_REQUEST != p_ISD->service_result)
+00000096 3c0f0d00        291 	ld.w	12[r28],r1
+0000009a a106f1ff        292 	xori	65521,r1,zero
+0000009e b205*           293 	be	.L91
+                         294 --125:         {
+                         295 --126:             /* Not SERV_NEW_REQUEST, process is terminated */
+                         296 --127:             ret_val = R_ICUMIF_ER_ADDR_NOT_G_RAM;
+                         297 --line127
+                         298 ..lin.4b6a9f96..d32ea9ab.0_13::
+                         299 .LDWlin13:
+000000a0 1dea            300 	mov	-3,r29
+000000a2 9525*           301 	br	.L90
+                         302 .L91:
+                         303 --128:         }
+                         304 --129:         else
+                         305 --130:         {
+                         306 --131:             /* 5. Execute interrupt issue process to issue service execution req interrupt */
+                         307 --132:             call_comm_ret = D_COMM_TriggerInterruptToICUP(ICUM_COMM_ICH_TO_SERV_REQUEST, p_ISD);
+                         308 --line132
+                         309 ..lin.4b6a9f96..d32ea9ab.0_14::
+                         310 .LDWlin14:
+000000a4 1c38            311 	mov	r28,r7
+000000a6 0232            312 	mov	2,r6
+                         313 .L232:
+                         314 	jarl	_D_COMM_TriggerInterruptToICUP,lp
+                         314 <EXPANSION BEGIN>
+                         314 jarl22 _D_COMM_TriggerInterruptToICUP , lp 
+000000a8 80ff0000*       314 <EXPANSION END>
+000000ac 0ad8            315 	mov	r10,r27
+                         316 --134:             /* 6. According to result of interrupt issue process, */
+                         317 --135:             /*    execute respective corresponding processes      */
+                         318 --136:             switch (call_comm_ret)
+                         319 --line136
+                         320 ..lin.4b6a9f96..d32ea9ab.0_15::
+                         321 .LDWlin15:
+000000ae 1b08            322 	mov	r27,r1
+000000b0 e009            323 	cmp	zero,r1
+000000b2 a20d*           324 	be	.L95
+000000b4 205e0104        325 	movea	1025,zero,r11
+000000b8 eb09            326 	cmp	r11,r1
+000000ba f205*           327 	be	.L96
+000000bc 205e0404        328 	movea	1028,zero,r11
+000000c0 eb09            329 	cmp	r11,r1
+000000c2 c20d*           330 	be	.L97
+000000c4 d50d*           331 	br	.L98
+                         332 .L95:
+                         333 --137:             {
+                         334 --138:                 case ER_OK:
+                         335 --139:                     /* 6-1. Do nothing */
+                         336 --140:                     break;
+                         337 --141:                 case ER_D_COMM_QUE_FULL:
+                         338 --line140
+                         339 ..lin.4b6a9f96..d32ea9ab.0_16::
+                         340 .LDWlin16:
+000000c6 f50d*           341 	br	.L90
+                         342 .L96:
+                         343 --142:                     /* ---- These lines should be left unchanged.   Start ---- */
+                         344 --143:                     /* 6-2. */
+                         345 --144:                     p_ISD->req_res_status = R_ICUMIF_REQRES_PE_RES_DEQUE;
+                         346 --line144
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         347 ..lin.4b6a9f96..d32ea9ab.0_17::
+                         348 .LDWlin17:
+000000c8 040a            349 	mov	4,r1
+000000ca 5c0f0700        350 	st.b	r1,7[r28]
+                         351 --145:                     p_ISD->service_result = SERV_REQUEST_QUEUE_FULL;
+000000ce 200e2b00        352 	movea	43,zero,r1
+000000d2 7c0f0d00        353 	st.w	r1,12[r28]
+                         354 --146:                     ret_val = R_ICUMIF_ER_REQ_QUEUE_FULL;
+000000d6 1bea            355 	mov	-5,r29
+                         356 --147:                     /* ---- These lines should be left unchanged.   End   ---- */
+                         357 --148:                     break;
+                         358 --149:                 case ER_D_COMM_QUE_NOT_INIT:
+000000d8 e505*           359 	br	.L90
+                         360 .L97:
+                         361 --150:                     /* 6-3. */
+                         362 --151:                     ret_val = R_ICUMIF_ER_IF_LIB_NOT_INIT;
+                         363 --line151
+                         364 ..lin.4b6a9f96..d32ea9ab.0_18::
+                         365 .LDWlin18:
+000000da 1cea            366 	mov	-4,r29
+                         367 --152:                     break;
+                         368 --153:                 case ER_PARAM:
+000000dc c505*           369 	br	.L90
+                         370 .L98:
+                         371 --154:                 case ER_D_COMM_QUE_NOT_ACCESS:
+                         372 --155:                 default:
+                         373 --156:                     /* 6-4. */
+                         374 --157:                     ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                         375 --line157
+                         376 ..lin.4b6a9f96..d32ea9ab.0_19::
+                         377 .LDWlin19:
+000000de 20ee9dff        378 	movea	-99,zero,r29
+                         379 --158:                     break;
+000000e2 0000            380 	nop
+                         381 .L90:
+                         382 --159:             }
+                         383 --160:         }
+                         384 --161:     }
+                         385 --163:     /* 8. */
+                         386 --164:     return (ret_val);
+000000e4 1d50            387 	mov	r29,r10
+                         388 --	    .ef
+                         389 .LDW31:
+000000e6 23ff0d00        390 	ld.w	12[sp],lp
+000000ea 23ef0100        391 	ld.w	0[sp],r29
+000000ee 23e70500        392 	ld.w	4[sp],r28
+000000f2 23df0900        393 	ld.w	8[sp],r27
+000000f6 031e1000        394 	addi	16,sp,sp
+                         395 .L234:
+                         396 	.jumptype return
+000000fa 7f00            397 	jmp	[lp]
+                         398 --line157
+                         399 ..lin.4b6a9f96..d32ea9ab.0_20::
+                         400 	.type	_R_ICUMIF_ServiceRequest,@function
+                         401 	.size	_R_ICUMIF_ServiceRequest,.-_R_ICUMIF_ServiceRequest
+                         402 	.align	2
+                         403 --_ret_val	r29	local
+                         404 --_call_comm_ret	r27	local
+                         405 
+                         406 --_p_ISD	r28	param
+                         407 
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         408 	.section ".ghcalltbl",""
+00000008 00000000*       409 .L233:	.word	.L232
+                         410 	.type	.L233,@object
+                         411 	.size	.L233,4
+                         412 	.section ".ghrettbl",""
+00000004 00000000*       413 .L235:	.word	.L234
+                         414 	.type	.L235,@object
+                         415 	.size	.L235,4
+                         416 	.data
+                         417 	.section ".icumif_rom","ax"
+                         418 
+                         419 --165: }
+                         420 
+                         421 --167: /***************************************************************************************
+                         422 --168: * Function ID  : [ICUMFW_CD_L_IF_0003]:[ICUMFW_UD_L_IF_0003]
+                         423 --169: * Function name: R_ICUMIF_ServiceResponse
+                         424 --170: * Description  : Acquires ISD from service response queue for self PE
+                         425 --171: * Arguments    : None
+                         426 --172: * Return Value : int32_t Service response reception process result
+                         427 --173: *                   0               : Successful
+                         428 --174: *                   Negative values : Interface library uninitialized
+                         429 --175: ***************************************************************************************/
+                         430 --176: int32_t R_ICUMIF_ServiceResponse(void)
+                         431 	.align	2
+                         432 	.align	2
+                         433 	.align	2
+                         434 ..gh.f.a.2.e.4:
+                         435 	.type	..gh.f.a.2.e.4,@object
+                         436 	.size	..gh.f.a.2.e.4,0
+                         437 	.global	_R_ICUMIF_ServiceResponse
+                         438 _R_ICUMIF_ServiceResponse:
+000000fc 031eecff        439 	addi	-20,sp,sp
+00000100 63ff1100        440 	st.w	lp,16[sp]
+00000104 63df0d00        441 	st.w	r27,12[sp]
+00000108 63e70900        442 	st.w	r28,8[sp]
+0000010c 63ef0500        443 	st.w	r29,4[sp]
+                         444 --	    .bf
+                         445 .LDW41:
+                         446 --177: {
+                         447 --178:     int32_t         ret_val = R_ICUMIF_ER_OK;
+00000110 00ea            448 	mov	0,r29
+                         449 --179:     uint32_t        call_comm_ret;
+                         450 --180:     uint32_t        exist_isd = 1UL;
+00000112 01e2            451 	mov	1,r28
+                         452 --181:     r_icumif_isd_t  *p_isd;
+                         453 --183:     /* Repeat process until there is no ISD in service response queue for self PE */
+                         454 --184:     while (1UL == exist_isd)
+00000114 f535*           455 	br	.L238
+                         456 .L240:
+                         457 --185:     {
+                         458 --186:         /* 1. Acquires ISD from service response queue for self PE */
+                         459 --187:         call_comm_ret = D_COMM_GetResponseISD(&p_isd);
+                         460 --line187
+                         461 ..lin.4b6a9f96..3d591c91.0_21::
+                         462 .LDWlin21:
+00000116 23360000        463 	movea	0,sp,r6
+                         464 .L378:
+                         465 	jarl	_D_COMM_GetResponseISD,lp
+                         465 <EXPANSION BEGIN>
+                         465 jarl22 _D_COMM_GetResponseISD , lp 
+0000011a 80ff0000*       465 <EXPANSION END>
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+0000011e 0ad8            466 	mov	r10,r27
+                         467 --189:         /* 2. According to result of acquires ISD,       */
+                         468 --190:         /*    execute respective corresponding processes */
+                         469 --191:         switch (call_comm_ret)
+                         470 --line191
+                         471 ..lin.4b6a9f96..3d591c91.0_22::
+                         472 .LDWlin22:
+00000120 1b08            473 	mov	r27,r1
+00000122 e009            474 	cmp	zero,r1
+00000124 d20d*           475 	be	.L242
+00000126 205e0204        476 	movea	1026,zero,r11
+0000012a eb09            477 	cmp	r11,r1
+0000012c c225*           478 	be	.L243
+0000012e 205e0404        479 	movea	1028,zero,r11
+00000132 eb09            480 	cmp	r11,r1
+00000134 a225*           481 	be	.L244
+00000136 205e0704        482 	movea	1031,zero,r11
+0000013a eb09            483 	cmp	r11,r1
+0000013c 8a25*           484 	bne	.L245
+                         485 .L242:
+                         486 --192:         {
+                         487 --193:             case ER_OK:
+                         488 --194:             case ER_D_COMM_EXIST_ISD:
+                         489 --195:                 /* 3-1. address check using Cluster RAM area check function */
+                         490 --196:                 /* 3-1-1. For detect that ICU-M could not update ISD,          */
+                         491 --197:                 /*          check value of service process state in acquired ISD */
+                         492 --198:                 if (SERV_NEW_REQUEST == p_isd->service_result)
+                         493 --line198
+                         494 ..lin.4b6a9f96..3d591c91.0_23::
+                         495 .LDWlin23:
+0000013e 23f70100        496 	ld.w	0[sp],ep
+00000142 060d            497 	sld.w	12[ep],r1
+00000144 a106f1ff        498 	xori	65521,r1,zero
+00000148 ea05*           499 	bne	.L247
+                         500 --199:                 {
+                         501 --200:                     /* 3-1-1-1. ICU-M could not update ISD */
+                         502 --201:                     p_isd->service_result = SERV_ISD_NOT_ACCESSIBLE;
+                         503 --line201
+                         504 ..lin.4b6a9f96..3d591c91.0_24::
+                         505 .LDWlin24:
+0000014a 23f70100        506 	ld.w	0[sp],ep
+0000014e 200e1f00        507 	movea	31,zero,r1
+00000152 070d            508 	sst.w	r1,12[ep]
+                         509 .L247:
+                         510 --202:                 }
+                         511 --203:                 /* ---- These lines should be left unchanged.   Start ---- */
+                         512 --204:                 /* 3-1-2. */
+                         513 --205:                 if (NULL != p_isd->p_callbackfunc)
+00000154 23f70100        514 	ld.w	0[sp],ep
+00000158 0c0d            515 	sld.w	24[ep],r1
+0000015a e009            516 	cmp	zero,r1
+0000015c 820d*           517 	be	.L249
+                         518 --206:                 {
+                         519 --207:                     /* 3-1-2-1. If there is registration of callback function, */
+                         520 --208:                     /*            calling callback function                      */
+                         521 --209:                     p_isd->p_callbackfunc(p_isd);
+                         522 --line209
+                         523 ..lin.4b6a9f96..3d591c91.0_25::
+                         524 .LDWlin25:
+0000015e 23f70100        525 	ld.w	0[sp],ep
+00000162 23370100        526 	ld.w	0[sp],r6
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+00000166 0c0d            527 	sld.w	24[ep],r1
+                         528 .L380:
+00000168 e1c760f9        529 	jarl	[r1],lp
+                         530 .L249:
+                         531 --210:                 }
+                         532 --211:                 /* ---- These lines should be left unchanged.   End   ---- */
+                         533 --212:                 if (ER_OK == call_comm_ret)
+                         534 --line212
+                         535 ..lin.4b6a9f96..3d591c91.0_26::
+                         536 .LDWlin26:
+0000016c e0d9            537 	cmp	zero,r27
+0000016e aa05*           538 	bne	.L253
+                         539 --213:                 {
+                         540 --214:                     exist_isd = 0UL;
+                         541 --line214
+                         542 ..lin.4b6a9f96..3d591c91.0_27::
+                         543 .LDWlin27:
+00000170 00e2            544 	mov	0,r28
+                         545 .L253:
+                         546 --215:                 }
+                         547 --216:                 else
+                         548 --217:                 {
+                         549 --218:                     /* do nothing */
+                         550 --219:                 }
+                         551 --220:                 break;
+                         552 --221:             case ER_D_COMM_NO_ISD:
+00000172 850d*           553 	br	.L238
+                         554 .L243:
+                         555 --222:                 /* 3-2. No ISD in service response queue, exit from loop process */
+                         556 --223:                 exist_isd = 0UL;
+                         557 --line223
+                         558 ..lin.4b6a9f96..3d591c91.0_28::
+                         559 .LDWlin28:
+00000174 00e2            560 	mov	0,r28
+                         561 --224:                 break;
+                         562 --225:             case ER_D_COMM_QUE_NOT_INIT:
+00000176 e505*           563 	br	.L238
+                         564 .L244:
+                         565 --226:                 /* 3-3. */
+                         566 --227:                 ret_val = R_ICUMIF_ER_IF_LIB_NOT_INIT;
+                         567 --line227
+                         568 ..lin.4b6a9f96..3d591c91.0_29::
+                         569 .LDWlin29:
+00000178 1cea            570 	mov	-4,r29
+                         571 --228:                 break;
+                         572 --229:             case ER_D_COMM_QUE_NOT_ACCESS:
+0000017a c505*           573 	br	.L238
+                         574 .L245:
+                         575 --230:             default:
+                         576 --231:                 /* 3-4. */
+                         577 --232:                 ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                         578 --line232
+                         579 ..lin.4b6a9f96..3d591c91.0_30::
+                         580 .LDWlin30:
+0000017c 20ee9dff        581 	movea	-99,zero,r29
+                         582 --233:                 break;
+00000180 0000            583 	nop
+                         584 .L238:
+00000182 61e2            585 	cmp	1,r28
+00000184 92cd*           586 	be	.L240
+                         587 --234:         }
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         588 --235:     }
+                         589 --237:     /* 4. */
+                         590 --238:     return (ret_val);
+                         591 --line238
+                         592 ..lin.4b6a9f96..3d591c91.0_31::
+                         593 .LDWlin31:
+00000186 1d50            594 	mov	r29,r10
+                         595 --	    .ef
+                         596 .LDW51:
+00000188 23ff1100        597 	ld.w	16[sp],lp
+0000018c 23ef0500        598 	ld.w	4[sp],r29
+00000190 23e70900        599 	ld.w	8[sp],r28
+00000194 23df0d00        600 	ld.w	12[sp],r27
+00000198 031e1400        601 	addi	20,sp,sp
+                         602 .L382:
+                         603 	.jumptype return
+0000019c 7f00            604 	jmp	[lp]
+                         605 --line238
+                         606 ..lin.4b6a9f96..3d591c91.0_32::
+                         607 	.type	_R_ICUMIF_ServiceResponse,@function
+                         608 	.size	_R_ICUMIF_ServiceResponse,.-_R_ICUMIF_ServiceResponse
+                         609 	.align	2
+                         610 --_ret_val	r29	local
+                         611 --_call_comm_ret	r27	local
+                         612 --_exist_isd	r28	local
+                         613 --_p_isd	0[sp]	local
+                         614 
+                         615 	.section ".ghcalltbl",""
+0000000c 00000000*       616 .L379:	.word	.L378
+                         617 	.type	.L379,@object
+                         618 	.size	.L379,4
+00000010 00000000*       619 .L381:	.word	.L380
+                         620 	.type	.L381,@object
+                         621 	.size	.L381,4
+                         622 	.section ".ghrettbl",""
+00000008 00000000*       623 .L383:	.word	.L382
+                         624 	.type	.L383,@object
+                         625 	.size	.L383,4
+                         626 	.data
+                         627 	.section ".icumif_rom","ax"
+                         628 
+                         629 --239: }
+                         630 
+                         631 --241: /***************************************************************************************
+                         632 --242: * Function ID  : [ICUMFW_CD_L_IF_0004]:[ICUMFW_UD_L_IF_0004]
+                         633 --243: * Function name: R_ICUMIF_IsServiceCompleted
+                         634 --244: * Description  : Check state of service execution requested to ICU-M
+                         635 --245: * Arguments    : r_icumif_isd_t *p_ISD : Pointer to ISD that service execution requested
+                         636 --246: * Return Value : int32_t Service execution state
+                         637 --247: *                   0            : Service running
+                         638 --248: *                   Other than 0 : Service execution completion
+                         639 --249: ***************************************************************************************/
+                         640 --250: int32_t R_ICUMIF_IsServiceCompleted(r_icumif_isd_t *p_ISD)
+                         641 	.align	2
+                         642 	.align	2
+                         643 	.align	2
+                         644 ..gh.f.a.2.e.5:
+                         645 	.type	..gh.f.a.2.e.5,@object
+                         646 	.size	..gh.f.a.2.e.5,0
+                         647 	.global	_R_ICUMIF_IsServiceCompleted
+                         648 _R_ICUMIF_IsServiceCompleted:
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+0000019e 541a            649 	add	-12,sp
+000001a0 63ff0900        650 	st.w	lp,8[sp]
+000001a4 63ef0500        651 	st.w	r29,4[sp]
+000001a8 06e8            652 	mov	r6,r29
+                         653 --	    .bf
+                         654 .LDW61:
+                         655 --251: {
+                         656 --252:     int32_t ret_val;
+                         657 --253:     uint8_t mem_check = ICUM_COMM_MEMCHECK_OK;
+000001aa 43070300        658 	st.b	zero,3[sp]
+                         659 --255:     /* 1. address check using Cluster RAM area check function */
+                         660 --256:     if (0UL != ((uint32_t)((volatile void *)p_ISD) & ALIGNMENT_4BYTE_CHECK_PATTERN))
+000001ae dd0e0300        661 	andi	3,r29,r1
+000001b2 e009            662 	cmp	zero,r1
+000001b4 b205*           663 	be	.L386
+                         664 --257:     {
+                         665 --258:         ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                         666 --line258
+                         667 ..lin.4b6a9f96..a229a1bb.0_33::
+                         668 .LDWlin33:
+000001b6 1f0a            669 	mov	-1,r1
+000001b8 f535*           670 	br	.L388
+                         671 .L386:
+                         672 --259:     }
+                         673 --260:     else
+                         674 --261:     {
+                         675 --262:         if ((p_ISD->service_id == SERVICE_01_AES_CMAC) && (p_ISD->service_priority == R_ICUMIF_SERV_PRIORITY_HIGHEST))
+                         676 --line262
+                         677 ..lin.4b6a9f96..a229a1bb.0_34::
+                         678 .LDWlin34:
+000001ba 3d0f0100        679 	ld.w	0[r29],r1
+000001be 0106eeff        680 	addi	-18,r1,zero
+000001c2 da05*           681 	bne	.L389
+000001c4 9d0f0900        682 	ld.bu	8[r29],r1
+000001c8 e009            683 	cmp	zero,r1
+000001ca d205*           684 	be	.L392
+                         685 .L389:
+                         686 --263:         {
+                         687 --264:             /* Do nothing */
+                         688 --265:         }
+                         689 --266:         else
+                         690 --267:         {
+                         691 --268:             (void)D_COMM_GetICUMemCheckErrInfo(&mem_check);
+                         692 --line268
+                         693 ..lin.4b6a9f96..a229a1bb.0_35::
+                         694 .LDWlin35:
+000001cc 23360300        695 	movea	3,sp,r6
+                         696 .L551:
+                         697 	jarl	_D_COMM_GetICUMemCheckErrInfo,lp
+                         697 <EXPANSION BEGIN>
+                         697 jarl22 _D_COMM_GetICUMemCheckErrInfo , lp 
+000001d0 80ff0000*       697 <EXPANSION END>
+                         698 .L392:
+                         699 --269:         }
+                         700 --271:         if(mem_check == ICUM_COMM_MEMCHECK_OK)
+                         701 --line271
+                         702 ..lin.4b6a9f96..a229a1bb.0_36::
+                         703 .LDWlin36:
+000001d4 a30f0300        704 	ld.bu	3[sp],r1
+000001d8 e009            705 	cmp	zero,r1
+000001da da25*           706 	bne	.L393
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         707 --272:         {
+                         708 --273:             /* ---- These lines should be left unchanged.   Start ---- */
+                         709 --274:             /* 3. Check service request / response queue transition state in ISD */
+                         710 --275:             ret_val = R_ICUMIF_RTN_SERV_RUNNING;
+                         711 --line275
+                         712 ..lin.4b6a9f96..a229a1bb.0_37::
+                         713 .LDWlin37:
+000001dc 000a            714 	mov	0,r1
+                         715 --277:             /* 4. Service execution completion */
+                         716 --278:             switch (p_ISD->req_res_status)
+000001de bd170700        717 	ld.bu	7[r29],r2
+000001e2 6112            718 	cmp	1,r2
+000001e4 d11d*           719 	bl	.L400
+000001e6 d215*           720 	be	.L398
+000001e8 6312            721 	cmp	3,r2
+000001ea 911d*           722 	bl	.L399
+000001ec c205*           723 	be	.L396
+000001ee 6412            724 	cmp	4,r2
+000001f0 820d*           725 	be	.L397
+000001f2 e515*           726 	br	.L400
+                         727 .L396:
+                         728 --279:             {
+                         729 --280:                 case R_ICUMIF_REQRES_ICUM_RES_ENQUE:
+                         730 --281:                     if(p_ISD->res_nointerrupt == R_ICUMIF_REQRES_NOINTERRPUT)
+                         731 --line281
+                         732 ..lin.4b6a9f96..a229a1bb.0_38::
+                         733 .LDWlin38:
+000001f4 bd171100        734 	ld.bu	17[r29],r2
+000001f8 6112            735 	cmp	1,r2
+000001fa aa05*           736 	bne	.L404
+                         737 --282:                     {
+                         738 --283:                         ret_val = R_ICUMIF_RTN_SERV_COMPLETION;
+                         739 --line283
+                         740 ..lin.4b6a9f96..a229a1bb.0_39::
+                         741 .LDWlin39:
+000001fc 010a            742 	mov	1,r1
+                         743 .L404:
+                         744 --284:                     }
+                         745 --285:                     else
+                         746 --286:                     {
+                         747 --287:                         /* Do nothing */
+                         748 --288:                     }
+                         749 --289:                     break;
+                         750 --290:                 case R_ICUMIF_REQRES_PE_RES_DEQUE:
+000001fe c515*           751 	br	.L388
+                         752 .L397:
+                         753 --291:                     /* 4-1. Check value of service process state in ISD */
+                         754 --292:                     if (SERV_REQUEST > p_ISD->service_result)
+                         755 --line292
+                         756 ..lin.4b6a9f96..a229a1bb.0_40::
+                         757 .LDWlin40:
+00000200 8016f0ff        758 	ori	65520,zero,r2
+00000204 3d9f0d00        759 	ld.w	12[r29],r19
+00000208 e299            760 	cmp	r2,r19
+0000020a ae05*           761 	bge	.L408
+                         762 --293:                     {
+                         763 --294:                         /* 4-1-1. Service execution completion */
+                         764 --295:                         ret_val = R_ICUMIF_RTN_SERV_COMPLETION;
+                         765 --line295
+                         766 ..lin.4b6a9f96..a229a1bb.0_41::
+                         767 .LDWlin41:
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+0000020c 010a            768 	mov	1,r1
+                         769 .L408:
+                         770 --296:                     }
+                         771 --297:                     else
+                         772 --298:                     {
+                         773 --299:                         /* Do nothing */
+                         774 --300:                     }
+                         775 --301:                     break;
+                         776 --302:                 case R_ICUMIF_REQRES_PE_REQ_ENQUE:
+0000020e c50d*           777 	br	.L388
+                         778 .L398:
+                         779 --303:                     if(p_ISD->req_nointerrupt == R_ICUMIF_REQRES_NOINTERRPUT)
+                         780 --line303
+                         781 ..lin.4b6a9f96..a229a1bb.0_42::
+                         782 .LDWlin42:
+00000210 9d171100        783 	ld.bu	16[r29],r2
+00000214 6112            784 	cmp	1,r2
+00000216 aa05*           785 	bne	.L411
+                         786 --304:                     {
+                         787 --305:                         ret_val = R_ICUMIF_RTN_SERV_COMPLETION;
+                         788 --line305
+                         789 ..lin.4b6a9f96..a229a1bb.0_43::
+                         790 .LDWlin43:
+00000218 010a            791 	mov	1,r1
+                         792 .L411:
+                         793 --306:                     }
+                         794 --307:                     else
+                         795 --308:                     {
+                         796 --309:                         /* Do nothing */
+                         797 --310:                     }
+                         798 --311:                     break;
+                         799 --312:                 case R_ICUMIF_REQRES_ICUM_REQ_DEQUE:
+0000021a e505*           800 	br	.L388
+                         801 .L399:
+                         802 --313:                     /* 4-2. Service running */
+                         803 --314:                     /* Initial value */
+                         804 --315:                     break;
+                         805 --316:                 default:
+                         806 --line315
+                         807 ..lin.4b6a9f96..a229a1bb.0_44::
+                         808 .LDWlin44:
+0000021c d505*           809 	br	.L388
+                         810 .L400:
+                         811 --317:                     /* 4-3. */
+                         812 --318:                     ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                         813 --line318
+                         814 ..lin.4b6a9f96..a229a1bb.0_45::
+                         815 .LDWlin45:
+0000021e 200e9dff        816 	movea	-99,zero,r1
+                         817 --319:                     break;
+00000222 a505*           818 	br	.L388
+                         819 .L393:
+                         820 --320:             }
+                         821 --321:         }
+                         822 --322:         else
+                         823 --323:         {
+                         824 --324:             ret_val = R_ICUMIF_ER_ADDR_NOT_G_RAM;
+                         825 --line324
+                         826 ..lin.4b6a9f96..a229a1bb.0_46::
+                         827 .LDWlin46:
+00000224 1d0a            828 	mov	-3,r1
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         829 .L388:
+                         830 --325:         }
+                         831 --326:         /* ---- These lines should be left unchanged.   End   ---- */
+                         832 --327:     }
+                         833 --329:     /* 6. */
+                         834 --330:     return (ret_val);
+00000226 0150            835 	mov	r1,r10
+                         836 --	    .ef
+                         837 .LDW71:
+00000228 23ff0900        838 	ld.w	8[sp],lp
+0000022c 23ef0500        839 	ld.w	4[sp],r29
+00000230 4c1a            840 	add	12,sp
+                         841 .L553:
+                         842 	.jumptype return
+00000232 7f00            843 	jmp	[lp]
+                         844 --line324
+                         845 ..lin.4b6a9f96..a229a1bb.0_47::
+                         846 	.type	_R_ICUMIF_IsServiceCompleted,@function
+                         847 	.size	_R_ICUMIF_IsServiceCompleted,.-_R_ICUMIF_IsServiceCompleted
+                         848 	.align	2
+                         849 --_ret_val	r1	local
+                         850 --_mem_check	3[sp]	local
+                         851 
+                         852 --_p_ISD	r29	param
+                         853 
+                         854 	.section ".ghcalltbl",""
+00000014 00000000*       855 .L552:	.word	.L551
+                         856 	.type	.L552,@object
+                         857 	.size	.L552,4
+                         858 	.section ".ghrettbl",""
+0000000c 00000000*       859 .L554:	.word	.L553
+                         860 	.type	.L554,@object
+                         861 	.size	.L554,4
+                         862 	.data
+                         863 	.section ".icumif_rom","ax"
+                         864 
+                         865 --331: }
+                         866 
+                         867 --333: /***************************************************************************************
+                         868 --334: * Function ID  : [ICUMFW_CD_L_IF_0005]:[ICUMFW_UD_L_IF_0005]
+                         869 --335: * Function name: R_ICUMIF_GetStatus
+                         870 --336: * Description  : Acquire address value of status information of ICU-M Firmware
+                         871 --337: * Arguments    : None
+                         872 --338: * Return Value : r_icumif_sts_t * Address value of ICU-M Firmware status information
+                         873 --339: ***************************************************************************************/
+                         874 --340: r_icumif_sts_t *R_ICUMIF_GetStatus(void)
+                         875 	.align	2
+                         876 	.align	2
+                         877 	.align	2
+                         878 ..gh.f.a.2.e.6:
+                         879 	.type	..gh.f.a.2.e.6,@object
+                         880 	.size	..gh.f.a.2.e.6,0
+                         881 	.global	_R_ICUMIF_GetStatus
+                         882 _R_ICUMIF_GetStatus:
+00000234 581a            883 	add	-8,sp
+00000236 63ff0500        884 	st.w	lp,4[sp]
+0000023a 63ef0100        885 	st.w	r29,0[sp]
+                         886 --	    .bf
+                         887 .LDW81:
+                         888 --341: {
+                         889 --342:     /* ---- These lines should be left unchanged.   Start ---- */
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         890 --343:     r_icumif_sts_t  *p_status;
+                         891 --345:     /* 1. Acquire address value of status information of ICU-M Firmware */
+                         892 --346:     p_status = D_COMM_GetICUStatusAddr();
+                         893 .L584:
+                         894 	jarl	_D_COMM_GetICUStatusAddr,lp
+                         894 <EXPANSION BEGIN>
+                         894 jarl22 _D_COMM_GetICUStatusAddr , lp 
+0000023e 80ff0000*       894 <EXPANSION END>
+00000242 0ae8            895 	mov	r10,r29
+                         896 --348:     /* 2. */
+                         897 --349:     return (p_status);
+                         898 --line349
+                         899 ..lin.4b6a9f96..75e37c75.0_48::
+                         900 .LDWlin48:
+00000244 1d50            901 	mov	r29,r10
+                         902 --	    .ef
+                         903 .LDW91:
+00000246 23ff0500        904 	ld.w	4[sp],lp
+0000024a 23ef0100        905 	ld.w	0[sp],r29
+0000024e 481a            906 	add	8,sp
+                         907 .L586:
+                         908 	.jumptype return
+00000250 7f00            909 	jmp	[lp]
+                         910 --line349
+                         911 ..lin.4b6a9f96..75e37c75.0_49::
+                         912 	.type	_R_ICUMIF_GetStatus,@function
+                         913 	.size	_R_ICUMIF_GetStatus,.-_R_ICUMIF_GetStatus
+                         914 	.align	2
+                         915 --_p_status	r29	local
+                         916 
+                         917 	.section ".ghcalltbl",""
+00000018 00000000*       918 .L585:	.word	.L584
+                         919 	.type	.L585,@object
+                         920 	.size	.L585,4
+                         921 	.section ".ghrettbl",""
+00000010 00000000*       922 .L587:	.word	.L586
+                         923 	.type	.L587,@object
+                         924 	.size	.L587,4
+                         925 	.data
+                         926 	.section ".icumif_rom","ax"
+                         927 
+                         928 --350:     /* ---- These lines should be left unchanged.   End   ---- */
+                         929 --351: }
+                         930 
+                         931 --353: /***************************************************************************************
+                         932 --354: * Function ID  : [ICUMFW_CD_L_IF_0006]:[ICUMFW_UD_L_IF_0006]
+                         933 --355: * Function name: R_ICUMIF_SetFlashAccessStatus
+                         934 --356: * Description  : Set access status of specified Flash type as PE status information
+                         935 --357: * Arguments    : r_icumif_flash_type_t    flash_type : Flash type to set access state
+                         936 --358: *                r_icumif_access_status_t status     : Access status to set
+                         937 --359: * Return Value : int32_t Access status setting result
+                         938 --360: *                   0               : Successful
+                         939 --361: *                   Negative values : Parameter error
+                         940 --362: ***************************************************************************************/
+                         941 --363: int32_t R_ICUMIF_SetFlashAccessStatus(r_icumif_flash_type_t flash_type,
+                         942 	.align	2
+                         943 	.align	2
+                         944 	.align	2
+                         945 ..gh.f.a.2.e.7:
+                         946 	.type	..gh.f.a.2.e.7,@object
+                         947 	.size	..gh.f.a.2.e.7,0
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                         948 	.global	_R_ICUMIF_SetFlashAccessStatus
+                         949 _R_ICUMIF_SetFlashAccessStatus:
+00000252 031eecff        950 	addi	-20,sp,sp
+00000256 63ff1100        951 	st.w	lp,16[sp]
+0000025a 63d70d00        952 	st.w	r26,12[sp]
+0000025e 63df0900        953 	st.w	r27,8[sp]
+00000262 63e70500        954 	st.w	r28,4[sp]
+00000266 63ef0100        955 	st.w	r29,0[sp]
+0000026a 06d0            956 	mov	r6,r26
+0000026c 07d8            957 	mov	r7,r27
+                         958 --	    .bf
+                         959 .LDW02:
+                         960 --364:                                       r_icumif_access_status_t status)
+                         961 --365: {
+                         962 --366:     /* ---- These lines should be left unchanged.   Start ---- */
+                         963 --367:     int32_t     ret_val = R_ICUMIF_ER_OK;
+0000026e 00ea            964 	mov	0,r29
+                         965 --368:     uint32_t    call_comm_ret;
+                         966 --370:     /* 1. */
+                         967 --371:     switch (flash_type)
+00000270 1a08            968 	mov	r26,r1
+00000272 610a            969 	cmp	1,r1
+00000274 817d*           970 	bl	.L595
+00000276 f205*           971 	be	.L591
+00000278 630a            972 	cmp	3,r1
+0000027a 9125*           973 	bl	.L592
+0000027c c23d*           974 	be	.L593
+0000027e 640a            975 	cmp	4,r1
+00000280 e255*           976 	be	.L594
+00000282 9575*           977 	br	.L595
+                         978 .L591:
+                         979 --372:     {
+                         980 --373:         case E_ICUMIF_FLASH_TYPE_DF:
+                         981 --374:             /* 1-1. */
+                         982 --375:             switch (status)
+                         983 --line375
+                         984 ..lin.4b6a9f96..e3036821.0_50::
+                         985 .LDWlin50:
+00000284 1b08            986 	mov	r27,r1
+00000286 610a            987 	cmp	1,r1
+00000288 b105*           988 	bl	.L598
+0000028a c20d*           989 	be	.L599
+0000028c d515*           990 	br	.L600
+                         991 .L598:
+                         992 --376:             {
+                         993 --377:                 case E_ICUMIF_ACCESS_OFF:
+                         994 --378:                     /* 1-1-1. */
+                         995 --379:                     /* Set the value corresponding of during non-access   */
+                         996 --380:                     /* to the Data Flash access state clear disable state */
+                         997 --381:                     /* of the PE status information                       */
+                         998 --382:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FACIACCDIS, 0U);
+                         999 --line382
+                        1000 ..lin.4b6a9f96..e3036821.0_51::
+                        1001 .LDWlin51:
+0000028e 0332           1002 	mov	3,r6
+00000290 003a           1003 	mov	0,r7
+                        1004 .L949:
+                        1005 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1005 <EXPANSION BEGIN>
+                        1005 jarl22 _D_COMM_SetPEStatusInfo , lp 
+00000292 80ff0000*      1005 <EXPANSION END>
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+00000296 0ae0           1006 	mov	r10,r28
+                        1007 --383:                     /* According to result of PE status information set    */
+                        1008 --384:                     /* process, execute respective corresponding processes */
+                        1009 --385:                     if (ER_OK != call_comm_ret)
+                        1010 --line385
+                        1011 ..lin.4b6a9f96..e3036821.0_52::
+                        1012 .LDWlin52:
+00000298 e0e1           1013 	cmp	zero,r28
+0000029a b205*          1014 	be	.L602
+                        1015 --386:                     {
+                        1016 --387:                         /* 1-1-1-1. */
+                        1017 --388:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1018 --line388
+                        1019 ..lin.4b6a9f96..e3036821.0_53::
+                        1020 .LDWlin53:
+0000029c 20ee9dff       1021 	movea	-99,zero,r29
+                        1022 .L602:
+                        1023 --389:                     }
+                        1024 --390:                     break;
+                        1025 --391:                 case E_ICUMIF_ACCESS_ON:
+000002a0 d50d*          1026 	br	.L604
+                        1027 .L599:
+                        1028 --392:                     /* 1-1-2. */
+                        1029 --393:                     /* Set the value corresponding of during access to  */
+                        1030 --394:                     /* the Data Flash access status clear disable state */
+                        1031 --395:                     /* of the PE status information                     */
+                        1032 --396:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FACIACCDIS, 1U);
+                        1033 --line396
+                        1034 ..lin.4b6a9f96..e3036821.0_54::
+                        1035 .LDWlin54:
+000002a2 0332           1036 	mov	3,r6
+000002a4 013a           1037 	mov	1,r7
+                        1038 .L951:
+                        1039 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1039 <EXPANSION BEGIN>
+                        1039 jarl22 _D_COMM_SetPEStatusInfo , lp 
+000002a6 80ff0000*      1039 <EXPANSION END>
+000002aa 0ae0           1040 	mov	r10,r28
+                        1041 --397:                     /* According to result of PE status information set    */
+                        1042 --398:                     /* process, execute respective corresponding processes */
+                        1043 --399:                     if (ER_OK != call_comm_ret)
+                        1044 --line399
+                        1045 ..lin.4b6a9f96..e3036821.0_55::
+                        1046 .LDWlin55:
+000002ac e0e1           1047 	cmp	zero,r28
+000002ae b205*          1048 	be	.L605
+                        1049 --400:                     {
+                        1050 --401:                         /* 1-1-2-1. */
+                        1051 --402:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1052 --line402
+                        1053 ..lin.4b6a9f96..e3036821.0_56::
+                        1054 .LDWlin56:
+000002b0 20ee9dff       1055 	movea	-99,zero,r29
+                        1056 .L605:
+                        1057 --403:                     }
+                        1058 --404:                     break;
+                        1059 --405:                 default:
+000002b4 b505*          1060 	br	.L604
+                        1061 .L600:
+                        1062 --406:                     /* 1-1-3. */
+                        1063 --407:                     ret_val = R_ICUMIF_ER_PARAM_RANGE;
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1064 --line407
+                        1065 ..lin.4b6a9f96..e3036821.0_57::
+                        1066 .LDWlin57:
+000002b6 1eea           1067 	mov	-2,r29
+                        1068 --408:                     break;
+000002b8 0000           1069 	nop
+                        1070 .L604:
+                        1071 --409:             }
+                        1072 --410:             break;
+                        1073 --411:         case E_ICUMIF_FLASH_TYPE_RAM:
+000002ba f555*          1074 	br	.L607
+                        1075 .L592:
+                        1076 --412:             /* 1-2. */
+                        1077 --413:             switch (status)
+                        1078 --line413
+                        1079 ..lin.4b6a9f96..e3036821.0_58::
+                        1080 .LDWlin58:
+000002bc 1b08           1081 	mov	r27,r1
+000002be 610a           1082 	cmp	1,r1
+000002c0 b105*          1083 	bl	.L609
+000002c2 c20d*          1084 	be	.L610
+000002c4 d515*          1085 	br	.L611
+                        1086 .L609:
+                        1087 --414:             {
+                        1088 --415:                 case E_ICUMIF_ACCESS_OFF:
+                        1089 --416:                     /* 1-2-1. */
+                        1090 --417:                     /* Set the value corresponding of during non-access to    */
+                        1091 --418:                     /* the Flash operation state clear disable state          */
+                        1092 --419:                     /* of the PE status information.                          */
+                        1093 --420:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_OPRN, 0U);
+                        1094 --line420
+                        1095 ..lin.4b6a9f96..e3036821.0_59::
+                        1096 .LDWlin59:
+000002c6 0232           1097 	mov	2,r6
+000002c8 003a           1098 	mov	0,r7
+                        1099 .L953:
+                        1100 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1100 <EXPANSION BEGIN>
+                        1100 jarl22 _D_COMM_SetPEStatusInfo , lp 
+000002ca 80ff0000*      1100 <EXPANSION END>
+000002ce 0ae0           1101 	mov	r10,r28
+                        1102 --421:                     /* According to result of PE status information set       */
+                        1103 --422:                     /* process, execute respective corresponding processes.   */
+                        1104 --423:                     if (ER_OK != call_comm_ret)
+                        1105 --line423
+                        1106 ..lin.4b6a9f96..e3036821.0_60::
+                        1107 .LDWlin60:
+000002d0 e0e1           1108 	cmp	zero,r28
+000002d2 b205*          1109 	be	.L615
+                        1110 --424:                     {
+                        1111 --425:                         /* 1-2-1-1. */
+                        1112 --426:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1113 --line426
+                        1114 ..lin.4b6a9f96..e3036821.0_61::
+                        1115 .LDWlin61:
+000002d4 20ee9dff       1116 	movea	-99,zero,r29
+                        1117 .L615:
+                        1118 --427:                     }
+                        1119 --428:                     else
+                        1120 --429:                     {
+                        1121 --430:                         /* 1-2-1-2. */
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1122 --431:                         /* Do nothing */
+                        1123 --432:                     }
+                        1124 --433:                     break;
+                        1125 --434:                 case E_ICUMIF_ACCESS_ON:
+000002d8 d50d*          1126 	br	.L616
+                        1127 .L610:
+                        1128 --435:                     /* 1-2-2. */
+                        1129 --436:                     /* Set the value corresponding of during access to        */
+                        1130 --437:                     /* the Flash operation status clear disable state         */
+                        1131 --438:                     /* of the PE status information.                          */
+                        1132 --439:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_OPRN, 1U);
+                        1133 --line439
+                        1134 ..lin.4b6a9f96..e3036821.0_62::
+                        1135 .LDWlin62:
+000002da 0232           1136 	mov	2,r6
+000002dc 013a           1137 	mov	1,r7
+                        1138 .L955:
+                        1139 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1139 <EXPANSION BEGIN>
+                        1139 jarl22 _D_COMM_SetPEStatusInfo , lp 
+000002de 80ff0000*      1139 <EXPANSION END>
+000002e2 0ae0           1140 	mov	r10,r28
+                        1141 --440:                     /* According to result of PE status information set       */
+                        1142 --441:                     /* process, execute respective corresponding processes.   */
+                        1143 --442:                     if (ER_OK != call_comm_ret)
+                        1144 --line442
+                        1145 ..lin.4b6a9f96..e3036821.0_63::
+                        1146 .LDWlin63:
+000002e4 e0e1           1147 	cmp	zero,r28
+000002e6 b205*          1148 	be	.L619
+                        1149 --443:                     {
+                        1150 --444:                         /* 1-2-2-1. */
+                        1151 --445:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1152 --line445
+                        1153 ..lin.4b6a9f96..e3036821.0_64::
+                        1154 .LDWlin64:
+000002e8 20ee9dff       1155 	movea	-99,zero,r29
+                        1156 .L619:
+                        1157 --446:                     }
+                        1158 --447:                     else
+                        1159 --448:                     {
+                        1160 --449:                         /* 1-2-2-2. */
+                        1161 --450:                         /* Do nothing */
+                        1162 --451:                     }
+                        1163 --452:                     break;
+                        1164 --453:                 default:
+000002ec b505*          1165 	br	.L616
+                        1166 .L611:
+                        1167 --454:                     /* 1-2-3. */
+                        1168 --455:                     ret_val = R_ICUMIF_ER_PARAM_RANGE;
+                        1169 --line455
+                        1170 ..lin.4b6a9f96..e3036821.0_65::
+                        1171 .LDWlin65:
+000002ee 1eea           1172 	mov	-2,r29
+                        1173 --456:                     break;
+000002f0 0000           1174 	nop
+                        1175 .L616:
+                        1176 --457:             }
+                        1177 --458:             break;
+                        1178 --459:         case E_ICUMIF_FLASH_TYPE_DF_PRG:
+000002f2 b53d*          1179 	br	.L607
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1180 .L593:
+                        1181 --460:             /* 1-3. */
+                        1182 --461:             switch (status)
+                        1183 --line461
+                        1184 ..lin.4b6a9f96..e3036821.0_66::
+                        1185 .LDWlin66:
+000002f4 1b08           1186 	mov	r27,r1
+000002f6 610a           1187 	cmp	1,r1
+000002f8 b105*          1188 	bl	.L621
+000002fa c20d*          1189 	be	.L622
+000002fc d515*          1190 	br	.L623
+                        1191 .L621:
+                        1192 --462:             {
+                        1193 --463:                 case E_ICUMIF_ACCESS_OFF:
+                        1194 --464:                     /* 1-3-1. */
+                        1195 --465:                     /* Set the value corresponding of during non-access to    */
+                        1196 --466:                     /* the Data Flash Programming state clear disable state   */
+                        1197 --467:                     /* of the PE status information.                          */
+                        1198 --468:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_DF_PRG, 0U);
+                        1199 --line468
+                        1200 ..lin.4b6a9f96..e3036821.0_67::
+                        1201 .LDWlin67:
+000002fe 0032           1202 	mov	0,r6
+00000300 003a           1203 	mov	0,r7
+                        1204 .L957:
+                        1205 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1205 <EXPANSION BEGIN>
+                        1205 jarl22 _D_COMM_SetPEStatusInfo , lp 
+00000302 80ff0000*      1205 <EXPANSION END>
+00000306 0ae0           1206 	mov	r10,r28
+                        1207 --469:                     /* According to result of PE status information set       */
+                        1208 --470:                     /* process, execute respective corresponding processes.   */
+                        1209 --471:                     if (ER_OK != call_comm_ret)
+                        1210 --line471
+                        1211 ..lin.4b6a9f96..e3036821.0_68::
+                        1212 .LDWlin68:
+00000308 e0e1           1213 	cmp	zero,r28
+0000030a b205*          1214 	be	.L627
+                        1215 --472:                     {
+                        1216 --473:                         /* 1-3-1-1. */
+                        1217 --474:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1218 --line474
+                        1219 ..lin.4b6a9f96..e3036821.0_69::
+                        1220 .LDWlin69:
+0000030c 20ee9dff       1221 	movea	-99,zero,r29
+                        1222 .L627:
+                        1223 --475:                     }
+                        1224 --476:                     else
+                        1225 --477:                     {
+                        1226 --478:                         /* 1-3-1-2. */
+                        1227 --479:                         /* Do nothing */
+                        1228 --480:                     }
+                        1229 --481:                     break;
+                        1230 --482:                 case E_ICUMIF_ACCESS_ON:
+00000310 d50d*          1231 	br	.L628
+                        1232 .L622:
+                        1233 --483:                     /* 1-3-2. */
+                        1234 --484:                     /* Set the value corresponding of during access to        */
+                        1235 --485:                     /* the Data Flash Programming status clear disable state  */
+                        1236 --486:                     /* of the PE status information.                          */
+                        1237 --487:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_DF_PRG, 1U);
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1238 --line487
+                        1239 ..lin.4b6a9f96..e3036821.0_70::
+                        1240 .LDWlin70:
+00000312 0032           1241 	mov	0,r6
+00000314 013a           1242 	mov	1,r7
+                        1243 .L959:
+                        1244 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1244 <EXPANSION BEGIN>
+                        1244 jarl22 _D_COMM_SetPEStatusInfo , lp 
+00000316 80ff0000*      1244 <EXPANSION END>
+0000031a 0ae0           1245 	mov	r10,r28
+                        1246 --488:                     /* According to result of PE status information set       */
+                        1247 --489:                     /* process, execute respective corresponding processes.   */
+                        1248 --490:                     if (ER_OK != call_comm_ret)
+                        1249 --line490
+                        1250 ..lin.4b6a9f96..e3036821.0_71::
+                        1251 .LDWlin71:
+0000031c e0e1           1252 	cmp	zero,r28
+0000031e b205*          1253 	be	.L631
+                        1254 --491:                     {
+                        1255 --492:                         /* 1-3-2-1. */
+                        1256 --493:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1257 --line493
+                        1258 ..lin.4b6a9f96..e3036821.0_72::
+                        1259 .LDWlin72:
+00000320 20ee9dff       1260 	movea	-99,zero,r29
+                        1261 .L631:
+                        1262 --494:                     }
+                        1263 --495:                     else
+                        1264 --496:                     {
+                        1265 --497:                         /* 1-3-2-2. */
+                        1266 --498:                         /* Do nothing */
+                        1267 --499:                     }
+                        1268 --500:                     break;
+                        1269 --501:                 default:
+00000324 b505*          1270 	br	.L628
+                        1271 .L623:
+                        1272 --502:                     /* 1-3-3. */
+                        1273 --503:                     ret_val = R_ICUMIF_ER_PARAM_RANGE;
+                        1274 --line503
+                        1275 ..lin.4b6a9f96..e3036821.0_73::
+                        1276 .LDWlin73:
+00000326 1eea           1277 	mov	-2,r29
+                        1278 --504:                     break;
+00000328 0000           1279 	nop
+                        1280 .L628:
+                        1281 --505:             }
+                        1282 --506:             break;
+                        1283 --507:         case E_ICUMIF_FLASH_TYPE_CF_PRG:
+0000032a f51d*          1284 	br	.L607
+                        1285 .L594:
+                        1286 --508:             /* 1-4. */
+                        1287 --509:             switch (status)
+                        1288 --line509
+                        1289 ..lin.4b6a9f96..e3036821.0_74::
+                        1290 .LDWlin74:
+0000032c 1b08           1291 	mov	r27,r1
+0000032e 610a           1292 	cmp	1,r1
+00000330 b105*          1293 	bl	.L633
+00000332 c20d*          1294 	be	.L634
+00000334 d515*          1295 	br	.L635
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1296 .L633:
+                        1297 --510:             {
+                        1298 --511:                 case E_ICUMIF_ACCESS_OFF:
+                        1299 --512:                     /* 1-4-1. */
+                        1300 --513:                     /* Set the value corresponding of during non-access to    */
+                        1301 --514:                     /* the Code Flash Programming state clear disable state   */
+                        1302 --515:                     /* of the PE status information.                          */
+                        1303 --516:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_CF_PRG, 0U);
+                        1304 --line516
+                        1305 ..lin.4b6a9f96..e3036821.0_75::
+                        1306 .LDWlin75:
+00000336 0132           1307 	mov	1,r6
+00000338 003a           1308 	mov	0,r7
+                        1309 .L961:
+                        1310 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1310 <EXPANSION BEGIN>
+                        1310 jarl22 _D_COMM_SetPEStatusInfo , lp 
+0000033a 80ff0000*      1310 <EXPANSION END>
+0000033e 0ae0           1311 	mov	r10,r28
+                        1312 --517:                     /* According to result of PE status information set       */
+                        1313 --518:                     /* process, execute respective corresponding processes.   */
+                        1314 --519:                     if (ER_OK != call_comm_ret)
+                        1315 --line519
+                        1316 ..lin.4b6a9f96..e3036821.0_76::
+                        1317 .LDWlin76:
+00000340 e0e1           1318 	cmp	zero,r28
+00000342 b205*          1319 	be	.L639
+                        1320 --520:                     {
+                        1321 --521:                         /* 1-3-1-1. */
+                        1322 --522:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1323 --line522
+                        1324 ..lin.4b6a9f96..e3036821.0_77::
+                        1325 .LDWlin77:
+00000344 20ee9dff       1326 	movea	-99,zero,r29
+                        1327 .L639:
+                        1328 --523:                     }
+                        1329 --524:                     else
+                        1330 --525:                     {
+                        1331 --526:                         /* 1-3-1-2. */
+                        1332 --527:                         /* Do nothing */
+                        1333 --528:                     }
+                        1334 --529:                     break;
+                        1335 --530:                 case E_ICUMIF_ACCESS_ON:
+00000348 d50d*          1336 	br	.L640
+                        1337 .L634:
+                        1338 --531:                     /* 1-4-2. */
+                        1339 --532:                     /* Set the value corresponding of during access to        */
+                        1340 --533:                     /* the Code Flash Programming status clear disable state  */
+                        1341 --534:                     /* of the PE status information.                          */
+                        1342 --535:                     call_comm_ret = D_COMM_SetPEStatusInfo(ICUM_COMM_INF_PE_ST_FLS_CF_PRG, 1U);
+                        1343 --line535
+                        1344 ..lin.4b6a9f96..e3036821.0_78::
+                        1345 .LDWlin78:
+0000034a 0132           1346 	mov	1,r6
+0000034c 013a           1347 	mov	1,r7
+                        1348 .L963:
+                        1349 	jarl	_D_COMM_SetPEStatusInfo,lp
+                        1349 <EXPANSION BEGIN>
+                        1349 jarl22 _D_COMM_SetPEStatusInfo , lp 
+0000034e 80ff0000*      1349 <EXPANSION END>
+00000352 0ae0           1350 	mov	r10,r28
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1351 --536:                     /* According to result of PE status information set       */
+                        1352 --537:                     /* process, execute respective corresponding processes.   */
+                        1353 --538:                     if (ER_OK != call_comm_ret)
+                        1354 --line538
+                        1355 ..lin.4b6a9f96..e3036821.0_79::
+                        1356 .LDWlin79:
+00000354 e0e1           1357 	cmp	zero,r28
+00000356 b205*          1358 	be	.L643
+                        1359 --539:                     {
+                        1360 --540:                         /* 1-4-2-1. */
+                        1361 --541:                         ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1362 --line541
+                        1363 ..lin.4b6a9f96..e3036821.0_80::
+                        1364 .LDWlin80:
+00000358 20ee9dff       1365 	movea	-99,zero,r29
+                        1366 .L643:
+                        1367 --542:                     }
+                        1368 --543:                     else
+                        1369 --544:                     {
+                        1370 --545:                         /* 1-4-2-2. */
+                        1371 --546:                         /* Do nothing */
+                        1372 --547:                     }
+                        1373 --548:                     break;
+                        1374 --549:                 default:
+0000035c b505*          1375 	br	.L640
+                        1376 .L635:
+                        1377 --550:                     /* 1-4-3. */
+                        1378 --551:                     ret_val = R_ICUMIF_ER_PARAM_RANGE;
+                        1379 --line551
+                        1380 ..lin.4b6a9f96..e3036821.0_81::
+                        1381 .LDWlin81:
+0000035e 1eea           1382 	mov	-2,r29
+                        1383 --552:                     break;
+00000360 0000           1384 	nop
+                        1385 .L640:
+                        1386 --553:             }
+                        1387 --554:             break;
+                        1388 --555:         default:
+00000362 b505*          1389 	br	.L607
+                        1390 .L595:
+                        1391 --556:             /* 1-5. */
+                        1392 --557:             ret_val = R_ICUMIF_ER_PARAM_RANGE;
+                        1393 --line557
+                        1394 ..lin.4b6a9f96..e3036821.0_82::
+                        1395 .LDWlin82:
+00000364 1eea           1396 	mov	-2,r29
+                        1397 --558:             break;
+00000366 0000           1398 	nop
+                        1399 .L607:
+                        1400 --559:     }
+                        1401 --561:     /* 2. */
+                        1402 --562:     return (ret_val);
+00000368 1d50           1403 	mov	r29,r10
+                        1404 --	    .ef
+                        1405 .LDW12:
+0000036a 23ff1100       1406 	ld.w	16[sp],lp
+0000036e 23ef0100       1407 	ld.w	0[sp],r29
+00000372 23e70500       1408 	ld.w	4[sp],r28
+00000376 23df0900       1409 	ld.w	8[sp],r27
+0000037a 23d70d00       1410 	ld.w	12[sp],r26
+0000037e 031e1400       1411 	addi	20,sp,sp
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1412 .L965:
+                        1413 	.jumptype return
+00000382 7f00           1414 	jmp	[lp]
+                        1415 --line557
+                        1416 ..lin.4b6a9f96..e3036821.0_83::
+                        1417 	.type	_R_ICUMIF_SetFlashAccessStatus,@function
+                        1418 	.size	_R_ICUMIF_SetFlashAccessStatus,.-_R_ICUMIF_SetFlashAccessStatus
+                        1419 	.align	2
+                        1420 --_ret_val	r29	local
+                        1421 --_call_comm_ret	r28	local
+                        1422 
+                        1423 --_flash_type	r26	param
+                        1424 --_status	r27	param
+                        1425 
+                        1426 	.section ".ghcalltbl",""
+0000001c 00000000*      1427 .L950:	.word	.L949
+                        1428 	.type	.L950,@object
+                        1429 	.size	.L950,4
+00000020 00000000*      1430 .L952:	.word	.L951
+                        1431 	.type	.L952,@object
+                        1432 	.size	.L952,4
+00000024 00000000*      1433 .L954:	.word	.L953
+                        1434 	.type	.L954,@object
+                        1435 	.size	.L954,4
+00000028 00000000*      1436 .L956:	.word	.L955
+                        1437 	.type	.L956,@object
+                        1438 	.size	.L956,4
+0000002c 00000000*      1439 .L958:	.word	.L957
+                        1440 	.type	.L958,@object
+                        1441 	.size	.L958,4
+00000030 00000000*      1442 .L960:	.word	.L959
+                        1443 	.type	.L960,@object
+                        1444 	.size	.L960,4
+00000034 00000000*      1445 .L962:	.word	.L961
+                        1446 	.type	.L962,@object
+                        1447 	.size	.L962,4
+00000038 00000000*      1448 .L964:	.word	.L963
+                        1449 	.type	.L964,@object
+                        1450 	.size	.L964,4
+                        1451 	.section ".ghrettbl",""
+00000014 00000000*      1452 .L966:	.word	.L965
+                        1453 	.type	.L966,@object
+                        1454 	.size	.L966,4
+                        1455 	.data
+                        1456 	.section ".icumif_rom","ax"
+                        1457 
+                        1458 --563:     /* ---- These lines should be left unchanged.   End   ---- */
+                        1459 --564: }
+                        1460 
+                        1461 --566: /***************************************************************************************
+                        1462 --567: * Function ID  : [ICUMFW_CD_L_IF_0007]:[ICUMFW_UD_L_IF_0007]
+                        1463 --568: * Function name: R_ICUMIF_NotifyFlashInterrupt
+                        1464 --569: * Description  : Perform specified Flash-related interrupt notification to ICU-M
+                        1465 --570: * Arguments    : r_icumif_notify_type_t notify_type : Type of interrupt notification
+                        1466 --571: * Return Value : int32_t Interrupt notification result
+                        1467 --572: *                   0               : Successful
+                        1468 --573: *                   Negative values : Parameter error
+                        1469 --574: ***************************************************************************************/
+                        1470 --575: int32_t R_ICUMIF_NotifyFlashInterrupt(r_icumif_notify_type_t notify_type)
+                        1471 	.align	2
+                        1472 	.align	2
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1473 	.align	2
+                        1474 ..gh.f.a.2.e.8:
+                        1475 	.type	..gh.f.a.2.e.8,@object
+                        1476 	.size	..gh.f.a.2.e.8,0
+                        1477 	.global	_R_ICUMIF_NotifyFlashInterrupt
+                        1478 _R_ICUMIF_NotifyFlashInterrupt:
+00000384 031eecff       1479 	addi	-20,sp,sp
+00000388 63ff1100       1480 	st.w	lp,16[sp]
+0000038c 63d70d00       1481 	st.w	r26,12[sp]
+00000390 63df0900       1482 	st.w	r27,8[sp]
+00000394 63e70500       1483 	st.w	r28,4[sp]
+00000398 63ef0100       1484 	st.w	r29,0[sp]
+0000039c 06e0           1485 	mov	r6,r28
+                        1486 --	    .bf
+                        1487 .LDW22:
+                        1488 --576: {
+                        1489 --577:     /* ---- These lines should be left unchanged.   Start ---- */
+                        1490 --578:     int32_t                     ret_val = R_ICUMIF_ER_OK;
+0000039e 00ea           1491 	mov	0,r29
+                        1492 --579:     uint32_t                    call_comm_ret;
+                        1493 --580:     icum_comm_int_to_channel_t  channel;
+                        1494 --582:     /* 1. */
+                        1495 --583:     switch (notify_type)
+000003a0 1c08           1496 	mov	r28,r1
+000003a2 5e0a           1497 	add	-2,r1
+000003a4 640a           1498 	cmp	4,r1
+000003a6 9b15*          1499 	bh	.L971
+                        1500 .L970:
+                        1501 --584:     {
+                        1502 --585:         case E_ICUMIF_NOTIFY_CF_PRG_ACK:
+                        1503 --586:         case E_ICUMIF_NOTIFY_DF_PRG_ACK:
+                        1504 --587:         case E_ICUMIF_NOTIFY_CF_PRG_NACK:
+                        1505 --588:         case E_ICUMIF_NOTIFY_DF_PRG_NACK:
+                        1506 --589:         case E_ICUMIF_NOTIFY_OPERATION_END:
+                        1507 --590:             /* 1-1. */
+                        1508 --591:             /* Execute an interrupt issuing process to                             */
+                        1509 --592:             /* issue interrupt of channel number corresponding to each notify_type */
+                        1510 --593:             channel = (1UL << (uint32_t)notify_type);
+                        1511 --line593
+                        1512 ..lin.4b6a9f96..5f995ee5.0_84::
+                        1513 .LDWlin84:
+000003a8 010a           1514 	mov	1,r1
+000003aa fc0fc2d0       1515 	shl	r28,r1,r26
+                        1516 --594:             call_comm_ret = D_COMM_TriggerInterruptToICUP(channel, NULL);
+000003ae 1a30           1517 	mov	r26,r6
+000003b0 003a           1518 	mov	0,r7
+                        1519 .L1070:
+                        1520 	jarl	_D_COMM_TriggerInterruptToICUP,lp
+                        1520 <EXPANSION BEGIN>
+                        1520 jarl22 _D_COMM_TriggerInterruptToICUP , lp 
+000003b2 80ff0000*      1520 <EXPANSION END>
+000003b6 0ad8           1521 	mov	r10,r27
+                        1522 --595:             switch (call_comm_ret)
+                        1523 --line595
+                        1524 ..lin.4b6a9f96..5f995ee5.0_85::
+                        1525 .LDWlin85:
+000003b8 1b08           1526 	mov	r27,r1
+000003ba e009           1527 	cmp	zero,r1
+000003bc aa05*          1528 	bne	.L975
+                        1529 .L974:
+                        1530 --596:             {
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1531 --597:                 case ER_OK:
+                        1532 --598:                     /* 1-1-1. Do nothing */
+                        1533 --599:                     break;
+                        1534 --600:                 case ER_PARAM:
+                        1535 --line599
+                        1536 ..lin.4b6a9f96..5f995ee5.0_86::
+                        1537 .LDWlin86:
+000003be c505*          1538 	br	.L977
+                        1539 .L975:
+                        1540 --601:                 default:
+                        1541 --602:                     /* 1-1-2. */
+                        1542 --603:                     ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1543 --line603
+                        1544 ..lin.4b6a9f96..5f995ee5.0_87::
+                        1545 .LDWlin87:
+000003c0 20ee9dff       1546 	movea	-99,zero,r29
+                        1547 --604:                     break;
+000003c4 0000           1548 	nop
+                        1549 .L977:
+                        1550 --605:             }
+                        1551 --606:             break;
+                        1552 --607:         default:
+000003c6 b505*          1553 	br	.L978
+                        1554 .L971:
+                        1555 --608:             /* 1-2. */
+                        1556 --609:             ret_val = R_ICUMIF_ER_PARAM_RANGE;
+                        1557 --line609
+                        1558 ..lin.4b6a9f96..5f995ee5.0_88::
+                        1559 .LDWlin88:
+000003c8 1eea           1560 	mov	-2,r29
+                        1561 --610:             break;
+000003ca 0000           1562 	nop
+                        1563 .L978:
+                        1564 --611:     }
+                        1565 --613:     /* 3. */
+                        1566 --614:     return (ret_val);
+000003cc 1d50           1567 	mov	r29,r10
+                        1568 --	    .ef
+                        1569 .LDW32:
+000003ce 23ff1100       1570 	ld.w	16[sp],lp
+000003d2 23ef0100       1571 	ld.w	0[sp],r29
+000003d6 23e70500       1572 	ld.w	4[sp],r28
+000003da 23df0900       1573 	ld.w	8[sp],r27
+000003de 23d70d00       1574 	ld.w	12[sp],r26
+000003e2 031e1400       1575 	addi	20,sp,sp
+                        1576 .L1072:
+                        1577 	.jumptype return
+000003e6 7f00           1578 	jmp	[lp]
+                        1579 --line609
+                        1580 ..lin.4b6a9f96..5f995ee5.0_89::
+                        1581 	.type	_R_ICUMIF_NotifyFlashInterrupt,@function
+                        1582 	.size	_R_ICUMIF_NotifyFlashInterrupt,.-_R_ICUMIF_NotifyFlashInterrupt
+                        1583 	.align	2
+                        1584 --_ret_val	r29	local
+                        1585 --_call_comm_ret	r27	local
+                        1586 --_channel	r26	local
+                        1587 
+                        1588 --_notify_type	r28	param
+                        1589 
+                        1590 	.section ".ghcalltbl",""
+0000003c 00000000*      1591 .L1071:	.word	.L1070
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1592 	.type	.L1071,@object
+                        1593 	.size	.L1071,4
+                        1594 	.section ".ghrettbl",""
+00000018 00000000*      1595 .L1073:	.word	.L1072
+                        1596 	.type	.L1073,@object
+                        1597 	.size	.L1073,4
+                        1598 	.data
+                        1599 	.section ".icumif_rom","ax"
+                        1600 
+                        1601 --615:     /* ---- These lines should be left unchanged.   End   ---- */
+                        1602 --616: }
+                        1603 
+                        1604 --618: /***************************************************************************************
+                        1605 --619: * Function ID  : [ICUMFW_CD_L_IF_0008]:[ICUMFW_UD_L_IF_0008]
+                        1606 --620: * Function name: R_ICUMIF_SetSystemCallBackFunc
+                        1607 --621: * Description  : Register the function to call back when receiving system interrupt
+                        1608 --622: * Arguments    : R_ICUMIF_CB_REGIST_t *p_regist_info : Pointer to registration info
+                        1609 --623: * Return Value : int32_t Callback registration result
+                        1610 --624: *                   0               : Successful
+                        1611 --625: *                   Negative values : Parameter error
+                        1612 --626: ***************************************************************************************/
+                        1613 --627: int32_t R_ICUMIF_SetSystemCallBackFunc(R_ICUMIF_CB_REGIST_t *p_regist_info)
+                        1614 	.align	2
+                        1615 	.align	2
+                        1616 	.align	2
+                        1617 ..gh.f.a.2.e.9:
+                        1618 	.type	..gh.f.a.2.e.9,@object
+                        1619 	.size	..gh.f.a.2.e.9,0
+                        1620 	.global	_R_ICUMIF_SetSystemCallBackFunc
+                        1621 _R_ICUMIF_SetSystemCallBackFunc:
+000003e8 031eecff       1622 	addi	-20,sp,sp
+000003ec 63ff1100       1623 	st.w	lp,16[sp]
+000003f0 63d70d00       1624 	st.w	r26,12[sp]
+000003f4 63df0900       1625 	st.w	r27,8[sp]
+000003f8 63e70500       1626 	st.w	r28,4[sp]
+000003fc 63ef0100       1627 	st.w	r29,0[sp]
+00000400 06e0           1628 	mov	r6,r28
+                        1629 --	    .bf
+                        1630 .LDW42:
+                        1631 --628: {
+                        1632 --629:     int32_t             ret_val = R_ICUMIF_ER_OK;
+00000402 00ea           1633 	mov	0,r29
+                        1634 --630:     uint32_t            call_comm_ret;
+                        1635 --631:     alignment_check_t   prm_ptr;
+                        1636 --633:     /* 1. Parameter alignment check ( p_regist_info ) */
+                        1637 --634:     if (0UL != ((uint32_t)((volatile void *)p_regist_info) & ALIGNMENT_4BYTE_CHECK_PATTERN))
+00000404 dc0e0300       1638 	andi	3,r28,r1
+00000408 e009           1639 	cmp	zero,r1
+0000040a b205*          1640 	be	.L1076
+                        1641 --635:     {
+                        1642 --636:         ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                        1643 --line636
+                        1644 ..lin.4b6a9f96..db01153b.0_90::
+                        1645 .LDWlin90:
+0000040c 1fea           1646 	mov	-1,r29
+0000040e c515*          1647 	br	.L1078
+                        1648 .L1076:
+                        1649 --637:     }
+                        1650 --638:     else
+                        1651 --639:     {
+                        1652 --640:         /* 2. Parameter alignment check ( callback function address ) */
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1653 --641:         prm_ptr.p_align_check = p_regist_info->p_func_addr;
+                        1654 --line641
+                        1655 ..lin.4b6a9f96..db01153b.0_91::
+                        1656 .LDWlin91:
+00000410 3cd70100       1657 	ld.w	0[r28],r26
+                        1658 --642:         if (0UL != (prm_ptr.val_align_check & ALIGNMENT_2BYTE_CHECK_PATTERN))
+00000414 da0e0100       1659 	andi	1,r26,r1
+00000418 e009           1660 	cmp	zero,r1
+0000041a b205*          1661 	be	.L1079
+                        1662 --643:         {
+                        1663 --644:             ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                        1664 --line644
+                        1665 ..lin.4b6a9f96..db01153b.0_92::
+                        1666 .LDWlin92:
+0000041c 1fea           1667 	mov	-1,r29
+0000041e c50d*          1668 	br	.L1078
+                        1669 .L1079:
+                        1670 --645:         }
+                        1671 --646:         else
+                        1672 --647:         {
+                        1673 --648:             /* 3. Register the function to call back */
+                        1674 --649:             call_comm_ret = D_COMM_SetSystemCallBackFunc(p_regist_info);
+                        1675 --line649
+                        1676 ..lin.4b6a9f96..db01153b.0_93::
+                        1677 .LDWlin93:
+00000420 1c30           1678 	mov	r28,r6
+                        1679 .L1164:
+                        1680 	jarl	_D_COMM_SetSystemCallBackFunc,lp
+                        1680 <EXPANSION BEGIN>
+                        1680 jarl22 _D_COMM_SetSystemCallBackFunc , lp 
+00000422 80ff0000*      1680 <EXPANSION END>
+00000426 0ad8           1681 	mov	r10,r27
+                        1682 --651:             /* 4. According to result of callback function regist process, */
+                        1683 --652:             /*    execute respective corresponding processes               */
+                        1684 --653:             switch (call_comm_ret)
+                        1685 --line653
+                        1686 ..lin.4b6a9f96..db01153b.0_94::
+                        1687 .LDWlin94:
+00000428 1b08           1688 	mov	r27,r1
+0000042a e009           1689 	cmp	zero,r1
+0000042c aa05*          1690 	bne	.L1084
+                        1691 .L1083:
+                        1692 --654:             {
+                        1693 --655:                 case ER_OK:
+                        1694 --656:                     /* 4-1. Do nothing */
+                        1695 --657:                     break;
+                        1696 --658:                 default:
+                        1697 --line657
+                        1698 ..lin.4b6a9f96..db01153b.0_95::
+                        1699 .LDWlin95:
+0000042e c505*          1700 	br	.L1078
+                        1701 .L1084:
+                        1702 --659:                     /* 4-2. */
+                        1703 --660:                     ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1704 --line660
+                        1705 ..lin.4b6a9f96..db01153b.0_96::
+                        1706 .LDWlin96:
+00000430 20ee9dff       1707 	movea	-99,zero,r29
+                        1708 --661:                     break;
+00000434 0000           1709 	nop
+                        1710 .L1078:
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1711 --662:             }
+                        1712 --663:         }
+                        1713 --664:     }
+                        1714 --666:     /* 5. */
+                        1715 --667:     return (ret_val);
+00000436 1d50           1716 	mov	r29,r10
+                        1717 --	    .ef
+                        1718 .LDW52:
+00000438 23ff1100       1719 	ld.w	16[sp],lp
+0000043c 23ef0100       1720 	ld.w	0[sp],r29
+00000440 23e70500       1721 	ld.w	4[sp],r28
+00000444 23df0900       1722 	ld.w	8[sp],r27
+00000448 23d70d00       1723 	ld.w	12[sp],r26
+0000044c 031e1400       1724 	addi	20,sp,sp
+                        1725 .L1166:
+                        1726 	.jumptype return
+00000450 7f00           1727 	jmp	[lp]
+                        1728 --line660
+                        1729 ..lin.4b6a9f96..db01153b.0_97::
+                        1730 	.type	_R_ICUMIF_SetSystemCallBackFunc,@function
+                        1731 	.size	_R_ICUMIF_SetSystemCallBackFunc,.-_R_ICUMIF_SetSystemCallBackFunc
+                        1732 	.align	2
+                        1733 --_ret_val	r29	local
+                        1734 --_call_comm_ret	r27	local
+                        1735 --_prm_ptr	r26	local
+                        1736 
+                        1737 --_p_regist_info	r28	param
+                        1738 
+                        1739 	.section ".ghcalltbl",""
+00000040 00000000*      1740 .L1165:	.word	.L1164
+                        1741 	.type	.L1165,@object
+                        1742 	.size	.L1165,4
+                        1743 	.section ".ghrettbl",""
+0000001c 00000000*      1744 .L1167:	.word	.L1166
+                        1745 	.type	.L1167,@object
+                        1746 	.size	.L1167,4
+                        1747 	.data
+                        1748 	.section ".icumif_rom","ax"
+                        1749 
+                        1750 --668: }
+                        1751 
+                        1752 --670: /***************************************************************************************
+                        1753 --671: * Function ID  : [ICUMFW_CD_L_IF_0009]:[ICUMFW_UD_L_IF_0009]
+                        1754 --672: * Function name: R_ICUMIF_SetFlashCallBackFunc
+                        1755 --673: * Description  : Register the function to call back when receiving flash interrupt
+                        1756 --674: * Arguments    : R_ICUMIF_CB_REGIST_t *p_regist_info : Pointer to registration info
+                        1757 --675: * Return Value : int32_t Callback registration result
+                        1758 --676: *                   0               : Successful
+                        1759 --677: *                   Negative values : Parameter error
+                        1760 --678: ***************************************************************************************/
+                        1761 --679: int32_t R_ICUMIF_SetFlashCallBackFunc(R_ICUMIF_CB_REGIST_t *p_regist_info)
+                        1762 	.align	2
+                        1763 	.align	2
+                        1764 	.align	2
+                        1765 ..gh.f.a.2.e.10:
+                        1766 	.type	..gh.f.a.2.e.10,@object
+                        1767 	.size	..gh.f.a.2.e.10,0
+                        1768 	.global	_R_ICUMIF_SetFlashCallBackFunc
+                        1769 _R_ICUMIF_SetFlashCallBackFunc:
+00000452 031eecff       1770 	addi	-20,sp,sp
+00000456 63ff1100       1771 	st.w	lp,16[sp]
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+0000045a 63d70d00       1772 	st.w	r26,12[sp]
+0000045e 63df0900       1773 	st.w	r27,8[sp]
+00000462 63e70500       1774 	st.w	r28,4[sp]
+00000466 63ef0100       1775 	st.w	r29,0[sp]
+0000046a 06e0           1776 	mov	r6,r28
+                        1777 --	    .bf
+                        1778 .LDW62:
+                        1779 --680: {
+                        1780 --681:     int32_t             ret_val = R_ICUMIF_ER_OK;
+0000046c 00ea           1781 	mov	0,r29
+                        1782 --682:     uint32_t            call_comm_ret;
+                        1783 --683:     alignment_check_t   prm_ptr;
+                        1784 --685:     /* 1. Parameter alignment check ( p_regist_info ) */
+                        1785 --686:     if (0UL != ((uint32_t)((volatile void *)p_regist_info) & ALIGNMENT_4BYTE_CHECK_PATTERN))
+0000046e dc0e0300       1786 	andi	3,r28,r1
+00000472 e009           1787 	cmp	zero,r1
+00000474 b205*          1788 	be	.L1170
+                        1789 --687:     {
+                        1790 --688:         ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                        1791 --line688
+                        1792 ..lin.4b6a9f96..1065c784.0_98::
+                        1793 .LDWlin98:
+00000476 1fea           1794 	mov	-1,r29
+00000478 c515*          1795 	br	.L1172
+                        1796 .L1170:
+                        1797 --689:     }
+                        1798 --690:     else
+                        1799 --691:     {
+                        1800 --692:         /* 2. Parameter alignment check ( callback function address ) */
+                        1801 --693:         prm_ptr.p_align_check = p_regist_info->p_func_addr;
+                        1802 --line693
+                        1803 ..lin.4b6a9f96..1065c784.0_99::
+                        1804 .LDWlin99:
+0000047a 3cd70100       1805 	ld.w	0[r28],r26
+                        1806 --694:         if (0UL != (prm_ptr.val_align_check & ALIGNMENT_2BYTE_CHECK_PATTERN))
+0000047e da0e0100       1807 	andi	1,r26,r1
+00000482 e009           1808 	cmp	zero,r1
+00000484 b205*          1809 	be	.L1173
+                        1810 --695:         {
+                        1811 --696:             ret_val = R_ICUMIF_ER_PARAM_ALIGNMENT;
+                        1812 --line696
+                        1813 ..lin.4b6a9f96..1065c784.0_100::
+                        1814 .LDWlin100:
+00000486 1fea           1815 	mov	-1,r29
+00000488 c50d*          1816 	br	.L1172
+                        1817 .L1173:
+                        1818 --697:         }
+                        1819 --698:         else
+                        1820 --699:         {
+                        1821 --700:             /* 3. Register the function to call back */
+                        1822 --701:             call_comm_ret = D_COMM_SetFlashCallBackFunc(p_regist_info);
+                        1823 --line701
+                        1824 ..lin.4b6a9f96..1065c784.0_101::
+                        1825 .LDWlin101:
+0000048a 1c30           1826 	mov	r28,r6
+                        1827 .L1260:
+                        1828 	jarl	_D_COMM_SetFlashCallBackFunc,lp
+                        1828 <EXPANSION BEGIN>
+                        1828 jarl22 _D_COMM_SetFlashCallBackFunc , lp 
+0000048c 80ff0000*      1828 <EXPANSION END>
+00000490 0ad8           1829 	mov	r10,r27
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1830 --703:             /* 4. According to result of callback function regist process, */
+                        1831 --704:             /*    execute respective corresponding processes               */
+                        1832 --705:             switch (call_comm_ret)
+                        1833 --line705
+                        1834 ..lin.4b6a9f96..1065c784.0_102::
+                        1835 .LDWlin102:
+00000492 1b08           1836 	mov	r27,r1
+00000494 e009           1837 	cmp	zero,r1
+00000496 aa05*          1838 	bne	.L1178
+                        1839 .L1177:
+                        1840 --706:             {
+                        1841 --707:                 case ER_OK:
+                        1842 --708:                     /* 4-1. Do nothing */
+                        1843 --709:                     break;
+                        1844 --710:                 default:
+                        1845 --line709
+                        1846 ..lin.4b6a9f96..1065c784.0_103::
+                        1847 .LDWlin103:
+00000498 c505*          1848 	br	.L1172
+                        1849 .L1178:
+                        1850 --711:                     /* 4-2. */
+                        1851 --712:                     ret_val = R_ICUMIF_ER_SOFTWARE_ERROR;
+                        1852 --line712
+                        1853 ..lin.4b6a9f96..1065c784.0_104::
+                        1854 .LDWlin104:
+0000049a 20ee9dff       1855 	movea	-99,zero,r29
+                        1856 --713:                     break;
+0000049e 0000           1857 	nop
+                        1858 .L1172:
+                        1859 --714:             }
+                        1860 --715:         }
+                        1861 --716:     }
+                        1862 --718:     /* 5. */
+                        1863 --719:     return (ret_val);
+000004a0 1d50           1864 	mov	r29,r10
+                        1865 --	    .ef
+                        1866 .LDW72:
+000004a2 23ff1100       1867 	ld.w	16[sp],lp
+000004a6 23ef0100       1868 	ld.w	0[sp],r29
+000004aa 23e70500       1869 	ld.w	4[sp],r28
+000004ae 23df0900       1870 	ld.w	8[sp],r27
+000004b2 23d70d00       1871 	ld.w	12[sp],r26
+000004b6 031e1400       1872 	addi	20,sp,sp
+                        1873 .L1262:
+                        1874 	.jumptype return
+000004ba 7f00           1875 	jmp	[lp]
+                        1876 --line712
+                        1877 ..lin.4b6a9f96..1065c784.0_105::
+                        1878 	.type	_R_ICUMIF_SetFlashCallBackFunc,@function
+                        1879 	.size	_R_ICUMIF_SetFlashCallBackFunc,.-_R_ICUMIF_SetFlashCallBackFunc
+                        1880 	.align	2
+                        1881 --_ret_val	r29	local
+                        1882 --_call_comm_ret	r27	local
+                        1883 --_prm_ptr	r26	local
+                        1884 
+                        1885 --_p_regist_info	r28	param
+                        1886 
+                        1887 	.section ".ghcalltbl",""
+00000044 00000000*      1888 .L1261:	.word	.L1260
+                        1889 	.type	.L1261,@object
+                        1890 	.size	.L1261,4
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000kc01.si
+                        1891 	.section ".ghrettbl",""
+00000020 00000000*      1892 .L1263:	.word	.L1262
+                        1893 	.type	.L1263,@object
+                        1894 	.size	.L1263,4
+                        1895 	.data
+                        1896 	.section ".icumif_rom","ax"
+                        1897 
+                        1898 --720: }
+                        1899 	.align	2
+                        1900 
+                        1901 	.data
+                        1902 	.ghsnote version,30
+                        1903 	.ghsnote tools,8195
+                        1904 	.ghsnote options,656
+                        1905 	.section ".icumif_rom","ax"
+                        1906 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cicumif_lib.5Cr_icumif...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF4A..0::
+                        1907 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

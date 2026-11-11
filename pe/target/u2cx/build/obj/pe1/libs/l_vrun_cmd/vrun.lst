@@ -1,0 +1,3704 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\target\u2cx\include -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\target\u2cx\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\l_vrun_cmd\vrun.dbo -source=vrun.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun_cmd\gh_0000nn41.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun_cmd\vrun.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+Source File: vrun.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\target\u2cx\include
+                           4 --		-I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\generic
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                           8 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                           9 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          10 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          11 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          12 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          13 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          14 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          15 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          16 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
+                          17 --		-filetype.c ..\..\pe\generic\src\l_vrun\l_vrun_cmd\vrun.c -o
+                          18 --		..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun_cmd\vrun.o
+                          19 --Source File:   ..\..\pe\generic\src\l_vrun\l_vrun_cmd\vrun.c
+                          20 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          21 --Compile Date:  Wed Nov 11 11:21:46 2026
+                          22 --Host OS:       Win64
+                          23 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          24 --Release:       Compiler v2023.5.4
+                          25 --Revision Date: Wed Sep 06 02:44:56 2023
+                          26 --Release Date:  Wed Sep 06 02:00:00 2023
+                          27 -- ecom  -g -w
+                          28 
+                          29 --1: /******************************************************************************/
+                          30 --2: /* Component Name   Testing the ICU-M                                         */
+                          31 --3: /******************************************************************************/
+                          32 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          33 --5: /******************************************************************************/
+                          34 --6: /***********************************************************************************************************************
+                          35 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          36 --8: * 
+                          37 --9: * DISCLAIMER
+                          38 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          39 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          40 --12: * applicable laws, including copyright laws.
+                          41 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          42 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          43 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          44 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          45 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          46 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          47 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          48 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          49 --21: * following link:
+                          50 --22: * www.renesas.com/disclaimer
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                          51 --23: *
+                          52 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          53 --25: ***********************************************************************************************************************/
+                          54 --27: // force the integration of the copyright notice
+                          55 --28: #pragma ghs reference vrun_get_package_info
+                          56 --30: #include <string.h>
+                          57 --31: #include <stdio.h>
+                          58 --33: #include "sys.api.h"
+                          59 --34: #include "vrun.config.h"
+                          60 --35: #include "vrun.cmd.h"
+                          61 --36: #include "vrun.api.h"
+                          62 --38: #define VRUN_CHAR_DEL           '\x08'
+                          63 --39: #define VRUN_CHAR_CR            '\x0D'
+                          64 --40: #define VRUN_CHAR_LF            '\x0A'
+                          65 --41: #define VRUN_CHAR_COMMA         '\x2C'
+                          66 --43: #define VRUN_STR_CRLF           "\x0D\x0A"  /* "^M^J" as sent by terminal */
+                          67 --44: #define VRUN_STR_CMD_DELIM      " \x0D\x0A"
+                          68 --46: /* vb_test */
+                          69 --47: #define VRUN_STR_VBTEST_CMD_SOFTRESET   "softreset\r\n"
+                          70 --49: #define VRUN_UART_CHANNEL        0
+                          71 --51: extern  void    proc_SOFTRESET(void);
+                          72 --53: /* vrun_cmd[] is the table that points to the command verb and the parameters */
+                          73 --54: static char *vrun_cmd[VRUN_MAX_NB_PARAM + 1];
+                          74 --56: /* vrun_iobuff[] is the input / output buffer for the interpreter */
+                          75 --57: static char vrun_iobuff[VRUN_IOBUFF_SIZE + sizeof(VRUN_STR_CRLF) + 1];
+                          76 --59: /* vrun_iobuff_idx is the character insertion point within the string vrun_iobuff[] */
+                          77 --60: static unsigned short vrun_iobuff_idx;
+                          78 --62: /* vrun_iobuff_external[] is an external input buffer used in place of vrun_iobuff[] */
+                          79 --63: /* if declared by the application, this buffer is filled with the characters received */
+                          80 --64: static char *vrun_iobuff_external;
+                          81 --66: /* vrun_size_iobuff_external the size of the external I/O buffer */
+                          82 --67: static unsigned long vrun_size_iobuff_external;
+                          83 --69: /* vrun_receiveflag is 1 when a byte has been received (update in irq function) */
+                          84 --70: /* NOTE: as the IRQ is now handled in the SYS module (HW dependent), this variable is now GLOBAL */
+                          85 --71: volatile char vrun_receiveflag;
+                          86 --73: /* vrun_sendflag is 1 when a byte has been sent (update in irq function) */
+                          87 --74: /* NOTE: as the IRQ is now handled in the SYS module (HW dependent), this variable is now GLOBAL */
+                          88 --75: volatile char vrun_sendflag;
+                          89 --77: /* the below variables are updated after a call to vrun_iobuff_print_chrono */
+                          90 --78: /* vrun_chrono_sec = seconds, vrun_chrono_millisec = milliseconds, vrun_chrono_microsec = microseconds */
+                          91 --79: unsigned short vrun_chrono_sec;
+                          92 --80: unsigned short vrun_chrono_millisec;
+                          93 --81: unsigned short vrun_chrono_microsec;
+                          94 --82: unsigned short vrun_chrono_nanosec;
+                          95 --85: unsigned long  vrun_stime;
+                          96 --86: unsigned long  vrun_etime;
+                          97 --88: unsigned long  vrun_chrono_sec_id[VRUN_TIMER_ID_NUM];
+                          98 --89: unsigned short vrun_chrono_millisec_id[VRUN_TIMER_ID_NUM];
+                          99 --90: unsigned short vrun_chrono_microsec_id[VRUN_TIMER_ID_NUM];
+                         100 --91: unsigned short vrun_chrono_nanosec_id[VRUN_TIMER_ID_NUM];
+                         101 --92: unsigned long  vrun_stime_id[VRUN_TIMER_ID_NUM];
+                         102 --93: unsigned long  vrun_etime_id[VRUN_TIMER_ID_NUM];
+                         103 --96: /* the below buffer is used for printf (PFORMAT) function */
+                         104 --97: char vrun_printf_buff[128];
+                         105 --99: /*===========================================================================
+                         106 --100:   function: vrun_console_get
+                         107 --101:   [PUBLIC]
+                         108 --102:   - gets a string from the console to be interpreted
+                         109 --103:   - returns with vrun_iobuff set with the string received
+                         110 --104:   ===========================================================================*/
+                         111 --105: void vrun_console_get()
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         112 	.text
+                         113 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF4B..0::
+                         114 	.align	2
+                         115 	.align	2
+                         116 ..gh.f.a.2.e.0:
+                         117 	.type	..gh.f.a.2.e.0,@object
+                         118 	.size	..gh.f.a.2.e.0,0
+                         119 	.global	_vrun_console_get
+                         120 _vrun_console_get:
+00000000 031eecff        121 	addi	-20,sp,sp
+00000004 63ff1100        122 	st.w	lp,16[sp]
+00000008 63d70d00        123 	st.w	r26,12[sp]
+0000000c 63df0900        124 	st.w	r27,8[sp]
+00000010 63e70500        125 	st.w	r28,4[sp]
+00000014 63ef0100        126 	st.w	r29,0[sp]
+                         127 --	    .bf
+                         128 .LDW01:
+                         129 --106: {
+                         130 --107:     char *ptrbuff;
+                         131 --108:     register unsigned long buffsize;
+                         132 --109:     int i;
+                         133 --110:     char receivedbyte;
+                         134 --112:     /* determine where to store the bytes recevied */
+                         135 --113:     if(vrun_iobuff_external == NULL)
+00000018 2b0600000000*   136 	mov	_vrun_iobuff_external,r11
+0000001e 2b0f0100        137 	ld.w	0[r11],r1
+00000022 e009            138 	cmp	zero,r1
+00000024 fa05*           139 	bne	.L4
+                         140 --114:     {
+                         141 --115:         ptrbuff = vrun_iobuff;
+                         142 --line115
+                         143 ..lin.10c56029..8c25ddc0.0_1::
+                         144 .LDWlin1:
+00000026 3b0600000000*   145 	mov	_vrun_iobuff,r27
+                         146 --116:         buffsize = VRUN_IOBUFF_SIZE;
+                         147 --line116
+                         148 ..lin.10c56029..8c25ddc0.0_2::
+                         149 .LDWlin2:
+0000002c 20d60001        150 	movea	256,zero,r26
+00000030 b50d*           151 	br	.L6
+                         152 .L4:
+                         153 --117:     }
+                         154 --118:     else
+                         155 --119:     {
+                         156 --120:         ptrbuff = vrun_iobuff_external;
+                         157 --line120
+                         158 ..lin.10c56029..8c25ddc0.0_3::
+                         159 .LDWlin3:
+00000032 2b0600000000*   160 	mov	_vrun_iobuff_external,r11
+00000038 2bdf0100        161 	ld.w	0[r11],r27
+                         162 --121:         buffsize = vrun_size_iobuff_external;
+                         163 --line121
+                         164 ..lin.10c56029..8c25ddc0.0_4::
+                         165 .LDWlin4:
+0000003c 2b0600000000*   166 	mov	_vrun_size_iobuff_external,r11
+00000042 2bd70100        167 	ld.w	0[r11],r26
+                         168 .L6:
+                         169 --122:     }
+                         170 --124:     /* clear the i/o buffer */
+                         171 --125:     ptrbuff[0] = 0;
+                         172 --line125
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         173 ..lin.10c56029..8c25ddc0.0_5::
+                         174 .LDWlin5:
+00000046 5b070000        175 	st.b	zero,0[r27]
+                         176 --126:     i = 0;
+0000004a 00ea            177 	mov	0,r29
+                         178 --127:     do
+0000004c 0000            179 	nop
+                         180 .L10:
+                         181 --128:     {
+                         182 --129:         /* wait for the interrupt to set the receive flag */
+                         183 --130:         while(!vrun_receiveflag);
+0000004e 2b0600000000*   184 	mov	_vrun_receiveflag,r11
+00000054 0b0f0000        185 	ld.b	0[r11],r1
+00000058 e009            186 	cmp	zero,r1
+0000005a a2fd*           187 	be	.L10
+                         188 --131:         /* clear the receive flag */
+                         189 --132:         vrun_receiveflag = 0;
+                         190 --line132
+                         191 ..lin.10c56029..8c25ddc0.0_6::
+                         192 .LDWlin6:
+0000005c 2b0600000000*   193 	mov	_vrun_receiveflag,r11
+00000062 4b070000        194 	st.b	zero,0[r11]
+                         195 --133:         /* get the character received */
+                         196 --134:         receivedbyte = sys_vuart_getbyte();
+                         197 .L174:
+                         198 --line134
+                         199 ..lin.10c56029..8c25ddc0.0_7::
+                         200 .LDWlin7:
+                         201 	jarl	_sys_vuart_getbyte,lp
+                         201 <EXPANSION BEGIN>
+                         201 jarl22 _sys_vuart_getbyte , lp 
+00000066 80ff0000*       201 <EXPANSION END>
+0000006a aa00            202 	sxb	r10
+0000006c 0ae0            203 	mov	r10,r28
+                         204 --135:         /* test for the del key */
+                         205 --136:         if(receivedbyte == VRUN_CHAR_DEL)
+                         206 --line136
+                         207 ..lin.10c56029..8c25ddc0.0_8::
+                         208 .LDWlin8:
+0000006e 68e2            209 	cmp	8,r28
+00000070 da05*           210 	bne	.L13
+                         211 --137:         {
+                         212 --138:             if(i > 0)
+                         213 --line138
+                         214 ..lin.10c56029..8c25ddc0.0_9::
+                         215 .LDWlin9:
+00000072 e0e9            216 	cmp	zero,r29
+00000074 e705*           217 	ble	.L17
+                         218 --139:             {
+                         219 --140:                 i -= 2;
+                         220 --line140
+                         221 ..lin.10c56029..8c25ddc0.0_10::
+                         222 .LDWlin10:
+00000076 5eea            223 	add	-2,r29
+00000078 c505*           224 	br	.L17
+                         225 .L13:
+                         226 --141:             }
+                         227 --142:         }
+                         228 --143:         else
+                         229 --144:         {
+                         230 --145:             /* concatenate the character received */
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         231 --146:             ptrbuff[i] = receivedbyte;
+                         232 --line146
+                         233 ..lin.10c56029..8c25ddc0.0_11::
+                         234 .LDWlin11:
+0000007a 1df0            235 	mov	r29,ep
+0000007c dbf1            236 	add	r27,ep
+0000007e 80e3            237 	sst.b	r28,0[ep]
+                         238 .L17:
+                         239 --147:         }
+                         240 --149:         /* still enough space to store the bytes? */
+                         241 --150:         if((receivedbyte == VRUN_CHAR_CR) || (receivedbyte == VRUN_CHAR_LF) || (receivedbyte == VRUN_CHAR_COMMA))
+00000080 6de2            242 	cmp	13,r28
+00000082 e205*           243 	be	.L19
+00000084 6ae2            244 	cmp	10,r28
+00000086 c205*           245 	be	.L19
+00000088 1c06d4ff        246 	addi	-44,r28,zero
+0000008c ba05*           247 	bne	.L18
+                         248 .L19:
+                         249 --151:         {
+                         250 --152:             /* there should be enough space to store CRLF in i/o buffer */
+                         251 --153:             /* increment the counter on the i/o buffer */
+                         252 --154:             i++;
+                         253 --line154
+                         254 ..lin.10c56029..8c25ddc0.0_12::
+                         255 .LDWlin12:
+0000008e 41ea            256 	add	1,r29
+00000090 c505*           257 	br	.L8
+                         258 .L18:
+                         259 --155:         }
+                         260 --156:         else if(i < buffsize)
+                         261 --line156
+                         262 ..lin.10c56029..8c25ddc0.0_13::
+                         263 .LDWlin13:
+00000092 fae9            264 	cmp	r26,r29
+00000094 a905*           265 	bnl	.L8
+                         266 --157:         {
+                         267 --158:             /* increment the counter on the i/o buffer */
+                         268 --159:             i++;
+                         269 --line159
+                         270 ..lin.10c56029..8c25ddc0.0_14::
+                         271 .LDWlin14:
+00000096 41ea            272 	add	1,r29
+                         273 .L8:
+00000098 6ae2            274 	cmp	10,r28
+0000009a aadd*           275 	bne	.L10
+                         276 --160:         }
+                         277 --161:     }
+                         278 --162:     while(receivedbyte != VRUN_CHAR_LF);
+                         279 --163:     /* terminate the string by chr(0) */
+                         280 --164:     ptrbuff[i] = 0;
+                         281 --line164
+                         282 ..lin.10c56029..8c25ddc0.0_15::
+                         283 .LDWlin15:
+0000009c 1df0            284 	mov	r29,ep
+0000009e dbf1            285 	add	r27,ep
+000000a0 8003            286 	sst.b	zero,0[ep]
+                         287 --166:     /* vb_test */
+                         288 --167:     if(strncmp(ptrbuff, VRUN_STR_VBTEST_CMD_SOFTRESET, 11) == 0) 
+000000a2 1b30            289 	mov	r27,r6
+000000a4 270600000000*   290 	mov	.L143,r7
+000000aa 0b42            291 	mov	11,r8
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         292 .L176:
+                         293 	jarl	_strncmp,lp
+                         293 <EXPANSION BEGIN>
+                         293 jarl22 _strncmp , lp 
+000000ac 80ff0000*       293 <EXPANSION END>
+000000b0 e051            294 	cmp	zero,r10
+000000b2 ba05*           295 	bne	.L2
+                         296 --168:     { 
+                         297 --169:         proc_SOFTRESET(); 
+                         298 .L178:
+                         299 --line169
+                         300 ..lin.10c56029..8c25ddc0.0_16::
+                         301 .LDWlin16:
+                         302 	jarl	_proc_SOFTRESET,lp
+                         302 <EXPANSION BEGIN>
+                         302 jarl22 _proc_SOFTRESET , lp 
+000000b4 80ff0000*       302 <EXPANSION END>
+                         303 .L2:
+                         304 --170:     } 
+                         305 --171: }
+                         306 --	    .ef
+                         307 .LDW11:
+                         308 --line171
+                         309 ..lin.10c56029..8c25ddc0.0_17::
+                         310 .LDWlin17:
+000000b8 23ff1100        311 	ld.w	16[sp],lp
+000000bc 23ef0100        312 	ld.w	0[sp],r29
+000000c0 23e70500        313 	ld.w	4[sp],r28
+000000c4 23df0900        314 	ld.w	8[sp],r27
+000000c8 23d70d00        315 	ld.w	12[sp],r26
+000000cc 031e1400        316 	addi	20,sp,sp
+                         317 .L180:
+                         318 	.jumptype return
+000000d0 7f00            319 	jmp	[lp]
+                         320 --line171
+                         321 ..lin.10c56029..8c25ddc0.0_18::
+                         322 	.type	_vrun_console_get,@function
+                         323 	.size	_vrun_console_get,.-_vrun_console_get
+                         324 	.align	2
+                         325 --_ptrbuff	r27	local
+                         326 --_buffsize	r26	local
+                         327 --_i	r29	local
+                         328 --_receivedbyte	r28	local
+                         329 
+                         330 	.section ".bss","awb"
+                         331 	.align	4
+                         332 	.global	_vrun_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.
+                         333 _vrun_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.:
+00000000 00000000        334 _vrun_iobuff_external:	.space	4
+                         335 	.type	_vrun_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,@object
+                         336 	.size	_vrun_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,4
+                         337 	.type	_vrun_iobuff_external,@object
+                         338 	.size	_vrun_iobuff_external,4
+                         339 	.global	_vrun_size_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.
+                         340 _vrun_size_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.:
+00000004 00000000        341 _vrun_size_iobuff_external:	.space	4
+                         342 	.type	_vrun_size_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,@object
+                         343 	.size	_vrun_size_iobuff_external..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,4
+                         344 	.type	_vrun_size_iobuff_external,@object
+                         345 	.size	_vrun_size_iobuff_external,4
+                         346 	.global	_vrun_iobuff_idx..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         347 _vrun_iobuff_idx..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.:
+00000008 0000            348 _vrun_iobuff_idx:	.space	2
+                         349 	.type	_vrun_iobuff_idx..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,@object
+                         350 	.size	_vrun_iobuff_idx..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,2
+                         351 	.type	_vrun_iobuff_idx,@object
+                         352 	.size	_vrun_iobuff_idx,2
+                         353 	.section ".rodata","a"
+                         354 .L142:--	"help"
+00000000 68656c70        355 	.byte	104,101,108,112
+00000004 00              356 	.byte	0
+                         357 	.type	.L142,@object
+                         358 	.size	.L142,5
+                         359 	.section ".bss","awb"
+0000000a 0000            360 	.space	2
+                         361 	.global	_vrun_cmd..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.
+                         362 _vrun_cmd..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.:
+0000000c 000000000000    363 _vrun_cmd:	.space	44
+00000012 000000000000 
+00000018 000000000000 
+0000001e 000000000000 
+00000024 000000000000 
+0000002a 000000000000 
+00000030 000000000000 
+00000036 0000 
+                         364 	.type	_vrun_cmd..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,@object
+                         365 	.size	_vrun_cmd..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,44
+                         366 	.type	_vrun_cmd,@object
+                         367 	.size	_vrun_cmd,44
+                         368 	.section ".rodata","a"
+                         369 .L143:--	"softreset\r\n"
+00000005 736f6674        370 	.byte	115,111,102,116
+00000009 72657365        371 	.byte	114,101,115,101
+0000000d 740d0a00        372 	.byte	116,13,10,0
+                         373 	.type	.L143,@object
+                         374 	.size	.L143,12
+                         375 .L144:--	"get_cpu_speed"
+00000011 6765745f        376 	.byte	103,101,116,95
+00000015 6370755f        377 	.byte	99,112,117,95
+00000019 73706565        378 	.byte	115,112,101,101
+0000001d 6400            379 	.byte	100,0
+                         380 	.type	.L144,@object
+                         381 	.size	.L144,14
+                         382 	.section ".bss","awb"
+                         383 	.global	_vrun_iobuff..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.
+                         384 _vrun_iobuff..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.:
+00000038 000000000000    385 _vrun_iobuff:	.space	260
+0000003e 000000000000 
+00000044 000000000000 
+0000004a 000000000000 
+00000050 000000000000 
+00000056 000000000000 
+0000005c 000000000000 
+00000062 000000000000 
+00000068 000000000000 
+0000006e 000000000000 
+00000074 000000000000 
+0000007a 000000000000 
+00000080 000000000000 
+00000086 000000000000 
+0000008c 000000000000 
+00000092 000000000000 
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+00000098 000000000000 
+0000009e 000000000000 
+000000a4 000000000000 
+000000aa 000000000000 
+000000b0 000000000000 
+000000b6 000000000000 
+000000bc 000000000000 
+000000c2 000000000000 
+000000c8 000000000000 
+000000ce 000000000000 
+000000d4 000000000000 
+000000da 000000000000 
+000000e0 000000000000 
+000000e6 000000000000 
+000000ec 000000000000 
+000000f2 000000000000 
+000000f8 000000000000 
+000000fe 000000000000 
+00000104 000000000000 
+0000010a 000000000000 
+00000110 000000000000 
+00000116 000000000000 
+0000011c 000000000000 
+00000122 000000000000 
+00000128 000000000000 
+0000012e 000000000000 
+00000134 00000000 
+                         386 	.type	_vrun_iobuff..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,@object
+                         387 	.size	_vrun_iobuff..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun.,260
+                         388 	.type	_vrun_iobuff,@object
+                         389 	.size	_vrun_iobuff,260
+                         390 	.section ".ghcalltbl",""
+                         391 	.align	4
+00000000 00000000*       392 .L175:	.word	.L174
+                         393 	.type	.L175,@object
+                         394 	.size	.L175,4
+00000004 00000000*       395 .L177:	.word	.L176
+                         396 	.type	.L177,@object
+                         397 	.size	.L177,4
+00000008 00000000*       398 .L179:	.word	.L178
+                         399 	.type	.L179,@object
+                         400 	.size	.L179,4
+                         401 	.section ".ghrettbl",""
+                         402 	.align	4
+00000000 00000000*       403 .L181:	.word	.L180
+                         404 	.type	.L181,@object
+                         405 	.size	.L181,4
+                         406 	.data
+                         407 	.text
+                         408 
+                         409 
+                         410 --173: /*===========================================================================
+                         411 --174:   function: vrun_set_external_iobuff
+                         412 --175:   [PUBLIC]
+                         413 --176:   - declares an alternative buffer to vrun_iobuff[] in case of buffer extbuff
+                         414 --177:   ===========================================================================*/
+                         415 --178: void vrun_set_external_iobuff(char *ptr_external_iobuff, unsigned long buffsize)
+                         416 	.align	2
+                         417 	.align	2
+                         418 	.align	2
+                         419 ..gh.f.a.2.e.1:
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         420 	.type	..gh.f.a.2.e.1,@object
+                         421 	.size	..gh.f.a.2.e.1,0
+                         422 	.global	_vrun_set_external_iobuff
+                         423 _vrun_set_external_iobuff:
+000000d2 0608            424 	mov	r6,r1
+000000d4 0710            425 	mov	r7,r2
+                         426 --	    .bf
+                         427 .LDW21:
+                         428 --179: {
+                         429 --180:     vrun_iobuff_external = ptr_external_iobuff;
+000000d6 2b0600000000*   430 	mov	_vrun_iobuff_external,r11
+000000dc 6b0f0100        431 	st.w	r1,0[r11]
+                         432 --181:     vrun_size_iobuff_external = buffsize;
+                         433 --line181
+                         434 ..lin.10c56029..90020d96.0_19::
+                         435 .LDWlin19:
+000000e0 2b0600000000*   436 	mov	_vrun_size_iobuff_external,r11
+000000e6 6b170100        437 	st.w	r2,0[r11]
+                         438 --182: }
+                         439 --	    .ef
+                         440 .LDW31:
+                         441 .L221:
+                         442 --line182
+                         443 ..lin.10c56029..90020d96.0_20::
+                         444 .LDWlin20:
+                         445 	.jumptype return
+000000ea 7f00            446 	jmp	[lp]
+                         447 --line182
+                         448 ..lin.10c56029..90020d96.0_21::
+                         449 	.type	_vrun_set_external_iobuff,@function
+                         450 	.size	_vrun_set_external_iobuff,.-_vrun_set_external_iobuff
+                         451 	.align	2
+                         452 
+                         453 --_ptr_external_iobuff	r1	param
+                         454 --_buffsize	r2	param
+                         455 
+                         456 	.section ".ghrettbl",""
+00000004 00000000*       457 .L222:	.word	.L221
+                         458 	.type	.L222,@object
+                         459 	.size	.L222,4
+                         460 	.data
+                         461 	.text
+                         462 
+                         463 
+                         464 --184: /*===========================================================================
+                         465 --185:   function: vrun_console_put
+                         466 --186:   [PUBLIC]
+                         467 --187:   - outputs the string vrun_iobuff to the console
+                         468 --188:   ===========================================================================*/
+                         469 --189: void vrun_console_put()
+                         470 	.align	2
+                         471 	.align	2
+                         472 	.align	2
+                         473 ..gh.f.a.2.e.2:
+                         474 	.type	..gh.f.a.2.e.2,@object
+                         475 	.size	..gh.f.a.2.e.2,0
+                         476 	.global	_vrun_console_put
+                         477 _vrun_console_put:
+000000ec 541a            478 	add	-12,sp
+000000ee 63ff0900        479 	st.w	lp,8[sp]
+000000f2 63e70500        480 	st.w	r28,4[sp]
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000000f6 63ef0100        481 	st.w	r29,0[sp]
+                         482 --	    .bf
+                         483 .LDW41:
+                         484 --190: {
+                         485 --191:     int i;
+                         486 --192:     int timeout_counter;
+                         487 --194:     /* clear the send flag */
+                         488 --195:     vrun_sendflag = 0;
+000000fa 2b0600000000*   489 	mov	_vrun_sendflag,r11
+00000100 4b070000        490 	st.b	zero,0[r11]
+                         491 --196:     
+                         492 --197:     /* parse all the characters to send */
+                         493 --198:     for(i = 0; i < vrun_iobuff_idx; i++)
+                         494 --line198
+                         495 ..lin.10c56029..8c260619.0_22::
+                         496 .LDWlin22:
+00000104 00ea            497 	mov	0,r29
+00000106 8525*           498 	br	.L228
+                         499 .L227:
+                         500 --199:     {
+                         501 --200:         timeout_counter = 1000000L;
+                         502 --line200
+                         503 ..lin.10c56029..8c260619.0_23::
+                         504 .LDWlin23:
+00000108 3c0640420f00    505 	mov	1000000,r28
+                         506 --201:         /* send next byte from the i/o buffer */
+                         507 --202:         sys_vuart_sendbyte(vrun_iobuff[i]);
+                         508 --line202
+                         509 ..lin.10c56029..8c260619.0_24::
+                         510 .LDWlin24:
+0000010e 210600000000*   511 	mov	_vrun_iobuff,r1
+00000114 1df0            512 	mov	r29,ep
+00000116 c1f1            513 	add	r1,ep
+00000118 6008            514 	sld.bu	0[ep],r1
+0000011a 0130            515 	mov	r1,r6
+                         516 .L329:
+                         517 	jarl	_sys_vuart_sendbyte,lp
+                         517 <EXPANSION BEGIN>
+                         517 jarl22 _sys_vuart_sendbyte , lp 
+0000011c 80ff0000*       517 <EXPANSION END>
+                         518 --203:         /* wait for the interrupt to set the send flag */
+                         519 --204:         while((!vrun_sendflag) && (--timeout_counter));
+                         520 .L229:
+                         521 --line204
+                         522 ..lin.10c56029..8c260619.0_25::
+                         523 .LDWlin25:
+00000120 2b0600000000*   524 	mov	_vrun_sendflag,r11
+00000126 0b0f0000        525 	ld.b	0[r11],r1
+0000012a e009            526 	cmp	zero,r1
+0000012c ca05*           527 	bne	.L230
+0000012e 5fe2            528 	add	-1,r28
+00000130 e0e1            529 	cmp	zero,r28
+00000132 faf5*           530 	bne	.L229
+                         531 .L230:
+                         532 --205:         /* cannot send? */
+                         533 --206:         if(!timeout_counter)
+                         534 --line206
+                         535 ..lin.10c56029..8c260619.0_26::
+                         536 .LDWlin26:
+00000134 e0e1            537 	cmp	zero,r28
+00000136 aa05*           538 	bne	.L233
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         539 --207:         {
+                         540 --208:             /* exit the for loop here */
+                         541 --209:             break;
+                         542 --line209
+                         543 ..lin.10c56029..8c260619.0_27::
+                         544 .LDWlin27:
+00000138 e50d*           545 	br	.L235
+                         546 .L233:
+                         547 --210:         }
+                         548 --211:         /* clear the send flag */
+                         549 --212:         vrun_sendflag = 0;
+                         550 --line212
+                         551 ..lin.10c56029..8c260619.0_28::
+                         552 .LDWlin28:
+0000013a 2b0600000000*   553 	mov	_vrun_sendflag,r11
+00000140 4b070000        554 	st.b	zero,0[r11]
+                         555 --line198
+                         556 ..lin.10c56029..8c260619.0_29::
+                         557 .LDWlin29:
+00000144 41ea            558 	add	1,r29
+                         559 .L228:
+00000146 2b0600000000*   560 	mov	_vrun_iobuff_idx,r11
+0000014c eb0f0100        561 	ld.hu	0[r11],r1
+00000150 e1e9            562 	cmp	r1,r29
+00000152 b6dd*           563 	blt	.L227
+                         564 .L235:
+                         565 --213:     }
+                         566 --215:     /* clear the insertion point in the I/O buffer */
+                         567 --216:     vrun_iobuff_idx = 0;
+                         568 --line216
+                         569 ..lin.10c56029..8c260619.0_30::
+                         570 .LDWlin30:
+00000154 2b0600000000*   571 	mov	_vrun_iobuff_idx,r11
+0000015a 6b070000        572 	st.h	zero,0[r11]
+                         573 --217: }
+                         574 --	    .ef
+                         575 .LDW51:
+                         576 --line217
+                         577 ..lin.10c56029..8c260619.0_31::
+                         578 .LDWlin31:
+0000015e 23ff0900        579 	ld.w	8[sp],lp
+00000162 23ef0100        580 	ld.w	0[sp],r29
+00000166 23e70500        581 	ld.w	4[sp],r28
+0000016a 4c1a            582 	add	12,sp
+                         583 .L331:
+                         584 	.jumptype return
+0000016c 7f00            585 	jmp	[lp]
+                         586 --line217
+                         587 ..lin.10c56029..8c260619.0_32::
+                         588 	.type	_vrun_console_put,@function
+                         589 	.size	_vrun_console_put,.-_vrun_console_put
+                         590 	.align	2
+                         591 --_i	r29	local
+                         592 --_timeout_counter	r28	local
+                         593 
+                         594 	.section ".ghcalltbl",""
+0000000c 00000000*       595 .L330:	.word	.L329
+                         596 	.type	.L330,@object
+                         597 	.size	.L330,4
+                         598 	.section ".ghrettbl",""
+00000008 00000000*       599 .L332:	.word	.L331
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         600 	.type	.L332,@object
+                         601 	.size	.L332,4
+                         602 	.data
+                         603 	.text
+                         604 
+                         605 
+                         606 --219: /*===========================================================================
+                         607 --220:   function: vrun_iobuff_clear
+                         608 --221:   [PUBLIC]
+                         609 --222:   - clears vrun_iobuff
+                         610 --223:   ===========================================================================*/
+                         611 --224: void vrun_iobuff_clear()
+                         612 	.align	2
+                         613 	.align	2
+                         614 	.align	2
+                         615 ..gh.f.a.2.e.3:
+                         616 	.type	..gh.f.a.2.e.3,@object
+                         617 	.size	..gh.f.a.2.e.3,0
+                         618 	.global	_vrun_iobuff_clear
+                         619 _vrun_iobuff_clear:
+                         620 --	    .bf
+                         621 .LDW61:
+                         622 --225: {
+                         623 --226:     /* I/O buffer now contains an empty string */
+                         624 --227:     vrun_iobuff[0]  = 0;
+0000016e 2b0600000000*   625 	mov	_vrun_iobuff,r11
+00000174 4b070000        626 	st.b	zero,0[r11]
+                         627 --228:     vrun_iobuff_idx = 0;
+                         628 --line228
+                         629 ..lin.10c56029..c52e1c2f.0_33::
+                         630 .LDWlin33:
+00000178 2b0600000000*   631 	mov	_vrun_iobuff_idx,r11
+0000017e 6b070000        632 	st.h	zero,0[r11]
+                         633 --229: }
+                         634 --	    .ef
+                         635 .LDW71:
+                         636 .L365:
+                         637 --line229
+                         638 ..lin.10c56029..c52e1c2f.0_34::
+                         639 .LDWlin34:
+                         640 	.jumptype return
+00000182 7f00            641 	jmp	[lp]
+                         642 --line229
+                         643 ..lin.10c56029..c52e1c2f.0_35::
+                         644 	.type	_vrun_iobuff_clear,@function
+                         645 	.size	_vrun_iobuff_clear,.-_vrun_iobuff_clear
+                         646 	.align	2
+                         647 
+                         648 	.section ".ghrettbl",""
+0000000c 00000000*       649 .L366:	.word	.L365
+                         650 	.type	.L366,@object
+                         651 	.size	.L366,4
+                         652 	.data
+                         653 	.text
+                         654 
+                         655 
+                         656 --231: /*===========================================================================
+                         657 --232:   function: vrun_iobuff_print_txt
+                         658 --233:   [PUBLIC]
+                         659 --234:   - concatenate a text string into vrun_iobuff
+                         660 --235:   ===========================================================================*/
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         661 --236: void vrun_iobuff_print_txt(const char *toprint)
+                         662 	.align	2
+                         663 	.align	2
+                         664 	.align	2
+                         665 ..gh.f.a.2.e.4:
+                         666 	.type	..gh.f.a.2.e.4,@object
+                         667 	.size	..gh.f.a.2.e.4,0
+                         668 	.global	_vrun_iobuff_print_txt
+                         669 _vrun_iobuff_print_txt:
+00000184 501a            670 	add	-16,sp
+00000186 63ff0d00        671 	st.w	lp,12[sp]
+0000018a 63df0900        672 	st.w	r27,8[sp]
+0000018e 63e70500        673 	st.w	r28,4[sp]
+00000192 63ef0100        674 	st.w	r29,0[sp]
+00000196 06d8            675 	mov	r6,r27
+                         676 --	    .bf
+                         677 .LDW81:
+                         678 --237: {
+                         679 --238:     unsigned short n;
+                         680 --239:     
+                         681 --240:     /* concatenate in the I/O buffer the string to print */
+                         682 --241:     n = strlen(toprint);
+00000198 1b30            683 	mov	r27,r6
+                         684 .L483:
+                         685 	jarl	_strlen,lp
+                         685 <EXPANSION BEGIN>
+                         685 jarl22 _strlen , lp 
+0000019a 80ff0000*       685 <EXPANSION END>
+0000019e ca00            686 	zxh	r10
+000001a0 0ae0            687 	mov	r10,r28
+                         688 --242:     if((vrun_iobuff_idx + n) > VRUN_IOBUFF_SIZE)
+                         689 --line242
+                         690 ..lin.10c56029..70a19f94.0_36::
+                         691 .LDWlin36:
+000001a2 2b0600000000*   692 	mov	_vrun_iobuff_idx,r11
+000001a8 eb0f0100        693 	ld.hu	0[r11],r1
+000001ac dc09            694 	add	r28,r1
+000001ae 010600ff        695 	addi	-256,r1,zero
+000001b2 b705*           696 	ble	.L369
+                         697 --243:     {
+                         698 --244:         /* first output what's in the I/O buffer */
+                         699 --245:         vrun_console_put();
+                         700 .L485:
+                         701 --line245
+                         702 ..lin.10c56029..70a19f94.0_37::
+                         703 .LDWlin37:
+                         704 	jarl	_vrun_console_put,lp
+                         704 <EXPANSION BEGIN>
+                         704 jarl22 _vrun_console_put , lp 
+000001b4 bfff38ff*       704 <EXPANSION END>
+                         705 .L369:
+                         706 --	    .bs
+                         707 .LDW91:
+                         708 --246:     }
+                         709 --247:     if(n > VRUN_IOBUFF_SIZE)
+                         710 --line247
+                         711 ..lin.10c56029..70a19f94.0_38::
+                         712 .LDWlin38:
+000001b8 1c06fffe        713 	addi	-257,r28,zero
+000001bc c92d*           714 	bnl	.L371
+                         715 --248:     {
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         716 --	    .bs
+                         717 .LDW02:
+                         718 --249:         /* need to split in several substring to print */
+                         719 --250:         int i;
+                         720 --251:         for(i = 0; i < n; i += VRUN_IOBUFF_SIZE)
+                         721 --line251
+                         722 ..lin.10c56029..70a19f94.0_39::
+                         723 .LDWlin39:
+000001be 00ea            724 	mov	0,r29
+000001c0 f525*           725 	br	.L376
+                         726 .L375:
+                         727 --252:         {
+                         728 --253:             if((i + VRUN_IOBUFF_SIZE) > n)
+                         729 --line253
+                         730 ..lin.10c56029..70a19f94.0_40::
+                         731 .LDWlin40:
+000001c2 1d0e0001        732 	addi	256,r29,r1
+000001c6 fc09            733 	cmp	r28,r1
+000001c8 f705*           734 	ble	.L377
+                         735 --254:             {
+                         736 --255:                 vrun_iobuff_print_txt(&toprint[i]);
+                         737 --line255
+                         738 ..lin.10c56029..70a19f94.0_41::
+                         739 .LDWlin41:
+000001ca 1d08            740 	mov	r29,r1
+000001cc db09            741 	add	r27,r1
+000001ce 0130            742 	mov	r1,r6
+                         743 .L487:
+                         744 	jarl	_vrun_iobuff_print_txt,lp
+                         744 <EXPANSION BEGIN>
+                         744 jarl22 _vrun_iobuff_print_txt , lp 
+000001d0 bfffb4ff*       744 <EXPANSION END>
+000001d4 b51d*           745 	br	.L374
+                         746 .L377:
+                         747 --256:             }
+                         748 --257:             else
+                         749 --258:             {
+                         750 --259:                 memcpy(&vrun_iobuff[vrun_iobuff_idx], &toprint[i], VRUN_IOBUFF_SIZE);
+                         751 --line259
+                         752 ..lin.10c56029..70a19f94.0_42::
+                         753 .LDWlin42:
+000001d6 2b0600000000*   754 	mov	_vrun_iobuff_idx,r11
+000001dc eb0f0100        755 	ld.hu	0[r11],r1
+000001e0 220600000000*   756 	mov	_vrun_iobuff,r2
+000001e6 c209            757 	add	r2,r1
+000001e8 0130            758 	mov	r1,r6
+000001ea 1d08            759 	mov	r29,r1
+000001ec db09            760 	add	r27,r1
+000001ee 0138            761 	mov	r1,r7
+000001f0 20460001        762 	movea	256,zero,r8
+                         763 .L489:
+                         764 	jarl	_memcpy,lp
+                         764 <EXPANSION BEGIN>
+                         764 jarl22 _memcpy , lp 
+000001f4 80ff0000*       764 <EXPANSION END>
+                         765 --260:                 vrun_iobuff_idx += VRUN_IOBUFF_SIZE;
+                         766 --line260
+                         767 ..lin.10c56029..70a19f94.0_43::
+                         768 .LDWlin43:
+000001f8 3e0600000000*   769 	mov	_vrun_iobuff_idx,ep
+000001fe 7008            770 	sld.hu	0[ep],r1
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+00000200 010e0001        771 	addi	256,r1,r1
+00000204 800c            772 	sst.h	r1,0[ep]
+                         773 --261:                 vrun_console_put();
+                         774 .L491:
+                         775 --line261
+                         776 ..lin.10c56029..70a19f94.0_44::
+                         777 .LDWlin44:
+                         778 	jarl	_vrun_console_put,lp
+                         778 <EXPANSION BEGIN>
+                         778 jarl22 _vrun_console_put , lp 
+00000206 bfffe6fe*       778 <EXPANSION END>
+                         779 .L374:
+                         780 --line251
+                         781 ..lin.10c56029..70a19f94.0_45::
+                         782 .LDWlin45:
+0000020a 1dee0001        783 	addi	256,r29,r29
+                         784 .L376:
+0000020e fce9            785 	cmp	r28,r29
+00000210 96dd*           786 	blt	.L375
+                         787 --	    .es
+                         788 .LDW12:
+                         789 --line263
+                         790 ..lin.10c56029..70a19f94.0_46::
+                         791 .LDWlin46:
+00000212 c515*           792 	br	.L380
+                         793 .L371:
+                         794 --262:             }
+                         795 --263:         }
+                         796 --264:     }
+                         797 --265:     else
+                         798 --266:     {
+                         799 --267:         /* do the concatenation of the string to print */
+                         800 --268:         sprintf(&vrun_iobuff[vrun_iobuff_idx], toprint);
+                         801 --line268
+                         802 ..lin.10c56029..70a19f94.0_47::
+                         803 .LDWlin47:
+00000214 2b0600000000*   804 	mov	_vrun_iobuff_idx,r11
+0000021a eb0f0100        805 	ld.hu	0[r11],r1
+0000021e 220600000000*   806 	mov	_vrun_iobuff,r2
+00000224 c209            807 	add	r2,r1
+00000226 0130            808 	mov	r1,r6
+00000228 1b38            809 	mov	r27,r7
+                         810 .L493:
+                         811 	jarl	_sprintf,lp
+                         811 <EXPANSION BEGIN>
+                         811 jarl22 _sprintf , lp 
+0000022a 80ff0000*       811 <EXPANSION END>
+                         812 --269:         vrun_iobuff_idx += n;
+                         813 --line269
+                         814 ..lin.10c56029..70a19f94.0_48::
+                         815 .LDWlin48:
+0000022e 3e0600000000*   816 	mov	_vrun_iobuff_idx,ep
+00000234 7008            817 	sld.hu	0[ep],r1
+00000236 dc09            818 	add	r28,r1
+00000238 800c            819 	sst.h	r1,0[ep]
+                         820 .L380:
+                         821 --	    .es
+                         822 .LDW22:
+                         823 --270:     }
+                         824 --271: }
+                         825 --	    .ef
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         826 .LDW32:
+                         827 --line271
+                         828 ..lin.10c56029..70a19f94.0_49::
+                         829 .LDWlin49:
+0000023a 23ff0d00        830 	ld.w	12[sp],lp
+0000023e 23ef0100        831 	ld.w	0[sp],r29
+00000242 23e70500        832 	ld.w	4[sp],r28
+00000246 23df0900        833 	ld.w	8[sp],r27
+0000024a 031e1000        834 	addi	16,sp,sp
+                         835 .L495:
+                         836 	.jumptype return
+0000024e 7f00            837 	jmp	[lp]
+                         838 --line271
+                         839 ..lin.10c56029..70a19f94.0_50::
+                         840 	.type	_vrun_iobuff_print_txt,@function
+                         841 	.size	_vrun_iobuff_print_txt,.-_vrun_iobuff_print_txt
+                         842 	.align	2
+                         843 --_n	r28	local
+                         844 --_i	r29	local
+                         845 
+                         846 --_toprint	r27	param
+                         847 
+                         848 	.section ".ghcalltbl",""
+00000010 00000000*       849 .L484:	.word	.L483
+                         850 	.type	.L484,@object
+                         851 	.size	.L484,4
+00000014 00000000*       852 .L486:	.word	.L485
+                         853 	.type	.L486,@object
+                         854 	.size	.L486,4
+00000018 00000000*       855 .L488:	.word	.L487
+                         856 	.type	.L488,@object
+                         857 	.size	.L488,4
+0000001c 00000000*       858 .L490:	.word	.L489
+                         859 	.type	.L490,@object
+                         860 	.size	.L490,4
+00000020 00000000*       861 .L492:	.word	.L491
+                         862 	.type	.L492,@object
+                         863 	.size	.L492,4
+00000024 00000000*       864 .L494:	.word	.L493
+                         865 	.type	.L494,@object
+                         866 	.size	.L494,4
+                         867 	.section ".ghrettbl",""
+00000010 00000000*       868 .L496:	.word	.L495
+                         869 	.type	.L496,@object
+                         870 	.size	.L496,4
+                         871 	.data
+                         872 	.text
+                         873 
+                         874 
+                         875 --273: /*===========================================================================
+                         876 --274:   function: vrun_iobuff_print_mem
+                         877 --275:   [PUBLIC]
+                         878 --276:   - concatenate a memory dump into vrun_iobuff
+                         879 --277:   - no memory limit
+                         880 --278:   ===========================================================================*/
+                         881 --279: void vrun_iobuff_print_mem(const unsigned char *pmem, unsigned int nb_bytes)
+                         882 	.align	2
+                         883 	.align	2
+                         884 	.align	2
+                         885 ..gh.f.a.2.e.5:
+                         886 	.type	..gh.f.a.2.e.5,@object
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                         887 	.size	..gh.f.a.2.e.5,0
+                         888 	.global	_vrun_iobuff_print_mem
+                         889 _vrun_iobuff_print_mem:
+00000250 501a            890 	add	-16,sp
+00000252 63ff0d00        891 	st.w	lp,12[sp]
+00000256 63e70900        892 	st.w	r28,8[sp]
+0000025a 63ef0500        893 	st.w	r29,4[sp]
+0000025e 06e8            894 	mov	r6,r29
+00000260 07e0            895 	mov	r7,r28
+                         896 --	    .bf
+                         897 .LDW42:
+                         898 --280: {
+                         899 --281:     char strbyte[3];
+                         900 --283:     while(nb_bytes > 0)
+00000262 9515*           901 	br	.L499
+                         902 .L501:
+                         903 --284:     {
+                         904 --285:         /* format the output string */
+                         905 --286:         sprintf(strbyte, "%02X", *(pmem++));
+                         906 --line286
+                         907 ..lin.10c56029..70a17f53.0_51::
+                         908 .LDWlin51:
+00000264 41ea            909 	add	1,r29
+00000266 1df6ffff        910 	addi	-1,r29,ep
+0000026a 6040            911 	sld.bu	0[ep],r8
+0000026c 23360100        912 	movea	1,sp,r6
+00000270 270600000000*   913 	mov	.L546,r7
+                         914 .L557:
+                         915 	jarl	_sprintf,lp
+                         915 <EXPANSION BEGIN>
+                         915 jarl22 _sprintf , lp 
+00000276 80ff0000*       915 <EXPANSION END>
+                         916 --287:         /* concatenate in the i/o buffer */
+                         917 --288:         vrun_iobuff_print_txt(strbyte);
+                         918 --line288
+                         919 ..lin.10c56029..70a17f53.0_52::
+                         920 .LDWlin52:
+0000027a 23360100        921 	movea	1,sp,r6
+                         922 .L559:
+                         923 	jarl	_vrun_iobuff_print_txt,lp
+                         923 <EXPANSION BEGIN>
+                         923 jarl22 _vrun_iobuff_print_txt , lp 
+0000027e bfff06ff*       923 <EXPANSION END>
+                         924 --289:         /* decrement the number of bytes to send */
+                         925 --290:         nb_bytes--;
+                         926 --line290
+                         927 ..lin.10c56029..70a17f53.0_53::
+                         928 .LDWlin53:
+00000282 5fe2            929 	add	-1,r28
+                         930 .L499:
+00000284 e0e1            931 	cmp	zero,r28
+00000286 fbed*           932 	bh	.L501
+                         933 --291:     }
+                         934 --292: }
+                         935 --	    .ef
+                         936 .LDW52:
+                         937 --line292
+                         938 ..lin.10c56029..70a17f53.0_54::
+                         939 .LDWlin54:
+00000288 23ff0d00        940 	ld.w	12[sp],lp
+0000028c 23ef0500        941 	ld.w	4[sp],r29
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+00000290 23e70900        942 	ld.w	8[sp],r28
+00000294 031e1000        943 	addi	16,sp,sp
+                         944 .L561:
+                         945 	.jumptype return
+00000298 7f00            946 	jmp	[lp]
+                         947 --line292
+                         948 ..lin.10c56029..70a17f53.0_55::
+                         949 	.type	_vrun_iobuff_print_mem,@function
+                         950 	.size	_vrun_iobuff_print_mem,.-_vrun_iobuff_print_mem
+                         951 	.align	2
+                         952 --_strbyte	1[sp]	local
+                         953 
+                         954 --_pmem	r29	param
+                         955 --_nb_bytes	r28	param
+                         956 
+                         957 	.section ".rodata","a"
+                         958 .L546:--	"%02X"
+0000001f 25303258        959 	.byte	37,48,50,88
+00000023 00              960 	.byte	0
+                         961 	.type	.L546,@object
+                         962 	.size	.L546,5
+                         963 	.section ".ghcalltbl",""
+00000028 00000000*       964 .L558:	.word	.L557
+                         965 	.type	.L558,@object
+                         966 	.size	.L558,4
+0000002c 00000000*       967 .L560:	.word	.L559
+                         968 	.type	.L560,@object
+                         969 	.size	.L560,4
+                         970 	.section ".ghrettbl",""
+00000014 00000000*       971 .L562:	.word	.L561
+                         972 	.type	.L562,@object
+                         973 	.size	.L562,4
+                         974 	.data
+                         975 	.text
+                         976 
+                         977 
+                         978 --294: /*===========================================================================
+                         979 --295:   function: vrun_iobuff_readparam
+                         980 --296:   [PUBLIC]
+                         981 --297:   - returns a pointer to the parameter string identified by param_number
+                         982 --298:   ===========================================================================*/
+                         983 --299: char *vrun_iobuff_readparam(unsigned char param_number)
+                         984 	.align	2
+                         985 	.align	2
+                         986 	.align	2
+                         987 ..gh.f.a.2.e.6:
+                         988 	.type	..gh.f.a.2.e.6,@object
+                         989 	.size	..gh.f.a.2.e.6,0
+                         990 	.global	_vrun_iobuff_readparam
+                         991 _vrun_iobuff_readparam:
+0000029a 0608            992 	mov	r6,r1
+0000029c 8100            993 	zxb	r1
+                         994 --	    .bf
+                         995 .LDW62:
+                         996 --300: {
+                         997 --301:     return(vrun_cmd[param_number]);
+0000029e 0110            998 	mov	r1,r2
+000002a0 c212            999 	shl	2,r2
+000002a2 330600000000*  1000 	mov	_vrun_cmd,r19
+000002a8 02f0           1001 	mov	r2,ep
+000002aa d3f1           1002 	add	r19,ep
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000002ac 0055           1003 	sld.w	0[ep],r10
+                        1004 --	    .ef
+                        1005 .LDW72:
+                        1006 .L595:
+                        1007 --line302
+                        1008 ..lin.10c56029..dad5e115.0_56::
+                        1009 .LDWlin56:
+                        1010 	.jumptype return
+000002ae 7f00           1011 	jmp	[lp]
+                        1012 --line302
+                        1013 ..lin.10c56029..dad5e115.0_57::
+                        1014 	.type	_vrun_iobuff_readparam,@function
+                        1015 	.size	_vrun_iobuff_readparam,.-_vrun_iobuff_readparam
+                        1016 	.align	2
+                        1017 
+                        1018 --_param_number	r1	param
+                        1019 
+                        1020 	.section ".ghrettbl",""
+00000018 00000000*      1021 .L596:	.word	.L595
+                        1022 	.type	.L596,@object
+                        1023 	.size	.L596,4
+                        1024 	.data
+                        1025 	.text
+                        1026 
+                        1027 --302: }
+                        1028 
+                        1029 --304: /*===========================================================================
+                        1030 --305:   function: vrun_iobuff_print_chrono
+                        1031 --306:   [PUBLIC]
+                        1032 --307:   - output the chrono to the iobuffer
+                        1033 --308:   - format: "---s ---ms ---us" => 16 characters max (not counting \0 at end)
+                        1034 --309:   - returns the (raw) 32-bit counter value retrieved from the low-level driver
+                        1035 --310:   ===========================================================================*/
+                        1036 --311: unsigned long vrun_iobuff_print_chrono(void)
+                        1037 	.align	2
+                        1038 	.align	2
+                        1039 	.align	2
+                        1040 ..gh.f.a.2.e.7:
+                        1041 	.type	..gh.f.a.2.e.7,@object
+                        1042 	.size	..gh.f.a.2.e.7,0
+                        1043 	.global	_vrun_iobuff_print_chrono
+                        1044 _vrun_iobuff_print_chrono:
+000002b0 031ed4ff       1045 	addi	-44,sp,sp
+000002b4 63ff2900       1046 	st.w	lp,40[sp]
+000002b8 63ef2500       1047 	st.w	r29,36[sp]
+                        1048 --	    .bf
+                        1049 .LDW82:
+                        1050 --312: {
+                        1051 --313:     unsigned long cnt;
+                        1052 --314:     char temp[32];
+                        1053 --316:     /* get elapsed time */
+                        1054 --317:     cnt = vrun_chrono_gettimestamp();
+                        1055 .L670:
+                        1056 	jarl	_vrun_chrono_gettimestamp,lp
+                        1056 <EXPANSION BEGIN>
+                        1056 jarl22 _vrun_chrono_gettimestamp , lp 
+000002bc 80ff0c01*      1056 <EXPANSION END>
+000002c0 0ae8           1057 	mov	r10,r29
+                        1058 --318:     
+                        1059 --319:     /* output to the I/O buffer */
+                        1060 --320:     if((!vrun_chrono_sec) && (!vrun_chrono_millisec))
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1061 --line320
+                        1062 ..lin.10c56029..e7b9fa5d.0_58::
+                        1063 .LDWlin58:
+000002c2 2b0600000000*  1064 	mov	_vrun_chrono_sec,r11
+000002c8 eb0f0100       1065 	ld.hu	0[r11],r1
+000002cc e009           1066 	cmp	zero,r1
+000002ce aa1d*          1067 	bne	.L599
+000002d0 2b0600000000*  1068 	mov	_vrun_chrono_millisec,r11
+000002d6 eb0f0100       1069 	ld.hu	0[r11],r1
+000002da e009           1070 	cmp	zero,r1
+000002dc ba15*          1071 	bne	.L599
+                        1072 --321:     {
+                        1073 --322:         sprintf(temp, "%dus %dns", vrun_chrono_microsec, vrun_chrono_nanosec);
+                        1074 --line322
+                        1075 ..lin.10c56029..e7b9fa5d.0_59::
+                        1076 .LDWlin59:
+000002de 2b0600000000*  1077 	mov	_vrun_chrono_microsec,r11
+000002e4 eb470100       1078 	ld.hu	0[r11],r8
+000002e8 2c0600000000*  1079 	mov	_vrun_chrono_nanosec,r12
+000002ee ec4f0100       1080 	ld.hu	0[r12],r9
+000002f2 23360400       1081 	movea	4,sp,r6
+000002f6 270600000000*  1082 	mov	.L654,r7
+                        1083 .L672:
+                        1084 	jarl	_sprintf,lp
+                        1084 <EXPANSION BEGIN>
+                        1084 jarl22 _sprintf , lp 
+000002fc 80ff0000*      1084 <EXPANSION END>
+00000300 a535*          1085 	br	.L602
+                        1086 .L599:
+                        1087 --323:     }
+                        1088 --324:     else if(!vrun_chrono_sec)
+                        1089 --line324
+                        1090 ..lin.10c56029..e7b9fa5d.0_60::
+                        1091 .LDWlin60:
+00000302 2b0600000000*  1092 	mov	_vrun_chrono_sec,r11
+00000308 eb0f0100       1093 	ld.hu	0[r11],r1
+0000030c e009           1094 	cmp	zero,r1
+0000030e ba15*          1095 	bne	.L603
+                        1096 --325:     {
+                        1097 --326:         sprintf(temp, "%dms %03dus", vrun_chrono_millisec, vrun_chrono_microsec);
+                        1098 --line326
+                        1099 ..lin.10c56029..e7b9fa5d.0_61::
+                        1100 .LDWlin61:
+00000310 2b0600000000*  1101 	mov	_vrun_chrono_millisec,r11
+00000316 eb470100       1102 	ld.hu	0[r11],r8
+0000031a 2c0600000000*  1103 	mov	_vrun_chrono_microsec,r12
+00000320 ec4f0100       1104 	ld.hu	0[r12],r9
+00000324 23360400       1105 	movea	4,sp,r6
+00000328 270600000000*  1106 	mov	.L655,r7
+                        1107 .L674:
+                        1108 	jarl	_sprintf,lp
+                        1108 <EXPANSION BEGIN>
+                        1108 jarl22 _sprintf , lp 
+0000032e 80ff0000*      1108 <EXPANSION END>
+00000332 951d*          1109 	br	.L602
+                        1110 .L603:
+                        1111 --327:     }
+                        1112 --328:     else
+                        1113 --329:     {
+                        1114 --330:         sprintf(temp, "%ds %03dms %03dus", vrun_chrono_sec, vrun_chrono_millisec, vrun_chrono_microsec);
+                        1115 --line330
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1116 ..lin.10c56029..e7b9fa5d.0_62::
+                        1117 .LDWlin62:
+00000334 2b0600000000*  1118 	mov	_vrun_chrono_sec,r11
+0000033a eb470100       1119 	ld.hu	0[r11],r8
+0000033e 2c0600000000*  1120 	mov	_vrun_chrono_millisec,r12
+00000344 ec4f0100       1121 	ld.hu	0[r12],r9
+00000348 2d0600000000*  1122 	mov	_vrun_chrono_microsec,r13
+0000034e ed0f0100       1123 	ld.hu	0[r13],r1
+00000352 630f0100       1124 	st.w	r1,0[sp]
+00000356 23360400       1125 	movea	4,sp,r6
+0000035a 270600000000*  1126 	mov	.L656,r7
+                        1127 .L676:
+                        1128 	jarl	_sprintf,lp
+                        1128 <EXPANSION BEGIN>
+                        1128 jarl22 _sprintf , lp 
+00000360 80ff0000*      1128 <EXPANSION END>
+                        1129 .L602:
+                        1130 --331:     }
+                        1131 --332:     vrun_iobuff_print_txt((const char *)temp);
+                        1132 --line332
+                        1133 ..lin.10c56029..e7b9fa5d.0_63::
+                        1134 .LDWlin63:
+00000364 23360400       1135 	movea	4,sp,r6
+                        1136 .L678:
+                        1137 	jarl	_vrun_iobuff_print_txt,lp
+                        1137 <EXPANSION BEGIN>
+                        1137 jarl22 _vrun_iobuff_print_txt , lp 
+00000368 bfff1cfe*      1137 <EXPANSION END>
+                        1138 --334:     return(cnt);
+                        1139 --line334
+                        1140 ..lin.10c56029..e7b9fa5d.0_64::
+                        1141 .LDWlin64:
+0000036c 1d50           1142 	mov	r29,r10
+                        1143 --	    .ef
+                        1144 .LDW92:
+0000036e 23ff2900       1145 	ld.w	40[sp],lp
+00000372 23ef2500       1146 	ld.w	36[sp],r29
+00000376 031e2c00       1147 	addi	44,sp,sp
+                        1148 .L680:
+                        1149 	.jumptype return
+0000037a 7f00           1150 	jmp	[lp]
+                        1151 --line334
+                        1152 ..lin.10c56029..e7b9fa5d.0_65::
+                        1153 	.type	_vrun_iobuff_print_chrono,@function
+                        1154 	.size	_vrun_iobuff_print_chrono,.-_vrun_iobuff_print_chrono
+                        1155 	.align	2
+                        1156 --_cnt	r29	local
+                        1157 --_temp	4[sp]	local
+                        1158 
+                        1159 	.section ".rodata","a"
+                        1160 .L654:--	"%dus %dns"
+00000024 25647573       1161 	.byte	37,100,117,115
+00000028 2025646e       1162 	.byte	32,37,100,110
+0000002c 7300           1163 	.byte	115,0
+                        1164 	.type	.L654,@object
+                        1165 	.size	.L654,10
+                        1166 .L655:--	"%dms %03dus"
+0000002e 25646d73       1167 	.byte	37,100,109,115
+00000032 20253033       1168 	.byte	32,37,48,51
+00000036 64757300       1169 	.byte	100,117,115,0
+                        1170 	.type	.L655,@object
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1171 	.size	.L655,12
+                        1172 .L656:--	"%ds %03dms %03dus"
+0000003a 25647320       1173 	.byte	37,100,115,32
+0000003e 25303364       1174 	.byte	37,48,51,100
+00000042 6d732025       1175 	.byte	109,115,32,37
+00000046 30336475       1176 	.byte	48,51,100,117
+0000004a 7300           1177 	.byte	115,0
+                        1178 	.type	.L656,@object
+                        1179 	.size	.L656,18
+                        1180 	.section ".ghcalltbl",""
+00000030 00000000*      1181 .L671:	.word	.L670
+                        1182 	.type	.L671,@object
+                        1183 	.size	.L671,4
+00000034 00000000*      1184 .L673:	.word	.L672
+                        1185 	.type	.L673,@object
+                        1186 	.size	.L673,4
+00000038 00000000*      1187 .L675:	.word	.L674
+                        1188 	.type	.L675,@object
+                        1189 	.size	.L675,4
+0000003c 00000000*      1190 .L677:	.word	.L676
+                        1191 	.type	.L677,@object
+                        1192 	.size	.L677,4
+00000040 00000000*      1193 .L679:	.word	.L678
+                        1194 	.type	.L679,@object
+                        1195 	.size	.L679,4
+                        1196 	.section ".ghrettbl",""
+0000001c 00000000*      1197 .L681:	.word	.L680
+                        1198 	.type	.L681,@object
+                        1199 	.size	.L681,4
+                        1200 	.data
+                        1201 	.text
+                        1202 
+                        1203 --335: }
+                        1204 
+                        1205 --337: /*===========================================================================
+                        1206 --338:   function: vrun_chrono_start
+                        1207 --339:   [PUBLIC]
+                        1208 --340:   - starts the chrono
+                        1209 --341:   ===========================================================================*/
+                        1210 --342: void vrun_chrono_start()
+                        1211 	.align	2
+                        1212 	.align	2
+                        1213 	.align	2
+                        1214 ..gh.f.a.2.e.8:
+                        1215 	.type	..gh.f.a.2.e.8,@object
+                        1216 	.size	..gh.f.a.2.e.8,0
+                        1217 	.global	_vrun_chrono_start
+                        1218 _vrun_chrono_start:
+0000037c 5c1a           1219 	add	-4,sp
+0000037e 63ff0100       1220 	st.w	lp,0[sp]
+                        1221 --	    .bf
+                        1222 .LDW03:
+                        1223 --343: {
+                        1224 --344:     vrun_stime = sys_vtimer0_get_pclk_counter();
+                        1225 .L717:
+                        1226 	jarl	_sys_vtimer0_get_pclk_counter,lp
+                        1226 <EXPANSION BEGIN>
+                        1226 jarl22 _sys_vtimer0_get_pclk_counter , lp 
+00000382 80ff0000*      1226 <EXPANSION END>
+00000386 2b0600000000*  1227 	mov	_vrun_stime,r11
+0000038c 6b570100       1228 	st.w	r10,0[r11]
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1229 --345:     vrun_etime = vrun_stime;
+                        1230 --line345
+                        1231 ..lin.10c56029..97b00944.0_66::
+                        1232 .LDWlin66:
+00000390 2b0600000000*  1233 	mov	_vrun_stime,r11
+00000396 2b0f0100       1234 	ld.w	0[r11],r1
+0000039a 2c0600000000*  1235 	mov	_vrun_etime,r12
+000003a0 6c0f0100       1236 	st.w	r1,0[r12]
+                        1237 --346: }
+                        1238 --	    .ef
+                        1239 .LDW13:
+                        1240 --line346
+                        1241 ..lin.10c56029..97b00944.0_67::
+                        1242 .LDWlin67:
+000003a4 23ff0100       1243 	ld.w	0[sp],lp
+000003a8 441a           1244 	add	4,sp
+                        1245 .L719:
+                        1246 	.jumptype return
+000003aa 7f00           1247 	jmp	[lp]
+                        1248 --line346
+                        1249 ..lin.10c56029..97b00944.0_68::
+                        1250 	.type	_vrun_chrono_start,@function
+                        1251 	.size	_vrun_chrono_start,.-_vrun_chrono_start
+                        1252 	.align	2
+                        1253 
+                        1254 	.section ".ghcalltbl",""
+00000044 00000000*      1255 .L718:	.word	.L717
+                        1256 	.type	.L718,@object
+                        1257 	.size	.L718,4
+                        1258 	.section ".ghrettbl",""
+00000020 00000000*      1259 .L720:	.word	.L719
+                        1260 	.type	.L720,@object
+                        1261 	.size	.L720,4
+                        1262 	.data
+                        1263 	.text
+                        1264 
+                        1265 
+                        1266 --348: /*===========================================================================
+                        1267 --349:   function: vrun_chrono_stop
+                        1268 --350:   [PUBLIC]
+                        1269 --351:   - stops the chrono
+                        1270 --352:   ===========================================================================*/
+                        1271 --353: void vrun_chrono_stop()
+                        1272 	.align	2
+                        1273 	.align	2
+                        1274 	.align	2
+                        1275 ..gh.f.a.2.e.9:
+                        1276 	.type	..gh.f.a.2.e.9,@object
+                        1277 	.size	..gh.f.a.2.e.9,0
+                        1278 	.global	_vrun_chrono_stop
+                        1279 _vrun_chrono_stop:
+000003ac 5c1a           1280 	add	-4,sp
+000003ae 63ff0100       1281 	st.w	lp,0[sp]
+                        1282 --	    .bf
+                        1283 .LDW23:
+                        1284 --354: {
+                        1285 --355:     vrun_etime = sys_vtimer0_get_pclk_counter();
+                        1286 .L760:
+                        1287 	jarl	_sys_vtimer0_get_pclk_counter,lp
+                        1287 <EXPANSION BEGIN>
+                        1287 jarl22 _sys_vtimer0_get_pclk_counter , lp 
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000003b2 80ff0000*      1287 <EXPANSION END>
+000003b6 2b0600000000*  1288 	mov	_vrun_etime,r11
+000003bc 6b570100       1289 	st.w	r10,0[r11]
+                        1290 --356: }
+                        1291 --	    .ef
+                        1292 .LDW33:
+                        1293 --line356
+                        1294 ..lin.10c56029..4a6a309c.0_69::
+                        1295 .LDWlin69:
+000003c0 23ff0100       1296 	ld.w	0[sp],lp
+000003c4 441a           1297 	add	4,sp
+                        1298 .L762:
+                        1299 	.jumptype return
+000003c6 7f00           1300 	jmp	[lp]
+                        1301 --line356
+                        1302 ..lin.10c56029..4a6a309c.0_70::
+                        1303 	.type	_vrun_chrono_stop,@function
+                        1304 	.size	_vrun_chrono_stop,.-_vrun_chrono_stop
+                        1305 	.align	2
+                        1306 
+                        1307 	.section ".ghcalltbl",""
+00000048 00000000*      1308 .L761:	.word	.L760
+                        1309 	.type	.L761,@object
+                        1310 	.size	.L761,4
+                        1311 	.section ".ghrettbl",""
+00000024 00000000*      1312 .L763:	.word	.L762
+                        1313 	.type	.L763,@object
+                        1314 	.size	.L763,4
+                        1315 	.data
+                        1316 	.text
+                        1317 
+                        1318 
+                        1319 --358: /*===========================================================================
+                        1320 --359:   function: vrun_chrono_gettimestamp
+                        1321 --360:   [PUBLIC]
+                        1322 --361:   get elapsed time in variables vrun_chrono_sec, vrun_chrono_millisec, vrun_chrono_microsec
+                        1323 --362:   ===========================================================================*/
+                        1324 --363: unsigned long vrun_chrono_gettimestamp()
+                        1325 	.align	2
+                        1326 	.align	2
+                        1327 	.align	2
+                        1328 ..gh.f.a.2.e.10:
+                        1329 	.type	..gh.f.a.2.e.10,@object
+                        1330 	.size	..gh.f.a.2.e.10,0
+                        1331 	.global	_vrun_chrono_gettimestamp
+                        1332 _vrun_chrono_gettimestamp:
+000003c8 031eecff       1333 	addi	-20,sp,sp
+000003cc 63ff1100       1334 	st.w	lp,16[sp]
+000003d0 63ef0d00       1335 	st.w	r29,12[sp]
+                        1336 --	    .bf
+                        1337 .LDW43:
+                        1338 --364: {
+                        1339 --365:     unsigned long  vrun_chrono_row_us;
+                        1340 --366:     time_t time;
+                        1341 --368:     vrun_chrono_row_us   = sys_vtimer0_cnv_pclk2time((unsigned long)(vrun_etime - vrun_stime),&time);
+000003d4 2b0600000000*  1342 	mov	_vrun_etime,r11
+000003da 2b0f0100       1343 	ld.w	0[r11],r1
+000003de 2c0600000000*  1344 	mov	_vrun_stime,r12
+000003e4 2c170100       1345 	ld.w	0[r12],r2
+000003e8 a209           1346 	sub	r2,r1
+000003ea 0190           1347 	mov	r1,r18
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000003ec 009a           1348 	mov	0,r19
+000003ee 1230           1349 	mov	r18,r6
+000003f0 1338           1350 	mov	r19,r7
+000003f2 23460000       1351 	movea	0,sp,r8
+                        1352 .L812:
+                        1353 	jarl	_sys_vtimer0_cnv_pclk2time,lp
+                        1353 <EXPANSION BEGIN>
+                        1353 jarl22 _sys_vtimer0_cnv_pclk2time , lp 
+000003f6 80ff0000*      1353 <EXPANSION END>
+000003fa 0ae8           1354 	mov	r10,r29
+                        1355 --369:     vrun_chrono_sec      = time.sec;
+                        1356 --line369
+                        1357 ..lin.10c56029..d14625ea.0_71::
+                        1358 .LDWlin71:
+000003fc e30f0100       1359 	ld.hu	0[sp],r1
+00000400 2b0600000000*  1360 	mov	_vrun_chrono_sec,r11
+00000406 6b0f0000       1361 	st.h	r1,0[r11]
+                        1362 --370:     vrun_chrono_millisec = time.msec;
+                        1363 --line370
+                        1364 ..lin.10c56029..d14625ea.0_72::
+                        1365 .LDWlin72:
+0000040a e30f0500       1366 	ld.hu	4[sp],r1
+0000040e 2b0600000000*  1367 	mov	_vrun_chrono_millisec,r11
+00000414 6b0f0000       1368 	st.h	r1,0[r11]
+                        1369 --371:     vrun_chrono_microsec = time.usec;
+                        1370 --line371
+                        1371 ..lin.10c56029..d14625ea.0_73::
+                        1372 .LDWlin73:
+00000418 e30f0700       1373 	ld.hu	6[sp],r1
+0000041c 2b0600000000*  1374 	mov	_vrun_chrono_microsec,r11
+00000422 6b0f0000       1375 	st.h	r1,0[r11]
+                        1376 --372:     vrun_chrono_nanosec  = time.nsec;
+                        1377 --line372
+                        1378 ..lin.10c56029..d14625ea.0_74::
+                        1379 .LDWlin74:
+00000426 e30f0900       1380 	ld.hu	8[sp],r1
+0000042a 2b0600000000*  1381 	mov	_vrun_chrono_nanosec,r11
+00000430 6b0f0000       1382 	st.h	r1,0[r11]
+                        1383 --374:     return(vrun_chrono_row_us);
+                        1384 --line374
+                        1385 ..lin.10c56029..d14625ea.0_75::
+                        1386 .LDWlin75:
+00000434 1d50           1387 	mov	r29,r10
+                        1388 --	    .ef
+                        1389 .LDW53:
+00000436 23ff1100       1390 	ld.w	16[sp],lp
+0000043a 23ef0d00       1391 	ld.w	12[sp],r29
+0000043e 031e1400       1392 	addi	20,sp,sp
+                        1393 .L814:
+                        1394 	.jumptype return
+00000442 7f00           1395 	jmp	[lp]
+                        1396 --line374
+                        1397 ..lin.10c56029..d14625ea.0_76::
+                        1398 	.type	_vrun_chrono_gettimestamp,@function
+                        1399 	.size	_vrun_chrono_gettimestamp,.-_vrun_chrono_gettimestamp
+                        1400 	.align	2
+                        1401 --_vrun_chrono_row_us	r29	local
+                        1402 --_time	0[sp]	local
+                        1403 
+                        1404 	.section ".ghcalltbl",""
+0000004c 00000000*      1405 .L813:	.word	.L812
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1406 	.type	.L813,@object
+                        1407 	.size	.L813,4
+                        1408 	.section ".ghrettbl",""
+00000028 00000000*      1409 .L815:	.word	.L814
+                        1410 	.type	.L815,@object
+                        1411 	.size	.L815,4
+                        1412 	.data
+                        1413 	.text
+                        1414 
+                        1415 --375: }
+                        1416 
+                        1417 --377: /*===========================================================================
+                        1418 --378:   function: vrun_callback_set_func
+                        1419 --379:   [PUBLIC]
+                        1420 --380:   - Regist Periodic operation callback function entry adderss
+                        1421 --381:   ===========================================================================*/
+                        1422 --382: void vrun_callback_set_func(void (*pfunc)(),unsigned long timing_ms)
+                        1423 	.align	2
+                        1424 	.align	2
+                        1425 	.align	2
+                        1426 ..gh.f.a.2.e.11:
+                        1427 	.type	..gh.f.a.2.e.11,@object
+                        1428 	.size	..gh.f.a.2.e.11,0
+                        1429 	.global	_vrun_callback_set_func
+                        1430 _vrun_callback_set_func:
+00000444 541a           1431 	add	-12,sp
+00000446 63ff0900       1432 	st.w	lp,8[sp]
+0000044a 63e70500       1433 	st.w	r28,4[sp]
+0000044e 63ef0100       1434 	st.w	r29,0[sp]
+00000452 06e8           1435 	mov	r6,r29
+00000454 07e0           1436 	mov	r7,r28
+                        1437 --	    .bf
+                        1438 .LDW63:
+                        1439 --383: {
+                        1440 --384:     sys_vtimer1_set_func(pfunc,timing_ms);
+00000456 1d30           1441 	mov	r29,r6
+00000458 1c38           1442 	mov	r28,r7
+                        1443 .L856:
+                        1444 	jarl	_sys_vtimer1_set_func,lp
+                        1444 <EXPANSION BEGIN>
+                        1444 jarl22 _sys_vtimer1_set_func , lp 
+0000045a 80ff0000*      1444 <EXPANSION END>
+                        1445 --385: }
+                        1446 --	    .ef
+                        1447 .LDW73:
+                        1448 --line385
+                        1449 ..lin.10c56029..63dd8d91.0_77::
+                        1450 .LDWlin77:
+0000045e 23ff0900       1451 	ld.w	8[sp],lp
+00000462 23ef0100       1452 	ld.w	0[sp],r29
+00000466 23e70500       1453 	ld.w	4[sp],r28
+0000046a 4c1a           1454 	add	12,sp
+                        1455 .L858:
+                        1456 	.jumptype return
+0000046c 7f00           1457 	jmp	[lp]
+                        1458 --line385
+                        1459 ..lin.10c56029..63dd8d91.0_78::
+                        1460 	.type	_vrun_callback_set_func,@function
+                        1461 	.size	_vrun_callback_set_func,.-_vrun_callback_set_func
+                        1462 	.align	2
+                        1463 
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1464 --_pfunc	r29	param
+                        1465 --_timing_ms	r28	param
+                        1466 
+                        1467 	.section ".ghcalltbl",""
+00000050 00000000*      1468 .L857:	.word	.L856
+                        1469 	.type	.L857,@object
+                        1470 	.size	.L857,4
+                        1471 	.section ".ghrettbl",""
+0000002c 00000000*      1472 .L859:	.word	.L858
+                        1473 	.type	.L859,@object
+                        1474 	.size	.L859,4
+                        1475 	.data
+                        1476 	.text
+                        1477 
+                        1478 
+                        1479 --387: /*===========================================================================
+                        1480 --388: function: vrun_vrimer1_start
+                        1481 --389:   [PUBLIC]
+                        1482 --390:   - start system timer for Periodic operation callback function
+                        1483 --391:  ===========================================================================*/
+                        1484 --392: void vrun_vrimer1_start(void)
+                        1485 	.align	2
+                        1486 	.align	2
+                        1487 	.align	2
+                        1488 ..gh.f.a.2.e.12:
+                        1489 	.type	..gh.f.a.2.e.12,@object
+                        1490 	.size	..gh.f.a.2.e.12,0
+                        1491 	.global	_vrun_vrimer1_start
+                        1492 _vrun_vrimer1_start:
+0000046e 5c1a           1493 	add	-4,sp
+00000470 63ff0100       1494 	st.w	lp,0[sp]
+                        1495 --	    .bf
+                        1496 .LDW83:
+                        1497 --393: {
+                        1498 --394:     sys_vtimer1_start();
+                        1499 .L888:
+                        1500 	jarl	_sys_vtimer1_start,lp
+                        1500 <EXPANSION BEGIN>
+                        1500 jarl22 _sys_vtimer1_start , lp 
+00000474 80ff0000*      1500 <EXPANSION END>
+                        1501 --395: }
+                        1502 --	    .ef
+                        1503 .LDW93:
+                        1504 --line395
+                        1505 ..lin.10c56029..4ba88381.0_79::
+                        1506 .LDWlin79:
+00000478 23ff0100       1507 	ld.w	0[sp],lp
+0000047c 441a           1508 	add	4,sp
+                        1509 .L890:
+                        1510 	.jumptype return
+0000047e 7f00           1511 	jmp	[lp]
+                        1512 --line395
+                        1513 ..lin.10c56029..4ba88381.0_80::
+                        1514 	.type	_vrun_vrimer1_start,@function
+                        1515 	.size	_vrun_vrimer1_start,.-_vrun_vrimer1_start
+                        1516 	.align	2
+                        1517 
+                        1518 	.section ".ghcalltbl",""
+00000054 00000000*      1519 .L889:	.word	.L888
+                        1520 	.type	.L889,@object
+                        1521 	.size	.L889,4
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1522 	.section ".ghrettbl",""
+00000030 00000000*      1523 .L891:	.word	.L890
+                        1524 	.type	.L891,@object
+                        1525 	.size	.L891,4
+                        1526 	.data
+                        1527 	.text
+                        1528 
+                        1529 
+                        1530 --397: /*===========================================================================
+                        1531 --398:   function: vrun_set_signal_high
+                        1532 --399:   [PUBLIC]
+                        1533 --400:   - sets the signal n (n = 0,1,2 or 3) to high (1)
+                        1534 --401:   ===========================================================================*/
+                        1535 --402: void vrun_set_signal_high(unsigned char n)
+                        1536 	.align	2
+                        1537 	.align	2
+                        1538 	.align	2
+                        1539 ..gh.f.a.2.e.13:
+                        1540 	.type	..gh.f.a.2.e.13,@object
+                        1541 	.size	..gh.f.a.2.e.13,0
+                        1542 	.global	_vrun_set_signal_high
+                        1543 _vrun_set_signal_high:
+00000480 581a           1544 	add	-8,sp
+00000482 63ff0500       1545 	st.w	lp,4[sp]
+00000486 63ef0100       1546 	st.w	r29,0[sp]
+0000048a 06e8           1547 	mov	r6,r29
+0000048c 9d00           1548 	zxb	r29
+                        1549 --	    .bf
+                        1550 .LDW04:
+                        1551 --403: {
+                        1552 --404:     /* n should be between 0 and 3 */
+                        1553 --405:     n &= 0x03;
+0000048e ddee0300       1554 	andi	3,r29,r29
+00000492 9d00           1555 	zxb	r29
+                        1556 --406:     /* sets the port level to high */
+                        1557 --407:     sys_vport_set_high(n);
+00000494 1d30           1558 	mov	r29,r6
+                        1559 .L925:
+                        1560 	jarl	_sys_vport_set_high,lp
+                        1560 <EXPANSION BEGIN>
+                        1560 jarl22 _sys_vport_set_high , lp 
+00000496 80ff0000*      1560 <EXPANSION END>
+                        1561 --408: }
+                        1562 --	    .ef
+                        1563 .LDW14:
+                        1564 --line408
+                        1565 ..lin.10c56029..bbe744d6.0_81::
+                        1566 .LDWlin81:
+0000049a 23ff0500       1567 	ld.w	4[sp],lp
+0000049e 23ef0100       1568 	ld.w	0[sp],r29
+000004a2 481a           1569 	add	8,sp
+                        1570 .L927:
+                        1571 	.jumptype return
+000004a4 7f00           1572 	jmp	[lp]
+                        1573 --line408
+                        1574 ..lin.10c56029..bbe744d6.0_82::
+                        1575 	.type	_vrun_set_signal_high,@function
+                        1576 	.size	_vrun_set_signal_high,.-_vrun_set_signal_high
+                        1577 	.align	2
+                        1578 
+                        1579 --_n	r29	param
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1580 
+                        1581 	.section ".ghcalltbl",""
+00000058 00000000*      1582 .L926:	.word	.L925
+                        1583 	.type	.L926,@object
+                        1584 	.size	.L926,4
+                        1585 	.section ".ghrettbl",""
+00000034 00000000*      1586 .L928:	.word	.L927
+                        1587 	.type	.L928,@object
+                        1588 	.size	.L928,4
+                        1589 	.data
+                        1590 	.text
+                        1591 
+                        1592 
+                        1593 --410: /*===========================================================================
+                        1594 --411:   function: vrun_set_signal_low
+                        1595 --412:   [PUBLIC]
+                        1596 --413:   - sets the signal n (n = 0,1,2 or 3) to low (0)
+                        1597 --414:   ===========================================================================*/
+                        1598 --415: void vrun_set_signal_low(unsigned char n)
+                        1599 	.align	2
+                        1600 	.align	2
+                        1601 	.align	2
+                        1602 ..gh.f.a.2.e.14:
+                        1603 	.type	..gh.f.a.2.e.14,@object
+                        1604 	.size	..gh.f.a.2.e.14,0
+                        1605 	.global	_vrun_set_signal_low
+                        1606 _vrun_set_signal_low:
+000004a6 581a           1607 	add	-8,sp
+000004a8 63ff0500       1608 	st.w	lp,4[sp]
+000004ac 63ef0100       1609 	st.w	r29,0[sp]
+000004b0 06e8           1610 	mov	r6,r29
+000004b2 9d00           1611 	zxb	r29
+                        1612 --	    .bf
+                        1613 .LDW24:
+                        1614 --416: {
+                        1615 --417:     /* n should be between 0 and 3 */
+                        1616 --418:     n &= 0x03;
+000004b4 ddee0300       1617 	andi	3,r29,r29
+000004b8 9d00           1618 	zxb	r29
+                        1619 --419:     /* sets the port level to low */
+                        1620 --420:     sys_vport_set_low(n);
+000004ba 1d30           1621 	mov	r29,r6
+                        1622 .L973:
+                        1623 	jarl	_sys_vport_set_low,lp
+                        1623 <EXPANSION BEGIN>
+                        1623 jarl22 _sys_vport_set_low , lp 
+000004bc 80ff0000*      1623 <EXPANSION END>
+                        1624 --421: }
+                        1625 --	    .ef
+                        1626 .LDW34:
+                        1627 --line421
+                        1628 ..lin.10c56029..24b98088.0_83::
+                        1629 .LDWlin83:
+000004c0 23ff0500       1630 	ld.w	4[sp],lp
+000004c4 23ef0100       1631 	ld.w	0[sp],r29
+000004c8 481a           1632 	add	8,sp
+                        1633 .L975:
+                        1634 	.jumptype return
+000004ca 7f00           1635 	jmp	[lp]
+                        1636 --line421
+                        1637 ..lin.10c56029..24b98088.0_84::
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1638 	.type	_vrun_set_signal_low,@function
+                        1639 	.size	_vrun_set_signal_low,.-_vrun_set_signal_low
+                        1640 	.align	2
+                        1641 
+                        1642 --_n	r29	param
+                        1643 
+                        1644 	.section ".ghcalltbl",""
+0000005c 00000000*      1645 .L974:	.word	.L973
+                        1646 	.type	.L974,@object
+                        1647 	.size	.L974,4
+                        1648 	.section ".ghrettbl",""
+00000038 00000000*      1649 .L976:	.word	.L975
+                        1650 	.type	.L976,@object
+                        1651 	.size	.L976,4
+                        1652 	.data
+                        1653 	.text
+                        1654 
+                        1655 
+                        1656 --423: /*===========================================================================
+                        1657 --424:   function: vrun_init
+                        1658 --425:   [PRIVATE]
+                        1659 --426:   - initializes the interpreter
+                        1660 --427:   - should be called once before calling vrun_interpreter
+                        1661 --428:   ===========================================================================*/
+                        1662 --429: void vrun_init()
+                        1663 	.align	2
+                        1664 	.align	2
+                        1665 	.align	2
+                        1666 ..gh.f.a.2.e.15:
+                        1667 	.type	..gh.f.a.2.e.15,@object
+                        1668 	.size	..gh.f.a.2.e.15,0
+                        1669 	.global	_vrun_init
+                        1670 _vrun_init:
+000004cc 5c1a           1671 	add	-4,sp
+000004ce 63ff0100       1672 	st.w	lp,0[sp]
+                        1673 --	    .bf
+                        1674 .LDW44:
+                        1675 --430: {
+                        1676 --431:     /* clear the send and receive flags */
+                        1677 --432:     vrun_receiveflag = 0;
+000004d2 2b0600000000*  1678 	mov	_vrun_receiveflag,r11
+000004d8 4b070000       1679 	st.b	zero,0[r11]
+                        1680 --433:     vrun_sendflag = 0;
+                        1681 --line433
+                        1682 ..lin.10c56029..d22e6422.0_85::
+                        1683 .LDWlin85:
+000004dc 2b0600000000*  1684 	mov	_vrun_sendflag,r11
+000004e2 4b070000       1685 	st.b	zero,0[r11]
+                        1686 --434:     
+                        1687 --435:     /* clear the I/O buffer */
+                        1688 --436:     vrun_iobuff_clear();
+                        1689 .L1057:
+                        1690 --line436
+                        1691 ..lin.10c56029..d22e6422.0_86::
+                        1692 .LDWlin86:
+                        1693 	jarl	_vrun_iobuff_clear,lp
+                        1693 <EXPANSION BEGIN>
+                        1693 jarl22 _vrun_iobuff_clear , lp 
+000004e6 bfff88fc*      1693 <EXPANSION END>
+                        1694 --437:     
+                        1695 --438:     /* configure the UART */
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1696 --439:     sys_vuart_config();
+                        1697 .L1059:
+                        1698 --line439
+                        1699 ..lin.10c56029..d22e6422.0_87::
+                        1700 .LDWlin87:
+                        1701 	jarl	_sys_vuart_config,lp
+                        1701 <EXPANSION BEGIN>
+                        1701 jarl22 _sys_vuart_config , lp 
+000004ea 80ff0000*      1701 <EXPANSION END>
+                        1702 --440:     
+                        1703 --441:     /* clear the address of external buffer */
+                        1704 --442:     vrun_iobuff_external = NULL;
+                        1705 --line442
+                        1706 ..lin.10c56029..d22e6422.0_88::
+                        1707 .LDWlin88:
+000004ee 2b0600000000*  1708 	mov	_vrun_iobuff_external,r11
+000004f4 6b070100       1709 	st.w	zero,0[r11]
+                        1710 --444:     /* Timer start */
+                        1711 --445:     sys_vtimer1_start();
+                        1712 .L1061:
+                        1713 --line445
+                        1714 ..lin.10c56029..d22e6422.0_89::
+                        1715 .LDWlin89:
+                        1716 	jarl	_sys_vtimer1_start,lp
+                        1716 <EXPANSION BEGIN>
+                        1716 jarl22 _sys_vtimer1_start , lp 
+000004f8 80ff0000*      1716 <EXPANSION END>
+                        1717 --446:     sys_vtimer0_start();
+                        1718 .L1063:
+                        1719 --line446
+                        1720 ..lin.10c56029..d22e6422.0_90::
+                        1721 .LDWlin90:
+                        1722 	jarl	_sys_vtimer0_start,lp
+                        1722 <EXPANSION BEGIN>
+                        1722 jarl22 _sys_vtimer0_start , lp 
+000004fc 80ff0000*      1722 <EXPANSION END>
+                        1723 --447:     
+                        1724 --448:     /* call the user-defined initialization function */
+                        1725 --449:     vrun_cmd_init();
+                        1726 .L1065:
+                        1727 --line449
+                        1728 ..lin.10c56029..d22e6422.0_91::
+                        1729 .LDWlin91:
+                        1730 	jarl	_vrun_cmd_init,lp
+                        1730 <EXPANSION BEGIN>
+                        1730 jarl22 _vrun_cmd_init , lp 
+00000500 80ff0000*      1730 <EXPANSION END>
+                        1731 --450:     
+                        1732 --451:     vrun_iobuff_print_txt("vrun_cmd_init end \n");
+                        1733 --line451
+                        1734 ..lin.10c56029..d22e6422.0_92::
+                        1735 .LDWlin92:
+00000504 260600000000*  1736 	mov	.L1042,r6
+                        1737 .L1067:
+                        1738 	jarl	_vrun_iobuff_print_txt,lp
+                        1738 <EXPANSION BEGIN>
+                        1738 jarl22 _vrun_iobuff_print_txt , lp 
+0000050a bfff7afc*      1738 <EXPANSION END>
+                        1739 --453: }
+                        1740 --	    .ef
+                        1741 .LDW54:
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1742 --line453
+                        1743 ..lin.10c56029..d22e6422.0_93::
+                        1744 .LDWlin93:
+0000050e 23ff0100       1745 	ld.w	0[sp],lp
+00000512 441a           1746 	add	4,sp
+                        1747 .L1069:
+                        1748 	.jumptype return
+00000514 7f00           1749 	jmp	[lp]
+                        1750 --line453
+                        1751 ..lin.10c56029..d22e6422.0_94::
+                        1752 	.type	_vrun_init,@function
+                        1753 	.size	_vrun_init,.-_vrun_init
+                        1754 	.align	2
+                        1755 
+                        1756 	.section ".rodata","a"
+                        1757 .L1042:--	"vrun_cmd_init end \n"
+0000004c 7672756e       1758 	.byte	118,114,117,110
+00000050 5f636d64       1759 	.byte	95,99,109,100
+00000054 5f696e69       1760 	.byte	95,105,110,105
+00000058 7420656e       1761 	.byte	116,32,101,110
+0000005c 64200a00       1762 	.byte	100,32,10,0
+                        1763 	.type	.L1042,@object
+                        1764 	.size	.L1042,20
+                        1765 	.section ".ghcalltbl",""
+00000060 00000000*      1766 .L1058:	.word	.L1057
+                        1767 	.type	.L1058,@object
+                        1768 	.size	.L1058,4
+00000064 00000000*      1769 .L1060:	.word	.L1059
+                        1770 	.type	.L1060,@object
+                        1771 	.size	.L1060,4
+00000068 00000000*      1772 .L1062:	.word	.L1061
+                        1773 	.type	.L1062,@object
+                        1774 	.size	.L1062,4
+0000006c 00000000*      1775 .L1064:	.word	.L1063
+                        1776 	.type	.L1064,@object
+                        1777 	.size	.L1064,4
+00000070 00000000*      1778 .L1066:	.word	.L1065
+                        1779 	.type	.L1066,@object
+                        1780 	.size	.L1066,4
+00000074 00000000*      1781 .L1068:	.word	.L1067
+                        1782 	.type	.L1068,@object
+                        1783 	.size	.L1068,4
+                        1784 	.section ".ghrettbl",""
+0000003c 00000000*      1785 .L1070:	.word	.L1069
+                        1786 	.type	.L1070,@object
+                        1787 	.size	.L1070,4
+                        1788 	.data
+                        1789 	.text
+                        1790 
+                        1791 
+                        1792 --455: /*===========================================================================
+                        1793 --456:   function: vrun_interpreter
+                        1794 --457:   [PRIVATE]
+                        1795 --458:   - runs the command interpretation i.e.
+                        1796 --459:     - gets a command string from the console
+                        1797 --460:     - retrieve the command verb and the parameters
+                        1798 --461:     - parse the command table to find the function to call
+                        1799 --462:   ===========================================================================*/
+                        1800 --463: void vrun_interpreter()
+                        1801 	.align	2
+                        1802 	.align	2
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1803 	.align	2
+                        1804 ..gh.f.a.2.e.16:
+                        1805 	.type	..gh.f.a.2.e.16,@object
+                        1806 	.size	..gh.f.a.2.e.16,0
+                        1807 	.global	_vrun_interpreter
+                        1808 _vrun_interpreter:
+00000516 501a           1809 	add	-16,sp
+00000518 63ff0d00       1810 	st.w	lp,12[sp]
+0000051c 63df0900       1811 	st.w	r27,8[sp]
+00000520 63e70500       1812 	st.w	r28,4[sp]
+00000524 63ef0100       1813 	st.w	r29,0[sp]
+                        1814 --	    .bf
+                        1815 .LDW64:
+                        1816 --464: {
+                        1817 --465:     int i;
+                        1818 --466:     char *ptrbuff;
+                        1819 --467:     
+                        1820 --468:     while(1)
+00000528 0000           1821 	nop
+                        1822 .L1075:
+                        1823 --469:     {
+                        1824 --470:         /* determine where to read the bytes recevied */
+                        1825 --471:         if(vrun_iobuff_external == NULL)
+0000052a 2b0600000000*  1826 	mov	_vrun_iobuff_external,r11
+00000530 2b0f0100       1827 	ld.w	0[r11],r1
+00000534 e009           1828 	cmp	zero,r1
+00000536 da05*          1829 	bne	.L1076
+                        1830 --472:         {
+                        1831 --473:             ptrbuff = vrun_iobuff;
+                        1832 --line473
+                        1833 ..lin.10c56029..68caa6c2.0_95::
+                        1834 .LDWlin95:
+00000538 3c0600000000*  1835 	mov	_vrun_iobuff,r28
+0000053e e505*          1836 	br	.L1078
+                        1837 .L1076:
+                        1838 --474:         }
+                        1839 --475:         else
+                        1840 --476:         {
+                        1841 --477:             ptrbuff = vrun_iobuff_external;
+                        1842 --line477
+                        1843 ..lin.10c56029..68caa6c2.0_96::
+                        1844 .LDWlin96:
+00000540 2b0600000000*  1845 	mov	_vrun_iobuff_external,r11
+00000546 2be70100       1846 	ld.w	0[r11],r28
+                        1847 .L1078:
+                        1848 --478:         }
+                        1849 --480:         /* loop on null string command */
+                        1850 --481:         do
+                        1851 --line481
+                        1852 ..lin.10c56029..68caa6c2.0_97::
+                        1853 .LDWlin97:
+0000054a 0000           1854 	nop
+                        1855 .L1081:
+                        1856 --482:         {
+                        1857 --483:             /* invite */
+                        1858 --484:             vrun_iobuff_print_txt("vrun> ");
+0000054c 260600000000*  1859 	mov	.L1255,r6
+                        1860 .L1289:
+                        1861 	jarl	_vrun_iobuff_print_txt,lp
+                        1861 <EXPANSION BEGIN>
+                        1861 jarl22 _vrun_iobuff_print_txt , lp 
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+00000552 bfff32fc*      1861 <EXPANSION END>
+                        1862 --485:             vrun_console_put();
+                        1863 .L1291:
+                        1864 --line485
+                        1865 ..lin.10c56029..68caa6c2.0_98::
+                        1866 .LDWlin98:
+                        1867 	jarl	_vrun_console_put,lp
+                        1867 <EXPANSION BEGIN>
+                        1867 jarl22 _vrun_console_put , lp 
+00000556 bfff96fb*      1867 <EXPANSION END>
+                        1868 --486:             /* read next command */
+                        1869 --487:             vrun_console_get();
+                        1870 .L1293:
+                        1871 --line487
+                        1872 ..lin.10c56029..68caa6c2.0_99::
+                        1873 .LDWlin99:
+                        1874 	jarl	_vrun_console_get,lp
+                        1874 <EXPANSION BEGIN>
+                        1874 jarl22 _vrun_console_get , lp 
+0000055a bfffa6fa*      1874 <EXPANSION END>
+                        1875 --line489
+                        1876 ..lin.10c56029..68caa6c2.0_100::
+                        1877 .LDWlin100:
+0000055e 1c0f0000       1878 	ld.b	0[r28],r1
+00000562 6d0a           1879 	cmp	13,r1
+00000564 c2f5*          1880 	be	.L1081
+                        1881 --488:         }
+                        1882 --489:         while(*ptrbuff == VRUN_CHAR_CR);
+                        1883 --490:         
+                        1884 --491:         /* retrieve the command verb */
+                        1885 --492:         vrun_cmd[0] = strtok(ptrbuff, VRUN_STR_CMD_DELIM);
+                        1886 --line492
+                        1887 ..lin.10c56029..68caa6c2.0_101::
+                        1888 .LDWlin101:
+00000566 1c30           1889 	mov	r28,r6
+00000568 270600000000*  1890 	mov	.L1256,r7
+                        1891 .L1295:
+                        1892 	jarl	_strtok,lp
+                        1892 <EXPANSION BEGIN>
+                        1892 jarl22 _strtok , lp 
+0000056e 80ff0000*      1892 <EXPANSION END>
+00000572 2b0600000000*  1893 	mov	_vrun_cmd,r11
+00000578 6b570100       1894 	st.w	r10,0[r11]
+                        1895 --493:         
+                        1896 --494:         /* scan for the command parameters */
+                        1897 --495:         for(i = 1; i < (sizeof(vrun_cmd) / sizeof(vrun_cmd[0])); i++)
+                        1898 --line495
+                        1899 ..lin.10c56029..68caa6c2.0_102::
+                        1900 .LDWlin102:
+0000057c 01ea           1901 	mov	1,r29
+0000057e 9515*          1902 	br	.L1085
+                        1903 .L1084:
+                        1904 --496:         {
+                        1905 --497:             vrun_cmd[i] = strtok(NULL, VRUN_STR_CMD_DELIM);
+                        1906 --line497
+                        1907 ..lin.10c56029..68caa6c2.0_103::
+                        1908 .LDWlin103:
+00000580 1d08           1909 	mov	r29,r1
+00000582 c20a           1910 	shl	2,r1
+00000584 220600000000*  1911 	mov	_vrun_cmd,r2
+0000058a 01d8           1912 	mov	r1,r27
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+0000058c c2d9           1913 	add	r2,r27
+0000058e 0032           1914 	mov	0,r6
+00000590 270600000000*  1915 	mov	.L1256,r7
+                        1916 .L1297:
+                        1917 	jarl	_strtok,lp
+                        1917 <EXPANSION BEGIN>
+                        1917 jarl22 _strtok , lp 
+00000596 80ff0000*      1917 <EXPANSION END>
+0000059a 7b570100       1918 	st.w	r10,0[r27]
+                        1919 --line495
+                        1920 ..lin.10c56029..68caa6c2.0_104::
+                        1921 .LDWlin104:
+0000059e 41ea           1922 	add	1,r29
+                        1923 .L1085:
+000005a0 6bea           1924 	cmp	11,r29
+000005a2 f1ed*          1925 	bl	.L1084
+                        1926 --498:         }
+                        1927 --499:         
+                        1928 --500:         /* scan the table of function hooks to find the command word */
+                        1929 --501:         for(i = 0; i < (sizeof(vrun_command_hook) / sizeof(vrun_command_hook_type)); i++)
+                        1930 --line501
+                        1931 ..lin.10c56029..68caa6c2.0_105::
+                        1932 .LDWlin105:
+000005a4 00ea           1933 	mov	0,r29
+000005a6 f51d*          1934 	br	.L1089
+                        1935 .L1088:
+                        1936 --502:         {
+                        1937 --503:             if(strcmp(vrun_cmd[0], vrun_command_hook[i].verb) == 0)
+                        1938 --line503
+                        1939 ..lin.10c56029..68caa6c2.0_106::
+                        1940 .LDWlin106:
+000005a8 2b0600000000*  1941 	mov	_vrun_cmd,r11
+000005ae 2b370100       1942 	ld.w	0[r11],r6
+000005b2 1d08           1943 	mov	r29,r1
+000005b4 c30a           1944 	shl	3,r1
+000005b6 220600000000*  1945 	mov	_vrun_command_hook,r2
+000005bc 01f0           1946 	mov	r1,ep
+000005be c2f1           1947 	add	r2,ep
+000005c0 003d           1948 	sld.w	0[ep],r7
+                        1949 .L1299:
+                        1950 	jarl	_strcmp,lp
+                        1950 <EXPANSION BEGIN>
+                        1950 jarl22 _strcmp , lp 
+000005c2 80ff0000*      1950 <EXPANSION END>
+000005c6 e051           1951 	cmp	zero,r10
+000005c8 da0d*          1952 	bne	.L1087
+                        1953 --504:             {
+                        1954 --505:                 /* found known command word */
+                        1955 --506:                 /* call the associated function */
+                        1956 --507:                 vrun_command_hook[i].pfunc();
+                        1957 --line507
+                        1958 ..lin.10c56029..68caa6c2.0_107::
+                        1959 .LDWlin107:
+000005ca 1d08           1960 	mov	r29,r1
+000005cc c30a           1961 	shl	3,r1
+000005ce 220600000000*  1962 	mov	_vrun_command_hook,r2
+000005d4 01f0           1963 	mov	r1,ep
+000005d6 c2f1           1964 	add	r2,ep
+000005d8 020d           1965 	sld.w	4[ep],r1
+                        1966 .L1301:
+000005da e1c760f9       1967 	jarl	[r1],lp
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        1968 --508:     
+                        1969 --509:                 /* exit the for loop here */
+                        1970 --510:                 /* set i to -1 to indicate that the command was found in the hook table */
+                        1971 --511:                 i = -1;
+                        1972 --line511
+                        1973 ..lin.10c56029..68caa6c2.0_108::
+                        1974 .LDWlin108:
+000005de 1fea           1975 	mov	-1,r29
+                        1976 --512:                 break;
+000005e0 c505*          1977 	br	.L1092
+                        1978 .L1087:
+                        1979 --line501
+                        1980 ..lin.10c56029..68caa6c2.0_109::
+                        1981 .LDWlin109:
+000005e2 41ea           1982 	add	1,r29
+                        1983 .L1089:
+000005e4 6cea           1984 	cmp	12,r29
+000005e6 91e5*          1985 	bl	.L1088
+                        1986 .L1092:
+                        1987 --513:             }
+                        1988 --514:         }
+                        1989 --515:     
+                        1990 --516:         /* if no command processed, terminate with an error */
+                        1991 --517:         if(i != -1)
+                        1992 --line517
+                        1993 ..lin.10c56029..68caa6c2.0_110::
+                        1994 .LDWlin110:
+000005e8 7fea           1995 	cmp	-1,r29
+000005ea f20d*          1996 	be	.L1073
+                        1997 --518:         {
+                        1998 --519:             /* error: unknown command */
+                        1999 --520:             vrun_iobuff_print_txt(vrun_cmd[0]);
+                        2000 --line520
+                        2001 ..lin.10c56029..68caa6c2.0_111::
+                        2002 .LDWlin111:
+000005ec 2b0600000000*  2003 	mov	_vrun_cmd,r11
+000005f2 2b370100       2004 	ld.w	0[r11],r6
+                        2005 .L1303:
+                        2006 	jarl	_vrun_iobuff_print_txt,lp
+                        2006 <EXPANSION BEGIN>
+                        2006 jarl22 _vrun_iobuff_print_txt , lp 
+000005f6 bfff8efb*      2006 <EXPANSION END>
+                        2007 --521:             vrun_iobuff_print_txt(": unknown command" VRUN_STR_CRLF);
+                        2008 --line521
+                        2009 ..lin.10c56029..68caa6c2.0_112::
+                        2010 .LDWlin112:
+000005fa 260600000000*  2011 	mov	.L1257,r6
+                        2012 .L1305:
+                        2013 	jarl	_vrun_iobuff_print_txt,lp
+                        2013 <EXPANSION BEGIN>
+                        2013 jarl22 _vrun_iobuff_print_txt , lp 
+00000600 bfff84fb*      2013 <EXPANSION END>
+                        2014 --522:             vrun_console_put();
+                        2015 .L1307:
+                        2016 --line522
+                        2017 ..lin.10c56029..68caa6c2.0_113::
+                        2018 .LDWlin113:
+                        2019 	jarl	_vrun_console_put,lp
+                        2019 <EXPANSION BEGIN>
+                        2019 jarl22 _vrun_console_put , lp 
+00000604 bfffe8fa*      2019 <EXPANSION END>
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2020 .L1073:
+                        2021 --line468
+                        2022 ..lin.10c56029..68caa6c2.0_114::
+                        2023 .LDWlin114:
+00000608 9595*          2024 	br	.L1075
+                        2025 --	    .ef
+                        2026 .LDW74:
+                        2027 --line525
+                        2028 ..lin.10c56029..68caa6c2.0_115::
+                        2029 	.type	_vrun_interpreter,@function
+                        2030 	.size	_vrun_interpreter,.-_vrun_interpreter
+                        2031 	.align	2
+                        2032 --_i	r29	local
+                        2033 --_ptrbuff	r28	local
+                        2034 
+                        2035 	.section ".rodata","a"
+                        2036 .L1255:--	"vrun> "
+00000060 7672756e       2037 	.byte	118,114,117,110
+00000064 3e20           2038 	.byte	62,32
+00000066 00             2039 	.byte	0
+                        2040 	.type	.L1255,@object
+                        2041 	.size	.L1255,7
+                        2042 .L1256:--	" \r\n"
+00000067 200d0a00       2043 	.byte	32,13,10,0
+                        2044 	.type	.L1256,@object
+                        2045 	.size	.L1256,4
+                        2046 .L1257:--	": unknown command\r\n"
+0000006b 3a20756e       2047 	.byte	58,32,117,110
+0000006f 6b6e6f77       2048 	.byte	107,110,111,119
+00000073 6e20636f       2049 	.byte	110,32,99,111
+00000077 6d6d616e       2050 	.byte	109,109,97,110
+0000007b 640d0a00       2051 	.byte	100,13,10,0
+                        2052 	.type	.L1257,@object
+                        2053 	.size	.L1257,20
+                        2054 	.section ".ghcalltbl",""
+00000078 00000000*      2055 .L1290:	.word	.L1289
+                        2056 	.type	.L1290,@object
+                        2057 	.size	.L1290,4
+0000007c 00000000*      2058 .L1292:	.word	.L1291
+                        2059 	.type	.L1292,@object
+                        2060 	.size	.L1292,4
+00000080 00000000*      2061 .L1294:	.word	.L1293
+                        2062 	.type	.L1294,@object
+                        2063 	.size	.L1294,4
+00000084 00000000*      2064 .L1296:	.word	.L1295
+                        2065 	.type	.L1296,@object
+                        2066 	.size	.L1296,4
+00000088 00000000*      2067 .L1298:	.word	.L1297
+                        2068 	.type	.L1298,@object
+                        2069 	.size	.L1298,4
+0000008c 00000000*      2070 .L1300:	.word	.L1299
+                        2071 	.type	.L1300,@object
+                        2072 	.size	.L1300,4
+00000090 00000000*      2073 .L1302:	.word	.L1301
+                        2074 	.type	.L1302,@object
+                        2075 	.size	.L1302,4
+00000094 00000000*      2076 .L1304:	.word	.L1303
+                        2077 	.type	.L1304,@object
+                        2078 	.size	.L1304,4
+00000098 00000000*      2079 .L1306:	.word	.L1305
+                        2080 	.type	.L1306,@object
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2081 	.size	.L1306,4
+0000009c 00000000*      2082 .L1308:	.word	.L1307
+                        2083 	.type	.L1308,@object
+                        2084 	.size	.L1308,4
+                        2085 	.data
+                        2086 	.text
+                        2087 
+                        2088 --523:         }
+                        2089 --524:     }
+                        2090 --525: }
+                        2091 
+                        2092 --527: /*===========================================================================
+                        2093 --528:   function: vrun_cmd_help
+                        2094 --529:   [PUBLIC]
+                        2095 --530:   - lists all commands supported
+                        2096 --531:   - output the list to the console
+                        2097 --532:   ===========================================================================*/
+                        2098 --533: void vrun_cmd_help(void)
+                        2099 	.align	2
+                        2100 	.align	2
+                        2101 	.align	2
+                        2102 ..gh.f.a.2.e.17:
+                        2103 	.type	..gh.f.a.2.e.17,@object
+                        2104 	.size	..gh.f.a.2.e.17,0
+                        2105 	.global	_vrun_cmd_help
+                        2106 _vrun_cmd_help:
+0000060a 581a           2107 	add	-8,sp
+0000060c 63ff0500       2108 	st.w	lp,4[sp]
+00000610 63ef0100       2109 	st.w	r29,0[sp]
+                        2110 --	    .bf
+                        2111 .LDW84:
+                        2112 --534: {
+                        2113 --535:     int i;
+                        2114 --536:     
+                        2115 --537:     vrun_iobuff_clear();
+                        2116 .L1410:
+                        2117 	jarl	_vrun_iobuff_clear,lp
+                        2117 <EXPANSION BEGIN>
+                        2117 jarl22 _vrun_iobuff_clear , lp 
+00000614 bfff5afb*      2117 <EXPANSION END>
+                        2118 --538:     vrun_iobuff_print_txt("\r\n\r\nCommand catalog: \r\n");
+                        2119 --line538
+                        2120 ..lin.10c56029..69b760ca.0_116::
+                        2121 .LDWlin116:
+00000618 260600000000*  2122 	mov	.L1390,r6
+                        2123 .L1412:
+                        2124 	jarl	_vrun_iobuff_print_txt,lp
+                        2124 <EXPANSION BEGIN>
+                        2124 jarl22 _vrun_iobuff_print_txt , lp 
+0000061e bfff66fb*      2124 <EXPANSION END>
+                        2125 --539:     
+                        2126 --540:     /* scan the table of function hooks to retrieve each command word */
+                        2127 --541:     for(i = 0; i < (sizeof(vrun_command_hook) / sizeof(vrun_command_hook_type)); i++)
+                        2128 --line541
+                        2129 ..lin.10c56029..69b760ca.0_117::
+                        2130 .LDWlin117:
+00000622 00ea           2131 	mov	0,r29
+00000624 9525*          2132 	br	.L1314
+                        2133 .L1313:
+                        2134 --542:     {
+                        2135 --543:         if(*vrun_command_hook[i].verb)
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2136 --line543
+                        2137 ..lin.10c56029..69b760ca.0_118::
+                        2138 .LDWlin118:
+00000626 1d08           2139 	mov	r29,r1
+00000628 c30a           2140 	shl	3,r1
+0000062a 220600000000*  2141 	mov	_vrun_command_hook,r2
+00000630 01f0           2142 	mov	r1,ep
+00000632 c2f1           2143 	add	r2,ep
+00000634 00f5           2144 	sld.w	0[ep],ep
+00000636 000b           2145 	sld.b	0[ep],r1
+00000638 e009           2146 	cmp	zero,r1
+0000063a d215*          2147 	be	.L1312
+                        2148 --544:         {
+                        2149 --545:             vrun_iobuff_print_txt(" : ");
+                        2150 --line545
+                        2151 ..lin.10c56029..69b760ca.0_119::
+                        2152 .LDWlin119:
+0000063c 260600000000*  2153 	mov	.L1391,r6
+                        2154 .L1414:
+                        2155 	jarl	_vrun_iobuff_print_txt,lp
+                        2155 <EXPANSION BEGIN>
+                        2155 jarl22 _vrun_iobuff_print_txt , lp 
+00000642 bfff42fb*      2155 <EXPANSION END>
+                        2156 --546:             vrun_iobuff_print_txt(vrun_command_hook[i].verb);
+                        2157 --line546
+                        2158 ..lin.10c56029..69b760ca.0_120::
+                        2159 .LDWlin120:
+00000646 1d08           2160 	mov	r29,r1
+00000648 c30a           2161 	shl	3,r1
+0000064a 220600000000*  2162 	mov	_vrun_command_hook,r2
+00000650 01f0           2163 	mov	r1,ep
+00000652 c2f1           2164 	add	r2,ep
+00000654 0035           2165 	sld.w	0[ep],r6
+                        2166 .L1416:
+                        2167 	jarl	_vrun_iobuff_print_txt,lp
+                        2167 <EXPANSION BEGIN>
+                        2167 jarl22 _vrun_iobuff_print_txt , lp 
+00000656 bfff2efb*      2167 <EXPANSION END>
+                        2168 --547:             vrun_iobuff_print_txt("\r\n");
+                        2169 --line547
+                        2170 ..lin.10c56029..69b760ca.0_121::
+                        2171 .LDWlin121:
+0000065a 260600000000*  2172 	mov	.L1392,r6
+                        2173 .L1418:
+                        2174 	jarl	_vrun_iobuff_print_txt,lp
+                        2174 <EXPANSION BEGIN>
+                        2174 jarl22 _vrun_iobuff_print_txt , lp 
+00000660 bfff24fb*      2174 <EXPANSION END>
+                        2175 .L1312:
+                        2176 --line541
+                        2177 ..lin.10c56029..69b760ca.0_122::
+                        2178 .LDWlin122:
+00000664 41ea           2179 	add	1,r29
+                        2180 .L1314:
+00000666 6cea           2181 	cmp	12,r29
+00000668 f1dd*          2182 	bl	.L1313
+                        2183 --548:         }
+                        2184 --549:     }
+                        2185 --550:     vrun_iobuff_print_txt("\r\n");
+                        2186 --line550
+                        2187 ..lin.10c56029..69b760ca.0_123::
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2188 .LDWlin123:
+0000066a 260600000000*  2189 	mov	.L1392,r6
+                        2190 .L1420:
+                        2191 	jarl	_vrun_iobuff_print_txt,lp
+                        2191 <EXPANSION BEGIN>
+                        2191 jarl22 _vrun_iobuff_print_txt , lp 
+00000670 bfff14fb*      2191 <EXPANSION END>
+                        2192 --551:     vrun_console_put();
+                        2193 .L1422:
+                        2194 --line551
+                        2195 ..lin.10c56029..69b760ca.0_124::
+                        2196 .LDWlin124:
+                        2197 	jarl	_vrun_console_put,lp
+                        2197 <EXPANSION BEGIN>
+                        2197 jarl22 _vrun_console_put , lp 
+00000674 bfff78fa*      2197 <EXPANSION END>
+                        2198 --552: }
+                        2199 --	    .ef
+                        2200 .LDW94:
+                        2201 --line552
+                        2202 ..lin.10c56029..69b760ca.0_125::
+                        2203 .LDWlin125:
+00000678 23ff0500       2204 	ld.w	4[sp],lp
+0000067c 23ef0100       2205 	ld.w	0[sp],r29
+00000680 481a           2206 	add	8,sp
+                        2207 .L1424:
+                        2208 	.jumptype return
+00000682 7f00           2209 	jmp	[lp]
+                        2210 --line552
+                        2211 ..lin.10c56029..69b760ca.0_126::
+                        2212 	.type	_vrun_cmd_help,@function
+                        2213 	.size	_vrun_cmd_help,.-_vrun_cmd_help
+                        2214 	.align	2
+                        2215 --_i	r29	local
+                        2216 
+                        2217 	.section ".rodata","a"
+                        2218 .L1390:--	"\r\n\r\nCommand catalog: \r\n"
+0000007f 0d0a0d0a       2219 	.byte	13,10,13,10
+00000083 436f6d6d       2220 	.byte	67,111,109,109
+00000087 616e6420       2221 	.byte	97,110,100,32
+0000008b 63617461       2222 	.byte	99,97,116,97
+0000008f 6c6f673a       2223 	.byte	108,111,103,58
+00000093 200d0a00       2224 	.byte	32,13,10,0
+                        2225 	.type	.L1390,@object
+                        2226 	.size	.L1390,24
+                        2227 .L1391:--	" : "
+00000097 203a2000       2228 	.byte	32,58,32,0
+                        2229 	.type	.L1391,@object
+                        2230 	.size	.L1391,4
+                        2231 .L1392:--	"\r\n"
+0000009b 0d0a           2232 	.byte	13,10
+0000009d 00             2233 	.byte	0
+                        2234 	.type	.L1392,@object
+                        2235 	.size	.L1392,3
+                        2236 	.section ".ghcalltbl",""
+000000a0 00000000*      2237 .L1411:	.word	.L1410
+                        2238 	.type	.L1411,@object
+                        2239 	.size	.L1411,4
+000000a4 00000000*      2240 .L1413:	.word	.L1412
+                        2241 	.type	.L1413,@object
+                        2242 	.size	.L1413,4
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000000a8 00000000*      2243 .L1415:	.word	.L1414
+                        2244 	.type	.L1415,@object
+                        2245 	.size	.L1415,4
+000000ac 00000000*      2246 .L1417:	.word	.L1416
+                        2247 	.type	.L1417,@object
+                        2248 	.size	.L1417,4
+000000b0 00000000*      2249 .L1419:	.word	.L1418
+                        2250 	.type	.L1419,@object
+                        2251 	.size	.L1419,4
+000000b4 00000000*      2252 .L1421:	.word	.L1420
+                        2253 	.type	.L1421,@object
+                        2254 	.size	.L1421,4
+000000b8 00000000*      2255 .L1423:	.word	.L1422
+                        2256 	.type	.L1423,@object
+                        2257 	.size	.L1423,4
+                        2258 	.section ".ghrettbl",""
+00000040 00000000*      2259 .L1425:	.word	.L1424
+                        2260 	.type	.L1425,@object
+                        2261 	.size	.L1425,4
+                        2262 	.data
+                        2263 	.text
+                        2264 
+                        2265 
+                        2266 --554: /*===========================================================================
+                        2267 --555:   function: vrun_cmd_get_cpu_speed
+                        2268 --556:   [PUBLIC]
+                        2269 --557:   - benchmark CPU speed
+                        2270 --558:   ===========================================================================*/
+                        2271 --559: void vrun_cmd_get_cpu_speed(void)
+                        2272 	.align	2
+                        2273 	.align	2
+                        2274 	.align	2
+                        2275 ..gh.f.a.2.e.18:
+                        2276 	.type	..gh.f.a.2.e.18,@object
+                        2277 	.size	..gh.f.a.2.e.18,0
+                        2278 	.global	_vrun_cmd_get_cpu_speed
+                        2279 _vrun_cmd_get_cpu_speed:
+                        2280 	.need	___gh_float_printf
+00000684 031ed8ff       2281 	addi	-40,sp,sp
+00000688 63ff2500       2282 	st.w	lp,36[sp]
+0000068c 63ef2100       2283 	st.w	r29,32[sp]
+                        2284 --	    .bf
+                        2285 .LDW05:
+                        2286 --560: {
+                        2287 --561:     char  strtemp[32];
+                        2288 --562:     float freq;
+                        2289 --563:     
+                        2290 --564:     freq  = (float)sys_clock_quartzfreq();
+                        2291 .L1576:
+                        2292 	jarl	_sys_clock_quartzfreq,lp
+                        2292 <EXPANSION BEGIN>
+                        2292 jarl22 _sys_clock_quartzfreq , lp 
+00000690 80ff0000*      2292 <EXPANSION END>
+00000694 f05742ec       2293 	cvtf.uws	r10,r29
+                        2294 --565:     freq /= 1000000;
+                        2295 --line565
+                        2296 ..lin.10c56029..8271b698.0_127::
+                        2297 .LDWlin127:
+00000698 210600247449   2298 	mov	1232348160,r1
+0000069e e1ef6eec       2299 	divf.s	r1,r29,r29
+                        2300 --566:     vrun_iobuff_print_txt("\r\nsystem configured to run on quartz frequency of: ");
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2301 --line566
+                        2302 ..lin.10c56029..8271b698.0_128::
+                        2303 .LDWlin128:
+000006a2 260600000000*  2304 	mov	.L1542,r6
+                        2305 .L1578:
+                        2306 	jarl	_vrun_iobuff_print_txt,lp
+                        2306 <EXPANSION BEGIN>
+                        2306 jarl22 _vrun_iobuff_print_txt , lp 
+000006a8 bfffdcfa*      2306 <EXPANSION END>
+                        2307 --567:     sprintf(strtemp, "%3.3f MHz\r\n", freq);
+                        2308 --line567
+                        2309 ..lin.10c56029..8271b698.0_129::
+                        2310 .LDWlin129:
+000006ac 1d30           2311 	mov	r29,r6
+                        2312 .L1580:
+                        2313 	jarl	___ftod,lp
+                        2313 <EXPANSION BEGIN>
+                        2313 jarl22 ___ftod , lp 
+000006ae 80ff0000*      2313 <EXPANSION END>
+000006b2 0a90           2314 	mov	r10,r18
+000006b4 0b98           2315 	mov	r11,r19
+000006b6 1240           2316 	mov	r18,r8
+000006b8 1348           2317 	mov	r19,r9
+000006ba 23360000       2318 	movea	0,sp,r6
+000006be 270600000000*  2319 	mov	.L1543,r7
+                        2320 .L1582:
+                        2321 	jarl	_sprintf,lp
+                        2321 <EXPANSION BEGIN>
+                        2321 jarl22 _sprintf , lp 
+000006c4 80ff0000*      2321 <EXPANSION END>
+                        2322 --568:     vrun_iobuff_print_txt((const char *)strtemp);
+                        2323 --line568
+                        2324 ..lin.10c56029..8271b698.0_130::
+                        2325 .LDWlin130:
+000006c8 23360000       2326 	movea	0,sp,r6
+                        2327 .L1584:
+                        2328 	jarl	_vrun_iobuff_print_txt,lp
+                        2328 <EXPANSION BEGIN>
+                        2328 jarl22 _vrun_iobuff_print_txt , lp 
+000006cc bfffb8fa*      2328 <EXPANSION END>
+                        2329 --570:     vrun_iobuff_print_txt("\r\nbenchmarking CPU clock frequency...");
+                        2330 --line570
+                        2331 ..lin.10c56029..8271b698.0_131::
+                        2332 .LDWlin131:
+000006d0 260600000000*  2333 	mov	.L1544,r6
+                        2334 .L1586:
+                        2335 	jarl	_vrun_iobuff_print_txt,lp
+                        2335 <EXPANSION BEGIN>
+                        2335 jarl22 _vrun_iobuff_print_txt , lp 
+000006d6 bfffaefa*      2335 <EXPANSION END>
+                        2336 --571:     vrun_iobuff_print_txt("\r\napprox. 900,000 CPU clocks executed in: ");
+                        2337 --line571
+                        2338 ..lin.10c56029..8271b698.0_132::
+                        2339 .LDWlin132:
+000006da 260600000000*  2340 	mov	.L1545,r6
+                        2341 .L1588:
+                        2342 	jarl	_vrun_iobuff_print_txt,lp
+                        2342 <EXPANSION BEGIN>
+                        2342 jarl22 _vrun_iobuff_print_txt , lp 
+000006e0 bfffa4fa*      2342 <EXPANSION END>
+                        2343 --572:     
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2344 --573:     __DI();
+                        2345 --line573
+                        2346 ..lin.10c56029..8271b698.0_133::
+                        2347 .LDWlin133:
+000006e4 e0076001       2348 	di
+                        2349 --574:     vrun_set_signal_high(0);
+000006e8 0032           2350 	mov	0,r6
+                        2351 .L1590:
+                        2352 	jarl	_vrun_set_signal_high,lp
+                        2352 <EXPANSION BEGIN>
+                        2352 jarl22 _vrun_set_signal_high , lp 
+000006ea bfff96fd*      2352 <EXPANSION END>
+                        2353 --575:     vrun_chrono_start();
+                        2354 .L1592:
+                        2355 --line575
+                        2356 ..lin.10c56029..8271b698.0_134::
+                        2357 .LDWlin134:
+                        2358 	jarl	_vrun_chrono_start,lp
+                        2358 <EXPANSION BEGIN>
+                        2358 jarl22 _vrun_chrono_start , lp 
+000006ee bfff8efc*      2358 <EXPANSION END>
+                        2359 --576:     BENCH_CPU_SPEED(900000*2);
+                        2360 --line576
+                        2361 ..lin.10c56029..8271b698.0_135::
+                        2362 .LDWlin135:
+000006f2 260640771b00   2363 	mov	1800000,r6
+                        2364 .L1594:
+                        2365 	jarl	_BENCH_CPU_SPEED,lp
+                        2365 <EXPANSION BEGIN>
+                        2365 jarl22 _BENCH_CPU_SPEED , lp 
+000006f8 80ff0000*      2365 <EXPANSION END>
+                        2366 --577:     vrun_chrono_stop();
+                        2367 .L1596:
+                        2368 --line577
+                        2369 ..lin.10c56029..8271b698.0_136::
+                        2370 .LDWlin136:
+                        2371 	jarl	_vrun_chrono_stop,lp
+                        2371 <EXPANSION BEGIN>
+                        2371 jarl22 _vrun_chrono_stop , lp 
+000006fc bfffb0fc*      2371 <EXPANSION END>
+                        2372 --578:     vrun_set_signal_low(0);
+                        2373 --line578
+                        2374 ..lin.10c56029..8271b698.0_137::
+                        2375 .LDWlin137:
+00000700 0032           2376 	mov	0,r6
+                        2377 .L1598:
+                        2378 	jarl	_vrun_set_signal_low,lp
+                        2378 <EXPANSION BEGIN>
+                        2378 jarl22 _vrun_set_signal_low , lp 
+00000702 bfffa4fd*      2378 <EXPANSION END>
+                        2379 --579:     __EI();
+                        2380 --line579
+                        2381 ..lin.10c56029..8271b698.0_138::
+                        2382 .LDWlin138:
+00000706 e0876001       2383 	ei
+                        2384 --581:     vrun_iobuff_print_chrono();
+                        2385 .L1600:
+                        2386 	jarl	_vrun_iobuff_print_chrono,lp
+                        2386 <EXPANSION BEGIN>
+                        2386 jarl22 _vrun_iobuff_print_chrono , lp 
+0000070a bfffa6fb*      2386 <EXPANSION END>
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2387 --582:     vrun_iobuff_print_txt("\r\napprox. CPU frequency: ");
+                        2388 --line582
+                        2389 ..lin.10c56029..8271b698.0_139::
+                        2390 .LDWlin139:
+0000070e 260600000000*  2391 	mov	.L1546,r6
+                        2392 .L1602:
+                        2393 	jarl	_vrun_iobuff_print_txt,lp
+                        2393 <EXPANSION BEGIN>
+                        2393 jarl22 _vrun_iobuff_print_txt , lp 
+00000714 bfff70fa*      2393 <EXPANSION END>
+                        2394 --584:     freq = 900000 / (float)((vrun_chrono_millisec * 1000) + vrun_chrono_microsec);
+                        2395 --line584
+                        2396 ..lin.10c56029..8271b698.0_140::
+                        2397 .LDWlin140:
+00000718 2b0600000000*  2398 	mov	_vrun_chrono_millisec,r11
+0000071e eb0f0100       2399 	ld.hu	0[r11],r1
+00000722 2016e803       2400 	movea	1000,zero,r2
+00000726 e20f2002       2401 	mul	r2,r1,zero
+0000072a 2c0600000000*  2402 	mov	_vrun_chrono_microsec,r12
+00000730 ec170100       2403 	ld.hu	0[r12],r2
+00000734 c209           2404 	add	r2,r1
+00000736 e00f420c       2405 	cvtf.ws	r1,r1
+0000073a 220600ba5b49   2406 	mov	1230748160,r2
+00000740 e1176eec       2407 	divf.s	r1,r2,r29
+                        2408 --585:     sprintf(strtemp, "%f", freq);
+                        2409 --line585
+                        2410 ..lin.10c56029..8271b698.0_141::
+                        2411 .LDWlin141:
+00000744 1d30           2412 	mov	r29,r6
+                        2413 .L1604:
+                        2414 	jarl	___ftod,lp
+                        2414 <EXPANSION BEGIN>
+                        2414 jarl22 ___ftod , lp 
+00000746 80ff0000*      2414 <EXPANSION END>
+0000074a 0a90           2415 	mov	r10,r18
+0000074c 0b98           2416 	mov	r11,r19
+0000074e 1240           2417 	mov	r18,r8
+00000750 1348           2418 	mov	r19,r9
+00000752 23360000       2419 	movea	0,sp,r6
+00000756 270600000000*  2420 	mov	.L1547,r7
+                        2421 .L1606:
+                        2422 	jarl	_sprintf,lp
+                        2422 <EXPANSION BEGIN>
+                        2422 jarl22 _sprintf , lp 
+0000075c 80ff0000*      2422 <EXPANSION END>
+                        2423 --586:     vrun_iobuff_print_txt((const char *)strtemp);
+                        2424 --line586
+                        2425 ..lin.10c56029..8271b698.0_142::
+                        2426 .LDWlin142:
+00000760 23360000       2427 	movea	0,sp,r6
+                        2428 .L1608:
+                        2429 	jarl	_vrun_iobuff_print_txt,lp
+                        2429 <EXPANSION BEGIN>
+                        2429 jarl22 _vrun_iobuff_print_txt , lp 
+00000764 bfff20fa*      2429 <EXPANSION END>
+                        2430 --588:     vrun_iobuff_print_txt(" MHz\r\n");
+                        2431 --line588
+                        2432 ..lin.10c56029..8271b698.0_143::
+                        2433 .LDWlin143:
+00000768 260600000000*  2434 	mov	.L1548,r6
+                        2435 .L1610:
+
+                                                                      Page 45
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2436 	jarl	_vrun_iobuff_print_txt,lp
+                        2436 <EXPANSION BEGIN>
+                        2436 jarl22 _vrun_iobuff_print_txt , lp 
+0000076e bfff16fa*      2436 <EXPANSION END>
+                        2437 --590:     vrun_iobuff_print_txt("\r\n");
+                        2438 --line590
+                        2439 ..lin.10c56029..8271b698.0_144::
+                        2440 .LDWlin144:
+00000772 260600000000*  2441 	mov	.L1392,r6
+                        2442 .L1612:
+                        2443 	jarl	_vrun_iobuff_print_txt,lp
+                        2443 <EXPANSION BEGIN>
+                        2443 jarl22 _vrun_iobuff_print_txt , lp 
+00000778 bfff0cfa*      2443 <EXPANSION END>
+                        2444 --591:     vrun_console_put();
+                        2445 .L1614:
+                        2446 --line591
+                        2447 ..lin.10c56029..8271b698.0_145::
+                        2448 .LDWlin145:
+                        2449 	jarl	_vrun_console_put,lp
+                        2449 <EXPANSION BEGIN>
+                        2449 jarl22 _vrun_console_put , lp 
+0000077c bfff70f9*      2449 <EXPANSION END>
+                        2450 --592: }
+                        2451 --	    .ef
+                        2452 .LDW15:
+                        2453 --line592
+                        2454 ..lin.10c56029..8271b698.0_146::
+                        2455 .LDWlin146:
+00000780 23ff2500       2456 	ld.w	36[sp],lp
+00000784 23ef2100       2457 	ld.w	32[sp],r29
+00000788 031e2800       2458 	addi	40,sp,sp
+                        2459 .L1616:
+                        2460 	.jumptype return
+0000078c 7f00           2461 	jmp	[lp]
+                        2462 --line592
+                        2463 ..lin.10c56029..8271b698.0_147::
+                        2464 	.type	_vrun_cmd_get_cpu_speed,@function
+                        2465 	.size	_vrun_cmd_get_cpu_speed,.-_vrun_cmd_get_cpu_speed
+                        2466 	.align	2
+                        2467 --_strtemp	0[sp]	local
+                        2468 --_freq	r29	local
+                        2469 
+                        2470 	.section ".rodata","a"
+                        2471 .L1542:--	"\r\nsystem configured to run on quartz frequency of: "
+0000009e 0d0a7379       2472 	.byte	13,10,115,121
+000000a2 7374656d       2473 	.byte	115,116,101,109
+000000a6 20636f6e       2474 	.byte	32,99,111,110
+000000aa 66696775       2475 	.byte	102,105,103,117
+000000ae 72656420       2476 	.byte	114,101,100,32
+000000b2 746f2072       2477 	.byte	116,111,32,114
+000000b6 756e206f       2478 	.byte	117,110,32,111
+000000ba 6e207175       2479 	.byte	110,32,113,117
+000000be 6172747a       2480 	.byte	97,114,116,122
+000000c2 20667265       2481 	.byte	32,102,114,101
+000000c6 7175656e       2482 	.byte	113,117,101,110
+000000ca 6379206f       2483 	.byte	99,121,32,111
+000000ce 663a2000       2484 	.byte	102,58,32,0
+                        2485 	.type	.L1542,@object
+                        2486 	.size	.L1542,52
+                        2487 .L1543:--	"%3.3f MHz\r\n"
+
+                                                                      Page 46
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000000d2 25332e33       2488 	.byte	37,51,46,51
+000000d6 66204d48       2489 	.byte	102,32,77,72
+000000da 7a0d0a00       2490 	.byte	122,13,10,0
+                        2491 	.type	.L1543,@object
+                        2492 	.size	.L1543,12
+                        2493 .L1544:--	"\r\nbenchmarking CPU clock frequency..."
+000000de 0d0a6265       2494 	.byte	13,10,98,101
+000000e2 6e63686d       2495 	.byte	110,99,104,109
+000000e6 61726b69       2496 	.byte	97,114,107,105
+000000ea 6e672043       2497 	.byte	110,103,32,67
+000000ee 50552063       2498 	.byte	80,85,32,99
+000000f2 6c6f636b       2499 	.byte	108,111,99,107
+000000f6 20667265       2500 	.byte	32,102,114,101
+000000fa 7175656e       2501 	.byte	113,117,101,110
+000000fe 63792e2e       2502 	.byte	99,121,46,46
+00000102 2e00           2503 	.byte	46,0
+                        2504 	.type	.L1544,@object
+                        2505 	.size	.L1544,38
+                        2506 .L1545:--	"\r\napprox. 900,000 CPU clocks executed in: "
+00000104 0d0a6170       2507 	.byte	13,10,97,112
+00000108 70726f78       2508 	.byte	112,114,111,120
+0000010c 2e203930       2509 	.byte	46,32,57,48
+00000110 302c3030       2510 	.byte	48,44,48,48
+00000114 30204350       2511 	.byte	48,32,67,80
+00000118 5520636c       2512 	.byte	85,32,99,108
+0000011c 6f636b73       2513 	.byte	111,99,107,115
+00000120 20657865       2514 	.byte	32,101,120,101
+00000124 63757465       2515 	.byte	99,117,116,101
+00000128 6420696e       2516 	.byte	100,32,105,110
+0000012c 3a20           2517 	.byte	58,32
+0000012e 00             2518 	.byte	0
+                        2519 	.type	.L1545,@object
+                        2520 	.size	.L1545,43
+                        2521 .L1546:--	"\r\napprox. CPU frequency: "
+0000012f 0d0a6170       2522 	.byte	13,10,97,112
+00000133 70726f78       2523 	.byte	112,114,111,120
+00000137 2e204350       2524 	.byte	46,32,67,80
+0000013b 55206672       2525 	.byte	85,32,102,114
+0000013f 65717565       2526 	.byte	101,113,117,101
+00000143 6e63793a       2527 	.byte	110,99,121,58
+00000147 2000           2528 	.byte	32,0
+                        2529 	.type	.L1546,@object
+                        2530 	.size	.L1546,26
+                        2531 .L1547:--	"%f"
+00000149 2566           2532 	.byte	37,102
+0000014b 00             2533 	.byte	0
+                        2534 	.type	.L1547,@object
+                        2535 	.size	.L1547,3
+                        2536 .L1548:--	" MHz\r\n"
+0000014c 204d487a       2537 	.byte	32,77,72,122
+00000150 0d0a           2538 	.byte	13,10
+00000152 00             2539 	.byte	0
+                        2540 	.type	.L1548,@object
+                        2541 	.size	.L1548,7
+                        2542 	.section ".ghcalltbl",""
+000000bc 00000000*      2543 .L1577:	.word	.L1576
+                        2544 	.type	.L1577,@object
+                        2545 	.size	.L1577,4
+000000c0 00000000*      2546 .L1579:	.word	.L1578
+                        2547 	.type	.L1579,@object
+                        2548 	.size	.L1579,4
+
+                                                                      Page 47
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000000c4 00000000*      2549 .L1581:	.word	.L1580
+                        2550 	.type	.L1581,@object
+                        2551 	.size	.L1581,4
+000000c8 00000000*      2552 .L1583:	.word	.L1582
+                        2553 	.type	.L1583,@object
+                        2554 	.size	.L1583,4
+000000cc 00000000*      2555 .L1585:	.word	.L1584
+                        2556 	.type	.L1585,@object
+                        2557 	.size	.L1585,4
+000000d0 00000000*      2558 .L1587:	.word	.L1586
+                        2559 	.type	.L1587,@object
+                        2560 	.size	.L1587,4
+000000d4 00000000*      2561 .L1589:	.word	.L1588
+                        2562 	.type	.L1589,@object
+                        2563 	.size	.L1589,4
+000000d8 00000000*      2564 .L1591:	.word	.L1590
+                        2565 	.type	.L1591,@object
+                        2566 	.size	.L1591,4
+000000dc 00000000*      2567 .L1593:	.word	.L1592
+                        2568 	.type	.L1593,@object
+                        2569 	.size	.L1593,4
+000000e0 00000000*      2570 .L1595:	.word	.L1594
+                        2571 	.type	.L1595,@object
+                        2572 	.size	.L1595,4
+000000e4 00000000*      2573 .L1597:	.word	.L1596
+                        2574 	.type	.L1597,@object
+                        2575 	.size	.L1597,4
+000000e8 00000000*      2576 .L1599:	.word	.L1598
+                        2577 	.type	.L1599,@object
+                        2578 	.size	.L1599,4
+000000ec 00000000*      2579 .L1601:	.word	.L1600
+                        2580 	.type	.L1601,@object
+                        2581 	.size	.L1601,4
+000000f0 00000000*      2582 .L1603:	.word	.L1602
+                        2583 	.type	.L1603,@object
+                        2584 	.size	.L1603,4
+000000f4 00000000*      2585 .L1605:	.word	.L1604
+                        2586 	.type	.L1605,@object
+                        2587 	.size	.L1605,4
+000000f8 00000000*      2588 .L1607:	.word	.L1606
+                        2589 	.type	.L1607,@object
+                        2590 	.size	.L1607,4
+000000fc 00000000*      2591 .L1609:	.word	.L1608
+                        2592 	.type	.L1609,@object
+                        2593 	.size	.L1609,4
+00000100 00000000*      2594 .L1611:	.word	.L1610
+                        2595 	.type	.L1611,@object
+                        2596 	.size	.L1611,4
+00000104 00000000*      2597 .L1613:	.word	.L1612
+                        2598 	.type	.L1613,@object
+                        2599 	.size	.L1613,4
+00000108 00000000*      2600 .L1615:	.word	.L1614
+                        2601 	.type	.L1615,@object
+                        2602 	.size	.L1615,4
+                        2603 	.section ".ghrettbl",""
+00000044 00000000*      2604 .L1617:	.word	.L1616
+                        2605 	.type	.L1617,@object
+                        2606 	.size	.L1617,4
+                        2607 	.data
+                        2608 	.text
+                        2609 
+
+                                                                      Page 48
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2610 
+                        2611 --594: /*===========================================================================
+                        2612 --595:   function: vrun_chrono_start_id
+                        2613 --596:   [PUBLIC]
+                        2614 --597:   - starts the chrono
+                        2615 --598:   ===========================================================================*/
+                        2616 --599: void vrun_chrono_start_id(timer_id_t id)
+                        2617 	.align	2
+                        2618 	.align	2
+                        2619 	.align	2
+                        2620 ..gh.f.a.2.e.19:
+                        2621 	.type	..gh.f.a.2.e.19,@object
+                        2622 	.size	..gh.f.a.2.e.19,0
+                        2623 	.global	_vrun_chrono_start_id
+                        2624 _vrun_chrono_start_id:
+0000078e 541a           2625 	add	-12,sp
+00000790 63ff0900       2626 	st.w	lp,8[sp]
+00000794 63e70500       2627 	st.w	r28,4[sp]
+00000798 63ef0100       2628 	st.w	r29,0[sp]
+0000079c 06e8           2629 	mov	r6,r29
+                        2630 --	    .bf
+                        2631 .LDW25:
+                        2632 --600: {
+                        2633 --601:     vrun_stime_id[id] = sys_vtimer0_get_pclk_counter();
+0000079e 1d08           2634 	mov	r29,r1
+000007a0 c20a           2635 	shl	2,r1
+000007a2 220600000000*  2636 	mov	_vrun_stime_id,r2
+000007a8 01e0           2637 	mov	r1,r28
+000007aa c2e1           2638 	add	r2,r28
+                        2639 .L1661:
+                        2640 	jarl	_sys_vtimer0_get_pclk_counter,lp
+                        2640 <EXPANSION BEGIN>
+                        2640 jarl22 _sys_vtimer0_get_pclk_counter , lp 
+000007ac 80ff0000*      2640 <EXPANSION END>
+000007b0 7c570100       2641 	st.w	r10,0[r28]
+                        2642 --602:     vrun_etime_id[id] = vrun_stime_id[id];
+                        2643 --line602
+                        2644 ..lin.10c56029..bec654d0.0_148::
+                        2645 .LDWlin148:
+000007b4 1d08           2646 	mov	r29,r1
+000007b6 c20a           2647 	shl	2,r1
+000007b8 220600000000*  2648 	mov	_vrun_etime_id,r2
+000007be 01f0           2649 	mov	r1,ep
+000007c0 c2f1           2650 	add	r2,ep
+000007c2 1d08           2651 	mov	r29,r1
+000007c4 c20a           2652 	shl	2,r1
+000007c6 220600000000*  2653 	mov	_vrun_stime_id,r2
+000007cc c209           2654 	add	r2,r1
+000007ce 210f0100       2655 	ld.w	0[r1],r1
+000007d2 010d           2656 	sst.w	r1,0[ep]
+                        2657 --603: }
+                        2658 --	    .ef
+                        2659 .LDW35:
+                        2660 --line603
+                        2661 ..lin.10c56029..bec654d0.0_149::
+                        2662 .LDWlin149:
+000007d4 23ff0900       2663 	ld.w	8[sp],lp
+000007d8 23ef0100       2664 	ld.w	0[sp],r29
+000007dc 23e70500       2665 	ld.w	4[sp],r28
+000007e0 4c1a           2666 	add	12,sp
+                        2667 .L1663:
+
+                                                                      Page 49
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2668 	.jumptype return
+000007e2 7f00           2669 	jmp	[lp]
+                        2670 --line603
+                        2671 ..lin.10c56029..bec654d0.0_150::
+                        2672 	.type	_vrun_chrono_start_id,@function
+                        2673 	.size	_vrun_chrono_start_id,.-_vrun_chrono_start_id
+                        2674 	.align	2
+                        2675 
+                        2676 --_id	r29	param
+                        2677 
+                        2678 	.section ".ghcalltbl",""
+0000010c 00000000*      2679 .L1662:	.word	.L1661
+                        2680 	.type	.L1662,@object
+                        2681 	.size	.L1662,4
+                        2682 	.section ".ghrettbl",""
+00000048 00000000*      2683 .L1664:	.word	.L1663
+                        2684 	.type	.L1664,@object
+                        2685 	.size	.L1664,4
+                        2686 	.data
+                        2687 	.text
+                        2688 
+                        2689 
+                        2690 --605: /*===========================================================================
+                        2691 --606:   function: vrun_chrono_stop_id
+                        2692 --607:   [PUBLIC]
+                        2693 --608:   - stops the chrono
+                        2694 --609:   ===========================================================================*/
+                        2695 --610: void vrun_chrono_stop_id(timer_id_t id)
+                        2696 	.align	2
+                        2697 	.align	2
+                        2698 	.align	2
+                        2699 ..gh.f.a.2.e.20:
+                        2700 	.type	..gh.f.a.2.e.20,@object
+                        2701 	.size	..gh.f.a.2.e.20,0
+                        2702 	.global	_vrun_chrono_stop_id
+                        2703 _vrun_chrono_stop_id:
+000007e4 541a           2704 	add	-12,sp
+000007e6 63ff0900       2705 	st.w	lp,8[sp]
+000007ea 63e70500       2706 	st.w	r28,4[sp]
+000007ee 63ef0100       2707 	st.w	r29,0[sp]
+000007f2 06e8           2708 	mov	r6,r29
+                        2709 --	    .bf
+                        2710 .LDW45:
+                        2711 --611: {
+                        2712 --612:     vrun_etime_id[id] = sys_vtimer0_get_pclk_counter();
+000007f4 1d08           2713 	mov	r29,r1
+000007f6 c20a           2714 	shl	2,r1
+000007f8 220600000000*  2715 	mov	_vrun_etime_id,r2
+000007fe 01e0           2716 	mov	r1,r28
+00000800 c2e1           2717 	add	r2,r28
+                        2718 .L1704:
+                        2719 	jarl	_sys_vtimer0_get_pclk_counter,lp
+                        2719 <EXPANSION BEGIN>
+                        2719 jarl22 _sys_vtimer0_get_pclk_counter , lp 
+00000802 80ff0000*      2719 <EXPANSION END>
+00000806 7c570100       2720 	st.w	r10,0[r28]
+                        2721 --613: }
+                        2722 --	    .ef
+                        2723 .LDW55:
+                        2724 --line613
+                        2725 ..lin.10c56029..44d35d28.0_151::
+
+                                                                      Page 50
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2726 .LDWlin151:
+0000080a 23ff0900       2727 	ld.w	8[sp],lp
+0000080e 23ef0100       2728 	ld.w	0[sp],r29
+00000812 23e70500       2729 	ld.w	4[sp],r28
+00000816 4c1a           2730 	add	12,sp
+                        2731 .L1706:
+                        2732 	.jumptype return
+00000818 7f00           2733 	jmp	[lp]
+                        2734 --line613
+                        2735 ..lin.10c56029..44d35d28.0_152::
+                        2736 	.type	_vrun_chrono_stop_id,@function
+                        2737 	.size	_vrun_chrono_stop_id,.-_vrun_chrono_stop_id
+                        2738 	.align	2
+                        2739 
+                        2740 --_id	r29	param
+                        2741 
+                        2742 	.section ".ghcalltbl",""
+00000110 00000000*      2743 .L1705:	.word	.L1704
+                        2744 	.type	.L1705,@object
+                        2745 	.size	.L1705,4
+                        2746 	.section ".ghrettbl",""
+0000004c 00000000*      2747 .L1707:	.word	.L1706
+                        2748 	.type	.L1707,@object
+                        2749 	.size	.L1707,4
+                        2750 	.data
+                        2751 	.text
+                        2752 
+                        2753 
+                        2754 --615: /*===========================================================================
+                        2755 --616:   function: vrun_chrono_gettimestamp_id
+                        2756 --617:   [PUBLIC]
+                        2757 --618:   get elapsed time in variables vrun_chrono_sec, vrun_chrono_millisec, vrun_chrono_microsec
+                        2758 --619:   ===========================================================================*/
+                        2759 --620: unsigned long vrun_chrono_gettimestamp_id(timer_id_t id)
+                        2760 	.align	2
+                        2761 	.align	2
+                        2762 	.align	2
+                        2763 ..gh.f.a.2.e.21:
+                        2764 	.type	..gh.f.a.2.e.21,@object
+                        2765 	.size	..gh.f.a.2.e.21,0
+                        2766 	.global	_vrun_chrono_gettimestamp_id
+                        2767 _vrun_chrono_gettimestamp_id:
+0000081a 031ee8ff       2768 	addi	-24,sp,sp
+0000081e 63ff1500       2769 	st.w	lp,20[sp]
+00000822 63e71100       2770 	st.w	r28,16[sp]
+00000826 63ef0d00       2771 	st.w	r29,12[sp]
+0000082a 06e8           2772 	mov	r6,r29
+                        2773 --	    .bf
+                        2774 .LDW65:
+                        2775 --621: {
+                        2776 --622:     unsigned long  vrun_chrono_row_us;
+                        2777 --623:     time_t time;
+                        2778 --625:     if ( VRUN_TIMER_ID_PE1 == id ) {
+0000082c e0e9           2779 	cmp	zero,r29
+0000082e ca1d*          2780 	bne	.L1710
+                        2781 --626:         vrun_chrono_row_us          = sys_vtimer0_cnv_pclk2time((unsigned long)(vrun_etime_id[id] - vrun_stime_id[id]), &time);
+                        2782 --line626
+                        2783 ..lin.10c56029..a851f7b6.0_153::
+                        2784 .LDWlin153:
+00000830 1d08           2785 	mov	r29,r1
+00000832 c20a           2786 	shl	2,r1
+
+                                                                      Page 51
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+00000834 220600000000*  2787 	mov	_vrun_etime_id,r2
+0000083a 01f0           2788 	mov	r1,ep
+0000083c c2f1           2789 	add	r2,ep
+0000083e 1d08           2790 	mov	r29,r1
+00000840 c20a           2791 	shl	2,r1
+00000842 220600000000*  2792 	mov	_vrun_stime_id,r2
+00000848 c209           2793 	add	r2,r1
+0000084a 0015           2794 	sld.w	0[ep],r2
+0000084c 210f0100       2795 	ld.w	0[r1],r1
+00000850 8209           2796 	subr	r2,r1
+00000852 0190           2797 	mov	r1,r18
+00000854 009a           2798 	mov	0,r19
+00000856 1230           2799 	mov	r18,r6
+00000858 1338           2800 	mov	r19,r7
+0000085a 23460000       2801 	movea	0,sp,r8
+                        2802 .L1766:
+                        2803 	jarl	_sys_vtimer0_cnv_pclk2time,lp
+                        2803 <EXPANSION BEGIN>
+                        2803 jarl22 _sys_vtimer0_cnv_pclk2time , lp 
+0000085e 80ff0000*      2803 <EXPANSION END>
+00000862 0ae0           2804 	mov	r10,r28
+00000864 b51d*          2805 	br	.L1712
+                        2806 .L1710:
+                        2807 --627:     }
+                        2808 --628:     else {
+                        2809 --629:         vrun_chrono_row_us          = sys_vtimer0_cnv_pclk2time_pe2((unsigned long)(vrun_etime_id[id] - vrun_stime_id[id]), &time);
+                        2810 --line629
+                        2811 ..lin.10c56029..a851f7b6.0_154::
+                        2812 .LDWlin154:
+00000866 1d08           2813 	mov	r29,r1
+00000868 c20a           2814 	shl	2,r1
+0000086a 220600000000*  2815 	mov	_vrun_etime_id,r2
+00000870 01f0           2816 	mov	r1,ep
+00000872 c2f1           2817 	add	r2,ep
+00000874 1d08           2818 	mov	r29,r1
+00000876 c20a           2819 	shl	2,r1
+00000878 220600000000*  2820 	mov	_vrun_stime_id,r2
+0000087e c209           2821 	add	r2,r1
+00000880 0015           2822 	sld.w	0[ep],r2
+00000882 210f0100       2823 	ld.w	0[r1],r1
+00000886 8209           2824 	subr	r2,r1
+00000888 0190           2825 	mov	r1,r18
+0000088a 009a           2826 	mov	0,r19
+0000088c 1230           2827 	mov	r18,r6
+0000088e 1338           2828 	mov	r19,r7
+00000890 23460000       2829 	movea	0,sp,r8
+                        2830 .L1768:
+                        2831 	jarl	_sys_vtimer0_cnv_pclk2time_pe2,lp
+                        2831 <EXPANSION BEGIN>
+                        2831 jarl22 _sys_vtimer0_cnv_pclk2time_pe2 , lp 
+00000894 80ff0000*      2831 <EXPANSION END>
+00000898 0ae0           2832 	mov	r10,r28
+                        2833 .L1712:
+                        2834 --630:     }
+                        2835 --631:     vrun_chrono_sec_id[id]      = time.sec;
+                        2836 --line631
+                        2837 ..lin.10c56029..a851f7b6.0_155::
+                        2838 .LDWlin155:
+0000089a 1d08           2839 	mov	r29,r1
+0000089c c20a           2840 	shl	2,r1
+0000089e 220600000000*  2841 	mov	_vrun_chrono_sec_id,r2
+
+                                                                      Page 52
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+000008a4 01f0           2842 	mov	r1,ep
+000008a6 c2f1           2843 	add	r2,ep
+000008a8 230f0100       2844 	ld.w	0[sp],r1
+000008ac 010d           2845 	sst.w	r1,0[ep]
+                        2846 --632:     vrun_chrono_millisec_id[id] = time.msec;
+                        2847 --line632
+                        2848 ..lin.10c56029..a851f7b6.0_156::
+                        2849 .LDWlin156:
+000008ae 1d08           2850 	mov	r29,r1
+000008b0 c10a           2851 	shl	1,r1
+000008b2 220600000000*  2852 	mov	_vrun_chrono_millisec_id,r2
+000008b8 01f0           2853 	mov	r1,ep
+000008ba c2f1           2854 	add	r2,ep
+000008bc e30f0500       2855 	ld.hu	4[sp],r1
+000008c0 800c           2856 	sst.h	r1,0[ep]
+                        2857 --633:     vrun_chrono_microsec_id[id] = time.usec;
+                        2858 --line633
+                        2859 ..lin.10c56029..a851f7b6.0_157::
+                        2860 .LDWlin157:
+000008c2 1d08           2861 	mov	r29,r1
+000008c4 c10a           2862 	shl	1,r1
+000008c6 220600000000*  2863 	mov	_vrun_chrono_microsec_id,r2
+000008cc 01f0           2864 	mov	r1,ep
+000008ce c2f1           2865 	add	r2,ep
+000008d0 e30f0700       2866 	ld.hu	6[sp],r1
+000008d4 800c           2867 	sst.h	r1,0[ep]
+                        2868 --634:     vrun_chrono_nanosec_id[id]  = time.nsec;
+                        2869 --line634
+                        2870 ..lin.10c56029..a851f7b6.0_158::
+                        2871 .LDWlin158:
+000008d6 1d08           2872 	mov	r29,r1
+000008d8 c10a           2873 	shl	1,r1
+000008da 220600000000*  2874 	mov	_vrun_chrono_nanosec_id,r2
+000008e0 01f0           2875 	mov	r1,ep
+000008e2 c2f1           2876 	add	r2,ep
+000008e4 e30f0900       2877 	ld.hu	8[sp],r1
+000008e8 800c           2878 	sst.h	r1,0[ep]
+                        2879 --636:     return(vrun_chrono_row_us);
+                        2880 --line636
+                        2881 ..lin.10c56029..a851f7b6.0_159::
+                        2882 .LDWlin159:
+000008ea 1c50           2883 	mov	r28,r10
+                        2884 --	    .ef
+                        2885 .LDW75:
+000008ec 23ff1500       2886 	ld.w	20[sp],lp
+000008f0 23ef0d00       2887 	ld.w	12[sp],r29
+000008f4 23e71100       2888 	ld.w	16[sp],r28
+000008f8 031e1800       2889 	addi	24,sp,sp
+                        2890 .L1770:
+                        2891 	.jumptype return
+000008fc 7f00           2892 	jmp	[lp]
+                        2893 --line636
+                        2894 ..lin.10c56029..a851f7b6.0_160::
+                        2895 	.type	_vrun_chrono_gettimestamp_id,@function
+                        2896 	.size	_vrun_chrono_gettimestamp_id,.-_vrun_chrono_gettimestamp_id
+                        2897 	.align	2
+                        2898 --_vrun_chrono_row_us	r28	local
+                        2899 --_time	0[sp]	local
+                        2900 
+                        2901 --_id	r29	param
+                        2902 
+
+                                                                      Page 53
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2903 	.section ".ghcalltbl",""
+00000114 00000000*      2904 .L1767:	.word	.L1766
+                        2905 	.type	.L1767,@object
+                        2906 	.size	.L1767,4
+00000118 00000000*      2907 .L1769:	.word	.L1768
+                        2908 	.type	.L1769,@object
+                        2909 	.size	.L1769,4
+                        2910 	.section ".ghrettbl",""
+00000050 00000000*      2911 .L1771:	.word	.L1770
+                        2912 	.type	.L1771,@object
+                        2913 	.size	.L1771,4
+                        2914 	.data
+                        2915 	.text
+                        2916 
+                        2917 --637: }
+                        2918 
+                        2919 --639: unsigned long  vrun_chrono_getsec_id(timer_id_t id)
+                        2920 	.align	2
+                        2921 	.align	2
+                        2922 	.align	2
+                        2923 ..gh.f.a.2.e.22:
+                        2924 	.type	..gh.f.a.2.e.22,@object
+                        2925 	.size	..gh.f.a.2.e.22,0
+                        2926 	.global	_vrun_chrono_getsec_id
+                        2927 _vrun_chrono_getsec_id:
+000008fe 0608           2928 	mov	r6,r1
+                        2929 --	    .bf
+                        2930 .LDW85:
+                        2931 --640: {
+                        2932 --641:     return vrun_chrono_sec_id[id];
+00000900 0110           2933 	mov	r1,r2
+00000902 c212           2934 	shl	2,r2
+00000904 330600000000*  2935 	mov	_vrun_chrono_sec_id,r19
+0000090a 02f0           2936 	mov	r2,ep
+0000090c d3f1           2937 	add	r19,ep
+0000090e 0055           2938 	sld.w	0[ep],r10
+                        2939 --	    .ef
+                        2940 .LDW95:
+                        2941 .L1795:
+                        2942 --line642
+                        2943 ..lin.10c56029..1ba6cfd.0_161::
+                        2944 .LDWlin161:
+                        2945 	.jumptype return
+00000910 7f00           2946 	jmp	[lp]
+                        2947 --line642
+                        2948 ..lin.10c56029..1ba6cfd.0_162::
+                        2949 	.type	_vrun_chrono_getsec_id,@function
+                        2950 	.size	_vrun_chrono_getsec_id,.-_vrun_chrono_getsec_id
+                        2951 	.align	2
+                        2952 
+                        2953 --_id	r1	param
+                        2954 
+                        2955 	.section ".ghrettbl",""
+00000054 00000000*      2956 .L1796:	.word	.L1795
+                        2957 	.type	.L1796,@object
+                        2958 	.size	.L1796,4
+                        2959 	.data
+                        2960 	.text
+                        2961 
+                        2962 --642: }
+                        2963 
+
+                                                                      Page 54
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        2964 --644: unsigned short vrun_chrono_getmsec_id(timer_id_t id)
+                        2965 	.align	2
+                        2966 	.align	2
+                        2967 	.align	2
+                        2968 ..gh.f.a.2.e.23:
+                        2969 	.type	..gh.f.a.2.e.23,@object
+                        2970 	.size	..gh.f.a.2.e.23,0
+                        2971 	.global	_vrun_chrono_getmsec_id
+                        2972 _vrun_chrono_getmsec_id:
+00000912 0608           2973 	mov	r6,r1
+                        2974 --	    .bf
+                        2975 .LDW06:
+                        2976 --645: {
+                        2977 --646:     return vrun_chrono_millisec_id[id];
+00000914 0110           2978 	mov	r1,r2
+00000916 c112           2979 	shl	1,r2
+00000918 330600000000*  2980 	mov	_vrun_chrono_millisec_id,r19
+0000091e 02f0           2981 	mov	r2,ep
+00000920 d3f1           2982 	add	r19,ep
+00000922 7050           2983 	sld.hu	0[ep],r10
+                        2984 --	    .ef
+                        2985 .LDW16:
+                        2986 .L1827:
+                        2987 --line647
+                        2988 ..lin.10c56029..8bf911ea.0_163::
+                        2989 .LDWlin163:
+                        2990 	.jumptype return
+00000924 7f00           2991 	jmp	[lp]
+                        2992 --line647
+                        2993 ..lin.10c56029..8bf911ea.0_164::
+                        2994 	.type	_vrun_chrono_getmsec_id,@function
+                        2995 	.size	_vrun_chrono_getmsec_id,.-_vrun_chrono_getmsec_id
+                        2996 	.align	2
+                        2997 
+                        2998 --_id	r1	param
+                        2999 
+                        3000 	.section ".ghrettbl",""
+00000058 00000000*      3001 .L1828:	.word	.L1827
+                        3002 	.type	.L1828,@object
+                        3003 	.size	.L1828,4
+                        3004 	.data
+                        3005 	.text
+                        3006 
+                        3007 --647: }
+                        3008 
+                        3009 --649: unsigned short vrun_chrono_getusec_id(timer_id_t id)
+                        3010 	.align	2
+                        3011 	.align	2
+                        3012 	.align	2
+                        3013 ..gh.f.a.2.e.24:
+                        3014 	.type	..gh.f.a.2.e.24,@object
+                        3015 	.size	..gh.f.a.2.e.24,0
+                        3016 	.global	_vrun_chrono_getusec_id
+                        3017 _vrun_chrono_getusec_id:
+00000926 0608           3018 	mov	r6,r1
+                        3019 --	    .bf
+                        3020 .LDW26:
+                        3021 --650: {
+                        3022 --651:     return vrun_chrono_microsec_id[id];
+00000928 0110           3023 	mov	r1,r2
+0000092a c112           3024 	shl	1,r2
+
+                                                                      Page 55
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+0000092c 330600000000*  3025 	mov	_vrun_chrono_microsec_id,r19
+00000932 02f0           3026 	mov	r2,ep
+00000934 d3f1           3027 	add	r19,ep
+00000936 7050           3028 	sld.hu	0[ep],r10
+                        3029 --	    .ef
+                        3030 .LDW36:
+                        3031 .L1859:
+                        3032 --line652
+                        3033 ..lin.10c56029..f3caf7f2.0_165::
+                        3034 .LDWlin165:
+                        3035 	.jumptype return
+00000938 7f00           3036 	jmp	[lp]
+                        3037 --line652
+                        3038 ..lin.10c56029..f3caf7f2.0_166::
+                        3039 	.type	_vrun_chrono_getusec_id,@function
+                        3040 	.size	_vrun_chrono_getusec_id,.-_vrun_chrono_getusec_id
+                        3041 	.align	2
+                        3042 
+                        3043 --_id	r1	param
+                        3044 
+                        3045 	.section ".ghrettbl",""
+0000005c 00000000*      3046 .L1860:	.word	.L1859
+                        3047 	.type	.L1860,@object
+                        3048 	.size	.L1860,4
+                        3049 	.data
+                        3050 	.text
+                        3051 
+                        3052 --652: }
+                        3053 
+                        3054 --654: unsigned short vrun_chrono_getnsec_id(timer_id_t id)
+                        3055 	.align	2
+                        3056 	.align	2
+                        3057 	.align	2
+                        3058 ..gh.f.a.2.e.25:
+                        3059 	.type	..gh.f.a.2.e.25,@object
+                        3060 	.size	..gh.f.a.2.e.25,0
+                        3061 	.global	_vrun_chrono_getnsec_id
+                        3062 _vrun_chrono_getnsec_id:
+0000093a 0608           3063 	mov	r6,r1
+                        3064 --	    .bf
+                        3065 .LDW46:
+                        3066 --655: {
+                        3067 --656:     return vrun_chrono_nanosec_id[id];
+0000093c 0110           3068 	mov	r1,r2
+0000093e c112           3069 	shl	1,r2
+00000940 330600000000*  3070 	mov	_vrun_chrono_nanosec_id,r19
+00000946 02f0           3071 	mov	r2,ep
+00000948 d3f1           3072 	add	r19,ep
+0000094a 7050           3073 	sld.hu	0[ep],r10
+                        3074 --	    .ef
+                        3075 .LDW56:
+                        3076 .L1891:
+                        3077 --line657
+                        3078 ..lin.10c56029..d8f34eab.0_167::
+                        3079 .LDWlin167:
+                        3080 	.jumptype return
+0000094c 7f00           3081 	jmp	[lp]
+                        3082 --line657
+                        3083 ..lin.10c56029..d8f34eab.0_168::
+                        3084 	.type	_vrun_chrono_getnsec_id,@function
+                        3085 	.size	_vrun_chrono_getnsec_id,.-_vrun_chrono_getnsec_id
+
+                                                                      Page 56
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        3086 	.align	2
+                        3087 
+                        3088 --_id	r1	param
+                        3089 
+                        3090 	.section ".ghrettbl",""
+00000060 00000000*      3091 .L1892:	.word	.L1891
+                        3092 	.type	.L1892,@object
+                        3093 	.size	.L1892,4
+                        3094 	.data
+                        3095 	.text
+                        3096 
+                        3097 --657: }
+                        3098 	.align	2
+                        3099 --_CMD_USR_1	_CMD_USR_1	import
+                        3100 --_CMD_USR_2	_CMD_USR_2	import
+                        3101 --_CMD_USR_3	_CMD_USR_3	import
+                        3102 --_CMD_USR_4	_CMD_USR_4	import
+                        3103 --_CMD_USR_5	_CMD_USR_5	import
+                        3104 --_CMD_USR_6	_CMD_USR_6	import
+                        3105 --_CMD_USR_7	_CMD_USR_7	import
+                        3106 --_CMD_USR_8	_CMD_USR_8	import
+                        3107 --_CMD_USR_9	_CMD_USR_9	import
+                        3108 --_CMD_USR_10	_CMD_USR_10	import
+                        3109 --_vrun_cmd	_vrun_cmd	static
+                        3110 --_vrun_iobuff	_vrun_iobuff	static
+                        3111 --_vrun_iobuff_idx	_vrun_iobuff_idx	static
+                        3112 --_vrun_iobuff_external	_vrun_iobuff_external	static
+                        3113 --_vrun_size_iobuff_external	_vrun_size_iobuff_external	static
+                        3114 
+                        3115 	.section ".rodata","a"
+00000153 00             3116 	.space	1
+                        3117 	.align	4
+                        3118 	.global	_vrun_command_hook
+00000154 00000000*      3119 _vrun_command_hook:	.word	.L142
+00000158 00000000*      3120 	.word	_vrun_cmd_help
+0000015c 00000000*      3121 	.word	.L144
+00000160 00000000*      3122 	.word	_vrun_cmd_get_cpu_speed
+00000164 00000000*      3123 	.word	_CMD_USR_1
+00000168 00000000*      3124 	.word	_vrun_cmd_usr_1
+0000016c 00000000*      3125 	.word	_CMD_USR_2
+00000170 00000000*      3126 	.word	_vrun_cmd_usr_2
+00000174 00000000*      3127 	.word	_CMD_USR_3
+00000178 00000000*      3128 	.word	_vrun_cmd_usr_3
+0000017c 00000000*      3129 	.word	_CMD_USR_4
+00000180 00000000*      3130 	.word	_vrun_cmd_usr_4
+00000184 00000000*      3131 	.word	_CMD_USR_5
+00000188 00000000*      3132 	.word	_vrun_cmd_usr_5
+0000018c 00000000*      3133 	.word	_CMD_USR_6
+00000190 00000000*      3134 	.word	_vrun_cmd_usr_6
+00000194 00000000*      3135 	.word	_CMD_USR_7
+00000198 00000000*      3136 	.word	_vrun_cmd_usr_7
+0000019c 00000000*      3137 	.word	_CMD_USR_8
+000001a0 00000000*      3138 	.word	_vrun_cmd_usr_8
+000001a4 00000000*      3139 	.word	_CMD_USR_9
+000001a8 00000000*      3140 	.word	_vrun_cmd_usr_9
+000001ac 00000000*      3141 	.word	_CMD_USR_10
+000001b0 00000000*      3142 	.word	_vrun_cmd_usr_10
+                        3143 	.type	_vrun_command_hook,@object
+                        3144 	.size	_vrun_command_hook,96
+                        3145 	.data
+                        3146 	.section ".bss","awb"
+
+                                                                      Page 57
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+                        3147 	.align	4
+                        3148 	.global	_vrun_chrono_sec_id
+0000013c 000000000000   3149 _vrun_chrono_sec_id:	.space	24
+00000142 000000000000 
+00000148 000000000000 
+0000014e 000000000000 
+                        3150 	.type	_vrun_chrono_sec_id,@object
+                        3151 	.size	_vrun_chrono_sec_id,24
+                        3152 	.align	4
+                        3153 	.global	_vrun_stime_id
+00000154 000000000000   3154 _vrun_stime_id:	.space	24
+0000015a 000000000000 
+00000160 000000000000 
+00000166 000000000000 
+                        3155 	.type	_vrun_stime_id,@object
+                        3156 	.size	_vrun_stime_id,24
+                        3157 	.align	4
+                        3158 	.global	_vrun_etime_id
+0000016c 000000000000   3159 _vrun_etime_id:	.space	24
+00000172 000000000000 
+00000178 000000000000 
+0000017e 000000000000 
+                        3160 	.type	_vrun_etime_id,@object
+                        3161 	.size	_vrun_etime_id,24
+                        3162 	.global	_vrun_printf_buff
+00000184 000000000000   3163 _vrun_printf_buff:	.space	128
+0000018a 000000000000 
+00000190 000000000000 
+00000196 000000000000 
+0000019c 000000000000 
+000001a2 000000000000 
+000001a8 000000000000 
+000001ae 000000000000 
+000001b4 000000000000 
+000001ba 000000000000 
+000001c0 000000000000 
+000001c6 000000000000 
+000001cc 000000000000 
+000001d2 000000000000 
+000001d8 000000000000 
+000001de 000000000000 
+000001e4 000000000000 
+000001ea 000000000000 
+000001f0 000000000000 
+000001f6 000000000000 
+000001fc 000000000000 
+00000202 0000 
+                        3164 	.type	_vrun_printf_buff,@object
+                        3165 	.size	_vrun_printf_buff,128
+                        3166 	.align	4
+                        3167 	.global	_vrun_stime
+00000204 00000000       3168 _vrun_stime:	.space	4
+                        3169 	.type	_vrun_stime,@object
+                        3170 	.size	_vrun_stime,4
+                        3171 	.align	4
+                        3172 	.global	_vrun_etime
+00000208 00000000       3173 _vrun_etime:	.space	4
+                        3174 	.type	_vrun_etime,@object
+                        3175 	.size	_vrun_etime,4
+                        3176 	.align	2
+                        3177 	.global	_vrun_chrono_millisec_id
+
+                                                                      Page 58
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000nn41.si
+0000020c 000000000000   3178 _vrun_chrono_millisec_id:	.space	12
+00000212 000000000000 
+                        3179 	.type	_vrun_chrono_millisec_id,@object
+                        3180 	.size	_vrun_chrono_millisec_id,12
+                        3181 	.align	2
+                        3182 	.global	_vrun_chrono_microsec_id
+00000218 000000000000   3183 _vrun_chrono_microsec_id:	.space	12
+0000021e 000000000000 
+                        3184 	.type	_vrun_chrono_microsec_id,@object
+                        3185 	.size	_vrun_chrono_microsec_id,12
+                        3186 	.align	2
+                        3187 	.global	_vrun_chrono_nanosec_id
+00000224 000000000000   3188 _vrun_chrono_nanosec_id:	.space	12
+0000022a 000000000000 
+                        3189 	.type	_vrun_chrono_nanosec_id,@object
+                        3190 	.size	_vrun_chrono_nanosec_id,12
+                        3191 	.align	2
+                        3192 	.global	_vrun_chrono_sec
+00000230 0000           3193 _vrun_chrono_sec:	.space	2
+                        3194 	.type	_vrun_chrono_sec,@object
+                        3195 	.size	_vrun_chrono_sec,2
+                        3196 	.align	2
+                        3197 	.global	_vrun_chrono_millisec
+00000232 0000           3198 _vrun_chrono_millisec:	.space	2
+                        3199 	.type	_vrun_chrono_millisec,@object
+                        3200 	.size	_vrun_chrono_millisec,2
+                        3201 	.align	2
+                        3202 	.global	_vrun_chrono_microsec
+00000234 0000           3203 _vrun_chrono_microsec:	.space	2
+                        3204 	.type	_vrun_chrono_microsec,@object
+                        3205 	.size	_vrun_chrono_microsec,2
+                        3206 	.align	2
+                        3207 	.global	_vrun_chrono_nanosec
+00000236 0000           3208 _vrun_chrono_nanosec:	.space	2
+                        3209 	.type	_vrun_chrono_nanosec,@object
+                        3210 	.size	_vrun_chrono_nanosec,2
+                        3211 	.global	_vrun_receiveflag
+00000238 00             3212 _vrun_receiveflag:	.space	1
+                        3213 	.type	_vrun_receiveflag,@object
+                        3214 	.size	_vrun_receiveflag,1
+                        3215 	.global	_vrun_sendflag
+00000239 00             3216 _vrun_sendflag:	.space	1
+                        3217 	.type	_vrun_sendflag,@object
+                        3218 	.size	_vrun_sendflag,1
+                        3219 	.data
+                        3220 	.need	_vrun_get_package_info
+                        3221 	.ghsnote version,30
+                        3222 	.ghsnote tools,3
+                        3223 	.ghsnote options,656
+                        3224 	.text
+                        3225 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cl_vrun_cmd.5Cvrun...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF4B..0::
+                        3226 .rh850_flags FLOAT,REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

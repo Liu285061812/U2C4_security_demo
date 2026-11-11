@@ -1,0 +1,2579 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common -I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif -I..\..\icum\sal\include\library -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_sha256.dbo -source=icum_l_sha256.c -comp -o ..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\gh_0000p7s1.o -list=..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_sha256.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+Source File: icum_l_sha256.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common
+                           2 --		-I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif
+                           3 --		-I..\..\icum\sal\include\library
+                           4 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common
+                           5 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\device\
+                           8 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           9 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          10 --		-I..\..\icum\target\u2cx\include\driver
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          14 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          15 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          16 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          17 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          18 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          19 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          20 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          21 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          22 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          23 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          24 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          25 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          26 --		.text=.icum_library.text -section .rodata=.icum_library.rodata
+                          27 --		-section .bss=.icum_library.bss -section .data=.icum_library.data
+                          28 --		-DTFM_ALREADY_SET -DTFM_TIMING_RESISTANT -DENDIAN_LITTLE
+                          29 --		-DENDIAN_32BITWORD -DLTC_RH850 -filetype.c
+                          30 --		..\..\icum\sal\src\library\l_cry\cry_pk\cry_hash\icum_l_sha256.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_sha256.o
+                          33 --Source File:   ..\..\icum\sal\src\library\l_cry\cry_pk\cry_hash\icum_l_sha256.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:25 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_library.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   Cryptographic Library HASH                                */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: #include "icum_l_hash.h"
+                          70 --28: #include "../cry_common/icum_l_macros.h"
+                          71 --29: #include "../cry_common/icum_l_my_toolbox.h"
+                          72 --30: /* For the used GHS macro functions */
+                          73 --31: #include "icum_d_misc_pub.h"
+                          74 --34: /**********************************************************************************
+                          75 --35: * K array defined without condition + force alignment on 32-bit boundary
+                          76 --36: ***********************************************************************************/
+                          77 --37: ALIGNVAR(4)
+                          78 --38: /* the K array */
+                          79 --39: static const uint32_t K[64] = {
+                          80 --40:     0x428a2f98U, 0x71374491U, 0xb5c0fbcfU, 0xe9b5dba5U, 0x3956c25bU,
+                          81 --41:     0x59f111f1U, 0x923f82a4U, 0xab1c5ed5U, 0xd807aa98U, 0x12835b01U,
+                          82 --42:     0x243185beU, 0x550c7dc3U, 0x72be5d74U, 0x80deb1feU, 0x9bdc06a7U,
+                          83 --43:     0xc19bf174U, 0xe49b69c1U, 0xefbe4786U, 0x0fc19dc6U, 0x240ca1ccU,
+                          84 --44:     0x2de92c6fU, 0x4a7484aaU, 0x5cb0a9dcU, 0x76f988daU, 0x983e5152U,
+                          85 --45:     0xa831c66dU, 0xb00327c8U, 0xbf597fc7U, 0xc6e00bf3U, 0xd5a79147U,
+                          86 --46:     0x06ca6351U, 0x14292967U, 0x27b70a85U, 0x2e1b2138U, 0x4d2c6dfcU,
+                          87 --47:     0x53380d13U, 0x650a7354U, 0x766a0abbU, 0x81c2c92eU, 0x92722c85U,
+                          88 --48:     0xa2bfe8a1U, 0xa81a664bU, 0xc24b8b70U, 0xc76c51a3U, 0xd192e819U,
+                          89 --49:     0xd6990624U, 0xf40e3585U, 0x106aa070U, 0x19a4c116U, 0x1e376c08U,
+                          90 --50:     0x2748774cU, 0x34b0bcb5U, 0x391c0cb3U, 0x4ed8aa4aU, 0x5b9cca4fU,
+                          91 --51:     0x682e6ff3U, 0x748f82eeU, 0x78a5636fU, 0x84c87814U, 0x8cc70208U,
+                          92 --52:     0x90befffaU, 0xa4506cebU, 0xbef9a3f7U, 0xc67178f2U
+                          93 --53: };
+                          94 --54: /* #endif */
+                          95 --56: /* Various logical functions */
+                          96 --57: #define Ch(x,y,z)       ((z) ^ ((x) & ((y) ^ (z))))
+                          97 --58: #define Maj(x,y,z)      ((((x) | (y)) & (z)) | ((x) & (y))) 
+                          98 --59: #define S(x, n)         RORc((x),(n))
+                          99 --60: #define R(x, n)         (((x)&0xFFFFFFFFU)>>(n))
+                         100 --61: #define Sigma0(x)       (S(x, 2U) ^ S(x, 13U) ^ S(x, 22U))
+                         101 --62: #define Sigma1(x)       (S(x, 6U) ^ S(x, 11U) ^ S(x, 25U))
+                         102 --63: #define Gamma0(x)       (S(x, 7U) ^ S(x, 18U) ^ R(x, 3U))
+                         103 --64: #define Gamma1(x)       (S(x, 17U) ^ S(x, 19U) ^ R(x, 10U))
+                         104 --67: #undef RND
+                         105 --69: /* #pragma ghs section text    = ".icum_library_ram" */
+                         106 --70: /* compress 512-bits */
+                         107 --72: /****************************************************************************************
+                         108 --73: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0028]:[ICUMFW_UD_L_CRY_HASH_0028]
+                         109 --74: * Function name: l_HASH_Sha256Compress()
+                         110 --75: * Description  : # HASH the 64-byte data.
+                         111 --76: * Arguments    : (IN-OUT)  md     : HASH state
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                         112 --77: *                (IN)      buf   : work buffer
+                         113 --78: * Return Value : 
+                         114 --79: ****************************************************************************************/
+                         115 --80: static uint32_t l_HASH_Sha256Compress(hash_inner_state_t * md, const uint8_t *buf)
+                         116 	.align	2
+                         117 	.align	2
+                         118 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF76..0::
+                         119 	.align	2
+                         120 	.align	2
+                         121 ..gh.f.a.2.e.0:
+                         122 	.type	..gh.f.a.2.e.0,@object
+                         123 	.size	..gh.f.a.2.e.0,0
+                         124 	.global	_l_HASH_Sha256Compress..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.
+                         125 _l_HASH_Sha256Compress..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.:
+                         126 _l_HASH_Sha256Compress:
+00000000 031ec4fe        127 	addi	-316,sp,sp
+00000004 63ff3901        128 	st.w	lp,312[sp]
+00000008 63d72d01        129 	st.w	r26,300[sp]
+0000000c 63df2901        130 	st.w	r27,296[sp]
+00000010 63e72501        131 	st.w	r28,292[sp]
+00000014 63c73501        132 	st.w	r24,308[sp]
+00000018 63cf3101        133 	st.w	r25,304[sp]
+0000001c 63ef2101        134 	st.w	r29,288[sp]
+00000020 06d8            135 	mov	r6,r27
+00000022 07d0            136 	mov	r7,r26
+00000024 3c0600000000*   137 	mov	_K,r28
+                         138 --	    .bf
+                         139 .LDW01:
+                         140 --81: {
+                         141 --82:     uint32_t S[8], W[64], t0, t1;
+                         142 --83:     uint32_t  i;
+                         143 --84:     uint32_t  times;
+                         144 --86:     /* copy state into S */
+                         145 --87:     for (i = 0u; i < 8U; i++)
+                         146 --line87
+                         147 ..lin.76e3fe0e..56822397.0_1::
+                         148 .LDWlin1:
+0000002a 00ea            149 	mov	0,r29
+0000002c d50d*           150 	br	.L7
+                         151 .L6:
+                         152 --88:     {
+                         153 --89:         S[i] = md->sha256.state[i];
+                         154 --line89
+                         155 ..lin.76e3fe0e..56822397.0_2::
+                         156 .LDWlin2:
+0000002e 1d08            157 	mov	r29,r1
+00000030 c20a            158 	shl	2,r1
+00000032 23f60001        159 	movea	256,sp,ep
+00000036 c1f1            160 	add	r1,ep
+00000038 1b160800        161 	addi	8,r27,r2
+0000003c c209            162 	add	r2,r1
+0000003e 210f0100        163 	ld.w	0[r1],r1
+00000042 010d            164 	sst.w	r1,0[ep]
+00000044 41ea            165 	add	1,r29
+                         166 .L7:
+00000046 68ea            167 	cmp	8,r29
+00000048 b1f5*           168 	bl	.L6
+                         169 --90:     }
+                         170 --92:     /* copy the state into 512-bits into W[0..15]   "W [i] = 0U" for countermeasures against CERT-c. */
+                         171 --93:     for (i = 0U; i < 16U; i++)
+                         172 --line93
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                         173 ..lin.76e3fe0e..56822397.0_3::
+                         174 .LDWlin3:
+0000004a 00ea            175 	mov	0,r29
+0000004c a515*           176 	br	.L11
+                         177 .L10:
+                         178 --94:     {
+                         179 --95:         W[i] = 0U;
+                         180 --line95
+                         181 ..lin.76e3fe0e..56822397.0_4::
+                         182 .LDWlin4:
+0000004e 1df0            183 	mov	r29,ep
+00000050 c2f2            184 	shl	2,ep
+00000052 23160000        185 	movea	0,sp,r2
+00000056 c2f1            186 	add	r2,ep
+00000058 0105            187 	sst.w	zero,0[ep]
+                         188 --96:         LOAD32H(W[i], buf + (4U*i));
+0000005a 1df0            189 	mov	r29,ep
+0000005c c2f2            190 	shl	2,ep
+0000005e 03c0            191 	mov	sp,r24
+00000060 dec1            192 	add	ep,r24
+00000062 daf1            193 	add	r26,ep
+00000064 00cd            194 	sld.w	0[ep],r25
+                         195 ..gh.beginasm.1:
+                         196 	.type	..gh.beginasm.1,@object
+                         197 	.size	..gh.beginasm.1,0
+                         198 --ASM MACRO: Start
+00000066 e0cf4053        199     bsw    r25, r10
+                         200 --ASM MACRO: End
+                         201 ..gh.endasm.2:
+                         202 	.type	..gh.endasm.2,@object
+                         203 	.size	..gh.endasm.2,0
+0000006a 78570100        204 	st.w	r10,0[r24]
+                         205 --line93
+                         206 ..lin.76e3fe0e..56822397.0_5::
+                         207 .LDWlin5:
+0000006e 41ea            208 	add	1,r29
+                         209 .L11:
+00000070 1d06f0ff        210 	addi	-16,r29,zero
+00000074 d9ed*           211 	bnl	.L10
+                         212 --97:     }
+                         213 --99:     /* fill W[16..63]  "W [i] = 0U" for countermeasures against CERT-c. */
+                         214 --100:     for (i = 16U; i < 64U; i++)
+                         215 --line100
+                         216 ..lin.76e3fe0e..56822397.0_6::
+                         217 .LDWlin6:
+00000076 20ee1000        218 	movea	16,zero,r29
+0000007a e55d*           219 	br	.L15
+                         220 .L14:
+                         221 --101:     {
+                         222 --102:         W[i] = 0U;
+                         223 --line102
+                         224 ..lin.76e3fe0e..56822397.0_7::
+                         225 .LDWlin7:
+0000007c 1df0            226 	mov	r29,ep
+0000007e c2f2            227 	shl	2,ep
+00000080 23160000        228 	movea	0,sp,r2
+00000084 c2f1            229 	add	r2,ep
+00000086 0105            230 	sst.w	zero,0[ep]
+                         231 --103:         W[i] = Gamma1(W[i - 2U]) + W[i - 7U] + Gamma0(W[i - 15U]) + W[i - 16U];
+00000088 1df6feff        232 	addi	-2,r29,ep
+0000008c c2f2            233 	shl	2,ep
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+0000008e c3f1            234 	add	sp,ep
+00000090 000d            235 	sld.w	0[ep],r1
+00000092 1df6feff        236 	addi	-2,r29,ep
+00000096 c2f2            237 	shl	2,ep
+00000098 c3f1            238 	add	sp,ep
+0000009a 009d            239 	sld.w	0[ep],r19
+0000009c 1df6feff        240 	addi	-2,r29,ep
+000000a0 910a            241 	shr	17,r1
+000000a2 c2f2            242 	shl	2,ep
+000000a4 cf9a            243 	shl	15,r19
+000000a6 1309            244 	or	r19,r1
+000000a8 c3f1            245 	add	sp,ep
+000000aa 009d            246 	sld.w	0[ep],r19
+000000ac 1df6feff        247 	addi	-2,r29,ep
+000000b0 c2f2            248 	shl	2,ep
+000000b2 c3f1            249 	add	sp,ep
+000000b4 0095            250 	sld.w	0[ep],r18
+000000b6 939a            251 	shr	19,r19
+000000b8 1df6feff        252 	addi	-2,r29,ep
+000000bc c2f2            253 	shl	2,ep
+000000be cd92            254 	shl	13,r18
+000000c0 1299            255 	or	r18,r19
+000000c2 3309            256 	xor	r19,r1
+000000c4 c3f1            257 	add	sp,ep
+000000c6 009d            258 	sld.w	0[ep],r19
+000000c8 1df6f9ff        259 	addi	-7,r29,ep
+000000cc c2f2            260 	shl	2,ep
+000000ce c3f1            261 	add	sp,ep
+000000d0 8a9a            262 	shr	10,r19
+000000d2 2199            263 	xor	r1,r19
+000000d4 000d            264 	sld.w	0[ep],r1
+000000d6 1df6f1ff        265 	addi	-15,r29,ep
+000000da c2f2            266 	shl	2,ep
+000000dc c3f1            267 	add	sp,ep
+000000de d309            268 	add	r19,r1
+000000e0 009d            269 	sld.w	0[ep],r19
+000000e2 1df6f1ff        270 	addi	-15,r29,ep
+000000e6 c2f2            271 	shl	2,ep
+000000e8 c3f1            272 	add	sp,ep
+000000ea 0095            273 	sld.w	0[ep],r18
+000000ec 1df6f1ff        274 	addi	-15,r29,ep
+000000f0 879a            275 	shr	7,r19
+000000f2 c2f2            276 	shl	2,ep
+000000f4 d992            277 	shl	25,r18
+000000f6 1299            278 	or	r18,r19
+000000f8 c3f1            279 	add	sp,ep
+000000fa 0095            280 	sld.w	0[ep],r18
+000000fc 1df6f1ff        281 	addi	-15,r29,ep
+00000100 c2f2            282 	shl	2,ep
+00000102 c3f1            283 	add	sp,ep
+00000104 008d            284 	sld.w	0[ep],r17
+00000106 9292            285 	shr	18,r18
+00000108 1df6f1ff        286 	addi	-15,r29,ep
+0000010c c2f2            287 	shl	2,ep
+0000010e ce8a            288 	shl	14,r17
+00000110 1191            289 	or	r17,r18
+00000112 3299            290 	xor	r18,r19
+00000114 c3f1            291 	add	sp,ep
+00000116 0095            292 	sld.w	0[ep],r18
+00000118 1df6f0ff        293 	addi	-16,r29,ep
+0000011c c2f2            294 	shl	2,ep
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+0000011e c3f1            295 	add	sp,ep
+00000120 8392            296 	shr	3,r18
+00000122 3299            297 	xor	r18,r19
+00000124 c199            298 	add	r1,r19
+00000126 000d            299 	sld.w	0[ep],r1
+00000128 1d10            300 	mov	r29,r2
+0000012a c212            301 	shl	2,r2
+0000012c c311            302 	add	sp,r2
+0000012e d309            303 	add	r19,r1
+00000130 620f0100        304 	st.w	r1,0[r2]
+00000134 41ea            305 	add	1,r29
+                         306 .L15:
+00000136 1d06c0ff        307 	addi	-64,r29,zero
+0000013a 99a5*           308 	bnl	.L14
+                         309 --104:     }        
+                         310 --106:     /* Compress */
+                         311 --107: #define RND(a,b,c,d,e,f,g,h,i,ki)                     \
+                         312 --108:     do {                                                  \
+                         313 --109:         t0 = (h) + Sigma1(e) + Ch(e, f, g) + (ki) + W[i]; \
+                         314 --110:         t1 = Sigma0(a) + Maj(a, b, c);                    \
+                         315 --111:         (d) += t0;                                        \
+                         316 --112:         (h)  = t0 + t1;                                   \
+                         317 --113:     } while(0)
+                         318 --115:     for (i = 0U; i < 8U; i++)
+                         319 --line115
+                         320 ..lin.76e3fe0e..56822397.0_8::
+                         321 .LDWlin8:
+0000013c 00ea            322 	mov	0,r29
+0000013e 80072604*       323 	br	.L19
+                         324 .L18:
+                         325 --116:     {
+                         326 --117:         times = i * 8U;
+                         327 --line117
+                         328 ..lin.76e3fe0e..56822397.0_9::
+                         329 .LDWlin9:
+00000142 1d10            330 	mov	r29,r2
+00000144 c312            331 	shl	3,r2
+                         332 --118:         RND(S[0],S[1],S[2],S[3],S[4],S[5],S[6],S[7],0U + times, K[0U + times]);
+00000146 234f1101        333 	ld.w	272[sp],r9
+0000014a 02f0            334 	mov	r2,ep
+0000014c c2f2            335 	shl	2,ep
+0000014e dcf1            336 	add	r28,ep
+00000150 23860000        337 	movea	0,sp,r16
+00000154 fa4fc490        338 	rotl	26,r9,r18
+00000158 f54fc408        339 	rotl	21,r9,r1
+0000015c 2191            340 	xor	r1,r18
+0000015e e74fc488        341 	rotl	7,r9,r17
+00000162 3191            342 	xor	r17,r18
+00000164 238f1d01        343 	ld.w	284[sp],r17
+00000168 230f1901        344 	ld.w	280[sp],r1
+0000016c d289            345 	add	r18,r17
+0000016e 23971501        346 	ld.w	276[sp],r18
+00000172 2191            347 	xor	r1,r18
+00000174 4991            348 	and	r9,r18
+00000176 2191            349 	xor	r1,r18
+00000178 d289            350 	add	r18,r17
+0000017a 0095            351 	sld.w	0[ep],r18
+0000017c 02f0            352 	mov	r2,ep
+0000017e c2f2            353 	shl	2,ep
+00000180 d0f1            354 	add	r16,ep
+00000182 000d            355 	sld.w	0[ep],r1
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000184 d191            356 	add	r17,r18
+00000186 d209            357 	add	r18,r1
+00000188 237f0101        358 	ld.w	256[sp],r15
+0000018c 238f0901        359 	ld.w	264[sp],r17
+00000190 fe7fc490        360 	rotl	30,r15,r18
+00000194 f37fc440        361 	rotl	19,r15,r8
+00000198 2891            362 	xor	r8,r18
+0000019a 23470501        363 	ld.w	260[sp],r8
+0000019e ea7fc480        364 	rotl	10,r15,r16
+000001a2 3281            365 	xor	r18,r16
+000001a4 0f90            366 	mov	r15,r18
+000001a6 0891            367 	or	r8,r18
+000001a8 5289            368 	and	r18,r17
+000001aa 4879            369 	and	r8,r15
+000001ac 1179            370 	or	r17,r15
+000001ae 0f98            371 	mov	r15,r19
+000001b0 d099            372 	add	r16,r19
+000001b2 23970d01        373 	ld.w	268[sp],r18
+000001b6 c191            374 	add	r1,r18
+000001b8 63970d01        375 	st.w	r18,268[sp]
+000001bc 1390            376 	mov	r19,r18
+000001be c191            377 	add	r1,r18
+000001c0 63971d01        378 	st.w	r18,284[sp]
+000001c4 0000            379 	nop
+                         380 --119:         RND(S[7],S[0],S[1],S[2],S[3],S[4],S[5],S[6],1U + times, K[1U + times]);
+000001c6 234f0d01        381 	ld.w	268[sp],r9
+000001ca 02f60100        382 	addi	1,r2,ep
+000001ce c2f2            383 	shl	2,ep
+000001d0 dcf1            384 	add	r28,ep
+000001d2 fa4fc490        385 	rotl	26,r9,r18
+000001d6 f54fc408        386 	rotl	21,r9,r1
+000001da 2191            387 	xor	r1,r18
+000001dc e74fc488        388 	rotl	7,r9,r17
+000001e0 3191            389 	xor	r17,r18
+000001e2 238f1901        390 	ld.w	280[sp],r17
+000001e6 230f1501        391 	ld.w	276[sp],r1
+000001ea 23860000        392 	movea	0,sp,r16
+000001ee d289            393 	add	r18,r17
+000001f0 23971101        394 	ld.w	272[sp],r18
+000001f4 2191            395 	xor	r1,r18
+000001f6 4991            396 	and	r9,r18
+000001f8 2191            397 	xor	r1,r18
+000001fa d289            398 	add	r18,r17
+000001fc 0095            399 	sld.w	0[ep],r18
+000001fe 02f60100        400 	addi	1,r2,ep
+00000202 c2f2            401 	shl	2,ep
+00000204 d0f1            402 	add	r16,ep
+00000206 000d            403 	sld.w	0[ep],r1
+00000208 d191            404 	add	r17,r18
+0000020a d209            405 	add	r18,r1
+0000020c 237f1d01        406 	ld.w	284[sp],r15
+00000210 238f0501        407 	ld.w	260[sp],r17
+00000214 fe7fc490        408 	rotl	30,r15,r18
+00000218 f37fc440        409 	rotl	19,r15,r8
+0000021c 2891            410 	xor	r8,r18
+0000021e 23470101        411 	ld.w	256[sp],r8
+00000222 ea7fc480        412 	rotl	10,r15,r16
+00000226 3281            413 	xor	r18,r16
+00000228 0f90            414 	mov	r15,r18
+0000022a 0891            415 	or	r8,r18
+0000022c 5289            416 	and	r18,r17
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+0000022e 4879            417 	and	r8,r15
+00000230 1179            418 	or	r17,r15
+00000232 0f98            419 	mov	r15,r19
+00000234 d099            420 	add	r16,r19
+00000236 23970901        421 	ld.w	264[sp],r18
+0000023a c191            422 	add	r1,r18
+0000023c 63970901        423 	st.w	r18,264[sp]
+00000240 1390            424 	mov	r19,r18
+00000242 c191            425 	add	r1,r18
+00000244 63971901        426 	st.w	r18,280[sp]
+00000248 0000            427 	nop
+                         428 --120:         RND(S[6],S[7],S[0],S[1],S[2],S[3],S[4],S[5],2U + times, K[2U + times]);
+0000024a 234f0901        429 	ld.w	264[sp],r9
+0000024e 02f60200        430 	addi	2,r2,ep
+00000252 c2f2            431 	shl	2,ep
+00000254 dcf1            432 	add	r28,ep
+00000256 fa4fc490        433 	rotl	26,r9,r18
+0000025a f54fc408        434 	rotl	21,r9,r1
+0000025e 2191            435 	xor	r1,r18
+00000260 e74fc488        436 	rotl	7,r9,r17
+00000264 3191            437 	xor	r17,r18
+00000266 238f1501        438 	ld.w	276[sp],r17
+0000026a 230f1101        439 	ld.w	272[sp],r1
+0000026e 23860000        440 	movea	0,sp,r16
+00000272 d289            441 	add	r18,r17
+00000274 23970d01        442 	ld.w	268[sp],r18
+00000278 2191            443 	xor	r1,r18
+0000027a 4991            444 	and	r9,r18
+0000027c 2191            445 	xor	r1,r18
+0000027e d289            446 	add	r18,r17
+00000280 0095            447 	sld.w	0[ep],r18
+00000282 02f60200        448 	addi	2,r2,ep
+00000286 c2f2            449 	shl	2,ep
+00000288 d0f1            450 	add	r16,ep
+0000028a 000d            451 	sld.w	0[ep],r1
+0000028c d191            452 	add	r17,r18
+0000028e d209            453 	add	r18,r1
+00000290 237f1901        454 	ld.w	280[sp],r15
+00000294 238f0101        455 	ld.w	256[sp],r17
+00000298 fe7fc490        456 	rotl	30,r15,r18
+0000029c f37fc440        457 	rotl	19,r15,r8
+000002a0 2891            458 	xor	r8,r18
+000002a2 23471d01        459 	ld.w	284[sp],r8
+000002a6 ea7fc480        460 	rotl	10,r15,r16
+000002aa 3281            461 	xor	r18,r16
+000002ac 0f90            462 	mov	r15,r18
+000002ae 0891            463 	or	r8,r18
+000002b0 5289            464 	and	r18,r17
+000002b2 4879            465 	and	r8,r15
+000002b4 1179            466 	or	r17,r15
+000002b6 0f98            467 	mov	r15,r19
+000002b8 d099            468 	add	r16,r19
+000002ba 23970501        469 	ld.w	260[sp],r18
+000002be c191            470 	add	r1,r18
+000002c0 63970501        471 	st.w	r18,260[sp]
+000002c4 1390            472 	mov	r19,r18
+000002c6 c191            473 	add	r1,r18
+000002c8 63971501        474 	st.w	r18,276[sp]
+000002cc 0000            475 	nop
+                         476 --121:         RND(S[5],S[6],S[7],S[0],S[1],S[2],S[3],S[4],3U + times, K[3U + times]);
+000002ce 234f0501        477 	ld.w	260[sp],r9
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000002d2 02f60300        478 	addi	3,r2,ep
+000002d6 c2f2            479 	shl	2,ep
+000002d8 dcf1            480 	add	r28,ep
+000002da fa4fc490        481 	rotl	26,r9,r18
+000002de f54fc408        482 	rotl	21,r9,r1
+000002e2 2191            483 	xor	r1,r18
+000002e4 e74fc488        484 	rotl	7,r9,r17
+000002e8 3191            485 	xor	r17,r18
+000002ea 238f1101        486 	ld.w	272[sp],r17
+000002ee 230f0d01        487 	ld.w	268[sp],r1
+000002f2 23860000        488 	movea	0,sp,r16
+000002f6 d289            489 	add	r18,r17
+000002f8 23970901        490 	ld.w	264[sp],r18
+000002fc 2191            491 	xor	r1,r18
+000002fe 4991            492 	and	r9,r18
+00000300 2191            493 	xor	r1,r18
+00000302 d289            494 	add	r18,r17
+00000304 0095            495 	sld.w	0[ep],r18
+00000306 02f60300        496 	addi	3,r2,ep
+0000030a c2f2            497 	shl	2,ep
+0000030c d0f1            498 	add	r16,ep
+0000030e 000d            499 	sld.w	0[ep],r1
+00000310 d191            500 	add	r17,r18
+00000312 d209            501 	add	r18,r1
+00000314 237f1501        502 	ld.w	276[sp],r15
+00000318 238f1d01        503 	ld.w	284[sp],r17
+0000031c fe7fc490        504 	rotl	30,r15,r18
+00000320 f37fc440        505 	rotl	19,r15,r8
+00000324 2891            506 	xor	r8,r18
+00000326 23471901        507 	ld.w	280[sp],r8
+0000032a ea7fc480        508 	rotl	10,r15,r16
+0000032e 3281            509 	xor	r18,r16
+00000330 0f90            510 	mov	r15,r18
+00000332 0891            511 	or	r8,r18
+00000334 5289            512 	and	r18,r17
+00000336 4879            513 	and	r8,r15
+00000338 1179            514 	or	r17,r15
+0000033a 0f98            515 	mov	r15,r19
+0000033c d099            516 	add	r16,r19
+0000033e 23970101        517 	ld.w	256[sp],r18
+00000342 c191            518 	add	r1,r18
+00000344 63970101        519 	st.w	r18,256[sp]
+00000348 1390            520 	mov	r19,r18
+0000034a c191            521 	add	r1,r18
+0000034c 63971101        522 	st.w	r18,272[sp]
+00000350 0000            523 	nop
+                         524 --122:         RND(S[4],S[5],S[6],S[7],S[0],S[1],S[2],S[3],4U + times, K[4U + times]);
+00000352 234f0101        525 	ld.w	256[sp],r9
+00000356 02f60400        526 	addi	4,r2,ep
+0000035a c2f2            527 	shl	2,ep
+0000035c dcf1            528 	add	r28,ep
+0000035e fa4fc490        529 	rotl	26,r9,r18
+00000362 f54fc408        530 	rotl	21,r9,r1
+00000366 2191            531 	xor	r1,r18
+00000368 e74fc488        532 	rotl	7,r9,r17
+0000036c 3191            533 	xor	r17,r18
+0000036e 238f0d01        534 	ld.w	268[sp],r17
+00000372 230f0901        535 	ld.w	264[sp],r1
+00000376 23860000        536 	movea	0,sp,r16
+0000037a d289            537 	add	r18,r17
+0000037c 23970501        538 	ld.w	260[sp],r18
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000380 2191            539 	xor	r1,r18
+00000382 4991            540 	and	r9,r18
+00000384 2191            541 	xor	r1,r18
+00000386 d289            542 	add	r18,r17
+00000388 0095            543 	sld.w	0[ep],r18
+0000038a 02f60400        544 	addi	4,r2,ep
+0000038e c2f2            545 	shl	2,ep
+00000390 d0f1            546 	add	r16,ep
+00000392 000d            547 	sld.w	0[ep],r1
+00000394 d191            548 	add	r17,r18
+00000396 d209            549 	add	r18,r1
+00000398 237f1101        550 	ld.w	272[sp],r15
+0000039c 238f1901        551 	ld.w	280[sp],r17
+000003a0 fe7fc490        552 	rotl	30,r15,r18
+000003a4 f37fc440        553 	rotl	19,r15,r8
+000003a8 2891            554 	xor	r8,r18
+000003aa 23471501        555 	ld.w	276[sp],r8
+000003ae ea7fc480        556 	rotl	10,r15,r16
+000003b2 3281            557 	xor	r18,r16
+000003b4 0f90            558 	mov	r15,r18
+000003b6 0891            559 	or	r8,r18
+000003b8 5289            560 	and	r18,r17
+000003ba 4879            561 	and	r8,r15
+000003bc 1179            562 	or	r17,r15
+000003be 0f98            563 	mov	r15,r19
+000003c0 d099            564 	add	r16,r19
+000003c2 23971d01        565 	ld.w	284[sp],r18
+000003c6 c191            566 	add	r1,r18
+000003c8 63971d01        567 	st.w	r18,284[sp]
+000003cc 1390            568 	mov	r19,r18
+000003ce c191            569 	add	r1,r18
+000003d0 63970d01        570 	st.w	r18,268[sp]
+000003d4 0000            571 	nop
+                         572 --123:         RND(S[3],S[4],S[5],S[6],S[7],S[0],S[1],S[2],5U + times, K[5U + times]);
+000003d6 234f1d01        573 	ld.w	284[sp],r9
+000003da 02f60500        574 	addi	5,r2,ep
+000003de c2f2            575 	shl	2,ep
+000003e0 dcf1            576 	add	r28,ep
+000003e2 fa4fc490        577 	rotl	26,r9,r18
+000003e6 f54fc408        578 	rotl	21,r9,r1
+000003ea 2191            579 	xor	r1,r18
+000003ec e74fc488        580 	rotl	7,r9,r17
+000003f0 3191            581 	xor	r17,r18
+000003f2 238f0901        582 	ld.w	264[sp],r17
+000003f6 230f0501        583 	ld.w	260[sp],r1
+000003fa 23860000        584 	movea	0,sp,r16
+000003fe d289            585 	add	r18,r17
+00000400 23970101        586 	ld.w	256[sp],r18
+00000404 2191            587 	xor	r1,r18
+00000406 4991            588 	and	r9,r18
+00000408 2191            589 	xor	r1,r18
+0000040a d289            590 	add	r18,r17
+0000040c 0095            591 	sld.w	0[ep],r18
+0000040e 02f60500        592 	addi	5,r2,ep
+00000412 c2f2            593 	shl	2,ep
+00000414 d0f1            594 	add	r16,ep
+00000416 000d            595 	sld.w	0[ep],r1
+00000418 d191            596 	add	r17,r18
+0000041a d209            597 	add	r18,r1
+0000041c 237f0d01        598 	ld.w	268[sp],r15
+00000420 238f1501        599 	ld.w	276[sp],r17
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000424 fe7fc490        600 	rotl	30,r15,r18
+00000428 f37fc440        601 	rotl	19,r15,r8
+0000042c 2891            602 	xor	r8,r18
+0000042e 23471101        603 	ld.w	272[sp],r8
+00000432 ea7fc480        604 	rotl	10,r15,r16
+00000436 3281            605 	xor	r18,r16
+00000438 0f90            606 	mov	r15,r18
+0000043a 0891            607 	or	r8,r18
+0000043c 5289            608 	and	r18,r17
+0000043e 4879            609 	and	r8,r15
+00000440 1179            610 	or	r17,r15
+00000442 0f98            611 	mov	r15,r19
+00000444 d099            612 	add	r16,r19
+00000446 23971901        613 	ld.w	280[sp],r18
+0000044a c191            614 	add	r1,r18
+0000044c 63971901        615 	st.w	r18,280[sp]
+00000450 1390            616 	mov	r19,r18
+00000452 c191            617 	add	r1,r18
+00000454 63970901        618 	st.w	r18,264[sp]
+00000458 0000            619 	nop
+                         620 --124:         RND(S[2],S[3],S[4],S[5],S[6],S[7],S[0],S[1],6U + times, K[6U + times]);
+0000045a 234f1901        621 	ld.w	280[sp],r9
+0000045e 02f60600        622 	addi	6,r2,ep
+00000462 c2f2            623 	shl	2,ep
+00000464 dcf1            624 	add	r28,ep
+00000466 fa4fc490        625 	rotl	26,r9,r18
+0000046a f54fc408        626 	rotl	21,r9,r1
+0000046e 2191            627 	xor	r1,r18
+00000470 e74fc488        628 	rotl	7,r9,r17
+00000474 3191            629 	xor	r17,r18
+00000476 238f0501        630 	ld.w	260[sp],r17
+0000047a 230f0101        631 	ld.w	256[sp],r1
+0000047e 23860000        632 	movea	0,sp,r16
+00000482 d289            633 	add	r18,r17
+00000484 23971d01        634 	ld.w	284[sp],r18
+00000488 2191            635 	xor	r1,r18
+0000048a 4991            636 	and	r9,r18
+0000048c 2191            637 	xor	r1,r18
+0000048e d289            638 	add	r18,r17
+00000490 0095            639 	sld.w	0[ep],r18
+00000492 02f60600        640 	addi	6,r2,ep
+00000496 c2f2            641 	shl	2,ep
+00000498 d0f1            642 	add	r16,ep
+0000049a 000d            643 	sld.w	0[ep],r1
+0000049c d191            644 	add	r17,r18
+0000049e d209            645 	add	r18,r1
+000004a0 237f0901        646 	ld.w	264[sp],r15
+000004a4 238f1101        647 	ld.w	272[sp],r17
+000004a8 fe7fc490        648 	rotl	30,r15,r18
+000004ac f37fc440        649 	rotl	19,r15,r8
+000004b0 2891            650 	xor	r8,r18
+000004b2 23470d01        651 	ld.w	268[sp],r8
+000004b6 ea7fc480        652 	rotl	10,r15,r16
+000004ba 3281            653 	xor	r18,r16
+000004bc 0f90            654 	mov	r15,r18
+000004be 0891            655 	or	r8,r18
+000004c0 5289            656 	and	r18,r17
+000004c2 4879            657 	and	r8,r15
+000004c4 1179            658 	or	r17,r15
+000004c6 0f98            659 	mov	r15,r19
+000004c8 d099            660 	add	r16,r19
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000004ca 23971501        661 	ld.w	276[sp],r18
+000004ce c191            662 	add	r1,r18
+000004d0 63971501        663 	st.w	r18,276[sp]
+000004d4 1390            664 	mov	r19,r18
+000004d6 c191            665 	add	r1,r18
+000004d8 63970501        666 	st.w	r18,260[sp]
+000004dc 0000            667 	nop
+                         668 --125:         RND(S[1],S[2],S[3],S[4],S[5],S[6],S[7],S[0],7U + times, K[7U + times]);
+000004de 234f1501        669 	ld.w	276[sp],r9
+000004e2 02f60700        670 	addi	7,r2,ep
+000004e6 c2f2            671 	shl	2,ep
+000004e8 dcf1            672 	add	r28,ep
+000004ea fa4fc490        673 	rotl	26,r9,r18
+000004ee f54fc408        674 	rotl	21,r9,r1
+000004f2 2191            675 	xor	r1,r18
+000004f4 e74fc488        676 	rotl	7,r9,r17
+000004f8 3191            677 	xor	r17,r18
+000004fa 238f0101        678 	ld.w	256[sp],r17
+000004fe 230f1d01        679 	ld.w	284[sp],r1
+00000502 23860000        680 	movea	0,sp,r16
+00000506 d289            681 	add	r18,r17
+00000508 23971901        682 	ld.w	280[sp],r18
+0000050c 2191            683 	xor	r1,r18
+0000050e 4991            684 	and	r9,r18
+00000510 2191            685 	xor	r1,r18
+00000512 d289            686 	add	r18,r17
+00000514 0095            687 	sld.w	0[ep],r18
+00000516 02f60700        688 	addi	7,r2,ep
+0000051a c2f2            689 	shl	2,ep
+0000051c d0f1            690 	add	r16,ep
+0000051e 000d            691 	sld.w	0[ep],r1
+00000520 d191            692 	add	r17,r18
+00000522 d209            693 	add	r18,r1
+00000524 237f0501        694 	ld.w	260[sp],r15
+00000528 238f0d01        695 	ld.w	268[sp],r17
+0000052c fe7fc490        696 	rotl	30,r15,r18
+00000530 f37fc440        697 	rotl	19,r15,r8
+00000534 2891            698 	xor	r8,r18
+00000536 23470901        699 	ld.w	264[sp],r8
+0000053a ea7fc480        700 	rotl	10,r15,r16
+0000053e 3281            701 	xor	r18,r16
+00000540 0f90            702 	mov	r15,r18
+00000542 0891            703 	or	r8,r18
+00000544 5289            704 	and	r18,r17
+00000546 4879            705 	and	r8,r15
+00000548 1179            706 	or	r17,r15
+0000054a 0f98            707 	mov	r15,r19
+0000054c d099            708 	add	r16,r19
+0000054e 23971101        709 	ld.w	272[sp],r18
+00000552 c191            710 	add	r1,r18
+00000554 63971101        711 	st.w	r18,272[sp]
+00000558 1390            712 	mov	r19,r18
+0000055a c191            713 	add	r1,r18
+0000055c 63970101        714 	st.w	r18,256[sp]
+00000560 0000            715 	nop
+00000562 41ea            716 	add	1,r29
+                         717 .L19:
+00000564 68ea            718 	cmp	8,r29
+00000566 f107ddfb*       719 	bl	.L18
+                         720 --126:     }
+                         721 --128: #undef RND
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                         722 --130:     /* feedback */
+                         723 --131:     for (i = 0U; i < 8U; i++)
+                         724 --line131
+                         725 ..lin.76e3fe0e..56822397.0_10::
+                         726 .LDWlin10:
+0000056a 00ea            727 	mov	0,r29
+0000056c f50d*           728 	br	.L47
+                         729 .L46:
+                         730 --132:     {
+                         731 --133:         md->sha256.state[i] = md->sha256.state[i] + S[i];
+                         732 --line133
+                         733 ..lin.76e3fe0e..56822397.0_11::
+                         734 .LDWlin11:
+0000056e 1df0            735 	mov	r29,ep
+00000570 c2f2            736 	shl	2,ep
+00000572 238e0001        737 	movea	256,sp,r17
+00000576 de89            738 	add	ep,r17
+00000578 1b860800        739 	addi	8,r27,r16
+0000057c d0f1            740 	add	r16,ep
+0000057e 0095            741 	sld.w	0[ep],r18
+00000580 318f0100        742 	ld.w	0[r17],r17
+00000584 d191            743 	add	r17,r18
+00000586 0195            744 	sst.w	r18,0[ep]
+00000588 41ea            745 	add	1,r29
+                         746 .L47:
+0000058a 68ea            747 	cmp	8,r29
+0000058c 91f5*           748 	bl	.L46
+                         749 --134:     }
+                         750 --136:     return(ER_OK);
+                         751 --line136
+                         752 ..lin.76e3fe0e..56822397.0_12::
+                         753 .LDWlin12:
+0000058e 0052            754 	mov	0,r10
+                         755 --	    .ef
+                         756 .LDW11:
+00000590 23ff3901        757 	ld.w	312[sp],lp
+00000594 23ef2101        758 	ld.w	288[sp],r29
+00000598 23e72501        759 	ld.w	292[sp],r28
+0000059c 23df2901        760 	ld.w	296[sp],r27
+000005a0 23d72d01        761 	ld.w	300[sp],r26
+000005a4 23cf3101        762 	ld.w	304[sp],r25
+000005a8 23c73501        763 	ld.w	308[sp],r24
+000005ac 031e3c01        764 	addi	316,sp,sp
+                         765 .L550:
+                         766 	.jumptype return
+000005b0 7f00            767 	jmp	[lp]
+                         768 --line136
+                         769 ..lin.76e3fe0e..56822397.0_13::
+                         770 	.type	_l_HASH_Sha256Compress,@function
+                         771 	.size	_l_HASH_Sha256Compress,.-_l_HASH_Sha256Compress
+                         772 	.type	_l_HASH_Sha256Compress..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,@function
+                         773 	.size	_l_HASH_Sha256Compress..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,.-_l_HASH_Sha256Compress..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.
+                         774 	.align	2
+                         775 --_S	256[sp]	local
+                         776 --_W	0[sp]	local
+                         777 --_t0	r1	local
+                         778 --_t1	r19	local
+                         779 --_i	r29	local
+                         780 --_times	r2	local
+                         781 
+                         782 --_md	r27	param
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                         783 --_buf	r26	param
+                         784 
+                         785 	.section ".bss","awb"
+                         786 .L334:
+                         787 	.type	.L334,@object
+                         788 	.size	.L334,0
+                         789 	.section ".icum_library.rodata","a"
+                         790 	.align	4
+                         791 	.global	_K..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.
+                         792 _K..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.:
+00000000 982f8a42        793 _K:	.byte	152,47,138,66
+00000004 91443771        794 	.byte	145,68,55,113
+00000008 cffbc0b5        795 	.byte	207,251,192,181
+0000000c a5dbb5e9        796 	.byte	165,219,181,233
+00000010 5bc25639        797 	.byte	91,194,86,57
+00000014 f111f159        798 	.byte	241,17,241,89
+00000018 a4823f92        799 	.byte	164,130,63,146
+0000001c d55e1cab        800 	.byte	213,94,28,171
+00000020 98aa07d8        801 	.byte	152,170,7,216
+00000024 015b8312        802 	.byte	1,91,131,18
+00000028 be853124        803 	.byte	190,133,49,36
+0000002c c37d0c55        804 	.byte	195,125,12,85
+00000030 745dbe72        805 	.byte	116,93,190,114
+00000034 feb1de80        806 	.byte	254,177,222,128
+00000038 a706dc9b        807 	.byte	167,6,220,155
+0000003c 74f19bc1        808 	.byte	116,241,155,193
+00000040 c1699be4        809 	.byte	193,105,155,228
+00000044 8647beef        810 	.byte	134,71,190,239
+00000048 c69dc10f        811 	.byte	198,157,193,15
+0000004c cca10c24        812 	.byte	204,161,12,36
+00000050 6f2ce92d        813 	.byte	111,44,233,45
+00000054 aa84744a        814 	.byte	170,132,116,74
+00000058 dca9b05c        815 	.byte	220,169,176,92
+0000005c da88f976        816 	.byte	218,136,249,118
+00000060 52513e98        817 	.byte	82,81,62,152
+00000064 6dc631a8        818 	.byte	109,198,49,168
+00000068 c82703b0        819 	.byte	200,39,3,176
+0000006c c77f59bf        820 	.byte	199,127,89,191
+00000070 f30be0c6        821 	.byte	243,11,224,198
+00000074 4791a7d5        822 	.byte	71,145,167,213
+00000078 5163ca06        823 	.byte	81,99,202,6
+0000007c 67292914        824 	.byte	103,41,41,20
+00000080 850ab727        825 	.byte	133,10,183,39
+00000084 38211b2e        826 	.byte	56,33,27,46
+00000088 fc6d2c4d        827 	.byte	252,109,44,77
+0000008c 130d3853        828 	.byte	19,13,56,83
+00000090 54730a65        829 	.byte	84,115,10,101
+00000094 bb0a6a76        830 	.byte	187,10,106,118
+00000098 2ec9c281        831 	.byte	46,201,194,129
+0000009c 852c7292        832 	.byte	133,44,114,146
+000000a0 a1e8bfa2        833 	.byte	161,232,191,162
+000000a4 4b661aa8        834 	.byte	75,102,26,168
+000000a8 708b4bc2        835 	.byte	112,139,75,194
+000000ac a3516cc7        836 	.byte	163,81,108,199
+000000b0 19e892d1        837 	.byte	25,232,146,209
+000000b4 240699d6        838 	.byte	36,6,153,214
+000000b8 85350ef4        839 	.byte	133,53,14,244
+000000bc 70a06a10        840 	.byte	112,160,106,16
+000000c0 16c1a419        841 	.byte	22,193,164,25
+000000c4 086c371e        842 	.byte	8,108,55,30
+000000c8 4c774827        843 	.byte	76,119,72,39
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000000cc b5bcb034        844 	.byte	181,188,176,52
+000000d0 b30c1c39        845 	.byte	179,12,28,57
+000000d4 4aaad84e        846 	.byte	74,170,216,78
+000000d8 4fca9c5b        847 	.byte	79,202,156,91
+000000dc f36f2e68        848 	.byte	243,111,46,104
+000000e0 ee828f74        849 	.byte	238,130,143,116
+000000e4 6f63a578        850 	.byte	111,99,165,120
+000000e8 1478c884        851 	.byte	20,120,200,132
+000000ec 0802c78c        852 	.byte	8,2,199,140
+000000f0 faffbe90        853 	.byte	250,255,190,144
+000000f4 eb6c50a4        854 	.byte	235,108,80,164
+000000f8 f7a3f9be        855 	.byte	247,163,249,190
+000000fc f27871c6        856 	.byte	242,120,113,198
+                         857 	.type	_K..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,@object
+                         858 	.size	_K..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,256
+                         859 	.type	_K,@object
+                         860 	.size	_K,256
+                         861 	.section ".ghrettbl",""
+                         862 	.align	4
+00000000 00000000*       863 .L551:	.word	.L550
+                         864 	.type	.L551,@object
+                         865 	.size	.L551,4
+                         866 	.data
+                         867 	.section ".icum_library.text","ax"
+                         868 
+                         869 --137: }
+                         870 
+                         871 --139: /* #pragma ghs section text    = default */
+                         872 --141: /**********************************************************************************
+                         873 --142: * code moved to specific section
+                         874 --143: ***********************************************************************************/
+                         875 --144: /* #pragma ghs section text=".r_crypt.text.rel" */
+                         876 --146: /**
+                         877 --147:    Initialize the hash state
+                         878 --148:    \param md   The hash state you wish to initialize
+                         879 --149:    \return ER_OK if successful
+                         880 --150: */
+                         881 --151: /****************************************************************************************
+                         882 --152: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0030]:[ICUMFW_UD_L_CRY_HASH_0030]
+                         883 --153: * Function name: l_HASH_Sha256Init()
+                         884 --154: * Description  : # Initialize the working area of HASH with specified values.
+                         885 --155: * Arguments    : (IN-OUT)  md     : HASH state
+                         886 --156: * Return Value : ER_OK
+                         887 --157: *                ER_L_HASH_INVALID_ARG
+                         888 --158: ****************************************************************************************/
+                         889 --159: uint32_t l_HASH_Sha256Init(hash_inner_state_t * md)
+                         890 	.align	2
+                         891 	.align	2
+                         892 	.align	2
+                         893 ..gh.f.a.2.e.3:
+                         894 	.type	..gh.f.a.2.e.3,@object
+                         895 	.size	..gh.f.a.2.e.3,0
+                         896 	.global	_l_HASH_Sha256Init
+                         897 _l_HASH_Sha256Init:
+000005b2 06f0            898 	mov	r6,ep
+                         899 --	    .bf
+                         900 .LDW21:
+                         901 --160: {
+                         902 --161:     uint32_t    err;
+                         903 --163:     if (md == NULL)
+000005b4 e0f1            904 	cmp	zero,ep
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000005b6 da05*           905 	bne	.L554
+                         906 --164:     {
+                         907 --165:         err = ER_L_HASH_INVALID_ARG;
+                         908 --line165
+                         909 ..lin.76e3fe0e..d8fa7bff.0_14::
+                         910 .LDWlin14:
+000005b8 210601000300    911 	mov	196609,r1
+000005be 852d*           912 	br	.L556
+                         913 .L554:
+                         914 --166:     }
+                         915 --167:     else
+                         916 --168:     {
+                         917 --169:         md->sha256.curlen = 0U;
+                         918 --line169
+                         919 ..lin.76e3fe0e..d8fa7bff.0_15::
+                         920 .LDWlin15:
+000005c0 1505            921 	sst.w	zero,40[ep]
+                         922 --170:         md->sha256.length = 0ULL;
+000005c2 0092            923 	mov	0,r18
+000005c4 009a            924 	mov	0,r19
+000005c6 be070f900000    925 	st.dw	r18,0[ep]
+                         926 --171:         md->sha256.state[0] = 0x6A09E667U;
+                         927 --line171
+                         928 ..lin.76e3fe0e..d8fa7bff.0_16::
+                         929 .LDWlin16:
+000005cc 210667e6096a    930 	mov	1779033703,r1
+000005d2 050d            931 	sst.w	r1,8[ep]
+                         932 --172:         md->sha256.state[1] = 0xBB67AE85U;
+                         933 --line172
+                         934 ..lin.76e3fe0e..d8fa7bff.0_17::
+                         935 .LDWlin17:
+000005d4 210685ae67bb    936 	mov	-1150833019,r1
+000005da 070d            937 	sst.w	r1,12[ep]
+                         938 --173:         md->sha256.state[2] = 0x3C6EF372U;
+                         939 --line173
+                         940 ..lin.76e3fe0e..d8fa7bff.0_18::
+                         941 .LDWlin18:
+000005dc 210672f36e3c    942 	mov	1013904242,r1
+000005e2 090d            943 	sst.w	r1,16[ep]
+                         944 --174:         md->sha256.state[3] = 0xA54FF53AU;
+                         945 --line174
+                         946 ..lin.76e3fe0e..d8fa7bff.0_19::
+                         947 .LDWlin19:
+000005e4 21063af54fa5    948 	mov	-1521486534,r1
+000005ea 0b0d            949 	sst.w	r1,20[ep]
+                         950 --175:         md->sha256.state[4] = 0x510E527FU;
+                         951 --line175
+                         952 ..lin.76e3fe0e..d8fa7bff.0_20::
+                         953 .LDWlin20:
+000005ec 21067f520e51    954 	mov	1359893119,r1
+000005f2 0d0d            955 	sst.w	r1,24[ep]
+                         956 --176:         md->sha256.state[5] = 0x9B05688CU;
+                         957 --line176
+                         958 ..lin.76e3fe0e..d8fa7bff.0_21::
+                         959 .LDWlin21:
+000005f4 21068c68059b    960 	mov	-1694144372,r1
+000005fa 0f0d            961 	sst.w	r1,28[ep]
+                         962 --177:         md->sha256.state[6] = 0x1F83D9ABU;
+                         963 --line177
+                         964 ..lin.76e3fe0e..d8fa7bff.0_22::
+                         965 .LDWlin22:
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000005fc 2106abd9831f    966 	mov	528734635,r1
+00000602 110d            967 	sst.w	r1,32[ep]
+                         968 --178:         md->sha256.state[7] = 0x5BE0CD19U;
+                         969 --line178
+                         970 ..lin.76e3fe0e..d8fa7bff.0_23::
+                         971 .LDWlin23:
+00000604 210619cde05b    972 	mov	1541459225,r1
+0000060a 130d            973 	sst.w	r1,36[ep]
+                         974 --179:         err = ER_OK;
+                         975 --line179
+                         976 ..lin.76e3fe0e..d8fa7bff.0_24::
+                         977 .LDWlin24:
+0000060c 000a            978 	mov	0,r1
+                         979 .L556:
+                         980 --180:     }
+                         981 --182:     return (err);
+0000060e 0150            982 	mov	r1,r10
+                         983 --	    .ef
+                         984 .LDW31:
+                         985 .L677:
+                         986 	.jumptype return
+00000610 7f00            987 	jmp	[lp]
+                         988 --line179
+                         989 ..lin.76e3fe0e..d8fa7bff.0_25::
+                         990 	.type	_l_HASH_Sha256Init,@function
+                         991 	.size	_l_HASH_Sha256Init,.-_l_HASH_Sha256Init
+                         992 	.align	2
+                         993 --_err	r1	local
+                         994 
+                         995 --_md	ep	param
+                         996 
+                         997 	.section ".bss","awb"
+                         998 .L626:
+                         999 	.type	.L626,@object
+                        1000 	.size	.L626,0
+                        1001 	.section ".ghrettbl",""
+00000004 00000000*      1002 .L678:	.word	.L677
+                        1003 	.type	.L678,@object
+                        1004 	.size	.L678,4
+                        1005 	.data
+                        1006 	.section ".icum_library.text","ax"
+                        1007 
+                        1008 --183: }
+                        1009 
+                        1010 --185: /**
+                        1011 --186:    Process a block of memory though the hash
+                        1012 --187:    \param md     The hash state
+                        1013 --188:    \param in     The data to hash
+                        1014 --189:    \param inlen  The length of the data (octets)
+                        1015 --190:    \return ER_OK if successful
+                        1016 --191: */
+                        1017 --192: /**********************************************************************************
+                        1018 --193: * code moved to default text section
+                        1019 --194: ***********************************************************************************/
+                        1020 --195: /* #pragma ghs section text=default */
+                        1021 --197: /****************************************************************************************
+                        1022 --198: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0026]:[ICUMFW_UD_L_CRY_HASH_0026]
+                        1023 --199: * Function name: l_HASH_Sha256Process()
+                        1024 --200: * Description  : # HASH the data for the length indicated by the message length.
+                        1025 --201: * Arguments    : (IN-OUT)  md     : HASH state
+                        1026 --202: *                (IN-OUT)  in    : Input message
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1027 --203: *                (IN-OUT)  inlen  : Input message length
+                        1028 --204: * Return Value : ER_OK
+                        1029 --205: *                ER_L_HASH_INVALID_ARG
+                        1030 --206: ****************************************************************************************/
+                        1031 --208: uint32_t l_HASH_Sha256Process(hash_inner_state_t * md, const uint8_t *in, uint32_t inlen)
+                        1032 	.align	2
+                        1033 	.align	2
+                        1034 	.align	2
+                        1035 ..gh.f.a.2.e.4:
+                        1036 	.type	..gh.f.a.2.e.4,@object
+                        1037 	.size	..gh.f.a.2.e.4,0
+                        1038 	.global	_l_HASH_Sha256Process
+                        1039 _l_HASH_Sha256Process:
+00000612 031eecff       1040 	addi	-20,sp,sp
+00000616 63ff1100       1041 	st.w	lp,16[sp]
+0000061a 63df0900       1042 	st.w	r27,8[sp]
+0000061e 63e70500       1043 	st.w	r28,4[sp]
+00000622 63ef0100       1044 	st.w	r29,0[sp]
+00000626 63d70d00       1045 	st.w	r26,12[sp]
+0000062a 06e8           1046 	mov	r6,r29
+0000062c 07d8           1047 	mov	r7,r27
+0000062e 08e0           1048 	mov	r8,r28
+                        1049 --	    .bf
+                        1050 .LDW41:
+                        1051 --209: {
+                        1052 --210:     uint32_t    n;
+                        1053 --211:     uint32_t    err;
+                        1054 --212:     
+                        1055 --213:     if (md == NULL)
+00000630 e0e9           1056 	cmp	zero,r29
+00000632 da05*          1057 	bne	.L681
+                        1058 --214:     {
+                        1059 --215:         err = ER_L_HASH_INVALID_ARG;
+                        1060 --line215
+                        1061 ..lin.76e3fe0e..5749b8ea.0_26::
+                        1062 .LDWlin26:
+00000634 210601000300   1063 	mov	196609,r1
+0000063a e555*          1064 	br	.L683
+                        1065 .L681:
+                        1066 --216:     }
+                        1067 --217:     else if (md->sha256.curlen > sizeof(md->sha256.buf))
+                        1068 --line217
+                        1069 ..lin.76e3fe0e..5749b8ea.0_27::
+                        1070 .LDWlin27:
+0000063c 3d0f2900       1071 	ld.w	40[r29],r1
+00000640 0106bfff       1072 	addi	-65,r1,zero
+00000644 d905*          1073 	bnl	.L684
+                        1074 --218:     {
+                        1075 --219:         err = ER_L_HASH_INVALID_ARG;
+                        1076 --line219
+                        1077 ..lin.76e3fe0e..5749b8ea.0_28::
+                        1078 .LDWlin28:
+00000646 210601000300   1079 	mov	196609,r1
+0000064c d54d*          1080 	br	.L683
+                        1081 .L684:
+                        1082 --220:     }
+                        1083 --221:     else
+                        1084 --222:     {
+                        1085 --223:         while (inlen > 0u)
+                        1086 --line223
+                        1087 ..lin.76e3fe0e..5749b8ea.0_29::
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1088 .LDWlin29:
+0000064e 954d*          1089 	br	.L687
+                        1090 .L689:
+                        1091 --224:         {
+                        1092 --225:             if ((md->sha256.curlen == 0u) && (inlen >= 64u))
+                        1093 --line225
+                        1094 ..lin.76e3fe0e..5749b8ea.0_30::
+                        1095 .LDWlin30:
+00000650 3d0f2900       1096 	ld.w	40[r29],r1
+00000654 e009           1097 	cmp	zero,r1
+00000656 fa15*          1098 	bne	.L690
+00000658 1c06c0ff       1099 	addi	-64,r28,zero
+0000065c c915*          1100 	bnl	.L690
+                        1101 --226:             {
+                        1102 --227:                 (void)l_HASH_Sha256Compress(md, in);
+                        1103 --line227
+                        1104 ..lin.76e3fe0e..5749b8ea.0_31::
+                        1105 .LDWlin31:
+0000065e 1d30           1106 	mov	r29,r6
+00000660 1b38           1107 	mov	r27,r7
+                        1108 .L884:
+                        1109 	jarl	_l_HASH_Sha256Compress,lp
+                        1109 <EXPANSION BEGIN>
+                        1109 jarl22 _l_HASH_Sha256Compress , lp 
+00000662 bfff9ef9*      1109 <EXPANSION END>
+                        1110 --228:                 md->sha256.length   += (uint64_t)(64U * 8U);
+                        1111 --line228
+                        1112 ..lin.76e3fe0e..5749b8ea.0_32::
+                        1113 .LDWlin32:
+00000666 bd0709800000   1114 	ld.dw	0[r29],r16
+0000066c 10960002       1115 	addi	512,r16,r18
+00000670 e08fa29b       1116 	adfl	zero,r17,r19
+00000674 bd070f900000   1117 	st.dw	r18,0[r29]
+                        1118 --229:                 in                  += 64u;
+                        1119 --line229
+                        1120 ..lin.76e3fe0e..5749b8ea.0_33::
+                        1121 .LDWlin33:
+0000067a 1bde4000       1122 	addi	64,r27,r27
+                        1123 --230:                 inlen               -= 64u;
+0000067e 1ce6c0ff       1124 	addi	-64,r28,r28
+00000682 f52d*          1125 	br	.L687
+                        1126 .L690:
+                        1127 --231:             }
+                        1128 --232:             else
+                        1129 --233:             {
+                        1130 --234:                 n = MIN(inlen, (64U - md->sha256.curlen));
+                        1131 --line234
+                        1132 ..lin.76e3fe0e..5749b8ea.0_34::
+                        1133 .LDWlin34:
+00000684 3d0f2900       1134 	ld.w	40[r29],r1
+00000688 20164000       1135 	movea	64,zero,r2
+0000068c 8209           1136 	subr	r2,r1
+0000068e fc09           1137 	cmp	r28,r1
+00000690 fc0f36d3       1138 	cmovh	r28,r1,r26
+                        1139 --235:                 l_CMN_MemCpy(md->sha256.buf + md->sha256.curlen, in, n);
+00000694 3d0f2900       1140 	ld.w	40[r29],r1
+00000698 1d362c00       1141 	addi	44,r29,r6
+0000069c 1b38           1142 	mov	r27,r7
+0000069e 1a40           1143 	mov	r26,r8
+000006a0 c131           1144 	add	r1,r6
+                        1145 .L886:
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1146 	jarl	_l_CMN_MemCpy,lp
+                        1146 <EXPANSION BEGIN>
+                        1146 jarl22 _l_CMN_MemCpy , lp 
+000006a2 80ff0000*      1146 <EXPANSION END>
+                        1147 --236:                 md->sha256.curlen += n;
+                        1148 --line236
+                        1149 ..lin.76e3fe0e..5749b8ea.0_35::
+                        1150 .LDWlin35:
+000006a6 3d0f2900       1151 	ld.w	40[r29],r1
+000006aa da09           1152 	add	r26,r1
+000006ac 7d0f2900       1153 	st.w	r1,40[r29]
+                        1154 --237:                 in                += n;
+000006b0 dad9           1155 	add	r26,r27
+                        1156 --238:                 inlen             -= n;
+000006b2 bae1           1157 	sub	r26,r28
+                        1158 --239:                 if (md->sha256.curlen == 64u)
+000006b4 3d0f2900       1159 	ld.w	40[r29],r1
+000006b8 0106c0ff       1160 	addi	-64,r1,zero
+000006bc aa15*          1161 	bne	.L687
+                        1162 --240:                 {
+                        1163 --241:                     (void)l_HASH_Sha256Compress(md, md->sha256.buf);
+                        1164 --line241
+                        1165 ..lin.76e3fe0e..5749b8ea.0_36::
+                        1166 .LDWlin36:
+000006be 1d30           1167 	mov	r29,r6
+000006c0 1d3e2c00       1168 	addi	44,r29,r7
+                        1169 .L888:
+                        1170 	jarl	_l_HASH_Sha256Compress,lp
+                        1170 <EXPANSION BEGIN>
+                        1170 jarl22 _l_HASH_Sha256Compress , lp 
+000006c4 bfff3cf9*      1170 <EXPANSION END>
+                        1171 --242:                     md->sha256.length += (uint64_t)(8U * 64U);
+                        1172 --line242
+                        1173 ..lin.76e3fe0e..5749b8ea.0_37::
+                        1174 .LDWlin37:
+000006c8 bd0709800000   1175 	ld.dw	0[r29],r16
+000006ce 10960002       1176 	addi	512,r16,r18
+000006d2 e08fa29b       1177 	adfl	zero,r17,r19
+000006d6 bd070f900000   1178 	st.dw	r18,0[r29]
+                        1179 --243:                     md->sha256.curlen = 0U;
+                        1180 --line243
+                        1181 ..lin.76e3fe0e..5749b8ea.0_38::
+                        1182 .LDWlin38:
+000006dc 7d072900       1183 	st.w	zero,40[r29]
+                        1184 .L687:
+                        1185 --244:                 }
+                        1186 --245:                 else
+                        1187 --246:                 {
+000006e0 e0e1           1188 	cmp	zero,r28
+000006e2 fbb5*          1189 	bh	.L689
+                        1190 --247:                     /* Do nothing */
+                        1191 --248:                 }
+                        1192 --249:             }
+                        1193 --250:         }
+                        1194 --251:         err = ER_OK;
+                        1195 --line251
+                        1196 ..lin.76e3fe0e..5749b8ea.0_39::
+                        1197 .LDWlin39:
+000006e4 000a           1198 	mov	0,r1
+                        1199 .L683:
+                        1200 --252:     }
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1201 --254:     return (err);
+000006e6 0150           1202 	mov	r1,r10
+                        1203 --	    .ef
+                        1204 .LDW51:
+000006e8 23ff1100       1205 	ld.w	16[sp],lp
+000006ec 23ef0100       1206 	ld.w	0[sp],r29
+000006f0 23e70500       1207 	ld.w	4[sp],r28
+000006f4 23df0900       1208 	ld.w	8[sp],r27
+000006f8 23d70d00       1209 	ld.w	12[sp],r26
+000006fc 031e1400       1210 	addi	20,sp,sp
+                        1211 .L890:
+                        1212 	.jumptype return
+00000700 7f00           1213 	jmp	[lp]
+                        1214 --line251
+                        1215 ..lin.76e3fe0e..5749b8ea.0_40::
+                        1216 	.type	_l_HASH_Sha256Process,@function
+                        1217 	.size	_l_HASH_Sha256Process,.-_l_HASH_Sha256Process
+                        1218 	.align	2
+                        1219 --_n	r26	local
+                        1220 --_err	r1	local
+                        1221 
+                        1222 --_md	r29	param
+                        1223 --_in	r27	param
+                        1224 --_inlen	r28	param
+                        1225 
+                        1226 	.section ".bss","awb"
+                        1227 .L806:
+                        1228 	.type	.L806,@object
+                        1229 	.size	.L806,0
+                        1230 	.section ".ghcalltbl",""
+                        1231 	.align	4
+00000000 00000000*      1232 .L885:	.word	.L884
+                        1233 	.type	.L885,@object
+                        1234 	.size	.L885,4
+00000004 00000000*      1235 .L887:	.word	.L886
+                        1236 	.type	.L887,@object
+                        1237 	.size	.L887,4
+00000008 00000000*      1238 .L889:	.word	.L888
+                        1239 	.type	.L889,@object
+                        1240 	.size	.L889,4
+                        1241 	.section ".ghrettbl",""
+00000008 00000000*      1242 .L891:	.word	.L890
+                        1243 	.type	.L891,@object
+                        1244 	.size	.L891,4
+                        1245 	.data
+                        1246 	.section ".icum_library.text","ax"
+                        1247 
+                        1248 --255: }
+                        1249 
+                        1250 --258: /**********************************************************************************
+                        1251 --259: * assigning ROM code and constants to specific sections
+                        1252 --260: ***********************************************************************************/
+                        1253 --261: /* #pragma ghs section text=".r_crypt.text.rel"      */
+                        1254 --262: /* #pragma ghs section rodata=".r_crypt.rodata.rel"  */
+                        1255 --264: /****************************************************************************************
+                        1256 --265: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0029]:[ICUMFW_UD_L_CRY_HASH_0029]
+                        1257 --266: * Function name: l_HASH_Sha256CompressSlow()
+                        1258 --267: * Description  : # HASH the 64-byte data.
+                        1259 --268: * Arguments    : (IN-OUT)  md     : HASH state
+                        1260 --269: *                (IN)      buf   : work buffer
+                        1261 --270: * Return Value : 
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1262 --271: ****************************************************************************************/
+                        1263 --272: static uint32_t l_HASH_Sha256CompressSlow(hash_inner_state_t * md, const uint8_t *buf)
+                        1264 	.align	2
+                        1265 	.align	2
+                        1266 	.align	2
+                        1267 ..gh.f.a.2.e.5:
+                        1268 	.type	..gh.f.a.2.e.5,@object
+                        1269 	.size	..gh.f.a.2.e.5,0
+                        1270 	.global	_l_HASH_Sha256CompressSlow..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.
+                        1271 _l_HASH_Sha256CompressSlow..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.:
+                        1272 _l_HASH_Sha256CompressSlow:
+00000702 031ec8fe       1273 	addi	-312,sp,sp
+00000706 63ff3501       1274 	st.w	lp,308[sp]
+0000070a 63df2901       1275 	st.w	r27,296[sp]
+0000070e 63e72501       1276 	st.w	r28,292[sp]
+00000712 63cf3101       1277 	st.w	r25,304[sp]
+00000716 63d72d01       1278 	st.w	r26,300[sp]
+0000071a 63ef2101       1279 	st.w	r29,288[sp]
+0000071e 06e0           1280 	mov	r6,r28
+00000720 07d8           1281 	mov	r7,r27
+                        1282 --	    .bf
+                        1283 .LDW61:
+                        1284 --273: {
+                        1285 --274:     uint32_t S[8], W[64], t0, t1;
+                        1286 --275:     uint32_t t;
+                        1287 --276:     uint32_t  i;
+                        1288 --278:     /* copy state into S */
+                        1289 --279:     for (i = 0U; i < 8U; i++)
+00000722 00ea           1290 	mov	0,r29
+00000724 d50d*          1291 	br	.L897
+                        1292 .L896:
+                        1293 --280:     {
+                        1294 --281:         S[i] = md->sha256.state[i];
+                        1295 --line281
+                        1296 ..lin.76e3fe0e..4bb774bc.0_41::
+                        1297 .LDWlin41:
+00000726 1d08           1298 	mov	r29,r1
+00000728 c20a           1299 	shl	2,r1
+0000072a 23f60001       1300 	movea	256,sp,ep
+0000072e c1f1           1301 	add	r1,ep
+00000730 1c160800       1302 	addi	8,r28,r2
+00000734 c209           1303 	add	r2,r1
+00000736 210f0100       1304 	ld.w	0[r1],r1
+0000073a 010d           1305 	sst.w	r1,0[ep]
+0000073c 41ea           1306 	add	1,r29
+                        1307 .L897:
+0000073e 68ea           1308 	cmp	8,r29
+00000740 b1f5*          1309 	bl	.L896
+                        1310 --282:     }
+                        1311 --284:     /* copy the state into 512-bits into W[0..15]   "W [i] = 0U" for countermeasures against CERT-c. */
+                        1312 --285:     for (i = 0U; i < 16U; i++)
+                        1313 --line285
+                        1314 ..lin.76e3fe0e..4bb774bc.0_42::
+                        1315 .LDWlin42:
+00000742 00ea           1316 	mov	0,r29
+00000744 a515*          1317 	br	.L901
+                        1318 .L900:
+                        1319 --286:     {
+                        1320 --287:         W[i] = 0U;
+                        1321 --line287
+                        1322 ..lin.76e3fe0e..4bb774bc.0_43::
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1323 .LDWlin43:
+00000746 1df0           1324 	mov	r29,ep
+00000748 c2f2           1325 	shl	2,ep
+0000074a 23160000       1326 	movea	0,sp,r2
+0000074e c2f1           1327 	add	r2,ep
+00000750 0105           1328 	sst.w	zero,0[ep]
+                        1329 --288:         LOAD32H(W[i], buf + (4U*i));
+00000752 1df0           1330 	mov	r29,ep
+00000754 c2f2           1331 	shl	2,ep
+00000756 03c8           1332 	mov	sp,r25
+00000758 dec9           1333 	add	ep,r25
+0000075a dbf1           1334 	add	r27,ep
+0000075c 00d5           1335 	sld.w	0[ep],r26
+                        1336 ..gh.beginasm.6:
+                        1337 	.type	..gh.beginasm.6,@object
+                        1338 	.size	..gh.beginasm.6,0
+                        1339 --ASM MACRO: Start
+0000075e e0d74053       1340     bsw    r26, r10
+                        1341 --ASM MACRO: End
+                        1342 ..gh.endasm.7:
+                        1343 	.type	..gh.endasm.7,@object
+                        1344 	.size	..gh.endasm.7,0
+00000762 79570100       1345 	st.w	r10,0[r25]
+                        1346 --line285
+                        1347 ..lin.76e3fe0e..4bb774bc.0_44::
+                        1348 .LDWlin44:
+00000766 41ea           1349 	add	1,r29
+                        1350 .L901:
+00000768 1d06f0ff       1351 	addi	-16,r29,zero
+0000076c d9ed*          1352 	bnl	.L900
+                        1353 --289:     }
+                        1354 --291:     /* fill W[16..63]   "W [i] = 0U" for countermeasures against CERT-c.  */
+                        1355 --292:     for (i = 16U; i < 64U; i++)
+                        1356 --line292
+                        1357 ..lin.76e3fe0e..4bb774bc.0_45::
+                        1358 .LDWlin45:
+0000076e 20ee1000       1359 	movea	16,zero,r29
+00000772 e55d*          1360 	br	.L905
+                        1361 .L904:
+                        1362 --293:     {
+                        1363 --294:         W[i] = 0U;
+                        1364 --line294
+                        1365 ..lin.76e3fe0e..4bb774bc.0_46::
+                        1366 .LDWlin46:
+00000774 1df0           1367 	mov	r29,ep
+00000776 c2f2           1368 	shl	2,ep
+00000778 23160000       1369 	movea	0,sp,r2
+0000077c c2f1           1370 	add	r2,ep
+0000077e 0105           1371 	sst.w	zero,0[ep]
+                        1372 --295:         W[i] = Gamma1(W[i - 2U]) + W[i - 7U] + Gamma0(W[i - 15U]) + W[i - 16U];
+00000780 1df6feff       1373 	addi	-2,r29,ep
+00000784 c2f2           1374 	shl	2,ep
+00000786 c3f1           1375 	add	sp,ep
+00000788 000d           1376 	sld.w	0[ep],r1
+0000078a 1df6feff       1377 	addi	-2,r29,ep
+0000078e c2f2           1378 	shl	2,ep
+00000790 c3f1           1379 	add	sp,ep
+00000792 009d           1380 	sld.w	0[ep],r19
+00000794 1df6feff       1381 	addi	-2,r29,ep
+00000798 910a           1382 	shr	17,r1
+0000079a c2f2           1383 	shl	2,ep
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+0000079c cf9a           1384 	shl	15,r19
+0000079e 1309           1385 	or	r19,r1
+000007a0 c3f1           1386 	add	sp,ep
+000007a2 009d           1387 	sld.w	0[ep],r19
+000007a4 1df6feff       1388 	addi	-2,r29,ep
+000007a8 c2f2           1389 	shl	2,ep
+000007aa c3f1           1390 	add	sp,ep
+000007ac 0095           1391 	sld.w	0[ep],r18
+000007ae 939a           1392 	shr	19,r19
+000007b0 1df6feff       1393 	addi	-2,r29,ep
+000007b4 c2f2           1394 	shl	2,ep
+000007b6 cd92           1395 	shl	13,r18
+000007b8 1299           1396 	or	r18,r19
+000007ba 3309           1397 	xor	r19,r1
+000007bc c3f1           1398 	add	sp,ep
+000007be 009d           1399 	sld.w	0[ep],r19
+000007c0 1df6f9ff       1400 	addi	-7,r29,ep
+000007c4 c2f2           1401 	shl	2,ep
+000007c6 c3f1           1402 	add	sp,ep
+000007c8 8a9a           1403 	shr	10,r19
+000007ca 2199           1404 	xor	r1,r19
+000007cc 000d           1405 	sld.w	0[ep],r1
+000007ce 1df6f1ff       1406 	addi	-15,r29,ep
+000007d2 c2f2           1407 	shl	2,ep
+000007d4 c3f1           1408 	add	sp,ep
+000007d6 d309           1409 	add	r19,r1
+000007d8 009d           1410 	sld.w	0[ep],r19
+000007da 1df6f1ff       1411 	addi	-15,r29,ep
+000007de c2f2           1412 	shl	2,ep
+000007e0 c3f1           1413 	add	sp,ep
+000007e2 0095           1414 	sld.w	0[ep],r18
+000007e4 1df6f1ff       1415 	addi	-15,r29,ep
+000007e8 879a           1416 	shr	7,r19
+000007ea c2f2           1417 	shl	2,ep
+000007ec d992           1418 	shl	25,r18
+000007ee 1299           1419 	or	r18,r19
+000007f0 c3f1           1420 	add	sp,ep
+000007f2 0095           1421 	sld.w	0[ep],r18
+000007f4 1df6f1ff       1422 	addi	-15,r29,ep
+000007f8 c2f2           1423 	shl	2,ep
+000007fa c3f1           1424 	add	sp,ep
+000007fc 008d           1425 	sld.w	0[ep],r17
+000007fe 9292           1426 	shr	18,r18
+00000800 1df6f1ff       1427 	addi	-15,r29,ep
+00000804 c2f2           1428 	shl	2,ep
+00000806 ce8a           1429 	shl	14,r17
+00000808 1191           1430 	or	r17,r18
+0000080a 3299           1431 	xor	r18,r19
+0000080c c3f1           1432 	add	sp,ep
+0000080e 0095           1433 	sld.w	0[ep],r18
+00000810 1df6f0ff       1434 	addi	-16,r29,ep
+00000814 c2f2           1435 	shl	2,ep
+00000816 c3f1           1436 	add	sp,ep
+00000818 8392           1437 	shr	3,r18
+0000081a 3299           1438 	xor	r18,r19
+0000081c c199           1439 	add	r1,r19
+0000081e 000d           1440 	sld.w	0[ep],r1
+00000820 1d10           1441 	mov	r29,r2
+00000822 c212           1442 	shl	2,r2
+00000824 c311           1443 	add	sp,r2
+00000826 d309           1444 	add	r19,r1
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000828 620f0100       1445 	st.w	r1,0[r2]
+0000082c 41ea           1446 	add	1,r29
+                        1447 .L905:
+0000082e 1d06c0ff       1448 	addi	-64,r29,zero
+00000832 99a5*          1449 	bnl	.L904
+                        1450 --296:     }
+                        1451 --298:     /* Compress */
+                        1452 --299: #define RND(a,b,c,d,e,f,g,h,i)                           \
+                        1453 --300:     do {                                                  \
+                        1454 --301:         t0 = (h) + Sigma1(e) + Ch(e, f, g) + K[i] + W[i]; \
+                        1455 --302:         t1 = Sigma0(a) + Maj(a, b, c);                    \
+                        1456 --303:         (d) += t0;                                        \
+                        1457 --304:         (h)  = t0 + t1;                                   \
+                        1458 --305:     } while(0)
+                        1459 --307:     for (i = 0U; i < 64U; ++i)
+                        1460 --line307
+                        1461 ..lin.76e3fe0e..4bb774bc.0_47::
+                        1462 .LDWlin47:
+00000834 00ea           1463 	mov	0,r29
+00000836 d565*          1464 	br	.L909
+                        1465 .L912:
+                        1466 --308:     {
+                        1467 --309:          RND(S[0],S[1],S[2],S[3],S[4],S[5],S[6],S[7],i);
+                        1468 --line309
+                        1469 ..lin.76e3fe0e..4bb774bc.0_48::
+                        1470 .LDWlin48:
+00000838 234f1101       1471 	ld.w	272[sp],r9
+0000083c 1df0           1472 	mov	r29,ep
+0000083e c2f2           1473 	shl	2,ep
+00000840 300600000000*  1474 	mov	_K,r16
+00000846 d0f1           1475 	add	r16,ep
+00000848 fa4fc490       1476 	rotl	26,r9,r18
+0000084c f54fc408       1477 	rotl	21,r9,r1
+00000850 2191           1478 	xor	r1,r18
+00000852 e74fc488       1479 	rotl	7,r9,r17
+00000856 3191           1480 	xor	r17,r18
+00000858 238f1d01       1481 	ld.w	284[sp],r17
+0000085c 230f1901       1482 	ld.w	280[sp],r1
+00000860 23860000       1483 	movea	0,sp,r16
+00000864 d289           1484 	add	r18,r17
+00000866 23971501       1485 	ld.w	276[sp],r18
+0000086a 2191           1486 	xor	r1,r18
+0000086c 4991           1487 	and	r9,r18
+0000086e 2191           1488 	xor	r1,r18
+00000870 d289           1489 	add	r18,r17
+00000872 0095           1490 	sld.w	0[ep],r18
+00000874 1df0           1491 	mov	r29,ep
+00000876 c2f2           1492 	shl	2,ep
+00000878 d0f1           1493 	add	r16,ep
+0000087a 000d           1494 	sld.w	0[ep],r1
+0000087c d191           1495 	add	r17,r18
+0000087e d209           1496 	add	r18,r1
+                        1497 --line309
+                        1498 ..lin.76e3fe0e..4bb774bc.0_49::
+                        1499 .LDWlin49:
+00000880 237f0101       1500 	ld.w	256[sp],r15
+00000884 238f0901       1501 	ld.w	264[sp],r17
+00000888 fe7fc490       1502 	rotl	30,r15,r18
+0000088c f37fc410       1503 	rotl	19,r15,r2
+00000890 2291           1504 	xor	r2,r18
+00000892 23170501       1505 	ld.w	260[sp],r2
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000896 ea7fc480       1506 	rotl	10,r15,r16
+0000089a 3281           1507 	xor	r18,r16
+0000089c 0f90           1508 	mov	r15,r18
+0000089e 0291           1509 	or	r2,r18
+000008a0 5289           1510 	and	r18,r17
+000008a2 4279           1511 	and	r2,r15
+000008a4 1179           1512 	or	r17,r15
+000008a6 0f10           1513 	mov	r15,r2
+000008a8 d011           1514 	add	r16,r2
+000008aa 23970d01       1515 	ld.w	268[sp],r18
+000008ae c191           1516 	add	r1,r18
+000008b0 63970d01       1517 	st.w	r18,268[sp]
+000008b4 0290           1518 	mov	r2,r18
+000008b6 c191           1519 	add	r1,r18
+000008b8 63971d01       1520 	st.w	r18,284[sp]
+000008bc 0000           1521 	nop
+                        1522 --310:          t    = S[7];
+000008be 239f1d01       1523 	ld.w	284[sp],r19
+                        1524 --311:          S[7] = S[6];
+000008c2 23971901       1525 	ld.w	280[sp],r18
+000008c6 63971d01       1526 	st.w	r18,284[sp]
+                        1527 --312:          S[6] = S[5];
+000008ca 23971501       1528 	ld.w	276[sp],r18
+000008ce 63971901       1529 	st.w	r18,280[sp]
+                        1530 --313:          S[5] = S[4];
+000008d2 23971101       1531 	ld.w	272[sp],r18
+000008d6 63971501       1532 	st.w	r18,276[sp]
+                        1533 --314:          S[4] = S[3];
+000008da 23970d01       1534 	ld.w	268[sp],r18
+000008de 63971101       1535 	st.w	r18,272[sp]
+                        1536 --315:          S[3] = S[2];
+000008e2 23970901       1537 	ld.w	264[sp],r18
+000008e6 63970d01       1538 	st.w	r18,268[sp]
+                        1539 --316:          S[2] = S[1];
+000008ea 23970501       1540 	ld.w	260[sp],r18
+000008ee 63970901       1541 	st.w	r18,264[sp]
+                        1542 --317:          S[1] = S[0];
+000008f2 23970101       1543 	ld.w	256[sp],r18
+000008f6 63970501       1544 	st.w	r18,260[sp]
+                        1545 --318:          S[0] = t;
+000008fa 639f0101       1546 	st.w	r19,256[sp]
+000008fe 41ea           1547 	add	1,r29
+                        1548 .L909:
+00000900 1d06c0ff       1549 	addi	-64,r29,zero
+00000904 a99d*          1550 	bnl	.L912
+                        1551 --319:     }
+                        1552 --322:     /* feedback */
+                        1553 --323:     for (i = 0U; i < 8U; i++)
+                        1554 --line323
+                        1555 ..lin.76e3fe0e..4bb774bc.0_50::
+                        1556 .LDWlin50:
+00000906 00ea           1557 	mov	0,r29
+00000908 f50d*          1558 	br	.L916
+                        1559 .L915:
+                        1560 --324:     {
+                        1561 --325:         md->sha256.state[i] = md->sha256.state[i] + S[i];
+                        1562 --line325
+                        1563 ..lin.76e3fe0e..4bb774bc.0_51::
+                        1564 .LDWlin51:
+0000090a 1df0           1565 	mov	r29,ep
+0000090c c2f2           1566 	shl	2,ep
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+0000090e 238e0001       1567 	movea	256,sp,r17
+00000912 de89           1568 	add	ep,r17
+00000914 1c860800       1569 	addi	8,r28,r16
+00000918 d0f1           1570 	add	r16,ep
+0000091a 0095           1571 	sld.w	0[ep],r18
+0000091c 318f0100       1572 	ld.w	0[r17],r17
+00000920 d191           1573 	add	r17,r18
+00000922 0195           1574 	sst.w	r18,0[ep]
+00000924 41ea           1575 	add	1,r29
+                        1576 .L916:
+00000926 68ea           1577 	cmp	8,r29
+00000928 91f5*          1578 	bl	.L915
+                        1579 --326:     }
+                        1580 --328:     return(ER_OK);
+                        1581 --line328
+                        1582 ..lin.76e3fe0e..4bb774bc.0_52::
+                        1583 .LDWlin52:
+0000092a 0052           1584 	mov	0,r10
+                        1585 --	    .ef
+                        1586 .LDW71:
+0000092c 23ff3501       1587 	ld.w	308[sp],lp
+00000930 23ef2101       1588 	ld.w	288[sp],r29
+00000934 23e72501       1589 	ld.w	292[sp],r28
+00000938 23df2901       1590 	ld.w	296[sp],r27
+0000093c 23d72d01       1591 	ld.w	300[sp],r26
+00000940 23cf3101       1592 	ld.w	304[sp],r25
+00000944 031e3801       1593 	addi	312,sp,sp
+                        1594 .L1234:
+                        1595 	.jumptype return
+00000948 7f00           1596 	jmp	[lp]
+                        1597 --line328
+                        1598 ..lin.76e3fe0e..4bb774bc.0_53::
+                        1599 	.type	_l_HASH_Sha256CompressSlow,@function
+                        1600 	.size	_l_HASH_Sha256CompressSlow,.-_l_HASH_Sha256CompressSlow
+                        1601 	.type	_l_HASH_Sha256CompressSlow..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,@function
+                        1602 	.size	_l_HASH_Sha256CompressSlow..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.,.-_l_HASH_Sha256CompressSlow..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256.
+                        1603 	.align	2
+                        1604 --_S	256[sp]	local
+                        1605 --_W	0[sp]	local
+                        1606 --_t0	r1	local
+                        1607 --_t1	r2	local
+                        1608 --_t	r19	local
+                        1609 --_i	r29	local
+                        1610 
+                        1611 --_md	r28	param
+                        1612 --_buf	r27	param
+                        1613 
+                        1614 	.section ".bss","awb"
+                        1615 .L1102:
+                        1616 	.type	.L1102,@object
+                        1617 	.size	.L1102,0
+                        1618 	.section ".ghrettbl",""
+0000000c 00000000*      1619 .L1235:	.word	.L1234
+                        1620 	.type	.L1235,@object
+                        1621 	.size	.L1235,4
+                        1622 	.data
+                        1623 	.section ".icum_library.text","ax"
+                        1624 
+                        1625 --329: }
+                        1626 
+                        1627 --331: /**********************************************************************************
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1628 --332: * _sha256_compress function forced with LTC_SMALL_CODE undefined
+                        1629 --333: * code moved to default text section
+                        1630 --334: ***********************************************************************************/
+                        1631 --335: /* #pragma ghs section text=default   */
+                        1632 --336: /* #pragma ghs section rodata=default */
+                        1633 --338: /* #pragma ghs section text=".r_crypt.text.rel" */
+                        1634 --340: /****************************************************************************************
+                        1635 --341: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0027]:[ICUMFW_UD_L_CRY_HASH_0027]
+                        1636 --342: * Function name: l_HASH_Sha256ProcessSlow()
+                        1637 --343: * Description  : # HASH the data for the length indicated by the message length.
+                        1638 --344: * Arguments    : (IN-OUT)  md     : HASH state
+                        1639 --345: *                (IN-OUT)  in    : Input message
+                        1640 --346: *                (IN-OUT)  inlen  : Input message length
+                        1641 --347: * Return Value : ER_OK
+                        1642 --348: *                ER_L_HASH_INVALID_ARG
+                        1643 --349: ****************************************************************************************/
+                        1644 --350: uint32_t l_HASH_Sha256ProcessSlow(hash_inner_state_t * md, const uint8_t *in, uint32_t inlen)
+                        1645 	.align	2
+                        1646 	.align	2
+                        1647 	.align	2
+                        1648 ..gh.f.a.2.e.8:
+                        1649 	.type	..gh.f.a.2.e.8,@object
+                        1650 	.size	..gh.f.a.2.e.8,0
+                        1651 	.global	_l_HASH_Sha256ProcessSlow
+                        1652 _l_HASH_Sha256ProcessSlow:
+0000094a 031eecff       1653 	addi	-20,sp,sp
+0000094e 63ff1100       1654 	st.w	lp,16[sp]
+00000952 63df0900       1655 	st.w	r27,8[sp]
+00000956 63e70500       1656 	st.w	r28,4[sp]
+0000095a 63ef0100       1657 	st.w	r29,0[sp]
+0000095e 63d70d00       1658 	st.w	r26,12[sp]
+00000962 06e8           1659 	mov	r6,r29
+00000964 07d8           1660 	mov	r7,r27
+00000966 08e0           1661 	mov	r8,r28
+                        1662 --	    .bf
+                        1663 .LDW81:
+                        1664 --351: {
+                        1665 --352:     uint32_t    n;
+                        1666 --353:     uint32_t    err;
+                        1667 --354:     
+                        1668 --355:     if (md == NULL)
+00000968 e0e9           1669 	cmp	zero,r29
+0000096a da05*          1670 	bne	.L1238
+                        1671 --356:     {
+                        1672 --357:         err = ER_L_HASH_INVALID_ARG;
+                        1673 --line357
+                        1674 ..lin.76e3fe0e..e61f7b8f.0_54::
+                        1675 .LDWlin54:
+0000096c 210601000300   1676 	mov	196609,r1
+00000972 e555*          1677 	br	.L1240
+                        1678 .L1238:
+                        1679 --358:     }
+                        1680 --359:     else if (md->sha256.curlen > sizeof(md->sha256.buf))
+                        1681 --line359
+                        1682 ..lin.76e3fe0e..e61f7b8f.0_55::
+                        1683 .LDWlin55:
+00000974 3d0f2900       1684 	ld.w	40[r29],r1
+00000978 0106bfff       1685 	addi	-65,r1,zero
+0000097c d905*          1686 	bnl	.L1241
+                        1687 --360:     {
+                        1688 --361:         err = ER_L_HASH_INVALID_ARG;
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1689 --line361
+                        1690 ..lin.76e3fe0e..e61f7b8f.0_56::
+                        1691 .LDWlin56:
+0000097e 210601000300   1692 	mov	196609,r1
+00000984 d54d*          1693 	br	.L1240
+                        1694 .L1241:
+                        1695 --362:     }
+                        1696 --363:     else
+                        1697 --364:     {
+                        1698 --365:         while (inlen > 0u)
+                        1699 --line365
+                        1700 ..lin.76e3fe0e..e61f7b8f.0_57::
+                        1701 .LDWlin57:
+00000986 954d*          1702 	br	.L1244
+                        1703 .L1246:
+                        1704 --366:         {
+                        1705 --367:             if ((md->sha256.curlen == 0U) && (inlen >= 64u))
+                        1706 --line367
+                        1707 ..lin.76e3fe0e..e61f7b8f.0_58::
+                        1708 .LDWlin58:
+00000988 3d0f2900       1709 	ld.w	40[r29],r1
+0000098c e009           1710 	cmp	zero,r1
+0000098e fa15*          1711 	bne	.L1247
+00000990 1c06c0ff       1712 	addi	-64,r28,zero
+00000994 c915*          1713 	bnl	.L1247
+                        1714 --368:             {
+                        1715 --369:                 (void)l_HASH_Sha256CompressSlow(md, in);
+                        1716 --line369
+                        1717 ..lin.76e3fe0e..e61f7b8f.0_59::
+                        1718 .LDWlin59:
+00000996 1d30           1719 	mov	r29,r6
+00000998 1b38           1720 	mov	r27,r7
+                        1721 .L1444:
+                        1722 	jarl	_l_HASH_Sha256CompressSlow,lp
+                        1722 <EXPANSION BEGIN>
+                        1722 jarl22 _l_HASH_Sha256CompressSlow , lp 
+0000099a bfff68fd*      1722 <EXPANSION END>
+                        1723 --370:                 md->sha256.length += ((uint64_t)64 * (uint64_t)8);
+                        1724 --line370
+                        1725 ..lin.76e3fe0e..e61f7b8f.0_60::
+                        1726 .LDWlin60:
+0000099e bd0709800000   1727 	ld.dw	0[r29],r16
+000009a4 10960002       1728 	addi	512,r16,r18
+000009a8 e08fa29b       1729 	adfl	zero,r17,r19
+000009ac bd070f900000   1730 	st.dw	r18,0[r29]
+                        1731 --371:                 in             += 64U;
+                        1732 --line371
+                        1733 ..lin.76e3fe0e..e61f7b8f.0_61::
+                        1734 .LDWlin61:
+000009b2 1bde4000       1735 	addi	64,r27,r27
+                        1736 --372:                 inlen          -= 64U;
+000009b6 1ce6c0ff       1737 	addi	-64,r28,r28
+000009ba f52d*          1738 	br	.L1244
+                        1739 .L1247:
+                        1740 --373:             }
+                        1741 --374:             else
+                        1742 --375:             {
+                        1743 --376:                 n = MIN(inlen, (64U - md->sha256.curlen));
+                        1744 --line376
+                        1745 ..lin.76e3fe0e..e61f7b8f.0_62::
+                        1746 .LDWlin62:
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+000009bc 3d0f2900       1747 	ld.w	40[r29],r1
+000009c0 20164000       1748 	movea	64,zero,r2
+000009c4 8209           1749 	subr	r2,r1
+000009c6 fc09           1750 	cmp	r28,r1
+000009c8 fc0f36d3       1751 	cmovh	r28,r1,r26
+                        1752 --377:                 l_CMN_MemCpy(md->sha256.buf + md-> sha256.curlen, in, n);
+000009cc 3d0f2900       1753 	ld.w	40[r29],r1
+000009d0 1d362c00       1754 	addi	44,r29,r6
+000009d4 1b38           1755 	mov	r27,r7
+000009d6 1a40           1756 	mov	r26,r8
+000009d8 c131           1757 	add	r1,r6
+                        1758 .L1446:
+                        1759 	jarl	_l_CMN_MemCpy,lp
+                        1759 <EXPANSION BEGIN>
+                        1759 jarl22 _l_CMN_MemCpy , lp 
+000009da 80ff0000*      1759 <EXPANSION END>
+                        1760 --378:                 md->sha256.curlen += n;
+                        1761 --line378
+                        1762 ..lin.76e3fe0e..e61f7b8f.0_63::
+                        1763 .LDWlin63:
+000009de 3d0f2900       1764 	ld.w	40[r29],r1
+000009e2 da09           1765 	add	r26,r1
+000009e4 7d0f2900       1766 	st.w	r1,40[r29]
+                        1767 --379:                 in             += n;
+000009e8 dad9           1768 	add	r26,r27
+                        1769 --380:                 inlen          -= n;
+000009ea bae1           1770 	sub	r26,r28
+                        1771 --381:                 if (md->sha256.curlen == 64U)
+000009ec 3d0f2900       1772 	ld.w	40[r29],r1
+000009f0 0106c0ff       1773 	addi	-64,r1,zero
+000009f4 aa15*          1774 	bne	.L1244
+                        1775 --382:                 {
+                        1776 --383:                     (void)l_HASH_Sha256CompressSlow(md, md->sha256.buf);
+                        1777 --line383
+                        1778 ..lin.76e3fe0e..e61f7b8f.0_64::
+                        1779 .LDWlin64:
+000009f6 1d30           1780 	mov	r29,r6
+000009f8 1d3e2c00       1781 	addi	44,r29,r7
+                        1782 .L1448:
+                        1783 	jarl	_l_HASH_Sha256CompressSlow,lp
+                        1783 <EXPANSION BEGIN>
+                        1783 jarl22 _l_HASH_Sha256CompressSlow , lp 
+000009fc bfff06fd*      1783 <EXPANSION END>
+                        1784 --384:                     md->sha256.length += (uint64_t)(8 * 64);
+                        1785 --line384
+                        1786 ..lin.76e3fe0e..e61f7b8f.0_65::
+                        1787 .LDWlin65:
+00000a00 bd0709800000   1788 	ld.dw	0[r29],r16
+00000a06 10960002       1789 	addi	512,r16,r18
+00000a0a e08fa29b       1790 	adfl	zero,r17,r19
+00000a0e bd070f900000   1791 	st.dw	r18,0[r29]
+                        1792 --385:                     md->sha256.curlen = 0;
+                        1793 --line385
+                        1794 ..lin.76e3fe0e..e61f7b8f.0_66::
+                        1795 .LDWlin66:
+00000a14 7d072900       1796 	st.w	zero,40[r29]
+                        1797 .L1244:
+                        1798 --386:                 }
+                        1799 --387:                 else
+                        1800 --388:                 {
+00000a18 e0e1           1801 	cmp	zero,r28
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000a1a fbb5*          1802 	bh	.L1246
+                        1803 --389:                     /* Do nothing */
+                        1804 --390:                 }
+                        1805 --391:             }
+                        1806 --392:         }
+                        1807 --393:         err = ER_OK;
+                        1808 --line393
+                        1809 ..lin.76e3fe0e..e61f7b8f.0_67::
+                        1810 .LDWlin67:
+00000a1c 000a           1811 	mov	0,r1
+                        1812 .L1240:
+                        1813 --394:     }
+                        1814 --396:     return (err);
+00000a1e 0150           1815 	mov	r1,r10
+                        1816 --	    .ef
+                        1817 .LDW91:
+00000a20 23ff1100       1818 	ld.w	16[sp],lp
+00000a24 23ef0100       1819 	ld.w	0[sp],r29
+00000a28 23e70500       1820 	ld.w	4[sp],r28
+00000a2c 23df0900       1821 	ld.w	8[sp],r27
+00000a30 23d70d00       1822 	ld.w	12[sp],r26
+00000a34 031e1400       1823 	addi	20,sp,sp
+                        1824 .L1450:
+                        1825 	.jumptype return
+00000a38 7f00           1826 	jmp	[lp]
+                        1827 --line393
+                        1828 ..lin.76e3fe0e..e61f7b8f.0_68::
+                        1829 	.type	_l_HASH_Sha256ProcessSlow,@function
+                        1830 	.size	_l_HASH_Sha256ProcessSlow,.-_l_HASH_Sha256ProcessSlow
+                        1831 	.align	2
+                        1832 --_n	r26	local
+                        1833 --_err	r1	local
+                        1834 
+                        1835 --_md	r29	param
+                        1836 --_in	r27	param
+                        1837 --_inlen	r28	param
+                        1838 
+                        1839 	.section ".bss","awb"
+                        1840 .L1366:
+                        1841 	.type	.L1366,@object
+                        1842 	.size	.L1366,0
+                        1843 	.section ".ghcalltbl",""
+0000000c 00000000*      1844 .L1445:	.word	.L1444
+                        1845 	.type	.L1445,@object
+                        1846 	.size	.L1445,4
+00000010 00000000*      1847 .L1447:	.word	.L1446
+                        1848 	.type	.L1447,@object
+                        1849 	.size	.L1447,4
+00000014 00000000*      1850 .L1449:	.word	.L1448
+                        1851 	.type	.L1449,@object
+                        1852 	.size	.L1449,4
+                        1853 	.section ".ghrettbl",""
+00000010 00000000*      1854 .L1451:	.word	.L1450
+                        1855 	.type	.L1451,@object
+                        1856 	.size	.L1451,4
+                        1857 	.data
+                        1858 	.section ".icum_library.text","ax"
+                        1859 
+                        1860 --397: }
+                        1861 
+                        1862 --400: /**
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1863 --401:    Terminate the hash to get the digest
+                        1864 --402:    \param md  The hash state
+                        1865 --403:    \param out [out] The destination of the hash (32 bytes)
+                        1866 --404:    \return ER_OK if successful
+                        1867 --405: */
+                        1868 --406: /****************************************************************************************
+                        1869 --407: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0031]:[ICUMFW_UD_L_CRY_HASH_0031]
+                        1870 --408: * Function name: l_HASH_Sha256Done()
+                        1871 --409: * Description  : # Output the HASH value.
+                        1872 --410: * Arguments    : (IN-OUT)  md     : HASH state
+                        1873 --411: *                (IN-OUT)  out    : HASH value output destination
+                        1874 --412: * Return Value : ER_OK
+                        1875 --413: *                ER_L_HASH_INVALID_ARG
+                        1876 --414: ****************************************************************************************/
+                        1877 --415: uint32_t l_HASH_Sha256Done(hash_inner_state_t * md, uint8_t *out)
+                        1878 	.align	2
+                        1879 	.align	2
+                        1880 	.align	2
+                        1881 ..gh.f.a.2.e.9:
+                        1882 	.type	..gh.f.a.2.e.9,@object
+                        1883 	.size	..gh.f.a.2.e.9,0
+                        1884 	.global	_l_HASH_Sha256Done
+                        1885 _l_HASH_Sha256Done:
+00000a3a 031ee8ff       1886 	addi	-24,sp,sp
+00000a3e 63ff1500       1887 	st.w	lp,20[sp]
+00000a42 63df0900       1888 	st.w	r27,8[sp]
+00000a46 63ef0100       1889 	st.w	r29,0[sp]
+00000a4a 63cf1100       1890 	st.w	r25,16[sp]
+00000a4e 63d70d00       1891 	st.w	r26,12[sp]
+00000a52 63e70500       1892 	st.w	r28,4[sp]
+00000a56 06e8           1893 	mov	r6,r29
+00000a58 07d8           1894 	mov	r7,r27
+                        1895 --	    .bf
+                        1896 .LDW02:
+                        1897 --416: {
+                        1898 --417:     uint32_t i;
+                        1899 --418:     uint32_t err;
+                        1900 --420:     if (md == NULL)
+00000a5a e0e9           1901 	cmp	zero,r29
+00000a5c da05*          1902 	bne	.L1454
+                        1903 --421:     {
+                        1904 --422:         err = ER_L_HASH_INVALID_ARG;
+                        1905 --line422
+                        1906 ..lin.76e3fe0e..d8f7c2f1.0_69::
+                        1907 .LDWlin69:
+00000a5e 210601000300   1908 	mov	196609,r1
+00000a64 d575*          1909 	br	.L1456
+                        1910 .L1454:
+                        1911 --423:     }
+                        1912 --424:     else if (md->sha256.curlen >= sizeof(md->sha256.buf))
+                        1913 --line424
+                        1914 ..lin.76e3fe0e..d8f7c2f1.0_70::
+                        1915 .LDWlin70:
+00000a66 3d0f2900       1916 	ld.w	40[r29],r1
+00000a6a 0106c0ff       1917 	addi	-64,r1,zero
+00000a6e d905*          1918 	bnl	.L1457
+                        1919 --425:     {
+                        1920 --426:         err = ER_L_HASH_INVALID_ARG;
+                        1921 --line426
+                        1922 ..lin.76e3fe0e..d8f7c2f1.0_71::
+                        1923 .LDWlin71:
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000a70 210601000300   1924 	mov	196609,r1
+00000a76 c56d*          1925 	br	.L1456
+                        1926 .L1457:
+                        1927 --427:     }
+                        1928 --428:     else
+                        1929 --429:     {
+                        1930 --430:         /* increase the length of the message */
+                        1931 --431:         md->sha256.length += (uint64_t)(md->sha256.curlen * 8U);
+                        1932 --line431
+                        1933 ..lin.76e3fe0e..d8f7c2f1.0_72::
+                        1934 .LDWlin72:
+00000a78 3d972900       1935 	ld.w	40[r29],r18
+00000a7c bd0709800000   1936 	ld.dw	0[r29],r16
+00000a82 c392           1937 	shl	3,r18
+00000a84 d091           1938 	add	r16,r18
+00000a86 e08fa29b       1939 	adfl	zero,r17,r19
+00000a8a bd070f900000   1940 	st.dw	r18,0[r29]
+                        1941 --433:         /* append the '1' bit */
+                        1942 --434:         md->sha256.buf[md->sha256.curlen++] = (uint8_t)0x80;
+                        1943 --line434
+                        1944 ..lin.76e3fe0e..d8f7c2f1.0_73::
+                        1945 .LDWlin73:
+00000a90 3df72900       1946 	ld.w	40[r29],ep
+00000a94 1e0e0100       1947 	addi	1,ep,r1
+00000a98 7d0f2900       1948 	st.w	r1,40[r29]
+00000a9c 1d0e2c00       1949 	addi	44,r29,r1
+00000aa0 c1f1           1950 	add	r1,ep
+00000aa2 200e8000       1951 	movea	128,zero,r1
+00000aa6 800b           1952 	sst.b	r1,0[ep]
+                        1953 --436:         /* if the length is currently above 56 bytes we append zeros
+                        1954 --437:         * then compress.  Then we can fall back to padding zeros and length
+                        1955 --438:         * encoding like normal.
+                        1956 --439:         */
+                        1957 --440:         if (md->sha256.curlen > 56u)
+00000aa8 3d0f2900       1958 	ld.w	40[r29],r1
+00000aac 0106c7ff       1959 	addi	-57,r1,zero
+00000ab0 891d*          1960 	bnl	.L1465
+                        1961 --441:         {
+                        1962 --442:             while (md->sha256.curlen < 64u)
+                        1963 --line442
+                        1964 ..lin.76e3fe0e..d8f7c2f1.0_74::
+                        1965 .LDWlin74:
+00000ab2 b50d*          1966 	br	.L1462
+                        1967 .L1464:
+                        1968 --443:             {
+                        1969 --444:                 md->sha256.buf[md->sha256.curlen++] = (uint8_t)0;
+                        1970 --line444
+                        1971 ..lin.76e3fe0e..d8f7c2f1.0_75::
+                        1972 .LDWlin75:
+00000ab4 3df72900       1973 	ld.w	40[r29],ep
+00000ab8 1e0e0100       1974 	addi	1,ep,r1
+00000abc 7d0f2900       1975 	st.w	r1,40[r29]
+00000ac0 1d0e2c00       1976 	addi	44,r29,r1
+00000ac4 c1f1           1977 	add	r1,ep
+00000ac6 8003           1978 	sst.b	zero,0[ep]
+                        1979 .L1462:
+00000ac8 3d0f2900       1980 	ld.w	40[r29],r1
+00000acc 0106c0ff       1981 	addi	-64,r1,zero
+00000ad0 a9f5*          1982 	bnl	.L1464
+                        1983 --445:             }
+                        1984 --446:             (void)l_HASH_Sha256Compress(md, md->sha256.buf);
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        1985 --line446
+                        1986 ..lin.76e3fe0e..d8f7c2f1.0_76::
+                        1987 .LDWlin76:
+00000ad2 1d30           1988 	mov	r29,r6
+00000ad4 1d3e2c00       1989 	addi	44,r29,r7
+                        1990 .L1703:
+                        1991 	jarl	_l_HASH_Sha256Compress,lp
+                        1991 <EXPANSION BEGIN>
+                        1991 jarl22 _l_HASH_Sha256Compress , lp 
+00000ad8 bfff28f5*      1991 <EXPANSION END>
+                        1992 --447:             md->sha256.curlen = 0u;
+                        1993 --line447
+                        1994 ..lin.76e3fe0e..d8f7c2f1.0_77::
+                        1995 .LDWlin77:
+00000adc 7d072900       1996 	st.w	zero,40[r29]
+                        1997 .L1465:
+                        1998 --448:         }
+                        1999 --449:         else
+                        2000 --450:         {
+                        2001 --451:             /* Do nothing */
+                        2002 --452:         }
+                        2003 --454:         /* pad upto 56 bytes of zeroes */
+                        2004 --455:         while (md->sha256.curlen < 56u)
+00000ae0 b50d*          2005 	br	.L1466
+                        2006 .L1468:
+                        2007 --456:         {
+                        2008 --457:             md->sha256.buf[md->sha256.curlen++] = (uint8_t)0;
+                        2009 --line457
+                        2010 ..lin.76e3fe0e..d8f7c2f1.0_78::
+                        2011 .LDWlin78:
+00000ae2 3df72900       2012 	ld.w	40[r29],ep
+00000ae6 1e0e0100       2013 	addi	1,ep,r1
+00000aea 7d0f2900       2014 	st.w	r1,40[r29]
+00000aee 1d0e2c00       2015 	addi	44,r29,r1
+00000af2 c1f1           2016 	add	r1,ep
+00000af4 8003           2017 	sst.b	zero,0[ep]
+                        2018 .L1466:
+00000af6 3d0f2900       2019 	ld.w	40[r29],r1
+00000afa 0106c8ff       2020 	addi	-56,r1,zero
+00000afe a9f5*          2021 	bnl	.L1468
+                        2022 --458:         }
+                        2023 --460:         /* store length */
+                        2024 --461:         STORE64H(md->sha256.length, md->sha256.buf+56U);
+                        2025 --line461
+                        2026 ..lin.76e3fe0e..d8f7c2f1.0_79::
+                        2027 .LDWlin79:
+00000b00 bd0709800000   2028 	ld.dw	0[r29],r16
+00000b06 1190           2029 	mov	r17,r18
+00000b08 12e0           2030 	mov	r18,r28
+                        2031 ..gh.beginasm.10:
+                        2032 	.type	..gh.beginasm.10,@object
+                        2033 	.size	..gh.beginasm.10,0
+                        2034 --ASM MACRO: Start
+00000b0a e0e74053       2035     bsw    r28, r10
+                        2036 --ASM MACRO: End
+                        2037 ..gh.endasm.11:
+                        2038 	.type	..gh.endasm.11,@object
+                        2039 	.size	..gh.endasm.11,0
+00000b0e 7d576500       2040 	st.w	r10,100[r29]
+                        2041 --line461
+                        2042 ..lin.76e3fe0e..d8f7c2f1.0_80::
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        2043 .LDWlin80:
+00000b12 3de70100       2044 	ld.w	0[r29],r28
+                        2045 ..gh.beginasm.12:
+                        2046 	.type	..gh.beginasm.12,@object
+                        2047 	.size	..gh.beginasm.12,0
+                        2048 --ASM MACRO: Start
+00000b16 e0e74053       2049     bsw    r28, r10
+                        2050 --ASM MACRO: End
+                        2051 ..gh.endasm.13:
+                        2052 	.type	..gh.endasm.13,@object
+                        2053 	.size	..gh.endasm.13,0
+00000b1a 7d576900       2054 	st.w	r10,104[r29]
+                        2055 --line461
+                        2056 ..lin.76e3fe0e..d8f7c2f1.0_81::
+                        2057 .LDWlin81:
+00000b1e 0000           2058 	nop
+                        2059 --462:         (void)l_HASH_Sha256Compress(md, md->sha256.buf);
+00000b20 1d30           2060 	mov	r29,r6
+00000b22 1d3e2c00       2061 	addi	44,r29,r7
+                        2062 .L1705:
+                        2063 	jarl	_l_HASH_Sha256Compress,lp
+                        2063 <EXPANSION BEGIN>
+                        2063 jarl22 _l_HASH_Sha256Compress , lp 
+00000b26 bfffdaf4*      2063 <EXPANSION END>
+                        2064 --464:         /* copy output */
+                        2065 --465:         for (i = 0U; i < 8U; i++)
+                        2066 --line465
+                        2067 ..lin.76e3fe0e..d8f7c2f1.0_82::
+                        2068 .LDWlin82:
+00000b2a 00e2           2069 	mov	0,r28
+00000b2c e50d*          2070 	br	.L1475
+                        2071 .L1474:
+                        2072 --466:         {
+                        2073 --467:             STORE32H(md->sha256.state[i], out+(4U*i));
+                        2074 --line467
+                        2075 ..lin.76e3fe0e..d8f7c2f1.0_83::
+                        2076 .LDWlin83:
+00000b2e 1cf0           2077 	mov	r28,ep
+00000b30 c2f2           2078 	shl	2,ep
+00000b32 1ec8           2079 	mov	ep,r25
+00000b34 dbc9           2080 	add	r27,r25
+00000b36 1d160800       2081 	addi	8,r29,r2
+00000b3a c2f1           2082 	add	r2,ep
+00000b3c 00d5           2083 	sld.w	0[ep],r26
+                        2084 ..gh.beginasm.14:
+                        2085 	.type	..gh.beginasm.14,@object
+                        2086 	.size	..gh.beginasm.14,0
+                        2087 --ASM MACRO: Start
+00000b3e e0d74053       2088     bsw    r26, r10
+                        2089 --ASM MACRO: End
+                        2090 ..gh.endasm.15:
+                        2091 	.type	..gh.endasm.15,@object
+                        2092 	.size	..gh.endasm.15,0
+00000b42 79570100       2093 	st.w	r10,0[r25]
+                        2094 --line465
+                        2095 ..lin.76e3fe0e..d8f7c2f1.0_84::
+                        2096 .LDWlin84:
+00000b46 41e2           2097 	add	1,r28
+                        2098 .L1475:
+00000b48 68e2           2099 	cmp	8,r28
+00000b4a a1f5*          2100 	bl	.L1474
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        2101 --468:         }
+                        2102 --469:         err = ER_OK;
+                        2103 --line469
+                        2104 ..lin.76e3fe0e..d8f7c2f1.0_85::
+                        2105 .LDWlin85:
+00000b4c 000a           2106 	mov	0,r1
+                        2107 .L1456:
+                        2108 --470:     }
+                        2109 --472:     return (err);
+00000b4e 0150           2110 	mov	r1,r10
+                        2111 --	    .ef
+                        2112 .LDW12:
+00000b50 23ff1500       2113 	ld.w	20[sp],lp
+00000b54 23ef0100       2114 	ld.w	0[sp],r29
+00000b58 23e70500       2115 	ld.w	4[sp],r28
+00000b5c 23df0900       2116 	ld.w	8[sp],r27
+00000b60 23d70d00       2117 	ld.w	12[sp],r26
+00000b64 23cf1100       2118 	ld.w	16[sp],r25
+00000b68 031e1800       2119 	addi	24,sp,sp
+                        2120 .L1707:
+                        2121 	.jumptype return
+00000b6c 7f00           2122 	jmp	[lp]
+                        2123 --line469
+                        2124 ..lin.76e3fe0e..d8f7c2f1.0_86::
+                        2125 	.type	_l_HASH_Sha256Done,@function
+                        2126 	.size	_l_HASH_Sha256Done,.-_l_HASH_Sha256Done
+                        2127 	.align	2
+                        2128 --_i	r28	local
+                        2129 --_err	r1	local
+                        2130 
+                        2131 --_md	r29	param
+                        2132 --_out	r27	param
+                        2133 
+                        2134 	.section ".bss","awb"
+                        2135 .L1610:
+                        2136 	.type	.L1610,@object
+                        2137 	.size	.L1610,0
+                        2138 	.section ".ghcalltbl",""
+00000018 00000000*      2139 .L1704:	.word	.L1703
+                        2140 	.type	.L1704,@object
+                        2141 	.size	.L1704,4
+0000001c 00000000*      2142 .L1706:	.word	.L1705
+                        2143 	.type	.L1706,@object
+                        2144 	.size	.L1706,4
+                        2145 	.section ".ghrettbl",""
+00000014 00000000*      2146 .L1708:	.word	.L1707
+                        2147 	.type	.L1708,@object
+                        2148 	.size	.L1708,4
+                        2149 	.data
+                        2150 	.section ".icum_library.text","ax"
+                        2151 
+                        2152 --473: }
+                        2153 
+                        2154 --475: /* #pragma ghs section text=default */
+                        2155 --478: /* init the sha256 er... sha224 state ;-) */
+                        2156 --479: /**
+                        2157 --480:    Initialize the hash state
+                        2158 --481:    \param md   The hash state you wish to initialize
+                        2159 --482:    \return ER_OK if successful
+                        2160 --483: */
+                        2161 --484: /****************************************************************************************
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        2162 --485: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0024]:[ICUMFW_UD_L_CRY_HASH_0024]
+                        2163 --486: * Function name: l_HASH_Sha224Init()
+                        2164 --487: * Description  : # Initialize the working area of HASH with specified values.
+                        2165 --488: * Arguments    : (IN-OUT)  md     : HASH state
+                        2166 --489: * Return Value : ER_OK
+                        2167 --490: *                ER_L_HASH_INVALID_ARG
+                        2168 --491: ****************************************************************************************/
+                        2169 --492: uint32_t l_HASH_Sha224Init(hash_inner_state_t * md)
+                        2170 	.align	2
+                        2171 	.align	2
+                        2172 	.align	2
+                        2173 ..gh.f.a.2.e.16:
+                        2174 	.type	..gh.f.a.2.e.16,@object
+                        2175 	.size	..gh.f.a.2.e.16,0
+                        2176 	.global	_l_HASH_Sha224Init
+                        2177 _l_HASH_Sha224Init:
+00000b6e 06f0           2178 	mov	r6,ep
+                        2179 --	    .bf
+                        2180 .LDW22:
+                        2181 --493: {
+                        2182 --494:     uint32_t    err;
+                        2183 --496:     if (md == NULL)
+00000b70 e0f1           2184 	cmp	zero,ep
+00000b72 da05*          2185 	bne	.L1711
+                        2186 --497:     {
+                        2187 --498:         err = ER_L_HASH_INVALID_ARG;
+                        2188 --line498
+                        2189 ..lin.76e3fe0e..d1d6d11a.0_87::
+                        2190 .LDWlin87:
+00000b74 210601000300   2191 	mov	196609,r1
+00000b7a 852d*          2192 	br	.L1713
+                        2193 .L1711:
+                        2194 --499:     }
+                        2195 --500:     else
+                        2196 --501:     {
+                        2197 --502:         md->sha256.curlen = 0U;
+                        2198 --line502
+                        2199 ..lin.76e3fe0e..d1d6d11a.0_88::
+                        2200 .LDWlin88:
+00000b7c 1505           2201 	sst.w	zero,40[ep]
+                        2202 --503:         md->sha256.length = 0ULL;
+00000b7e 0092           2203 	mov	0,r18
+00000b80 009a           2204 	mov	0,r19
+00000b82 be070f900000   2205 	st.dw	r18,0[ep]
+                        2206 --504:         md->sha256.state[0] = 0xc1059ed8U;
+                        2207 --line504
+                        2208 ..lin.76e3fe0e..d1d6d11a.0_89::
+                        2209 .LDWlin89:
+00000b88 2106d89e05c1   2210 	mov	-1056596264,r1
+00000b8e 050d           2211 	sst.w	r1,8[ep]
+                        2212 --505:         md->sha256.state[1] = 0x367cd507U;
+                        2213 --line505
+                        2214 ..lin.76e3fe0e..d1d6d11a.0_90::
+                        2215 .LDWlin90:
+00000b90 210607d57c36   2216 	mov	914150663,r1
+00000b96 070d           2217 	sst.w	r1,12[ep]
+                        2218 --506:         md->sha256.state[2] = 0x3070dd17U;
+                        2219 --line506
+                        2220 ..lin.76e3fe0e..d1d6d11a.0_91::
+                        2221 .LDWlin91:
+00000b98 210617dd7030   2222 	mov	812702999,r1
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000b9e 090d           2223 	sst.w	r1,16[ep]
+                        2224 --507:         md->sha256.state[3] = 0xf70e5939U;
+                        2225 --line507
+                        2226 ..lin.76e3fe0e..d1d6d11a.0_92::
+                        2227 .LDWlin92:
+00000ba0 210639590ef7   2228 	mov	-150054599,r1
+00000ba6 0b0d           2229 	sst.w	r1,20[ep]
+                        2230 --508:         md->sha256.state[4] = 0xffc00b31U;
+                        2231 --line508
+                        2232 ..lin.76e3fe0e..d1d6d11a.0_93::
+                        2233 .LDWlin93:
+00000ba8 2106310bc0ff   2234 	mov	-4191439,r1
+00000bae 0d0d           2235 	sst.w	r1,24[ep]
+                        2236 --509:         md->sha256.state[5] = 0x68581511U;
+                        2237 --line509
+                        2238 ..lin.76e3fe0e..d1d6d11a.0_94::
+                        2239 .LDWlin94:
+00000bb0 210611155868   2240 	mov	1750603025,r1
+00000bb6 0f0d           2241 	sst.w	r1,28[ep]
+                        2242 --510:         md->sha256.state[6] = 0x64f98fa7U;
+                        2243 --line510
+                        2244 ..lin.76e3fe0e..d1d6d11a.0_95::
+                        2245 .LDWlin95:
+00000bb8 2106a78ff964   2246 	mov	1694076839,r1
+00000bbe 110d           2247 	sst.w	r1,32[ep]
+                        2248 --511:         md->sha256.state[7] = 0xbefa4fa4U;
+                        2249 --line511
+                        2250 ..lin.76e3fe0e..d1d6d11a.0_96::
+                        2251 .LDWlin96:
+00000bc0 2106a44ffabe   2252 	mov	-1090891868,r1
+00000bc6 130d           2253 	sst.w	r1,36[ep]
+                        2254 --512:         err = ER_OK;
+                        2255 --line512
+                        2256 ..lin.76e3fe0e..d1d6d11a.0_97::
+                        2257 .LDWlin97:
+00000bc8 000a           2258 	mov	0,r1
+                        2259 .L1713:
+                        2260 --513:     }
+                        2261 --515:     return (err);
+00000bca 0150           2262 	mov	r1,r10
+                        2263 --	    .ef
+                        2264 .LDW32:
+                        2265 .L1845:
+                        2266 	.jumptype return
+00000bcc 7f00           2267 	jmp	[lp]
+                        2268 --line512
+                        2269 ..lin.76e3fe0e..d1d6d11a.0_98::
+                        2270 	.type	_l_HASH_Sha224Init,@function
+                        2271 	.size	_l_HASH_Sha224Init,.-_l_HASH_Sha224Init
+                        2272 	.align	2
+                        2273 --_err	r1	local
+                        2274 
+                        2275 --_md	ep	param
+                        2276 
+                        2277 	.section ".bss","awb"
+                        2278 .L1794:
+                        2279 	.type	.L1794,@object
+                        2280 	.size	.L1794,0
+                        2281 	.section ".ghrettbl",""
+00000018 00000000*      2282 .L1846:	.word	.L1845
+                        2283 	.type	.L1846,@object
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        2284 	.size	.L1846,4
+                        2285 	.data
+                        2286 	.section ".icum_library.text","ax"
+                        2287 
+                        2288 --516: }
+                        2289 
+                        2290 --518: /**
+                        2291 --519:    Terminate the hash to get the digest
+                        2292 --520:    \param md  The hash state
+                        2293 --521:    \param out [out] The destination of the hash (28 bytes)
+                        2294 --522:    \return ER_OK if successful
+                        2295 --523: */
+                        2296 --524: /****************************************************************************************
+                        2297 --525: * Function ID  : [ICUMFW_CD_L_CRY_HASH_0025]:[ICUMFW_UD_L_CRY_HASH_0025]
+                        2298 --526: * Function name: l_HASH_Sha224Done()
+                        2299 --527: * Description  : # Output the HASH value.
+                        2300 --528: * Arguments    : (IN-OUT)  md     : HASH state
+                        2301 --529: *                (IN-OUT)  out    : HASH value output destination
+                        2302 --530: * Return Value : ER_OK
+                        2303 --531: *                ER_L_HASH_INVALID_ARG
+                        2304 --532: ****************************************************************************************/
+                        2305 --533: uint32_t l_HASH_Sha224Done(hash_inner_state_t * md, uint8_t *out)
+                        2306 	.align	2
+                        2307 	.align	2
+                        2308 	.align	2
+                        2309 ..gh.f.a.2.e.17:
+                        2310 	.type	..gh.f.a.2.e.17,@object
+                        2311 	.size	..gh.f.a.2.e.17,0
+                        2312 	.global	_l_HASH_Sha224Done
+                        2313 _l_HASH_Sha224Done:
+00000bce 031ed0ff       2314 	addi	-48,sp,sp
+00000bd2 63ff2d00       2315 	st.w	lp,44[sp]
+00000bd6 63df2900       2316 	st.w	r27,40[sp]
+00000bda 63e72500       2317 	st.w	r28,36[sp]
+00000bde 63ef2100       2318 	st.w	r29,32[sp]
+00000be2 06e0           2319 	mov	r6,r28
+00000be4 07d8           2320 	mov	r7,r27
+                        2321 --	    .bf
+                        2322 .LDW42:
+                        2323 --534: {
+                        2324 --535:     uint8_t     buf[32];
+                        2325 --536:     uint32_t    err;
+                        2326 --538:     if (md == NULL)
+00000be6 e0e1           2327 	cmp	zero,r28
+00000be8 da05*          2328 	bne	.L1849
+                        2329 --539:     {
+                        2330 --540:         err = ER_L_HASH_INVALID_ARG;
+                        2331 --line540
+                        2332 ..lin.76e3fe0e..d1d4180c.0_99::
+                        2333 .LDWlin99:
+00000bea 3d0601000300   2334 	mov	196609,r29
+00000bf0 e50d*          2335 	br	.L1851
+                        2336 .L1849:
+                        2337 --541:     }
+                        2338 --542:     else
+                        2339 --543:     {
+                        2340 --544:         err = l_HASH_Sha256Done(md, buf);
+                        2341 --line544
+                        2342 ..lin.76e3fe0e..d1d4180c.0_100::
+                        2343 .LDWlin100:
+00000bf2 1c30           2344 	mov	r28,r6
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+00000bf4 233e0000       2345 	movea	0,sp,r7
+                        2346 .L1910:
+                        2347 	jarl	_l_HASH_Sha256Done,lp
+                        2347 <EXPANSION BEGIN>
+                        2347 jarl22 _l_HASH_Sha256Done , lp 
+00000bf8 bfff42fe*      2347 <EXPANSION END>
+00000bfc 0ae8           2348 	mov	r10,r29
+                        2349 --545:         l_CMN_MemCpy(out, buf, (uint32_t)28);
+                        2350 --line545
+                        2351 ..lin.76e3fe0e..d1d4180c.0_101::
+                        2352 .LDWlin101:
+00000bfe 1b30           2353 	mov	r27,r6
+00000c00 233e0000       2354 	movea	0,sp,r7
+00000c04 20461c00       2355 	movea	28,zero,r8
+                        2356 .L1912:
+                        2357 	jarl	_l_CMN_MemCpy,lp
+                        2357 <EXPANSION BEGIN>
+                        2357 jarl22 _l_CMN_MemCpy , lp 
+00000c08 80ff0000*      2357 <EXPANSION END>
+                        2358 .L1851:
+                        2359 --546:     }
+                        2360 --548:     return (err);
+                        2361 --line548
+                        2362 ..lin.76e3fe0e..d1d4180c.0_102::
+                        2363 .LDWlin102:
+00000c0c 1d50           2364 	mov	r29,r10
+                        2365 --	    .ef
+                        2366 .LDW52:
+00000c0e 23ff2d00       2367 	ld.w	44[sp],lp
+00000c12 23ef2100       2368 	ld.w	32[sp],r29
+00000c16 23e72500       2369 	ld.w	36[sp],r28
+00000c1a 23df2900       2370 	ld.w	40[sp],r27
+00000c1e 031e3000       2371 	addi	48,sp,sp
+                        2372 .L1914:
+                        2373 	.jumptype return
+00000c22 7f00           2374 	jmp	[lp]
+                        2375 --line548
+                        2376 ..lin.76e3fe0e..d1d4180c.0_103::
+                        2377 	.type	_l_HASH_Sha224Done,@function
+                        2378 	.size	_l_HASH_Sha224Done,.-_l_HASH_Sha224Done
+                        2379 	.align	2
+                        2380 --_buf	0[sp]	local
+                        2381 --_err	r29	local
+                        2382 
+                        2383 --_md	r28	param
+                        2384 --_out	r27	param
+                        2385 
+                        2386 	.section ".bss","awb"
+                        2387 .L1886:
+                        2388 	.type	.L1886,@object
+                        2389 	.size	.L1886,0
+                        2390 	.section ".ghcalltbl",""
+00000020 00000000*      2391 .L1911:	.word	.L1910
+                        2392 	.type	.L1911,@object
+                        2393 	.size	.L1911,4
+00000024 00000000*      2394 .L1913:	.word	.L1912
+                        2395 	.type	.L1913,@object
+                        2396 	.size	.L1913,4
+                        2397 	.section ".ghrettbl",""
+0000001c 00000000*      2398 .L1915:	.word	.L1914
+                        2399 	.type	.L1915,@object
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000p7s1.si
+                        2400 	.size	.L1915,4
+                        2401 	.data
+                        2402 	.section ".icum_library.text","ax"
+                        2403 
+                        2404 --549: }
+                        2405 	.align	2
+                        2406 --_K	_K	static
+                        2407 
+                        2408 	.data
+                        2409 	.ghsnote version,30
+                        2410 	.ghsnote tools,8195
+                        2411 	.ghsnote options,656
+                        2412 	.section ".icum_library.text","ax"
+                        2413 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_sha256...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF76..0::
+                        2414 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

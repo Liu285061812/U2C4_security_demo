@@ -1,0 +1,2887 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_ram.dbo -source=icum_mm_fls_ram.c -comp -o ..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\gh_000078k1.o -list=..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_ram.lst C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+Source File: icum_mm_fls_ram.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\common\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\middle\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           8 --		-I..\..\icum\target\u2cx\include\device\
+                           9 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          10 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          11 --		-I..\..\icum\target\u2cx\include\driver
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          15 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          16 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          17 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          18 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          19 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          20 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          21 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          22 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          23 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          24 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          25 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          26 --		-list -cpu=rh850g3k -G -section .text=.icum_middle.text -section
+                          27 --		.rodata=.icum_middle.rodata -section .bss=.icum_middle.bss
+                          28 --		-section .data=.icum_middle.data -Osize -inline_prologue
+                          29 --		-prepare_dispose -filetype.c
+                          30 --		..\..\icum\generic\src\middle\mm_fls\icum_mm_fls_ram.c -o
+                          31 --		..\..\icum\target\u2cx\build\middle\obj\libs\icum_mm_fls\icum_mm_fls_ram.o
+                          32 --Source File:   ..\..\icum\generic\src\middle\mm_fls\icum_mm_fls_ram.c
+                          33 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          34 --Compile Date:  Wed Nov 11 12:18:07 2026
+                          35 --Host OS:       Win64
+                          36 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          37 --Release:       Compiler v2023.5.4
+                          38 --Revision Date: Wed Sep 06 02:44:56 2023
+                          39 --Release Date:  Wed Sep 06 02:00:00 2023
+                          40 -- ecom  -g -w -OS
+                          41 	.section ".icum_middle.text","ax"
+                          42 
+                          43 --1: #include "renesas_types.h"
+                          44 --2: #include MM_FLASH_PUBLIC_H
+                          45 --3: #include "icum_mm_flash.h"
+                          46 --5: #define RAM_FLS_CAPACITY (FLS_NB_BLOCK * FLS_ERASE_BLOCK_SIZE)
+                          47 --6: #define RAM_FLS_INVALID_OFFSET (0xFFFFFFFFuL)
+                          48 --8: typedef struct
+                          49 --9: {
+                          50 --10:     uint32_t offset;
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                          51 --11:     uint16_t size;
+                          52 --12:     uint8_t ds_type;
+                          53 --13:     uint8_t slot_num;
+                          54 --14:     uint8_t used;
+                          55 --15: } ram_fls_slot_t;
+                          56 --17: static uint8_t g_ram_fls_data[RAM_FLS_CAPACITY];
+                          57 --18: static ram_fls_slot_t g_ram_fls_slots[FLS_DATA_MAP_SIZE];
+                          58 --19: static uint32_t g_ram_fls_used;
+                          59 	.align	2
+                          60 	.align	2
+                          61 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3EC7F..0::
+                          62 	.align	2
+                          63 	.align	2
+                          64 ..gh.f.a.2.e.0:
+                          65 	.type	..gh.f.a.2.e.0,@object
+                          66 	.size	..gh.f.a.2.e.0,0
+                          67 	.global	_ram_FLS_FindSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                          68 _ram_FLS_FindSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+                          69 _ram_FLS_FindSlot:
+00000000 8600             70 	zxb	r6
+00000002 8700             71 	zxb	r7
+                          72 --	    .bf
+                          73 .LDW01:
+                          74 --21: static int32_t ram_FLS_FindSlot(const uint8_t ds_type, const uint8_t slot_num)
+                          75 --22: {
+                          76 --23:     uint32_t index;
+                          77 --25:     for (index = FLS_ZERO_U32; index < FLS_DATA_MAP_SIZE; index++)
+00000004 0052             78 	mov	0,r10
+                          79 .L6:
+                          80 --26:     {
+                          81 --27:         if ((FLS_FLAG_ON_U8 == g_ram_fls_slots[index].used)
+00000006 eaf60c00         82 	mulhi	12,r10,ep
+0000000a 210600000000*    83 	mov	_g_ram_fls_slots,r1
+00000010 c1f1             84 	add	r1,ep
+00000012 6808             85 	sld.bu	8[ep],r1
+00000014 610a             86 	cmp	1,r1
+00000016 fa05*            87 	bne	.L7
+                          88 --line28
+                          89 ..lin.2cc895ec..aa969d8a.0_1::
+                          90 .LDWlin1:
+00000018 6608             91 	sld.bu	6[ep],r1
+0000001a e131             92 	cmp	r1,r6
+0000001c ca05*            93 	bne	.L7
+                          94 --line29
+                          95 ..lin.2cc895ec..aa969d8a.0_2::
+                          96 .LDWlin2:
+0000001e 6708             97 	sld.bu	7[ep],r1
+00000020 e139             98 	cmp	r1,r7
+00000022 e205*            99 	be	.L2
+                         100 .L7:
+                         101 --28:             && (ds_type == g_ram_fls_slots[index].ds_type)
+                         102 --29:             && (slot_num == g_ram_fls_slots[index].slot_num))
+                         103 --30:         {
+                         104 --31:             return (int32_t)index;
+                         105 --line25
+                         106 ..lin.2cc895ec..aa969d8a.0_3::
+                         107 .LDWlin3:
+00000024 4152            108 	add	1,r10
+00000026 0a0600ff        109 	addi	-256,r10,zero
+                         110 --32:         }
+                         111 --33:     }
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         112 --35:     return -1;
+0000002a e9ed*           113 	bnl	.L6
+0000002c 1f52            114 	mov	-1,r10
+                         115 .L2:
+                         116 --	    .ef
+                         117 .LDW11:
+                         118 .L185:
+                         119 --line25
+                         120 ..lin.2cc895ec..aa969d8a.0_4::
+                         121 .LDWlin4:
+                         122 	.jumptype return
+0000002e 7f00            123 	jmp	[lp]
+                         124 --line25
+                         125 ..lin.2cc895ec..aa969d8a.0_5::
+                         126 	.type	_ram_FLS_FindSlot,@function
+                         127 	.size	_ram_FLS_FindSlot,.-_ram_FLS_FindSlot
+                         128 	.type	_ram_FLS_FindSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@function
+                         129 	.size	_ram_FLS_FindSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,.-_ram_FLS_FindSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         130 	.align	2
+                         131 --_index	r10	local
+                         132 
+                         133 --_ds_type	r6	param
+                         134 --_slot_num	r7	param
+                         135 
+                         136 	.section ".icum_middle.data","aw"
+                         137 .L107:
+                         138 	.type	.L107,@object
+                         139 	.size	.L107,0
+                         140 	.section ".icum_middle.bss","awb"
+                         141 	.align	4
+                         142 	.global	_g_ram_fls_used..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         143 _g_ram_fls_used..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+00000000 00000000        144 _g_ram_fls_used:	.space	4
+                         145 	.type	_g_ram_fls_used..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@object
+                         146 	.size	_g_ram_fls_used..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,4
+                         147 	.type	_g_ram_fls_used,@object
+                         148 	.size	_g_ram_fls_used,4
+                         149 	.global	_g_ram_fls_data..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         150 _g_ram_fls_data..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+00000004 000000000000    151 _g_ram_fls_data:	.space	61440
+0000000a 000000000000 
+00000010 000000000000 
+00000016 000000000000 
+0000001c 000000000000 
+00000022 000000000000 
+00000028 000000000000 
+0000002e 000000000000 
+00000034 000000000000 
+0000003a 000000000000 
+00000040 000000000000 
+00000046 000000000000 
+0000004c 000000000000 
+00000052 000000000000 
+00000058 000000000000 
+0000005e 000000000000 
+00000064 000000000000 
+0000006a 000000000000 
+00000070 000000000000 
+00000076 000000000000 
+0000007c 000000000000 
+00000082 000000000000 
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+00000088 000000000000 
+0000008e 000000000000 
+00000094 000000000000 
+0000009a 000000000000 
+000000a0 000000000000 
+000000a6 000000000000 
+000000ac 000000000000 
+000000b2 000000000000 
+000000b8 000000000000 
+000000be 000000000000 
+000000c4 000000000000 
+000000ca 000000000000 
+000000d0 000000000000 
+000000d6 000000000000 
+000000dc 000000000000 
+000000e2 000000000000 
+000000e8 000000000000 
+000000ee 000000000000 
+000000f4 000000000000 
+000000fa 000000000000 
+00000100 00000000 
+                         152 	.type	_g_ram_fls_data..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@object
+                         153 	.size	_g_ram_fls_data..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,61440
+                         154 	.type	_g_ram_fls_data,@object
+                         155 	.size	_g_ram_fls_data,61440
+                         156 	.global	_g_ram_fls_slots..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         157 _g_ram_fls_slots..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+0000f004 000000000000    158 _g_ram_fls_slots:	.space	3072
+0000f00a 000000000000 
+0000f010 000000000000 
+0000f016 000000000000 
+0000f01c 000000000000 
+0000f022 000000000000 
+0000f028 000000000000 
+0000f02e 000000000000 
+0000f034 000000000000 
+0000f03a 000000000000 
+0000f040 000000000000 
+0000f046 000000000000 
+0000f04c 000000000000 
+0000f052 000000000000 
+0000f058 000000000000 
+0000f05e 000000000000 
+0000f064 000000000000 
+0000f06a 000000000000 
+0000f070 000000000000 
+0000f076 000000000000 
+0000f07c 000000000000 
+0000f082 000000000000 
+0000f088 000000000000 
+0000f08e 000000000000 
+0000f094 000000000000 
+0000f09a 000000000000 
+0000f0a0 000000000000 
+0000f0a6 000000000000 
+0000f0ac 000000000000 
+0000f0b2 000000000000 
+0000f0b8 000000000000 
+0000f0be 000000000000 
+0000f0c4 000000000000 
+0000f0ca 000000000000 
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+0000f0d0 000000000000 
+0000f0d6 000000000000 
+0000f0dc 000000000000 
+0000f0e2 000000000000 
+0000f0e8 000000000000 
+0000f0ee 000000000000 
+0000f0f4 000000000000 
+0000f0fa 000000000000 
+0000f100 00000000 
+                         159 	.type	_g_ram_fls_slots..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@object
+                         160 	.size	_g_ram_fls_slots..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,3072
+                         161 	.type	_g_ram_fls_slots,@object
+                         162 	.size	_g_ram_fls_slots,3072
+                         163 	.section ".ghrettbl",""
+                         164 	.align	4
+00000000 00000000*       165 .L186:	.word	.L185
+                         166 	.type	.L186,@object
+                         167 	.size	.L186,4
+                         168 	.data
+                         169 	.section ".icum_middle.text","ax"
+                         170 
+                         171 --36: }
+                         172 
+                         173 	.align	2
+                         174 	.align	2
+                         175 	.align	2
+                         176 ..gh.f.a.2.e.1:
+                         177 	.type	..gh.f.a.2.e.1,@object
+                         178 	.size	..gh.f.a.2.e.1,0
+                         179 	.global	_ram_FLS_FindFreeSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         180 _ram_FLS_FindFreeSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+                         181 _ram_FLS_FindFreeSlot:
+                         182 --	    .bf
+                         183 .LDW21:
+                         184 --38: static int32_t ram_FLS_FindFreeSlot(void)
+                         185 --39: {
+                         186 --40:     uint32_t index;
+                         187 --42:     for (index = FLS_ZERO_U32; index < FLS_DATA_MAP_SIZE; index++)
+00000030 0052            188 	mov	0,r10
+                         189 .L191:
+                         190 --43:     {
+                         191 --44:         if (FLS_ZERO_U8 == g_ram_fls_slots[index].used)
+00000032 eaf60c00        192 	mulhi	12,r10,ep
+00000036 210600000000*   193 	mov	_g_ram_fls_slots,r1
+0000003c c1f1            194 	add	r1,ep
+0000003e 6808            195 	sld.bu	8[ep],r1
+00000040 e009            196 	cmp	zero,r1
+00000042 e205*           197 	be	.L187
+                         198 --45:         {
+                         199 --46:             return (int32_t)index;
+                         200 --line42
+                         201 ..lin.2cc895ec..deb0476c.0_6::
+                         202 .LDWlin6:
+00000044 4152            203 	add	1,r10
+00000046 0a0600ff        204 	addi	-256,r10,zero
+                         205 --47:         }
+                         206 --48:     }
+                         207 --50:     return -1;
+0000004a c9f5*           208 	bnl	.L191
+0000004c 1f52            209 	mov	-1,r10
+                         210 .L187:
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         211 --	    .ef
+                         212 .LDW31:
+                         213 .L330:
+                         214 --line42
+                         215 ..lin.2cc895ec..deb0476c.0_7::
+                         216 .LDWlin7:
+                         217 	.jumptype return
+0000004e 7f00            218 	jmp	[lp]
+                         219 --line42
+                         220 ..lin.2cc895ec..deb0476c.0_8::
+                         221 	.type	_ram_FLS_FindFreeSlot,@function
+                         222 	.size	_ram_FLS_FindFreeSlot,.-_ram_FLS_FindFreeSlot
+                         223 	.type	_ram_FLS_FindFreeSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@function
+                         224 	.size	_ram_FLS_FindFreeSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,.-_ram_FLS_FindFreeSlot..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         225 	.align	2
+                         226 --_index	r10	local
+                         227 
+                         228 	.section ".ghrettbl",""
+00000004 00000000*       229 .L331:	.word	.L330
+                         230 	.type	.L331,@object
+                         231 	.size	.L331,4
+                         232 	.data
+                         233 	.section ".icum_middle.text","ax"
+                         234 
+                         235 --51: }
+                         236 
+                         237 	.assert 0x0 + (_g_ram_fls_used - _g_ram_fls_used) +0 == 0
+                         238 	.assert 0x0 + (_g_ram_fls_data - _g_ram_fls_used) +0 == 4
+                         239 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_used) +0 == 61444
+                         240 	.align	2
+                         241 	.align	2
+                         242 	.align	2
+                         243 ..gh.f.a.2.e.2:
+                         244 	.type	..gh.f.a.2.e.2,@object
+                         245 	.size	..gh.f.a.2.e.2,0
+                         246 	.global	_ram_FLS_Compact..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         247 _ram_FLS_Compact..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+                         248 _ram_FLS_Compact:
+00000050 210600000000*   249 	mov	_g_ram_fls_used,r1
+                         250 --	    .bf
+                         251 .LDW41:
+                         252 --67:     old_used = g_ram_fls_used;
+                         253 --line67
+                         254 ..lin.2cc895ec..b011464e.0_9::
+                         255 .LDWlin9:
+00000056 216f0100        256 	ld.w	0[r1],r13
+                         257 --53: static void ram_FLS_Compact(void)
+                         258 --54: {
+                         259 --55:     uint32_t destination;
+                         260 --56:     uint32_t lower_bound;
+                         261 --57:     uint32_t old_used;
+                         262 --58:     uint32_t source;
+                         263 --59:     uint32_t size;
+                         264 --60:     uint32_t byte_index;
+                         265 --61:     uint32_t best_offset;
+                         266 --62:     uint32_t index;
+                         267 --63:     uint32_t best_index;
+                         268 --65:     destination = FLS_ZERO_U32;
+0000005a 0092            269 	mov	0,r18
+                         270 --66:     lower_bound = FLS_ZERO_U32;
+0000005c 1278            271 	mov	r18,r15
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         272 --69:     for (;;)
+                         273 .L336:
+                         274 --70:     {
+                         275 --71:         best_offset = RAM_FLS_INVALID_OFFSET;
+0000005e 1f12            276 	mov	-1,r2
+                         277 --72:         best_index = FLS_DATA_MAP_SIZE;
+00000060 209e0001        278 	movea	256,zero,r19
+                         279 --73:         for (index = FLS_ZERO_U32; index < FLS_DATA_MAP_SIZE; index++)
+00000064 008a            280 	mov	0,r17
+                         281 .L340:
+                         282 --74:         {
+                         283 --75:             if ((FLS_FLAG_ON_U8 == g_ram_fls_slots[index].used)
+00000066 f1f60c00        284 	mulhi	12,r17,ep
+0000006a 41760100        285 	movhi	hi(61444),r1,r14
+0000006e 2e7604f0        286 	movea	lo(61444),r14,r14
+00000072 cef1            287 	add	r14,ep
+00000074 6880            288 	sld.bu	8[ep],r16
+00000076 6182            289 	cmp	1,r16
+00000078 9a0d*           290 	bne	.L341
+                         291 --line76
+                         292 ..lin.2cc895ec..b011464e.0_10::
+                         293 .LDWlin10:
+0000007a 0085            294 	sld.w	0[ep],r16
+0000007c f079            295 	cmp	r16,r15
+0000007e eb05*           296 	bh	.L341
+                         297 --line77
+                         298 ..lin.2cc895ec..b011464e.0_11::
+                         299 .LDWlin11:
+00000080 e281            300 	cmp	r2,r16
+                         301 --76:                 && (lower_bound <= g_ram_fls_slots[index].offset)
+                         302 --77:                 && (g_ram_fls_slots[index].offset < best_offset))
+                         303 --78:             {
+                         304 --79:                 best_offset = g_ram_fls_slots[index].offset;
+00000082 f0172213        305 	cmovl	r16,r2,r2
+                         306 --80:                 best_index = index;
+00000086 f19f229b        307 	cmovl	r17,r19,r19
+                         308 .L341:
+0000008a 418a            309 	add	1,r17
+0000008c 110600ff        310 	addi	-256,r17,zero
+00000090 b9ed*           311 	bnl	.L340
+                         312 --81:             }
+                         313 --82:         }
+                         314 --84:         if (FLS_DATA_MAP_SIZE == best_index)
+                         315 --line84
+                         316 ..lin.2cc895ec..b011464e.0_12::
+                         317 .LDWlin12:
+00000092 218e0400        318 	movea	4,r1,r17
+00000096 130600ff        319 	addi	-256,r19,zero
+0000009a b21d*           320 	be	.L348
+                         321 --85:         {
+                         322 --86:             break;
+                         323 --87:         }
+                         324 --89:         source = best_offset;
+                         325 --90:         size = g_ram_fls_slots[best_index].size;
+                         326 --line90
+                         327 ..lin.2cc895ec..b011464e.0_13::
+                         328 .LDWlin13:
+0000009c f3f60c00        329 	mulhi	12,r19,ep
+000000a0 cef1            330 	add	r14,ep
+000000a2 7280            331 	sld.hu	4[ep],r16
+                         332 --91:         if (destination < source)
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+000000a4 e291            333 	cmp	r2,r18
+                         334 --92:         {
+                         335 --93:             for (byte_index = FLS_ZERO_U32; byte_index < size; byte_index++)
+000000a6 8915*           336 	bnl	.L350
+000000a8 009a            337 	mov	0,r19
+000000aa c50d*           338 	br	.L355
+                         339 .L354:
+                         340 --94:             {
+                         341 --95:                 g_ram_fls_data[destination + byte_index] = g_ram_fls_data[source + byte_index];
+                         342 --line95
+                         343 ..lin.2cc895ec..b011464e.0_14::
+                         344 .LDWlin14:
+000000ac 0270            345 	mov	r2,r14
+000000ae d371            346 	add	r19,r14
+000000b0 d171            347 	add	r17,r14
+000000b2 8e770100        348 	ld.bu	0[r14],r14
+000000b6 1278            349 	mov	r18,r15
+000000b8 d379            350 	add	r19,r15
+000000ba d179            351 	add	r17,r15
+000000bc 419a            352 	add	1,r19
+000000be 4f770000        353 	st.b	r14,0[r15]
+                         354 .L355:
+000000c2 f099            355 	cmp	r16,r19
+000000c4 c1f5*           356 	bl	.L354
+                         357 .L350:
+                         358 --96:             }
+                         359 --97:         }
+                         360 --99:         g_ram_fls_slots[best_index].offset = destination;
+                         361 --line99
+                         362 ..lin.2cc895ec..b011464e.0_15::
+                         363 .LDWlin15:
+000000c6 0195            364 	sst.w	r18,0[ep]
+                         365 --100:         lower_bound = source + size;
+000000c8 1078            366 	mov	r16,r15
+000000ca c279            367 	add	r2,r15
+                         368 --101:         destination += size;
+000000cc d091            369 	add	r16,r18
+000000ce 85cd*           370 	br	.L336
+                         371 .L348:
+                         372 --102:     }
+                         373 --104:     for (byte_index = destination; byte_index < old_used; byte_index++)
+                         374 --line104
+                         375 ..lin.2cc895ec..b011464e.0_16::
+                         376 .LDWlin16:
+000000d0 1298            377 	mov	r18,r19
+000000d2 d505*           378 	br	.L359
+                         379 .L358:
+                         380 --105:     {
+                         381 --106:         g_ram_fls_data[byte_index] = FLS_ZERO_U8;
+                         382 --line106
+                         383 ..lin.2cc895ec..b011464e.0_17::
+                         384 .LDWlin17:
+000000d4 13f0            385 	mov	r19,ep
+000000d6 d1f1            386 	add	r17,ep
+000000d8 8003            387 	sst.b	zero,0[ep]
+000000da 419a            388 	add	1,r19
+                         389 .L359:
+000000dc ed99            390 	cmp	r13,r19
+000000de b1fd*           391 	bl	.L358
+                         392 --107:     }
+                         393 --108:     g_ram_fls_used = destination;
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         394 --line108
+                         395 ..lin.2cc895ec..b011464e.0_18::
+                         396 .LDWlin18:
+000000e0 61970100        397 	st.w	r18,0[r1]
+                         398 --109: }
+                         399 --	    .ef
+                         400 .LDW51:
+                         401 .L717:
+                         402 	.jumptype return
+000000e4 7f00            403 	jmp	[lp]
+                         404 --line108
+                         405 ..lin.2cc895ec..b011464e.0_19::
+                         406 	.type	_ram_FLS_Compact,@function
+                         407 	.size	_ram_FLS_Compact,.-_ram_FLS_Compact
+                         408 	.type	_ram_FLS_Compact..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@function
+                         409 	.size	_ram_FLS_Compact..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,.-_ram_FLS_Compact..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         410 	.align	2
+                         411 --_destination	r18	local
+                         412 --_lower_bound	r15	local
+                         413 --_old_used	r13	local
+                         414 --_source	r2	local
+                         415 --_size	r16	local
+                         416 --_byte_index	r19	local
+                         417 --_best_offset	r2	local
+                         418 --_index	r17	local
+                         419 --_best_index	r19	local
+                         420 
+                         421 	.section ".ghrettbl",""
+00000008 00000000*       422 .L718:	.word	.L717
+                         423 	.type	.L718,@object
+                         424 	.size	.L718,4
+                         425 	.data
+                         426 	.section ".icum_middle.text","ax"
+                         427 
+                         428 
+                         429 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_used) +0 == 61444
+                         430 	.assert 0x0 + (_g_ram_fls_data - _g_ram_fls_used) +0 == 4
+                         431 	.align	2
+                         432 	.align	2
+                         433 	.align	2
+                         434 ..gh.f.a.2.e.3:
+                         435 	.type	..gh.f.a.2.e.3,@object
+                         436 	.size	..gh.f.a.2.e.3,0
+                         437 	.global	_ram_FLS_Clear..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         438 _ram_FLS_Clear..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+                         439 _ram_FLS_Clear:
+                         440 --	    .bf
+                         441 .LDW61:
+                         442 --111: static void ram_FLS_Clear(void)
+                         443 --112: {
+                         444 --113:     uint32_t index;
+                         445 --115:     for (index = FLS_ZERO_U32; index < RAM_FLS_CAPACITY; index++)
+000000e6 0012            446 	mov	0,r2
+                         447 .L724:
+000000e8 210600000000*   448 	mov	_g_ram_fls_used,r1
+                         449 --116:     {
+                         450 --117:         g_ram_fls_data[index] = FLS_ZERO_U8;
+                         451 --line117
+                         452 ..lin.2cc895ec..b703e4e.0_20::
+                         453 .LDWlin20:
+000000ee 02f0            454 	mov	r2,ep
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+000000f0 c1f1            455 	add	r1,ep
+000000f2 4112            456 	add	1,r2
+000000f4 809e00f0        457 	ori	61440,zero,r19
+000000f8 8403            458 	sst.b	zero,4[ep]
+000000fa f311            459 	cmp	r19,r2
+                         460 --118:     }
+                         461 --119:     for (index = FLS_ZERO_U32; index < FLS_DATA_MAP_SIZE; index++)
+000000fc e1f5*           462 	bl	.L724
+000000fe 0012            463 	mov	0,r2
+                         464 .L728:
+                         465 --120:     {
+                         466 --121:         g_ram_fls_slots[index].offset = FLS_ZERO_U32;
+                         467 --line121
+                         468 ..lin.2cc895ec..b703e4e.0_21::
+                         469 .LDWlin21:
+00000100 e2f60c00        470 	mulhi	12,r2,ep
+00000104 419e0100        471 	movhi	hi(61444),r1,r19
+00000108 339e04f0        472 	movea	lo(61444),r19,r19
+                         473 --line119
+                         474 ..lin.2cc895ec..b703e4e.0_22::
+                         475 .LDWlin22:
+0000010c 4112            476 	add	1,r2
+0000010e d3f1            477 	add	r19,ep
+00000110 409effff        478 	movhi	hi(-65536),zero,r19
+00000114 0105            479 	sst.w	zero,0[ep]
+00000116 039d            480 	sst.w	r19,4[ep]
+                         481 --125:         g_ram_fls_slots[index].used = FLS_ZERO_U8;
+                         482 --line125
+                         483 ..lin.2cc895ec..b703e4e.0_23::
+                         484 .LDWlin23:
+00000118 8803            485 	sst.b	zero,8[ep]
+0000011a 020600ff        486 	addi	-256,r2,zero
+0000011e 99f5*           487 	bnl	.L728
+                         488 --126:     }
+                         489 --127:     g_ram_fls_used = FLS_ZERO_U32;
+                         490 --line127
+                         491 ..lin.2cc895ec..b703e4e.0_24::
+                         492 .LDWlin24:
+00000120 61070100        493 	st.w	zero,0[r1]
+                         494 --128: }
+                         495 --	    .ef
+                         496 .LDW71:
+                         497 .L871:
+                         498 	.jumptype return
+00000124 7f00            499 	jmp	[lp]
+                         500 --line127
+                         501 ..lin.2cc895ec..b703e4e.0_25::
+                         502 	.type	_ram_FLS_Clear,@function
+                         503 	.size	_ram_FLS_Clear,.-_ram_FLS_Clear
+                         504 	.type	_ram_FLS_Clear..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@function
+                         505 	.size	_ram_FLS_Clear..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,.-_ram_FLS_Clear..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         506 	.align	2
+                         507 --_index	r2	local
+                         508 
+                         509 	.section ".ghrettbl",""
+0000000c 00000000*       510 .L872:	.word	.L871
+                         511 	.type	.L872,@object
+                         512 	.size	.L872,4
+                         513 	.data
+                         514 	.section ".icum_middle.text","ax"
+                         515 
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         516 
+                         517 	.align	2
+                         518 	.align	2
+                         519 	.align	2
+                         520 ..gh.f.a.2.e.4:
+                         521 	.type	..gh.f.a.2.e.4,@object
+                         522 	.size	..gh.f.a.2.e.4,0
+                         523 	.global	_ram_FLS_CheckSecureTarget..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         524 _ram_FLS_CheckSecureTarget..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.:
+                         525 _ram_FLS_CheckSecureTarget:
+00000126 8600            526 	zxb	r6
+00000128 8700            527 	zxb	r7
+                         528 --	    .bf
+                         529 .LDW81:
+                         530 --130: static uint32_t ram_FLS_CheckSecureTarget(const uint8_t target_flash, const uint8_t target_area)
+                         531 --131: {
+                         532 --132:     if (((uint32_t)FLS_SELECT_ICUM_DF != (uint32_t)target_flash)
+0000012a 6232            533 	cmp	2,r6
+0000012c ba05*           534 	bne	.L876
+                         535 --line133
+                         536 ..lin.2cc895ec..a94cf3b3.0_26::
+                         537 .LDWlin26:
+0000012e 613a            538 	cmp	1,r7
+00000130 d205*           539 	be	.L875
+                         540 .L876:
+                         541 --133:         || ((uint32_t)FLS_SELECT_SECURE != (uint32_t)target_area))
+                         542 --134:     {
+                         543 --135:         return ER_MM_FLS_UNAVAILABLE;
+                         544 --line135
+                         545 ..lin.2cc895ec..a94cf3b3.0_27::
+                         546 .LDWlin27:
+00000132 2a0606006000    547 	mov	6291462,r10
+                         548 .L974:
+                         549 	.jumptype return
+00000138 7f00            550 	jmp	[lp]
+                         551 .L875:
+                         552 --136:     }
+                         553 --138:     return ER_OK;
+                         554 --line138
+                         555 ..lin.2cc895ec..a94cf3b3.0_28::
+                         556 .LDWlin28:
+0000013a 0052            557 	mov	0,r10
+                         558 --	    .ef
+                         559 .LDW91:
+                         560 .L976:
+                         561 	.jumptype return
+0000013c 7f00            562 	jmp	[lp]
+                         563 --line138
+                         564 ..lin.2cc895ec..a94cf3b3.0_29::
+                         565 	.type	_ram_FLS_CheckSecureTarget,@function
+                         566 	.size	_ram_FLS_CheckSecureTarget,.-_ram_FLS_CheckSecureTarget
+                         567 	.type	_ram_FLS_CheckSecureTarget..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,@function
+                         568 	.size	_ram_FLS_CheckSecureTarget..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.,.-_ram_FLS_CheckSecureTarget..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram.
+                         569 	.align	2
+                         570 
+                         571 --_target_flash	r6	param
+                         572 --_target_area	r7	param
+                         573 
+                         574 	.section ".bss","awb"
+                         575 .L918:
+                         576 	.type	.L918,@object
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         577 	.size	.L918,0
+                         578 	.section ".ghrettbl",""
+00000010 00000000*       579 .L975:	.word	.L974
+                         580 	.type	.L975,@object
+                         581 	.size	.L975,4
+00000014 00000000*       582 .L977:	.word	.L976
+                         583 	.type	.L977,@object
+                         584 	.size	.L977,4
+                         585 	.data
+                         586 	.section ".icum_middle.text","ax"
+                         587 
+                         588 --139: }
+                         589 
+                         590 	.align	2
+                         591 	.align	2
+                         592 	.align	2
+                         593 ..gh.f.a.2.e.5:
+                         594 	.type	..gh.f.a.2.e.5,@object
+                         595 	.size	..gh.f.a.2.e.5,0
+                         596 	.global	_mm_FLS_ConvertionError
+                         597 _mm_FLS_ConvertionError:
+                         598 --	    .bf
+                         599 .LDW02:
+                         600 --141: uint32_t mm_FLS_ConvertionError(const uint32_t err)
+                         601 --142: {
+                         602 --143:     switch (err)
+0000013e 2b0620000c00    603 	mov	786464,r11
+00000144 400e6000        604 	movhi	hi(6291456),zero,r1
+00000148 eb31            605 	cmp	r11,r6
+0000014a b225*           606 	be	.L983
+0000014c 2206defff3ff    607 	mov	-786466,r2
+00000152 c611            608 	add	r6,r2
+00000154 6212            609 	cmp	2,r2
+00000156 d11d*           610 	bl	.L983
+00000158 9225*           611 	be	.L985
+0000015a 6412            612 	cmp	4,r2
+0000015c c11d*           613 	bl	.L984
+0000015e 921d*           614 	be	.L983
+00000160 6612            615 	cmp	6,r2
+00000162 911d*           616 	bl	.L984
+00000164 9215*           617 	be	.L981
+00000166 6812            618 	cmp	8,r2
+00000168 9115*           619 	bl	.L982
+0000016a b21d*           620 	be	.L986
+0000016c 6a12            621 	cmp	10,r2
+0000016e b115*           622 	bl	.L984
+00000170 9225*           623 	be	.L989
+00000172 2b06deff4300    624 	mov	4456414,r11
+00000178 eb11            625 	cmp	r11,r2
+0000017a e215*           626 	be	.L987
+0000017c 415a            627 	add	1,r11
+0000017e eb11            628 	cmp	r11,r2
+                         629 --168:         default:
+                         630 --169:             return err;
+                         631 --line169
+                         632 ..lin.2cc895ec..5bbc1ff2.0_30::
+                         633 .LDWlin30:
+00000180 0650            634 	mov	r6,r10
+00000182 d215*           635 	be	.L988
+                         636 --	    .ef
+                         637 .LDW12:
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         638 .L1303:
+                         639 --line170
+                         640 ..lin.2cc895ec..5bbc1ff2.0_31::
+                         641 .LDWlin31:
+                         642 	.jumptype return
+00000184 7f00            643 	jmp	[lp]
+                         644 .L981:
+                         645 --144:     {
+                         646 --145:         case ER_L_FLS_ECC1EDF1:
+                         647 --146:             return ER_OK;
+                         648 --line146
+                         649 ..lin.2cc895ec..5bbc1ff2.0_32::
+                         650 .LDWlin32:
+00000186 0052            651 	mov	0,r10
+                         652 .L1305:
+                         653 	.jumptype return
+00000188 7f00            654 	jmp	[lp]
+                         655 .L982:
+                         656 --147:         case ER_L_FLS_ECC2EDF1:
+                         657 --148:             return ER_MM_FLS_DATA_INVALID;
+                         658 --line148
+                         659 ..lin.2cc895ec..5bbc1ff2.0_33::
+                         660 .LDWlin33:
+0000018a 01560300        661 	addi	3,r1,r10
+                         662 .L1307:
+                         663 	.jumptype return
+0000018e 7f00            664 	jmp	[lp]
+                         665 .L983:
+                         666 --149:         case ER_L_FLS_FLOW:
+                         667 --150:         case ER_L_FLS_REJECTED:
+                         668 --151:         case ER_L_FLS_INVALID_DATA:
+                         669 --152:         case ER_L_FLS_PROTECTION:
+                         670 --153:             return ER_MM_FLS_SYS;
+                         671 --line153
+                         672 ..lin.2cc895ec..5bbc1ff2.0_34::
+                         673 .LDWlin34:
+00000190 0150            674 	mov	r1,r10
+                         675 .L1309:
+                         676 	.jumptype return
+00000192 7f00            677 	jmp	[lp]
+                         678 .L984:
+                         679 --154:         case ER_L_FLS_INTERNAL:
+                         680 --155:         case ER_L_FLS_CANCEL:
+                         681 --156:         case ER_L_FLS_FACI_TIME_OUT:
+                         682 --157:             return ER_MM_FLS_SYS_CRITICAL;
+                         683 --line157
+                         684 ..lin.2cc895ec..5bbc1ff2.0_35::
+                         685 .LDWlin35:
+00000194 01560100        686 	addi	1,r1,r10
+                         687 .L1311:
+                         688 	.jumptype return
+00000198 7f00            689 	jmp	[lp]
+                         690 .L985:
+                         691 --158:         case ER_L_FLS_PROGRAM:
+                         692 --159:             return ER_MM_FLS_PROG;
+                         693 --line159
+                         694 ..lin.2cc895ec..5bbc1ff2.0_36::
+                         695 .LDWlin36:
+0000019a 01560200        696 	addi	2,r1,r10
+                         697 .L1313:
+                         698 	.jumptype return
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+0000019e 7f00            699 	jmp	[lp]
+                         700 .L986:
+                         701 --160:         case ER_L_FLS_UNAVAILABLE:
+                         702 --161:             return ER_MM_FLS_UNAVAILABLE;
+                         703 --line161
+                         704 ..lin.2cc895ec..5bbc1ff2.0_37::
+                         705 .LDWlin37:
+000001a0 01560600        706 	addi	6,r1,r10
+                         707 .L1315:
+                         708 	.jumptype return
+000001a4 7f00            709 	jmp	[lp]
+                         710 .L987:
+                         711 --162:         case ER_ML_DVC_ALIGN:
+                         712 --163:             return ER_MM_FLS_AES_PRM_ERROR;
+                         713 --line163
+                         714 ..lin.2cc895ec..5bbc1ff2.0_38::
+                         715 .LDWlin38:
+000001a6 01560e00        716 	addi	14,r1,r10
+                         717 .L1317:
+                         718 	.jumptype return
+000001aa 7f00            719 	jmp	[lp]
+                         720 .L988:
+                         721 --164:         case ER_ML_DVC_AES_TIMEOUT:
+                         722 --165:             return ER_MM_FLS_AES_TIME_OUT;
+                         723 --line165
+                         724 ..lin.2cc895ec..5bbc1ff2.0_39::
+                         725 .LDWlin39:
+000001ac 01560b00        726 	addi	11,r1,r10
+                         727 .L1319:
+                         728 	.jumptype return
+000001b0 7f00            729 	jmp	[lp]
+                         730 .L989:
+                         731 --166:         case ER_L_FLS_REMAP:
+                         732 --167:             return ER_MM_FLS_MEM_SOURCE;
+                         733 --line167
+                         734 ..lin.2cc895ec..5bbc1ff2.0_40::
+                         735 .LDWlin40:
+000001b2 01560800        736 	addi	8,r1,r10
+                         737 .L1321:
+                         738 	.jumptype return
+000001b6 7f00            739 	jmp	[lp]
+                         740 --line167
+                         741 ..lin.2cc895ec..5bbc1ff2.0_41::
+                         742 	.type	_mm_FLS_ConvertionError,@function
+                         743 	.size	_mm_FLS_ConvertionError,.-_mm_FLS_ConvertionError
+                         744 	.align	2
+                         745 
+                         746 --_err	r6	param
+                         747 
+                         748 	.section ".bss","awb"
+                         749 .L1101:
+                         750 	.type	.L1101,@object
+                         751 	.size	.L1101,0
+                         752 	.section ".ghrettbl",""
+00000018 00000000*       753 .L1304:	.word	.L1303
+                         754 	.type	.L1304,@object
+                         755 	.size	.L1304,4
+0000001c 00000000*       756 .L1306:	.word	.L1305
+                         757 	.type	.L1306,@object
+                         758 	.size	.L1306,4
+00000020 00000000*       759 .L1308:	.word	.L1307
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         760 	.type	.L1308,@object
+                         761 	.size	.L1308,4
+00000024 00000000*       762 .L1310:	.word	.L1309
+                         763 	.type	.L1310,@object
+                         764 	.size	.L1310,4
+00000028 00000000*       765 .L1312:	.word	.L1311
+                         766 	.type	.L1312,@object
+                         767 	.size	.L1312,4
+0000002c 00000000*       768 .L1314:	.word	.L1313
+                         769 	.type	.L1314,@object
+                         770 	.size	.L1314,4
+00000030 00000000*       771 .L1316:	.word	.L1315
+                         772 	.type	.L1316,@object
+                         773 	.size	.L1316,4
+00000034 00000000*       774 .L1318:	.word	.L1317
+                         775 	.type	.L1318,@object
+                         776 	.size	.L1318,4
+00000038 00000000*       777 .L1320:	.word	.L1319
+                         778 	.type	.L1320,@object
+                         779 	.size	.L1320,4
+0000003c 00000000*       780 .L1322:	.word	.L1321
+                         781 	.type	.L1322,@object
+                         782 	.size	.L1322,4
+                         783 	.data
+                         784 	.section ".icum_middle.text","ax"
+                         785 
+                         786 --170:     }
+                         787 --171: }
+                         788 
+                         789 	.align	2
+                         790 	.align	2
+                         791 	.align	2
+                         792 ..gh.f.a.2.e.6:
+                         793 	.type	..gh.f.a.2.e.6,@object
+                         794 	.size	..gh.f.a.2.e.6,0
+                         795 	.global	_MM_FLS_Init
+                         796 _MM_FLS_Init:
+000001b8 80072100        797 	prepare	{r31},0
+                         798 --	    .bf
+                         799 .LDW22:
+                         800 --173: uint32_t MM_FLS_Init(void)
+                         801 --174: {
+                         802 --175:     ram_FLS_Clear();
+                         803 .L1367:
+                         804 	jarl	_ram_FLS_Clear,lp
+                         804 <EXPANSION BEGIN>
+                         804 jarl22 _ram_FLS_Clear , lp 
+000001bc bfff2aff*       804 <EXPANSION END>
+                         805 --176:     return ER_OK;
+                         806 --line176
+                         807 ..lin.2cc895ec..4df7f2d5.0_42::
+                         808 .LDWlin42:
+000001c0 0052            809 	mov	0,r10
+                         810 --	    .ef
+                         811 .LDW32:
+                         812 .L1369:
+000001c2 40063f00        813 	dispose	0,{r31},[lp]
+                         814 --line176
+                         815 ..lin.2cc895ec..4df7f2d5.0_43::
+                         816 	.type	_MM_FLS_Init,@function
+                         817 	.size	_MM_FLS_Init,.-_MM_FLS_Init
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         818 	.align	2
+                         819 
+                         820 	.section ".bss","awb"
+                         821 .L1348:
+                         822 	.type	.L1348,@object
+                         823 	.size	.L1348,0
+                         824 	.section ".ghcalltbl",""
+                         825 	.align	4
+00000000 00000000*       826 .L1368:	.word	.L1367
+                         827 	.type	.L1368,@object
+                         828 	.size	.L1368,4
+                         829 	.section ".ghrettbl",""
+00000040 00000000*       830 .L1370:	.word	.L1369
+                         831 	.type	.L1370,@object
+                         832 	.size	.L1370,4
+                         833 	.data
+                         834 	.section ".icum_middle.text","ax"
+                         835 
+                         836 --177: }
+                         837 
+                         838 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_data) +0 == 61440
+                         839 	.align	2
+                         840 	.align	2
+                         841 	.align	2
+                         842 ..gh.f.a.2.e.7:
+                         843 	.type	..gh.f.a.2.e.7,@object
+                         844 	.size	..gh.f.a.2.e.7,0
+                         845 	.global	_MM_FLS_Read
+                         846 _MM_FLS_Read:
+000001c6 8007e370        847 	prepare	{r25,r26,r27,r28,r29,r31},0,sp
+000001ca 8600            848 	zxb	r6
+000001cc 8700            849 	zxb	r7
+000001ce 08d0            850 	mov	r8,r26
+000001d0 9a00            851 	zxb	r26
+000001d2 09c8            852 	mov	r9,r25
+000001d4 9900            853 	zxb	r25
+000001d6 7ce0            854 	sld.hu	24[ep],r28
+000001d8 0edd            855 	sld.w	28[ep],r27
+000001da 3d0600000000*   856 	mov	_g_ram_fls_data,r29
+                         857 --	    .bf
+                         858 .LDW42:
+                         859 --179: uint32_t MM_FLS_Read(uint8_t target_flash, uint8_t target_area, uint8_t ds_type, uint8_t slot_num,
+                         860 --180:                      uint16_t size, uint8_t *p_data)
+                         861 --181: {
+                         862 --182:     int32_t slot_index;
+                         863 --183:     uint32_t index;
+                         864 --184:     uint32_t err;
+                         865 --186:     err = ram_FLS_CheckSecureTarget(target_flash, target_area);
+                         866 .L1668:
+                         867 --line186
+                         868 ..lin.2cc895ec..4dfcbadd.0_44::
+                         869 .LDWlin44:
+                         870 	jarl	_ram_FLS_CheckSecureTarget,lp
+                         870 <EXPANSION BEGIN>
+                         870 jarl22 _ram_FLS_CheckSecureTarget , lp 
+000001e0 bfff46ff*       870 <EXPANSION END>
+                         871 --187:     if ((ER_OK != err) || (NULL == p_data) || (FLS_ZERO_U16 == size))
+                         872 --line187
+                         873 ..lin.2cc895ec..4dfcbadd.0_45::
+                         874 .LDWlin45:
+000001e4 e051            875 	cmp	zero,r10
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+000001e6 ea2d*           876 	bne	.L1371
+000001e8 e0d9            877 	cmp	zero,r27
+000001ea a205*           878 	be	.L1378
+000001ec e0e1            879 	cmp	zero,r28
+                         880 .L1378:
+                         881 --188:     {
+                         882 --189:         return (ER_OK == err) ? ER_PARAM : err;
+                         883 --line189
+                         884 ..lin.2cc895ec..4dfcbadd.0_46::
+                         885 .LDWlin46:
+000001ee e1570453        886 	cmove	1,r10,r10
+000001f2 822d*           887 	be	.L1371
+                         888 .L1373:
+                         889 --190:     }
+                         890 --192:     slot_index = ram_FLS_FindSlot(ds_type, slot_num);
+                         891 --line192
+                         892 ..lin.2cc895ec..4dfcbadd.0_47::
+                         893 .LDWlin47:
+000001f4 1a30            894 	mov	r26,r6
+000001f6 1938            895 	mov	r25,r7
+                         896 .L1670:
+                         897 	jarl	_ram_FLS_FindSlot,lp
+                         897 <EXPANSION BEGIN>
+                         897 jarl22 _ram_FLS_FindSlot , lp 
+000001f8 bfff08fe*       897 <EXPANSION END>
+                         898 --193:     if (0 > slot_index)
+                         899 --line193
+                         900 ..lin.2cc895ec..4dfcbadd.0_48::
+                         901 .LDWlin48:
+000001fc e051            902 	cmp	zero,r10
+000001fe de05*           903 	bge	.L1381
+                         904 --194:     {
+                         905 --195:         return ER_MM_FLS_DATA_BLANK;
+                         906 --line195
+                         907 ..lin.2cc895ec..4dfcbadd.0_49::
+                         908 .LDWlin49:
+00000200 2a0604006000    909 	mov	6291460,r10
+00000206 e51d*           910 	br	.L1371
+                         911 .L1381:
+                         912 --196:     }
+                         913 --197:     if (size > g_ram_fls_slots[slot_index].size)
+                         914 --line197
+                         915 ..lin.2cc895ec..4dfcbadd.0_50::
+                         916 .LDWlin50:
+00000208 eaf60c00        917 	mulhi	12,r10,ep
+0000020c 5d0e0100        918 	movhi	hi(61440),r29,r1
+00000210 210e00f0        919 	movea	lo(61440),r1,r1
+00000214 c1f1            920 	add	r1,ep
+00000216 7208            921 	sld.hu	4[ep],r1
+00000218 e1e1            922 	cmp	r1,r28
+0000021a d305*           923 	bnh	.L1384
+                         924 --198:     {
+                         925 --199:         return ER_MM_FLS_SIZE;
+                         926 --line199
+                         927 ..lin.2cc895ec..4dfcbadd.0_51::
+                         928 .LDWlin51:
+0000021c 2a0607006000    929 	mov	6291463,r10
+00000222 8515*           930 	br	.L1371
+                         931 .L1384:
+                         932 --200:     }
+                         933 --202:     for (index = FLS_ZERO_U32; index < size; index++)
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         934 --line202
+                         935 ..lin.2cc895ec..4dfcbadd.0_52::
+                         936 .LDWlin52:
+00000224 000a            937 	mov	0,r1
+00000226 b50d*           938 	br	.L1390
+                         939 .L1389:
+                         940 --203:     {
+                         941 --204:         p_data[index] = g_ram_fls_data[g_ram_fls_slots[slot_index].offset + index];
+                         942 --line204
+                         943 ..lin.2cc895ec..4dfcbadd.0_53::
+                         944 .LDWlin53:
+00000228 0015            945 	sld.w	0[ep],r2
+0000022a 0198            946 	mov	r1,r19
+0000022c db99            947 	add	r27,r19
+0000022e c111            948 	add	r1,r2
+00000230 dd11            949 	add	r29,r2
+00000232 82170100        950 	ld.bu	0[r2],r2
+00000236 410a            951 	add	1,r1
+00000238 53170000        952 	st.b	r2,0[r19]
+                         953 .L1390:
+0000023c fc09            954 	cmp	r28,r1
+                         955 --205:     }
+                         956 --207:     return ER_OK;
+0000023e 0052            957 	mov	0,r10
+00000240 c1f5*           958 	bl	.L1389
+                         959 .L1371:
+                         960 --	    .ef
+                         961 .LDW52:
+                         962 .L1672:
+                         963 --line204
+                         964 ..lin.2cc895ec..4dfcbadd.0_54::
+                         965 .LDWlin54:
+00000242 4006ff70        966 	dispose	0,{r25,r26,r27,r28,r29,r31},[lp]
+                         967 --line204
+                         968 ..lin.2cc895ec..4dfcbadd.0_55::
+                         969 	.type	_MM_FLS_Read,@function
+                         970 	.size	_MM_FLS_Read,.-_MM_FLS_Read
+                         971 	.align	2
+                         972 --_slot_index	r10	local
+                         973 --_index	r1	local
+                         974 --_err	r10	local
+                         975 
+                         976 --_target_flash	r6	param
+                         977 --_target_area	r7	param
+                         978 --_ds_type	r26	param
+                         979 --_slot_num	r25	param
+                         980 --_size	r28	param
+                         981 --_p_data	r27	param
+                         982 
+                         983 	.section ".ghcalltbl",""
+00000004 00000000*       984 .L1669:	.word	.L1668
+                         985 	.type	.L1669,@object
+                         986 	.size	.L1669,4
+00000008 00000000*       987 .L1671:	.word	.L1670
+                         988 	.type	.L1671,@object
+                         989 	.size	.L1671,4
+                         990 	.section ".ghrettbl",""
+00000044 00000000*       991 .L1673:	.word	.L1672
+                         992 	.type	.L1673,@object
+                         993 	.size	.L1673,4
+                         994 	.data
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                         995 	.section ".icum_middle.text","ax"
+                         996 
+                         997 --208: }
+                         998 
+                         999 	.assert 0x0 + (_g_ram_fls_data - _g_ram_fls_used) +0 == 4
+                        1000 	.assert 0x0 + (_g_ram_fls_used - _g_ram_fls_used) +0 == 0
+                        1001 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_used) +0 == 61444
+                        1002 	.align	2
+                        1003 	.align	2
+                        1004 	.align	2
+                        1005 ..gh.f.a.2.e.8:
+                        1006 	.type	..gh.f.a.2.e.8,@object
+                        1007 	.size	..gh.f.a.2.e.8,0
+                        1008 	.global	_MM_FLS_Write
+                        1009 _MM_FLS_Write:
+00000246 8207e1f2       1010 	prepare	{r22,r24,r25,r26,r27,r28,r29,r31},1
+0000024a 0730           1011 	mov	r7,r6
+0000024c 8600           1012 	zxb	r6
+0000024e 23f62400       1013 	movea	36,sp,ep
+00000252 0838           1014 	mov	r8,r7
+00000254 8700           1015 	zxb	r7
+00000256 09d8           1016 	mov	r9,r27
+00000258 9b00           1017 	zxb	r27
+0000025a 60e0           1018 	sld.bu	0[ep],r28
+0000025c 72d0           1019 	sld.hu	4[ep],r26
+0000025e 04cd           1020 	sld.w	8[ep],r25
+00000260 3d0600000000*  1021 	mov	_g_ram_fls_used,r29
+                        1022 --	    .bf
+                        1023 .LDW62:
+                        1024 --210: uint32_t MM_FLS_Write(r_icumif_job_id_t job_id, uint8_t target_flash, uint8_t target_area,
+                        1025 --211:                       uint8_t ds_type, uint8_t slot_num, uint16_t size, uint8_t *p_data)
+                        1026 --212: {
+                        1027 --213:     int32_t slot_index;
+                        1028 --214:     uint32_t index;
+                        1029 --215:     uint32_t offset;
+                        1030 --216:     uint32_t previous_size;
+                        1031 --217:     uint32_t err;
+                        1032 --219:     (void)job_id;
+                        1033 --220:     err = ram_FLS_CheckSecureTarget(target_flash, target_area);
+                        1034 .L2163:
+                        1035 --line220
+                        1036 ..lin.2cc895ec..df5d66c.0_56::
+                        1037 .LDWlin56:
+                        1038 	jarl	_ram_FLS_CheckSecureTarget,lp
+                        1038 <EXPANSION BEGIN>
+                        1038 jarl22 _ram_FLS_CheckSecureTarget , lp 
+00000266 bfffc0fe*      1038 <EXPANSION END>
+                        1039 --221:     if ((ER_OK != err) || (NULL == p_data) || (FLS_ZERO_U16 == size))
+                        1040 --line221
+                        1041 ..lin.2cc895ec..df5d66c.0_57::
+                        1042 .LDWlin57:
+0000026a e051           1043 	cmp	zero,r10
+0000026c 9a75*          1044 	bne	.L1674
+0000026e e0c9           1045 	cmp	zero,r25
+00000270 a205*          1046 	be	.L1681
+00000272 e0d1           1047 	cmp	zero,r26
+                        1048 .L1681:
+                        1049 --222:     {
+                        1050 --223:         return (ER_OK == err) ? ER_PARAM : err;
+                        1051 --line223
+                        1052 ..lin.2cc895ec..df5d66c.0_58::
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1053 .LDWlin58:
+00000274 e1570453       1054 	cmove	1,r10,r10
+00000278 b26d*          1055 	be	.L1674
+                        1056 .L1676:
+                        1057 --224:     }
+                        1058 --225:     if (size > RAM_FLS_CAPACITY)
+                        1059 --line225
+                        1060 ..lin.2cc895ec..df5d66c.0_59::
+                        1061 .LDWlin59:
+0000027a 800e00f0       1062 	ori	61440,zero,r1
+0000027e e1d1           1063 	cmp	r1,r26
+00000280 d305*          1064 	bnh	.L1684
+                        1065 --226:     {
+                        1066 --227:         return ER_MM_FLS_SIZE;
+                        1067 --line227
+                        1068 ..lin.2cc895ec..df5d66c.0_60::
+                        1069 .LDWlin60:
+00000282 2a0607006000   1070 	mov	6291463,r10
+00000288 b565*          1071 	br	.L1674
+                        1072 .L1684:
+0000028a 360602006000   1073 	mov	6291458,r22
+                        1074 --228:     }
+                        1075 --230:     slot_index = ram_FLS_FindSlot(ds_type, slot_num);
+                        1076 --line230
+                        1077 ..lin.2cc895ec..df5d66c.0_61::
+                        1078 .LDWlin61:
+00000290 1b30           1079 	mov	r27,r6
+00000292 1c38           1080 	mov	r28,r7
+                        1081 .L2165:
+                        1082 	jarl	_ram_FLS_FindSlot,lp
+                        1082 <EXPANSION BEGIN>
+                        1082 jarl22 _ram_FLS_FindSlot , lp 
+00000294 bfff6cfd*      1082 <EXPANSION END>
+                        1083 --231:     if (0 <= slot_index)
+                        1084 --line231
+                        1085 ..lin.2cc895ec..df5d66c.0_62::
+                        1086 .LDWlin62:
+00000298 5dc60100       1087 	movhi	hi(61444),r29,r24
+0000029c 38c604f0       1088 	movea	lo(61444),r24,r24
+000002a0 e051           1089 	cmp	zero,r10
+000002a2 a625*          1090 	blt	.L1687
+                        1091 --232:     {
+                        1092 --233:         previous_size = g_ram_fls_slots[slot_index].size;
+                        1093 --line233
+                        1094 ..lin.2cc895ec..df5d66c.0_63::
+                        1095 .LDWlin63:
+000002a4 eae60c00       1096 	mulhi	12,r10,r28
+000002a8 d8e1           1097 	add	r24,r28
+000002aa fc170500       1098 	ld.hu	4[r28],r2
+                        1099 --234:         if (size == previous_size)
+000002ae e2d1           1100 	cmp	r2,r26
+000002b0 ca05*          1101 	bne	.L1689
+                        1102 --235:         {
+                        1103 --236:             offset = g_ram_fls_slots[slot_index].offset;
+                        1104 --line236
+                        1105 ..lin.2cc895ec..df5d66c.0_64::
+                        1106 .LDWlin64:
+000002b2 3c170100       1107 	ld.w	0[r28],r2
+000002b6 e53d*          1108 	br	.L1695
+                        1109 .L1689:
+                        1110 --237:         }
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1111 --238:         else
+                        1112 --239:         {
+                        1113 --240:             if (size > (RAM_FLS_CAPACITY - (g_ram_fls_used - previous_size)))
+                        1114 --line240
+                        1115 ..lin.2cc895ec..df5d66c.0_65::
+                        1116 .LDWlin65:
+000002b8 3d0f0100       1117 	ld.w	0[r29],r1
+000002bc a209           1118 	sub	r2,r1
+000002be 801600f0       1119 	ori	61440,zero,r2
+000002c2 a111           1120 	sub	r1,r2
+000002c4 e2d1           1121 	cmp	r2,r26
+000002c6 eb25*          1122 	bh	.L1702
+                        1123 --241:             {
+                        1124 --242:                 return ER_MM_FLS_PROG;
+                        1125 --243:             }
+                        1126 --244:             g_ram_fls_slots[slot_index].used = FLS_ZERO_U8;
+                        1127 --line244
+                        1128 ..lin.2cc895ec..df5d66c.0_66::
+                        1129 .LDWlin66:
+000002c8 5c070800       1130 	st.b	zero,8[r28]
+                        1131 --245:             g_ram_fls_used -= previous_size;
+000002cc 7d0f0100       1132 	st.w	r1,0[r29]
+                        1133 --246:             ram_FLS_Compact();
+                        1134 .L2167:
+                        1135 	jarl	_ram_FLS_Compact,lp
+                        1135 <EXPANSION BEGIN>
+                        1135 jarl22 _ram_FLS_Compact , lp 
+000002d0 bfff80fd*      1135 <EXPANSION END>
+                        1136 --247:             offset = g_ram_fls_used;
+                        1137 --line247
+                        1138 ..lin.2cc895ec..df5d66c.0_67::
+                        1139 .LDWlin67:
+000002d4 1df0           1140 	mov	r29,ep
+000002d6 0015           1141 	sld.w	0[ep],r2
+                        1142 --248:             g_ram_fls_used += size;
+000002d8 1a08           1143 	mov	r26,r1
+000002da c209           1144 	add	r2,r1
+000002dc 010d           1145 	sst.w	r1,0[ep]
+                        1146 --249:             g_ram_fls_slots[slot_index].offset = offset;
+000002de 1cf0           1147 	mov	r28,ep
+000002e0 0115           1148 	sst.w	r2,0[ep]
+                        1149 --250:             g_ram_fls_slots[slot_index].size = size;
+000002e2 82d4           1150 	sst.h	r26,4[ep]
+                        1151 --251:             g_ram_fls_slots[slot_index].used = FLS_FLAG_ON_U8;
+000002e4 d525*          1152 	br	.L2141
+                        1153 .L1687:
+                        1154 --252:         }
+                        1155 --253:     }
+                        1156 --254:     else
+                        1157 --255:     {
+                        1158 --256:         slot_index = ram_FLS_FindFreeSlot();
+                        1159 .L2169:
+                        1160 --line256
+                        1161 ..lin.2cc895ec..df5d66c.0_68::
+                        1162 .LDWlin68:
+                        1163 	jarl	_ram_FLS_FindFreeSlot,lp
+                        1163 <EXPANSION BEGIN>
+                        1163 jarl22 _ram_FLS_FindFreeSlot , lp 
+000002e6 bfff4afd*      1163 <EXPANSION END>
+                        1164 --257:         if (0 > slot_index)
+                        1165 --line257
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1166 ..lin.2cc895ec..df5d66c.0_69::
+                        1167 .LDWlin69:
+000002ea e051           1168 	cmp	zero,r10
+000002ec ce05*          1169 	bge	.L1696
+                        1170 --258:         {
+                        1171 --259:             return ER_MM_FLS_FULL_DATA_MAP;
+                        1172 --line259
+                        1173 ..lin.2cc895ec..df5d66c.0_70::
+                        1174 .LDWlin70:
+000002ee 16560f00       1175 	addi	15,r22,r10
+000002f2 e52d*          1176 	br	.L1674
+                        1177 .L1696:
+                        1178 --260:         }
+                        1179 --261:         if (size > (RAM_FLS_CAPACITY - g_ram_fls_used))
+                        1180 --line261
+                        1181 ..lin.2cc895ec..df5d66c.0_71::
+                        1182 .LDWlin71:
+000002f4 3d170100       1183 	ld.w	0[r29],r2
+000002f8 800e00f0       1184 	ori	61440,zero,r1
+000002fc a209           1185 	sub	r2,r1
+000002fe e1d1           1186 	cmp	r1,r26
+00000300 c30d*          1187 	bnh	.L1699
+                        1188 --262:         {
+                        1189 --263:             ram_FLS_Compact();
+                        1190 .L2171:
+                        1191 --line263
+                        1192 ..lin.2cc895ec..df5d66c.0_72::
+                        1193 .LDWlin72:
+                        1194 	jarl	_ram_FLS_Compact,lp
+                        1194 <EXPANSION BEGIN>
+                        1194 jarl22 _ram_FLS_Compact , lp 
+00000302 bfff4efd*      1194 <EXPANSION END>
+                        1195 --264:             if (size > (RAM_FLS_CAPACITY - g_ram_fls_used))
+                        1196 --line264
+                        1197 ..lin.2cc895ec..df5d66c.0_73::
+                        1198 .LDWlin73:
+00000306 3d170100       1199 	ld.w	0[r29],r2
+0000030a 800e00f0       1200 	ori	61440,zero,r1
+0000030e a209           1201 	sub	r2,r1
+00000310 e1d1           1202 	cmp	r1,r26
+                        1203 .L1702:
+                        1204 --265:             {
+                        1205 --266:                 return ER_MM_FLS_PROG;
+00000312 f6573653       1206 	cmovh	r22,r10,r10
+00000316 cb1d*          1207 	bh	.L1674
+                        1208 .L1699:
+                        1209 --271:         g_ram_fls_slots[slot_index].offset = offset;
+                        1210 --line271
+                        1211 ..lin.2cc895ec..df5d66c.0_74::
+                        1212 .LDWlin74:
+00000318 eaf60c00       1213 	mulhi	12,r10,ep
+                        1214 --267:             }
+                        1215 --268:         }
+                        1216 --269:         offset = g_ram_fls_used;
+                        1217 --270:         g_ram_fls_used += size;
+0000031c 1a08           1218 	mov	r26,r1
+0000031e c209           1219 	add	r2,r1
+00000320 7d0f0100       1220 	st.w	r1,0[r29]
+00000324 d8f1           1221 	add	r24,ep
+00000326 0115           1222 	sst.w	r2,0[ep]
+                        1223 --272:         g_ram_fls_slots[slot_index].size = size;
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+00000328 82d4           1224 	sst.h	r26,4[ep]
+                        1225 --273:         g_ram_fls_slots[slot_index].ds_type = ds_type;
+0000032a 86db           1226 	sst.b	r27,6[ep]
+                        1227 --274:         g_ram_fls_slots[slot_index].slot_num = slot_num;
+0000032c 87e3           1228 	sst.b	r28,7[ep]
+                        1229 .L2141:
+                        1230 --275:         g_ram_fls_slots[slot_index].used = FLS_FLAG_ON_U8;
+0000032e 010a           1231 	mov	1,r1
+00000330 880b           1232 	sst.b	r1,8[ep]
+                        1233 .L1695:
+                        1234 --276:     }
+                        1235 --278:     for (index = FLS_ZERO_U32; index < size; index++)
+00000332 000a           1236 	mov	0,r1
+00000334 a50d*          1237 	br	.L1707
+                        1238 .L1706:
+                        1239 --279:     {
+                        1240 --280:         g_ram_fls_data[offset + index] = p_data[index];
+                        1241 --line280
+                        1242 ..lin.2cc895ec..df5d66c.0_75::
+                        1243 .LDWlin75:
+00000336 0198           1244 	mov	r1,r19
+00000338 d999           1245 	add	r25,r19
+0000033a 939f0100       1246 	ld.bu	0[r19],r19
+0000033e 02f0           1247 	mov	r2,ep
+00000340 c1f1           1248 	add	r1,ep
+00000342 ddf1           1249 	add	r29,ep
+00000344 410a           1250 	add	1,r1
+00000346 849b           1251 	sst.b	r19,4[ep]
+                        1252 .L1707:
+00000348 fa09           1253 	cmp	r26,r1
+                        1254 --281:     }
+                        1255 --283:     return ER_OK;
+0000034a 0052           1256 	mov	0,r10
+0000034c d1f5*          1257 	bl	.L1706
+                        1258 .L1674:
+                        1259 --	    .ef
+                        1260 .LDW72:
+                        1261 .L2173:
+                        1262 --line280
+                        1263 ..lin.2cc895ec..df5d66c.0_76::
+                        1264 .LDWlin76:
+0000034e 4206fff2       1265 	dispose	1,{r22,r24,r25,r26,r27,r28,r29,r31},[lp]
+                        1266 --line280
+                        1267 ..lin.2cc895ec..df5d66c.0_77::
+                        1268 	.type	_MM_FLS_Write,@function
+                        1269 	.size	_MM_FLS_Write,.-_MM_FLS_Write
+                        1270 	.align	2
+                        1271 --_slot_index	r23	local
+                        1272 --_index	r1	local
+                        1273 --_offset	r2	local
+                        1274 --_previous_size	r2	local
+                        1275 --_err	r10	local
+                        1276 
+                        1277 --_job_id	none	param
+                        1278 --_target_flash	r7	param
+                        1279 --_target_area	r8	param
+                        1280 --_ds_type	r27	param
+                        1281 --_slot_num	r28	param
+                        1282 --_size	r26	param
+                        1283 --_p_data	r25	param
+                        1284 
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1285 	.section ".ghcalltbl",""
+0000000c 00000000*      1286 .L2164:	.word	.L2163
+                        1287 	.type	.L2164,@object
+                        1288 	.size	.L2164,4
+00000010 00000000*      1289 .L2166:	.word	.L2165
+                        1290 	.type	.L2166,@object
+                        1291 	.size	.L2166,4
+00000014 00000000*      1292 .L2168:	.word	.L2167
+                        1293 	.type	.L2168,@object
+                        1294 	.size	.L2168,4
+00000018 00000000*      1295 .L2170:	.word	.L2169
+                        1296 	.type	.L2170,@object
+                        1297 	.size	.L2170,4
+0000001c 00000000*      1298 .L2172:	.word	.L2171
+                        1299 	.type	.L2172,@object
+                        1300 	.size	.L2172,4
+                        1301 	.section ".ghrettbl",""
+00000048 00000000*      1302 .L2174:	.word	.L2173
+                        1303 	.type	.L2174,@object
+                        1304 	.size	.L2174,4
+                        1305 	.data
+                        1306 	.section ".icum_middle.text","ax"
+                        1307 
+                        1308 --284: }
+                        1309 
+                        1310 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_data) +0 == 61440
+                        1311 	.align	2
+                        1312 	.align	2
+                        1313 	.align	2
+                        1314 ..gh.f.a.2.e.9:
+                        1315 	.type	..gh.f.a.2.e.9,@object
+                        1316 	.size	..gh.f.a.2.e.9,0
+                        1317 	.global	_MM_FLS_Erase
+                        1318 _MM_FLS_Erase:
+00000352 80076110       1319 	prepare	{r27,r29,r31},0
+00000356 0730           1320 	mov	r7,r6
+00000358 8600           1321 	zxb	r6
+0000035a 0838           1322 	mov	r8,r7
+0000035c 8700           1323 	zxb	r7
+0000035e 8900           1324 	zxb	r9
+00000360 83df0d00       1325 	ld.bu	12[sp],r27
+00000364 3d0600000000*  1326 	mov	_g_ram_fls_data,r29
+                        1327 --	    .bf
+                        1328 .LDW82:
+                        1329 --286: uint32_t MM_FLS_Erase(r_icumif_job_id_t job_id, uint8_t target_flash, uint8_t target_area,
+                        1330 --287:                       uint8_t ds_type, uint8_t slot_num)
+                        1331 --288: {
+                        1332 --289:     int32_t slot_index;
+                        1333 --290:     uint32_t index;
+                        1334 --291:     uint32_t err;
+                        1335 --293:     (void)job_id;
+                        1336 --294:     err = ram_FLS_CheckSecureTarget(target_flash, target_area);
+                        1337 .L2355:
+                        1338 --line294
+                        1339 ..lin.2cc895ec..caffb31.0_78::
+                        1340 .LDWlin78:
+                        1341 	jarl	_ram_FLS_CheckSecureTarget,lp
+                        1341 <EXPANSION BEGIN>
+                        1341 jarl22 _ram_FLS_CheckSecureTarget , lp 
+0000036a bfffbcfd*      1341 <EXPANSION END>
+                        1342 --295:     if (ER_OK != err)
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1343 --line295
+                        1344 ..lin.2cc895ec..caffb31.0_79::
+                        1345 .LDWlin79:
+0000036e e051           1346 	cmp	zero,r10
+00000370 8a25*          1347 	bne	.L2175
+                        1348 --296:     {
+                        1349 --297:         return err;
+                        1350 --298:     }
+                        1351 --300:     slot_index = ram_FLS_FindSlot(ds_type, slot_num);
+                        1352 --line300
+                        1353 ..lin.2cc895ec..caffb31.0_80::
+                        1354 .LDWlin80:
+00000372 0930           1355 	mov	r9,r6
+00000374 1b38           1356 	mov	r27,r7
+                        1357 .L2357:
+                        1358 	jarl	_ram_FLS_FindSlot,lp
+                        1358 <EXPANSION BEGIN>
+                        1358 jarl22 _ram_FLS_FindSlot , lp 
+00000376 bfff8afc*      1358 <EXPANSION END>
+                        1359 --301:     if (0 > slot_index)
+                        1360 --line301
+                        1361 ..lin.2cc895ec..caffb31.0_81::
+                        1362 .LDWlin81:
+0000037a e051           1363 	cmp	zero,r10
+0000037c de05*          1364 	bge	.L2180
+                        1365 --302:     {
+                        1366 --303:         return ER_MM_FLS_DATA_BLANK;
+                        1367 --line303
+                        1368 ..lin.2cc895ec..caffb31.0_82::
+                        1369 .LDWlin82:
+0000037e 2a0604006000   1370 	mov	6291460,r10
+00000384 e515*          1371 	br	.L2175
+                        1372 .L2180:
+                        1373 --304:     }
+                        1374 --305:     for (index = 0; index < g_ram_fls_slots[slot_index].size; index++)
+                        1375 --line305
+                        1376 ..lin.2cc895ec..caffb31.0_83::
+                        1377 .LDWlin83:
+00000386 000a           1378 	mov	0,r1
+00000388 e505*          1379 	br	.L2186
+                        1380 .L2185:
+                        1381 --306:     {
+                        1382 --307:         g_ram_fls_data[g_ram_fls_slots[slot_index].offset + index] = FLS_ZERO_U8;
+                        1383 --line307
+                        1384 ..lin.2cc895ec..caffb31.0_84::
+                        1385 .LDWlin84:
+0000038a 00f5           1386 	sld.w	0[ep],ep
+0000038c c1f1           1387 	add	r1,ep
+0000038e ddf1           1388 	add	r29,ep
+00000390 8003           1389 	sst.b	zero,0[ep]
+00000392 410a           1390 	add	1,r1
+                        1391 .L2186:
+00000394 eaf60c00       1392 	mulhi	12,r10,ep
+00000398 5d160100       1393 	movhi	hi(61440),r29,r2
+0000039c 221600f0       1394 	movea	lo(61440),r2,r2
+000003a0 c2f1           1395 	add	r2,ep
+000003a2 7210           1396 	sld.hu	4[ep],r2
+000003a4 e209           1397 	cmp	r2,r1
+000003a6 a1f5*          1398 	bl	.L2185
+                        1399 --308:     }
+                        1400 --309:     g_ram_fls_slots[slot_index].used = FLS_ZERO_U8;
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1401 --line309
+                        1402 ..lin.2cc895ec..caffb31.0_85::
+                        1403 .LDWlin85:
+000003a8 8803           1404 	sst.b	zero,8[ep]
+                        1405 --310:     ram_FLS_Compact();
+                        1406 .L2359:
+                        1407 	jarl	_ram_FLS_Compact,lp
+                        1407 <EXPANSION BEGIN>
+                        1407 jarl22 _ram_FLS_Compact , lp 
+000003aa bfffa6fc*      1407 <EXPANSION END>
+                        1408 --311:     return ER_OK;
+                        1409 --line311
+                        1410 ..lin.2cc895ec..caffb31.0_86::
+                        1411 .LDWlin86:
+000003ae 0052           1412 	mov	0,r10
+                        1413 .L2175:
+                        1414 --	    .ef
+                        1415 .LDW92:
+                        1416 .L2361:
+000003b0 40067f10       1417 	dispose	0,{r27,r29,r31},[lp]
+                        1418 --line311
+                        1419 ..lin.2cc895ec..caffb31.0_87::
+                        1420 	.type	_MM_FLS_Erase,@function
+                        1421 	.size	_MM_FLS_Erase,.-_MM_FLS_Erase
+                        1422 	.align	2
+                        1423 --_slot_index	r10	local
+                        1424 --_index	r1	local
+                        1425 --_err	r10	local
+                        1426 
+                        1427 --_job_id	none	param
+                        1428 --_target_flash	r7	param
+                        1429 --_target_area	r8	param
+                        1430 --_ds_type	r28	param
+                        1431 --_slot_num	r27	param
+                        1432 
+                        1433 	.section ".ghcalltbl",""
+00000020 00000000*      1434 .L2356:	.word	.L2355
+                        1435 	.type	.L2356,@object
+                        1436 	.size	.L2356,4
+00000024 00000000*      1437 .L2358:	.word	.L2357
+                        1438 	.type	.L2358,@object
+                        1439 	.size	.L2358,4
+00000028 00000000*      1440 .L2360:	.word	.L2359
+                        1441 	.type	.L2360,@object
+                        1442 	.size	.L2360,4
+                        1443 	.section ".ghrettbl",""
+0000004c 00000000*      1444 .L2362:	.word	.L2361
+                        1445 	.type	.L2362,@object
+                        1446 	.size	.L2362,4
+                        1447 	.data
+                        1448 	.section ".icum_middle.text","ax"
+                        1449 
+                        1450 --312: }
+                        1451 
+                        1452 	.align	2
+                        1453 	.align	2
+                        1454 	.align	2
+                        1455 ..gh.f.a.2.e.10:
+                        1456 	.type	..gh.f.a.2.e.10,@object
+                        1457 	.size	..gh.f.a.2.e.10,0
+                        1458 	.global	_MM_FLS_WriteFlashCfg
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1459 _MM_FLS_WriteFlashCfg:
+                        1460 --	    .bf
+                        1461 .LDW03:
+                        1462 --314: uint32_t MM_FLS_WriteFlashCfg(r_icumif_job_id_t job_id, uint8_t target_func, uint32_t set_data)
+                        1463 --315: {
+                        1464 --316:     (void)job_id;
+                        1465 --317:     (void)target_func;
+                        1466 --318:     (void)set_data;
+                        1467 --319:     return ER_MM_FLS_UNAVAILABLE;
+000003b4 2a0606006000   1468 	mov	6291462,r10
+                        1469 --	    .ef
+                        1470 .LDW13:
+                        1471 .L2407:
+                        1472 --line315
+                        1473 ..lin.2cc895ec..5c1cf24a.0_88::
+                        1474 .LDWlin88:
+                        1475 	.jumptype return
+000003ba 7f00           1476 	jmp	[lp]
+                        1477 --line315
+                        1478 ..lin.2cc895ec..5c1cf24a.0_89::
+                        1479 	.type	_MM_FLS_WriteFlashCfg,@function
+                        1480 	.size	_MM_FLS_WriteFlashCfg,.-_MM_FLS_WriteFlashCfg
+                        1481 	.align	2
+                        1482 
+                        1483 --_job_id	none	param
+                        1484 --_target_func	none	param
+                        1485 --_set_data	none	param
+                        1486 
+                        1487 	.section ".bss","awb"
+                        1488 .L2388:
+                        1489 	.type	.L2388,@object
+                        1490 	.size	.L2388,0
+                        1491 	.section ".ghrettbl",""
+00000050 00000000*      1492 .L2408:	.word	.L2407
+                        1493 	.type	.L2408,@object
+                        1494 	.size	.L2408,4
+                        1495 	.data
+                        1496 	.section ".icum_middle.text","ax"
+                        1497 
+                        1498 --320: }
+                        1499 
+                        1500 	.align	2
+                        1501 	.align	2
+                        1502 	.align	2
+                        1503 ..gh.f.a.2.e.11:
+                        1504 	.type	..gh.f.a.2.e.11,@object
+                        1505 	.size	..gh.f.a.2.e.11,0
+                        1506 	.global	_MM_FLS_MapDataSet
+                        1507 _MM_FLS_MapDataSet:
+                        1508 --	    .bf
+                        1509 .LDW23:
+                        1510 --322: uint32_t MM_FLS_MapDataSet(void)
+                        1511 --323: {
+                        1512 --324:     uint32_t index;
+                        1513 --326:     for (index = 0; index < FLS_DATA_MAP_SIZE; index++)
+000003bc 000a           1514 	mov	0,r1
+                        1515 .L2413:
+                        1516 --327:     {
+                        1517 --328:         if (FLS_FLAG_ON_U8 == g_ram_fls_slots[index].used)
+000003be e1f60c00       1518 	mulhi	12,r1,ep
+000003c2 220600000000*  1519 	mov	_g_ram_fls_slots,r2
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1520 --329:         {
+                        1521 --330:             return ER_OK;
+                        1522 --line330
+                        1523 ..lin.2cc895ec..5c4212c5.0_90::
+                        1524 .LDWlin90:
+000003c8 0052           1525 	mov	0,r10
+000003ca c2f1           1526 	add	r2,ep
+000003cc 6810           1527 	sld.bu	8[ep],r2
+000003ce 6112           1528 	cmp	1,r2
+000003d0 820d*          1529 	be	.L2409
+                        1530 --line326
+                        1531 ..lin.2cc895ec..5c4212c5.0_91::
+                        1532 .LDWlin91:
+000003d2 410a           1533 	add	1,r1
+000003d4 010600ff       1534 	addi	-256,r1,zero
+000003d8 b9f5*          1535 	bnl	.L2413
+                        1536 --331:         }
+                        1537 --332:     }
+                        1538 --333:     return ER_MM_FLS_ALL_BLANK;
+                        1539 --line333
+                        1540 ..lin.2cc895ec..5c4212c5.0_92::
+                        1541 .LDWlin92:
+000003da 2a0613006000   1542 	mov	6291475,r10
+                        1543 .L2409:
+                        1544 --	    .ef
+                        1545 .LDW33:
+                        1546 .L2558:
+                        1547 --line333
+                        1548 ..lin.2cc895ec..5c4212c5.0_93::
+                        1549 .LDWlin93:
+                        1550 	.jumptype return
+000003e0 7f00           1551 	jmp	[lp]
+                        1552 --line333
+                        1553 ..lin.2cc895ec..5c4212c5.0_94::
+                        1554 	.type	_MM_FLS_MapDataSet,@function
+                        1555 	.size	_MM_FLS_MapDataSet,.-_MM_FLS_MapDataSet
+                        1556 	.align	2
+                        1557 --_index	r1	local
+                        1558 
+                        1559 	.section ".ghrettbl",""
+00000054 00000000*      1560 .L2559:	.word	.L2558
+                        1561 	.type	.L2559,@object
+                        1562 	.size	.L2559,4
+                        1563 	.data
+                        1564 	.section ".icum_middle.text","ax"
+                        1565 
+                        1566 --334: }
+                        1567 
+                        1568 	.align	2
+                        1569 	.align	2
+                        1570 	.align	2
+                        1571 ..gh.f.a.2.e.12:
+                        1572 	.type	..gh.f.a.2.e.12,@object
+                        1573 	.size	..gh.f.a.2.e.12,0
+                        1574 	.global	_MM_FLS_EraseCF
+                        1575 _MM_FLS_EraseCF:
+                        1576 --	    .bf
+                        1577 .LDW43:
+                        1578 --336: uint32_t MM_FLS_EraseCF(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        1579 --337:                         uint8_t target_area, const uint32_t cf_addr, uint32_t size)
+                        1580 --338: {
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1581 --339:     (void)job_id;
+                        1582 --340:     (void)service_priority;
+                        1583 --341:     (void)target_area;
+                        1584 --342:     (void)cf_addr;
+                        1585 --343:     (void)size;
+                        1586 --344:     return ER_MM_FLS_UNAVAILABLE;
+000003e2 2a0606006000   1587 	mov	6291462,r10
+                        1588 --	    .ef
+                        1589 .LDW53:
+                        1590 .L2615:
+                        1591 --line338
+                        1592 ..lin.2cc895ec..f89b945a.0_95::
+                        1593 .LDWlin95:
+                        1594 	.jumptype return
+000003e8 7f00           1595 	jmp	[lp]
+                        1596 --line338
+                        1597 ..lin.2cc895ec..f89b945a.0_96::
+                        1598 	.type	_MM_FLS_EraseCF,@function
+                        1599 	.size	_MM_FLS_EraseCF,.-_MM_FLS_EraseCF
+                        1600 	.align	2
+                        1601 
+                        1602 --_job_id	none	param
+                        1603 --_service_priority	none	param
+                        1604 --_target_area	none	param
+                        1605 --_cf_addr	none	param
+                        1606 --_size	none	param
+                        1607 
+                        1608 	.section ".bss","awb"
+                        1609 .L2596:
+                        1610 	.type	.L2596,@object
+                        1611 	.size	.L2596,0
+                        1612 	.section ".ghrettbl",""
+00000058 00000000*      1613 .L2616:	.word	.L2615
+                        1614 	.type	.L2616,@object
+                        1615 	.size	.L2616,4
+                        1616 	.data
+                        1617 	.section ".icum_middle.text","ax"
+                        1618 
+                        1619 --345: }
+                        1620 
+                        1621 	.align	2
+                        1622 	.align	2
+                        1623 	.align	2
+                        1624 ..gh.f.a.2.e.13:
+                        1625 	.type	..gh.f.a.2.e.13,@object
+                        1626 	.size	..gh.f.a.2.e.13,0
+                        1627 	.global	_MM_FLS_WriteCF
+                        1628 _MM_FLS_WriteCF:
+                        1629 --	    .bf
+                        1630 .LDW63:
+                        1631 --347: uint32_t MM_FLS_WriteCF(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        1632 --348:                         uint8_t target_area, const uint32_t cf_addr, uint32_t size, const uint32_t *p_data)
+                        1633 --349: {
+                        1634 --350:     (void)job_id;
+                        1635 --351:     (void)service_priority;
+                        1636 --352:     (void)target_area;
+                        1637 --353:     (void)cf_addr;
+                        1638 --354:     (void)size;
+                        1639 --355:     (void)p_data;
+                        1640 --356:     return ER_MM_FLS_UNAVAILABLE;
+000003ea 2a0606006000   1641 	mov	6291462,r10
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1642 --	    .ef
+                        1643 .LDW73:
+                        1644 .L2663:
+                        1645 --line349
+                        1646 ..lin.2cc895ec..62c52a55.0_97::
+                        1647 .LDWlin97:
+                        1648 	.jumptype return
+000003f0 7f00           1649 	jmp	[lp]
+                        1650 --line349
+                        1651 ..lin.2cc895ec..62c52a55.0_98::
+                        1652 	.type	_MM_FLS_WriteCF,@function
+                        1653 	.size	_MM_FLS_WriteCF,.-_MM_FLS_WriteCF
+                        1654 	.align	2
+                        1655 
+                        1656 --_job_id	none	param
+                        1657 --_service_priority	none	param
+                        1658 --_target_area	none	param
+                        1659 --_cf_addr	none	param
+                        1660 --_size	none	param
+                        1661 --_p_data	none	param
+                        1662 
+                        1663 	.section ".bss","awb"
+                        1664 .L2644:
+                        1665 	.type	.L2644,@object
+                        1666 	.size	.L2644,0
+                        1667 	.section ".ghrettbl",""
+0000005c 00000000*      1668 .L2664:	.word	.L2663
+                        1669 	.type	.L2664,@object
+                        1670 	.size	.L2664,4
+                        1671 	.data
+                        1672 	.section ".icum_middle.text","ax"
+                        1673 
+                        1674 --357: }
+                        1675 
+                        1676 	.align	2
+                        1677 	.align	2
+                        1678 	.align	2
+                        1679 ..gh.f.a.2.e.14:
+                        1680 	.type	..gh.f.a.2.e.14,@object
+                        1681 	.size	..gh.f.a.2.e.14,0
+                        1682 	.global	_MM_FLS_CollectGarbage
+                        1683 _MM_FLS_CollectGarbage:
+                        1684 --	    .bf
+                        1685 .LDW83:
+                        1686 --359: uint32_t MM_FLS_CollectGarbage(r_icumif_job_id_t job_id)
+                        1687 --360: {
+                        1688 --361:     (void)job_id;
+                        1689 --362:     return ER_MM_FLS_UNAVAILABLE;
+000003f2 2a0606006000   1690 	mov	6291462,r10
+                        1691 --	    .ef
+                        1692 .LDW93:
+                        1693 .L2711:
+                        1694 --line360
+                        1695 ..lin.2cc895ec..521459b0.0_99::
+                        1696 .LDWlin99:
+                        1697 	.jumptype return
+000003f8 7f00           1698 	jmp	[lp]
+                        1699 --line360
+                        1700 ..lin.2cc895ec..521459b0.0_100::
+                        1701 	.type	_MM_FLS_CollectGarbage,@function
+                        1702 	.size	_MM_FLS_CollectGarbage,.-_MM_FLS_CollectGarbage
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1703 	.align	2
+                        1704 
+                        1705 --_job_id	none	param
+                        1706 
+                        1707 	.section ".bss","awb"
+                        1708 .L2692:
+                        1709 	.type	.L2692,@object
+                        1710 	.size	.L2692,0
+                        1711 	.section ".ghrettbl",""
+00000060 00000000*      1712 .L2712:	.word	.L2711
+                        1713 	.type	.L2712,@object
+                        1714 	.size	.L2712,4
+                        1715 	.data
+                        1716 	.section ".icum_middle.text","ax"
+                        1717 
+                        1718 --363: }
+                        1719 
+                        1720 	.align	2
+                        1721 	.align	2
+                        1722 	.align	2
+                        1723 ..gh.f.a.2.e.15:
+                        1724 	.type	..gh.f.a.2.e.15,@object
+                        1725 	.size	..gh.f.a.2.e.15,0
+                        1726 	.global	_MM_FLS_CollectGarbageAll
+                        1727 _MM_FLS_CollectGarbageAll:
+                        1728 --	    .bf
+                        1729 .LDW04:
+                        1730 --365: uint32_t MM_FLS_CollectGarbageAll(r_icumif_job_id_t job_id)
+                        1731 --366: {
+                        1732 --367:     (void)job_id;
+                        1733 --368:     return ER_MM_FLS_UNAVAILABLE;
+000003fa 2a0606006000   1734 	mov	6291462,r10
+                        1735 --	    .ef
+                        1736 .LDW14:
+                        1737 .L2759:
+                        1738 --line366
+                        1739 ..lin.2cc895ec..3ac35e89.0_101::
+                        1740 .LDWlin101:
+                        1741 	.jumptype return
+00000400 7f00           1742 	jmp	[lp]
+                        1743 --line366
+                        1744 ..lin.2cc895ec..3ac35e89.0_102::
+                        1745 	.type	_MM_FLS_CollectGarbageAll,@function
+                        1746 	.size	_MM_FLS_CollectGarbageAll,.-_MM_FLS_CollectGarbageAll
+                        1747 	.align	2
+                        1748 
+                        1749 --_job_id	none	param
+                        1750 
+                        1751 	.section ".bss","awb"
+                        1752 .L2740:
+                        1753 	.type	.L2740,@object
+                        1754 	.size	.L2740,0
+                        1755 	.section ".ghrettbl",""
+00000064 00000000*      1756 .L2760:	.word	.L2759
+                        1757 	.type	.L2760,@object
+                        1758 	.size	.L2760,4
+                        1759 	.data
+                        1760 	.section ".icum_middle.text","ax"
+                        1761 
+                        1762 --369: }
+                        1763 
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1764 	.assert 0x0 + (_g_ram_fls_slots - _g_ram_fls_data) +0 == 61440
+                        1765 	.align	2
+                        1766 	.align	2
+                        1767 	.align	2
+                        1768 ..gh.f.a.2.e.16:
+                        1769 	.type	..gh.f.a.2.e.16,@object
+                        1770 	.size	..gh.f.a.2.e.16,0
+                        1771 	.global	_MM_FLS_DeleteMapData
+                        1772 _MM_FLS_DeleteMapData:
+00000402 80072100       1773 	prepare	{r31},0
+00000406 8600           1774 	zxb	r6
+00000408 8700           1775 	zxb	r7
+                        1776 --	    .bf
+                        1777 .LDW24:
+                        1778 --371: uint32_t MM_FLS_DeleteMapData(uint8_t ds_type, uint8_t slot_num)
+                        1779 --372: {
+                        1780 --373:     int32_t slot_index;
+                        1781 --374:     uint32_t index;
+                        1782 --376:     slot_index = ram_FLS_FindSlot(ds_type, slot_num);
+                        1783 .L2890:
+                        1784 	jarl	_ram_FLS_FindSlot,lp
+                        1784 <EXPANSION BEGIN>
+                        1784 jarl22 _ram_FLS_FindSlot , lp 
+0000040a bffff6fb*      1784 <EXPANSION END>
+                        1785 --377:     if (0 <= slot_index)
+                        1786 --line377
+                        1787 ..lin.2cc895ec..6bd7a3cc.0_103::
+                        1788 .LDWlin103:
+0000040e e051           1789 	cmp	zero,r10
+                        1790 --378:     {
+                        1791 --379:         for (index = 0; index < g_ram_fls_slots[slot_index].size; index++)
+00000410 0012           1792 	mov	0,r2
+00000412 fe05*          1793 	bge	.L2768
+00000414 e515*          1794 	br	.L2763
+                        1795 .L2767:
+                        1796 --380:         {
+                        1797 --381:             g_ram_fls_data[g_ram_fls_slots[slot_index].offset + index] = FLS_ZERO_U8;
+                        1798 --line381
+                        1799 ..lin.2cc895ec..6bd7a3cc.0_104::
+                        1800 .LDWlin104:
+00000416 00f5           1801 	sld.w	0[ep],ep
+00000418 c2f1           1802 	add	r2,ep
+0000041a c1f1           1803 	add	r1,ep
+0000041c 8003           1804 	sst.b	zero,0[ep]
+0000041e 4112           1805 	add	1,r2
+                        1806 .L2768:
+00000420 eaf60c00       1807 	mulhi	12,r10,ep
+00000424 210600000000*  1808 	mov	_g_ram_fls_data,r1
+0000042a 419e0100       1809 	movhi	hi(61440),r1,r19
+0000042e 339e00f0       1810 	movea	lo(61440),r19,r19
+00000432 d3f1           1811 	add	r19,ep
+00000434 7298           1812 	sld.hu	4[ep],r19
+00000436 f311           1813 	cmp	r19,r2
+00000438 f1ed*          1814 	bl	.L2767
+                        1815 --382:         }
+                        1816 --383:         g_ram_fls_slots[slot_index].used = FLS_ZERO_U8;
+                        1817 --line383
+                        1818 ..lin.2cc895ec..6bd7a3cc.0_105::
+                        1819 .LDWlin105:
+0000043a 8803           1820 	sst.b	zero,8[ep]
+                        1821 --384:         ram_FLS_Compact();
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1822 .L2892:
+                        1823 	jarl	_ram_FLS_Compact,lp
+                        1823 <EXPANSION BEGIN>
+                        1823 jarl22 _ram_FLS_Compact , lp 
+0000043c bfff14fc*      1823 <EXPANSION END>
+                        1824 .L2763:
+                        1825 --385:     }
+                        1826 --386:     return ER_OK;
+                        1827 --line386
+                        1828 ..lin.2cc895ec..6bd7a3cc.0_106::
+                        1829 .LDWlin106:
+00000440 0052           1830 	mov	0,r10
+                        1831 --	    .ef
+                        1832 .LDW34:
+                        1833 .L2894:
+00000442 40063f00       1834 	dispose	0,{r31},[lp]
+                        1835 --line386
+                        1836 ..lin.2cc895ec..6bd7a3cc.0_107::
+                        1837 	.type	_MM_FLS_DeleteMapData,@function
+                        1838 	.size	_MM_FLS_DeleteMapData,.-_MM_FLS_DeleteMapData
+                        1839 	.align	2
+                        1840 --_slot_index	r10	local
+                        1841 --_index	r2	local
+                        1842 
+                        1843 --_ds_type	r6	param
+                        1844 --_slot_num	r7	param
+                        1845 
+                        1846 	.section ".ghcalltbl",""
+0000002c 00000000*      1847 .L2891:	.word	.L2890
+                        1848 	.type	.L2891,@object
+                        1849 	.size	.L2891,4
+00000030 00000000*      1850 .L2893:	.word	.L2892
+                        1851 	.type	.L2893,@object
+                        1852 	.size	.L2893,4
+                        1853 	.section ".ghrettbl",""
+00000068 00000000*      1854 .L2895:	.word	.L2894
+                        1855 	.type	.L2895,@object
+                        1856 	.size	.L2895,4
+                        1857 	.data
+                        1858 	.section ".icum_middle.text","ax"
+                        1859 
+                        1860 --387: }
+                        1861 
+                        1862 	.align	2
+                        1863 	.align	2
+                        1864 	.align	2
+                        1865 ..gh.f.a.2.e.17:
+                        1866 	.type	..gh.f.a.2.e.17,@object
+                        1867 	.size	..gh.f.a.2.e.17,0
+                        1868 	.global	_MM_FLS_GET_FormatPhase
+                        1869 _MM_FLS_GET_FormatPhase:
+                        1870 --	    .bf
+                        1871 .LDW44:
+                        1872 --389: uint8_t MM_FLS_GET_FormatPhase(void)
+                        1873 --390: {
+                        1874 --391:     return FLS_PHASE_0;
+00000446 0052           1875 	mov	0,r10
+                        1876 --	    .ef
+                        1877 .LDW54:
+                        1878 .L2951:
+                        1879 	.jumptype return
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+00000448 7f00           1880 	jmp	[lp]
+                        1881 --line390
+                        1882 ..lin.2cc895ec..b26919da.0_108::
+                        1883 	.type	_MM_FLS_GET_FormatPhase,@function
+                        1884 	.size	_MM_FLS_GET_FormatPhase,.-_MM_FLS_GET_FormatPhase
+                        1885 	.align	2
+                        1886 
+                        1887 	.section ".bss","awb"
+                        1888 .L2932:
+                        1889 	.type	.L2932,@object
+                        1890 	.size	.L2932,0
+                        1891 	.section ".ghrettbl",""
+0000006c 00000000*      1892 .L2952:	.word	.L2951
+                        1893 	.type	.L2952,@object
+                        1894 	.size	.L2952,4
+                        1895 	.data
+                        1896 	.section ".icum_middle.text","ax"
+                        1897 
+                        1898 --392: }
+                        1899 
+                        1900 	.align	2
+                        1901 	.align	2
+                        1902 	.align	2
+                        1903 ..gh.f.a.2.e.18:
+                        1904 	.type	..gh.f.a.2.e.18,@object
+                        1905 	.size	..gh.f.a.2.e.18,0
+                        1906 	.global	_MM_FLS_GET_WritePhase
+                        1907 _MM_FLS_GET_WritePhase:
+                        1908 --	    .bf
+                        1909 .LDW64:
+                        1910 --394: uint8_t MM_FLS_GET_WritePhase(void)
+                        1911 --395: {
+                        1912 --396:     return FLS_PHASE_0;
+0000044a 0052           1913 	mov	0,r10
+                        1914 --	    .ef
+                        1915 .LDW74:
+                        1916 .L2999:
+                        1917 	.jumptype return
+0000044c 7f00           1918 	jmp	[lp]
+                        1919 --line395
+                        1920 ..lin.2cc895ec..dfc7a05c.0_109::
+                        1921 	.type	_MM_FLS_GET_WritePhase,@function
+                        1922 	.size	_MM_FLS_GET_WritePhase,.-_MM_FLS_GET_WritePhase
+                        1923 	.align	2
+                        1924 
+                        1925 	.section ".bss","awb"
+                        1926 .L2980:
+                        1927 	.type	.L2980,@object
+                        1928 	.size	.L2980,0
+                        1929 	.section ".ghrettbl",""
+00000070 00000000*      1930 .L3000:	.word	.L2999
+                        1931 	.type	.L3000,@object
+                        1932 	.size	.L3000,4
+                        1933 	.data
+                        1934 	.section ".icum_middle.text","ax"
+                        1935 
+                        1936 --397: }
+                        1937 
+                        1938 	.align	2
+                        1939 	.align	2
+                        1940 	.align	2
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1941 ..gh.f.a.2.e.19:
+                        1942 	.type	..gh.f.a.2.e.19,@object
+                        1943 	.size	..gh.f.a.2.e.19,0
+                        1944 	.global	_MM_FLS_Format
+                        1945 _MM_FLS_Format:
+0000044e 80072100       1946 	prepare	{r31},0
+                        1947 --	    .bf
+                        1948 .LDW84:
+                        1949 --399: uint32_t MM_FLS_Format(r_icumif_job_id_t job_id)
+                        1950 --400: {
+                        1951 --401:     (void)job_id;
+                        1952 --402:     ram_FLS_Clear();
+                        1953 .L3047:
+                        1954 	jarl	_ram_FLS_Clear,lp
+                        1954 <EXPANSION BEGIN>
+                        1954 jarl22 _ram_FLS_Clear , lp 
+00000452 bfff94fc*      1954 <EXPANSION END>
+                        1955 --403:     return ER_OK;
+                        1956 --line403
+                        1957 ..lin.2cc895ec..a4d7794a.0_110::
+                        1958 .LDWlin110:
+00000456 0052           1959 	mov	0,r10
+                        1960 --	    .ef
+                        1961 .LDW94:
+                        1962 .L3049:
+00000458 40063f00       1963 	dispose	0,{r31},[lp]
+                        1964 --line403
+                        1965 ..lin.2cc895ec..a4d7794a.0_111::
+                        1966 	.type	_MM_FLS_Format,@function
+                        1967 	.size	_MM_FLS_Format,.-_MM_FLS_Format
+                        1968 	.align	2
+                        1969 
+                        1970 --_job_id	none	param
+                        1971 
+                        1972 	.section ".bss","awb"
+                        1973 .L3028:
+                        1974 	.type	.L3028,@object
+                        1975 	.size	.L3028,0
+                        1976 	.section ".ghcalltbl",""
+00000034 00000000*      1977 .L3048:	.word	.L3047
+                        1978 	.type	.L3048,@object
+                        1979 	.size	.L3048,4
+                        1980 	.section ".ghrettbl",""
+00000074 00000000*      1981 .L3050:	.word	.L3049
+                        1982 	.type	.L3050,@object
+                        1983 	.size	.L3050,4
+                        1984 	.data
+                        1985 	.section ".icum_middle.text","ax"
+                        1986 
+                        1987 --404: }
+                        1988 
+                        1989 	.align	2
+                        1990 	.align	2
+                        1991 	.align	2
+                        1992 ..gh.f.a.2.e.20:
+                        1993 	.type	..gh.f.a.2.e.20,@object
+                        1994 	.size	..gh.f.a.2.e.20,0
+                        1995 	.global	_MM_FLS_Config
+                        1996 _MM_FLS_Config:
+                        1997 --	    .bf
+                        1998 .LDW05:
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        1999 --406: uint32_t MM_FLS_Config(void)
+                        2000 --407: {
+                        2001 --408:     return ER_OK;
+0000045c 0052           2002 	mov	0,r10
+                        2003 --	    .ef
+                        2004 .LDW15:
+                        2005 .L3095:
+                        2006 	.jumptype return
+0000045e 7f00           2007 	jmp	[lp]
+                        2008 --line407
+                        2009 ..lin.2cc895ec..9dd5b117.0_112::
+                        2010 	.type	_MM_FLS_Config,@function
+                        2011 	.size	_MM_FLS_Config,.-_MM_FLS_Config
+                        2012 	.align	2
+                        2013 
+                        2014 	.section ".bss","awb"
+                        2015 .L3076:
+                        2016 	.type	.L3076,@object
+                        2017 	.size	.L3076,0
+                        2018 	.section ".ghrettbl",""
+00000078 00000000*      2019 .L3096:	.word	.L3095
+                        2020 	.type	.L3096,@object
+                        2021 	.size	.L3096,4
+                        2022 	.data
+                        2023 	.section ".icum_middle.text","ax"
+                        2024 
+                        2025 --409: }
+                        2026 
+                        2027 	.align	2
+                        2028 	.align	2
+                        2029 	.align	2
+                        2030 ..gh.f.a.2.e.21:
+                        2031 	.type	..gh.f.a.2.e.21,@object
+                        2032 	.size	..gh.f.a.2.e.21,0
+                        2033 	.global	_MM_FLS_GetFreeCapacity
+                        2034 _MM_FLS_GetFreeCapacity:
+00000460 06f0           2035 	mov	r6,ep
+                        2036 --	    .bf
+                        2037 .LDW25:
+                        2038 --411: uint32_t MM_FLS_GetFreeCapacity(free_block_t *p_free_block)
+                        2039 --412: {
+                        2040 --413:     uint32_t index;
+                        2041 --415:     if (NULL == p_free_block)
+00000462 e031           2042 	cmp	zero,r6
+                        2043 --416:     {
+                        2044 --417:         return ER_PARAM;
+00000464 0152           2045 	mov	1,r10
+00000466 c215*          2046 	be	.L3097
+                        2047 --418:     }
+                        2048 --419:     p_free_block->total_free_block_num = (flash_block_idx_t)((RAM_FLS_CAPACITY - g_ram_fls_used) / FLS_DF_BLOCK_SIZE);
+                        2049 --line419
+                        2050 ..lin.2cc895ec..4cd093f1.0_113::
+                        2051 .LDWlin113:
+00000468 40160000*      2052 	movhi	hi(_g_ram_fls_used),zero,r2
+0000046c 22170100*      2053 	ld.w	lo(_g_ram_fls_used)[r2],r2
+00000470 800e00f0       2054 	ori	61440,zero,r1
+00000474 a209           2055 	sub	r2,r1
+00000476 860a           2056 	shr	6,r1
+00000478 800c           2057 	sst.h	r1,0[ep]
+                        2058 --420:     for (index = 0; index < FLS_NB_BLOCK; index++)
+                        2059 --line420
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2060 ..lin.2cc895ec..4cd093f1.0_114::
+                        2061 .LDWlin114:
+0000047a 000a           2062 	mov	0,r1
+                        2063 .L3105:
+                        2064 --421:     {
+                        2065 --422:         p_free_block->free_block_num[index] = FLS_ZERO_U16;
+0000047c 0110           2066 	mov	r1,r2
+0000047e c112           2067 	shl	1,r2
+00000480 c611           2068 	add	r6,r2
+00000482 410a           2069 	add	1,r1
+00000484 62070200       2070 	st.h	zero,2[r2]
+00000488 6f0a           2071 	cmp	15,r1
+                        2072 --423:     }
+                        2073 --424:     return ER_OK;
+0000048a 0052           2074 	mov	0,r10
+0000048c 81fd*          2075 	bl	.L3105
+                        2076 .L3097:
+                        2077 --	    .ef
+                        2078 .LDW35:
+                        2079 .L3249:
+                        2080 --line420
+                        2081 ..lin.2cc895ec..4cd093f1.0_115::
+                        2082 .LDWlin115:
+                        2083 	.jumptype return
+0000048e 7f00           2084 	jmp	[lp]
+                        2085 --line420
+                        2086 ..lin.2cc895ec..4cd093f1.0_116::
+                        2087 	.type	_MM_FLS_GetFreeCapacity,@function
+                        2088 	.size	_MM_FLS_GetFreeCapacity,.-_MM_FLS_GetFreeCapacity
+                        2089 	.align	2
+                        2090 --_index	r1	local
+                        2091 
+                        2092 --_p_free_block	ep	param
+                        2093 
+                        2094 	.section ".ghrettbl",""
+0000007c 00000000*      2095 .L3250:	.word	.L3249
+                        2096 	.type	.L3250,@object
+                        2097 	.size	.L3250,4
+                        2098 	.data
+                        2099 	.section ".icum_middle.text","ax"
+                        2100 
+                        2101 --425: }
+                        2102 
+                        2103 	.align	2
+                        2104 	.align	2
+                        2105 	.align	2
+                        2106 ..gh.f.a.2.e.22:
+                        2107 	.type	..gh.f.a.2.e.22,@object
+                        2108 	.size	..gh.f.a.2.e.22,0
+                        2109 	.global	_MM_FLS_GetFlashResource
+                        2110 _MM_FLS_GetFlashResource:
+                        2111 --	    .bf
+                        2112 .LDW45:
+                        2113 --427: uint32_t MM_FLS_GetFlashResource(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2114 --428:                                  uint8_t target_flash, uint8_t target_area, uint32_t addr, uint32_t size)
+                        2115 --429: {
+                        2116 --430:     (void)job_id;
+                        2117 --431:     (void)service_priority;
+                        2118 --432:     (void)target_flash;
+                        2119 --433:     (void)target_area;
+                        2120 --434:     (void)addr;
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2121 --435:     (void)size;
+                        2122 --436:     return ER_MM_FLS_UNAVAILABLE;
+00000490 2a0606006000   2123 	mov	6291462,r10
+                        2124 --	    .ef
+                        2125 .LDW55:
+                        2126 .L3303:
+                        2127 --line429
+                        2128 ..lin.2cc895ec..be8cc737.0_117::
+                        2129 .LDWlin117:
+                        2130 	.jumptype return
+00000496 7f00           2131 	jmp	[lp]
+                        2132 --line429
+                        2133 ..lin.2cc895ec..be8cc737.0_118::
+                        2134 	.type	_MM_FLS_GetFlashResource,@function
+                        2135 	.size	_MM_FLS_GetFlashResource,.-_MM_FLS_GetFlashResource
+                        2136 	.align	2
+                        2137 
+                        2138 --_job_id	none	param
+                        2139 --_service_priority	none	param
+                        2140 --_target_flash	none	param
+                        2141 --_target_area	none	param
+                        2142 --_addr	none	param
+                        2143 --_size	none	param
+                        2144 
+                        2145 	.section ".bss","awb"
+                        2146 .L3284:
+                        2147 	.type	.L3284,@object
+                        2148 	.size	.L3284,0
+                        2149 	.section ".ghrettbl",""
+00000080 00000000*      2150 .L3304:	.word	.L3303
+                        2151 	.type	.L3304,@object
+                        2152 	.size	.L3304,4
+                        2153 	.data
+                        2154 	.section ".icum_middle.text","ax"
+                        2155 
+                        2156 --437: }
+                        2157 
+                        2158 	.align	2
+                        2159 	.align	2
+                        2160 	.align	2
+                        2161 ..gh.f.a.2.e.23:
+                        2162 	.type	..gh.f.a.2.e.23,@object
+                        2163 	.size	..gh.f.a.2.e.23,0
+                        2164 	.global	_MM_FLS_FreeFlashResource
+                        2165 _MM_FLS_FreeFlashResource:
+                        2166 --	    .bf
+                        2167 .LDW65:
+                        2168 --439: uint32_t MM_FLS_FreeFlashResource(uint8_t target_flash, uint8_t target_area, uint32_t addr, uint32_t size)
+                        2169 --440: {
+                        2170 --441:     (void)target_flash;
+                        2171 --442:     (void)target_area;
+                        2172 --443:     (void)addr;
+                        2173 --444:     (void)size;
+                        2174 --445:     return ER_MM_FLS_UNAVAILABLE;
+00000498 2a0606006000   2175 	mov	6291462,r10
+                        2176 --	    .ef
+                        2177 .LDW75:
+                        2178 .L3351:
+                        2179 --line440
+                        2180 ..lin.2cc895ec..a2e8e7f9.0_119::
+                        2181 .LDWlin119:
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2182 	.jumptype return
+0000049e 7f00           2183 	jmp	[lp]
+                        2184 --line440
+                        2185 ..lin.2cc895ec..a2e8e7f9.0_120::
+                        2186 	.type	_MM_FLS_FreeFlashResource,@function
+                        2187 	.size	_MM_FLS_FreeFlashResource,.-_MM_FLS_FreeFlashResource
+                        2188 	.align	2
+                        2189 
+                        2190 --_target_flash	none	param
+                        2191 --_target_area	none	param
+                        2192 --_addr	none	param
+                        2193 --_size	none	param
+                        2194 
+                        2195 	.section ".bss","awb"
+                        2196 .L3332:
+                        2197 	.type	.L3332,@object
+                        2198 	.size	.L3332,0
+                        2199 	.section ".ghrettbl",""
+00000084 00000000*      2200 .L3352:	.word	.L3351
+                        2201 	.type	.L3352,@object
+                        2202 	.size	.L3352,4
+                        2203 	.data
+                        2204 	.section ".icum_middle.text","ax"
+                        2205 
+                        2206 --446: }
+                        2207 
+                        2208 	.align	2
+                        2209 	.align	2
+                        2210 	.align	2
+                        2211 ..gh.f.a.2.e.24:
+                        2212 	.type	..gh.f.a.2.e.24,@object
+                        2213 	.size	..gh.f.a.2.e.24,0
+                        2214 	.global	_MM_FLS_WritePartitionInfo
+                        2215 _MM_FLS_WritePartitionInfo:
+                        2216 --	    .bf
+                        2217 .LDW85:
+                        2218 --448: uint32_t MM_FLS_WritePartitionInfo(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2219 --449:                                   uint8_t target, uint32_t info, uint32_t *p_data)
+                        2220 --450: {
+                        2221 --451:     (void)job_id;
+                        2222 --452:     (void)service_priority;
+                        2223 --453:     (void)target;
+                        2224 --454:     (void)info;
+                        2225 --455:     (void)p_data;
+                        2226 --456:     return ER_MM_FLS_UNAVAILABLE;
+000004a0 2a0606006000   2227 	mov	6291462,r10
+                        2228 --	    .ef
+                        2229 .LDW95:
+                        2230 .L3399:
+                        2231 --line450
+                        2232 ..lin.2cc895ec..7b482d2.0_121::
+                        2233 .LDWlin121:
+                        2234 	.jumptype return
+000004a6 7f00           2235 	jmp	[lp]
+                        2236 --line450
+                        2237 ..lin.2cc895ec..7b482d2.0_122::
+                        2238 	.type	_MM_FLS_WritePartitionInfo,@function
+                        2239 	.size	_MM_FLS_WritePartitionInfo,.-_MM_FLS_WritePartitionInfo
+                        2240 	.align	2
+                        2241 
+                        2242 --_job_id	none	param
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2243 --_service_priority	none	param
+                        2244 --_target	none	param
+                        2245 --_info	none	param
+                        2246 --_p_data	none	param
+                        2247 
+                        2248 	.section ".bss","awb"
+                        2249 .L3380:
+                        2250 	.type	.L3380,@object
+                        2251 	.size	.L3380,0
+                        2252 	.section ".ghrettbl",""
+00000088 00000000*      2253 .L3400:	.word	.L3399
+                        2254 	.type	.L3400,@object
+                        2255 	.size	.L3400,4
+                        2256 	.data
+                        2257 	.section ".icum_middle.text","ax"
+                        2258 
+                        2259 --457: }
+                        2260 
+                        2261 	.align	2
+                        2262 	.align	2
+                        2263 	.align	2
+                        2264 ..gh.f.a.2.e.25:
+                        2265 	.type	..gh.f.a.2.e.25,@object
+                        2266 	.size	..gh.f.a.2.e.25,0
+                        2267 	.global	_MM_FLS_ReadPartitionInfo
+                        2268 _MM_FLS_ReadPartitionInfo:
+                        2269 --	    .bf
+                        2270 .LDW06:
+                        2271 --459: uint32_t MM_FLS_ReadPartitionInfo(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2272 --460:                                   uint8_t target, uint32_t *p_info, uint32_t *p_data)
+                        2273 --461: {
+                        2274 --462:     (void)job_id;
+                        2275 --463:     (void)service_priority;
+                        2276 --464:     (void)target;
+                        2277 --465:     (void)p_info;
+                        2278 --466:     (void)p_data;
+                        2279 --467:     return ER_MM_FLS_UNAVAILABLE;
+000004a8 2a0606006000   2280 	mov	6291462,r10
+                        2281 --	    .ef
+                        2282 .LDW16:
+                        2283 .L3447:
+                        2284 --line461
+                        2285 ..lin.2cc895ec..fc2756e3.0_123::
+                        2286 .LDWlin123:
+                        2287 	.jumptype return
+000004ae 7f00           2288 	jmp	[lp]
+                        2289 --line461
+                        2290 ..lin.2cc895ec..fc2756e3.0_124::
+                        2291 	.type	_MM_FLS_ReadPartitionInfo,@function
+                        2292 	.size	_MM_FLS_ReadPartitionInfo,.-_MM_FLS_ReadPartitionInfo
+                        2293 	.align	2
+                        2294 
+                        2295 --_job_id	none	param
+                        2296 --_service_priority	none	param
+                        2297 --_target	none	param
+                        2298 --_p_info	none	param
+                        2299 --_p_data	none	param
+                        2300 
+                        2301 	.section ".bss","awb"
+                        2302 .L3428:
+                        2303 	.type	.L3428,@object
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2304 	.size	.L3428,0
+                        2305 	.section ".ghrettbl",""
+0000008c 00000000*      2306 .L3448:	.word	.L3447
+                        2307 	.type	.L3448,@object
+                        2308 	.size	.L3448,4
+                        2309 	.data
+                        2310 	.section ".icum_middle.text","ax"
+                        2311 
+                        2312 --468: }
+                        2313 
+                        2314 	.align	2
+                        2315 	.align	2
+                        2316 	.align	2
+                        2317 ..gh.f.a.2.e.26:
+                        2318 	.type	..gh.f.a.2.e.26,@object
+                        2319 	.size	..gh.f.a.2.e.26,0
+                        2320 	.global	_MM_FLS_CheckRamExecRequired
+                        2321 _MM_FLS_CheckRamExecRequired:
+000004b0 08f0           2322 	mov	r8,ep
+                        2323 --	    .bf
+                        2324 .LDW26:
+                        2325 --470: uint32_t MM_FLS_CheckRamExecRequired(uint8_t target_flash, uint32_t *p_addr, uint8_t *p_result)
+                        2326 --471: {
+                        2327 --472:     (void)target_flash;
+                        2328 --473:     (void)p_addr;
+                        2329 --474:     if (NULL == p_result)
+000004b2 e041           2330 	cmp	zero,r8
+                        2331 --475:     {
+                        2332 --476:         return ER_PARAM;
+000004b4 0152           2333 	mov	1,r10
+000004b6 b205*          2334 	be	.L3449
+                        2335 --477:     }
+                        2336 --478:     *p_result = (uint8_t)false;
+                        2337 --line478
+                        2338 ..lin.2cc895ec..372fbca5.0_125::
+                        2339 .LDWlin125:
+000004b8 8003           2340 	sst.b	zero,0[ep]
+                        2341 --479:     return ER_OK;
+000004ba 0052           2342 	mov	0,r10
+                        2343 .L3449:
+                        2344 --	    .ef
+                        2345 .LDW36:
+                        2346 .L3529:
+                        2347 	.jumptype return
+000004bc 7f00           2348 	jmp	[lp]
+                        2349 --line478
+                        2350 ..lin.2cc895ec..372fbca5.0_126::
+                        2351 	.type	_MM_FLS_CheckRamExecRequired,@function
+                        2352 	.size	_MM_FLS_CheckRamExecRequired,.-_MM_FLS_CheckRamExecRequired
+                        2353 	.align	2
+                        2354 
+                        2355 --_target_flash	none	param
+                        2356 --_p_addr	none	param
+                        2357 --_p_result	ep	param
+                        2358 
+                        2359 	.section ".bss","awb"
+                        2360 .L3488:
+                        2361 	.type	.L3488,@object
+                        2362 	.size	.L3488,0
+                        2363 	.section ".ghrettbl",""
+00000090 00000000*      2364 .L3530:	.word	.L3529
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2365 	.type	.L3530,@object
+                        2366 	.size	.L3530,4
+                        2367 	.data
+                        2368 	.section ".icum_middle.text","ax"
+                        2369 
+                        2370 --480: }
+                        2371 
+                        2372 	.align	2
+                        2373 	.align	2
+                        2374 	.align	2
+                        2375 ..gh.f.a.2.e.27:
+                        2376 	.type	..gh.f.a.2.e.27,@object
+                        2377 	.size	..gh.f.a.2.e.27,0
+                        2378 	.global	_MM_FLS_ReadUser
+                        2379 _MM_FLS_ReadUser:
+                        2380 --	    .bf
+                        2381 .LDW46:
+                        2382 --482: uint32_t MM_FLS_ReadUser(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2383 --483:                          uint8_t target_flash, uint8_t target_area, uint32_t *p_addr,
+                        2384 --484:                          uint32_t size, uint8_t *p_data)
+                        2385 --485: {
+                        2386 --486:     (void)job_id;
+                        2387 --487:     (void)service_priority;
+                        2388 --488:     (void)target_flash;
+                        2389 --489:     (void)target_area;
+                        2390 --490:     (void)p_addr;
+                        2391 --491:     (void)size;
+                        2392 --492:     (void)p_data;
+                        2393 --493:     return ER_MM_FLS_UNAVAILABLE;
+000004be 2a0606006000   2394 	mov	6291462,r10
+                        2395 --	    .ef
+                        2396 .LDW56:
+                        2397 .L3575:
+                        2398 --line485
+                        2399 ..lin.2cc895ec..2199743c.0_127::
+                        2400 .LDWlin127:
+                        2401 	.jumptype return
+000004c4 7f00           2402 	jmp	[lp]
+                        2403 --line485
+                        2404 ..lin.2cc895ec..2199743c.0_128::
+                        2405 	.type	_MM_FLS_ReadUser,@function
+                        2406 	.size	_MM_FLS_ReadUser,.-_MM_FLS_ReadUser
+                        2407 	.align	2
+                        2408 
+                        2409 --_job_id	none	param
+                        2410 --_service_priority	none	param
+                        2411 --_target_flash	none	param
+                        2412 --_target_area	none	param
+                        2413 --_p_addr	none	param
+                        2414 --_size	none	param
+                        2415 --_p_data	none	param
+                        2416 
+                        2417 	.section ".bss","awb"
+                        2418 .L3556:
+                        2419 	.type	.L3556,@object
+                        2420 	.size	.L3556,0
+                        2421 	.section ".ghrettbl",""
+00000094 00000000*      2422 .L3576:	.word	.L3575
+                        2423 	.type	.L3576,@object
+                        2424 	.size	.L3576,4
+                        2425 	.data
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2426 	.section ".icum_middle.text","ax"
+                        2427 
+                        2428 --494: }
+                        2429 
+                        2430 	.align	2
+                        2431 	.align	2
+                        2432 	.align	2
+                        2433 ..gh.f.a.2.e.28:
+                        2434 	.type	..gh.f.a.2.e.28,@object
+                        2435 	.size	..gh.f.a.2.e.28,0
+                        2436 	.global	_MM_FLS_EraseUser
+                        2437 _MM_FLS_EraseUser:
+                        2438 --	    .bf
+                        2439 .LDW66:
+                        2440 --496: uint32_t MM_FLS_EraseUser(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2441 --497:                           uint8_t target_flash, uint8_t target_area, uint32_t *p_addr, uint32_t size)
+                        2442 --498: {
+                        2443 --499:     (void)job_id;
+                        2444 --500:     (void)service_priority;
+                        2445 --501:     (void)target_flash;
+                        2446 --502:     (void)target_area;
+                        2447 --503:     (void)p_addr;
+                        2448 --504:     (void)size;
+                        2449 --505:     return ER_MM_FLS_UNAVAILABLE;
+000004c6 2a0606006000   2450 	mov	6291462,r10
+                        2451 --	    .ef
+                        2452 .LDW76:
+                        2453 .L3623:
+                        2454 --line498
+                        2455 ..lin.2cc895ec..8ddcbe90.0_129::
+                        2456 .LDWlin129:
+                        2457 	.jumptype return
+000004cc 7f00           2458 	jmp	[lp]
+                        2459 --line498
+                        2460 ..lin.2cc895ec..8ddcbe90.0_130::
+                        2461 	.type	_MM_FLS_EraseUser,@function
+                        2462 	.size	_MM_FLS_EraseUser,.-_MM_FLS_EraseUser
+                        2463 	.align	2
+                        2464 
+                        2465 --_job_id	none	param
+                        2466 --_service_priority	none	param
+                        2467 --_target_flash	none	param
+                        2468 --_target_area	none	param
+                        2469 --_p_addr	none	param
+                        2470 --_size	none	param
+                        2471 
+                        2472 	.section ".bss","awb"
+                        2473 .L3604:
+                        2474 	.type	.L3604,@object
+                        2475 	.size	.L3604,0
+                        2476 	.section ".ghrettbl",""
+00000098 00000000*      2477 .L3624:	.word	.L3623
+                        2478 	.type	.L3624,@object
+                        2479 	.size	.L3624,4
+                        2480 	.data
+                        2481 	.section ".icum_middle.text","ax"
+                        2482 
+                        2483 --506: }
+                        2484 
+                        2485 	.align	2
+                        2486 	.align	2
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2487 	.align	2
+                        2488 ..gh.f.a.2.e.29:
+                        2489 	.type	..gh.f.a.2.e.29,@object
+                        2490 	.size	..gh.f.a.2.e.29,0
+                        2491 	.global	_MM_FLS_WriteUser
+                        2492 _MM_FLS_WriteUser:
+                        2493 --	    .bf
+                        2494 .LDW86:
+                        2495 --508: uint32_t MM_FLS_WriteUser(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2496 --509:                           uint8_t target_flash, uint8_t target_area, uint32_t *p_addr,
+                        2497 --510:                           uint32_t size, const uint32_t *p_data)
+                        2498 --511: {
+                        2499 --512:     (void)job_id;
+                        2500 --513:     (void)service_priority;
+                        2501 --514:     (void)target_flash;
+                        2502 --515:     (void)target_area;
+                        2503 --516:     (void)p_addr;
+                        2504 --517:     (void)size;
+                        2505 --518:     (void)p_data;
+                        2506 --519:     return ER_MM_FLS_UNAVAILABLE;
+000004ce 2a0606006000   2507 	mov	6291462,r10
+                        2508 --	    .ef
+                        2509 .LDW96:
+                        2510 .L3671:
+                        2511 --line511
+                        2512 ..lin.2cc895ec..28c3bf4b.0_131::
+                        2513 .LDWlin131:
+                        2514 	.jumptype return
+000004d4 7f00           2515 	jmp	[lp]
+                        2516 --line511
+                        2517 ..lin.2cc895ec..28c3bf4b.0_132::
+                        2518 	.type	_MM_FLS_WriteUser,@function
+                        2519 	.size	_MM_FLS_WriteUser,.-_MM_FLS_WriteUser
+                        2520 	.align	2
+                        2521 
+                        2522 --_job_id	none	param
+                        2523 --_service_priority	none	param
+                        2524 --_target_flash	none	param
+                        2525 --_target_area	none	param
+                        2526 --_p_addr	none	param
+                        2527 --_size	none	param
+                        2528 --_p_data	none	param
+                        2529 
+                        2530 	.section ".bss","awb"
+                        2531 .L3652:
+                        2532 	.type	.L3652,@object
+                        2533 	.size	.L3652,0
+                        2534 	.section ".ghrettbl",""
+0000009c 00000000*      2535 .L3672:	.word	.L3671
+                        2536 	.type	.L3672,@object
+                        2537 	.size	.L3672,4
+                        2538 	.data
+                        2539 	.section ".icum_middle.text","ax"
+                        2540 
+                        2541 --520: }
+                        2542 
+                        2543 	.align	2
+                        2544 	.align	2
+                        2545 	.align	2
+                        2546 ..gh.f.a.2.e.30:
+                        2547 	.type	..gh.f.a.2.e.30,@object
+
+                                                                      Page 45
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2548 	.size	..gh.f.a.2.e.30,0
+                        2549 	.global	_MM_FLS_BlankCheckUser
+                        2550 _MM_FLS_BlankCheckUser:
+                        2551 --	    .bf
+                        2552 .LDW07:
+                        2553 --522: uint32_t MM_FLS_BlankCheckUser(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority,
+                        2554 --523:                                uint8_t target_flash, uint8_t target_area, uint32_t *p_addr,
+                        2555 --524:                                uint32_t size, uint8_t *p_is_blank)
+                        2556 --525: {
+                        2557 --526:     (void)job_id;
+                        2558 --527:     (void)service_priority;
+                        2559 --528:     (void)target_flash;
+                        2560 --529:     (void)target_area;
+                        2561 --530:     (void)p_addr;
+                        2562 --531:     (void)size;
+                        2563 --532:     (void)p_is_blank;
+                        2564 --533:     return ER_MM_FLS_UNAVAILABLE;
+000004d6 2a0606006000   2565 	mov	6291462,r10
+                        2566 --	    .ef
+                        2567 .LDW17:
+                        2568 .L3719:
+                        2569 --line525
+                        2570 ..lin.2cc895ec..980ea6c6.0_133::
+                        2571 .LDWlin133:
+                        2572 	.jumptype return
+000004dc 7f00           2573 	jmp	[lp]
+                        2574 --line525
+                        2575 ..lin.2cc895ec..980ea6c6.0_134::
+                        2576 	.type	_MM_FLS_BlankCheckUser,@function
+                        2577 	.size	_MM_FLS_BlankCheckUser,.-_MM_FLS_BlankCheckUser
+                        2578 	.align	2
+                        2579 
+                        2580 --_job_id	none	param
+                        2581 --_service_priority	none	param
+                        2582 --_target_flash	none	param
+                        2583 --_target_area	none	param
+                        2584 --_p_addr	none	param
+                        2585 --_size	none	param
+                        2586 --_p_is_blank	none	param
+                        2587 
+                        2588 	.section ".bss","awb"
+                        2589 .L3700:
+                        2590 	.type	.L3700,@object
+                        2591 	.size	.L3700,0
+                        2592 	.section ".ghrettbl",""
+000000a0 00000000*      2593 .L3720:	.word	.L3719
+                        2594 	.type	.L3720,@object
+                        2595 	.size	.L3720,4
+                        2596 	.data
+                        2597 	.section ".icum_middle.text","ax"
+                        2598 
+                        2599 --534: }
+                        2600 	.align	2
+                        2601 --_g_ram_fls_data	_g_ram_fls_data	static
+                        2602 --_g_ram_fls_slots	_g_ram_fls_slots	static
+                        2603 --_g_ram_fls_used	_g_ram_fls_used	static
+                        2604 
+                        2605 	.data
+                        2606 	.ghsnote version,30
+                        2607 	.ghsnote tools,3
+                        2608 	.ghsnote options,656
+
+                                                                      Page 46
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000078k1.si
+                        2609 	.section ".icum_middle.text","ax"
+                        2610 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mm_fls.5Cicum_mm_fls_ram...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3EC7F..0::
+                        2611 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

@@ -1,0 +1,985 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\src\service\ -I..\..\icum\generic\src\service\s_01 -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_03_common.dbo -source=icum_s_03_common.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\gh_0000rp41.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_03_common.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+Source File: icum_s_03_common.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-I..\..\icum\generic\src\service\
+                           8 --		-I..\..\icum\generic\src\service\s_01
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\device\
+                          11 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          13 --		-I..\..\icum\target\u2cx\include\driver
+                          14 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          17 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          18 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          19 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          20 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          21 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          22 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          23 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          24 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          25 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          26 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          27 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          28 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          29 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          30 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          31 --		-filetype.c
+                          32 --		..\..\icum\generic\src\service\s_03\icum_s_03_common.c -o
+                          33 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_03_common.o
+                          34 --Source File:   ..\..\icum\generic\src\service\s_03\icum_s_03_common.c
+                          35 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          36 --Compile Date:  Wed Nov 11 14:08:39 2026
+                          37 --Host OS:       Win64
+                          38 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          39 --Release:       Compiler v2023.5.4
+                          40 --Revision Date: Wed Sep 06 02:44:56 2023
+                          41 --Release Date:  Wed Sep 06 02:00:00 2023
+                          42 -- ecom  -g -w
+                          43 	.section ".icum_service.text","ax"
+                          44 
+                          45 --1: /******************************************************************************/
+                          46 --2: /* Component Name   ICU-M Service                                             */
+                          47 --3: /******************************************************************************/
+                          48 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          49 --5: /******************************************************************************/
+                          50 --6: /***********************************************************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                          51 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          52 --8: * 
+                          53 --9: * DISCLAIMER
+                          54 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          55 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          56 --12: * applicable laws, including copyright laws.
+                          57 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          58 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          59 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          60 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          61 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          62 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          63 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          64 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          65 --21: * following link:
+                          66 --22: * www.renesas.com/disclaimer
+                          67 --23: *
+                          68 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          69 --25: ***********************************************************************************************************************/
+                          70 --27: /**********************************************************************************
+                          71 --28: * Header files
+                          72 --29: ***********************************************************************************/
+                          73 --30: #include "renesas_types.h"
+                          74 --31: #include "r_icumif_api.h"
+                          75 --32: #include "icum_common_pub.h"
+                          76 --33: #include "icum_d_comm_pub.h"
+                          77 --34: #include "icum_d_wdt_pub.h"
+                          78 --35: #include "icum_d_cr_pub.h"
+                          79 --36: #include "icum_d_cry_aes_pub.h"
+                          80 --37: #include "icum_l_toolbox_pub.h"
+                          81 --38: #include "icum_ml_prng_pub.h"
+                          82 --39: #include "icum_l_cry_pk_pub.h"
+                          83 --40: #include "icum_ml_abtr_api_pub.h"
+                          84 --41: #include "icum_ml_ctx_pub.h"
+                          85 --42: #include "icum_ml_cfg_pub.h"
+                          86 --43: #include MM_FLASH_PUBLIC_H
+                          87 --44: #include "icum_mh_key_pub.h"
+                          88 --45: #include "icum_k_issd_pub.h"
+                          89 --47: #include "icum_s_03_common.h"
+                          90 --48: #include "icum_service_common.h"
+                          91 --50: /**********************************************************************************
+                          92 --51: * Variable
+                          93 --52: ***********************************************************************************/
+                          94 --53: #if defined(FSW_USE_CRAM)
+                          95 --54: #pragma ghs section bss = ".start.icum_cram.bss"
+                          96 --55: pkc_data_t g_work_bignum[3];
+                          97 --56: #pragma ghs section bss = default
+                          98 --57: #endif
+                          99 --59: /**********************************************************************************
+                         100 --60: * Local defines
+                         101 --61: **********************************************************************************/
+                         102 --62: #define NUMBER_OF_ERROR_TABLE (58)
+                         103 --64: /* Service and middle error conversion structure */
+                         104 --65: typedef struct {
+                         105 --66:     uint32_t                    internal_code;
+                         106 --67:     r_icumif_service_result_t   external_code;
+                         107 --68: } errcode_tuple_t;
+                         108 --70: /* Service 03 and middle layer error conversion table */
+                         109 --71: static const errcode_tuple_t s_03_errcode_tuples[NUMBER_OF_ERROR_TABLE] =
+                         110 --72: {
+                         111 --73:     /* Common error */
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         112 --74:     {ER_OK,                         SERV_OK                 },
+                         113 --75:     {ER_PARAM,                      SERV_PRM_ERROR          },
+                         114 --76:     {ER_PENDING_ARB,                SERV_PENDING            },
+                         115 --77:     {ER_PENDING,                    SERV_PENDING            },
+                         116 --78:     {ER_IN_PROCESS,                 SERV_IN_PROCESS         },
+                         117 --79:     /* ER_MH_KEY */
+                         118 --80:     {ER_MH_KEY_SLOT_EMPTY,          SERV_KEY_SLOT_EMPTY     },
+                         119 --81:     {ER_MH_KEY_INVALID_KEY_GROUP,   SERV_INVALID_KEY_GROUP  },
+                         120 --82:     {ER_MH_KEY_INVALID_KEY_INDEX,   SERV_INVALID_KEY_INDEX  },
+                         121 --83:     {ER_MH_KEY_WRITE_PROTECTED,     SERV_KEY_WRITE_PROTECTED},
+                         122 --84:     {ER_MH_KEY_IN_USE,              SERV_KEY_NOT_USABLE     },
+                         123 --85:     {ER_MH_KEY_DATA_NOT_FOUND,      SERV_KEY_NOT_USABLE     },
+                         124 --86:     {ER_MH_KEY_WRITING,             SERV_PENDING            },
+                         125 --87:     {ER_MH_KEY_USER_OVER,           SERV_KEY_NOT_USABLE     },
+                         126 --88:     {ER_MH_KEY_NOT_USABLE,          SERV_KEY_NOT_USABLE     },
+                         127 --89:     {ER_MH_KEY_AES_TIMEOUT_ERROR,   SERV_AES_TIMEOUT_ERROR  },
+                         128 --90:     {ER_MH_KEY_DATA_INVALID,        SERV_DATA_INVALID       },
+                         129 --91:     {ER_MH_KEY_NVM_UNAVAILABLE,     SERV_NVM_UNAVAILABLE    },
+                         130 --92:     {ER_MH_KEY_NVM_SYS_CRITICAL,    SERV_NVM_SYS_ERROR_CRITICAL},
+                         131 --93:     {ER_MH_KEY_NVM_SYS,             SERV_NVM_SYS_ERROR      },
+                         132 --94:     {ER_MH_KEY_NVM_PROG,            SERV_NVM_PROG_ERROR     },
+                         133 --95:     {ER_MH_KEY_NVM_SIZE,            SERV_NVM_SIZE_ERROR     },
+                         134 --96:     {ER_MH_KEY_SRC_MEM_ERROR,       SERV_SRC_MEM_ERROR      },
+                         135 --97:     {ER_MH_KEY_DEST_MEM_ERROR,      SERV_DEST_MEM_ERROR     },
+                         136 --98:     {ER_MH_KEY_SYS_ERROR,           SERV_SYS_ERROR          },
+                         137 --99:     {ER_MH_KEY_AES_PRM_ERROR,       SERV_AES_PRM_ERROR      },
+                         138 --100:     {ER_MH_KEY_INVALID_CURVE_ID,    SERV_INVALID_CURVE_ID   },
+                         139 --101:     {ER_MH_KEY_UPDATE_ERROR,        SERV_KEY_UPDATE_ERROR   },
+                         140 --102:     /* ER_MH_CTX */
+                         141 --103:     {ER_ML_CTX_ALL_USE,             SERV_PENDING            },
+                         142 --104:     {ER_ML_CTX_NOT_FOUND,           SERV_PRM_ERROR          },
+                         143 --105:     /* Driver */
+                         144 --106:     {ER_L_HMAC_INVALID_ARG,         SERV_PRM_ERROR          },
+                         145 --107:     {ER_D_AES_ALIGN_ERROR,          SERV_AES_PRM_ERROR      },
+                         146 --108:     {ER_D_AES_TIMEOUT_ERROR,        SERV_CRYPT_ERROR        },
+                         147 --109:     /* ER_ML_ABTR */
+                         148 --110:     {ER_ML_ABTR_EMPTY,              SERV_PENDING            },
+                         149 --111:     {ER_ML_ABTR_NOT_RELEASED,       SERV_SYS_ERROR          },
+                         150 --112:     {ER_ML_ABTR_INVALID_ID,         SERV_SYS_ERROR          },
+                         151 --113:     {ER_ML_ABTR_TIMER_SET_FAILURE,  SERV_SYS_ERROR          },
+                         152 --114:     {ER_ML_ABTR_NOT_INITIALIZED,    SERV_SYS_ERROR          },
+                         153 --115:     {ER_ML_ABTR_SYS_ERROR,          SERV_SYS_ERROR          },
+                         154 --116:     /* ER_ML_PRNG */
+                         155 --117:     {ER_ML_PRNG_STATUS,             SERV_NO_INIT_RNG        },
+                         156 --118:     {ER_ML_PRNG_RESEED,             SERV_NEED_RESEED        },
+                         157 --119:     {ER_ML_PRNG_TIMEOUT,            SERV_AES_TIMEOUT_ERROR  },
+                         158 --120:     {ER_ML_PRNG_PARAMETER,          SERV_PRM_ERROR          },
+                         159 --121:     {ER_ML_PRNG_AES_PRM,            SERV_PRM_ERROR          },
+                         160 --122:     /* ER_L_PKC_RSA */
+                         161 --123:     {ER_L_RSA_SYS_ERROR,            SERV_SYS_ERROR          },
+                         162 --124:     {ER_L_RSA_ERROR,                SERV_CRYPT_ERROR        },
+                         163 --125:     {ER_L_RSA_INVALID_ARG,          SERV_PRM_ERROR          },
+                         164 --126:     {ER_L_RSA_LENGTHERR,            SERV_CRYPT_ERROR        },
+                         165 --127:     {ER_L_RSA_KEYGEN_RETRYOVER,     SERV_KEY_GENERATION_ERROR },
+                         166 --128:     {ER_L_RSA_RUNNING,              SERV_IN_PROCESS         },
+                         167 --129:     {ER_L_RSA_INVALID_PARM,         SERV_PRM_ERROR          },
+                         168 --130:     /* ER_L_PKC ECC */
+                         169 --131:     {ER_L_ECC_SYS_ERROR,            SERV_SYS_ERROR          },
+                         170 --132:     {ER_L_ECC_ERROR,                SERV_CRYPT_ERROR        },
+                         171 --133:     {ER_L_ECC_INVALID_ARG,          SERV_PRM_ERROR          },
+                         172 --134:     {ER_L_ECC_LENGTHERR,            SERV_CRYPT_ERROR        },
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         173 --135:     {ER_L_ECC_RUNNING,              SERV_IN_PROCESS         },
+                         174 --136:     /* ER_L_PKC HASH */
+                         175 --137:     {ER_L_HASH_INVALID_ARG,         SERV_PRM_ERROR          },
+                         176 --138:     /* L_BIGNUM */
+                         177 --139:     {ER_L_BIGNUM_BUFFER_OVERFLOW,   SERV_PRM_ERROR          },
+                         178 --140:     {ER_L_BIGNUM_INVALID_ARG,       SERV_PRM_ERROR          },
+                         179 --141: };
+                         180 --143: /***************************************************************************************
+                         181 --144: * Function ID  : [ICUMFW_CD_S_03_PK_0015]:[ICUMFW_UD_S_03_PK_0015]
+                         182 --145: * Function name: s_03_GetInternalHashType
+                         183 --146: * Description  : Get hash type and size from hash primitive.
+                         184 --147: * Arguments    : (in) hash_primitive         : HASH Primitive
+                         185 --148: *                                               Range: HASH_PRIMITIVE_SHA2_224
+                         186 --149: *                                                      HASH_PRIMITIVE_SHA2_256
+                         187 --150: *                                                      HASH_PRIMITIVE_SHA2_384
+                         188 --151: *                                                      HASH_PRIMITIVE_SHA2_512
+                         189 --152: *                                                      HASH_PRIMITIVE_SHA2_512_224
+                         190 --153: *                                                      HASH_PRIMITIVE_SHA2_512_256
+                         191 --154: *                (out) *p_hash_type           : hash type
+                         192 --155: *                                               Range: E_SHA2_224
+                         193 --156: *                                                      E_SHA2_256
+                         194 --157: *                                                      E_SHA2_384
+                         195 --158: *                                                      E_SHA2_512
+                         196 --159: *                                                      E_SHA2_512_224
+                         197 --160: *                                                      E_SHA2_512_256
+                         198 --161: *                (out) *p_hash_size_in_bytes  : HASH Size address
+                         199 --162: *                                               Range: 0 - 0xFFFF(65535)
+                         200 --163: * Return Value : ER_OK
+                         201 --164: ***************************************************************************************/
+                         202 --165: uint32_t s_03_GetInternalHashType(r_hash_primitive_t hash_primitive,
+                         203 	.align	2
+                         204 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40667..0::
+                         205 	.align	2
+                         206 	.align	2
+                         207 ..gh.f.a.2.e.0:
+                         208 	.type	..gh.f.a.2.e.0,@object
+                         209 	.size	..gh.f.a.2.e.0,0
+                         210 	.global	_s_03_GetInternalHashType
+                         211 _s_03_GetInternalHashType:
+00000000 501a            212 	add	-16,sp
+00000002 63ff0d00        213 	st.w	lp,12[sp]
+00000006 63df0900        214 	st.w	r27,8[sp]
+0000000a 63e70500        215 	st.w	r28,4[sp]
+0000000e 63ef0100        216 	st.w	r29,0[sp]
+00000012 06e8            217 	mov	r6,r29
+00000014 07e0            218 	mov	r7,r28
+00000016 08d8            219 	mov	r8,r27
+                         220 --	    .bf
+                         221 .LDW01:
+                         222 --166:                                   hash_type_t *p_hash_type,
+                         223 --167:                                   uint16_t *p_hash_size_in_bytes)
+                         224 --168: {
+                         225 --170:     (void)L_HASH_GetInternalHashType(hash_primitive, p_hash_type, p_hash_size_in_bytes);
+00000018 1d30            226 	mov	r29,r6
+0000001a 1c38            227 	mov	r28,r7
+0000001c 1b40            228 	mov	r27,r8
+                         229 .L49:
+                         230 	jarl	_L_HASH_GetInternalHashType,lp
+                         230 <EXPANSION BEGIN>
+                         230 jarl22 _L_HASH_GetInternalHashType , lp 
+0000001e 80ff0000*       230 <EXPANSION END>
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         231 --172:     return (ER_OK);
+                         232 --line172
+                         233 ..lin.51dc5425..13ead89b.0_1::
+                         234 .LDWlin1:
+00000022 0052            235 	mov	0,r10
+                         236 --	    .ef
+                         237 .LDW11:
+00000024 23ff0d00        238 	ld.w	12[sp],lp
+00000028 23ef0100        239 	ld.w	0[sp],r29
+0000002c 23e70500        240 	ld.w	4[sp],r28
+00000030 23df0900        241 	ld.w	8[sp],r27
+00000034 031e1000        242 	addi	16,sp,sp
+                         243 .L51:
+                         244 	.jumptype return
+00000038 7f00            245 	jmp	[lp]
+                         246 --line172
+                         247 ..lin.51dc5425..13ead89b.0_2::
+                         248 	.type	_s_03_GetInternalHashType,@function
+                         249 	.size	_s_03_GetInternalHashType,.-_s_03_GetInternalHashType
+                         250 	.align	2
+                         251 
+                         252 --_hash_primitive	r29	param
+                         253 --_p_hash_type	r28	param
+                         254 --_p_hash_size_in_bytes	r27	param
+                         255 
+                         256 	.section ".bss","awb"
+                         257 .L34:
+                         258 	.type	.L34,@object
+                         259 	.size	.L34,0
+                         260 	.section ".ghcalltbl",""
+                         261 	.align	4
+00000000 00000000*       262 .L50:	.word	.L49
+                         263 	.type	.L50,@object
+                         264 	.size	.L50,4
+                         265 	.section ".ghrettbl",""
+                         266 	.align	4
+00000000 00000000*       267 .L52:	.word	.L51
+                         268 	.type	.L52,@object
+                         269 	.size	.L52,4
+                         270 	.data
+                         271 	.section ".icum_service.text","ax"
+                         272 
+                         273 --173: }
+                         274 
+                         275 --175: /****************************************************************************************
+                         276 --176: * Function ID  : [ICUMFW_CD_S_03_PK_0016]:[ICUMFW_UD_S_03_PK_0016]
+                         277 --177: * Function name: s_03_GetBitCntFromDecimalStr
+                         278 --178: * Description  : get bit_length from decimal string.
+                         279 --179: *                     (decimal figure length) = (bit length) * log(2)
+                         280 --180: *                in below coding, (30103 / 100000) is used instead of log(2) (= 0.30102999...)
+                         281 --181: * Arguments    : (IN)       p_DecimalString
+                         282 --182: *                (OUT)      p_bitsMin
+                         283 --183: * Return Value : ER_OK
+                         284 --184: ****************************************************************************************/
+                         285 --185: uint32_t s_03_GetBitCntFromDecimalStr(const char *p_DecimalString, uint16_t *p_bitsMin)
+                         286 	.align	2
+                         287 	.align	2
+                         288 	.align	2
+                         289 ..gh.f.a.2.e.1:
+                         290 	.type	..gh.f.a.2.e.1,@object
+                         291 	.size	..gh.f.a.2.e.1,0
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         292 	.global	_s_03_GetBitCntFromDecimalStr
+                         293 _s_03_GetBitCntFromDecimalStr:
+0000003a 501a            294 	add	-16,sp
+0000003c 63ff0d00        295 	st.w	lp,12[sp]
+00000040 63df0900        296 	st.w	r27,8[sp]
+00000044 63e70500        297 	st.w	r28,4[sp]
+00000048 63ef0100        298 	st.w	r29,0[sp]
+0000004c 06e0            299 	mov	r6,r28
+0000004e 07d8            300 	mov	r7,r27
+                         301 --	    .bf
+                         302 .LDW21:
+                         303 --186: {
+                         304 --187:     uint32_t len;
+                         305 --189:     len = L_Toolbox_StrLen(p_DecimalString);
+00000050 1c30            306 	mov	r28,r6
+                         307 .L104:
+                         308 	jarl	_L_Toolbox_StrLen,lp
+                         308 <EXPANSION BEGIN>
+                         308 jarl22 _L_Toolbox_StrLen , lp 
+00000052 80ff0000*       308 <EXPANSION END>
+00000056 0ae8            309 	mov	r10,r29
+                         310 --190:     
+                         311 --191:     /* (+ 30102) to round up */
+                         312 --192:     *p_bitsMin = (uint16_t)((((len - 1u) * 100000u) + 30102u) / 30103u);
+                         313 --line192
+                         314 ..lin.51dc5425..98c3c178.0_3::
+                         315 .LDWlin3:
+00000058 1d0effff        316 	addi	-1,r29,r1
+0000005c 2206a0860100    317 	mov	100000,r2
+00000062 e1172202        318 	mulu	r1,r2,zero
+00000066 320693dca916    319 	mov	380230803,r18
+0000006c 02169675        320 	addi	30102,r2,r2
+00000070 e297229a        321 	mulu	r2,r18,r19
+00000074 b311            322 	sub	r19,r2
+00000076 8112            323 	shr	1,r2
+00000078 d311            324 	add	r19,r2
+0000007a 8e12            325 	shr	14,r2
+0000007c 7b170000        326 	st.h	r2,0[r27]
+                         327 --193:     /* *bitsMax = (uint16_t)(( len      * 100000u + 30102u) / 30103u);. */
+                         328 --194:     
+                         329 --195:     return (ER_OK);
+                         330 --line195
+                         331 ..lin.51dc5425..98c3c178.0_4::
+                         332 .LDWlin4:
+00000080 0052            333 	mov	0,r10
+                         334 --	    .ef
+                         335 .LDW31:
+00000082 23ff0d00        336 	ld.w	12[sp],lp
+00000086 23ef0100        337 	ld.w	0[sp],r29
+0000008a 23e70500        338 	ld.w	4[sp],r28
+0000008e 23df0900        339 	ld.w	8[sp],r27
+00000092 031e1000        340 	addi	16,sp,sp
+                         341 .L106:
+                         342 	.jumptype return
+00000096 7f00            343 	jmp	[lp]
+                         344 --line195
+                         345 ..lin.51dc5425..98c3c178.0_5::
+                         346 	.type	_s_03_GetBitCntFromDecimalStr,@function
+                         347 	.size	_s_03_GetBitCntFromDecimalStr,.-_s_03_GetBitCntFromDecimalStr
+                         348 	.align	2
+                         349 --_len	r29	local
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         350 
+                         351 --_p_DecimalString	r28	param
+                         352 --_p_bitsMin	r27	param
+                         353 
+                         354 	.section ".bss","awb"
+                         355 .L86:
+                         356 	.type	.L86,@object
+                         357 	.size	.L86,0
+                         358 	.section ".ghcalltbl",""
+00000004 00000000*       359 .L105:	.word	.L104
+                         360 	.type	.L105,@object
+                         361 	.size	.L105,4
+                         362 	.section ".ghrettbl",""
+00000004 00000000*       363 .L107:	.word	.L106
+                         364 	.type	.L107,@object
+                         365 	.size	.L107,4
+                         366 	.data
+                         367 	.section ".icum_service.text","ax"
+                         368 
+                         369 --196: }
+                         370 
+                         371 --198: /***************************************************************************************
+                         372 --199: * Function ID  : [ICUMFW_CD_S_03_PK_0019]:[ICUMFW_UD_S_03_PK_0019]
+                         373 --200: * Function name: s_03_CanUseKeyIfDbgConnected
+                         374 --201: * Description  : Determine whether the key is usable
+                         375 --202: * Arguments    : (in) disable_on_debug     : flag for whether key is usable when the debugger is connected
+                         376 --203: *                                           Range: 0 (key is usable when debugger is connected)
+                         377 --204: *                                                  1 (key is unusable when debugger is connected)
+                         378 --205: *                (out) p_is_allowed         : Range: TRUE  (key is usable)
+                         379 --206: *                                                  FALSE (key is unusable)
+                         380 --207: * Return Value : ER_OK
+                         381 --208: ***************************************************************************************/
+                         382 --209: uint32_t s_03_CanUseKeyIfDbgConnected(key_flags_t disable_on_debug, uint8_t *p_is_allowed)
+                         383 	.align	2
+                         384 	.align	2
+                         385 	.align	2
+                         386 ..gh.f.a.2.e.2:
+                         387 	.type	..gh.f.a.2.e.2,@object
+                         388 	.size	..gh.f.a.2.e.2,0
+                         389 	.global	_s_03_CanUseKeyIfDbgConnected
+                         390 _s_03_CanUseKeyIfDbgConnected:
+00000098 501a            391 	add	-16,sp
+0000009a 63ff0d00        392 	st.w	lp,12[sp]
+0000009e 63e70900        393 	st.w	r28,8[sp]
+000000a2 63ef0500        394 	st.w	r29,4[sp]
+000000a6 06e0            395 	mov	r6,r28
+000000a8 dc00            396 	zxh	r28
+000000aa 07e8            397 	mov	r7,r29
+                         398 --	    .bf
+                         399 .LDW41:
+                         400 --210: {
+                         401 --211:     uint32_t    icu_status;
+                         402 --213:     *p_is_allowed = (uint8_t)TRUE;
+000000ac 010a            403 	mov	1,r1
+000000ae 5d0f0000        404 	st.b	r1,0[r29]
+                         405 --214:     (void)D_COMM_GetICUStatusInfo(&icu_status);
+000000b2 23360000        406 	movea	0,sp,r6
+                         407 .L189:
+                         408 	jarl	_D_COMM_GetICUStatusInfo,lp
+                         408 <EXPANSION BEGIN>
+                         408 jarl22 _D_COMM_GetICUStatusInfo , lp 
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+000000b6 80ff0000*       408 <EXPANSION END>
+                         409 --216:     if ((1u == (uint32_t)disable_on_debug)
+                         410 --line216
+                         411 ..lin.51dc5425..ed5573af.0_6::
+                         412 .LDWlin6:
+000000ba 61e2            413 	cmp	1,r28
+000000bc aa0d*           414 	bne	.L113
+                         415 --line217
+                         416 ..lin.51dc5425..ed5573af.0_7::
+                         417 .LDWlin7:
+000000be 230f0100        418 	ld.w	0[sp],r1
+000000c2 c10e4000        419 	andi	64,r1,r1
+000000c6 0106c0ff        420 	addi	-64,r1,zero
+000000ca ba05*           421 	bne	.L113
+                         422 --217:             && ((ICUM_COMM_INF_ICU_ST_EXT_DEBUG & icu_status) == ICUM_COMM_INF_ICU_ST_EXT_DEBUG))
+                         423 --218:     {
+                         424 --219:         *p_is_allowed = (uint8_t)FALSE;
+                         425 --line219
+                         426 ..lin.51dc5425..ed5573af.0_8::
+                         427 .LDWlin8:
+000000cc 5d070000        428 	st.b	zero,0[r29]
+                         429 .L113:
+                         430 --220:     }
+                         431 --221:     else
+                         432 --222:     {
+                         433 --223:         /* do nothing */
+                         434 --224:     }
+                         435 --225:     return (ER_OK);
+000000d0 0052            436 	mov	0,r10
+                         437 --	    .ef
+                         438 .LDW51:
+000000d2 23ff0d00        439 	ld.w	12[sp],lp
+000000d6 23ef0500        440 	ld.w	4[sp],r29
+000000da 23e70900        441 	ld.w	8[sp],r28
+000000de 031e1000        442 	addi	16,sp,sp
+                         443 .L191:
+                         444 	.jumptype return
+000000e2 7f00            445 	jmp	[lp]
+                         446 --line219
+                         447 ..lin.51dc5425..ed5573af.0_9::
+                         448 	.type	_s_03_CanUseKeyIfDbgConnected,@function
+                         449 	.size	_s_03_CanUseKeyIfDbgConnected,.-_s_03_CanUseKeyIfDbgConnected
+                         450 	.align	2
+                         451 --_icu_status	0[sp]	local
+                         452 
+                         453 --_disable_on_debug	r28	param
+                         454 --_p_is_allowed	r29	param
+                         455 
+                         456 	.section ".bss","awb"
+                         457 .L162:
+                         458 	.type	.L162,@object
+                         459 	.size	.L162,0
+                         460 	.section ".ghcalltbl",""
+00000008 00000000*       461 .L190:	.word	.L189
+                         462 	.type	.L190,@object
+                         463 	.size	.L190,4
+                         464 	.section ".ghrettbl",""
+00000008 00000000*       465 .L192:	.word	.L191
+                         466 	.type	.L192,@object
+                         467 	.size	.L192,4
+                         468 	.data
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         469 	.section ".icum_service.text","ax"
+                         470 
+                         471 --226: }
+                         472 
+                         473 --228: /***************************************************************************************
+                         474 --229: * Function ID  : [ICUMFW_CD_S_03_AESKeyUpdate_0006]:[ICUMFW_UD_S_03_AESKeyUpdate_0006]
+                         475 --230: * Function name: s_03_CheckMemory
+                         476 --231: * Description  : CheckMemory
+                         477 --232: * Arguments    : ex_service
+                         478 --233: *              : *p_input
+                         479 --234: *              : size
+                         480 --235: *              : direction
+                         481 --236: * Return Value : SERV_OK(ER_OK)
+                         482 --237: *              : ER_PARAM
+                         483 --238: *              : SERV_SRC_MEM_ERROR
+                         484 --239: *              : SERV_DEST_MEM_ERROR
+                         485 --240: ***************************************************************************************/
+                         486 --241: uint32_t s_03_CheckMemory(uint8_t ex_service, uint8_t* p_input, uint32_t size, uint8_t direction)
+                         487 	.align	2
+                         488 	.align	2
+                         489 	.align	2
+                         490 ..gh.f.a.2.e.3:
+                         491 	.type	..gh.f.a.2.e.3,@object
+                         492 	.size	..gh.f.a.2.e.3,0
+                         493 	.global	_s_03_CheckMemory
+                         494 _s_03_CheckMemory:
+000000e4 031ee0ff        495 	addi	-32,sp,sp
+000000e8 63ff1d00        496 	st.w	lp,28[sp]
+000000ec 63cf1900        497 	st.w	r25,24[sp]
+000000f0 63d71500        498 	st.w	r26,20[sp]
+000000f4 63df1100        499 	st.w	r27,16[sp]
+000000f8 63e70d00        500 	st.w	r28,12[sp]
+000000fc 63ef0900        501 	st.w	r29,8[sp]
+00000100 06d8            502 	mov	r6,r27
+00000102 9b00            503 	zxb	r27
+00000104 07d0            504 	mov	r7,r26
+00000106 08c8            505 	mov	r8,r25
+00000108 09e0            506 	mov	r9,r28
+0000010a 9c00            507 	zxb	r28
+                         508 --	    .bf
+                         509 .LDW61:
+                         510 --242: {
+                         511 --243:     uint32_t err;
+                         512 --244:     uint8_t  mem_check;
+                         513 --246:     /* make sure the source address range is valid */
+                         514 --247:     err = MM_FLS_CheckMemory((uint32_t)p_input, size, direction, ex_service, &mem_check);
+0000010c 230e0700        515 	movea	7,sp,r1
+00000110 1a30            516 	mov	r26,r6
+00000112 1938            517 	mov	r25,r7
+00000114 1c40            518 	mov	r28,r8
+00000116 1b48            519 	mov	r27,r9
+00000118 630f0100        520 	st.w	r1,0[sp]
+                         521 .L276:
+                         522 	jarl	_MM_FLS_CheckMemory,lp
+                         522 <EXPANSION BEGIN>
+                         522 jarl22 _MM_FLS_CheckMemory , lp 
+0000011c 80ff0000*       522 <EXPANSION END>
+00000120 0ae8            523 	mov	r10,r29
+                         524 --248:     if (err == ER_OK)
+                         525 --line248
+                         526 ..lin.51dc5425..e573990f.0_10::
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         527 .LDWlin10:
+00000122 e0e9            528 	cmp	zero,r29
+00000124 aa0d*           529 	bne	.L203
+                         530 --249:     {
+                         531 --250:         if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check)
+                         532 --line250
+                         533 ..lin.51dc5425..e573990f.0_11::
+                         534 .LDWlin11:
+00000126 a30f0700        535 	ld.bu	7[sp],r1
+0000012a 610a            536 	cmp	1,r1
+0000012c e205*           537 	be	.L203
+                         538 --251:         {
+                         539 --252:             if ((uint32_t)direction == (uint32_t)FLS_CHK_MEM_SOURCE)
+                         540 --line252
+                         541 ..lin.51dc5425..e573990f.0_12::
+                         542 .LDWlin12:
+0000012e e0e1            543 	cmp	zero,r28
+00000130 ba05*           544 	bne	.L199
+                         545 --253:             {
+                         546 --254:                 err = (uint32_t)SERV_SRC_MEM_ERROR;
+                         547 --line254
+                         548 ..lin.51dc5425..e573990f.0_13::
+                         549 .LDWlin13:
+00000132 0cea            550 	mov	12,r29
+00000134 a505*           551 	br	.L203
+                         552 .L199:
+                         553 --255:             }
+                         554 --256:             else
+                         555 --257:             {
+                         556 --258:                 err = (uint32_t)SERV_DEST_MEM_ERROR;
+                         557 --line258
+                         558 ..lin.51dc5425..e573990f.0_14::
+                         559 .LDWlin14:
+00000136 0dea            560 	mov	13,r29
+                         561 .L203:
+                         562 --259:             }
+                         563 --260:         }
+                         564 --261:         else
+                         565 --262:         {
+                         566 --263:             /* Do nothing */
+                         567 --264:         }
+                         568 --265:     }
+                         569 --266:     else
+                         570 --267:     {
+                         571 --268:         /* Do Nothing */
+                         572 --269:     }
+                         573 --270:     return(err);
+00000138 1d50            574 	mov	r29,r10
+                         575 --	    .ef
+                         576 .LDW71:
+0000013a 23ff1d00        577 	ld.w	28[sp],lp
+0000013e 23ef0900        578 	ld.w	8[sp],r29
+00000142 23e70d00        579 	ld.w	12[sp],r28
+00000146 23df1100        580 	ld.w	16[sp],r27
+0000014a 23d71500        581 	ld.w	20[sp],r26
+0000014e 23cf1900        582 	ld.w	24[sp],r25
+00000152 031e2000        583 	addi	32,sp,sp
+                         584 .L278:
+                         585 	.jumptype return
+00000156 7f00            586 	jmp	[lp]
+                         587 --line258
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         588 ..lin.51dc5425..e573990f.0_15::
+                         589 	.type	_s_03_CheckMemory,@function
+                         590 	.size	_s_03_CheckMemory,.-_s_03_CheckMemory
+                         591 	.align	2
+                         592 --_err	r29	local
+                         593 --_mem_check	7[sp]	local
+                         594 
+                         595 --_ex_service	r27	param
+                         596 --_p_input	r26	param
+                         597 --_size	r25	param
+                         598 --_direction	r28	param
+                         599 
+                         600 	.section ".bss","awb"
+                         601 .L246:
+                         602 	.type	.L246,@object
+                         603 	.size	.L246,0
+                         604 	.section ".ghcalltbl",""
+0000000c 00000000*       605 .L277:	.word	.L276
+                         606 	.type	.L277,@object
+                         607 	.size	.L277,4
+                         608 	.section ".ghrettbl",""
+0000000c 00000000*       609 .L279:	.word	.L278
+                         610 	.type	.L279,@object
+                         611 	.size	.L279,4
+                         612 	.data
+                         613 	.section ".icum_service.text","ax"
+                         614 
+                         615 --271: }
+                         616 
+                         617 --274: /***************************************************************************************
+                         618 --275: * Function ID  : [ICUMFW_CD_S_03_PK_0022]:[ICUMFW_UD_S_03_PK_0022]
+                         619 --276: * Function name: s_03_ConvertErr
+                         620 --277: * Description  : Convert the set error code to another error code
+                         621 --278: * Arguments    : (in) arg                        : Error code to be set
+                         622 --279: *                                                  Range: ER_OK
+                         623 --280: *                                                         ER_PARAM
+                         624 --281: *                                                         ER_PENDING_ARB
+                         625 --282: *                                                         ER_PENDING
+                         626 --283: *                                                         ER_IN_PROCESS
+                         627 --284: *                                                         ER_MH_KEY_SLOT_EMPTY
+                         628 --285: *                                                         ER_MH_KEY_INVALID_KEY_GROUP
+                         629 --286: *                                                         ER_MH_KEY_INVALID_KEY_INDEX
+                         630 --287: *                                                         ER_MH_KEY_WRITE_PROTECTED
+                         631 --288: *                                                         ER_MH_KEY_IN_USE
+                         632 --289: *                                                         ER_MH_KEY_DATA_NOT_FOUND
+                         633 --290: *                                                         ER_MH_KEY_WRITING
+                         634 --291: *                                                         ER_MH_KEY_USER_OVER
+                         635 --292: *                                                         ER_MH_KEY_NOT_USABLE
+                         636 --293: *                                                         ER_MH_KEY_AES_TIMEOUT_ERROR
+                         637 --294: *                                                         ER_MH_KEY_DATA_INVALID
+                         638 --295: *                                                         ER_MH_KEY_NVM_UNAVAILABLE
+                         639 --296: *                                                         ER_MH_KEY_NVM_SYS_CRITICAL
+                         640 --297: *                                                         ER_MH_KEY_NVM_SYS
+                         641 --298: *                                                         ER_MH_KEY_NVM_PROG
+                         642 --299: *                                                         ER_MH_KEY_NVM_SIZE
+                         643 --300: *                                                         ER_MH_KEY_SRC_MEM_ERROR
+                         644 --301: *                                                         ER_MH_KEY_DEST_MEM_ERROR
+                         645 --302: *                                                         ER_MH_KEY_SYS_ERROR
+                         646 --303: *                                                         ER_MH_KEY_AES_PRM_ERROR
+                         647 --304: *                                                         ER_ML_CTX_ALL_USE
+                         648 --305: *                                                         ER_ML_CTX_NOT_FOUND
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         649 --306: *                                                         R_SALIF_ER_OK
+                         650 --307: *                                                         R_SALIF_ER_PARAM
+                         651 --308: *                                                         R_SALIF_ER_PENDING
+                         652 --309: *                                                         R_SALIF_ER_IN_PROCESS
+                         653 --310: *                                                         R_SALIF_ER_CRY_STATUS_ERROR
+                         654 --311: *                                                         R_SALIF_ER_CRY_PKCC_ERROR
+                         655 --312: *                                                         R_SALIF_ER_CRY_INVALID_ARG
+                         656 --313: *                                                         R_SALIF_ER_CRY_ERROR
+                         657 --314: *                                                         R_SALIF_ER_CRY_ALIGN_ERROR
+                         658 --315: *                                                         R_SALIF_ER_CRY_TIMEOUT 
+                         659 --316: *                                                         R_SALIF_ER_CRY_RUNNING
+                         660 --317: *                (out) p_service_result            : converted error code
+                         661 --318: *                                                    Range: SERV_OK
+                         662 --319: *                                                           SERV_PRM_ERROR
+                         663 --320: *                                                           SERV_PENDING
+                         664 --321: *                                                           SERV_IN_PROCESS
+                         665 --322: *                                                           SERV_CRYPT_ERROR
+                         666 --323: *                                                           SERV_KEY_SLOT_EMPTY
+                         667 --324: *                                                           SERV_INVALID_KEY_GROUP
+                         668 --325: *                                                           SERV_INVALID_KEY_INDEX
+                         669 --326: *                                                           SERV_SEQUENCE_ERROR
+                         670 --327: *                                                           SERV_KEY_WRITE_PROTECTED
+                         671 --328: *                                                           SERV_DATA_INVALID
+                         672 --329: *                                                           SERV_NVM_UNAVAILABLE
+                         673 --330: *                                                           SERV_NVM_SYS_ERROR_CRITICAL 
+                         674 --331: *                                                           SERV_NVM_SYS_ERROR
+                         675 --332: *                                                           SERV_NVM_PROG_ERROR
+                         676 --333: *                                                           SERV_NVM_SIZE_ERROR
+                         677 --334: *                                                           SERV_SRC_MEM_ERROR
+                         678 --335: *                                                           SERV_DEST_MEM_ERROR
+                         679 --336: *                                                           SERV_SYS_ERROR
+                         680 --337: *                                                           SERV_AES_PRM_ERROR
+                         681 --338: * Return Value : ER_OK
+                         682 --339: ***************************************************************************************/
+                         683 --340: uint32_t s_03_ConvertErr(uint32_t arg, volatile r_icumif_service_result_t *p_service_result)
+                         684 	.align	2
+                         685 	.align	2
+                         686 	.align	2
+                         687 	.align	2
+                         688 ..gh.f.a.2.e.4:
+                         689 	.type	..gh.f.a.2.e.4,@object
+                         690 	.size	..gh.f.a.2.e.4,0
+                         691 	.global	_s_03_ConvertErr
+                         692 _s_03_ConvertErr:
+00000158 0610            693 	mov	r6,r2
+0000015a 07f0            694 	mov	r7,ep
+0000015c 330600000000*   695 	mov	_s_03_errcode_tuples,r19
+                         696 --	    .bf
+                         697 .LDW81:
+                         698 --341: {
+                         699 --342:     int32_t i;
+                         700 --343:     
+                         701 --344:     *p_service_result = (r_icumif_service_result_t)arg;
+                         702 --line344
+                         703 ..lin.51dc5425..3f6819e2.0_16::
+                         704 .LDWlin16:
+00000162 0115            705 	sst.w	r2,0[ep]
+                         706 --345:     for (i = 0; i < NUMBER_OF_ERROR_TABLE; i++)
+00000164 000a            707 	mov	0,r1
+00000166 8515*           708 	br	.L285
+                         709 .L284:
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         710 --346:     {
+                         711 --347:         if (arg == s_03_errcode_tuples[i].internal_code)
+                         712 --line347
+                         713 ..lin.51dc5425..3f6819e2.0_17::
+                         714 .LDWlin17:
+00000168 0190            715 	mov	r1,r18
+0000016a c392            716 	shl	3,r18
+0000016c d391            717 	add	r19,r18
+0000016e 32970100        718 	ld.w	0[r18],r18
+00000172 f211            719 	cmp	r18,r2
+00000174 8a0d*           720 	bne	.L283
+                         721 --348:         {
+                         722 --349:             *p_service_result = s_03_errcode_tuples[i].external_code;
+                         723 --line349
+                         724 ..lin.51dc5425..3f6819e2.0_18::
+                         725 .LDWlin18:
+00000176 0190            726 	mov	r1,r18
+00000178 c392            727 	shl	3,r18
+0000017a d391            728 	add	r19,r18
+0000017c 32970500        729 	ld.w	4[r18],r18
+00000180 0195            730 	sst.w	r18,0[ep]
+                         731 --350:             break;
+00000182 d505*           732 	br	.L288
+                         733 .L283:
+                         734 --351:         }
+                         735 --352:         else
+                         736 --353:         {
+                         737 --line345
+                         738 ..lin.51dc5425..3f6819e2.0_19::
+                         739 .LDWlin19:
+00000184 410a            740 	add	1,r1
+                         741 .L285:
+00000186 0106c6ff        742 	addi	-58,r1,zero
+0000018a f6ed*           743 	blt	.L284
+                         744 .L288:
+                         745 --354:             /* do nothing */
+                         746 --355:         }
+                         747 --356:     }
+                         748 --357:     return (ER_OK);
+                         749 --line357
+                         750 ..lin.51dc5425..3f6819e2.0_20::
+                         751 .LDWlin20:
+0000018c 0052            752 	mov	0,r10
+                         753 --	    .ef
+                         754 .LDW91:
+                         755 .L386:
+                         756 	.jumptype return
+0000018e 7f00            757 	jmp	[lp]
+                         758 --line357
+                         759 ..lin.51dc5425..3f6819e2.0_21::
+                         760 	.type	_s_03_ConvertErr,@function
+                         761 	.size	_s_03_ConvertErr,.-_s_03_ConvertErr
+                         762 	.align	2
+                         763 --_i	r1	local
+                         764 
+                         765 --_arg	r2	param
+                         766 --_p_service_result	ep	param
+                         767 
+                         768 	.section ".bss","awb"
+                         769 .L350:
+                         770 	.type	.L350,@object
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         771 	.size	.L350,0
+                         772 	.section ".icum_service.rodata","a"
+                         773 	.align	4
+                         774 	.global	_s_03_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common.
+                         775 _s_03_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common.:
+00000000 000000000000    776 _s_03_errcode_tuples:	.space	8
+00000006 0000 
+00000008 01000000        777 	.byte	1,0,0,0
+0000000c 04000000        778 	.byte	4,0,0,0
+00000010 02000000        779 	.byte	2,0,0,0
+00000014 f2ff0000        780 	.byte	242,255,0,0
+00000018 03000000        781 	.byte	3,0,0,0
+0000001c f2ff0000        782 	.byte	242,255,0,0
+00000020 04000000        783 	.byte	4,0,0,0
+00000024 ffff0000        784 	.byte	255,255,0,0
+00000028 01009000        785 	.byte	1,0,144,0
+0000002c 09000000        786 	.byte	9,0,0,0
+00000030 02009000        787 	.byte	2,0,144,0
+00000034 07000000        788 	.byte	7,0,0,0
+00000038 03009000        789 	.byte	3,0,144,0
+0000003c 08000000        790 	.byte	8,0,0,0
+00000040 05009000        791 	.byte	5,0,144,0
+00000044 0a000000        792 	.byte	10,0,0,0
+00000048 04009000        793 	.byte	4,0,144,0
+0000004c 06000000        794 	.byte	6,0,0,0
+00000050 06009000        795 	.byte	6,0,144,0
+00000054 06000000        796 	.byte	6,0,0,0
+00000058 07009000        797 	.byte	7,0,144,0
+0000005c f2ff0000        798 	.byte	242,255,0,0
+00000060 08009000        799 	.byte	8,0,144,0
+00000064 06000000        800 	.byte	6,0,0,0
+00000068 09009000        801 	.byte	9,0,144,0
+0000006c 06000000        802 	.byte	6,0,0,0
+00000070 0b009000        803 	.byte	11,0,144,0
+00000074 30000000        804 	.byte	48,0,0,0
+00000078 0c009000        805 	.byte	12,0,144,0
+0000007c 17000000        806 	.byte	23,0,0,0
+00000080 0d009000        807 	.byte	13,0,144,0
+00000084 16000000        808 	.byte	22,0,0,0
+00000088 0e009000        809 	.byte	14,0,144,0
+0000008c 15000000        810 	.byte	21,0,0,0
+00000090 0f009000        811 	.byte	15,0,144,0
+00000094 14000000        812 	.byte	20,0,0,0
+00000098 10009000        813 	.byte	16,0,144,0
+0000009c 13000000        814 	.byte	19,0,0,0
+000000a0 11009000        815 	.byte	17,0,144,0
+000000a4 19000000        816 	.byte	25,0,0,0
+000000a8 12009000        817 	.byte	18,0,144,0
+000000ac 0c000000        818 	.byte	12,0,0,0
+000000b0 13009000        819 	.byte	19,0,144,0
+000000b4 0d000000        820 	.byte	13,0,0,0
+000000b8 14009000        821 	.byte	20,0,144,0
+000000bc 11000000        822 	.byte	17,0,0,0
+000000c0 15009000        823 	.byte	21,0,144,0
+000000c4 32000000        824 	.byte	50,0,0,0
+000000c8 16009000        825 	.byte	22,0,144,0
+000000cc 23000000        826 	.byte	35,0,0,0
+000000d0 0a009000        827 	.byte	10,0,144,0
+000000d4 0b000000        828 	.byte	11,0,0,0
+000000d8 01001000        829 	.byte	1,0,16,0
+000000dc f2ff0000        830 	.byte	242,255,0,0
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+000000e0 02001000        831 	.byte	2,0,16,0
+000000e4 04000000        832 	.byte	4,0,0,0
+000000e8 01000400        833 	.byte	1,0,4,0
+000000ec 04000000        834 	.byte	4,0,0,0
+000000f0 040c0000        835 	.byte	4,12,0,0
+000000f4 32000000        836 	.byte	50,0,0,0
+000000f8 010c0000        837 	.byte	1,12,0,0
+000000fc 1a000000        838 	.byte	26,0,0,0
+00000100 01002000        839 	.byte	1,0,32,0
+00000104 f2ff0000        840 	.byte	242,255,0,0
+00000108 02002000        841 	.byte	2,0,32,0
+0000010c 11000000        842 	.byte	17,0,0,0
+00000110 03002000        843 	.byte	3,0,32,0
+00000114 11000000        844 	.byte	17,0,0,0
+00000118 05002000        845 	.byte	5,0,32,0
+0000011c 11000000        846 	.byte	17,0,0,0
+00000120 04002000        847 	.byte	4,0,32,0
+00000124 11000000        848 	.byte	17,0,0,0
+00000128 06002000        849 	.byte	6,0,32,0
+0000012c 11000000        850 	.byte	17,0,0,0
+00000130 0000f000        851 	.byte	0,0,240,0
+00000134 34000000        852 	.byte	52,0,0,0
+00000138 1000f000        853 	.byte	16,0,240,0
+0000013c 36000000        854 	.byte	54,0,0,0
+00000140 1200f000        855 	.byte	18,0,240,0
+00000144 30000000        856 	.byte	48,0,0,0
+00000148 01000000        857 	.byte	1,0,0,0
+0000014c 04000000        858 	.byte	4,0,0,0
+00000150 1300f000        859 	.byte	19,0,240,0
+00000154 04000000        860 	.byte	4,0,0,0
+00000158 90000500        861 	.byte	144,0,5,0
+0000015c 11000000        862 	.byte	17,0,0,0
+00000160 10000500        863 	.byte	16,0,5,0
+00000164 1a000000        864 	.byte	26,0,0,0
+00000168 01000500        865 	.byte	1,0,5,0
+0000016c 04000000        866 	.byte	4,0,0,0
+00000170 80000500        867 	.byte	128,0,5,0
+00000174 1a000000        868 	.byte	26,0,0,0
+00000178 05000500        869 	.byte	5,0,5,0
+0000017c 21000000        870 	.byte	33,0,0,0
+00000180 20000500        871 	.byte	32,0,5,0
+00000184 ffff0000        872 	.byte	255,255,0,0
+00000188 06000500        873 	.byte	6,0,5,0
+0000018c 04000000        874 	.byte	4,0,0,0
+00000190 90000600        875 	.byte	144,0,6,0
+00000194 11000000        876 	.byte	17,0,0,0
+00000198 10000600        877 	.byte	16,0,6,0
+0000019c 1a000000        878 	.byte	26,0,0,0
+000001a0 01000600        879 	.byte	1,0,6,0
+000001a4 04000000        880 	.byte	4,0,0,0
+000001a8 80000600        881 	.byte	128,0,6,0
+000001ac 1a000000        882 	.byte	26,0,0,0
+000001b0 20000600        883 	.byte	32,0,6,0
+000001b4 ffff0000        884 	.byte	255,255,0,0
+000001b8 01000300        885 	.byte	1,0,3,0
+000001bc 04000000        886 	.byte	4,0,0,0
+000001c0 02000700        887 	.byte	2,0,7,0
+000001c4 04000000        888 	.byte	4,0,0,0
+000001c8 01000700        889 	.byte	1,0,7,0
+000001cc 04000000        890 	.byte	4,0,0,0
+                         891 	.type	_s_03_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common.,@object
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp41.si
+                         892 	.size	_s_03_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common.,464
+                         893 	.type	_s_03_errcode_tuples,@object
+                         894 	.size	_s_03_errcode_tuples,464
+                         895 	.section ".ghrettbl",""
+00000010 00000000*       896 .L387:	.word	.L386
+                         897 	.type	.L387,@object
+                         898 	.size	.L387,4
+                         899 	.data
+                         900 	.section ".icum_service.text","ax"
+                         901 
+                         902 --358: }
+                         903 	.align	2
+                         904 --_s_03_errcode_tuples	_s_03_errcode_tuples	static
+                         905 
+                         906 	.data
+                         907 	.ghsnote version,30
+                         908 	.ghsnote tools,3
+                         909 	.ghsnote options,656
+                         910 	.section ".icum_service.text","ax"
+                         911 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_03_common...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40667..0::
+                         912 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

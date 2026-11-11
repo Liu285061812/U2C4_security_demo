@@ -1,0 +1,1942 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hash.dbo -source=icum_s_01_hash.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\gh_0000rv41.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hash.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+Source File: icum_s_01_hash.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\
+                           7 --		-I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          28 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          29 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          30 --		-filetype.c ..\..\icum\generic\src\service\s_01\icum_s_01_hash.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hash.o
+                          33 --Source File:   ..\..\icum\generic\src\service\s_01\icum_s_01_hash.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 14:08:35 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_service.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICU-M Service                                             */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /**********************************************************************************
+                          70 --28: * Header files
+                          71 --29: ***********************************************************************************/
+                          72 --32: #include "icum_l_cry_pk_pub.h"
+                          73 --33: #include "r_icumif_api.h"
+                          74 --34: #include "icum_s_pub.h"
+                          75 --35: #include "icum_ml_ctx_pub.h"
+                          76 --36: #include MM_FLASH_PUBLIC_H
+                          77 --37: /* For call functions of remap driver. */
+                          78 --38: #include "icum_d_remap_pub.h"
+                          79 --40: #include "renesas_types.h"
+                          80 --41: #include "icum_s_01_common.h"
+                          81 --42: #include "icum_l_toolbox_pub.h"
+                          82 --43: #include "icum_service_common.h"
+                          83 --45: /**********************************************************************************
+                          84 --46: * Local types
+                          85 --47: **********************************************************************************/
+                          86 --48: #define MAX_U32                 (0xFFFFFFFFu)
+                          87 --50: /**********************************************************************************
+                          88 --51: * Local variables
+                          89 --52: **********************************************************************************/
+                          90 --54: /**********************************************************************************
+                          91 --55: * Functions
+                          92 --56: ***********************************************************************************/
+                          93 --57: static uint32_t s_01_InitHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx);
+                          94 --58: static uint32_t s_01_FinalizeHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx);
+                          95 --59: static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle);
+                          96 --60: static uint32_t s_01_IsHashTypeSha3(r_hash_primitive_t hash_primitive);
+                          97 --62: /****************************************************************************************
+                          98 --63: * Function ID  : [ICUMFW_CD_S_01_PK_0002]:[ICUMFW_UD_S_01_PK_0002]
+                          99 --64: * Function name: s_01_InitHash()
+                         100 --65: * Description  : # Initialize the hash process.
+                         101 --66: *                  Set hash_type and hash_size, and initialize HASH processing.
+                         102 --67: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                         103 --68: *                (IN-OUT)  p_hash_ctx : Pointer to HASH Context
+                         104 --69: * Return Value : SERV_PRM_ERROR
+                         105 --70: *              : SERV_SRC_MEM_ERROR
+                         106 --71: *              : SERV_IN_PROCESS
+                         107 --72: *              : SERV_DEST_MEM_ERROR
+                         108 --73: *              : SERV_CRYPT_ERROR
+                         109 --74: ****************************************************************************************/
+                         110 --75: static uint32_t s_01_InitHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx)
+                         111 	.align	2
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         112 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40663..0::
+                         113 	.align	2
+                         114 	.align	2
+                         115 ..gh.f.a.2.e.0:
+                         116 	.type	..gh.f.a.2.e.0,@object
+                         117 	.size	..gh.f.a.2.e.0,0
+                         118 	.global	_s_01_InitHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                         119 _s_01_InitHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.:
+                         120 _s_01_InitHash:
+00000000 031eccff        121 	addi	-52,sp,sp
+00000004 63ff3100        122 	st.w	lp,48[sp]
+00000008 63c72d00        123 	st.w	r24,44[sp]
+0000000c 63df2100        124 	st.w	r27,32[sp]
+00000010 63cf2900        125 	st.w	r25,40[sp]
+00000014 63d72500        126 	st.w	r26,36[sp]
+00000018 63e71d00        127 	st.w	r28,28[sp]
+0000001c 63ef1900        128 	st.w	r29,24[sp]
+00000020 06d8            129 	mov	r6,r27
+00000022 07c0            130 	mov	r7,r24
+                         131 --	    .bf
+                         132 .LDW01:
+                         133 --76: {
+                         134 --77:     r_icumif_isd_t      *p_ISD;
+                         135 --78:     hash_type_t          hash_type;
+                         136 --79:     uint16_t             hash_size;
+                         137 --80:     uint32_t             err;
+                         138 --81:     uint8_t              result;
+                         139 --82:     uint32_t             skip_flg;
+                         140 --83:     hash_ope_prm_t       hash_ope_prm;
+                         141 --84:     uint32_t             out_area_size;
+                         142 --86:     skip_flg = FLG_OFF;
+00000024 00d2            143 	mov	0,r26
+                         144 --87:     out_area_size = NUM0;
+00000026 00ca            145 	mov	0,r25
+                         146 --89:     L_Toolbox_MemSet((uint8_t *)&hash_ope_prm, (uint8_t)NUM0, (int16_t)sizeof(hash_ope_prm_t));
+00000028 23361000        147 	movea	16,sp,r6
+0000002c 003a            148 	mov	0,r7
+0000002e 0842            149 	mov	8,r8
+                         150 .L282:
+                         151 	jarl	_L_Toolbox_MemSet,lp
+                         151 <EXPANSION BEGIN>
+                         151 jarl22 _L_Toolbox_MemSet , lp 
+00000030 80ff0000*       151 <EXPANSION END>
+                         152 --90:     /* retrieve the service handler */
+                         153 --91:     p_ISD = p_job->p_ISD;
+                         154 --line91
+                         155 ..lin.92e7b8fc..4c67b60e.0_1::
+                         156 .LDWlin1:
+00000034 3bef0100        157 	ld.w	0[r27],r29
+                         158 --93:     /* copy the source address within the job description */
+                         159 --94:     p_job->prm.job_hash.p_source = p_ISD->prm.HASH.p_message;
+00000038 3d0f2100        160 	ld.w	32[r29],r1
+0000003c 7b0f1500        161 	st.w	r1,20[r27]
+                         162 --96:     /* indicates how many bytes to process in the job */
+                         163 --97:     p_job->prm.job_hash.nb_bytes = p_ISD->prm.HASH.message_size_in_bytes;
+00000040 3d0f3100        164 	ld.w	48[r29],r1
+00000044 7b0f1100        165 	st.w	r1,16[r27]
+                         166 --99:     /* determin hash_type */
+                         167 --100:     err = L_HASH_GetInternalHashType(p_ISD->prm.HASH.hash_primitive, &hash_type, &hash_size);
+00000048 3d373900        168 	ld.w	56[r29],r6
+0000004c 233e0800        169 	movea	8,sp,r7
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+00000050 23460e00        170 	movea	14,sp,r8
+                         171 .L284:
+                         172 	jarl	_L_HASH_GetInternalHashType,lp
+                         172 <EXPANSION BEGIN>
+                         172 jarl22 _L_HASH_GetInternalHashType , lp 
+00000054 80ff0000*       172 <EXPANSION END>
+00000058 0ae0            173 	mov	r10,r28
+                         174 --102:     if(hash_size == (uint16_t)0)
+                         175 --line102
+                         176 ..lin.92e7b8fc..4c67b60e.0_2::
+                         177 .LDWlin2:
+0000005a e30f0f00        178 	ld.hu	14[sp],r1
+0000005e e009            179 	cmp	zero,r1
+00000060 ea05*           180 	bne	.L4
+                         181 --103:     {
+                         182 --104:         /* error on hash type */
+                         183 --105:         p_ISD->service_result = SERV_PRM_ERROR;
+                         184 --line105
+                         185 ..lin.92e7b8fc..4c67b60e.0_3::
+                         186 .LDWlin3:
+00000062 040a            187 	mov	4,r1
+00000064 7d0f0d00        188 	st.w	r1,12[r29]
+                         189 --106:         skip_flg = FLG_ON;
+00000068 01d2            190 	mov	1,r26
+0000006a a50d*           191 	br	.L6
+                         192 .L4:
+                         193 --107:     }
+                         194 --108:     else
+                         195 --109:     {
+                         196 --110:         if (NUM0 == (uint32_t)p_ISD->prm.HASH.hash_size_in_bytes)
+                         197 --line110
+                         198 ..lin.92e7b8fc..4c67b60e.0_4::
+                         199 .LDWlin4:
+0000006c fd0f3500        200 	ld.hu	52[r29],r1
+00000070 e009            201 	cmp	zero,r1
+00000072 ca05*           202 	bne	.L7
+                         203 --111:         {
+                         204 --112:             out_area_size = (uint32_t)hash_size;
+                         205 --line112
+                         206 ..lin.92e7b8fc..4c67b60e.0_5::
+                         207 .LDWlin5:
+00000074 e3cf0f00        208 	ld.hu	14[sp],r25
+00000078 b505*           209 	br	.L6
+                         210 .L7:
+                         211 --113:         }
+                         212 --114:         else
+                         213 --115:         {
+                         214 --116:             out_area_size = (uint32_t)p_ISD->prm.HASH.hash_size_in_bytes;
+                         215 --line116
+                         216 ..lin.92e7b8fc..4c67b60e.0_6::
+                         217 .LDWlin6:
+0000007a fdcf3500        218 	ld.hu	52[r29],r25
+                         219 .L6:
+                         220 --117:         }
+                         221 --118:     }
+                         222 --120:     /* reset hash size to zero */
+                         223 --121:     p_ISD->prm.HASH.hash_size_in_bytes = NUM0;
+0000007e 7d073400        224 	st.h	zero,52[r29]
+                         225 --122:     if (skip_flg == FLG_OFF)
+00000082 e0d1            226 	cmp	zero,r26
+00000084 ba55*           227 	bne	.L25
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         228 --123:     {
+                         229 --124:         /* make sure the destination address range is valid */
+                         230 --125:         (void)MM_FLS_CheckMemory((uint32_t)p_ISD->prm.HASH.p_hash,
+                         231 --line125
+                         232 ..lin.92e7b8fc..4c67b60e.0_7::
+                         233 .LDWlin7:
+00000086 3d372900        234 	ld.w	40[r29],r6
+0000008a e33f0f00        235 	ld.hu	14[sp],r7
+0000008e 9b4f0d00        236 	ld.bu	12[r27],r9
+00000092 230e0700        237 	movea	7,sp,r1
+00000096 630f0100        238 	st.w	r1,0[sp]
+0000009a 0142            239 	mov	1,r8
+                         240 .L286:
+                         241 	jarl	_MM_FLS_CheckMemory,lp
+                         241 <EXPANSION BEGIN>
+                         241 jarl22 _MM_FLS_CheckMemory , lp 
+0000009c 80ff0000*       241 <EXPANSION END>
+                         242 --126:                                  (uint32_t)hash_size,
+                         243 --127:                                  FLS_CHK_MEM_DESTINATION,
+                         244 --128:                                  p_job->expansion_service,
+                         245 --129:                                  &result);
+                         246 --131:         if(result != FLS_CHK_OK)
+                         247 --line131
+                         248 ..lin.92e7b8fc..4c67b60e.0_8::
+                         249 .LDWlin8:
+000000a0 a30f0700        250 	ld.bu	7[sp],r1
+000000a4 610a            251 	cmp	1,r1
+000000a6 e205*           252 	be	.L12
+                         253 --132:         {
+                         254 --133:             p_ISD->service_result = SERV_DEST_MEM_ERROR;
+                         255 --line133
+                         256 ..lin.92e7b8fc..4c67b60e.0_9::
+                         257 .LDWlin9:
+000000a8 0d0a            258 	mov	13,r1
+000000aa 7d0f0d00        259 	st.w	r1,12[r29]
+                         260 --134:             skip_flg = FLG_ON;
+000000ae 01d2            261 	mov	1,r26
+000000b0 d53d*           262 	br	.L25
+                         263 .L12:
+                         264 --135:         }
+                         265 --136:         else
+                         266 --137:         {
+                         267 --138:             /* Check if DMA transfer is applicable and set the transfer information in the operating parameters */
+                         268 --139:             if ((JOB_ALL_AT_ONCE == p_ISD->prm.HASH.job_cycle) && (NUM0 == (uint32_t)p_ISD->prm.HASH.job_slice))
+                         269 --line139
+                         270 ..lin.92e7b8fc..4c67b60e.0_10::
+                         271 .LDWlin10:
+000000b2 3d0f4100        272 	ld.w	64[r29],r1
+000000b6 e009            273 	cmp	zero,r1
+000000b8 ba15*           274 	bne	.L18
+000000ba fd0f3d00        275 	ld.hu	60[r29],r1
+000000be e009            276 	cmp	zero,r1
+000000c0 fa0d*           277 	bne	.L18
+                         278 --140:             {
+                         279 --141:                 hash_ope_prm.use_dma_transfer = L_HASH_ChkDMAApplicable(hash_type, 
+                         280 --line141
+                         281 ..lin.92e7b8fc..4c67b60e.0_11::
+                         282 .LDWlin11:
+000000c2 3d3f2100        283 	ld.w	32[r29],r7
+000000c6 3d473100        284 	ld.w	48[r29],r8
+000000ca 3d4f2900        285 	ld.w	40[r29],r9
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+000000ce 23370900        286 	ld.w	8[sp],r6
+000000d2 63cf0100        287 	st.w	r25,0[sp]
+                         288 .L288:
+                         289 	jarl	_L_HASH_ChkDMAApplicable,lp
+                         289 <EXPANSION BEGIN>
+                         289 jarl22 _L_HASH_ChkDMAApplicable , lp 
+000000d6 80ff0000*       289 <EXPANSION END>
+000000da 63571500        290 	st.w	r10,20[sp]
+                         291 .L18:
+                         292 --142:                                             p_ISD->prm.HASH.p_message, p_ISD->prm.HASH.message_size_in_bytes, 
+                         293 --143:                                             p_ISD->prm.HASH.p_hash,    out_area_size);
+                         294 --144:             }
+                         295 --145:             else
+                         296 --146:             {
+                         297 --147:                 /* do nothing */
+                         298 --148:             }
+                         299 --150:             hash_ope_prm.total_msg_size_in_bytes = p_ISD->prm.HASH.total_msg_size_in_bytes;
+                         300 --line150
+                         301 ..lin.92e7b8fc..4c67b60e.0_12::
+                         302 .LDWlin12:
+000000de 3d0f4500        303 	ld.w	68[r29],r1
+000000e2 630f1100        304 	st.w	r1,16[sp]
+                         305 --151:             err =  L_HASH_SetOpePrm(p_hash_ctx, &hash_ope_prm);
+000000e6 1830            306 	mov	r24,r6
+000000e8 233e1000        307 	movea	16,sp,r7
+                         308 .L290:
+                         309 	jarl	_L_HASH_SetOpePrm,lp
+                         309 <EXPANSION BEGIN>
+                         309 jarl22 _L_HASH_SetOpePrm , lp 
+000000ec 80ff0000*       309 <EXPANSION END>
+000000f0 0ae0            310 	mov	r10,r28
+                         311 --152:             if (ER_OK == err)
+                         312 --line152
+                         313 ..lin.92e7b8fc..4c67b60e.0_13::
+                         314 .LDWlin13:
+000000f2 e0e1            315 	cmp	zero,r28
+000000f4 8a1d*           316 	bne	.L19
+                         317 --153:             {
+                         318 --154:                 p_job->prm.job_hash.processed_data_size = NUM0;
+                         319 --line154
+                         320 ..lin.92e7b8fc..4c67b60e.0_14::
+                         321 .LDWlin14:
+000000f6 7b072500        322 	st.w	zero,36[r27]
+                         323 --155:                 p_job->prm.job_hash.total_msg_size_in_bytes = p_ISD->prm.HASH.total_msg_size_in_bytes;
+000000fa 3d0f4500        324 	ld.w	68[r29],r1
+000000fe 7b0f2100        325 	st.w	r1,32[r27]
+                         326 --157:                 /* in process */
+                         327 --158:                 p_ISD->service_result = SERV_IN_PROCESS;
+00000102 800effff        328 	ori	65535,zero,r1
+00000106 7d0f0d00        329 	st.w	r1,12[r29]
+                         330 --159:                 err = L_HASH_Init(p_hash_ctx, hash_type);
+0000010a 233f0900        331 	ld.w	8[sp],r7
+0000010e 1830            332 	mov	r24,r6
+                         333 .L292:
+                         334 	jarl	_L_HASH_Init,lp
+                         334 <EXPANSION BEGIN>
+                         334 jarl22 _L_HASH_Init , lp 
+00000110 80ff0000*       334 <EXPANSION END>
+00000114 0ae0            335 	mov	r10,r28
+                         336 --160:                 if (ER_OK != err)
+                         337 --line160
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         338 ..lin.92e7b8fc..4c67b60e.0_15::
+                         339 .LDWlin15:
+00000116 e0e1            340 	cmp	zero,r28
+00000118 920d*           341 	be	.L25
+                         342 --161:                 {
+                         343 --162:                     p_ISD->service_result = SERV_CRYPT_ERROR;
+                         344 --line162
+                         345 ..lin.92e7b8fc..4c67b60e.0_16::
+                         346 .LDWlin16:
+0000011a 200e1a00        347 	movea	26,zero,r1
+0000011e 7d0f0d00        348 	st.w	r1,12[r29]
+00000122 c505*           349 	br	.L25
+                         350 .L19:
+                         351 --163:                 }
+                         352 --164:                 else
+                         353 --165:                 {
+                         354 --166:                     /* do nothing */
+                         355 --167:                 }
+                         356 --168:             } /* end of if (ER_OK == err) */
+                         357 --169:             else
+                         358 --170:             {
+                         359 --171:                 p_ISD->service_result = SERV_PRM_ERROR;
+                         360 --line171
+                         361 ..lin.92e7b8fc..4c67b60e.0_17::
+                         362 .LDWlin17:
+00000124 040a            363 	mov	4,r1
+00000126 7d0f0d00        364 	st.w	r1,12[r29]
+                         365 .L25:
+                         366 --172:             }
+                         367 --173:         }
+                         368 --174:     }
+                         369 --175:     else
+                         370 --176:     {
+                         371 --177:         /* do nothing */
+                         372 --178:     }
+                         373 --180:     return(err);
+0000012a 1c50            374 	mov	r28,r10
+                         375 --	    .ef
+                         376 .LDW11:
+0000012c 23ff3100        377 	ld.w	48[sp],lp
+00000130 23ef1900        378 	ld.w	24[sp],r29
+00000134 23e71d00        379 	ld.w	28[sp],r28
+00000138 23df2100        380 	ld.w	32[sp],r27
+0000013c 23d72500        381 	ld.w	36[sp],r26
+00000140 23cf2900        382 	ld.w	40[sp],r25
+00000144 23c72d00        383 	ld.w	44[sp],r24
+00000148 031e3400        384 	addi	52,sp,sp
+                         385 .L294:
+                         386 	.jumptype return
+0000014c 7f00            387 	jmp	[lp]
+                         388 --line171
+                         389 ..lin.92e7b8fc..4c67b60e.0_18::
+                         390 	.type	_s_01_InitHash,@function
+                         391 	.size	_s_01_InitHash,.-_s_01_InitHash
+                         392 	.type	_s_01_InitHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,@function
+                         393 	.size	_s_01_InitHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,.-_s_01_InitHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                         394 	.align	2
+                         395 --_p_ISD	r29	local
+                         396 --_hash_type	8[sp]	local
+                         397 --_hash_size	14[sp]	local
+                         398 --_err	r28	local
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         399 --_result	7[sp]	local
+                         400 --_skip_flg	r26	local
+                         401 --_hash_ope_prm	16[sp]	local
+                         402 --_out_area_size	r25	local
+                         403 
+                         404 --_p_job	r27	param
+                         405 --_p_hash_ctx	r24	param
+                         406 
+                         407 	.section ".bss","awb"
+                         408 .L174:
+                         409 	.type	.L174,@object
+                         410 	.size	.L174,0
+                         411 	.section ".ghcalltbl",""
+                         412 	.align	4
+00000000 00000000*       413 .L283:	.word	.L282
+                         414 	.type	.L283,@object
+                         415 	.size	.L283,4
+00000004 00000000*       416 .L285:	.word	.L284
+                         417 	.type	.L285,@object
+                         418 	.size	.L285,4
+00000008 00000000*       419 .L287:	.word	.L286
+                         420 	.type	.L287,@object
+                         421 	.size	.L287,4
+0000000c 00000000*       422 .L289:	.word	.L288
+                         423 	.type	.L289,@object
+                         424 	.size	.L289,4
+00000010 00000000*       425 .L291:	.word	.L290
+                         426 	.type	.L291,@object
+                         427 	.size	.L291,4
+00000014 00000000*       428 .L293:	.word	.L292
+                         429 	.type	.L293,@object
+                         430 	.size	.L293,4
+                         431 	.section ".ghrettbl",""
+                         432 	.align	4
+00000000 00000000*       433 .L295:	.word	.L294
+                         434 	.type	.L295,@object
+                         435 	.size	.L295,4
+                         436 	.data
+                         437 	.section ".icum_service.text","ax"
+                         438 
+                         439 --181: }
+                         440 
+                         441 --183: /*===========================================================================
+                         442 --184:   Finalize the hash process - get the plain hash value
+                         443 --185:   [PRIVATE]
+                         444 --186:   ===========================================================================*/
+                         445 --187: /****************************************************************************************
+                         446 --188: * Function ID  : [ICUMFW_CD_S_01_PK_0003]:[ICUMFW_UD_S_01_PK_0003]
+                         447 --189: * Function name: s_01_FinalizeHash()
+                         448 --190: * Description  : # Call HASH termination processing and release the context.
+                         449 --191: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                         450 --192: *                (IN-OUT)  p_hash_ctx : Pointer to HASH Context
+                         451 --193: * Return Value : ER_OK
+                         452 --194: *              : R_SALIF_ER_CRY_INVALID_ARG
+                         453 --195: ****************************************************************************************/
+                         454 --196: static uint32_t s_01_FinalizeHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx)
+                         455 	.align	2
+                         456 	.align	2
+                         457 	.align	2
+                         458 ..gh.f.a.2.e.1:
+                         459 	.type	..gh.f.a.2.e.1,@object
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         460 	.size	..gh.f.a.2.e.1,0
+                         461 	.global	_s_01_FinalizeHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                         462 _s_01_FinalizeHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.:
+                         463 _s_01_FinalizeHash:
+0000014e 031ee0ff        464 	addi	-32,sp,sp
+00000152 63ff1d00        465 	st.w	lp,28[sp]
+00000156 63d71100        466 	st.w	r26,16[sp]
+0000015a 63e70900        467 	st.w	r28,8[sp]
+0000015e 63c71900        468 	st.w	r24,24[sp]
+00000162 63cf1500        469 	st.w	r25,20[sp]
+00000166 63df0d00        470 	st.w	r27,12[sp]
+0000016a 63ef0500        471 	st.w	r29,4[sp]
+0000016e 06e0            472 	mov	r6,r28
+00000170 07d0            473 	mov	r7,r26
+                         474 --	    .bf
+                         475 .LDW21:
+                         476 --197: {
+                         477 --198:     r_icumif_isd_t      *p_ISD;
+                         478 --199:     hash_descriptor_t   *p_hash_desc;
+                         479 --200:     uint32_t             err;
+                         480 --201:     uint32_t             type_check_sha3;
+                         481 --202:     remap_ptr_manip_t     hash_logical;
+                         482 --204:     type_check_sha3 = NUM0;
+00000172 00ca            483 	mov	0,r25
+                         484 --205:     /* retrieve the service handler */
+                         485 --206:     p_ISD = p_job->p_ISD;
+00000174 3cef0100        486 	ld.w	0[r28],r29
+                         487 --208:     /* no more data to process! */
+                         488 --209:     p_job->prm.job_hash.nb_bytes = 0;
+00000178 7c071100        489 	st.w	zero,16[r28]
+                         490 --211:     /* retrieve the hash context */
+                         491 --212:     p_hash_desc  = &(p_hash_ctx->hash_desc);
+0000017c 1ac60400        492 	addi	4,r26,r24
+                         493 --214:     if (p_job->keep.job_cycle == 1u)
+00000180 dccf0d00        494 	tst1	1,13[r28]
+00000184 b205*           495 	be	.L300
+                         496 --215:     {
+                         497 --216:         p_job->keep.job_cycle = 0u;
+                         498 --line216
+                         499 ..lin.92e7b8fc..f8f9acec.0_19::
+                         500 .LDWlin19:
+00000186 dc8f0d00        501 	clr1	1,13[r28]
+                         502 .L300:
+                         503 --217:     }
+                         504 --218:     else
+                         505 --219:     {
+                         506 --220:         /* do nothing */
+                         507 --221:     }
+                         508 --223:     type_check_sha3 = s_01_IsHashTypeSha3(p_ISD->prm.HASH.hash_primitive);
+0000018a 3d373900        509 	ld.w	56[r29],r6
+                         510 .L479:
+                         511 	jarl	_s_01_IsHashTypeSha3,lp
+                         511 <EXPANSION BEGIN>
+                         511 jarl22 _s_01_IsHashTypeSha3 , lp 
+0000018e 80ffb002*       511 <EXPANSION END>
+00000192 0ac8            512 	mov	r10,r25
+                         513 --225:     if ((NUM1 != type_check_sha3) ||
+                         514 --line225
+                         515 ..lin.92e7b8fc..f8f9acec.0_20::
+                         516 .LDWlin20:
+00000194 61ca            517 	cmp	1,r25
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+00000196 fa05*           518 	bne	.L302
+                         519 --line226
+                         520 ..lin.92e7b8fc..f8f9acec.0_21::
+                         521 .LDWlin21:
+00000198 3c0f2500        522 	ld.w	36[r28],r1
+0000019c 3c172100        523 	ld.w	32[r28],r2
+000001a0 e111            524 	cmp	r1,r2
+000001a2 ba15*           525 	bne	.L301
+                         526 .L302:
+                         527 --226:         (p_job->prm.job_hash.total_msg_size_in_bytes == p_job->prm.job_hash.processed_data_size))
+                         528 --227:     {
+                         529 --228:         /* Get Remap(Convert Physical address -> Logical Address) */
+                         530 --229:         (void)D_REMAP_GetLogicalAddrs((uint32_t)p_ISD->prm.HASH.p_hash, &hash_logical.val);
+                         531 --line229
+                         532 ..lin.92e7b8fc..f8f9acec.0_22::
+                         533 .LDWlin22:
+000001a4 3d372900        534 	ld.w	40[r29],r6
+000001a8 233e0000        535 	movea	0,sp,r7
+                         536 .L481:
+                         537 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                         537 <EXPANSION BEGIN>
+                         537 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+000001ac 80ff0000*       537 <EXPANSION END>
+                         538 --230:         /* terminate: get the hash value */
+                         539 --231:         err = L_HASH_Finish(p_hash_ctx, hash_logical.p_ptr);
+                         540 --line231
+                         541 ..lin.92e7b8fc..f8f9acec.0_23::
+                         542 .LDWlin23:
+000001b0 233f0100        543 	ld.w	0[sp],r7
+000001b4 1a30            544 	mov	r26,r6
+                         545 .L483:
+                         546 	jarl	_L_HASH_Finish,lp
+                         546 <EXPANSION BEGIN>
+                         546 jarl22 _L_HASH_Finish , lp 
+000001b6 80ff0000*       546 <EXPANSION END>
+000001ba 0ad8            547 	mov	r10,r27
+                         548 --233:         /* indicate the size of the hash */
+                         549 --234:         p_ISD->prm.HASH.hash_size_in_bytes = (uint16_t)(p_hash_desc->hash_bitlen / 8UL);
+                         550 --line234
+                         551 ..lin.92e7b8fc..f8f9acec.0_24::
+                         552 .LDWlin24:
+000001bc 380f0100        553 	ld.w	0[r24],r1
+000001c0 830a            554 	shr	3,r1
+000001c2 7d0f3400        555 	st.h	r1,52[r29]
+000001c6 a505*           556 	br	.L304
+                         557 .L301:
+                         558 --236:     } /* end of if ((NUM1 != type_check_sha3) || */
+                         559 --237:       /*            (p_job->prm.job_hash.total_msg_size_in_bytes == p_job->prm.job_hash.processed_data_size)) */
+                         560 --238:     else
+                         561 --239:     {
+                         562 --240:         err = ER_PARAM;
+                         563 --line240
+                         564 ..lin.92e7b8fc..f8f9acec.0_25::
+                         565 .LDWlin25:
+000001c8 01da            566 	mov	1,r27
+                         567 .L304:
+                         568 --241:     }
+                         569 --243:     /* free the hash context */
+                         570 --244:     (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
+000001ca 1a38            571 	mov	r26,r7
+000001cc 0332            572 	mov	3,r6
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         573 .L485:
+                         574 	jarl	_ML_CTX_Free,lp
+                         574 <EXPANSION BEGIN>
+                         574 jarl22 _ML_CTX_Free , lp 
+000001ce 80ff0000*       574 <EXPANSION END>
+                         575 --246:     if (ER_OK == err)
+                         576 --line246
+                         577 ..lin.92e7b8fc..f8f9acec.0_26::
+                         578 .LDWlin26:
+000001d2 e0d9            579 	cmp	zero,r27
+000001d4 ca05*           580 	bne	.L305
+                         581 --247:     {
+                         582 --248:         /* indicate service completion */
+                         583 --249:         p_ISD->service_result = SERV_OK;
+                         584 --line249
+                         585 ..lin.92e7b8fc..f8f9acec.0_27::
+                         586 .LDWlin27:
+000001d6 7d070d00        587 	st.w	zero,12[r29]
+000001da b50d*           588 	br	.L307
+                         589 .L305:
+                         590 --250:     }
+                         591 --251:     else if (ER_PARAM == err)
+                         592 --line251
+                         593 ..lin.92e7b8fc..f8f9acec.0_28::
+                         594 .LDWlin28:
+000001dc 61da            595 	cmp	1,r27
+000001de da05*           596 	bne	.L308
+                         597 --252:     {
+                         598 --253:         p_ISD->service_result = SERV_PRM_ERROR;
+                         599 --line253
+                         600 ..lin.92e7b8fc..f8f9acec.0_29::
+                         601 .LDWlin29:
+000001e0 040a            602 	mov	4,r1
+000001e2 7d0f0d00        603 	st.w	r1,12[r29]
+000001e6 d505*           604 	br	.L307
+                         605 .L308:
+                         606 --254:     }
+                         607 --255:     else
+                         608 --256:     {
+                         609 --257:         p_ISD->service_result = SERV_CRYPT_ERROR;
+                         610 --line257
+                         611 ..lin.92e7b8fc..f8f9acec.0_30::
+                         612 .LDWlin30:
+000001e8 200e1a00        613 	movea	26,zero,r1
+000001ec 7d0f0d00        614 	st.w	r1,12[r29]
+                         615 .L307:
+                         616 --258:     }
+                         617 --260:     return(err);
+000001f0 1b50            618 	mov	r27,r10
+                         619 --	    .ef
+                         620 .LDW31:
+000001f2 23ff1d00        621 	ld.w	28[sp],lp
+000001f6 23ef0500        622 	ld.w	4[sp],r29
+000001fa 23e70900        623 	ld.w	8[sp],r28
+000001fe 23df0d00        624 	ld.w	12[sp],r27
+00000202 23d71100        625 	ld.w	16[sp],r26
+00000206 23cf1500        626 	ld.w	20[sp],r25
+0000020a 23c71900        627 	ld.w	24[sp],r24
+0000020e 031e2000        628 	addi	32,sp,sp
+                         629 .L487:
+                         630 	.jumptype return
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+00000212 7f00            631 	jmp	[lp]
+                         632 --line257
+                         633 ..lin.92e7b8fc..f8f9acec.0_31::
+                         634 	.type	_s_01_FinalizeHash,@function
+                         635 	.size	_s_01_FinalizeHash,.-_s_01_FinalizeHash
+                         636 	.type	_s_01_FinalizeHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,@function
+                         637 	.size	_s_01_FinalizeHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,.-_s_01_FinalizeHash..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                         638 	.align	2
+                         639 --_p_ISD	r29	local
+                         640 --_p_hash_desc	r24	local
+                         641 --_err	r27	local
+                         642 --_type_check_sha3	r25	local
+                         643 --_hash_logical	0[sp]	local
+                         644 
+                         645 --_p_job	r28	param
+                         646 --_p_hash_ctx	r26	param
+                         647 
+                         648 	.section ".bss","awb"
+                         649 .L410:
+                         650 	.type	.L410,@object
+                         651 	.size	.L410,0
+                         652 	.section ".ghcalltbl",""
+00000018 00000000*       653 .L480:	.word	.L479
+                         654 	.type	.L480,@object
+                         655 	.size	.L480,4
+0000001c 00000000*       656 .L482:	.word	.L481
+                         657 	.type	.L482,@object
+                         658 	.size	.L482,4
+00000020 00000000*       659 .L484:	.word	.L483
+                         660 	.type	.L484,@object
+                         661 	.size	.L484,4
+00000024 00000000*       662 .L486:	.word	.L485
+                         663 	.type	.L486,@object
+                         664 	.size	.L486,4
+                         665 	.section ".ghrettbl",""
+00000004 00000000*       666 .L488:	.word	.L487
+                         667 	.type	.L488,@object
+                         668 	.size	.L488,4
+                         669 	.data
+                         670 	.section ".icum_service.text","ax"
+                         671 
+                         672 --261: }
+                         673 
+                         674 --263: /**********************************************************************************
+                         675 --264: * ICU-M service
+                         676 --265: ***********************************************************************************/
+                         677 --267: /*===========================================================================
+                         678 --268:   Hash a message and format according to specific standard
+                         679 --269:   Command parameters extracted from the ICU-M service descriptor (ISD)
+                         680 --270:   [PUBLIC]
+                         681 --271:   ===========================================================================*/
+                         682 --273: /****************************************************************************************
+                         683 --274: * Function ID  : [ICUMFW_CD_S_01_PK_0046]:[ICUMFW_UD_S_01_PK_0046]
+                         684 --275: * Function name: s_01_GenerateHashSub()
+                         685 --276: * Description  : Sub routine of the hash generation
+                         686 --277: * Arguments    : (IN-OUT)  p_job               : Pointer to Job_parameter
+                         687 --278: *                (IN)      job_cycle           : Job cycle
+                         688 --279: * Return Value : R_SALIF_ER_OK
+                         689 --280: *                R_SALIF_ER_PARAM
+                         690 --281: *                R_SALIF_ER_PENDING
+                         691 --282: *                R_SALIF_ER_IN_PROCESS
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         692 --283: *                R_SALIF_ER_CRY_ALIGN_ERROR
+                         693 --284: *                R_SALIF_ER_CRY_TIMEOUT
+                         694 --285: *                R_SALIF_ER_CRY_AES_SEQUENCE_ERROR
+                         695 --286: *                R_SALIF_ER_CRY_RUNNING
+                         696 --287: *                R_SALIF_ER_CRY_INVALID_ARG
+                         697 --288: *                R_SALIF_ER_CRY_ERROR
+                         698 --289: *                R_SALIF_ER_CRY_BUFFER_OVERFLOW
+                         699 --290: *                R_SALIF_ER_CRY_INVALID_SIZE
+                         700 --291: *                R_SALIF_ER_CRY_INVALID_PACKET
+                         701 --292: *                R_SALIF_ER_CRY_KEYGEN_RETRYOVER
+                         702 --293: *                R_SALIF_ER_CRY_IN_PROGRESS
+                         703 --294: *                R_SALIF_ER_CRY_NOT_SUPPORT
+                         704 --295: *                R_SALIF_ER_CRY_STATUS_ERROR
+                         705 --296: *                R_SALIF_ER_CRY_PKCC_ERROR
+                         706 --297: *                R_SALIF_ER_CRY_DECOMP_ERROR
+                         707 --298: ****************************************************************************************/
+                         708 --299: static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
+                         709 	.align	2
+                         710 	.align	2
+                         711 	.align	2
+                         712 ..gh.f.a.2.e.2:
+                         713 	.type	..gh.f.a.2.e.2,@object
+                         714 	.size	..gh.f.a.2.e.2,0
+                         715 	.global	_s_01_GenerateHashSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                         716 _s_01_GenerateHashSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.:
+                         717 _s_01_GenerateHashSub:
+00000214 031eccff        718 	addi	-52,sp,sp
+00000218 63ff3100        719 	st.w	lp,48[sp]
+0000021c 63af2d00        720 	st.w	r21,44[sp]
+00000220 63ef0d00        721 	st.w	r29,12[sp]
+00000224 63b72900        722 	st.w	r22,40[sp]
+00000228 63bf2500        723 	st.w	r23,36[sp]
+0000022c 63c72100        724 	st.w	r24,32[sp]
+00000230 63cf1d00        725 	st.w	r25,28[sp]
+00000234 63d71900        726 	st.w	r26,24[sp]
+00000238 63df1500        727 	st.w	r27,20[sp]
+0000023c 63e71100        728 	st.w	r28,16[sp]
+00000240 06e8            729 	mov	r6,r29
+00000242 07a8            730 	mov	r7,r21
+                         731 --	    .bf
+                         732 .LDW41:
+                         733 --300: {
+                         734 --301:     r_icumif_isd_t  *p_ISD;
+                         735 --302:     uint32_t        *p_hash_ctx;
+                         736 --304:     uint32_t         err;
+                         737 --305:     uint8_t          result;
+                         738 --306:     uint32_t         skip_flg;
+                         739 --307:     uint32_t         remaining_byte_size;
+                         740 --308:     uint32_t         job_slice_size;
+                         741 --309:     uint32_t         type_check_sha3;
+                         742 --311:     remap_ptr_manip_t     source_logical;
+                         743 --312:     type_check_sha3 = NUM0;
+00000244 00b2            744 	mov	0,r22
+                         745 --315:     /* retrieve the service handler */
+                         746 --316:     p_ISD = p_job->p_ISD;
+00000246 3ddf0100        747 	ld.w	0[r29],r27
+                         748 --317:     err = ER_OK;
+0000024a 00ca            749 	mov	0,r25
+                         750 --318:     skip_flg = FLG_OFF;
+0000024c 00e2            751 	mov	0,r28
+                         752 --320:     if (NULL != p_job->prm.job_hash.p_hash_ctx)
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+0000024e 3d0f1d00        753 	ld.w	28[r29],r1
+00000252 e009            754 	cmp	zero,r1
+00000254 f22d*           755 	be	.L491
+                         756 --321:     {
+                         757 --322:         p_hash_ctx = p_job->prm.job_hash.p_hash_ctx;
+                         758 --line322
+                         759 ..lin.92e7b8fc..a02e132f.0_32::
+                         760 .LDWlin32:
+00000256 3dd71d00        761 	ld.w	28[r29],r26
+                         762 --323:     
+                         763 --324:         /* retrieves the (remaining) number of remaining bytes to process */
+                         764 --325:         /* and the number of bytes to process per job round */
+                         765 --326:         
+                         766 --327:         /* All previously received messages are processed. or first JOB_UPDATE */
+                         767 --328:         if (p_job->prm.job_hash.nb_bytes == 0UL)
+0000025a 3d0f1100        768 	ld.w	16[r29],r1
+0000025e e009            769 	cmp	zero,r1
+00000260 9a0d*           770 	bne	.L495
+                         771 --329:         {
+                         772 --330:             /* copy the source address within the job description */
+                         773 --331:             p_job->prm.job_hash.p_source = p_ISD->prm.HASH.p_message;
+                         774 --line331
+                         775 ..lin.92e7b8fc..a02e132f.0_33::
+                         776 .LDWlin33:
+00000262 3b0f2100        777 	ld.w	32[r27],r1
+00000266 7d0f1500        778 	st.w	r1,20[r29]
+                         779 --332:         
+                         780 --333:             /* indicates how many bytes to process in the job */
+                         781 --334:             p_job->prm.job_hash.nb_bytes = p_ISD->prm.HASH.message_size_in_bytes;
+0000026a 3b0f3100        782 	ld.w	48[r27],r1
+0000026e 7d0f1100        783 	st.w	r1,16[r29]
+                         784 .L495:
+                         785 --335:         }
+                         786 --336:         else
+                         787 --337:         {
+                         788 --338:             /* do nothing */
+                         789 --339:         }
+                         790 --340:         
+                         791 --341:         remaining_byte_size = p_job->prm.job_hash.nb_bytes;
+00000272 3dc71100        792 	ld.w	16[r29],r24
+                         793 --342:         job_slice_size = (uint32_t)p_job->prm.job_hash.nb_bytes_per_round;
+00000276 fdbf1900        794 	ld.hu	24[r29],r23
+                         795 --343:         
+                         796 --344:         /* If "remaining_byte_size" is greater than 0, L_HASH_Update() is always performed below. */
+                         797 --345:         if (remaining_byte_size > 0UL)
+0000027a e0c1            798 	cmp	zero,r24
+0000027c 8325*           799 	bnh	.L502
+                         800 --346:         {
+                         801 --347:             /* make sure the source address range is valid */
+                         802 --348:             (void)MM_FLS_CheckMemory((uint32_t)p_job->prm.job_hash.p_source,
+                         803 --line348
+                         804 ..lin.92e7b8fc..a02e132f.0_34::
+                         805 .LDWlin34:
+0000027e 3d371500        806 	ld.w	20[r29],r6
+00000282 3d3f1100        807 	ld.w	16[r29],r7
+00000286 9d4f0d00        808 	ld.bu	12[r29],r9
+0000028a 230e0700        809 	movea	7,sp,r1
+0000028e 630f0100        810 	st.w	r1,0[sp]
+00000292 0042            811 	mov	0,r8
+                         812 .L1018:
+                         813 	jarl	_MM_FLS_CheckMemory,lp
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         813 <EXPANSION BEGIN>
+                         813 jarl22 _MM_FLS_CheckMemory , lp 
+00000294 80ff0000*       813 <EXPANSION END>
+                         814 --349:                                       p_job->prm.job_hash.nb_bytes,
+                         815 --350:                                       FLS_CHK_MEM_SOURCE,
+                         816 --351:                                       p_job->expansion_service,
+                         817 --352:                                       &result);
+                         818 --353:             if(result != FLS_CHK_OK)
+                         819 --line353
+                         820 ..lin.92e7b8fc..a02e132f.0_35::
+                         821 .LDWlin35:
+00000298 a30f0700        822 	ld.bu	7[sp],r1
+0000029c 610a            823 	cmp	1,r1
+0000029e f20d*           824 	be	.L502
+                         825 --354:             {
+                         826 --355:                 p_ISD->service_result = SERV_SRC_MEM_ERROR;
+                         827 --line355
+                         828 ..lin.92e7b8fc..a02e132f.0_36::
+                         829 .LDWlin36:
+000002a0 0c0a            830 	mov	12,r1
+000002a2 7b0f0d00        831 	st.w	r1,12[r27]
+                         832 --356:                 (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+000002a6 1a38            833 	mov	r26,r7
+000002a8 0332            834 	mov	3,r6
+                         835 .L1020:
+                         836 	jarl	_ML_CTX_Free,lp
+                         836 <EXPANSION BEGIN>
+                         836 jarl22 _ML_CTX_Free , lp 
+000002aa 80ff0000*       836 <EXPANSION END>
+                         837 --357:                 skip_flg = FLG_ON;
+                         838 --line357
+                         839 ..lin.92e7b8fc..a02e132f.0_37::
+                         840 .LDWlin37:
+000002ae 01e2            841 	mov	1,r28
+000002b0 e505*           842 	br	.L502
+                         843 .L491:
+                         844 --358:             }
+                         845 --359:             else
+                         846 --360:             {
+                         847 --361:                 /* do nothing */
+                         848 --362:             }
+                         849 --363:         }
+                         850 --364:         else
+                         851 --365:         {
+                         852 --366:             /* do nothing */
+                         853 --367:         }
+                         854 --368:     }
+                         855 --369:     else
+                         856 --370:     {
+                         857 --371:         p_ISD->service_result = SERV_SEQUENCE_ERROR;
+                         858 --line371
+                         859 ..lin.92e7b8fc..a02e132f.0_38::
+                         860 .LDWlin38:
+000002b2 200e2e00        861 	movea	46,zero,r1
+000002b6 7b0f0d00        862 	st.w	r1,12[r27]
+                         863 --372:         skip_flg = FLG_ON;
+000002ba 01e2            864 	mov	1,r28
+                         865 .L502:
+                         866 --373:     }
+                         867 --375:     if (skip_flg == FLG_OFF)
+000002bc e0e1            868 	cmp	zero,r28
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+000002be ea075101*       869 	bne	.L543
+                         870 --376:     {
+                         871 --377:         type_check_sha3 = s_01_IsHashTypeSha3(p_ISD->prm.HASH.hash_primitive);
+                         872 --line377
+                         873 ..lin.92e7b8fc..a02e132f.0_39::
+                         874 .LDWlin39:
+000002c2 3b373900        875 	ld.w	56[r27],r6
+                         876 .L1022:
+                         877 	jarl	_s_01_IsHashTypeSha3,lp
+                         877 <EXPANSION BEGIN>
+                         877 jarl22 _s_01_IsHashTypeSha3 , lp 
+000002c6 80ff7801*       877 <EXPANSION END>
+000002ca 0ab0            878 	mov	r10,r22
+                         879 --379:         if ((NUM1 != type_check_sha3) ||
+                         880 --line379
+                         881 ..lin.92e7b8fc..a02e132f.0_40::
+                         882 .LDWlin40:
+000002cc 61b2            883 	cmp	1,r22
+000002ce 8a15*           884 	bne	.L506
+                         885 --line380
+                         886 ..lin.92e7b8fc..a02e132f.0_41::
+                         887 .LDWlin41:
+000002d0 3d0f2500        888 	ld.w	36[r29],r1
+000002d4 1f12            889 	mov	-1,r2
+000002d6 8209            890 	subr	r2,r1
+000002d8 f809            891 	cmp	r24,r1
+000002da e1072701*       892 	bl	.L505
+                         893 --line381
+                         894 ..lin.92e7b8fc..a02e132f.0_42::
+                         895 .LDWlin42:
+000002de 3d0f2500        896 	ld.w	36[r29],r1
+000002e2 3d172100        897 	ld.w	32[r29],r2
+000002e6 d809            898 	add	r24,r1
+000002e8 e111            899 	cmp	r1,r2
+000002ea e1071701*       900 	bl	.L505
+                         901 .L506:
+                         902 --380:             (((MAX_U32 - p_job->prm.job_hash.processed_data_size) >= remaining_byte_size) &&
+                         903 --381:              (p_job->prm.job_hash.total_msg_size_in_bytes >=
+                         904 --382:              (remaining_byte_size + p_job->prm.job_hash.processed_data_size))))
+                         905 --383:         {
+                         906 --384:             /* Get Remap(Convert Physical address -> Logical Address) */
+                         907 --385:             (void)D_REMAP_GetLogicalAddrs((uint32_t)p_job->prm.job_hash.p_source, &source_logical.val);
+                         908 --line385
+                         909 ..lin.92e7b8fc..a02e132f.0_43::
+                         910 .LDWlin43:
+000002ee 3d371500        911 	ld.w	20[r29],r6
+000002f2 233e0800        912 	movea	8,sp,r7
+                         913 .L1024:
+                         914 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                         914 <EXPANSION BEGIN>
+                         914 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+000002f6 80ff0000*       914 <EXPANSION END>
+                         915 --386:             if(job_slice_size == 0uL)
+                         916 --line386
+                         917 ..lin.92e7b8fc..a02e132f.0_44::
+                         918 .LDWlin44:
+000002fa e0b9            919 	cmp	zero,r23
+000002fc da2d*           920 	bne	.L509
+                         921 --387:             {
+                         922 --388:                 if (remaining_byte_size > 0uL)
+                         923 --line388
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         924 ..lin.92e7b8fc..a02e132f.0_45::
+                         925 .LDWlin45:
+000002fe e0c1            926 	cmp	zero,r24
+00000300 b31d*           927 	bnh	.L516
+                         928 --389:                 {
+                         929 --390:                     /* process the hash all at once */
+                         930 --391:                     err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, remaining_byte_size);
+                         931 --line391
+                         932 ..lin.92e7b8fc..a02e132f.0_46::
+                         933 .LDWlin46:
+00000302 233f0900        934 	ld.w	8[sp],r7
+00000306 1a30            935 	mov	r26,r6
+00000308 1840            936 	mov	r24,r8
+                         937 .L1026:
+                         938 	jarl	_L_HASH_Update,lp
+                         938 <EXPANSION BEGIN>
+                         938 jarl22 _L_HASH_Update , lp 
+0000030a 80ff0000*       938 <EXPANSION END>
+0000030e 0ac8            939 	mov	r10,r25
+                         940 --392:                     if (ER_OK != err)
+                         941 --line392
+                         942 ..lin.92e7b8fc..a02e132f.0_47::
+                         943 .LDWlin47:
+00000310 e0c9            944 	cmp	zero,r25
+00000312 b20d*           945 	be	.L513
+                         946 --393:                     {
+                         947 --394:                         /* error on hash processing */
+                         948 --395:                         p_ISD->service_result = SERV_CRYPT_ERROR;
+                         949 --line395
+                         950 ..lin.92e7b8fc..a02e132f.0_48::
+                         951 .LDWlin48:
+00000314 200e1a00        952 	movea	26,zero,r1
+00000318 7b0f0d00        953 	st.w	r1,12[r27]
+                         954 --396:                         (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+0000031c 1a38            955 	mov	r26,r7
+0000031e 0332            956 	mov	3,r6
+                         957 .L1028:
+                         958 	jarl	_ML_CTX_Free,lp
+                         958 <EXPANSION BEGIN>
+                         958 jarl22 _ML_CTX_Free , lp 
+00000320 80ff0000*       958 <EXPANSION END>
+                         959 --397:                         skip_flg = FLG_ON;
+                         960 --line397
+                         961 ..lin.92e7b8fc..a02e132f.0_49::
+                         962 .LDWlin49:
+00000324 01e2            963 	mov	1,r28
+00000326 850d*           964 	br	.L516
+                         965 .L513:
+                         966 --398:                     }
+                         967 --399:                     else
+                         968 --400:                     {
+                         969 --401:                         p_job->prm.job_hash.nb_bytes = 0UL;
+                         970 --line401
+                         971 ..lin.92e7b8fc..a02e132f.0_50::
+                         972 .LDWlin50:
+00000328 7d071100        973 	st.w	zero,16[r29]
+                         974 --402:                         p_job->prm.job_hash.processed_data_size =
+0000032c 3d0f2500        975 	ld.w	36[r29],r1
+00000330 d809            976 	add	r24,r1
+00000332 7d0f2500        977 	st.w	r1,36[r29]
+                         978 .L516:
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                         979 --403:                         p_job->prm.job_hash.processed_data_size + remaining_byte_size;
+                         980 --404:                     }
+                         981 --405:                 }
+                         982 --406:                 else
+                         983 --407:                 {
+                         984 --408:                     /* do nothing */
+                         985 --409:                 }
+                         986 --411:                 if (skip_flg == FLG_OFF)
+00000336 e0e1            987 	cmp	zero,r28
+00000338 ba6d*           988 	bne	.L543
+                         989 --412:                 {
+                         990 --413:                     if (((uint8_t)job_cycle & (uint8_t)JOB_FINISH) != (uint8_t)0)
+                         991 --line413
+                         992 ..lin.92e7b8fc..a02e132f.0_51::
+                         993 .LDWlin51:
+0000033a 1508            994 	mov	r21,r1
+0000033c 8100            995 	zxb	r1
+0000033e 830a            996 	shr	3,r1
+00000340 e905*           997 	bnl	.L519
+                         998 --414:                     {
+                         999 --415:                         /* final step */
+                        1000 --416:                         (void)s_01_FinalizeHash(p_job, (hash_ctx_t *)p_hash_ctx);
+                        1001 --line416
+                        1002 ..lin.92e7b8fc..a02e132f.0_52::
+                        1003 .LDWlin52:
+00000342 1d30           1004 	mov	r29,r6
+00000344 1a38           1005 	mov	r26,r7
+                        1006 .L1030:
+                        1007 	jarl	_s_01_FinalizeHash,lp
+                        1007 <EXPANSION BEGIN>
+                        1007 jarl22 _s_01_FinalizeHash , lp 
+00000346 bfff08fe*      1007 <EXPANSION END>
+0000034a a565*          1008 	br	.L543
+                        1009 .L519:
+                        1010 --417:                     }
+                        1011 --418:                     else 
+                        1012 --419:                     {
+                        1013 --420:                         p_job->keep.job_cycle = 1u;
+                        1014 --line420
+                        1015 ..lin.92e7b8fc..a02e132f.0_53::
+                        1016 .LDWlin53:
+0000034c dd0f0d00       1017 	set1	1,13[r29]
+                        1018 --421:                         p_ISD->service_result = SERV_OK;
+00000350 7b070d00       1019 	st.w	zero,12[r27]
+00000354 d55d*          1020 	br	.L543
+                        1021 .L509:
+                        1022 --422:                     }
+                        1023 --423:                 }
+                        1024 --424:                 else
+                        1025 --425:                 {
+                        1026 --426:                     /* do nothing */
+                        1027 --427:                 }
+                        1028 --429:             }
+                        1029 --430:             else
+                        1030 --431:             {
+                        1031 --432:                 /* The remaining bytes is larger than the bytes processed at one time, and JOB_UPDATE is omitted.  */
+                        1032 --433:                 /* Same as specifying to process all at once(job_slice = 0). Therefore, even if the n is less than */
+                        1033 --434:                 /* or equal to the m, termination processing is performed if it is JOB_FINISH.                     */
+                        1034 --435:                 if(remaining_byte_size <= job_slice_size)
+                        1035 --line435
+                        1036 ..lin.92e7b8fc..a02e132f.0_54::
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1037 .LDWlin54:
+00000356 f7c1           1038 	cmp	r23,r24
+00000358 db2d*          1039 	bh	.L524
+                        1040 --436:                 {
+                        1041 --437:                     if (remaining_byte_size > 0uL)
+                        1042 --line437
+                        1043 ..lin.92e7b8fc..a02e132f.0_55::
+                        1044 .LDWlin55:
+0000035a e0c1           1045 	cmp	zero,r24
+0000035c b31d*          1046 	bnh	.L531
+                        1047 --438:                     {
+                        1048 --439:                         /* last job round */
+                        1049 --440:                         err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, remaining_byte_size);
+                        1050 --line440
+                        1051 ..lin.92e7b8fc..a02e132f.0_56::
+                        1052 .LDWlin56:
+0000035e 233f0900       1053 	ld.w	8[sp],r7
+00000362 1a30           1054 	mov	r26,r6
+00000364 1840           1055 	mov	r24,r8
+                        1056 .L1032:
+                        1057 	jarl	_L_HASH_Update,lp
+                        1057 <EXPANSION BEGIN>
+                        1057 jarl22 _L_HASH_Update , lp 
+00000366 80ff0000*      1057 <EXPANSION END>
+0000036a 0ac8           1058 	mov	r10,r25
+                        1059 --441:                         if (ER_OK != err)
+                        1060 --line441
+                        1061 ..lin.92e7b8fc..a02e132f.0_57::
+                        1062 .LDWlin57:
+0000036c e0c9           1063 	cmp	zero,r25
+0000036e b20d*          1064 	be	.L528
+                        1065 --442:                         {
+                        1066 --443:                             /* error on hash processing */
+                        1067 --444:                             p_ISD->service_result = SERV_CRYPT_ERROR;
+                        1068 --line444
+                        1069 ..lin.92e7b8fc..a02e132f.0_58::
+                        1070 .LDWlin58:
+00000370 200e1a00       1071 	movea	26,zero,r1
+00000374 7b0f0d00       1072 	st.w	r1,12[r27]
+                        1073 --445:                             (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+00000378 1a38           1074 	mov	r26,r7
+0000037a 0332           1075 	mov	3,r6
+                        1076 .L1034:
+                        1077 	jarl	_ML_CTX_Free,lp
+                        1077 <EXPANSION BEGIN>
+                        1077 jarl22 _ML_CTX_Free , lp 
+0000037c 80ff0000*      1077 <EXPANSION END>
+                        1078 --446:                             skip_flg = FLG_ON;
+                        1079 --line446
+                        1080 ..lin.92e7b8fc..a02e132f.0_59::
+                        1081 .LDWlin59:
+00000380 01e2           1082 	mov	1,r28
+00000382 850d*          1083 	br	.L531
+                        1084 .L528:
+                        1085 --447:                         }
+                        1086 --448:                         else
+                        1087 --449:                         {
+                        1088 --450:                             p_job->prm.job_hash.nb_bytes = 0UL;
+                        1089 --line450
+                        1090 ..lin.92e7b8fc..a02e132f.0_60::
+                        1091 .LDWlin60:
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+00000384 7d071100       1092 	st.w	zero,16[r29]
+                        1093 --451:                             p_job->prm.job_hash.processed_data_size =
+00000388 3d0f2500       1094 	ld.w	36[r29],r1
+0000038c d809           1095 	add	r24,r1
+0000038e 7d0f2500       1096 	st.w	r1,36[r29]
+                        1097 .L531:
+                        1098 --452:                             p_job->prm.job_hash.processed_data_size + remaining_byte_size;
+                        1099 --453:                         }
+                        1100 --454:                     }
+                        1101 --455:                     else
+                        1102 --456:                     {
+                        1103 --457:                         /* do nothing */
+                        1104 --458:                     }
+                        1105 --460:                     if (skip_flg == FLG_OFF)
+00000392 e0e1           1106 	cmp	zero,r28
+00000394 da3d*          1107 	bne	.L543
+                        1108 --461:                     {
+                        1109 --462:                         if (((uint8_t)job_cycle & (uint8_t)JOB_FINISH) != 0)
+                        1110 --line462
+                        1111 ..lin.92e7b8fc..a02e132f.0_61::
+                        1112 .LDWlin61:
+00000396 1508           1113 	mov	r21,r1
+00000398 8100           1114 	zxb	r1
+0000039a 830a           1115 	shr	3,r1
+0000039c e905*          1116 	bnl	.L534
+                        1117 --463:                         {
+                        1118 --464:                             /* final step */
+                        1119 --465:                             (void)s_01_FinalizeHash(p_job, (hash_ctx_t *)p_hash_ctx);
+                        1120 --line465
+                        1121 ..lin.92e7b8fc..a02e132f.0_62::
+                        1122 .LDWlin62:
+0000039e 1d30           1123 	mov	r29,r6
+000003a0 1a38           1124 	mov	r26,r7
+                        1125 .L1036:
+                        1126 	jarl	_s_01_FinalizeHash,lp
+                        1126 <EXPANSION BEGIN>
+                        1126 jarl22 _s_01_FinalizeHash , lp 
+000003a2 bfffacfd*      1126 <EXPANSION END>
+000003a6 c535*          1127 	br	.L543
+                        1128 .L534:
+                        1129 --466:                         }
+                        1130 --467:                         else 
+                        1131 --468:                         {
+                        1132 --469:                             p_job->keep.job_cycle = 1u;
+                        1133 --line469
+                        1134 ..lin.92e7b8fc..a02e132f.0_63::
+                        1135 .LDWlin63:
+000003a8 dd0f0d00       1136 	set1	1,13[r29]
+                        1137 --470:                             p_ISD->service_result = SERV_OK;
+000003ac 7b070d00       1138 	st.w	zero,12[r27]
+000003b0 f52d*          1139 	br	.L543
+                        1140 .L524:
+                        1141 --471:                         }
+                        1142 --472:                     }
+                        1143 --473:                     else
+                        1144 --474:                     {
+                        1145 --475:                         /* do nothing */
+                        1146 --476:                     }
+                        1147 --477:                 }
+                        1148 --478:                 else
+                        1149 --479:                 {
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1150 --480:                     /* next job round */
+                        1151 --481:                     err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, job_slice_size);
+                        1152 --line481
+                        1153 ..lin.92e7b8fc..a02e132f.0_64::
+                        1154 .LDWlin64:
+000003b2 233f0900       1155 	ld.w	8[sp],r7
+000003b6 1a30           1156 	mov	r26,r6
+000003b8 1740           1157 	mov	r23,r8
+                        1158 .L1038:
+                        1159 	jarl	_L_HASH_Update,lp
+                        1159 <EXPANSION BEGIN>
+                        1159 jarl22 _L_HASH_Update , lp 
+000003ba 80ff0000*      1159 <EXPANSION END>
+000003be 0ac8           1160 	mov	r10,r25
+                        1161 --482:                     if (ER_OK != err)
+                        1162 --line482
+                        1163 ..lin.92e7b8fc..a02e132f.0_65::
+                        1164 .LDWlin65:
+000003c0 e0c9           1165 	cmp	zero,r25
+000003c2 b20d*          1166 	be	.L539
+                        1167 --483:                     {
+                        1168 --484:                         /* error on hash processing */
+                        1169 --485:                         p_ISD->service_result = SERV_CRYPT_ERROR;
+                        1170 --line485
+                        1171 ..lin.92e7b8fc..a02e132f.0_66::
+                        1172 .LDWlin66:
+000003c4 200e1a00       1173 	movea	26,zero,r1
+000003c8 7b0f0d00       1174 	st.w	r1,12[r27]
+                        1175 --486:                         (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+000003cc 1a38           1176 	mov	r26,r7
+000003ce 0332           1177 	mov	3,r6
+                        1178 .L1040:
+                        1179 	jarl	_ML_CTX_Free,lp
+                        1179 <EXPANSION BEGIN>
+                        1179 jarl22 _ML_CTX_Free , lp 
+000003d0 80ff0000*      1179 <EXPANSION END>
+                        1180 --487:                         skip_flg = FLG_ON;
+                        1181 --line487
+                        1182 ..lin.92e7b8fc..a02e132f.0_67::
+                        1183 .LDWlin67:
+000003d4 01e2           1184 	mov	1,r28
+000003d6 c51d*          1185 	br	.L543
+                        1186 .L539:
+                        1187 --488:                     }
+                        1188 --489:                     else
+                        1189 --490:                     {
+                        1190 --491:                         /* update pointers and number of bytes remaining */
+                        1191 --492:                         p_job->prm.job_hash.nb_bytes -= job_slice_size;
+                        1192 --line492
+                        1193 ..lin.92e7b8fc..a02e132f.0_68::
+                        1194 .LDWlin68:
+000003d8 3d0f1100       1195 	ld.w	16[r29],r1
+000003dc b709           1196 	sub	r23,r1
+000003de 7d0f1100       1197 	st.w	r1,16[r29]
+                        1198 --493:                         p_job->prm.job_hash.p_source += job_slice_size;
+000003e2 3d0f1500       1199 	ld.w	20[r29],r1
+000003e6 d709           1200 	add	r23,r1
+000003e8 7d0f1500       1201 	st.w	r1,20[r29]
+                        1202 --494:                         p_job->prm.job_hash.processed_data_size =
+000003ec 3d0f2500       1203 	ld.w	36[r29],r1
+000003f0 d709           1204 	add	r23,r1
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+000003f2 7d0f2500       1205 	st.w	r1,36[r29]
+                        1206 --495:                         p_job->prm.job_hash.processed_data_size + job_slice_size;
+                        1207 --497:                         p_ISD->service_result = SERV_IN_PROCESS;
+000003f6 800effff       1208 	ori	65535,zero,r1
+000003fa 7b0f0d00       1209 	st.w	r1,12[r27]
+000003fe 850d*          1210 	br	.L543
+                        1211 .L505:
+                        1212 --498:                     }
+                        1213 --499:                 } /* end of else */
+                        1214 --500:             } /* end of else */
+                        1215 --501:         } /* end of if ((NUM1 != type_check_sha3) ||                                                     */
+                        1216 --502:           /*            (((MAX_U32 - p_job->prm.job_hash.processed_data_size) >= remaining_byte_size) && */
+                        1217 --503:           /*             (p_job->prm.job_hash.total_msg_size_in_bytes >=                                 */
+                        1218 --504:           /*             (remaining_byte_size + p_job->prm.job_hash.processed_data_size))))              */
+                        1219 --505:         else
+                        1220 --506:         {
+                        1221 --507:             p_ISD->service_result = SERV_PRM_ERROR;
+                        1222 --line507
+                        1223 ..lin.92e7b8fc..a02e132f.0_69::
+                        1224 .LDWlin69:
+00000400 040a           1225 	mov	4,r1
+00000402 7b0f0d00       1226 	st.w	r1,12[r27]
+                        1227 --508:             (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+00000406 1a38           1228 	mov	r26,r7
+00000408 0332           1229 	mov	3,r6
+                        1230 .L1042:
+                        1231 	jarl	_ML_CTX_Free,lp
+                        1231 <EXPANSION BEGIN>
+                        1231 jarl22 _ML_CTX_Free , lp 
+0000040a 80ff0000*      1231 <EXPANSION END>
+                        1232 .L543:
+                        1233 --509:         }
+                        1234 --510:     } /* end of if (FLG_OFF == skip_flg) */
+                        1235 --511:     else
+                        1236 --512:     {
+                        1237 --513:         /* do nothing */
+                        1238 --514:     }
+                        1239 --516:     return err;
+                        1240 --line516
+                        1241 ..lin.92e7b8fc..a02e132f.0_70::
+                        1242 .LDWlin70:
+0000040e 1950           1243 	mov	r25,r10
+                        1244 --	    .ef
+                        1245 .LDW51:
+00000410 23ff3100       1246 	ld.w	48[sp],lp
+00000414 23ef0d00       1247 	ld.w	12[sp],r29
+00000418 23e71100       1248 	ld.w	16[sp],r28
+0000041c 23df1500       1249 	ld.w	20[sp],r27
+00000420 23d71900       1250 	ld.w	24[sp],r26
+00000424 23cf1d00       1251 	ld.w	28[sp],r25
+00000428 23c72100       1252 	ld.w	32[sp],r24
+0000042c 23bf2500       1253 	ld.w	36[sp],r23
+00000430 23b72900       1254 	ld.w	40[sp],r22
+00000434 23af2d00       1255 	ld.w	44[sp],r21
+00000438 031e3400       1256 	addi	52,sp,sp
+                        1257 .L1044:
+                        1258 	.jumptype return
+0000043c 7f00           1259 	jmp	[lp]
+                        1260 --line516
+                        1261 ..lin.92e7b8fc..a02e132f.0_71::
+                        1262 	.type	_s_01_GenerateHashSub,@function
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1263 	.size	_s_01_GenerateHashSub,.-_s_01_GenerateHashSub
+                        1264 	.type	_s_01_GenerateHashSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,@function
+                        1265 	.size	_s_01_GenerateHashSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,.-_s_01_GenerateHashSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                        1266 	.align	2
+                        1267 --_p_ISD	r27	local
+                        1268 --_p_hash_ctx	r26	local
+                        1269 --_err	r25	local
+                        1270 --_result	7[sp]	local
+                        1271 --_skip_flg	r28	local
+                        1272 --_remaining_byte_size	r24	local
+                        1273 --_job_slice_size	r23	local
+                        1274 --_type_check_sha3	r22	local
+                        1275 --_source_logical	8[sp]	local
+                        1276 
+                        1277 --_p_job	r29	param
+                        1278 --_job_cycle	r21	param
+                        1279 
+                        1280 	.section ".bss","awb"
+                        1281 .L814:
+                        1282 	.type	.L814,@object
+                        1283 	.size	.L814,0
+                        1284 	.section ".ghcalltbl",""
+00000028 00000000*      1285 .L1019:	.word	.L1018
+                        1286 	.type	.L1019,@object
+                        1287 	.size	.L1019,4
+0000002c 00000000*      1288 .L1021:	.word	.L1020
+                        1289 	.type	.L1021,@object
+                        1290 	.size	.L1021,4
+00000030 00000000*      1291 .L1023:	.word	.L1022
+                        1292 	.type	.L1023,@object
+                        1293 	.size	.L1023,4
+00000034 00000000*      1294 .L1025:	.word	.L1024
+                        1295 	.type	.L1025,@object
+                        1296 	.size	.L1025,4
+00000038 00000000*      1297 .L1027:	.word	.L1026
+                        1298 	.type	.L1027,@object
+                        1299 	.size	.L1027,4
+0000003c 00000000*      1300 .L1029:	.word	.L1028
+                        1301 	.type	.L1029,@object
+                        1302 	.size	.L1029,4
+00000040 00000000*      1303 .L1031:	.word	.L1030
+                        1304 	.type	.L1031,@object
+                        1305 	.size	.L1031,4
+00000044 00000000*      1306 .L1033:	.word	.L1032
+                        1307 	.type	.L1033,@object
+                        1308 	.size	.L1033,4
+00000048 00000000*      1309 .L1035:	.word	.L1034
+                        1310 	.type	.L1035,@object
+                        1311 	.size	.L1035,4
+0000004c 00000000*      1312 .L1037:	.word	.L1036
+                        1313 	.type	.L1037,@object
+                        1314 	.size	.L1037,4
+00000050 00000000*      1315 .L1039:	.word	.L1038
+                        1316 	.type	.L1039,@object
+                        1317 	.size	.L1039,4
+00000054 00000000*      1318 .L1041:	.word	.L1040
+                        1319 	.type	.L1041,@object
+                        1320 	.size	.L1041,4
+00000058 00000000*      1321 .L1043:	.word	.L1042
+                        1322 	.type	.L1043,@object
+                        1323 	.size	.L1043,4
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1324 	.section ".ghrettbl",""
+00000008 00000000*      1325 .L1045:	.word	.L1044
+                        1326 	.type	.L1045,@object
+                        1327 	.size	.L1045,4
+                        1328 	.data
+                        1329 	.section ".icum_service.text","ax"
+                        1330 
+                        1331 --517: }
+                        1332 
+                        1333 --519: /****************************************************************************************
+                        1334 --520: * Function ID  : [ICUMFW_CD_S_01_PK_0053]:[ICUMFW_UD_S_01_PK_0053]
+                        1335 --521: * Function name: s_01_IsHashTypeSha3()
+                        1336 --522: * Description  : # Check if the Hash primitive is SHA3 or not.
+                        1337 --523: * Arguments    : (IN) hash_primitive : hash primitive
+                        1338 --524: * Return Value : NUM0 : Hash type is not SHA3
+                        1339 --525: *                NUM1 : Hash type is SHA3
+                        1340 --526: ****************************************************************************************/
+                        1341 --527: static uint32_t s_01_IsHashTypeSha3(r_hash_primitive_t hash_primitive)
+                        1342 	.align	2
+                        1343 	.align	2
+                        1344 	.align	2
+                        1345 ..gh.f.a.2.e.3:
+                        1346 	.type	..gh.f.a.2.e.3,@object
+                        1347 	.size	..gh.f.a.2.e.3,0
+                        1348 	.global	_s_01_IsHashTypeSha3..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                        1349 _s_01_IsHashTypeSha3..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.:
+                        1350 _s_01_IsHashTypeSha3:
+0000043e 0610           1351 	mov	r6,r2
+                        1352 --	    .bf
+                        1353 .LDW61:
+                        1354 --528: {
+                        1355 --529:     uint32_t rtn;
+                        1356 --531:     rtn = NUM0;
+00000440 000a           1357 	mov	0,r1
+                        1358 --533:     if (HASH_PRIMITIVE_SHA2_512_256 >= hash_primitive)
+00000442 6b12           1359 	cmp	11,r2
+00000444 a705*          1360 	ble	.L1050
+                        1361 --534:     {
+                        1362 --535:         /* do nothing */
+                        1363 --536:     }
+                        1364 --537:     else
+                        1365 --538:     {
+                        1366 --539:         rtn = NUM1;
+                        1367 --line539
+                        1368 ..lin.92e7b8fc..9c89afc7.0_72::
+                        1369 .LDWlin72:
+00000446 010a           1370 	mov	1,r1
+                        1371 .L1050:
+                        1372 --540:     }
+                        1373 --542:     return (rtn);
+00000448 0150           1374 	mov	r1,r10
+                        1375 --	    .ef
+                        1376 .LDW71:
+                        1377 .L1103:
+                        1378 	.jumptype return
+0000044a 7f00           1379 	jmp	[lp]
+                        1380 --line539
+                        1381 ..lin.92e7b8fc..9c89afc7.0_73::
+                        1382 	.type	_s_01_IsHashTypeSha3,@function
+                        1383 	.size	_s_01_IsHashTypeSha3,.-_s_01_IsHashTypeSha3
+                        1384 	.type	_s_01_IsHashTypeSha3..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,@function
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1385 	.size	_s_01_IsHashTypeSha3..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.,.-_s_01_IsHashTypeSha3..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash.
+                        1386 	.align	2
+                        1387 --_rtn	r1	local
+                        1388 
+                        1389 --_hash_primitive	r2	param
+                        1390 
+                        1391 	.section ".bss","awb"
+                        1392 .L1082:
+                        1393 	.type	.L1082,@object
+                        1394 	.size	.L1082,0
+                        1395 	.section ".ghrettbl",""
+0000000c 00000000*      1396 .L1104:	.word	.L1103
+                        1397 	.type	.L1104,@object
+                        1398 	.size	.L1104,4
+                        1399 	.data
+                        1400 	.section ".icum_service.text","ax"
+                        1401 
+                        1402 --543: }
+                        1403 
+                        1404 --545: /****************************************************************************************
+                        1405 --546: * Function ID  : [ICUMFW_CD_S_01_PK_0001]:[ICUMFW_UD_S_01_PK_0001]
+                        1406 --547: * Function name: S_01_GenerateHash()
+                        1407 --548: * Description  : # Data is exchanged with dispatcher, and in it,
+                        1408 --549: *                  control of HASH initialization, HASH intermediate processing,
+                        1409 --550: *                  HASH termination processing is performed by processing result (state)
+                        1410 --551: *                  and values such as job_cycle.
+                        1411 --552: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                        1412 --553: * Return Value : SERV_REQUEST
+                        1413 --554: *              : SERV_PENDING
+                        1414 --555: *              : SERV_IN_PROCESS
+                        1415 --556: *              : SERV_CRYPT_ERROR
+                        1416 --557: *              : SERV_SRC_MEM_ERROR
+                        1417 --558: *              : SERV_DEST_MEM_ERROR
+                        1418 --559: *              : SERV_PRM_ERROR
+                        1419 --560: ****************************************************************************************/
+                        1420 --561: void S_01_GenerateHash(icum_job_t *p_job)
+                        1421 	.align	2
+                        1422 	.align	2
+                        1423 	.align	2
+                        1424 ..gh.f.a.2.e.4:
+                        1425 	.type	..gh.f.a.2.e.4,@object
+                        1426 	.size	..gh.f.a.2.e.4,0
+                        1427 	.global	_S_01_GenerateHash
+                        1428 _S_01_GenerateHash:
+0000044c 031ee4ff       1429 	addi	-28,sp,sp
+00000450 63ff1900       1430 	st.w	lp,24[sp]
+00000454 63df0d00       1431 	st.w	r27,12[sp]
+00000458 63cf1500       1432 	st.w	r25,20[sp]
+0000045c 63d71100       1433 	st.w	r26,16[sp]
+00000460 63e70900       1434 	st.w	r28,8[sp]
+00000464 63ef0500       1435 	st.w	r29,4[sp]
+00000468 06d8           1436 	mov	r6,r27
+                        1437 --	    .bf
+                        1438 .LDW81:
+                        1439 --562: {
+                        1440 --563:     r_icumif_isd_t  *p_isd;
+                        1441 --564:     uint32_t        *p_hash_ctx;
+                        1442 --565:     r_job_cycle_t    job_cycle;
+                        1443 --567:     uint32_t         err;
+                        1444 --568:     uint32_t         skip_flg;
+                        1445 --570:     /* retrieve the service handler */
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1446 --571:     p_isd = p_job->p_ISD;
+0000046a 3be70100       1447 	ld.w	0[r27],r28
+                        1448 --572:     err = ER_OK;
+0000046e 00d2           1449 	mov	0,r26
+                        1450 --573:     skip_flg = FLG_OFF;
+00000470 00ea           1451 	mov	0,r29
+                        1452 --575:     /* 1. range check of job cycle */
+                        1453 --576:     if ((JOB_INIT | JOB_UPDATE | JOB_FINISH) < p_isd->prm.HASH.job_cycle)
+00000472 3c0f4100       1454 	ld.w	64[r28],r1
+00000476 670a           1455 	cmp	7,r1
+00000478 e705*          1456 	ble	.L1107
+                        1457 --577:     {
+                        1458 --578:         p_isd->service_result = SERV_PRM_ERROR;
+                        1459 --line578
+                        1460 ..lin.92e7b8fc..9ee9dca5.0_74::
+                        1461 .LDWlin74:
+0000047a 040a           1462 	mov	4,r1
+0000047c 7c0f0d00       1463 	st.w	r1,12[r28]
+                        1464 --579:         skip_flg = FLG_ON;
+00000480 01ea           1465 	mov	1,r29
+00000482 950d*          1466 	br	.L1109
+                        1467 .L1107:
+                        1468 --580:     }
+                        1469 --581:     /* 2. When JOB_ALL_AT_ONCE is specified for job_cycle */
+                        1470 --582:     else if (JOB_ALL_AT_ONCE == p_isd->prm.HASH.job_cycle)
+                        1471 --line582
+                        1472 ..lin.92e7b8fc..9ee9dca5.0_75::
+                        1473 .LDWlin75:
+00000484 3c0f4100       1474 	ld.w	64[r28],r1
+00000488 e009           1475 	cmp	zero,r1
+0000048a ba05*          1476 	bne	.L1110
+                        1477 --583:     {
+                        1478 --584:         job_cycle = (r_job_cycle_t)(JOB_INIT | JOB_UPDATE | JOB_FINISH);
+                        1479 --line584
+                        1480 ..lin.92e7b8fc..9ee9dca5.0_76::
+                        1481 .LDWlin76:
+0000048c 07ca           1482 	mov	7,r25
+0000048e b505*          1483 	br	.L1109
+                        1484 .L1110:
+                        1485 --585:     }
+                        1486 --586:     else
+                        1487 --587:     {
+                        1488 --588:         job_cycle = p_isd->prm.HASH.job_cycle;
+                        1489 --line588
+                        1490 ..lin.92e7b8fc..9ee9dca5.0_77::
+                        1491 .LDWlin77:
+00000490 3ccf4100       1492 	ld.w	64[r28],r25
+                        1493 .L1109:
+                        1494 --589:     }
+                        1495 --591:     if (FLG_OFF == skip_flg)
+00000494 e0e9           1496 	cmp	zero,r29
+00000496 ea3d*          1497 	bne	.L1129
+                        1498 --592:     {
+                        1499 --593:         /* service just triggered? */
+                        1500 --594:         if ((NUM0 != (job_cycle & JOB_INIT))
+                        1501 --line594
+                        1502 ..lin.92e7b8fc..9ee9dca5.0_78::
+                        1503 .LDWlin78:
+00000498 1908           1504 	mov	r25,r1
+0000049a 810a           1505 	shr	1,r1
+0000049c b93d*          1506 	bnl	.L1129
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1507 --line595
+                        1508 ..lin.92e7b8fc..9ee9dca5.0_79::
+                        1509 .LDWlin79:
+0000049e 3c0f0d00       1510 	ld.w	12[r28],r1
+000004a2 a106f0ff       1511 	xori	65520,r1,zero
+000004a6 e205*          1512 	be	.L1116
+000004a8 3c0f0d00       1513 	ld.w	12[r28],r1
+000004ac a106f2ff       1514 	xori	65522,r1,zero
+000004b0 9a35*          1515 	bne	.L1129
+                        1516 .L1116:
+                        1517 --595:          && ((p_isd->service_result == SERV_REQUEST) || (p_isd->service_result == SERV_PENDING)))
+                        1518 --596:         {
+                        1519 --597:             /* get a Hash execution context */
+                        1520 --598:             err = ML_CTX_Get(CTX_TYPE_HASH, &p_hash_ctx);
+                        1521 --line598
+                        1522 ..lin.92e7b8fc..9ee9dca5.0_80::
+                        1523 .LDWlin80:
+000004b2 0332           1524 	mov	3,r6
+000004b4 233e0000       1525 	movea	0,sp,r7
+                        1526 .L1430:
+                        1527 	jarl	_ML_CTX_Get,lp
+                        1527 <EXPANSION BEGIN>
+                        1527 jarl22 _ML_CTX_Get , lp 
+000004b8 80ff0000*      1527 <EXPANSION END>
+000004bc 0ad0           1528 	mov	r10,r26
+                        1529 --600:             if (ER_ML_CTX_ALL_USE == err)
+                        1530 --line600
+                        1531 ..lin.92e7b8fc..9ee9dca5.0_81::
+                        1532 .LDWlin81:
+000004be 210601001000   1533 	mov	1048577,r1
+000004c4 e1d1           1534 	cmp	r1,r26
+000004c6 fa05*          1535 	bne	.L1119
+                        1536 --601:             {
+                        1537 --602:                 p_isd->service_result = SERV_PENDING;
+                        1538 --line602
+                        1539 ..lin.92e7b8fc..9ee9dca5.0_82::
+                        1540 .LDWlin82:
+000004c8 800ef2ff       1541 	ori	65522,zero,r1
+000004cc 7c0f0d00       1542 	st.w	r1,12[r28]
+                        1543 --603:                 skip_flg = FLG_ON;
+000004d0 01ea           1544 	mov	1,r29
+000004d2 8525*          1545 	br	.L1129
+                        1546 .L1119:
+                        1547 --604:             }
+                        1548 --605:             else if (ER_OK != err)
+                        1549 --line605
+                        1550 ..lin.92e7b8fc..9ee9dca5.0_83::
+                        1551 .LDWlin83:
+000004d4 e0d1           1552 	cmp	zero,r26
+000004d6 e205*          1553 	be	.L1122
+                        1554 --606:             {
+                        1555 --607:                 /* should never occur */
+                        1556 --608:                 p_isd->service_result = SERV_UNAVAILABLE;
+                        1557 --line608
+                        1558 ..lin.92e7b8fc..9ee9dca5.0_84::
+                        1559 .LDWlin84:
+000004d8 0f0a           1560 	mov	15,r1
+000004da 7c0f0d00       1561 	st.w	r1,12[r28]
+                        1562 --609:                 skip_flg = FLG_ON;
+000004de 01ea           1563 	mov	1,r29
+000004e0 951d*          1564 	br	.L1129
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1565 .L1122:
+                        1566 --610:             }
+                        1567 --611:             else
+                        1568 --612:             {
+                        1569 --613:                 p_job->prm.job_hash.p_hash_ctx = p_hash_ctx;
+                        1570 --line613
+                        1571 ..lin.92e7b8fc..9ee9dca5.0_85::
+                        1572 .LDWlin85:
+000004e2 230f0100       1573 	ld.w	0[sp],r1
+000004e6 7b0f1d00       1574 	st.w	r1,28[r27]
+                        1575 --615:                 /* have an Hash context to use: initialize it */
+                        1576 --616:                 (void)s_01_InitHash(p_job, (hash_ctx_t *)p_hash_ctx);
+000004ea 233f0100       1577 	ld.w	0[sp],r7
+000004ee 1b30           1578 	mov	r27,r6
+                        1579 .L1432:
+                        1580 	jarl	_s_01_InitHash,lp
+                        1580 <EXPANSION BEGIN>
+                        1580 jarl22 _s_01_InitHash , lp 
+000004f0 bfff10fb*      1580 <EXPANSION END>
+                        1581 --618:                 /* test for errors after the initialization phase */
+                        1582 --619:                 if (SERV_IN_PROCESS != p_isd->service_result)
+                        1583 --line619
+                        1584 ..lin.92e7b8fc..9ee9dca5.0_86::
+                        1585 .LDWlin86:
+000004f4 3c0f0d00       1586 	ld.w	12[r28],r1
+000004f8 a106ffff       1587 	xori	65535,r1,zero
+000004fc f205*          1588 	be	.L1127
+                        1589 --620:                 {
+                        1590 --621:                     (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
+                        1591 --line621
+                        1592 ..lin.92e7b8fc..9ee9dca5.0_87::
+                        1593 .LDWlin87:
+000004fe 233f0100       1594 	ld.w	0[sp],r7
+00000502 0332           1595 	mov	3,r6
+                        1596 .L1434:
+                        1597 	jarl	_ML_CTX_Free,lp
+                        1597 <EXPANSION BEGIN>
+                        1597 jarl22 _ML_CTX_Free , lp 
+00000504 80ff0000*      1597 <EXPANSION END>
+                        1598 --622:                     skip_flg = FLG_ON;
+                        1599 --line622
+                        1600 ..lin.92e7b8fc..9ee9dca5.0_88::
+                        1601 .LDWlin88:
+00000508 01ea           1602 	mov	1,r29
+                        1603 .L1127:
+                        1604 --623:                 }
+                        1605 --624:                 else
+                        1606 --625:                 {
+                        1607 --626:                     /* do nothing */
+                        1608 --627:                 }
+                        1609 --629:                 /* get the job slice configured */
+                        1610 --630:                 p_job->prm.job_hash.nb_bytes_per_round = p_isd->prm.HASH.job_slice;
+0000050a fc0f3d00       1611 	ld.hu	60[r28],r1
+0000050e 7b0f1800       1612 	st.h	r1,24[r27]
+                        1613 .L1129:
+                        1614 --631:             }
+                        1615 --632:         } /* end of if ((NUM0 != (job_cycle & JOB_INIT))... */
+                        1616 --633:         else
+                        1617 --634:         {
+                        1618 --635:             /* do nothing */
+                        1619 --636:         }
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1620 --637:     } /* end of if (FLG_OFF == skip_flg) */
+                        1621 --638:     else
+                        1622 --639:     {
+                        1623 --640:         /* do nothing */
+                        1624 --641:     }
+                        1625 --643:     if (FLG_OFF == skip_flg)
+00000512 e0e9           1626 	cmp	zero,r29
+00000514 aa0d*          1627 	bne	.L1135
+                        1628 --644:     {
+                        1629 --645:         /* job_cycle : only JOB_INIT */
+                        1630 --646:         if (JOB_INIT == job_cycle)
+                        1631 --line646
+                        1632 ..lin.92e7b8fc..9ee9dca5.0_89::
+                        1633 .LDWlin89:
+00000516 61ca           1634 	cmp	1,r25
+00000518 8a0d*          1635 	bne	.L1135
+                        1636 --647:         {
+                        1637 --648:             p_job->prm.job_hash.nb_bytes = NUM0;
+                        1638 --line648
+                        1639 ..lin.92e7b8fc..9ee9dca5.0_90::
+                        1640 .LDWlin90:
+0000051a 7b071100       1641 	st.w	zero,16[r27]
+                        1642 --649:             p_job->keep.job_cycle = 1u;
+0000051e db0f0d00       1643 	set1	1,13[r27]
+                        1644 --650:             p_isd->service_result = SERV_OK;
+00000522 7c070d00       1645 	st.w	zero,12[r28]
+                        1646 --651:             skip_flg = FLG_ON;
+00000526 01ea           1647 	mov	1,r29
+                        1648 .L1135:
+                        1649 --652:         }
+                        1650 --653:         else
+                        1651 --654:         {
+                        1652 --655:             /* do nothing */
+                        1653 --656:         }
+                        1654 --657:     } /* end of if (FLG_OFF == skip_flg) */
+                        1655 --658:     else
+                        1656 --659:     {
+                        1657 --660:         /* do nothing */
+                        1658 --661:     }
+                        1659 --663:     if (FLG_OFF == skip_flg)
+00000528 e0e9           1660 	cmp	zero,r29
+0000052a ea05*          1661 	bne	.L1138
+                        1662 --664:     {
+                        1663 --665:         err = s_01_GenerateHashSub(p_job, job_cycle);
+                        1664 --line665
+                        1665 ..lin.92e7b8fc..9ee9dca5.0_91::
+                        1666 .LDWlin91:
+0000052c 1b30           1667 	mov	r27,r6
+0000052e 1938           1668 	mov	r25,r7
+                        1669 .L1436:
+                        1670 	jarl	_s_01_GenerateHashSub,lp
+                        1670 <EXPANSION BEGIN>
+                        1670 jarl22 _s_01_GenerateHashSub , lp 
+00000530 bfffe4fc*      1670 <EXPANSION END>
+00000534 0ad0           1671 	mov	r10,r26
+                        1672 .L1138:
+                        1673 --666:     }
+                        1674 --667:     else
+                        1675 --668:     {
+                        1676 --669:         /* do nothing */
+                        1677 --670:     }
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1678 --672:     if ((ER_OK != err) && (1u == (uint32_t)p_job->keep.job_cycle))
+                        1679 --line672
+                        1680 ..lin.92e7b8fc..9ee9dca5.0_92::
+                        1681 .LDWlin92:
+00000536 e0d1           1682 	cmp	zero,r26
+00000538 e205*          1683 	be	.L1105
+0000053a dbcf0d00       1684 	tst1	1,13[r27]
+0000053e b205*          1685 	be	.L1105
+                        1686 --673:     {
+                        1687 --674:         p_job->keep.job_cycle = 0u;
+                        1688 --line674
+                        1689 ..lin.92e7b8fc..9ee9dca5.0_93::
+                        1690 .LDWlin93:
+00000540 db8f0d00       1691 	clr1	1,13[r27]
+                        1692 .L1105:
+                        1693 --675:     }
+                        1694 --676:     else
+                        1695 --677:     {
+                        1696 --678:         /* do nothing */
+                        1697 --679:     }
+                        1698 --680: }
+                        1699 --	    .ef
+                        1700 .LDW91:
+00000544 23ff1900       1701 	ld.w	24[sp],lp
+00000548 23ef0500       1702 	ld.w	4[sp],r29
+0000054c 23e70900       1703 	ld.w	8[sp],r28
+00000550 23df0d00       1704 	ld.w	12[sp],r27
+00000554 23d71100       1705 	ld.w	16[sp],r26
+00000558 23cf1500       1706 	ld.w	20[sp],r25
+0000055c 031e1c00       1707 	addi	28,sp,sp
+                        1708 .L1438:
+                        1709 	.jumptype return
+00000560 7f00           1710 	jmp	[lp]
+                        1711 --line674
+                        1712 ..lin.92e7b8fc..9ee9dca5.0_94::
+                        1713 	.type	_S_01_GenerateHash,@function
+                        1714 	.size	_S_01_GenerateHash,.-_S_01_GenerateHash
+                        1715 	.align	2
+                        1716 --_p_isd	r28	local
+                        1717 --_p_hash_ctx	0[sp]	local
+                        1718 --_job_cycle	r25	local
+                        1719 --_err	r26	local
+                        1720 --_skip_flg	r29	local
+                        1721 
+                        1722 --_p_job	r27	param
+                        1723 
+                        1724 	.section ".bss","awb"
+                        1725 .L1310:
+                        1726 	.type	.L1310,@object
+                        1727 	.size	.L1310,0
+                        1728 	.section ".ghcalltbl",""
+0000005c 00000000*      1729 .L1431:	.word	.L1430
+                        1730 	.type	.L1431,@object
+                        1731 	.size	.L1431,4
+00000060 00000000*      1732 .L1433:	.word	.L1432
+                        1733 	.type	.L1433,@object
+                        1734 	.size	.L1433,4
+00000064 00000000*      1735 .L1435:	.word	.L1434
+                        1736 	.type	.L1435,@object
+                        1737 	.size	.L1435,4
+00000068 00000000*      1738 .L1437:	.word	.L1436
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rv41.si
+                        1739 	.type	.L1437,@object
+                        1740 	.size	.L1437,4
+                        1741 	.section ".ghrettbl",""
+00000010 00000000*      1742 .L1439:	.word	.L1438
+                        1743 	.type	.L1439,@object
+                        1744 	.size	.L1439,4
+                        1745 	.data
+                        1746 	.section ".icum_service.text","ax"
+                        1747 
+                        1748 	.align	2
+                        1749 
+                        1750 	.data
+                        1751 	.ghsnote version,30
+                        1752 	.ghsnote tools,3
+                        1753 	.ghsnote options,656
+                        1754 	.section ".icum_service.text","ax"
+                        1755 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40663..0::
+                        1756 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

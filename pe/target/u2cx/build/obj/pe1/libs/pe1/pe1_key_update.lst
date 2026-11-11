@@ -1,0 +1,2579 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_key_update.dbo -source=pe1_key_update.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000mfs1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_key_update.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+Source File: pe1_key_update.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\src\l_vrun\l_vrun_cmd
+                           4 --		-I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\target\u2cx\src\driver\comm_drv
+                           6 --		-I..\..\pe\target\u2cx\src\shared\src
+                           7 --		-I..\..\pe\target\u2cx\src\l_vrun
+                           8 --		-I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include
+                           9 --		-I..\..\pe\generic
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          12 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          13 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          14 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          15 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          16 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          17 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
+                          21 --		-D_TARG_=U2C4 -filetype.c
+                          22 --		..\..\pe\generic\src\pe1\src\pe1_key_update.c -o
+                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_key_update.o
+                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_key_update.c
+                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          26 --Compile Date:  Wed Nov 11 11:21:43 2026
+                          27 --Host OS:       Win64
+                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          29 --Release:       Compiler v2023.5.4
+                          30 --Revision Date: Wed Sep 06 02:44:56 2023
+                          31 --Release Date:  Wed Sep 06 02:00:00 2023
+                          32 -- ecom  -g -w
+                          33 
+                          34 --1: /******************************************************************************/
+                          35 --2: /* Component Name   Testing the ICU-M                                         */
+                          36 --3: /******************************************************************************/
+                          37 --4: /* Product      : ICU-M Firmware                                              */
+                          38 --5: /******************************************************************************/
+                          39 --6: /*******************************************************************************
+                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          41 --8: *                                                                               
+                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          43 --10: *                                                                               
+                          44 --11: * These instructions, statements, and programs are the confidential information 
+                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
+                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          49 --16: *******************************************************************************/
+                          50 --18: // ********************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                          51 --19: // Headers
+                          52 --20: // ********************************************************************************
+                          53 --22: #include <stdio.h>
+                          54 --23: #include <string.h>
+                          55 --25: #undef NULL
+                          56 --26: #include "r_icumif_api.h"
+                          57 --27: #include "r_icumif_pub.h"
+                          58 --29: #include "pe1.h"
+                          59 --30: #include "pe1.int.h"
+                          60 --31: #include "shared.h"
+                          61 --33: #include "vrun.api.h"
+                          62 --35: #include "renesas_types.h"
+                          63 --37: // ********************************************************************************
+                          64 --38: // Local variables
+                          65 --39: // ********************************************************************************
+                          66 --41: static const uint8_t TEST_VECTOR[][16] =
+                          67 --42: {
+                          68 --43:      {0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF},
+                          69 --44: };
+                          70 --46: // ********************************************************************************
+                          71 --47: // Test functions
+                          72 --48: // ********************************************************************************
+                          73 --49: void icum_key_update(void)
+                          74 	.text
+                          75 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF47..0::
+                          76 	.align	2
+                          77 	.align	2
+                          78 ..gh.f.a.2.e.0:
+                          79 	.type	..gh.f.a.2.e.0,@object
+                          80 	.size	..gh.f.a.2.e.0,0
+                          81 	.global	_icum_key_update
+                          82 _icum_key_update:
+00000000 031ee8ff         83 	addi	-24,sp,sp
+00000004 63ff1500         84 	st.w	lp,20[sp]
+00000008 63e71100         85 	st.w	r28,16[sp]
+0000000c 63ef0d00         86 	st.w	r29,12[sp]
+                          87 --	    .bf
+                          88 .LDW01:
+                          89 --50: {
+                          90 --51:     r_icumif_isd_t *p_ISD;
+                          91 --52:     int done;
+                          92 --53:     int i;
+                          93 --54:     int j;
+                          94 --55:     int n;
+                          95 --57:     // initialize the global icum service header
+                          96 --58:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+00000010 3d0600000000*    97 	mov	_ISD_BUFFER,r29
+                          98 --60:     printf("\nTesting key update...\n\n");
+                          99 --line60
+                         100 ..lin.3305b82b..bda86c5c.0_1::
+                         101 .LDWlin1:
+00000016 260600000000*   102 	mov	_vrun_printf_buff,r6
+0000001c 270600000000*   103 	mov	.L968,r7
+                         104 .L1211:
+                         105 	jarl	_sprintf,lp
+                         105 <EXPANSION BEGIN>
+                         105 jarl22 _sprintf , lp 
+00000022 80ff0000*       105 <EXPANSION END>
+                         106 --line60
+                         107 ..lin.3305b82b..bda86c5c.0_2::
+                         108 .LDWlin2:
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000026 260600000000*   109 	mov	_vrun_printf_buff,r6
+                         110 .L1213:
+                         111 	jarl	_vrun_iobuff_print_txt,lp
+                         111 <EXPANSION BEGIN>
+                         111 jarl22 _vrun_iobuff_print_txt , lp 
+0000002c 80ff0000*       111 <EXPANSION END>
+                         112 .L1215:
+                         113 --line60
+                         114 ..lin.3305b82b..bda86c5c.0_3::
+                         115 .LDWlin3:
+                         116 	jarl	_vrun_console_put,lp
+                         116 <EXPANSION BEGIN>
+                         116 jarl22 _vrun_console_put , lp 
+00000030 80ff0000*       116 <EXPANSION END>
+                         117 --line60
+                         118 ..lin.3305b82b..bda86c5c.0_4::
+                         119 .LDWlin4:
+00000034 0000            120 	nop
+                         121 --61:     
+                         122 --62:     printf("\n| Key to update:\n");
+00000036 260600000000*   123 	mov	_vrun_printf_buff,r6
+0000003c 270600000000*   124 	mov	.L969,r7
+                         125 .L1217:
+                         126 	jarl	_sprintf,lp
+                         126 <EXPANSION BEGIN>
+                         126 jarl22 _sprintf , lp 
+00000042 80ff0000*       126 <EXPANSION END>
+                         127 --line62
+                         128 ..lin.3305b82b..bda86c5c.0_5::
+                         129 .LDWlin5:
+00000046 260600000000*   130 	mov	_vrun_printf_buff,r6
+                         131 .L1219:
+                         132 	jarl	_vrun_iobuff_print_txt,lp
+                         132 <EXPANSION BEGIN>
+                         132 jarl22 _vrun_iobuff_print_txt , lp 
+0000004c 80ff0000*       132 <EXPANSION END>
+                         133 .L1221:
+                         134 --line62
+                         135 ..lin.3305b82b..bda86c5c.0_6::
+                         136 .LDWlin6:
+                         137 	jarl	_vrun_console_put,lp
+                         137 <EXPANSION BEGIN>
+                         137 jarl22 _vrun_console_put , lp 
+00000050 80ff0000*       137 <EXPANSION END>
+                         138 --line62
+                         139 ..lin.3305b82b..bda86c5c.0_7::
+                         140 .LDWlin7:
+00000054 0000            141 	nop
+                         142 --63:     printf("|-----------------------------\n");
+00000056 260600000000*   143 	mov	_vrun_printf_buff,r6
+0000005c 270600000000*   144 	mov	.L953,r7
+                         145 .L1223:
+                         146 	jarl	_sprintf,lp
+                         146 <EXPANSION BEGIN>
+                         146 jarl22 _sprintf , lp 
+00000062 80ff0000*       146 <EXPANSION END>
+                         147 --line63
+                         148 ..lin.3305b82b..bda86c5c.0_8::
+                         149 .LDWlin8:
+00000066 260600000000*   150 	mov	_vrun_printf_buff,r6
+                         151 .L1225:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         152 	jarl	_vrun_iobuff_print_txt,lp
+                         152 <EXPANSION BEGIN>
+                         152 jarl22 _vrun_iobuff_print_txt , lp 
+0000006c 80ff0000*       152 <EXPANSION END>
+                         153 .L1227:
+                         154 --line63
+                         155 ..lin.3305b82b..bda86c5c.0_9::
+                         156 .LDWlin9:
+                         157 	jarl	_vrun_console_put,lp
+                         157 <EXPANSION BEGIN>
+                         157 jarl22 _vrun_console_put , lp 
+00000070 80ff0000*       157 <EXPANSION END>
+                         158 --line63
+                         159 ..lin.3305b82b..bda86c5c.0_10::
+                         160 .LDWlin10:
+00000074 0000            161 	nop
+                         162 --64:     i = 0;
+00000076 63070100        163 	st.w	zero,0[sp]
+                         164 --65:     do
+0000007a 0000            165 	nop
+                         166 .L6:
+                         167 --66:     {
+                         168 --67:         printf("| %i: %s\n", i, keys[i].key_name);
+0000007c 23470100        169 	ld.w	0[sp],r8
+00000080 230f0100        170 	ld.w	0[sp],r1
+00000084 e80f4402        171 	mul	40,r1,zero
+00000088 220600000000*   172 	mov	_keys,r2
+0000008e c209            173 	add	r2,r1
+00000090 0148            174 	mov	r1,r9
+00000092 260600000000*   175 	mov	_vrun_printf_buff,r6
+00000098 270600000000*   176 	mov	.L964,r7
+                         177 .L1229:
+                         178 	jarl	_sprintf,lp
+                         178 <EXPANSION BEGIN>
+                         178 jarl22 _sprintf , lp 
+0000009e 80ff0000*       178 <EXPANSION END>
+                         179 --line67
+                         180 ..lin.3305b82b..bda86c5c.0_11::
+                         181 .LDWlin11:
+000000a2 260600000000*   182 	mov	_vrun_printf_buff,r6
+                         183 .L1231:
+                         184 	jarl	_vrun_iobuff_print_txt,lp
+                         184 <EXPANSION BEGIN>
+                         184 jarl22 _vrun_iobuff_print_txt , lp 
+000000a8 80ff0000*       184 <EXPANSION END>
+                         185 .L1233:
+                         186 --line67
+                         187 ..lin.3305b82b..bda86c5c.0_12::
+                         188 .LDWlin12:
+                         189 	jarl	_vrun_console_put,lp
+                         189 <EXPANSION BEGIN>
+                         189 jarl22 _vrun_console_put , lp 
+000000ac 80ff0000*       189 <EXPANSION END>
+                         190 --line67
+                         191 ..lin.3305b82b..bda86c5c.0_13::
+                         192 .LDWlin13:
+000000b0 0000            193 	nop
+                         194 --68:         i++;
+000000b2 230f0100        195 	ld.w	0[sp],r1
+000000b6 410a            196 	add	1,r1
+000000b8 630f0100        197 	st.w	r1,0[sp]
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+000000bc 230f0100        198 	ld.w	0[sp],r1
+000000c0 e80f4402        199 	mul	40,r1,zero
+000000c4 220600000000*   200 	mov	_keys,r2
+000000ca 01f0            201 	mov	r1,ep
+000000cc c2f1            202 	add	r2,ep
+000000ce 6008            203 	sld.bu	0[ep],r1
+000000d0 e009            204 	cmp	zero,r1
+000000d2 dad5*           205 	bne	.L6
+                         206 --69:     } while(*(uint8_t *)keys[i].key_name != 0);
+                         207 --70:     printf("  ?> ");
+                         208 --line70
+                         209 ..lin.3305b82b..bda86c5c.0_14::
+                         210 .LDWlin14:
+000000d4 260600000000*   211 	mov	_vrun_printf_buff,r6
+000000da 270600000000*   212 	mov	.L948,r7
+                         213 .L1235:
+                         214 	jarl	_sprintf,lp
+                         214 <EXPANSION BEGIN>
+                         214 jarl22 _sprintf , lp 
+000000e0 80ff0000*       214 <EXPANSION END>
+                         215 --line70
+                         216 ..lin.3305b82b..bda86c5c.0_15::
+                         217 .LDWlin15:
+000000e4 260600000000*   218 	mov	_vrun_printf_buff,r6
+                         219 .L1237:
+                         220 	jarl	_vrun_iobuff_print_txt,lp
+                         220 <EXPANSION BEGIN>
+                         220 jarl22 _vrun_iobuff_print_txt , lp 
+000000ea 80ff0000*       220 <EXPANSION END>
+                         221 .L1239:
+                         222 --line70
+                         223 ..lin.3305b82b..bda86c5c.0_16::
+                         224 .LDWlin16:
+                         225 	jarl	_vrun_console_put,lp
+                         225 <EXPANSION BEGIN>
+                         225 jarl22 _vrun_console_put , lp 
+000000ee 80ff0000*       225 <EXPANSION END>
+                         226 --line70
+                         227 ..lin.3305b82b..bda86c5c.0_17::
+                         228 .LDWlin17:
+000000f2 0000            229 	nop
+                         230 --71:     vrun_console_get();
+                         231 .L1241:
+                         232 	jarl	_vrun_console_get,lp
+                         232 <EXPANSION BEGIN>
+                         232 jarl22 _vrun_console_get , lp 
+000000f4 80ff0000*       232 <EXPANSION END>
+                         233 --72:     sscanf(vrun_iobuff_readparam(0), "%i", &n);
+                         234 --line72
+                         235 ..lin.3305b82b..bda86c5c.0_18::
+                         236 .LDWlin18:
+000000f8 0032            237 	mov	0,r6
+                         238 .L1243:
+                         239 	jarl	_vrun_iobuff_readparam,lp
+                         239 <EXPANSION BEGIN>
+                         239 jarl22 _vrun_iobuff_readparam , lp 
+000000fa 80ff0000*       239 <EXPANSION END>
+000000fe 0a30            240 	mov	r10,r6
+00000100 270600000000*   241 	mov	.L950,r7
+00000106 23460800        242 	movea	8,sp,r8
+                         243 .L1245:
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         244 	jarl	_sscanf,lp
+                         244 <EXPANSION BEGIN>
+                         244 jarl22 _sscanf , lp 
+0000010a 80ff0000*       244 <EXPANSION END>
+                         245 --74:     if(!(n < i))
+                         246 --line74
+                         247 ..lin.3305b82b..bda86c5c.0_19::
+                         248 .LDWlin19:
+0000010e 230f0100        249 	ld.w	0[sp],r1
+00000112 23170900        250 	ld.w	8[sp],r2
+00000116 e111            251 	cmp	r1,r2
+00000118 b615*           252 	blt	.L7
+                         253 --75:     {
+                         254 --76:         printf("Invalid key number - aborting\n\n");
+                         255 --line76
+                         256 ..lin.3305b82b..bda86c5c.0_20::
+                         257 .LDWlin20:
+0000011a 260600000000*   258 	mov	_vrun_printf_buff,r6
+00000120 270600000000*   259 	mov	.L954,r7
+                         260 .L1247:
+                         261 	jarl	_sprintf,lp
+                         261 <EXPANSION BEGIN>
+                         261 jarl22 _sprintf , lp 
+00000126 80ff0000*       261 <EXPANSION END>
+                         262 --line76
+                         263 ..lin.3305b82b..bda86c5c.0_21::
+                         264 .LDWlin21:
+0000012a 260600000000*   265 	mov	_vrun_printf_buff,r6
+                         266 .L1249:
+                         267 	jarl	_vrun_iobuff_print_txt,lp
+                         267 <EXPANSION BEGIN>
+                         267 jarl22 _vrun_iobuff_print_txt , lp 
+00000130 80ff0000*       267 <EXPANSION END>
+                         268 .L1251:
+                         269 --line76
+                         270 ..lin.3305b82b..bda86c5c.0_22::
+                         271 .LDWlin22:
+                         272 	jarl	_vrun_console_put,lp
+                         272 <EXPANSION BEGIN>
+                         272 jarl22 _vrun_console_put , lp 
+00000134 80ff0000*       272 <EXPANSION END>
+                         273 --line76
+                         274 ..lin.3305b82b..bda86c5c.0_23::
+                         275 .LDWlin23:
+00000138 0000            276 	nop
+                         277 --77:         goto end;
+0000013a 8007e605*       278 	br	.L9
+                         279 .L7:
+                         280 --78:     }
+                         281 --79:     printf("\nKey selected: %s\n\n", keys[n].key_name);
+                         282 --line79
+                         283 ..lin.3305b82b..bda86c5c.0_24::
+                         284 .LDWlin24:
+0000013e 230f0900        285 	ld.w	8[sp],r1
+00000142 e80f4402        286 	mul	40,r1,zero
+00000146 220600000000*   287 	mov	_keys,r2
+0000014c c209            288 	add	r2,r1
+0000014e 0140            289 	mov	r1,r8
+00000150 260600000000*   290 	mov	_vrun_printf_buff,r6
+00000156 270600000000*   291 	mov	.L959,r7
+                         292 .L1253:
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         293 	jarl	_sprintf,lp
+                         293 <EXPANSION BEGIN>
+                         293 jarl22 _sprintf , lp 
+0000015c 80ff0000*       293 <EXPANSION END>
+                         294 --line79
+                         295 ..lin.3305b82b..bda86c5c.0_25::
+                         296 .LDWlin25:
+00000160 260600000000*   297 	mov	_vrun_printf_buff,r6
+                         298 .L1255:
+                         299 	jarl	_vrun_iobuff_print_txt,lp
+                         299 <EXPANSION BEGIN>
+                         299 jarl22 _vrun_iobuff_print_txt , lp 
+00000166 80ff0000*       299 <EXPANSION END>
+                         300 .L1257:
+                         301 --line79
+                         302 ..lin.3305b82b..bda86c5c.0_26::
+                         303 .LDWlin26:
+                         304 	jarl	_vrun_console_put,lp
+                         304 <EXPANSION BEGIN>
+                         304 jarl22 _vrun_console_put , lp 
+0000016a 80ff0000*       304 <EXPANSION END>
+                         305 --line79
+                         306 ..lin.3305b82b..bda86c5c.0_27::
+                         307 .LDWlin27:
+0000016e 0000            308 	nop
+                         309 --80:     FLUSH();
+                         310 .L1259:
+                         311 	jarl	_vrun_console_put,lp
+                         311 <EXPANSION BEGIN>
+                         311 jarl22 _vrun_console_put , lp 
+00000170 80ff0000*       311 <EXPANSION END>
+                         312 --82:     // initialize the service structure
+                         313 --83:     p_ISD->service_id                             = SERVICE_03_AES_KEY_UPDATE_PLAIN;
+                         314 --line83
+                         315 ..lin.3305b82b..bda86c5c.0_28::
+                         316 .LDWlin28:
+00000174 200e3000        317 	movea	48,zero,r1
+00000178 7d0f0100        318 	st.w	r1,0[r29]
+                         319 --84:     p_ISD->p_callbackfunc                         = 0;
+0000017c 7d071900        320 	st.w	zero,24[r29]
+                         321 --85:     p_ISD->job_id                                 = 0;
+00000180 7d071200        322 	st.h	zero,18[r29]
+                         323 --86:     p_ISD->prm.KEY_UPDATE_PLAIN.key_group         = keys[n].key_group;
+00000184 230f0900        324 	ld.w	8[sp],r1
+00000188 e80f4402        325 	mul	40,r1,zero
+0000018c 220600000000*   326 	mov	_keys,r2
+00000192 01f0            327 	mov	r1,ep
+00000194 c2f1            328 	add	r2,ep
+00000196 100d            329 	sld.w	32[ep],r1
+00000198 7d0f2900        330 	st.w	r1,40[r29]
+                         331 --87:     p_ISD->prm.KEY_UPDATE_PLAIN.key_id            = keys[n].key_id;
+                         332 --line87
+                         333 ..lin.3305b82b..bda86c5c.0_29::
+                         334 .LDWlin29:
+0000019c 230f0900        335 	ld.w	8[sp],r1
+000001a0 e80f4402        336 	mul	40,r1,zero
+000001a4 220600000000*   337 	mov	_keys,r2
+000001aa c209            338 	add	r2,r1
+000001ac 810f2500        339 	ld.bu	36[r1],r1
+000001b0 5d0f2c00        340 	st.b	r1,44[r29]
+                         341 --88:     p_ISD->prm.KEY_UPDATE_PLAIN.p_key_value       = (const uint8_t *)(p_ISD) + sizeof(r_icumif_isd_t) + 4;
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         342 --line88
+                         343 ..lin.3305b82b..bda86c5c.0_30::
+                         344 .LDWlin30:
+000001b4 1d0e8c00        345 	addi	140,r29,r1
+000001b8 7d0f2100        346 	st.w	r1,32[r29]
+                         347 --89:     p_ISD->prm.KEY_UPDATE_PLAIN.key_size_in_bytes = AES_BLOCK_SIZE_IN_BYTES;
+000001bc 200e1000        348 	movea	16,zero,r1
+000001c0 7d0f2e00        349 	st.h	r1,46[r29]
+                         350 --90:     
+                         351 --91:     memset((void *)p_ISD->prm.KEY_UPDATE_PLAIN.p_key_value, 0x55, AES_BLOCK_SIZE_IN_BYTES);
+000001c4 3d372100        352 	ld.w	32[r29],r6
+000001c8 203e5500        353 	movea	85,zero,r7
+000001cc 20461000        354 	movea	16,zero,r8
+                         355 .L1261:
+                         356 	jarl	_memset,lp
+                         356 <EXPANSION BEGIN>
+                         356 jarl22 _memset , lp 
+000001d0 80ff0000*       356 <EXPANSION END>
+                         357 --93:     p_ISD->prm.KEY_UPDATE_PLAIN.flags.encryption         = 1;     
+                         358 --line93
+                         359 ..lin.3305b82b..bda86c5c.0_31::
+                         360 .LDWlin31:
+000001d4 dd073000        361 	set1	0,48[r29]
+                         362 --94:     p_ISD->prm.KEY_UPDATE_PLAIN.flags.decryption         = 1;     
+000001d8 dd0f3000        363 	set1	1,48[r29]
+                         364 --95:     p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_generation    = 1;
+000001dc dd173000        365 	set1	2,48[r29]
+                         366 --96:     p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_verification  = 0;
+000001e0 dd9f3000        367 	clr1	3,48[r29]
+                         368 --97:     p_ISD->prm.KEY_UPDATE_PLAIN.flags.disable_on_debug   = 0;
+000001e4 ddaf3000        369 	clr1	5,48[r29]
+                         370 --99:     done = 0;
+000001e8 00e2            371 	mov	0,r28
+                         372 --100:     
+                         373 --101:     do
+000001ea 0000            374 	nop
+                         375 .L13:
+                         376 --102:     {
+                         377 --103:         printf("\n| Current key properties:\n");
+000001ec 260600000000*   378 	mov	_vrun_printf_buff,r6
+000001f2 270600000000*   379 	mov	.L960,r7
+                         380 .L1263:
+                         381 	jarl	_sprintf,lp
+                         381 <EXPANSION BEGIN>
+                         381 jarl22 _sprintf , lp 
+000001f8 80ff0000*       381 <EXPANSION END>
+                         382 --line103
+                         383 ..lin.3305b82b..bda86c5c.0_32::
+                         384 .LDWlin32:
+000001fc 260600000000*   385 	mov	_vrun_printf_buff,r6
+                         386 .L1265:
+                         387 	jarl	_vrun_iobuff_print_txt,lp
+                         387 <EXPANSION BEGIN>
+                         387 jarl22 _vrun_iobuff_print_txt , lp 
+00000202 80ff0000*       387 <EXPANSION END>
+                         388 .L1267:
+                         389 --line103
+                         390 ..lin.3305b82b..bda86c5c.0_33::
+                         391 .LDWlin33:
+                         392 	jarl	_vrun_console_put,lp
+                         392 <EXPANSION BEGIN>
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         392 jarl22 _vrun_console_put , lp 
+00000206 80ff0000*       392 <EXPANSION END>
+                         393 --line103
+                         394 ..lin.3305b82b..bda86c5c.0_34::
+                         395 .LDWlin34:
+0000020a 0000            396 	nop
+                         397 --104:         printf("|-----------------------------\n");
+0000020c 260600000000*   398 	mov	_vrun_printf_buff,r6
+00000212 270600000000*   399 	mov	.L953,r7
+                         400 .L1269:
+                         401 	jarl	_sprintf,lp
+                         401 <EXPANSION BEGIN>
+                         401 jarl22 _sprintf , lp 
+00000218 80ff0000*       401 <EXPANSION END>
+                         402 --line104
+                         403 ..lin.3305b82b..bda86c5c.0_35::
+                         404 .LDWlin35:
+0000021c 260600000000*   405 	mov	_vrun_printf_buff,r6
+                         406 .L1271:
+                         407 	jarl	_vrun_iobuff_print_txt,lp
+                         407 <EXPANSION BEGIN>
+                         407 jarl22 _vrun_iobuff_print_txt , lp 
+00000222 80ff0000*       407 <EXPANSION END>
+                         408 .L1273:
+                         409 --line104
+                         410 ..lin.3305b82b..bda86c5c.0_36::
+                         411 .LDWlin36:
+                         412 	jarl	_vrun_console_put,lp
+                         412 <EXPANSION BEGIN>
+                         412 jarl22 _vrun_console_put , lp 
+00000226 80ff0000*       412 <EXPANSION END>
+                         413 --line104
+                         414 ..lin.3305b82b..bda86c5c.0_37::
+                         415 .LDWlin37:
+0000022a 0000            416 	nop
+                         417 --105:         printf("| Key: %s\n\n", keys[n].key_name);
+0000022c 230f0900        418 	ld.w	8[sp],r1
+00000230 e80f4402        419 	mul	40,r1,zero
+00000234 220600000000*   420 	mov	_keys,r2
+0000023a c209            421 	add	r2,r1
+0000023c 0140            422 	mov	r1,r8
+0000023e 260600000000*   423 	mov	_vrun_printf_buff,r6
+00000244 270600000000*   424 	mov	.L961,r7
+                         425 .L1275:
+                         426 	jarl	_sprintf,lp
+                         426 <EXPANSION BEGIN>
+                         426 jarl22 _sprintf , lp 
+0000024a 80ff0000*       426 <EXPANSION END>
+                         427 --line105
+                         428 ..lin.3305b82b..bda86c5c.0_38::
+                         429 .LDWlin38:
+0000024e 260600000000*   430 	mov	_vrun_printf_buff,r6
+                         431 .L1277:
+                         432 	jarl	_vrun_iobuff_print_txt,lp
+                         432 <EXPANSION BEGIN>
+                         432 jarl22 _vrun_iobuff_print_txt , lp 
+00000254 80ff0000*       432 <EXPANSION END>
+                         433 .L1279:
+                         434 --line105
+                         435 ..lin.3305b82b..bda86c5c.0_39::
+                         436 .LDWlin39:
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         437 	jarl	_vrun_console_put,lp
+                         437 <EXPANSION BEGIN>
+                         437 jarl22 _vrun_console_put , lp 
+00000258 80ff0000*       437 <EXPANSION END>
+                         438 --line105
+                         439 ..lin.3305b82b..bda86c5c.0_40::
+                         440 .LDWlin40:
+0000025c 0000            441 	nop
+                         442 --107:         if(keys[n].key_group != KEY_GRP_AES_ROM)
+0000025e 230f0900        443 	ld.w	8[sp],r1
+00000262 e80f4402        444 	mul	40,r1,zero
+00000266 220600000000*   445 	mov	_keys,r2
+0000026c 01f0            446 	mov	r1,ep
+0000026e c2f1            447 	add	r2,ep
+00000270 100d            448 	sld.w	32[ep],r1
+00000272 e009            449 	cmp	zero,r1
+00000274 e21d*           450 	be	.L14
+                         451 --108:         {
+                         452 --109:             printf("| key value              : ");
+                         453 --line109
+                         454 ..lin.3305b82b..bda86c5c.0_41::
+                         455 .LDWlin41:
+00000276 260600000000*   456 	mov	_vrun_printf_buff,r6
+0000027c 270600000000*   457 	mov	.L962,r7
+                         458 .L1281:
+                         459 	jarl	_sprintf,lp
+                         459 <EXPANSION BEGIN>
+                         459 jarl22 _sprintf , lp 
+00000282 80ff0000*       459 <EXPANSION END>
+                         460 --line109
+                         461 ..lin.3305b82b..bda86c5c.0_42::
+                         462 .LDWlin42:
+00000286 260600000000*   463 	mov	_vrun_printf_buff,r6
+                         464 .L1283:
+                         465 	jarl	_vrun_iobuff_print_txt,lp
+                         465 <EXPANSION BEGIN>
+                         465 jarl22 _vrun_iobuff_print_txt , lp 
+0000028c 80ff0000*       465 <EXPANSION END>
+                         466 .L1285:
+                         467 --line109
+                         468 ..lin.3305b82b..bda86c5c.0_43::
+                         469 .LDWlin43:
+                         470 	jarl	_vrun_console_put,lp
+                         470 <EXPANSION BEGIN>
+                         470 jarl22 _vrun_console_put , lp 
+00000290 80ff0000*       470 <EXPANSION END>
+                         471 --line109
+                         472 ..lin.3305b82b..bda86c5c.0_44::
+                         473 .LDWlin44:
+00000294 0000            474 	nop
+                         475 --110:             PMEM((const uint8_t *)p_ISD->prm.KEY_UPDATE_PLAIN.p_key_value, AES_BLOCK_SIZE_IN_BYTES);
+00000296 3d372100        476 	ld.w	32[r29],r6
+0000029a 203e1000        477 	movea	16,zero,r7
+                         478 .L1287:
+                         479 	jarl	_vrun_iobuff_print_mem,lp
+                         479 <EXPANSION BEGIN>
+                         479 jarl22 _vrun_iobuff_print_mem , lp 
+0000029e 80ff0000*       479 <EXPANSION END>
+                         480 --111:             NL(); FLUSH();
+                         481 --line111
+                         482 ..lin.3305b82b..bda86c5c.0_45::
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         483 .LDWlin45:
+000002a2 260600000000*   484 	mov	.L951,r6
+                         485 .L1289:
+                         486 	jarl	_vrun_iobuff_print_txt,lp
+                         486 <EXPANSION BEGIN>
+                         486 jarl22 _vrun_iobuff_print_txt , lp 
+000002a8 80ff0000*       486 <EXPANSION END>
+                         487 .L1291:
+                         488 --line111
+                         489 ..lin.3305b82b..bda86c5c.0_46::
+                         490 .LDWlin46:
+                         491 	jarl	_vrun_console_put,lp
+                         491 <EXPANSION BEGIN>
+                         491 jarl22 _vrun_console_put , lp 
+000002ac 80ff0000*       491 <EXPANSION END>
+                         492 .L14:
+                         493 --112:         }
+                         494 --113:             
+                         495 --114:         printf("| flag encryption        : %i\n",   p_ISD->prm.KEY_UPDATE_PLAIN.flags.encryption       );
+                         496 --line114
+                         497 ..lin.3305b82b..bda86c5c.0_47::
+                         498 .LDWlin47:
+000002b0 9d0f3100        499 	ld.bu	48[r29],r1
+000002b4 c10e0100        500 	andi	1,r1,r1
+000002b8 0140            501 	mov	r1,r8
+000002ba 260600000000*   502 	mov	_vrun_printf_buff,r6
+000002c0 270600000000*   503 	mov	.L970,r7
+                         504 .L1293:
+                         505 	jarl	_sprintf,lp
+                         505 <EXPANSION BEGIN>
+                         505 jarl22 _sprintf , lp 
+000002c6 80ff0000*       505 <EXPANSION END>
+                         506 --line114
+                         507 ..lin.3305b82b..bda86c5c.0_48::
+                         508 .LDWlin48:
+000002ca 260600000000*   509 	mov	_vrun_printf_buff,r6
+                         510 .L1295:
+                         511 	jarl	_vrun_iobuff_print_txt,lp
+                         511 <EXPANSION BEGIN>
+                         511 jarl22 _vrun_iobuff_print_txt , lp 
+000002d0 80ff0000*       511 <EXPANSION END>
+                         512 .L1297:
+                         513 --line114
+                         514 ..lin.3305b82b..bda86c5c.0_49::
+                         515 .LDWlin49:
+                         516 	jarl	_vrun_console_put,lp
+                         516 <EXPANSION BEGIN>
+                         516 jarl22 _vrun_console_put , lp 
+000002d4 80ff0000*       516 <EXPANSION END>
+                         517 --line114
+                         518 ..lin.3305b82b..bda86c5c.0_50::
+                         519 .LDWlin50:
+000002d8 0000            520 	nop
+                         521 --115:         printf("| flag decryption        : %i\n",   p_ISD->prm.KEY_UPDATE_PLAIN.flags.decryption       );
+000002da 9d0f3100        522 	ld.bu	48[r29],r1
+000002de de0a            523 	shl	30,r1
+000002e0 9f0a            524 	shr	31,r1
+000002e2 0140            525 	mov	r1,r8
+000002e4 260600000000*   526 	mov	_vrun_printf_buff,r6
+000002ea 270600000000*   527 	mov	.L971,r7
+                         528 .L1299:
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         529 	jarl	_sprintf,lp
+                         529 <EXPANSION BEGIN>
+                         529 jarl22 _sprintf , lp 
+000002f0 80ff0000*       529 <EXPANSION END>
+                         530 --line115
+                         531 ..lin.3305b82b..bda86c5c.0_51::
+                         532 .LDWlin51:
+000002f4 260600000000*   533 	mov	_vrun_printf_buff,r6
+                         534 .L1301:
+                         535 	jarl	_vrun_iobuff_print_txt,lp
+                         535 <EXPANSION BEGIN>
+                         535 jarl22 _vrun_iobuff_print_txt , lp 
+000002fa 80ff0000*       535 <EXPANSION END>
+                         536 .L1303:
+                         537 --line115
+                         538 ..lin.3305b82b..bda86c5c.0_52::
+                         539 .LDWlin52:
+                         540 	jarl	_vrun_console_put,lp
+                         540 <EXPANSION BEGIN>
+                         540 jarl22 _vrun_console_put , lp 
+000002fe 80ff0000*       540 <EXPANSION END>
+                         541 --line115
+                         542 ..lin.3305b82b..bda86c5c.0_53::
+                         543 .LDWlin53:
+00000302 0000            544 	nop
+                         545 --116:         printf("| flag cmac_generation   : %i\n",   p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_generation  );
+00000304 9d0f3100        546 	ld.bu	48[r29],r1
+00000308 dd0a            547 	shl	29,r1
+0000030a 9f0a            548 	shr	31,r1
+0000030c 0140            549 	mov	r1,r8
+0000030e 260600000000*   550 	mov	_vrun_printf_buff,r6
+00000314 270600000000*   551 	mov	.L972,r7
+                         552 .L1305:
+                         553 	jarl	_sprintf,lp
+                         553 <EXPANSION BEGIN>
+                         553 jarl22 _sprintf , lp 
+0000031a 80ff0000*       553 <EXPANSION END>
+                         554 --line116
+                         555 ..lin.3305b82b..bda86c5c.0_54::
+                         556 .LDWlin54:
+0000031e 260600000000*   557 	mov	_vrun_printf_buff,r6
+                         558 .L1307:
+                         559 	jarl	_vrun_iobuff_print_txt,lp
+                         559 <EXPANSION BEGIN>
+                         559 jarl22 _vrun_iobuff_print_txt , lp 
+00000324 80ff0000*       559 <EXPANSION END>
+                         560 .L1309:
+                         561 --line116
+                         562 ..lin.3305b82b..bda86c5c.0_55::
+                         563 .LDWlin55:
+                         564 	jarl	_vrun_console_put,lp
+                         564 <EXPANSION BEGIN>
+                         564 jarl22 _vrun_console_put , lp 
+00000328 80ff0000*       564 <EXPANSION END>
+                         565 --line116
+                         566 ..lin.3305b82b..bda86c5c.0_56::
+                         567 .LDWlin56:
+0000032c 0000            568 	nop
+                         569 --117:         printf("| flag cmac_verification : %i\n",   p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_verification);
+0000032e 9d0f3100        570 	ld.bu	48[r29],r1
+00000332 dc0a            571 	shl	28,r1
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000334 9f0a            572 	shr	31,r1
+00000336 0140            573 	mov	r1,r8
+00000338 260600000000*   574 	mov	_vrun_printf_buff,r6
+0000033e 270600000000*   575 	mov	.L973,r7
+                         576 .L1311:
+                         577 	jarl	_sprintf,lp
+                         577 <EXPANSION BEGIN>
+                         577 jarl22 _sprintf , lp 
+00000344 80ff0000*       577 <EXPANSION END>
+                         578 --line117
+                         579 ..lin.3305b82b..bda86c5c.0_57::
+                         580 .LDWlin57:
+00000348 260600000000*   581 	mov	_vrun_printf_buff,r6
+                         582 .L1313:
+                         583 	jarl	_vrun_iobuff_print_txt,lp
+                         583 <EXPANSION BEGIN>
+                         583 jarl22 _vrun_iobuff_print_txt , lp 
+0000034e 80ff0000*       583 <EXPANSION END>
+                         584 .L1315:
+                         585 --line117
+                         586 ..lin.3305b82b..bda86c5c.0_58::
+                         587 .LDWlin58:
+                         588 	jarl	_vrun_console_put,lp
+                         588 <EXPANSION BEGIN>
+                         588 jarl22 _vrun_console_put , lp 
+00000352 80ff0000*       588 <EXPANSION END>
+                         589 --line117
+                         590 ..lin.3305b82b..bda86c5c.0_59::
+                         591 .LDWlin59:
+00000356 0000            592 	nop
+                         593 --118:         printf("| flag disable_on_debug  : %i\n",   p_ISD->prm.KEY_UPDATE_PLAIN.flags.disable_on_debug );
+00000358 9d0f3100        594 	ld.bu	48[r29],r1
+0000035c da0a            595 	shl	26,r1
+0000035e 9f0a            596 	shr	31,r1
+00000360 0140            597 	mov	r1,r8
+00000362 260600000000*   598 	mov	_vrun_printf_buff,r6
+00000368 270600000000*   599 	mov	.L974,r7
+                         600 .L1317:
+                         601 	jarl	_sprintf,lp
+                         601 <EXPANSION BEGIN>
+                         601 jarl22 _sprintf , lp 
+0000036e 80ff0000*       601 <EXPANSION END>
+                         602 --line118
+                         603 ..lin.3305b82b..bda86c5c.0_60::
+                         604 .LDWlin60:
+00000372 260600000000*   605 	mov	_vrun_printf_buff,r6
+                         606 .L1319:
+                         607 	jarl	_vrun_iobuff_print_txt,lp
+                         607 <EXPANSION BEGIN>
+                         607 jarl22 _vrun_iobuff_print_txt , lp 
+00000378 80ff0000*       607 <EXPANSION END>
+                         608 .L1321:
+                         609 --line118
+                         610 ..lin.3305b82b..bda86c5c.0_61::
+                         611 .LDWlin61:
+                         612 	jarl	_vrun_console_put,lp
+                         612 <EXPANSION BEGIN>
+                         612 jarl22 _vrun_console_put , lp 
+0000037c 80ff0000*       612 <EXPANSION END>
+                         613 --line118
+                         614 ..lin.3305b82b..bda86c5c.0_62::
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         615 .LDWlin62:
+00000380 0000            616 	nop
+                         617 --119:         NL(); FLUSH();
+00000382 260600000000*   618 	mov	.L951,r6
+                         619 .L1323:
+                         620 	jarl	_vrun_iobuff_print_txt,lp
+                         620 <EXPANSION BEGIN>
+                         620 jarl22 _vrun_iobuff_print_txt , lp 
+00000388 80ff0000*       620 <EXPANSION END>
+                         621 .L1325:
+                         622 --line119
+                         623 ..lin.3305b82b..bda86c5c.0_63::
+                         624 .LDWlin63:
+                         625 	jarl	_vrun_console_put,lp
+                         625 <EXPANSION BEGIN>
+                         625 jarl22 _vrun_console_put , lp 
+0000038c 80ff0000*       625 <EXPANSION END>
+                         626 --120:     
+                         627 --121:         printf("\n| Select an action:\n");
+                         628 --line121
+                         629 ..lin.3305b82b..bda86c5c.0_64::
+                         630 .LDWlin64:
+00000390 260600000000*   631 	mov	_vrun_printf_buff,r6
+00000396 270600000000*   632 	mov	.L965,r7
+                         633 .L1327:
+                         634 	jarl	_sprintf,lp
+                         634 <EXPANSION BEGIN>
+                         634 jarl22 _sprintf , lp 
+0000039c 80ff0000*       634 <EXPANSION END>
+                         635 --line121
+                         636 ..lin.3305b82b..bda86c5c.0_65::
+                         637 .LDWlin65:
+000003a0 260600000000*   638 	mov	_vrun_printf_buff,r6
+                         639 .L1329:
+                         640 	jarl	_vrun_iobuff_print_txt,lp
+                         640 <EXPANSION BEGIN>
+                         640 jarl22 _vrun_iobuff_print_txt , lp 
+000003a6 80ff0000*       640 <EXPANSION END>
+                         641 .L1331:
+                         642 --line121
+                         643 ..lin.3305b82b..bda86c5c.0_66::
+                         644 .LDWlin66:
+                         645 	jarl	_vrun_console_put,lp
+                         645 <EXPANSION BEGIN>
+                         645 jarl22 _vrun_console_put , lp 
+000003aa 80ff0000*       645 <EXPANSION END>
+                         646 --line121
+                         647 ..lin.3305b82b..bda86c5c.0_67::
+                         648 .LDWlin67:
+000003ae 0000            649 	nop
+                         650 --122:         printf("|-----------------------------\n");
+000003b0 260600000000*   651 	mov	_vrun_printf_buff,r6
+000003b6 270600000000*   652 	mov	.L953,r7
+                         653 .L1333:
+                         654 	jarl	_sprintf,lp
+                         654 <EXPANSION BEGIN>
+                         654 jarl22 _sprintf , lp 
+000003bc 80ff0000*       654 <EXPANSION END>
+                         655 --line122
+                         656 ..lin.3305b82b..bda86c5c.0_68::
+                         657 .LDWlin68:
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+000003c0 260600000000*   658 	mov	_vrun_printf_buff,r6
+                         659 .L1335:
+                         660 	jarl	_vrun_iobuff_print_txt,lp
+                         660 <EXPANSION BEGIN>
+                         660 jarl22 _vrun_iobuff_print_txt , lp 
+000003c6 80ff0000*       660 <EXPANSION END>
+                         661 .L1337:
+                         662 --line122
+                         663 ..lin.3305b82b..bda86c5c.0_69::
+                         664 .LDWlin69:
+                         665 	jarl	_vrun_console_put,lp
+                         665 <EXPANSION BEGIN>
+                         665 jarl22 _vrun_console_put , lp 
+000003ca 80ff0000*       665 <EXPANSION END>
+                         666 --line122
+                         667 ..lin.3305b82b..bda86c5c.0_70::
+                         668 .LDWlin70:
+000003ce 0000            669 	nop
+                         670 --123:         if(keys[n].key_group != KEY_GRP_AES_ROM)
+000003d0 230f0900        671 	ld.w	8[sp],r1
+000003d4 e80f4402        672 	mul	40,r1,zero
+000003d8 220600000000*   673 	mov	_keys,r2
+000003de 01f0            674 	mov	r1,ep
+000003e0 c2f1            675 	add	r2,ep
+000003e2 100d            676 	sld.w	32[ep],r1
+000003e4 e009            677 	cmp	zero,r1
+000003e6 9225*           678 	be	.L16
+                         679 --124:         {
+                         680 --125:             printf("|  0    : Set key value to 0x0011...FF\n");
+                         681 --line125
+                         682 ..lin.3305b82b..bda86c5c.0_71::
+                         683 .LDWlin71:
+000003e8 260600000000*   684 	mov	_vrun_printf_buff,r6
+000003ee 270600000000*   685 	mov	.L955,r7
+                         686 .L1339:
+                         687 	jarl	_sprintf,lp
+                         687 <EXPANSION BEGIN>
+                         687 jarl22 _sprintf , lp 
+000003f4 80ff0000*       687 <EXPANSION END>
+                         688 --line125
+                         689 ..lin.3305b82b..bda86c5c.0_72::
+                         690 .LDWlin72:
+000003f8 260600000000*   691 	mov	_vrun_printf_buff,r6
+                         692 .L1341:
+                         693 	jarl	_vrun_iobuff_print_txt,lp
+                         693 <EXPANSION BEGIN>
+                         693 jarl22 _vrun_iobuff_print_txt , lp 
+000003fe 80ff0000*       693 <EXPANSION END>
+                         694 .L1343:
+                         695 --line125
+                         696 ..lin.3305b82b..bda86c5c.0_73::
+                         697 .LDWlin73:
+                         698 	jarl	_vrun_console_put,lp
+                         698 <EXPANSION BEGIN>
+                         698 jarl22 _vrun_console_put , lp 
+00000402 80ff0000*       698 <EXPANSION END>
+                         699 --line125
+                         700 ..lin.3305b82b..bda86c5c.0_74::
+                         701 .LDWlin74:
+00000406 0000            702 	nop
+                         703 --126:             printf("|  1    : Set key value to 0xAAAA...AA\n");
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000408 260600000000*   704 	mov	_vrun_printf_buff,r6
+0000040e 270600000000*   705 	mov	.L956,r7
+                         706 .L1345:
+                         707 	jarl	_sprintf,lp
+                         707 <EXPANSION BEGIN>
+                         707 jarl22 _sprintf , lp 
+00000414 80ff0000*       707 <EXPANSION END>
+                         708 --line126
+                         709 ..lin.3305b82b..bda86c5c.0_75::
+                         710 .LDWlin75:
+00000418 260600000000*   711 	mov	_vrun_printf_buff,r6
+                         712 .L1347:
+                         713 	jarl	_vrun_iobuff_print_txt,lp
+                         713 <EXPANSION BEGIN>
+                         713 jarl22 _vrun_iobuff_print_txt , lp 
+0000041e 80ff0000*       713 <EXPANSION END>
+                         714 .L1349:
+                         715 --line126
+                         716 ..lin.3305b82b..bda86c5c.0_76::
+                         717 .LDWlin76:
+                         718 	jarl	_vrun_console_put,lp
+                         718 <EXPANSION BEGIN>
+                         718 jarl22 _vrun_console_put , lp 
+00000422 80ff0000*       718 <EXPANSION END>
+                         719 --line126
+                         720 ..lin.3305b82b..bda86c5c.0_77::
+                         721 .LDWlin77:
+00000426 0000            722 	nop
+                         723 .L16:
+                         724 --127:         }
+                         725 --128:         printf("| 11    : Set encryption flag\n");
+00000428 260600000000*   726 	mov	_vrun_printf_buff,r6
+0000042e 270600000000*   727 	mov	.L975,r7
+                         728 .L1351:
+                         729 	jarl	_sprintf,lp
+                         729 <EXPANSION BEGIN>
+                         729 jarl22 _sprintf , lp 
+00000434 80ff0000*       729 <EXPANSION END>
+                         730 --line128
+                         731 ..lin.3305b82b..bda86c5c.0_78::
+                         732 .LDWlin78:
+00000438 260600000000*   733 	mov	_vrun_printf_buff,r6
+                         734 .L1353:
+                         735 	jarl	_vrun_iobuff_print_txt,lp
+                         735 <EXPANSION BEGIN>
+                         735 jarl22 _vrun_iobuff_print_txt , lp 
+0000043e 80ff0000*       735 <EXPANSION END>
+                         736 .L1355:
+                         737 --line128
+                         738 ..lin.3305b82b..bda86c5c.0_79::
+                         739 .LDWlin79:
+                         740 	jarl	_vrun_console_put,lp
+                         740 <EXPANSION BEGIN>
+                         740 jarl22 _vrun_console_put , lp 
+00000442 80ff0000*       740 <EXPANSION END>
+                         741 --line128
+                         742 ..lin.3305b82b..bda86c5c.0_80::
+                         743 .LDWlin80:
+00000446 0000            744 	nop
+                         745 --129:         printf("| 12    : Set decryption flag\n");
+00000448 260600000000*   746 	mov	_vrun_printf_buff,r6
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+0000044e 270600000000*   747 	mov	.L976,r7
+                         748 .L1357:
+                         749 	jarl	_sprintf,lp
+                         749 <EXPANSION BEGIN>
+                         749 jarl22 _sprintf , lp 
+00000454 80ff0000*       749 <EXPANSION END>
+                         750 --line129
+                         751 ..lin.3305b82b..bda86c5c.0_81::
+                         752 .LDWlin81:
+00000458 260600000000*   753 	mov	_vrun_printf_buff,r6
+                         754 .L1359:
+                         755 	jarl	_vrun_iobuff_print_txt,lp
+                         755 <EXPANSION BEGIN>
+                         755 jarl22 _vrun_iobuff_print_txt , lp 
+0000045e 80ff0000*       755 <EXPANSION END>
+                         756 .L1361:
+                         757 --line129
+                         758 ..lin.3305b82b..bda86c5c.0_82::
+                         759 .LDWlin82:
+                         760 	jarl	_vrun_console_put,lp
+                         760 <EXPANSION BEGIN>
+                         760 jarl22 _vrun_console_put , lp 
+00000462 80ff0000*       760 <EXPANSION END>
+                         761 --line129
+                         762 ..lin.3305b82b..bda86c5c.0_83::
+                         763 .LDWlin83:
+00000466 0000            764 	nop
+                         765 --130:         printf("| 13    : Set CMAC generation flag\n");
+00000468 260600000000*   766 	mov	_vrun_printf_buff,r6
+0000046e 270600000000*   767 	mov	.L963,r7
+                         768 .L1363:
+                         769 	jarl	_sprintf,lp
+                         769 <EXPANSION BEGIN>
+                         769 jarl22 _sprintf , lp 
+00000474 80ff0000*       769 <EXPANSION END>
+                         770 --line130
+                         771 ..lin.3305b82b..bda86c5c.0_84::
+                         772 .LDWlin84:
+00000478 260600000000*   773 	mov	_vrun_printf_buff,r6
+                         774 .L1365:
+                         775 	jarl	_vrun_iobuff_print_txt,lp
+                         775 <EXPANSION BEGIN>
+                         775 jarl22 _vrun_iobuff_print_txt , lp 
+0000047e 80ff0000*       775 <EXPANSION END>
+                         776 .L1367:
+                         777 --line130
+                         778 ..lin.3305b82b..bda86c5c.0_85::
+                         779 .LDWlin85:
+                         780 	jarl	_vrun_console_put,lp
+                         780 <EXPANSION BEGIN>
+                         780 jarl22 _vrun_console_put , lp 
+00000482 80ff0000*       780 <EXPANSION END>
+                         781 --line130
+                         782 ..lin.3305b82b..bda86c5c.0_86::
+                         783 .LDWlin86:
+00000486 0000            784 	nop
+                         785 --131:         printf("| 14    : Set CMAC verification flag\n");
+00000488 260600000000*   786 	mov	_vrun_printf_buff,r6
+0000048e 270600000000*   787 	mov	.L966,r7
+                         788 .L1369:
+                         789 	jarl	_sprintf,lp
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         789 <EXPANSION BEGIN>
+                         789 jarl22 _sprintf , lp 
+00000494 80ff0000*       789 <EXPANSION END>
+                         790 --line131
+                         791 ..lin.3305b82b..bda86c5c.0_87::
+                         792 .LDWlin87:
+00000498 260600000000*   793 	mov	_vrun_printf_buff,r6
+                         794 .L1371:
+                         795 	jarl	_vrun_iobuff_print_txt,lp
+                         795 <EXPANSION BEGIN>
+                         795 jarl22 _vrun_iobuff_print_txt , lp 
+0000049e 80ff0000*       795 <EXPANSION END>
+                         796 .L1373:
+                         797 --line131
+                         798 ..lin.3305b82b..bda86c5c.0_88::
+                         799 .LDWlin88:
+                         800 	jarl	_vrun_console_put,lp
+                         800 <EXPANSION BEGIN>
+                         800 jarl22 _vrun_console_put , lp 
+000004a2 80ff0000*       800 <EXPANSION END>
+                         801 --line131
+                         802 ..lin.3305b82b..bda86c5c.0_89::
+                         803 .LDWlin89:
+000004a6 0000            804 	nop
+                         805 --132:         printf("| 20    : Update key\n");
+000004a8 260600000000*   806 	mov	_vrun_printf_buff,r6
+000004ae 270600000000*   807 	mov	.L967,r7
+                         808 .L1375:
+                         809 	jarl	_sprintf,lp
+                         809 <EXPANSION BEGIN>
+                         809 jarl22 _sprintf , lp 
+000004b4 80ff0000*       809 <EXPANSION END>
+                         810 --line132
+                         811 ..lin.3305b82b..bda86c5c.0_90::
+                         812 .LDWlin90:
+000004b8 260600000000*   813 	mov	_vrun_printf_buff,r6
+                         814 .L1377:
+                         815 	jarl	_vrun_iobuff_print_txt,lp
+                         815 <EXPANSION BEGIN>
+                         815 jarl22 _vrun_iobuff_print_txt , lp 
+000004be 80ff0000*       815 <EXPANSION END>
+                         816 .L1379:
+                         817 --line132
+                         818 ..lin.3305b82b..bda86c5c.0_91::
+                         819 .LDWlin91:
+                         820 	jarl	_vrun_console_put,lp
+                         820 <EXPANSION BEGIN>
+                         820 jarl22 _vrun_console_put , lp 
+000004c2 80ff0000*       820 <EXPANSION END>
+                         821 --line132
+                         822 ..lin.3305b82b..bda86c5c.0_92::
+                         823 .LDWlin92:
+000004c6 0000            824 	nop
+                         825 --133:         printf("| 99    : Exit\n");
+000004c8 260600000000*   826 	mov	_vrun_printf_buff,r6
+000004ce 270600000000*   827 	mov	.L957,r7
+                         828 .L1381:
+                         829 	jarl	_sprintf,lp
+                         829 <EXPANSION BEGIN>
+                         829 jarl22 _sprintf , lp 
+000004d4 80ff0000*       829 <EXPANSION END>
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         830 --line133
+                         831 ..lin.3305b82b..bda86c5c.0_93::
+                         832 .LDWlin93:
+000004d8 260600000000*   833 	mov	_vrun_printf_buff,r6
+                         834 .L1383:
+                         835 	jarl	_vrun_iobuff_print_txt,lp
+                         835 <EXPANSION BEGIN>
+                         835 jarl22 _vrun_iobuff_print_txt , lp 
+000004de 80ff0000*       835 <EXPANSION END>
+                         836 .L1385:
+                         837 --line133
+                         838 ..lin.3305b82b..bda86c5c.0_94::
+                         839 .LDWlin94:
+                         840 	jarl	_vrun_console_put,lp
+                         840 <EXPANSION BEGIN>
+                         840 jarl22 _vrun_console_put , lp 
+000004e2 80ff0000*       840 <EXPANSION END>
+                         841 --line133
+                         842 ..lin.3305b82b..bda86c5c.0_95::
+                         843 .LDWlin95:
+000004e6 0000            844 	nop
+                         845 --134:         printf("  ?> ");
+000004e8 260600000000*   846 	mov	_vrun_printf_buff,r6
+000004ee 270600000000*   847 	mov	.L948,r7
+                         848 .L1387:
+                         849 	jarl	_sprintf,lp
+                         849 <EXPANSION BEGIN>
+                         849 jarl22 _sprintf , lp 
+000004f4 80ff0000*       849 <EXPANSION END>
+                         850 --line134
+                         851 ..lin.3305b82b..bda86c5c.0_96::
+                         852 .LDWlin96:
+000004f8 260600000000*   853 	mov	_vrun_printf_buff,r6
+                         854 .L1389:
+                         855 	jarl	_vrun_iobuff_print_txt,lp
+                         855 <EXPANSION BEGIN>
+                         855 jarl22 _vrun_iobuff_print_txt , lp 
+000004fe 80ff0000*       855 <EXPANSION END>
+                         856 .L1391:
+                         857 --line134
+                         858 ..lin.3305b82b..bda86c5c.0_97::
+                         859 .LDWlin97:
+                         860 	jarl	_vrun_console_put,lp
+                         860 <EXPANSION BEGIN>
+                         860 jarl22 _vrun_console_put , lp 
+00000502 80ff0000*       860 <EXPANSION END>
+                         861 --line134
+                         862 ..lin.3305b82b..bda86c5c.0_98::
+                         863 .LDWlin98:
+00000506 0000            864 	nop
+                         865 --135:         vrun_console_get();
+                         866 .L1393:
+                         867 	jarl	_vrun_console_get,lp
+                         867 <EXPANSION BEGIN>
+                         867 jarl22 _vrun_console_get , lp 
+00000508 80ff0000*       867 <EXPANSION END>
+                         868 --136:         sscanf(vrun_iobuff_readparam(0), "%i", &i);
+                         869 --line136
+                         870 ..lin.3305b82b..bda86c5c.0_99::
+                         871 .LDWlin99:
+0000050c 0032            872 	mov	0,r6
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         873 .L1395:
+                         874 	jarl	_vrun_iobuff_readparam,lp
+                         874 <EXPANSION BEGIN>
+                         874 jarl22 _vrun_iobuff_readparam , lp 
+0000050e 80ff0000*       874 <EXPANSION END>
+00000512 0a30            875 	mov	r10,r6
+00000514 270600000000*   876 	mov	.L950,r7
+0000051a 23460000        877 	movea	0,sp,r8
+                         878 .L1397:
+                         879 	jarl	_sscanf,lp
+                         879 <EXPANSION BEGIN>
+                         879 jarl22 _sscanf , lp 
+0000051e 80ff0000*       879 <EXPANSION END>
+                         880 --137:         
+                         881 --138:         if((i >= 10) && (i < 20))
+                         882 --line138
+                         883 ..lin.3305b82b..bda86c5c.0_100::
+                         884 .LDWlin100:
+00000522 230f0100        885 	ld.w	0[sp],r1
+00000526 6a0a            886 	cmp	10,r1
+00000528 f67d*           887 	blt	.L18
+0000052a 230f0100        888 	ld.w	0[sp],r1
+0000052e 0106ecff        889 	addi	-20,r1,zero
+00000532 ae7d*           890 	bge	.L18
+                         891 --139:         {
+                         892 --140:             printf("\n| Select flag value (0/1):\n");
+                         893 --line140
+                         894 ..lin.3305b82b..bda86c5c.0_101::
+                         895 .LDWlin101:
+00000534 260600000000*   896 	mov	_vrun_printf_buff,r6
+0000053a 270600000000*   897 	mov	.L977,r7
+                         898 .L1399:
+                         899 	jarl	_sprintf,lp
+                         899 <EXPANSION BEGIN>
+                         899 jarl22 _sprintf , lp 
+00000540 80ff0000*       899 <EXPANSION END>
+                         900 --line140
+                         901 ..lin.3305b82b..bda86c5c.0_102::
+                         902 .LDWlin102:
+00000544 260600000000*   903 	mov	_vrun_printf_buff,r6
+                         904 .L1401:
+                         905 	jarl	_vrun_iobuff_print_txt,lp
+                         905 <EXPANSION BEGIN>
+                         905 jarl22 _vrun_iobuff_print_txt , lp 
+0000054a 80ff0000*       905 <EXPANSION END>
+                         906 .L1403:
+                         907 --line140
+                         908 ..lin.3305b82b..bda86c5c.0_103::
+                         909 .LDWlin103:
+                         910 	jarl	_vrun_console_put,lp
+                         910 <EXPANSION BEGIN>
+                         910 jarl22 _vrun_console_put , lp 
+0000054e 80ff0000*       910 <EXPANSION END>
+                         911 --line140
+                         912 ..lin.3305b82b..bda86c5c.0_104::
+                         913 .LDWlin104:
+00000552 0000            914 	nop
+                         915 --141:             printf("|-----------------------------\n");
+00000554 260600000000*   916 	mov	_vrun_printf_buff,r6
+0000055a 270600000000*   917 	mov	.L953,r7
+                         918 .L1405:
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         919 	jarl	_sprintf,lp
+                         919 <EXPANSION BEGIN>
+                         919 jarl22 _sprintf , lp 
+00000560 80ff0000*       919 <EXPANSION END>
+                         920 --line141
+                         921 ..lin.3305b82b..bda86c5c.0_105::
+                         922 .LDWlin105:
+00000564 260600000000*   923 	mov	_vrun_printf_buff,r6
+                         924 .L1407:
+                         925 	jarl	_vrun_iobuff_print_txt,lp
+                         925 <EXPANSION BEGIN>
+                         925 jarl22 _vrun_iobuff_print_txt , lp 
+0000056a 80ff0000*       925 <EXPANSION END>
+                         926 .L1409:
+                         927 --line141
+                         928 ..lin.3305b82b..bda86c5c.0_106::
+                         929 .LDWlin106:
+                         930 	jarl	_vrun_console_put,lp
+                         930 <EXPANSION BEGIN>
+                         930 jarl22 _vrun_console_put , lp 
+0000056e 80ff0000*       930 <EXPANSION END>
+                         931 --line141
+                         932 ..lin.3305b82b..bda86c5c.0_107::
+                         933 .LDWlin107:
+00000572 0000            934 	nop
+                         935 --142:             printf("  ?> ");
+00000574 260600000000*   936 	mov	_vrun_printf_buff,r6
+0000057a 270600000000*   937 	mov	.L948,r7
+                         938 .L1411:
+                         939 	jarl	_sprintf,lp
+                         939 <EXPANSION BEGIN>
+                         939 jarl22 _sprintf , lp 
+00000580 80ff0000*       939 <EXPANSION END>
+                         940 --line142
+                         941 ..lin.3305b82b..bda86c5c.0_108::
+                         942 .LDWlin108:
+00000584 260600000000*   943 	mov	_vrun_printf_buff,r6
+                         944 .L1413:
+                         945 	jarl	_vrun_iobuff_print_txt,lp
+                         945 <EXPANSION BEGIN>
+                         945 jarl22 _vrun_iobuff_print_txt , lp 
+0000058a 80ff0000*       945 <EXPANSION END>
+                         946 .L1415:
+                         947 --line142
+                         948 ..lin.3305b82b..bda86c5c.0_109::
+                         949 .LDWlin109:
+                         950 	jarl	_vrun_console_put,lp
+                         950 <EXPANSION BEGIN>
+                         950 jarl22 _vrun_console_put , lp 
+0000058e 80ff0000*       950 <EXPANSION END>
+                         951 --line142
+                         952 ..lin.3305b82b..bda86c5c.0_110::
+                         953 .LDWlin110:
+00000592 0000            954 	nop
+                         955 --143:             vrun_console_get();
+                         956 .L1417:
+                         957 	jarl	_vrun_console_get,lp
+                         957 <EXPANSION BEGIN>
+                         957 jarl22 _vrun_console_get , lp 
+00000594 80ff0000*       957 <EXPANSION END>
+                         958 --144:             sscanf(vrun_iobuff_readparam(0), "%i", &j);
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                         959 --line144
+                         960 ..lin.3305b82b..bda86c5c.0_111::
+                         961 .LDWlin111:
+00000598 0032            962 	mov	0,r6
+                         963 .L1419:
+                         964 	jarl	_vrun_iobuff_readparam,lp
+                         964 <EXPANSION BEGIN>
+                         964 jarl22 _vrun_iobuff_readparam , lp 
+0000059a 80ff0000*       964 <EXPANSION END>
+0000059e 0a30            965 	mov	r10,r6
+000005a0 270600000000*   966 	mov	.L950,r7
+000005a6 23460400        967 	movea	4,sp,r8
+                         968 .L1421:
+                         969 	jarl	_sscanf,lp
+                         969 <EXPANSION BEGIN>
+                         969 jarl22 _sscanf , lp 
+000005aa 80ff0000*       969 <EXPANSION END>
+                         970 --145:             if((j == 0) || (j == 1))
+                         971 --line145
+                         972 ..lin.3305b82b..bda86c5c.0_112::
+                         973 .LDWlin112:
+000005ae 230f0500        974 	ld.w	4[sp],r1
+000005b2 e009            975 	cmp	zero,r1
+000005b4 e205*           976 	be	.L22
+000005b6 230f0500        977 	ld.w	4[sp],r1
+000005ba 610a            978 	cmp	1,r1
+000005bc ea075f01*       979 	bne	.L12
+                         980 .L22:
+                         981 --146:             {
+                         982 --147:                 switch(i)
+                         983 --line147
+                         984 ..lin.3305b82b..bda86c5c.0_113::
+                         985 .LDWlin113:
+000005c0 230f0100        986 	ld.w	0[sp],r1
+000005c4 6b0a            987 	cmp	11,r1
+000005c6 f12d*           988 	bl	.L29
+000005c8 f205*           989 	be	.L25
+000005ca 6d0a            990 	cmp	13,r1
+000005cc f10d*           991 	bl	.L26
+000005ce 821d*           992 	be	.L27
+000005d0 6e0a            993 	cmp	14,r1
+000005d2 8225*           994 	be	.L28
+000005d4 852d*           995 	br	.L29
+                         996 .L25:
+                         997 --148:                 {
+                         998 --149:                     case 11: p_ISD->prm.KEY_UPDATE_PLAIN.flags.encryption        = j; break; 
+                         999 --line149
+                        1000 ..lin.3305b82b..bda86c5c.0_114::
+                        1001 .LDWlin114:
+000005d6 e3170500       1002 	ld.hu	4[sp],r2
+000005da 9d0f3100       1003 	ld.bu	48[r29],r1
+000005de e20fd000       1004 	bins	r2,0,1,r1
+000005e2 5d0f3000       1005 	st.b	r1,48[r29]
+                        1006 --150:                     case 12: p_ISD->prm.KEY_UPDATE_PLAIN.flags.decryption        = j; break;
+000005e6 80073401*      1007 	br	.L12
+                        1008 .L26:
+                        1009 --line150
+                        1010 ..lin.3305b82b..bda86c5c.0_115::
+                        1011 .LDWlin115:
+000005ea e3170500       1012 	ld.hu	4[sp],r2
+000005ee 9d0f3100       1013 	ld.bu	48[r29],r1
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+000005f2 e20fd210       1014 	bins	r2,1,1,r1
+000005f6 5d0f3000       1015 	st.b	r1,48[r29]
+                        1016 --151:                     case 13: p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_generation   = j; break;
+000005fa 80072001*      1017 	br	.L12
+                        1018 .L27:
+                        1019 --line151
+                        1020 ..lin.3305b82b..bda86c5c.0_116::
+                        1021 .LDWlin116:
+000005fe e3170500       1022 	ld.hu	4[sp],r2
+00000602 9d0f3100       1023 	ld.bu	48[r29],r1
+00000606 e20fd420       1024 	bins	r2,2,1,r1
+0000060a 5d0f3000       1025 	st.b	r1,48[r29]
+                        1026 --152:                     case 14: p_ISD->prm.KEY_UPDATE_PLAIN.flags.cmac_verification = j; break;
+0000060e 80070c01*      1027 	br	.L12
+                        1028 .L28:
+                        1029 --line152
+                        1030 ..lin.3305b82b..bda86c5c.0_117::
+                        1031 .LDWlin117:
+00000612 e3170500       1032 	ld.hu	4[sp],r2
+00000616 9d0f3100       1033 	ld.bu	48[r29],r1
+0000061a e20fd630       1034 	bins	r2,3,1,r1
+0000061e 5d0f3000       1035 	st.b	r1,48[r29]
+                        1036 --153:                     default: break;
+00000622 c57d*          1037 	br	.L12
+                        1038 .L29:
+                        1039 --line153
+                        1040 ..lin.3305b82b..bda86c5c.0_118::
+                        1041 .LDWlin118:
+00000624 b57d*          1042 	br	.L12
+                        1043 .L18:
+                        1044 --154:                 }
+                        1045 --155:             }
+                        1046 --156:         }
+                        1047 --157:         else
+                        1048 --158:         {        
+                        1049 --159:             switch(i)
+                        1050 --line159
+                        1051 ..lin.3305b82b..bda86c5c.0_119::
+                        1052 .LDWlin119:
+00000626 230f0100       1053 	ld.w	0[sp],r1
+0000062a 610a           1054 	cmp	1,r1
+0000062c b10d*          1055 	bl	.L34
+0000062e c215*          1056 	be	.L35
+00000630 205e1400       1057 	movea	20,zero,r11
+00000634 eb09           1058 	cmp	r11,r1
+00000636 921d*          1059 	be	.L36
+00000638 205e6300       1060 	movea	99,zero,r11
+0000063c eb09           1061 	cmp	r11,r1
+0000063e b25d*          1062 	be	.L37
+00000640 c55d*          1063 	br	.L38
+                        1064 .L34:
+                        1065 --160:             {
+                        1066 --161:                 case 0:
+                        1067 --162:                     memcpy((void *)p_ISD->prm.KEY_UPDATE_PLAIN.p_key_value, TEST_VECTOR[0], AES_BLOCK_SIZE_IN_BYTES);
+                        1068 --line162
+                        1069 ..lin.3305b82b..bda86c5c.0_120::
+                        1070 .LDWlin120:
+00000642 3d372100       1071 	ld.w	32[r29],r6
+00000646 270600000000*  1072 	mov	_TEST_VECTOR,r7
+0000064c 20461000       1073 	movea	16,zero,r8
+                        1074 .L1423:
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1075 	jarl	_memcpy,lp
+                        1075 <EXPANSION BEGIN>
+                        1075 jarl22 _memcpy , lp 
+00000650 80ff0000*      1075 <EXPANSION END>
+                        1076 --163:                     break;
+                        1077 --164:                 case 1:
+                        1078 --line163
+                        1079 ..lin.3305b82b..bda86c5c.0_121::
+                        1080 .LDWlin121:
+00000654 b565*          1081 	br	.L12
+                        1082 .L35:
+                        1083 --165:                     memset((void *)p_ISD->prm.KEY_UPDATE_PLAIN.p_key_value, 0xaa, AES_BLOCK_SIZE_IN_BYTES);
+                        1084 --line165
+                        1085 ..lin.3305b82b..bda86c5c.0_122::
+                        1086 .LDWlin122:
+00000656 3d372100       1087 	ld.w	32[r29],r6
+0000065a 203eaa00       1088 	movea	170,zero,r7
+0000065e 20461000       1089 	movea	16,zero,r8
+                        1090 .L1425:
+                        1091 	jarl	_memset,lp
+                        1091 <EXPANSION BEGIN>
+                        1091 jarl22 _memset , lp 
+00000662 80ff0000*      1091 <EXPANSION END>
+                        1092 --166:                     break;
+                        1093 --167:                 case 20:
+                        1094 --line166
+                        1095 ..lin.3305b82b..bda86c5c.0_123::
+                        1096 .LDWlin123:
+00000666 a55d*          1097 	br	.L12
+                        1098 .L36:
+                        1099 --168:                     printf("Updating key...\n");
+                        1100 --line168
+                        1101 ..lin.3305b82b..bda86c5c.0_124::
+                        1102 .LDWlin124:
+00000668 260600000000*  1103 	mov	_vrun_printf_buff,r6
+0000066e 270600000000*  1104 	mov	.L978,r7
+                        1105 .L1427:
+                        1106 	jarl	_sprintf,lp
+                        1106 <EXPANSION BEGIN>
+                        1106 jarl22 _sprintf , lp 
+00000674 80ff0000*      1106 <EXPANSION END>
+                        1107 --line168
+                        1108 ..lin.3305b82b..bda86c5c.0_125::
+                        1109 .LDWlin125:
+00000678 260600000000*  1110 	mov	_vrun_printf_buff,r6
+                        1111 .L1429:
+                        1112 	jarl	_vrun_iobuff_print_txt,lp
+                        1112 <EXPANSION BEGIN>
+                        1112 jarl22 _vrun_iobuff_print_txt , lp 
+0000067e 80ff0000*      1112 <EXPANSION END>
+                        1113 .L1431:
+                        1114 --line168
+                        1115 ..lin.3305b82b..bda86c5c.0_126::
+                        1116 .LDWlin126:
+                        1117 	jarl	_vrun_console_put,lp
+                        1117 <EXPANSION BEGIN>
+                        1117 jarl22 _vrun_console_put , lp 
+00000682 80ff0000*      1117 <EXPANSION END>
+                        1118 --line168
+                        1119 ..lin.3305b82b..bda86c5c.0_127::
+                        1120 .LDWlin127:
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000686 0000           1121 	nop
+                        1122 --169:                     pause_life_signal();
+                        1123 .L1433:
+                        1124 	jarl	_pause_life_signal,lp
+                        1124 <EXPANSION BEGIN>
+                        1124 jarl22 _pause_life_signal , lp 
+00000688 80ff0000*      1124 <EXPANSION END>
+                        1125 --170:                     vrun_chrono_start();
+                        1126 .L1435:
+                        1127 --line170
+                        1128 ..lin.3305b82b..bda86c5c.0_128::
+                        1129 .LDWlin128:
+                        1130 	jarl	_vrun_chrono_start,lp
+                        1130 <EXPANSION BEGIN>
+                        1130 jarl22 _vrun_chrono_start , lp 
+0000068c 80ff0000*      1130 <EXPANSION END>
+                        1131 --171:                     trigger_service_and_wait(p_ISD);
+                        1132 --line171
+                        1133 ..lin.3305b82b..bda86c5c.0_129::
+                        1134 .LDWlin129:
+00000690 1d30           1135 	mov	r29,r6
+                        1136 .L1437:
+                        1137 	jarl	_trigger_service_and_wait,lp
+                        1137 <EXPANSION BEGIN>
+                        1137 jarl22 _trigger_service_and_wait , lp 
+00000692 80ff0000*      1137 <EXPANSION END>
+                        1138 --172:                     vrun_chrono_stop();
+                        1139 .L1439:
+                        1140 --line172
+                        1141 ..lin.3305b82b..bda86c5c.0_130::
+                        1142 .LDWlin130:
+                        1143 	jarl	_vrun_chrono_stop,lp
+                        1143 <EXPANSION BEGIN>
+                        1143 jarl22 _vrun_chrono_stop , lp 
+00000696 80ff0000*      1143 <EXPANSION END>
+                        1144 --173:                     vrun_chrono_gettimestamp();
+                        1145 .L1441:
+                        1146 --line173
+                        1147 ..lin.3305b82b..bda86c5c.0_131::
+                        1148 .LDWlin131:
+                        1149 	jarl	_vrun_chrono_gettimestamp,lp
+                        1149 <EXPANSION BEGIN>
+                        1149 jarl22 _vrun_chrono_gettimestamp , lp 
+0000069a 80ff0000*      1149 <EXPANSION END>
+                        1150 --174:                     printf("Processed in : "); PCHRONO(); NL(); FLUSH();
+                        1151 --line174
+                        1152 ..lin.3305b82b..bda86c5c.0_132::
+                        1153 .LDWlin132:
+0000069e 260600000000*  1154 	mov	_vrun_printf_buff,r6
+000006a4 270600000000*  1155 	mov	.L958,r7
+                        1156 .L1443:
+                        1157 	jarl	_sprintf,lp
+                        1157 <EXPANSION BEGIN>
+                        1157 jarl22 _sprintf , lp 
+000006aa 80ff0000*      1157 <EXPANSION END>
+                        1158 --line174
+                        1159 ..lin.3305b82b..bda86c5c.0_133::
+                        1160 .LDWlin133:
+000006ae 260600000000*  1161 	mov	_vrun_printf_buff,r6
+                        1162 .L1445:
+                        1163 	jarl	_vrun_iobuff_print_txt,lp
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1163 <EXPANSION BEGIN>
+                        1163 jarl22 _vrun_iobuff_print_txt , lp 
+000006b4 80ff0000*      1163 <EXPANSION END>
+                        1164 .L1447:
+                        1165 --line174
+                        1166 ..lin.3305b82b..bda86c5c.0_134::
+                        1167 .LDWlin134:
+                        1168 	jarl	_vrun_console_put,lp
+                        1168 <EXPANSION BEGIN>
+                        1168 jarl22 _vrun_console_put , lp 
+000006b8 80ff0000*      1168 <EXPANSION END>
+                        1169 .L1449:
+                        1170 --line174
+                        1171 ..lin.3305b82b..bda86c5c.0_135::
+                        1172 .LDWlin135:
+                        1173 	jarl	_vrun_iobuff_print_chrono,lp
+                        1173 <EXPANSION BEGIN>
+                        1173 jarl22 _vrun_iobuff_print_chrono , lp 
+000006bc 80ff0000*      1173 <EXPANSION END>
+                        1174 --line174
+                        1175 ..lin.3305b82b..bda86c5c.0_136::
+                        1176 .LDWlin136:
+000006c0 260600000000*  1177 	mov	.L951,r6
+                        1178 .L1451:
+                        1179 	jarl	_vrun_iobuff_print_txt,lp
+                        1179 <EXPANSION BEGIN>
+                        1179 jarl22 _vrun_iobuff_print_txt , lp 
+000006c6 80ff0000*      1179 <EXPANSION END>
+                        1180 .L1453:
+                        1181 --line174
+                        1182 ..lin.3305b82b..bda86c5c.0_137::
+                        1183 .LDWlin137:
+                        1184 	jarl	_vrun_console_put,lp
+                        1184 <EXPANSION BEGIN>
+                        1184 jarl22 _vrun_console_put , lp 
+000006ca 80ff0000*      1184 <EXPANSION END>
+                        1185 --175:                     printf("Done\n");
+                        1186 --line175
+                        1187 ..lin.3305b82b..bda86c5c.0_138::
+                        1188 .LDWlin138:
+000006ce 260600000000*  1189 	mov	_vrun_printf_buff,r6
+000006d4 270600000000*  1190 	mov	.L949,r7
+                        1191 .L1455:
+                        1192 	jarl	_sprintf,lp
+                        1192 <EXPANSION BEGIN>
+                        1192 jarl22 _sprintf , lp 
+000006da 80ff0000*      1192 <EXPANSION END>
+                        1193 --line175
+                        1194 ..lin.3305b82b..bda86c5c.0_139::
+                        1195 .LDWlin139:
+000006de 260600000000*  1196 	mov	_vrun_printf_buff,r6
+                        1197 .L1457:
+                        1198 	jarl	_vrun_iobuff_print_txt,lp
+                        1198 <EXPANSION BEGIN>
+                        1198 jarl22 _vrun_iobuff_print_txt , lp 
+000006e4 80ff0000*      1198 <EXPANSION END>
+                        1199 .L1459:
+                        1200 --line175
+                        1201 ..lin.3305b82b..bda86c5c.0_140::
+                        1202 .LDWlin140:
+                        1203 	jarl	_vrun_console_put,lp
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1203 <EXPANSION BEGIN>
+                        1203 jarl22 _vrun_console_put , lp 
+000006e8 80ff0000*      1203 <EXPANSION END>
+                        1204 --line175
+                        1205 ..lin.3305b82b..bda86c5c.0_141::
+                        1206 .LDWlin141:
+000006ec 0000           1207 	nop
+                        1208 --176:                     restart_life_signal();
+                        1209 .L1461:
+                        1210 	jarl	_restart_life_signal,lp
+                        1210 <EXPANSION BEGIN>
+                        1210 jarl22 _restart_life_signal , lp 
+000006ee 80ff0000*      1210 <EXPANSION END>
+                        1211 --177:                     break;
+                        1212 --178:                 case 99:
+                        1213 --line177
+                        1214 ..lin.3305b82b..bda86c5c.0_142::
+                        1215 .LDWlin142:
+000006f2 c515*          1216 	br	.L12
+                        1217 .L37:
+                        1218 --179:                     done = 1;
+                        1219 --line179
+                        1220 ..lin.3305b82b..bda86c5c.0_143::
+                        1221 .LDWlin143:
+000006f4 01e2           1222 	mov	1,r28
+                        1223 --180:                     break;
+                        1224 --181:                 default:
+000006f6 a515*          1225 	br	.L12
+                        1226 .L38:
+                        1227 --182:                     printf("Invalid action\n\n");
+                        1228 --line182
+                        1229 ..lin.3305b82b..bda86c5c.0_144::
+                        1230 .LDWlin144:
+000006f8 260600000000*  1231 	mov	_vrun_printf_buff,r6
+000006fe 270600000000*  1232 	mov	.L979,r7
+                        1233 .L1463:
+                        1234 	jarl	_sprintf,lp
+                        1234 <EXPANSION BEGIN>
+                        1234 jarl22 _sprintf , lp 
+00000704 80ff0000*      1234 <EXPANSION END>
+                        1235 --line182
+                        1236 ..lin.3305b82b..bda86c5c.0_145::
+                        1237 .LDWlin145:
+00000708 260600000000*  1238 	mov	_vrun_printf_buff,r6
+                        1239 .L1465:
+                        1240 	jarl	_vrun_iobuff_print_txt,lp
+                        1240 <EXPANSION BEGIN>
+                        1240 jarl22 _vrun_iobuff_print_txt , lp 
+0000070e 80ff0000*      1240 <EXPANSION END>
+                        1241 .L1467:
+                        1242 --line182
+                        1243 ..lin.3305b82b..bda86c5c.0_146::
+                        1244 .LDWlin146:
+                        1245 	jarl	_vrun_console_put,lp
+                        1245 <EXPANSION BEGIN>
+                        1245 jarl22 _vrun_console_put , lp 
+00000712 80ff0000*      1245 <EXPANSION END>
+                        1246 --line182
+                        1247 ..lin.3305b82b..bda86c5c.0_147::
+                        1248 .LDWlin147:
+00000716 0000           1249 	nop
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1250 --183:                     break;
+00000718 0000           1251 	nop
+                        1252 .L12:
+0000071a e0e1           1253 	cmp	zero,r28
+0000071c f207d1fa*      1254 	be	.L13
+                        1255 .L9:
+                        1256 --184:             }
+                        1257 --185:         }
+                        1258 --186:     } while(done == 0);
+                        1259 --187:     
+                        1260 --188: end:
+                        1261 .LDW11:
+                        1262 --189:     printf("Done!\n");
+                        1263 --line189
+                        1264 ..lin.3305b82b..bda86c5c.0_148::
+                        1265 .LDWlin148:
+00000720 260600000000*  1266 	mov	_vrun_printf_buff,r6
+00000726 270600000000*  1267 	mov	.L952,r7
+                        1268 .L1469:
+                        1269 	jarl	_sprintf,lp
+                        1269 <EXPANSION BEGIN>
+                        1269 jarl22 _sprintf , lp 
+0000072c 80ff0000*      1269 <EXPANSION END>
+                        1270 --line189
+                        1271 ..lin.3305b82b..bda86c5c.0_149::
+                        1272 .LDWlin149:
+00000730 260600000000*  1273 	mov	_vrun_printf_buff,r6
+                        1274 .L1471:
+                        1275 	jarl	_vrun_iobuff_print_txt,lp
+                        1275 <EXPANSION BEGIN>
+                        1275 jarl22 _vrun_iobuff_print_txt , lp 
+00000736 80ff0000*      1275 <EXPANSION END>
+                        1276 .L1473:
+                        1277 --line189
+                        1278 ..lin.3305b82b..bda86c5c.0_150::
+                        1279 .LDWlin150:
+                        1280 	jarl	_vrun_console_put,lp
+                        1280 <EXPANSION BEGIN>
+                        1280 jarl22 _vrun_console_put , lp 
+0000073a 80ff0000*      1280 <EXPANSION END>
+                        1281 --line189
+                        1282 ..lin.3305b82b..bda86c5c.0_151::
+                        1283 .LDWlin151:
+0000073e 0000           1284 	nop
+                        1285 --190:     FLUSH();
+                        1286 .L1475:
+                        1287 	jarl	_vrun_console_put,lp
+                        1287 <EXPANSION BEGIN>
+                        1287 jarl22 _vrun_console_put , lp 
+00000740 80ff0000*      1287 <EXPANSION END>
+                        1288 --191: }
+                        1289 --	    .ef
+                        1290 .LDW21:
+                        1291 --line191
+                        1292 ..lin.3305b82b..bda86c5c.0_152::
+                        1293 .LDWlin152:
+00000744 23ff1500       1294 	ld.w	20[sp],lp
+00000748 23ef0d00       1295 	ld.w	12[sp],r29
+0000074c 23e71100       1296 	ld.w	16[sp],r28
+00000750 031e1800       1297 	addi	24,sp,sp
+                        1298 .L1477:
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1299 	.jumptype return
+00000754 7f00           1300 	jmp	[lp]
+                        1301 --line191
+                        1302 ..lin.3305b82b..bda86c5c.0_153::
+                        1303 	.type	_icum_key_update,@function
+                        1304 	.size	_icum_key_update,.-_icum_key_update
+                        1305 	.align	2
+                        1306 --_p_ISD	r29	local
+                        1307 --_done	r28	local
+                        1308 --_i	0[sp]	local
+                        1309 --_j	4[sp]	local
+                        1310 --_n	8[sp]	local
+                        1311 
+                        1312 	.section ".rodata","a"
+                        1313 .L948:--	"  ?> "
+00000000 20203f3e       1314 	.byte	32,32,63,62
+00000004 2000           1315 	.byte	32,0
+                        1316 	.type	.L948,@object
+                        1317 	.size	.L948,6
+                        1318 .L949:--	"Done\n"
+00000006 446f6e65       1319 	.byte	68,111,110,101
+0000000a 0a00           1320 	.byte	10,0
+                        1321 	.type	.L949,@object
+                        1322 	.size	.L949,6
+                        1323 .L950:--	"%i"
+0000000c 2569           1324 	.byte	37,105
+0000000e 00             1325 	.byte	0
+                        1326 	.type	.L950,@object
+                        1327 	.size	.L950,3
+                        1328 .L951:--	"\r\n"
+0000000f 0d0a           1329 	.byte	13,10
+00000011 00             1330 	.byte	0
+                        1331 	.type	.L951,@object
+                        1332 	.size	.L951,3
+                        1333 .L952:--	"Done!\n"
+00000012 446f6e65       1334 	.byte	68,111,110,101
+00000016 210a           1335 	.byte	33,10
+00000018 00             1336 	.byte	0
+                        1337 	.type	.L952,@object
+                        1338 	.size	.L952,7
+                        1339 .L953:--	"|-----------------------------\n"
+00000019 7c2d2d2d       1340 	.byte	124,45,45,45
+0000001d 2d2d2d2d       1341 	.byte	45,45,45,45
+00000021 2d2d2d2d       1342 	.byte	45,45,45,45
+00000025 2d2d2d2d       1343 	.byte	45,45,45,45
+00000029 2d2d2d2d       1344 	.byte	45,45,45,45
+0000002d 2d2d2d2d       1345 	.byte	45,45,45,45
+00000031 2d2d2d2d       1346 	.byte	45,45,45,45
+00000035 2d2d0a00       1347 	.byte	45,45,10,0
+                        1348 	.type	.L953,@object
+                        1349 	.size	.L953,32
+                        1350 .L954:--	"Invalid key number - aborting\n\n"
+00000039 496e7661       1351 	.byte	73,110,118,97
+0000003d 6c696420       1352 	.byte	108,105,100,32
+00000041 6b657920       1353 	.byte	107,101,121,32
+00000045 6e756d62       1354 	.byte	110,117,109,98
+00000049 6572202d       1355 	.byte	101,114,32,45
+0000004d 2061626f       1356 	.byte	32,97,98,111
+00000051 7274696e       1357 	.byte	114,116,105,110
+00000055 670a0a00       1358 	.byte	103,10,10,0
+                        1359 	.type	.L954,@object
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1360 	.size	.L954,32
+                        1361 .L955:--	"|  0    : Set key value to 0x0011...FF\n"
+00000059 7c202030       1362 	.byte	124,32,32,48
+0000005d 20202020       1363 	.byte	32,32,32,32
+00000061 3a205365       1364 	.byte	58,32,83,101
+00000065 74206b65       1365 	.byte	116,32,107,101
+00000069 79207661       1366 	.byte	121,32,118,97
+0000006d 6c756520       1367 	.byte	108,117,101,32
+00000071 746f2030       1368 	.byte	116,111,32,48
+00000075 78303031       1369 	.byte	120,48,48,49
+00000079 312e2e2e       1370 	.byte	49,46,46,46
+0000007d 46460a00       1371 	.byte	70,70,10,0
+                        1372 	.type	.L955,@object
+                        1373 	.size	.L955,40
+                        1374 .L956:--	"|  1    : Set key value to 0xAAAA...AA\n"
+00000081 7c202031       1375 	.byte	124,32,32,49
+00000085 20202020       1376 	.byte	32,32,32,32
+00000089 3a205365       1377 	.byte	58,32,83,101
+0000008d 74206b65       1378 	.byte	116,32,107,101
+00000091 79207661       1379 	.byte	121,32,118,97
+00000095 6c756520       1380 	.byte	108,117,101,32
+00000099 746f2030       1381 	.byte	116,111,32,48
+0000009d 78414141       1382 	.byte	120,65,65,65
+000000a1 412e2e2e       1383 	.byte	65,46,46,46
+000000a5 41410a00       1384 	.byte	65,65,10,0
+                        1385 	.type	.L956,@object
+                        1386 	.size	.L956,40
+                        1387 .L957:--	"| 99    : Exit\n"
+000000a9 7c203939       1388 	.byte	124,32,57,57
+000000ad 20202020       1389 	.byte	32,32,32,32
+000000b1 3a204578       1390 	.byte	58,32,69,120
+000000b5 69740a00       1391 	.byte	105,116,10,0
+                        1392 	.type	.L957,@object
+                        1393 	.size	.L957,16
+                        1394 .L958:--	"Processed in : "
+000000b9 50726f63       1395 	.byte	80,114,111,99
+000000bd 65737365       1396 	.byte	101,115,115,101
+000000c1 6420696e       1397 	.byte	100,32,105,110
+000000c5 203a2000       1398 	.byte	32,58,32,0
+                        1399 	.type	.L958,@object
+                        1400 	.size	.L958,16
+                        1401 .L959:--	"\nKey selected: %s\n\n"
+000000c9 0a4b6579       1402 	.byte	10,75,101,121
+000000cd 2073656c       1403 	.byte	32,115,101,108
+000000d1 65637465       1404 	.byte	101,99,116,101
+000000d5 643a2025       1405 	.byte	100,58,32,37
+000000d9 730a0a00       1406 	.byte	115,10,10,0
+                        1407 	.type	.L959,@object
+                        1408 	.size	.L959,20
+                        1409 .L960:--	"\n| Current key properties:\n"
+000000dd 0a7c2043       1410 	.byte	10,124,32,67
+000000e1 75727265       1411 	.byte	117,114,114,101
+000000e5 6e74206b       1412 	.byte	110,116,32,107
+000000e9 65792070       1413 	.byte	101,121,32,112
+000000ed 726f7065       1414 	.byte	114,111,112,101
+000000f1 72746965       1415 	.byte	114,116,105,101
+000000f5 733a0a00       1416 	.byte	115,58,10,0
+                        1417 	.type	.L960,@object
+                        1418 	.size	.L960,28
+                        1419 .L961:--	"| Key: %s\n\n"
+000000f9 7c204b65       1420 	.byte	124,32,75,101
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+000000fd 793a2025       1421 	.byte	121,58,32,37
+00000101 730a0a00       1422 	.byte	115,10,10,0
+                        1423 	.type	.L961,@object
+                        1424 	.size	.L961,12
+                        1425 .L962:--	"| key value              : "
+00000105 7c206b65       1426 	.byte	124,32,107,101
+00000109 79207661       1427 	.byte	121,32,118,97
+0000010d 6c756520       1428 	.byte	108,117,101,32
+00000111 20202020       1429 	.byte	32,32,32,32
+00000115 20202020       1430 	.byte	32,32,32,32
+00000119 20202020       1431 	.byte	32,32,32,32
+0000011d 203a2000       1432 	.byte	32,58,32,0
+                        1433 	.type	.L962,@object
+                        1434 	.size	.L962,28
+                        1435 .L963:--	"| 13    : Set CMAC generation flag\n"
+00000121 7c203133       1436 	.byte	124,32,49,51
+00000125 20202020       1437 	.byte	32,32,32,32
+00000129 3a205365       1438 	.byte	58,32,83,101
+0000012d 7420434d       1439 	.byte	116,32,67,77
+00000131 41432067       1440 	.byte	65,67,32,103
+00000135 656e6572       1441 	.byte	101,110,101,114
+00000139 6174696f       1442 	.byte	97,116,105,111
+0000013d 6e20666c       1443 	.byte	110,32,102,108
+00000141 61670a00       1444 	.byte	97,103,10,0
+                        1445 	.type	.L963,@object
+                        1446 	.size	.L963,36
+                        1447 .L964:--	"| %i: %s\n"
+00000145 7c202569       1448 	.byte	124,32,37,105
+00000149 3a202573       1449 	.byte	58,32,37,115
+0000014d 0a00           1450 	.byte	10,0
+                        1451 	.type	.L964,@object
+                        1452 	.size	.L964,10
+                        1453 .L965:--	"\n| Select an action:\n"
+0000014f 0a7c2053       1454 	.byte	10,124,32,83
+00000153 656c6563       1455 	.byte	101,108,101,99
+00000157 7420616e       1456 	.byte	116,32,97,110
+0000015b 20616374       1457 	.byte	32,97,99,116
+0000015f 696f6e3a       1458 	.byte	105,111,110,58
+00000163 0a00           1459 	.byte	10,0
+                        1460 	.type	.L965,@object
+                        1461 	.size	.L965,22
+                        1462 .L966:--	"| 14    : Set CMAC verification flag\n"
+00000165 7c203134       1463 	.byte	124,32,49,52
+00000169 20202020       1464 	.byte	32,32,32,32
+0000016d 3a205365       1465 	.byte	58,32,83,101
+00000171 7420434d       1466 	.byte	116,32,67,77
+00000175 41432076       1467 	.byte	65,67,32,118
+00000179 65726966       1468 	.byte	101,114,105,102
+0000017d 69636174       1469 	.byte	105,99,97,116
+00000181 696f6e20       1470 	.byte	105,111,110,32
+00000185 666c6167       1471 	.byte	102,108,97,103
+00000189 0a00           1472 	.byte	10,0
+                        1473 	.type	.L966,@object
+                        1474 	.size	.L966,38
+                        1475 .L967:--	"| 20    : Update key\n"
+0000018b 7c203230       1476 	.byte	124,32,50,48
+0000018f 20202020       1477 	.byte	32,32,32,32
+00000193 3a205570       1478 	.byte	58,32,85,112
+00000197 64617465       1479 	.byte	100,97,116,101
+0000019b 206b6579       1480 	.byte	32,107,101,121
+0000019f 0a00           1481 	.byte	10,0
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1482 	.type	.L967,@object
+                        1483 	.size	.L967,22
+                        1484 .L968:--	"\nTesting key update...\n\n"
+000001a1 0a546573       1485 	.byte	10,84,101,115
+000001a5 74696e67       1486 	.byte	116,105,110,103
+000001a9 206b6579       1487 	.byte	32,107,101,121
+000001ad 20757064       1488 	.byte	32,117,112,100
+000001b1 6174652e       1489 	.byte	97,116,101,46
+000001b5 2e2e0a0a       1490 	.byte	46,46,10,10
+000001b9 00             1491 	.byte	0
+                        1492 	.type	.L968,@object
+                        1493 	.size	.L968,25
+                        1494 .L969:--	"\n| Key to update:\n"
+000001ba 0a7c204b       1495 	.byte	10,124,32,75
+000001be 65792074       1496 	.byte	101,121,32,116
+000001c2 6f207570       1497 	.byte	111,32,117,112
+000001c6 64617465       1498 	.byte	100,97,116,101
+000001ca 3a0a           1499 	.byte	58,10
+000001cc 00             1500 	.byte	0
+                        1501 	.type	.L969,@object
+                        1502 	.size	.L969,19
+                        1503 .L970:--	"| flag encryption        : %i\n"
+000001cd 7c20666c       1504 	.byte	124,32,102,108
+000001d1 61672065       1505 	.byte	97,103,32,101
+000001d5 6e637279       1506 	.byte	110,99,114,121
+000001d9 7074696f       1507 	.byte	112,116,105,111
+000001dd 6e202020       1508 	.byte	110,32,32,32
+000001e1 20202020       1509 	.byte	32,32,32,32
+000001e5 203a2025       1510 	.byte	32,58,32,37
+000001e9 690a           1511 	.byte	105,10
+000001eb 00             1512 	.byte	0
+                        1513 	.type	.L970,@object
+                        1514 	.size	.L970,31
+                        1515 .L971:--	"| flag decryption        : %i\n"
+000001ec 7c20666c       1516 	.byte	124,32,102,108
+000001f0 61672064       1517 	.byte	97,103,32,100
+000001f4 65637279       1518 	.byte	101,99,114,121
+000001f8 7074696f       1519 	.byte	112,116,105,111
+000001fc 6e202020       1520 	.byte	110,32,32,32
+00000200 20202020       1521 	.byte	32,32,32,32
+00000204 203a2025       1522 	.byte	32,58,32,37
+00000208 690a           1523 	.byte	105,10
+0000020a 00             1524 	.byte	0
+                        1525 	.type	.L971,@object
+                        1526 	.size	.L971,31
+                        1527 .L972:--	"| flag cmac_generation   : %i\n"
+0000020b 7c20666c       1528 	.byte	124,32,102,108
+0000020f 61672063       1529 	.byte	97,103,32,99
+00000213 6d61635f       1530 	.byte	109,97,99,95
+00000217 67656e65       1531 	.byte	103,101,110,101
+0000021b 72617469       1532 	.byte	114,97,116,105
+0000021f 6f6e2020       1533 	.byte	111,110,32,32
+00000223 203a2025       1534 	.byte	32,58,32,37
+00000227 690a           1535 	.byte	105,10
+00000229 00             1536 	.byte	0
+                        1537 	.type	.L972,@object
+                        1538 	.size	.L972,31
+                        1539 .L973:--	"| flag cmac_verification : %i\n"
+0000022a 7c20666c       1540 	.byte	124,32,102,108
+0000022e 61672063       1541 	.byte	97,103,32,99
+00000232 6d61635f       1542 	.byte	109,97,99,95
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000236 76657269       1543 	.byte	118,101,114,105
+0000023a 66696361       1544 	.byte	102,105,99,97
+0000023e 74696f6e       1545 	.byte	116,105,111,110
+00000242 203a2025       1546 	.byte	32,58,32,37
+00000246 690a           1547 	.byte	105,10
+00000248 00             1548 	.byte	0
+                        1549 	.type	.L973,@object
+                        1550 	.size	.L973,31
+                        1551 .L974:--	"| flag disable_on_debug  : %i\n"
+00000249 7c20666c       1552 	.byte	124,32,102,108
+0000024d 61672064       1553 	.byte	97,103,32,100
+00000251 69736162       1554 	.byte	105,115,97,98
+00000255 6c655f6f       1555 	.byte	108,101,95,111
+00000259 6e5f6465       1556 	.byte	110,95,100,101
+0000025d 62756720       1557 	.byte	98,117,103,32
+00000261 203a2025       1558 	.byte	32,58,32,37
+00000265 690a           1559 	.byte	105,10
+00000267 00             1560 	.byte	0
+                        1561 	.type	.L974,@object
+                        1562 	.size	.L974,31
+                        1563 .L975:--	"| 11    : Set encryption flag\n"
+00000268 7c203131       1564 	.byte	124,32,49,49
+0000026c 20202020       1565 	.byte	32,32,32,32
+00000270 3a205365       1566 	.byte	58,32,83,101
+00000274 7420656e       1567 	.byte	116,32,101,110
+00000278 63727970       1568 	.byte	99,114,121,112
+0000027c 74696f6e       1569 	.byte	116,105,111,110
+00000280 20666c61       1570 	.byte	32,102,108,97
+00000284 670a           1571 	.byte	103,10
+00000286 00             1572 	.byte	0
+                        1573 	.type	.L975,@object
+                        1574 	.size	.L975,31
+                        1575 .L976:--	"| 12    : Set decryption flag\n"
+00000287 7c203132       1576 	.byte	124,32,49,50
+0000028b 20202020       1577 	.byte	32,32,32,32
+0000028f 3a205365       1578 	.byte	58,32,83,101
+00000293 74206465       1579 	.byte	116,32,100,101
+00000297 63727970       1580 	.byte	99,114,121,112
+0000029b 74696f6e       1581 	.byte	116,105,111,110
+0000029f 20666c61       1582 	.byte	32,102,108,97
+000002a3 670a           1583 	.byte	103,10
+000002a5 00             1584 	.byte	0
+                        1585 	.type	.L976,@object
+                        1586 	.size	.L976,31
+                        1587 .L977:--	"\n| Select flag value (0/1):\n"
+000002a6 0a7c2053       1588 	.byte	10,124,32,83
+000002aa 656c6563       1589 	.byte	101,108,101,99
+000002ae 7420666c       1590 	.byte	116,32,102,108
+000002b2 61672076       1591 	.byte	97,103,32,118
+000002b6 616c7565       1592 	.byte	97,108,117,101
+000002ba 2028302f       1593 	.byte	32,40,48,47
+000002be 31293a0a       1594 	.byte	49,41,58,10
+000002c2 00             1595 	.byte	0
+                        1596 	.type	.L977,@object
+                        1597 	.size	.L977,29
+                        1598 .L978:--	"Updating key...\n"
+000002c3 55706461       1599 	.byte	85,112,100,97
+000002c7 74696e67       1600 	.byte	116,105,110,103
+000002cb 206b6579       1601 	.byte	32,107,101,121
+000002cf 2e2e2e0a       1602 	.byte	46,46,46,10
+000002d3 00             1603 	.byte	0
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1604 	.type	.L978,@object
+                        1605 	.size	.L978,17
+                        1606 .L979:--	"Invalid action\n\n"
+000002d4 496e7661       1607 	.byte	73,110,118,97
+000002d8 6c696420       1608 	.byte	108,105,100,32
+000002dc 61637469       1609 	.byte	97,99,116,105
+000002e0 6f6e0a0a       1610 	.byte	111,110,10,10
+000002e4 00             1611 	.byte	0
+                        1612 	.type	.L979,@object
+                        1613 	.size	.L979,17
+                        1614 	.global	_TEST_VECTOR..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update.
+                        1615 _TEST_VECTOR..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update.:
+000002e5 00112233       1616 _TEST_VECTOR:	.byte	0,17,34,51
+000002e9 44556677       1617 	.byte	68,85,102,119
+000002ed 8899aabb       1618 	.byte	136,153,170,187
+000002f1 ccddeeff       1619 	.byte	204,221,238,255
+                        1620 	.type	_TEST_VECTOR..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update.,@object
+                        1621 	.size	_TEST_VECTOR..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update.,16
+                        1622 	.type	_TEST_VECTOR,@object
+                        1623 	.size	_TEST_VECTOR,16
+                        1624 	.section ".ghcalltbl",""
+                        1625 	.align	4
+00000000 00000000*      1626 .L1212:	.word	.L1211
+                        1627 	.type	.L1212,@object
+                        1628 	.size	.L1212,4
+00000004 00000000*      1629 .L1214:	.word	.L1213
+                        1630 	.type	.L1214,@object
+                        1631 	.size	.L1214,4
+00000008 00000000*      1632 .L1216:	.word	.L1215
+                        1633 	.type	.L1216,@object
+                        1634 	.size	.L1216,4
+0000000c 00000000*      1635 .L1218:	.word	.L1217
+                        1636 	.type	.L1218,@object
+                        1637 	.size	.L1218,4
+00000010 00000000*      1638 .L1220:	.word	.L1219
+                        1639 	.type	.L1220,@object
+                        1640 	.size	.L1220,4
+00000014 00000000*      1641 .L1222:	.word	.L1221
+                        1642 	.type	.L1222,@object
+                        1643 	.size	.L1222,4
+00000018 00000000*      1644 .L1224:	.word	.L1223
+                        1645 	.type	.L1224,@object
+                        1646 	.size	.L1224,4
+0000001c 00000000*      1647 .L1226:	.word	.L1225
+                        1648 	.type	.L1226,@object
+                        1649 	.size	.L1226,4
+00000020 00000000*      1650 .L1228:	.word	.L1227
+                        1651 	.type	.L1228,@object
+                        1652 	.size	.L1228,4
+00000024 00000000*      1653 .L1230:	.word	.L1229
+                        1654 	.type	.L1230,@object
+                        1655 	.size	.L1230,4
+00000028 00000000*      1656 .L1232:	.word	.L1231
+                        1657 	.type	.L1232,@object
+                        1658 	.size	.L1232,4
+0000002c 00000000*      1659 .L1234:	.word	.L1233
+                        1660 	.type	.L1234,@object
+                        1661 	.size	.L1234,4
+00000030 00000000*      1662 .L1236:	.word	.L1235
+                        1663 	.type	.L1236,@object
+                        1664 	.size	.L1236,4
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000034 00000000*      1665 .L1238:	.word	.L1237
+                        1666 	.type	.L1238,@object
+                        1667 	.size	.L1238,4
+00000038 00000000*      1668 .L1240:	.word	.L1239
+                        1669 	.type	.L1240,@object
+                        1670 	.size	.L1240,4
+0000003c 00000000*      1671 .L1242:	.word	.L1241
+                        1672 	.type	.L1242,@object
+                        1673 	.size	.L1242,4
+00000040 00000000*      1674 .L1244:	.word	.L1243
+                        1675 	.type	.L1244,@object
+                        1676 	.size	.L1244,4
+00000044 00000000*      1677 .L1246:	.word	.L1245
+                        1678 	.type	.L1246,@object
+                        1679 	.size	.L1246,4
+00000048 00000000*      1680 .L1248:	.word	.L1247
+                        1681 	.type	.L1248,@object
+                        1682 	.size	.L1248,4
+0000004c 00000000*      1683 .L1250:	.word	.L1249
+                        1684 	.type	.L1250,@object
+                        1685 	.size	.L1250,4
+00000050 00000000*      1686 .L1252:	.word	.L1251
+                        1687 	.type	.L1252,@object
+                        1688 	.size	.L1252,4
+00000054 00000000*      1689 .L1254:	.word	.L1253
+                        1690 	.type	.L1254,@object
+                        1691 	.size	.L1254,4
+00000058 00000000*      1692 .L1256:	.word	.L1255
+                        1693 	.type	.L1256,@object
+                        1694 	.size	.L1256,4
+0000005c 00000000*      1695 .L1258:	.word	.L1257
+                        1696 	.type	.L1258,@object
+                        1697 	.size	.L1258,4
+00000060 00000000*      1698 .L1260:	.word	.L1259
+                        1699 	.type	.L1260,@object
+                        1700 	.size	.L1260,4
+00000064 00000000*      1701 .L1262:	.word	.L1261
+                        1702 	.type	.L1262,@object
+                        1703 	.size	.L1262,4
+00000068 00000000*      1704 .L1264:	.word	.L1263
+                        1705 	.type	.L1264,@object
+                        1706 	.size	.L1264,4
+0000006c 00000000*      1707 .L1266:	.word	.L1265
+                        1708 	.type	.L1266,@object
+                        1709 	.size	.L1266,4
+00000070 00000000*      1710 .L1268:	.word	.L1267
+                        1711 	.type	.L1268,@object
+                        1712 	.size	.L1268,4
+00000074 00000000*      1713 .L1270:	.word	.L1269
+                        1714 	.type	.L1270,@object
+                        1715 	.size	.L1270,4
+00000078 00000000*      1716 .L1272:	.word	.L1271
+                        1717 	.type	.L1272,@object
+                        1718 	.size	.L1272,4
+0000007c 00000000*      1719 .L1274:	.word	.L1273
+                        1720 	.type	.L1274,@object
+                        1721 	.size	.L1274,4
+00000080 00000000*      1722 .L1276:	.word	.L1275
+                        1723 	.type	.L1276,@object
+                        1724 	.size	.L1276,4
+00000084 00000000*      1725 .L1278:	.word	.L1277
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1726 	.type	.L1278,@object
+                        1727 	.size	.L1278,4
+00000088 00000000*      1728 .L1280:	.word	.L1279
+                        1729 	.type	.L1280,@object
+                        1730 	.size	.L1280,4
+0000008c 00000000*      1731 .L1282:	.word	.L1281
+                        1732 	.type	.L1282,@object
+                        1733 	.size	.L1282,4
+00000090 00000000*      1734 .L1284:	.word	.L1283
+                        1735 	.type	.L1284,@object
+                        1736 	.size	.L1284,4
+00000094 00000000*      1737 .L1286:	.word	.L1285
+                        1738 	.type	.L1286,@object
+                        1739 	.size	.L1286,4
+00000098 00000000*      1740 .L1288:	.word	.L1287
+                        1741 	.type	.L1288,@object
+                        1742 	.size	.L1288,4
+0000009c 00000000*      1743 .L1290:	.word	.L1289
+                        1744 	.type	.L1290,@object
+                        1745 	.size	.L1290,4
+000000a0 00000000*      1746 .L1292:	.word	.L1291
+                        1747 	.type	.L1292,@object
+                        1748 	.size	.L1292,4
+000000a4 00000000*      1749 .L1294:	.word	.L1293
+                        1750 	.type	.L1294,@object
+                        1751 	.size	.L1294,4
+000000a8 00000000*      1752 .L1296:	.word	.L1295
+                        1753 	.type	.L1296,@object
+                        1754 	.size	.L1296,4
+000000ac 00000000*      1755 .L1298:	.word	.L1297
+                        1756 	.type	.L1298,@object
+                        1757 	.size	.L1298,4
+000000b0 00000000*      1758 .L1300:	.word	.L1299
+                        1759 	.type	.L1300,@object
+                        1760 	.size	.L1300,4
+000000b4 00000000*      1761 .L1302:	.word	.L1301
+                        1762 	.type	.L1302,@object
+                        1763 	.size	.L1302,4
+000000b8 00000000*      1764 .L1304:	.word	.L1303
+                        1765 	.type	.L1304,@object
+                        1766 	.size	.L1304,4
+000000bc 00000000*      1767 .L1306:	.word	.L1305
+                        1768 	.type	.L1306,@object
+                        1769 	.size	.L1306,4
+000000c0 00000000*      1770 .L1308:	.word	.L1307
+                        1771 	.type	.L1308,@object
+                        1772 	.size	.L1308,4
+000000c4 00000000*      1773 .L1310:	.word	.L1309
+                        1774 	.type	.L1310,@object
+                        1775 	.size	.L1310,4
+000000c8 00000000*      1776 .L1312:	.word	.L1311
+                        1777 	.type	.L1312,@object
+                        1778 	.size	.L1312,4
+000000cc 00000000*      1779 .L1314:	.word	.L1313
+                        1780 	.type	.L1314,@object
+                        1781 	.size	.L1314,4
+000000d0 00000000*      1782 .L1316:	.word	.L1315
+                        1783 	.type	.L1316,@object
+                        1784 	.size	.L1316,4
+000000d4 00000000*      1785 .L1318:	.word	.L1317
+                        1786 	.type	.L1318,@object
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1787 	.size	.L1318,4
+000000d8 00000000*      1788 .L1320:	.word	.L1319
+                        1789 	.type	.L1320,@object
+                        1790 	.size	.L1320,4
+000000dc 00000000*      1791 .L1322:	.word	.L1321
+                        1792 	.type	.L1322,@object
+                        1793 	.size	.L1322,4
+000000e0 00000000*      1794 .L1324:	.word	.L1323
+                        1795 	.type	.L1324,@object
+                        1796 	.size	.L1324,4
+000000e4 00000000*      1797 .L1326:	.word	.L1325
+                        1798 	.type	.L1326,@object
+                        1799 	.size	.L1326,4
+000000e8 00000000*      1800 .L1328:	.word	.L1327
+                        1801 	.type	.L1328,@object
+                        1802 	.size	.L1328,4
+000000ec 00000000*      1803 .L1330:	.word	.L1329
+                        1804 	.type	.L1330,@object
+                        1805 	.size	.L1330,4
+000000f0 00000000*      1806 .L1332:	.word	.L1331
+                        1807 	.type	.L1332,@object
+                        1808 	.size	.L1332,4
+000000f4 00000000*      1809 .L1334:	.word	.L1333
+                        1810 	.type	.L1334,@object
+                        1811 	.size	.L1334,4
+000000f8 00000000*      1812 .L1336:	.word	.L1335
+                        1813 	.type	.L1336,@object
+                        1814 	.size	.L1336,4
+000000fc 00000000*      1815 .L1338:	.word	.L1337
+                        1816 	.type	.L1338,@object
+                        1817 	.size	.L1338,4
+00000100 00000000*      1818 .L1340:	.word	.L1339
+                        1819 	.type	.L1340,@object
+                        1820 	.size	.L1340,4
+00000104 00000000*      1821 .L1342:	.word	.L1341
+                        1822 	.type	.L1342,@object
+                        1823 	.size	.L1342,4
+00000108 00000000*      1824 .L1344:	.word	.L1343
+                        1825 	.type	.L1344,@object
+                        1826 	.size	.L1344,4
+0000010c 00000000*      1827 .L1346:	.word	.L1345
+                        1828 	.type	.L1346,@object
+                        1829 	.size	.L1346,4
+00000110 00000000*      1830 .L1348:	.word	.L1347
+                        1831 	.type	.L1348,@object
+                        1832 	.size	.L1348,4
+00000114 00000000*      1833 .L1350:	.word	.L1349
+                        1834 	.type	.L1350,@object
+                        1835 	.size	.L1350,4
+00000118 00000000*      1836 .L1352:	.word	.L1351
+                        1837 	.type	.L1352,@object
+                        1838 	.size	.L1352,4
+0000011c 00000000*      1839 .L1354:	.word	.L1353
+                        1840 	.type	.L1354,@object
+                        1841 	.size	.L1354,4
+00000120 00000000*      1842 .L1356:	.word	.L1355
+                        1843 	.type	.L1356,@object
+                        1844 	.size	.L1356,4
+00000124 00000000*      1845 .L1358:	.word	.L1357
+                        1846 	.type	.L1358,@object
+                        1847 	.size	.L1358,4
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+00000128 00000000*      1848 .L1360:	.word	.L1359
+                        1849 	.type	.L1360,@object
+                        1850 	.size	.L1360,4
+0000012c 00000000*      1851 .L1362:	.word	.L1361
+                        1852 	.type	.L1362,@object
+                        1853 	.size	.L1362,4
+00000130 00000000*      1854 .L1364:	.word	.L1363
+                        1855 	.type	.L1364,@object
+                        1856 	.size	.L1364,4
+00000134 00000000*      1857 .L1366:	.word	.L1365
+                        1858 	.type	.L1366,@object
+                        1859 	.size	.L1366,4
+00000138 00000000*      1860 .L1368:	.word	.L1367
+                        1861 	.type	.L1368,@object
+                        1862 	.size	.L1368,4
+0000013c 00000000*      1863 .L1370:	.word	.L1369
+                        1864 	.type	.L1370,@object
+                        1865 	.size	.L1370,4
+00000140 00000000*      1866 .L1372:	.word	.L1371
+                        1867 	.type	.L1372,@object
+                        1868 	.size	.L1372,4
+00000144 00000000*      1869 .L1374:	.word	.L1373
+                        1870 	.type	.L1374,@object
+                        1871 	.size	.L1374,4
+00000148 00000000*      1872 .L1376:	.word	.L1375
+                        1873 	.type	.L1376,@object
+                        1874 	.size	.L1376,4
+0000014c 00000000*      1875 .L1378:	.word	.L1377
+                        1876 	.type	.L1378,@object
+                        1877 	.size	.L1378,4
+00000150 00000000*      1878 .L1380:	.word	.L1379
+                        1879 	.type	.L1380,@object
+                        1880 	.size	.L1380,4
+00000154 00000000*      1881 .L1382:	.word	.L1381
+                        1882 	.type	.L1382,@object
+                        1883 	.size	.L1382,4
+00000158 00000000*      1884 .L1384:	.word	.L1383
+                        1885 	.type	.L1384,@object
+                        1886 	.size	.L1384,4
+0000015c 00000000*      1887 .L1386:	.word	.L1385
+                        1888 	.type	.L1386,@object
+                        1889 	.size	.L1386,4
+00000160 00000000*      1890 .L1388:	.word	.L1387
+                        1891 	.type	.L1388,@object
+                        1892 	.size	.L1388,4
+00000164 00000000*      1893 .L1390:	.word	.L1389
+                        1894 	.type	.L1390,@object
+                        1895 	.size	.L1390,4
+00000168 00000000*      1896 .L1392:	.word	.L1391
+                        1897 	.type	.L1392,@object
+                        1898 	.size	.L1392,4
+0000016c 00000000*      1899 .L1394:	.word	.L1393
+                        1900 	.type	.L1394,@object
+                        1901 	.size	.L1394,4
+00000170 00000000*      1902 .L1396:	.word	.L1395
+                        1903 	.type	.L1396,@object
+                        1904 	.size	.L1396,4
+00000174 00000000*      1905 .L1398:	.word	.L1397
+                        1906 	.type	.L1398,@object
+                        1907 	.size	.L1398,4
+00000178 00000000*      1908 .L1400:	.word	.L1399
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1909 	.type	.L1400,@object
+                        1910 	.size	.L1400,4
+0000017c 00000000*      1911 .L1402:	.word	.L1401
+                        1912 	.type	.L1402,@object
+                        1913 	.size	.L1402,4
+00000180 00000000*      1914 .L1404:	.word	.L1403
+                        1915 	.type	.L1404,@object
+                        1916 	.size	.L1404,4
+00000184 00000000*      1917 .L1406:	.word	.L1405
+                        1918 	.type	.L1406,@object
+                        1919 	.size	.L1406,4
+00000188 00000000*      1920 .L1408:	.word	.L1407
+                        1921 	.type	.L1408,@object
+                        1922 	.size	.L1408,4
+0000018c 00000000*      1923 .L1410:	.word	.L1409
+                        1924 	.type	.L1410,@object
+                        1925 	.size	.L1410,4
+00000190 00000000*      1926 .L1412:	.word	.L1411
+                        1927 	.type	.L1412,@object
+                        1928 	.size	.L1412,4
+00000194 00000000*      1929 .L1414:	.word	.L1413
+                        1930 	.type	.L1414,@object
+                        1931 	.size	.L1414,4
+00000198 00000000*      1932 .L1416:	.word	.L1415
+                        1933 	.type	.L1416,@object
+                        1934 	.size	.L1416,4
+0000019c 00000000*      1935 .L1418:	.word	.L1417
+                        1936 	.type	.L1418,@object
+                        1937 	.size	.L1418,4
+000001a0 00000000*      1938 .L1420:	.word	.L1419
+                        1939 	.type	.L1420,@object
+                        1940 	.size	.L1420,4
+000001a4 00000000*      1941 .L1422:	.word	.L1421
+                        1942 	.type	.L1422,@object
+                        1943 	.size	.L1422,4
+000001a8 00000000*      1944 .L1424:	.word	.L1423
+                        1945 	.type	.L1424,@object
+                        1946 	.size	.L1424,4
+000001ac 00000000*      1947 .L1426:	.word	.L1425
+                        1948 	.type	.L1426,@object
+                        1949 	.size	.L1426,4
+000001b0 00000000*      1950 .L1428:	.word	.L1427
+                        1951 	.type	.L1428,@object
+                        1952 	.size	.L1428,4
+000001b4 00000000*      1953 .L1430:	.word	.L1429
+                        1954 	.type	.L1430,@object
+                        1955 	.size	.L1430,4
+000001b8 00000000*      1956 .L1432:	.word	.L1431
+                        1957 	.type	.L1432,@object
+                        1958 	.size	.L1432,4
+000001bc 00000000*      1959 .L1434:	.word	.L1433
+                        1960 	.type	.L1434,@object
+                        1961 	.size	.L1434,4
+000001c0 00000000*      1962 .L1436:	.word	.L1435
+                        1963 	.type	.L1436,@object
+                        1964 	.size	.L1436,4
+000001c4 00000000*      1965 .L1438:	.word	.L1437
+                        1966 	.type	.L1438,@object
+                        1967 	.size	.L1438,4
+000001c8 00000000*      1968 .L1440:	.word	.L1439
+                        1969 	.type	.L1440,@object
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        1970 	.size	.L1440,4
+000001cc 00000000*      1971 .L1442:	.word	.L1441
+                        1972 	.type	.L1442,@object
+                        1973 	.size	.L1442,4
+000001d0 00000000*      1974 .L1444:	.word	.L1443
+                        1975 	.type	.L1444,@object
+                        1976 	.size	.L1444,4
+000001d4 00000000*      1977 .L1446:	.word	.L1445
+                        1978 	.type	.L1446,@object
+                        1979 	.size	.L1446,4
+000001d8 00000000*      1980 .L1448:	.word	.L1447
+                        1981 	.type	.L1448,@object
+                        1982 	.size	.L1448,4
+000001dc 00000000*      1983 .L1450:	.word	.L1449
+                        1984 	.type	.L1450,@object
+                        1985 	.size	.L1450,4
+000001e0 00000000*      1986 .L1452:	.word	.L1451
+                        1987 	.type	.L1452,@object
+                        1988 	.size	.L1452,4
+000001e4 00000000*      1989 .L1454:	.word	.L1453
+                        1990 	.type	.L1454,@object
+                        1991 	.size	.L1454,4
+000001e8 00000000*      1992 .L1456:	.word	.L1455
+                        1993 	.type	.L1456,@object
+                        1994 	.size	.L1456,4
+000001ec 00000000*      1995 .L1458:	.word	.L1457
+                        1996 	.type	.L1458,@object
+                        1997 	.size	.L1458,4
+000001f0 00000000*      1998 .L1460:	.word	.L1459
+                        1999 	.type	.L1460,@object
+                        2000 	.size	.L1460,4
+000001f4 00000000*      2001 .L1462:	.word	.L1461
+                        2002 	.type	.L1462,@object
+                        2003 	.size	.L1462,4
+000001f8 00000000*      2004 .L1464:	.word	.L1463
+                        2005 	.type	.L1464,@object
+                        2006 	.size	.L1464,4
+000001fc 00000000*      2007 .L1466:	.word	.L1465
+                        2008 	.type	.L1466,@object
+                        2009 	.size	.L1466,4
+00000200 00000000*      2010 .L1468:	.word	.L1467
+                        2011 	.type	.L1468,@object
+                        2012 	.size	.L1468,4
+00000204 00000000*      2013 .L1470:	.word	.L1469
+                        2014 	.type	.L1470,@object
+                        2015 	.size	.L1470,4
+00000208 00000000*      2016 .L1472:	.word	.L1471
+                        2017 	.type	.L1472,@object
+                        2018 	.size	.L1472,4
+0000020c 00000000*      2019 .L1474:	.word	.L1473
+                        2020 	.type	.L1474,@object
+                        2021 	.size	.L1474,4
+00000210 00000000*      2022 .L1476:	.word	.L1475
+                        2023 	.type	.L1476,@object
+                        2024 	.size	.L1476,4
+                        2025 	.section ".ghrettbl",""
+                        2026 	.align	4
+00000000 00000000*      2027 .L1478:	.word	.L1477
+                        2028 	.type	.L1478,@object
+                        2029 	.size	.L1478,4
+                        2030 	.data
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mfs1.si
+                        2031 	.text
+                        2032 
+                        2033 	.align	2
+                        2034 --_keys	_keys	import
+                        2035 --_ISD_BUFFER	_ISD_BUFFER	import
+                        2036 --_vrun_printf_buff	_vrun_printf_buff	import
+                        2037 --_TEST_VECTOR	_TEST_VECTOR	static
+                        2038 
+                        2039 	.data
+                        2040 	.ghsnote version,30
+                        2041 	.ghsnote tools,3
+                        2042 	.ghsnote options,656
+                        2043 	.text
+                        2044 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_key_update...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF47..0::
+                        2045 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

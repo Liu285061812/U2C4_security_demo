@@ -1,0 +1,163 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000cqk1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\common -I..\..\pe\target\u2cx\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.info.dbo -source=sys.info.c -comp -o ..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\gh_0000cqk1.o -list=..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.info.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000cqk1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000cqk1.si
+Source File: sys.info.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\common
+                           2 --		-I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\include
+                           3 --		-I..\..\pe\generic
+                           4 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           5 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                           6 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                           7 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                           8 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                           9 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          10 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          11 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          12 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          13 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          14 --		-D_PEID_=2 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle -DD_PEID=2
+                          15 --		-filetype.c ..\..\pe\target\u2cx\src\l_vrun\sys.info.c -o
+                          16 --		..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.info.o
+                          17 --Source File:   ..\..\pe\target\u2cx\src\l_vrun\sys.info.c
+                          18 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          19 --Compile Date:  Wed Nov 11 11:21:56 2026
+                          20 --Host OS:       Win64
+                          21 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          22 --Release:       Compiler v2023.5.4
+                          23 --Revision Date: Wed Sep 06 02:44:56 2023
+                          24 --Release Date:  Wed Sep 06 02:00:00 2023
+                          25 -- ecom  -g -w
+                          26 
+                          27 --1: /******************************************************************************/
+                          28 --2: /* Component Name   Testing the ICU-M                                         */
+                          29 --3: /******************************************************************************/
+                          30 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          31 --5: /******************************************************************************/
+                          32 --6: /***********************************************************************************************************************
+                          33 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          34 --8: * 
+                          35 --9: * DISCLAIMER
+                          36 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          37 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          38 --12: * applicable laws, including copyright laws.
+                          39 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          40 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          41 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          42 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          43 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          44 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          45 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          46 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          47 --21: * following link:
+                          48 --22: * www.renesas.com/disclaimer
+                          49 --23: *
+                          50 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000cqk1.si
+                          51 --25: ***********************************************************************************************************************/
+                          52 --27: // ----------------------------------------------------------------------
+                          53 --28: // Package identification and copyright information
+                          54 --29: //
+                          55 --30: // ** CAUTION ** CAUTION ** CAUTION ** CAUTION ** CAUTION ** CAUTION **
+                          56 --31: // Do not update the symbol __PACKAGE_VERSION__
+                          57 --32: //
+                          58 --33: // ----------------------------------------------------------------------
+                          59 --34: #define __PACKAGE_NAME__    "VRUN SYSTEM (SYS)"
+                          60 --35: #define __PACKAGE_VERSION__ "V0.03"
+                          61 --37: static const char PACKAGE_INFO[] = __PACKAGE_NAME__ " - " __PACKAGE_VERSION__
+                          62 --38: #if !defined(RELEASE_PACKAGE)
+                          63 --39:                                    " (DEBUG) "
+                          64 --40: #endif
+                          65 --41:                                    " - BUILD DATE " __DATE__ " " __TIME__ ;
+                          66 --43: // ********************************************************************************
+                          67 --44: // Module identification and copyright information
+                          68 --45: // ********************************************************************************
+                          69 --46: const char *sys_get_package_info(void)
+                          70 	.text
+                          71 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF54..0::
+                          72 	.align	2
+                          73 	.align	2
+                          74 ..gh.f.a.2.e.0:
+                          75 	.type	..gh.f.a.2.e.0,@object
+                          76 	.size	..gh.f.a.2.e.0,0
+                          77 	.global	_sys_get_package_info
+                          78 _sys_get_package_info:
+                          79 --	    .bf
+                          80 .LDW01:
+                          81 --47: {
+                          82 --48:     return(PACKAGE_INFO);
+00000000 2a0600000000*    83 	mov	_PACKAGE_INFO,r10
+                          84 --	    .ef
+                          85 .LDW11:
+                          86 .L35:
+                          87 --line49
+                          88 ..lin.b5c0a2bc..77bbbed8.0_1::
+                          89 .LDWlin1:
+                          90 	.jumptype return
+00000006 7f00             91 	jmp	[lp]
+                          92 --line49
+                          93 ..lin.b5c0a2bc..77bbbed8.0_2::
+                          94 	.type	_sys_get_package_info,@function
+                          95 	.size	_sys_get_package_info,.-_sys_get_package_info
+                          96 	.align	2
+                          97 
+                          98 	.section ".rodata","a"
+                          99 	.global	_PACKAGE_INFO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo.
+                         100 _PACKAGE_INFO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo.:
+                         101 _PACKAGE_INFO:--	"VRUN SYSTEM (SYS) - V0.03 (DEBUG)  - BUILD DATE Nov 11 2026 11:21:56..."
+00000000 5652554e        102 	.byte	86,82,85,78
+00000004 20535953        103 	.byte	32,83,89,83
+00000008 54454d20        104 	.byte	84,69,77,32
+0000000c 28535953        105 	.byte	40,83,89,83
+00000010 29202d20        106 	.byte	41,32,45,32
+00000014 56302e30        107 	.byte	86,48,46,48
+00000018 33202844        108 	.byte	51,32,40,68
+0000001c 45425547        109 	.byte	69,66,85,71
+00000020 2920202d        110 	.byte	41,32,32,45
+00000024 20425549        111 	.byte	32,66,85,73
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000cqk1.si
+00000028 4c442044        112 	.byte	76,68,32,68
+0000002c 41544520        113 	.byte	65,84,69,32
+00000030 4e6f7620        114 	.byte	78,111,118,32
+00000034 31312032        115 	.byte	49,49,32,50
+00000038 30323620        116 	.byte	48,50,54,32
+0000003c 31313a32        117 	.byte	49,49,58,50
+00000040 313a3536        118 	.byte	49,58,53,54
+00000044 00              119 	.byte	0
+                         120 	.type	_PACKAGE_INFO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo.,@object
+                         121 	.size	_PACKAGE_INFO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo.,69
+                         122 	.type	_PACKAGE_INFO,@object
+                         123 	.size	_PACKAGE_INFO,69
+                         124 	.section ".ghrettbl",""
+                         125 	.align	4
+00000000 00000000*       126 .L36:	.word	.L35
+                         127 	.type	.L36,@object
+                         128 	.size	.L36,4
+                         129 	.data
+                         130 	.text
+                         131 
+                         132 --49: }
+                         133 	.align	2
+                         134 --_PACKAGE_INFO	_PACKAGE_INFO	static
+                         135 
+                         136 	.data
+                         137 	.ghsnote version,30
+                         138 	.ghsnote tools,3
+                         139 	.ghsnote options,656
+                         140 	.text
+                         141 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Einfo...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF54..0::
+                         142 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

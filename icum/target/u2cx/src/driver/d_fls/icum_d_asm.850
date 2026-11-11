@@ -1,0 +1,127 @@
+--/******************************************************************************/
+--/* Component Name   ICUM Flash Driver                                         */
+--/******************************************************************************/
+--/* Product      : ICU-M Low Level Driver (Demo Part)                          */
+--/******************************************************************************/
+--/***********************************************************************************************************************
+--* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+--* 
+--* DISCLAIMER
+--* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+--* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+--* applicable laws, including copyright laws.
+--* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+--* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+--* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+--* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+--* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+--* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+--* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+--* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+--* following link:
+--* www.renesas.com/disclaimer
+--*
+--* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+--***********************************************************************************************************************/
+
+.section".icum_driver_ram",.text
+
+.global _d_FLS_CheckFcuReg_ram
+.global _d_FLS_CheckFcuRegOrState_ram
+.global _d_FLS_CheckFcuRegU16_ram
+
+--/*************************************************************************************************
+--* Function ID   : [ICUMFW_CD_U2C_D_FLS_0032]:[ICUMFW_UD_U2B_D_FLS_0032]
+--* Function Name : _d_FLS_CheckFcuReg_ram
+--* Description   : Function waits until a target register value is read(32bit)
+--*               : The register check loop is timeout supervised
+--* Arguments     : @param[in]     r6: register address
+--*                 @param[in]     r7: target value mask
+--*                 @param[in]     r8: target value
+--*                 @param[in]     r9: timeout value
+--* Return Value  : 0: No error
+--*                 1: Timeout error
+--**************************************************************************************************/
+_d_FLS_CheckFcuReg_ram:
+
+_d_FLS_CheckFcuReg_ram_Loop:
+    ld.w    0[r6], r10                                  ; /* read register value */
+    and     r7, r10                                     ; /* mask the value */
+    cmp     r10, r8                                     ; /* equal target value? */
+    bz      _d_FLS_CheckFcuReg_ram_Pass
+    sub     1, r9                                       ; /* timeout check */
+    bnz     _d_FLS_CheckFcuReg_ram_Loop
+
+    mov     1, r10                                      ; /* timeout detected, return 1 */
+    br      _d_FLS_CheckFcuReg_ram_End
+
+_d_FLS_CheckFcuReg_ram_Pass:
+    mov     0, r10                                      ; /* correct register value, return 0 */
+
+_d_FLS_CheckFcuReg_ram_End:
+    jmp     [lp]
+
+
+--/*************************************************************************************************
+--* Function ID   : [ICUMFW_CD_U2C_D_FLS_0107]:[ICUMFW_UD_U2B_D_FLS_0107]
+--* Function Name : _d_FLS_CheckFcuRegOrState_ram
+--* Description   : Function waits until a target register value is read(32bit)
+--*               : The register check loop is timeout supervised
+--* Arguments     : @param[in]     r6: register address
+--*                 @param[in]     r7: target value mask
+--*                 @param[in]     r8: target value
+--*                 @param[in]     r9: timeout value
+--* Return Value  : 0: No error
+--*                 1: Timeout error
+--**************************************************************************************************/
+_d_FLS_CheckFcuRegOrState_ram:
+
+_d_FLS_CheckFcuRegOrState_ram_Loop:
+    ld.w    0[r6], r10                                  ; /* read register value */
+    and     r7, r10                                     ; /* mask the value */
+    and     r10, r8                                     ; /* target value? */
+    bnz     _d_FLS_CheckFcuRegOrState_ram_Pass
+    sub     1, r9                                       ; /* timeout check */
+    bnz     _d_FLS_CheckFcuRegOrState_ram_Loop
+
+    mov     1, r10                                      ; /* timeout detected, return 1 */
+    br      _d_FLS_CheckFcuRegOrState_ram_End
+
+_d_FLS_CheckFcuRegOrState_ram_Pass:
+    mov     0, r10                                      ; /* correct register value, return 0 */
+
+_d_FLS_CheckFcuRegOrState_ram_End:
+    jmp     [lp]
+
+--/*************************************************************************************************
+--* Function ID   : [ICUMFW_CD_U2C_D_FLS_0033]:[ICUMFW_UD_U2B_D_FLS_0033]
+--* Function Name : _d_FLS_CheckFcuRegU16_ram
+--* Description   : Function waits until a target register value is read(16bit)
+--*               : The register check loop is timeout supervised
+--* Arguments     : @param[in]     r6: register address   (16bit align)
+--*                 @param[in]     r7: target value mask  (16bit)
+--*                 @param[in]     r8: target value       (16bit)
+--*                 @param[in]     r9: timeout value
+--* Return Value  : 0: No error
+--*                 1: Timeout error
+--**************************************************************************************************/
+_d_FLS_CheckFcuRegU16_ram:
+    zxh     r7                                          ; /* target data value mask data Upper 16bit zero-extend */
+    and     r7,r8                                       ; /* mask the target value */ 
+_d_FLS_CheckFcuRegU16_ram_Loop:                                ;
+    ld.hu   0[r6], r10                                  ; /* read register Upper 16bit zero-extend */
+    and     r7, r10                                     ; /* mask the value */
+    cmp     r10, r8                                     ; /* equal target value? */
+    bz      _d_FLS_CheckFcuRegU16_ram_Pass                     ; /*  - Yes : success */
+    sub     1, r9                                       ; /* timeout check */
+    bnz     _d_FLS_CheckFcuRegU16_ram_Loop
+
+    mov     1, r10                                      ; /* timeout detected, return 1 */
+    br      _d_FLS_CheckFcuRegU16_ram_End
+
+_d_FLS_CheckFcuRegU16_ram_Pass:
+    mov     0, r10                                      ; /* correct register value, return 0 */
+
+_d_FLS_CheckFcuRegU16_ram_End:
+    jmp     [lp]
+

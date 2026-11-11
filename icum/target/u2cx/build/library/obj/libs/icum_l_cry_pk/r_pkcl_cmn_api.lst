@@ -1,0 +1,1967 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common -I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif -I..\..\icum\sal\include\library -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\r_pkcl_cmn_api.dbo -source=r_pkcl_cmn_api.c -comp -o ..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\gh_0000svs1.o -list=..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\r_pkcl_cmn_api.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+Source File: r_pkcl_cmn_api.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common
+                           2 --		-I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif
+                           3 --		-I..\..\icum\sal\include\library
+                           4 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common
+                           5 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\device\
+                           8 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           9 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          10 --		-I..\..\icum\target\u2cx\include\driver
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          14 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          15 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          16 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          17 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          18 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          19 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          20 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          21 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          22 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          23 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          24 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          25 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          26 --		.text=.icum_library.text -section .rodata=.icum_library.rodata
+                          27 --		-section .bss=.icum_library.bss -section .data=.icum_library.data
+                          28 --		-DTFM_ALREADY_SET -DTFM_TIMING_RESISTANT -DENDIAN_LITTLE
+                          29 --		-DENDIAN_32BITWORD -DLTC_RH850 -filetype.c
+                          30 --		..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc\r_pkcl_cmn_api.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\r_pkcl_cmn_api.o
+                          33 --Source File:   ..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc\r_pkcl_cmn_api.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:26 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_library.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   Cryptographic Library PKC Library                         */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver                                      */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /* PRQA S 0310, 3305 ++ # D001 Processing is done in units of WORD to increase processing speed. */
+                          70 --28: /* PRQA S 0751, 1251, 2100 ++ # D007 Because it is necessary for the judgment of big endian. */
+                          71 --29: /* PRQA S 1503 ++ # D010 No problem if it is unused because it is an API called from outside the library  */
+                          72 --30: /* PRQA S 1532 ++ # D011 Since files are grouped by function, they are called from different files. */
+                          73 --31: /* PRQA S 3383, 3384 ++ # D012 Have confirmed in advance that the value doesn't wrap around. */
+                          74 --32: /* PRQA S 2981 ++ # D013 Local variable ret of APIs sets INTERNALERR to the initial value
+                          75 --33:                         as a countermeasure against attacks that pass through processing. */
+                          76 --34: /* PRQA S 2984 ++ # D021 Double check in setting the return value as a countermeaseure
+                          77 --35:                         against attacks that skip a certain process */
+                          78 --37: /**********************************************************************************************************************
+                          79 --38:  Includes   <System Includes> , "Project Includes"
+                          80 --39:  *********************************************************************************************************************/
+                          81 --40: #include "renesas_types.h"
+                          82 --41: #include "r_pkc_api.h"
+                          83 --42: #include "r_pkcl_api.h"
+                          84 --43: #include "r_pkcl_cmn.h"
+                          85 --45: /*!********************************************************************
+                          86 --46:  * \addtogroup    PKCLCommon
+                          87 --47:  * \{
+                          88 --48:  * \addtogroup    PKCLCommonFlags               Common Flags
+                          89 --49:  * \addtogroup    PKCLCommonDefines             Common Definitions
+                          90 --50:  * \addtogroup    PKCLCommonTypes               Common Types
+                          91 --51:  * \addtogroup    PKCLCommonAPIs                Common APIs
+                          92 --52:  * \addtogroup    PKCLCommonDefinesInternal     Common Internal Definition
+                          93 --53:  * \addtogroup    PKCLCommonTypesInternal       Common Internal Types
+                          94 --54:  * \addtogroup    PKCLCommonVariablesInternal   Common Internal Variables
+                          95 --55:  * \addtogroup    PKCLCommonAPIsInternal        Common Internal APIs
+                          96 --56:  * \}******************************************************************/
+                          97 --58: /**********************************************************************************************************************
+                          98 --59:  Macro definitions
+                          99 --60:  *********************************************************************************************************************/
+                         100 --61: /*!********************************************************************
+                         101 --62:  * \ingroup PKCDCommonDefinesInternal
+                         102 --63:  * \{******************************************************************/
+                         103 --64: /*! \}*/
+                         104 --66: /*!********************************************************************
+                         105 --67:  * \addtogroup  PKCLCommonDefinesInternal     Common Internal Definition
+                         106 --68:  * \{******************************************************************/
+                         107 --69: #define PKCL_CMN_WORD_BYTE_SIZE              (4U)              /**< A byte size of WORD */
+                         108 --71: #define PKCL_CMN_MULTIPLE_4                  (3U)              /**< Value used to determine multiples of 4 */
+                         109 --73: #define PKCL_CMN_CH_BIG_ENDIAN_CALC_1B       (0x000000FFU)     /**< First byte value used for big endian conversion */
+                         110 --74: #define PKCL_CMN_CH_BIG_ENDIAN_CALC_2B       (0x0000FF00U)     /**< Second byte value used for big endian conversion */
+                         111 --75: #define PKCL_CMN_CH_BIG_ENDIAN_CALC_3B       (0x00FF0000U)     /**< Third byte value used for big endian conversion */
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         112 --76: #define PKCL_CMN_CH_BIG_ENDIAN_CALC_4B       (0xFF000000U)     /**< Fourth byte value used for big endian conversion */
+                         113 --77: #define PKCL_CMN_CH_BIG_ENDIAN_SHIFT_8_BIT   (8U)              /**< 8-bit shift number **/
+                         114 --78: #define PKCL_CMN_CH_BIG_ENDIAN_SHIFT_24_BIT  (24U)             /**< 24-bit shift number **/
+                         115 --79: /*! \}*/
+                         116 --81: /**********************************************************************************************************************
+                         117 --82:  Typedef definitions
+                         118 --83:  *********************************************************************************************************************/
+                         119 --85: /**********************************************************************************************************************
+                         120 --86:  Exported global variables
+                         121 --87:  *********************************************************************************************************************/
+                         122 --89: /**********************************************************************************************************************
+                         123 --90:  Private (static) variables and functions
+                         124 --91:  *********************************************************************************************************************/
+                         125 --92: /*!********************************************************************
+                         126 --93:  * \addtogroup  PKCLCommonVariablesInternal     Common Internal Variables
+                         127 --94:  * \{******************************************************************/
+                         128 --95: static e_pkcl_state_t s_pkcl_state;               /**< PKC State */
+                         129 --96: /*! \}*/
+                         130 --98: /**********************************************************************************************************************
+                         131 --99: * Function Name : R_PKCL_Initialize
+                         132 --100: **********************************************************************************************************************/
+                         133 --101: pkcl_ret_t R_PKCL_Initialize(void)
+                         134 	.align	2
+                         135 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF72..0::
+                         136 	.align	2
+                         137 	.align	2
+                         138 ..gh.f.a.2.e.0:
+                         139 	.type	..gh.f.a.2.e.0,@object
+                         140 	.size	..gh.f.a.2.e.0,0
+                         141 	.global	_R_PKCL_Initialize
+                         142 _R_PKCL_Initialize:
+00000000 031eecff        143 	addi	-20,sp,sp
+00000004 63ff1100        144 	st.w	lp,16[sp]
+00000008 63e70500        145 	st.w	r28,4[sp]
+0000000c 63d70d00        146 	st.w	r26,12[sp]
+00000010 63df0900        147 	st.w	r27,8[sp]
+00000014 63ef0100        148 	st.w	r29,0[sp]
+00000018 40e6aaaa        149 	movhi	hi(-1431699456),zero,r28
+                         150 --	    .bf
+                         151 .LDW01:
+                         152 --102: {
+                         153 --103:     pkcl_ret_t ret = PKCL_RET_INTERNALERR;
+                         154 --line103
+                         155 ..lin.78e4554e..70f0dbb0.0_1::
+                         156 .LDWlin1:
+0000001c 40eeaaaa        157 	movhi	hi(-1431699456),zero,r29
+                         158 --104:     pkcd_ret_t drv_ret;
+                         159 --105:     e_pkcl_state_t pkcl_state;
+                         160 --107:     /* Check PKC State */
+                         161 --108:     pkcl_state = r_pkcl_cmn_get_state();
+                         162 .L98:
+                         163 --line108
+                         164 ..lin.78e4554e..70f0dbb0.0_2::
+                         165 .LDWlin2:
+                         166 	jarl	_r_pkcl_cmn_get_state,lp
+                         166 <EXPANSION BEGIN>
+                         166 jarl22 _r_pkcl_cmn_get_state , lp 
+00000020 80ff1c02*       166 <EXPANSION END>
+00000024 0ad0            167 	mov	r10,r26
+                         168 --109:     if (PKCL_STATE_INIT == pkcl_state)
+                         169 --line109
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         170 ..lin.78e4554e..70f0dbb0.0_3::
+                         171 .LDWlin3:
+00000026 e0d1            172 	cmp	zero,r26
+00000028 9a15*           173 	bne	.L4
+                         174 --110:     {
+                         175 --111:         /* PKC-Driver Initialize */
+                         176 --112:         drv_ret = R_PKCD_Initialize();
+                         177 .L100:
+                         178 --line112
+                         179 ..lin.78e4554e..70f0dbb0.0_4::
+                         180 .LDWlin4:
+                         181 	jarl	_R_PKCD_Initialize,lp
+                         181 <EXPANSION BEGIN>
+                         181 jarl22 _R_PKCD_Initialize , lp 
+0000002a 80ff0000*       181 <EXPANSION END>
+0000002e 0ad8            182 	mov	r10,r27
+                         183 --114:         /* Convert to PKC-Lib return code */
+                         184 --115:         ret = r_pkcl_cmn_pkcl_ret_from_pkcd_ret(drv_ret);
+                         185 --line115
+                         186 ..lin.78e4554e..70f0dbb0.0_5::
+                         187 .LDWlin5:
+00000030 1b30            188 	mov	r27,r6
+                         189 .L102:
+                         190 	jarl	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret,lp
+                         190 <EXPANSION BEGIN>
+                         190 jarl22 _r_pkcl_cmn_pkcl_ret_from_pkcd_ret , lp 
+00000032 80ff2a01*       190 <EXPANSION END>
+00000036 0ae8            191 	mov	r10,r29
+                         192 --117:         if (PKCL_RET_OK == ret)
+                         193 --line117
+                         194 ..lin.78e4554e..70f0dbb0.0_6::
+                         195 .LDWlin6:
+00000038 210655555555    196 	mov	1431655765,r1
+0000003e e1e9            197 	cmp	r1,r29
+00000040 fa05*           198 	bne	.L9
+                         199 --118:         {
+                         200 --119:             /* State transition */
+                         201 --120:             r_pkcl_cmn_set_state(PKCL_STATE_NO_EXEC_OPERATION);
+                         202 --line120
+                         203 ..lin.78e4554e..70f0dbb0.0_7::
+                         204 .LDWlin7:
+00000042 0132            205 	mov	1,r6
+                         206 .L104:
+                         207 	jarl	_r_pkcl_cmn_set_state,lp
+                         207 <EXPANSION BEGIN>
+                         207 jarl22 _r_pkcl_cmn_set_state , lp 
+00000044 80ffea01*       207 <EXPANSION END>
+00000048 b505*           208 	br	.L9
+                         209 .L4:
+                         210 --121:         }
+                         211 --122:         else
+                         212 --123:         {
+                         213 --124:             /* Do nothing */
+                         214 --125:         }
+                         215 --126:     }
+                         216 --127:     else
+                         217 --128:     {
+                         218 --129:         ret = PKCL_RET_STATUSERR;
+                         219 --line129
+                         220 ..lin.78e4554e..70f0dbb0.0_8::
+                         221 .LDWlin8:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+0000004a 1cee0100        222 	addi	1,r28,r29
+                         223 .L9:
+                         224 --130:     }
+                         225 --132:     return ret;
+0000004e 1d50            226 	mov	r29,r10
+                         227 --	    .ef
+                         228 .LDW11:
+00000050 23ff1100        229 	ld.w	16[sp],lp
+00000054 23ef0100        230 	ld.w	0[sp],r29
+00000058 23e70500        231 	ld.w	4[sp],r28
+0000005c 23df0900        232 	ld.w	8[sp],r27
+00000060 23d70d00        233 	ld.w	12[sp],r26
+00000064 031e1400        234 	addi	20,sp,sp
+                         235 .L106:
+                         236 	.jumptype return
+00000068 7f00            237 	jmp	[lp]
+                         238 --line129
+                         239 ..lin.78e4554e..70f0dbb0.0_9::
+                         240 	.type	_R_PKCL_Initialize,@function
+                         241 	.size	_R_PKCL_Initialize,.-_R_PKCL_Initialize
+                         242 	.align	2
+                         243 --_ret	r29	local
+                         244 --_drv_ret	r27	local
+                         245 --_pkcl_state	r26	local
+                         246 
+                         247 	.section ".bss","awb"
+                         248 .L62:
+                         249 	.type	.L62,@object
+                         250 	.size	.L62,0
+                         251 	.section ".ghcalltbl",""
+                         252 	.align	4
+00000000 00000000*       253 .L99:	.word	.L98
+                         254 	.type	.L99,@object
+                         255 	.size	.L99,4
+00000004 00000000*       256 .L101:	.word	.L100
+                         257 	.type	.L101,@object
+                         258 	.size	.L101,4
+00000008 00000000*       259 .L103:	.word	.L102
+                         260 	.type	.L103,@object
+                         261 	.size	.L103,4
+0000000c 00000000*       262 .L105:	.word	.L104
+                         263 	.type	.L105,@object
+                         264 	.size	.L105,4
+                         265 	.section ".ghrettbl",""
+                         266 	.align	4
+00000000 00000000*       267 .L107:	.word	.L106
+                         268 	.type	.L107,@object
+                         269 	.size	.L107,4
+                         270 	.data
+                         271 	.section ".icum_library.text","ax"
+                         272 
+                         273 --133: }
+                         274 
+                         275 --134: /**********************************************************************************************************************
+                         276 --135: * End of function R_PKCL_Initialize()
+                         277 --136: **********************************************************************************************************************/
+                         278 --138: /**********************************************************************************************************************
+                         279 --139: * Function Name : R_PKCL_GetState
+                         280 --140: **********************************************************************************************************************/
+                         281 --141: e_pkcl_state_t R_PKCL_GetState(void)
+                         282 	.align	2
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         283 	.align	2
+                         284 	.align	2
+                         285 	.align	2
+                         286 ..gh.f.a.2.e.1:
+                         287 	.type	..gh.f.a.2.e.1,@object
+                         288 	.size	..gh.f.a.2.e.1,0
+                         289 	.global	_R_PKCL_GetState
+                         290 _R_PKCL_GetState:
+                         291 --	    .bf
+                         292 .LDW21:
+                         293 --142: {
+                         294 --143:     return s_pkcl_state;
+0000006a 2a0600000000*   295 	mov	_s_pkcl_state,r10
+00000070 2a570100        296 	ld.w	0[r10],r10
+                         297 --	    .ef
+                         298 .LDW31:
+                         299 .L138:
+                         300 --line144
+                         301 ..lin.78e4554e..280863f.0_10::
+                         302 .LDWlin10:
+                         303 	.jumptype return
+00000074 7f00            304 	jmp	[lp]
+                         305 --line144
+                         306 ..lin.78e4554e..280863f.0_11::
+                         307 	.type	_R_PKCL_GetState,@function
+                         308 	.size	_R_PKCL_GetState,.-_R_PKCL_GetState
+                         309 	.align	2
+                         310 
+                         311 	.section ".icum_library.data","aw"
+                         312 .L126:
+                         313 	.type	.L126,@object
+                         314 	.size	.L126,0
+                         315 	.section ".icum_library.bss","awb"
+                         316 	.align	4
+                         317 	.global	_s_pkcl_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api.
+                         318 _s_pkcl_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api.:
+00000000 00000000        319 _s_pkcl_state:	.space	4
+                         320 	.type	_s_pkcl_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api.,@object
+                         321 	.size	_s_pkcl_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api.,4
+                         322 	.type	_s_pkcl_state,@object
+                         323 	.size	_s_pkcl_state,4
+                         324 	.section ".ghrettbl",""
+00000004 00000000*       325 .L139:	.word	.L138
+                         326 	.type	.L139,@object
+                         327 	.size	.L139,4
+                         328 	.data
+                         329 	.section ".icum_library.text","ax"
+                         330 
+                         331 --144: }
+                         332 
+                         333 --145: /**********************************************************************************************************************
+                         334 --146: * End of function R_PKCL_GetState()
+                         335 --147: **********************************************************************************************************************/
+                         336 --149: /**********************************************************************************************************************
+                         337 --150: * Function Name : R_PKCL_ChkPKCCBusy
+                         338 --151: **********************************************************************************************************************/
+                         339 --152: pkcl_ret_t R_PKCL_ChkPKCCBusy(void)
+                         340 	.align	2
+                         341 	.align	2
+                         342 	.align	2
+                         343 ..gh.f.a.2.e.2:
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         344 	.type	..gh.f.a.2.e.2,@object
+                         345 	.size	..gh.f.a.2.e.2,0
+                         346 	.global	_R_PKCL_ChkPKCCBusy
+                         347 _R_PKCL_ChkPKCCBusy:
+00000076 541a            348 	add	-12,sp
+00000078 63ff0900        349 	st.w	lp,8[sp]
+0000007c 63e70500        350 	st.w	r28,4[sp]
+00000080 63ef0100        351 	st.w	r29,0[sp]
+                         352 --	    .bf
+                         353 .LDW41:
+                         354 --153: {
+                         355 --154:     pkcl_ret_t ret = PKCL_RET_INTERNALERR;
+00000084 40eeaaaa        356 	movhi	hi(-1431699456),zero,r29
+                         357 --155:     pkcd_ret_t drv_ret;
+                         358 --157:     /* Check PKCC Busy */
+                         359 --158:     drv_ret = R_PKCD_ChkPKCCBusy();
+                         360 .L191:
+                         361 --line158
+                         362 ..lin.78e4554e..b80e59d8.0_12::
+                         363 .LDWlin12:
+                         364 	jarl	_R_PKCD_ChkPKCCBusy,lp
+                         364 <EXPANSION BEGIN>
+                         364 jarl22 _R_PKCD_ChkPKCCBusy , lp 
+00000088 80ff0000*       364 <EXPANSION END>
+0000008c 0ae0            365 	mov	r10,r28
+                         366 --160:     /* Convert to PKC-Lib return code */
+                         367 --161:     ret = r_pkcl_cmn_pkcl_ret_from_pkcd_ret(drv_ret);
+                         368 --line161
+                         369 ..lin.78e4554e..b80e59d8.0_13::
+                         370 .LDWlin13:
+0000008e 1c30            371 	mov	r28,r6
+                         372 .L193:
+                         373 	jarl	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret,lp
+                         373 <EXPANSION BEGIN>
+                         373 jarl22 _r_pkcl_cmn_pkcl_ret_from_pkcd_ret , lp 
+00000090 80ffcc00*       373 <EXPANSION END>
+00000094 0ae8            374 	mov	r10,r29
+                         375 --163:     return ret;
+                         376 --line163
+                         377 ..lin.78e4554e..b80e59d8.0_14::
+                         378 .LDWlin14:
+00000096 1d50            379 	mov	r29,r10
+                         380 --	    .ef
+                         381 .LDW51:
+00000098 23ff0900        382 	ld.w	8[sp],lp
+0000009c 23ef0100        383 	ld.w	0[sp],r29
+000000a0 23e70500        384 	ld.w	4[sp],r28
+000000a4 4c1a            385 	add	12,sp
+                         386 .L195:
+                         387 	.jumptype return
+000000a6 7f00            388 	jmp	[lp]
+                         389 --line163
+                         390 ..lin.78e4554e..b80e59d8.0_15::
+                         391 	.type	_R_PKCL_ChkPKCCBusy,@function
+                         392 	.size	_R_PKCL_ChkPKCCBusy,.-_R_PKCL_ChkPKCCBusy
+                         393 	.align	2
+                         394 --_ret	r29	local
+                         395 --_drv_ret	r28	local
+                         396 
+                         397 	.section ".bss","awb"
+                         398 .L170:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         399 	.type	.L170,@object
+                         400 	.size	.L170,0
+                         401 	.section ".ghcalltbl",""
+00000010 00000000*       402 .L192:	.word	.L191
+                         403 	.type	.L192,@object
+                         404 	.size	.L192,4
+00000014 00000000*       405 .L194:	.word	.L193
+                         406 	.type	.L194,@object
+                         407 	.size	.L194,4
+                         408 	.section ".ghrettbl",""
+00000008 00000000*       409 .L196:	.word	.L195
+                         410 	.type	.L196,@object
+                         411 	.size	.L196,4
+                         412 	.data
+                         413 	.section ".icum_library.text","ax"
+                         414 
+                         415 --164: }
+                         416 
+                         417 --165: /**********************************************************************************************************************
+                         418 --166: * End of function R_PKCL_ChkPKCCBusy()
+                         419 --167: **********************************************************************************************************************/
+                         420 --169: /**********************************************************************************************************************
+                         421 --170: * Function Name : R_PKCL_IsAsyncOpeProgress
+                         422 --171: **********************************************************************************************************************/
+                         423 --172: e_pkc_bool_t R_PKCL_IsAsyncOpeProgress(void)
+                         424 	.align	2
+                         425 	.align	2
+                         426 	.align	2
+                         427 ..gh.f.a.2.e.3:
+                         428 	.type	..gh.f.a.2.e.3,@object
+                         429 	.size	..gh.f.a.2.e.3,0
+                         430 	.global	_R_PKCL_IsAsyncOpeProgress
+                         431 _R_PKCL_IsAsyncOpeProgress:
+000000a8 581a            432 	add	-8,sp
+000000aa 63ff0500        433 	st.w	lp,4[sp]
+000000ae 63ef0100        434 	st.w	r29,0[sp]
+                         435 --	    .bf
+                         436 .LDW61:
+                         437 --173: {
+                         438 --174:     e_pkc_bool_t is_async;
+                         439 --175:     is_async = R_PKCD_IsAsyncOpeProgress();
+                         440 .L241:
+                         441 	jarl	_R_PKCD_IsAsyncOpeProgress,lp
+                         441 <EXPANSION BEGIN>
+                         441 jarl22 _R_PKCD_IsAsyncOpeProgress , lp 
+000000b2 80ff0000*       441 <EXPANSION END>
+000000b6 0ae8            442 	mov	r10,r29
+                         443 --177:     return is_async;
+                         444 --line177
+                         445 ..lin.78e4554e..b3c0a431.0_16::
+                         446 .LDWlin16:
+000000b8 1d50            447 	mov	r29,r10
+                         448 --	    .ef
+                         449 .LDW71:
+000000ba 23ff0500        450 	ld.w	4[sp],lp
+000000be 23ef0100        451 	ld.w	0[sp],r29
+000000c2 481a            452 	add	8,sp
+                         453 .L243:
+                         454 	.jumptype return
+000000c4 7f00            455 	jmp	[lp]
+                         456 --line177
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         457 ..lin.78e4554e..b3c0a431.0_17::
+                         458 	.type	_R_PKCL_IsAsyncOpeProgress,@function
+                         459 	.size	_R_PKCL_IsAsyncOpeProgress,.-_R_PKCL_IsAsyncOpeProgress
+                         460 	.align	2
+                         461 --_is_async	r29	local
+                         462 
+                         463 	.section ".bss","awb"
+                         464 .L226:
+                         465 	.type	.L226,@object
+                         466 	.size	.L226,0
+                         467 	.section ".ghcalltbl",""
+00000018 00000000*       468 .L242:	.word	.L241
+                         469 	.type	.L242,@object
+                         470 	.size	.L242,4
+                         471 	.section ".ghrettbl",""
+0000000c 00000000*       472 .L244:	.word	.L243
+                         473 	.type	.L244,@object
+                         474 	.size	.L244,4
+                         475 	.data
+                         476 	.section ".icum_library.text","ax"
+                         477 
+                         478 --178: }
+                         479 
+                         480 --179: /**********************************************************************************************************************
+                         481 --180: * End of function R_PKCL_IsAsyncOpeProgress()
+                         482 --181: **********************************************************************************************************************/
+                         483 --183: /**********************************************************************************************************************
+                         484 --184: * Function Name : R_PKCL_ClearState
+                         485 --185: **********************************************************************************************************************/
+                         486 --186: pkcl_ret_t R_PKCL_ClearState(void)
+                         487 	.align	2
+                         488 	.align	2
+                         489 	.align	2
+                         490 ..gh.f.a.2.e.4:
+                         491 	.type	..gh.f.a.2.e.4,@object
+                         492 	.size	..gh.f.a.2.e.4,0
+                         493 	.global	_R_PKCL_ClearState
+                         494 _R_PKCL_ClearState:
+000000c6 031eecff        495 	addi	-20,sp,sp
+000000ca 63ff1100        496 	st.w	lp,16[sp]
+000000ce 63e70500        497 	st.w	r28,4[sp]
+000000d2 63d70d00        498 	st.w	r26,12[sp]
+000000d6 63df0900        499 	st.w	r27,8[sp]
+000000da 63ef0100        500 	st.w	r29,0[sp]
+000000de 40e6aaaa        501 	movhi	hi(-1431699456),zero,r28
+                         502 --	    .bf
+                         503 .LDW81:
+                         504 --187: {
+                         505 --188:     pkcl_ret_t ret = PKCL_RET_INTERNALERR;
+                         506 --line188
+                         507 ..lin.78e4554e..1c2413e6.0_18::
+                         508 .LDWlin18:
+000000e2 40eeaaaa        509 	movhi	hi(-1431699456),zero,r29
+                         510 --189:     pkcd_ret_t drv_ret;
+                         511 --190:     e_pkcl_state_t pkcl_state;
+                         512 --192:     /* Check PKC State */
+                         513 --193:     pkcl_state = r_pkcl_cmn_get_state();
+                         514 .L338:
+                         515 --line193
+                         516 ..lin.78e4554e..1c2413e6.0_19::
+                         517 .LDWlin19:
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         518 	jarl	_r_pkcl_cmn_get_state,lp
+                         518 <EXPANSION BEGIN>
+                         518 jarl22 _r_pkcl_cmn_get_state , lp 
+000000e6 80ff5601*       518 <EXPANSION END>
+000000ea 0ad0            519 	mov	r10,r26
+                         520 --194:     if (PKCL_STATE_INIT != pkcl_state)
+                         521 --line194
+                         522 ..lin.78e4554e..1c2413e6.0_20::
+                         523 .LDWlin20:
+000000ec e0d1            524 	cmp	zero,r26
+000000ee 9215*           525 	be	.L247
+                         526 --195:     {
+                         527 --196:         /* PKC-Driver  */
+                         528 --197:         drv_ret = R_PKCD_ClearState();
+                         529 .L340:
+                         530 --line197
+                         531 ..lin.78e4554e..1c2413e6.0_21::
+                         532 .LDWlin21:
+                         533 	jarl	_R_PKCD_ClearState,lp
+                         533 <EXPANSION BEGIN>
+                         533 jarl22 _R_PKCD_ClearState , lp 
+000000f0 80ff0000*       533 <EXPANSION END>
+000000f4 0ad8            534 	mov	r10,r27
+                         535 --199:         /* Convert to PKC-Lib return code */
+                         536 --200:         ret = r_pkcl_cmn_pkcl_ret_from_pkcd_ret(drv_ret);
+                         537 --line200
+                         538 ..lin.78e4554e..1c2413e6.0_22::
+                         539 .LDWlin22:
+000000f6 1b30            540 	mov	r27,r6
+                         541 .L342:
+                         542 	jarl	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret,lp
+                         542 <EXPANSION BEGIN>
+                         542 jarl22 _r_pkcl_cmn_pkcl_ret_from_pkcd_ret , lp 
+000000f8 80ff6400*       542 <EXPANSION END>
+000000fc 0ae8            543 	mov	r10,r29
+                         544 --202:         if (PKCL_RET_OK == ret)
+                         545 --line202
+                         546 ..lin.78e4554e..1c2413e6.0_23::
+                         547 .LDWlin23:
+000000fe 210655555555    548 	mov	1431655765,r1
+00000104 e1e9            549 	cmp	r1,r29
+00000106 fa05*           550 	bne	.L252
+                         551 --203:         {
+                         552 --204:             /* State transition */
+                         553 --205:             r_pkcl_cmn_set_state(PKCL_STATE_NO_EXEC_OPERATION);
+                         554 --line205
+                         555 ..lin.78e4554e..1c2413e6.0_24::
+                         556 .LDWlin24:
+00000108 0132            557 	mov	1,r6
+                         558 .L344:
+                         559 	jarl	_r_pkcl_cmn_set_state,lp
+                         559 <EXPANSION BEGIN>
+                         559 jarl22 _r_pkcl_cmn_set_state , lp 
+0000010a 80ff2401*       559 <EXPANSION END>
+0000010e b505*           560 	br	.L252
+                         561 .L247:
+                         562 --206:         }
+                         563 --207:         else
+                         564 --208:         {
+                         565 --209:             /* Do nothing */
+                         566 --210:         }
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         567 --211:     }
+                         568 --212:     else
+                         569 --213:     {
+                         570 --214:         ret = PKCL_RET_STATUSERR;
+                         571 --line214
+                         572 ..lin.78e4554e..1c2413e6.0_25::
+                         573 .LDWlin25:
+00000110 1cee0100        574 	addi	1,r28,r29
+                         575 .L252:
+                         576 --215:     }
+                         577 --217:     return ret;
+00000114 1d50            578 	mov	r29,r10
+                         579 --	    .ef
+                         580 .LDW91:
+00000116 23ff1100        581 	ld.w	16[sp],lp
+0000011a 23ef0100        582 	ld.w	0[sp],r29
+0000011e 23e70500        583 	ld.w	4[sp],r28
+00000122 23df0900        584 	ld.w	8[sp],r27
+00000126 23d70d00        585 	ld.w	12[sp],r26
+0000012a 031e1400        586 	addi	20,sp,sp
+                         587 .L346:
+                         588 	.jumptype return
+0000012e 7f00            589 	jmp	[lp]
+                         590 --line214
+                         591 ..lin.78e4554e..1c2413e6.0_26::
+                         592 	.type	_R_PKCL_ClearState,@function
+                         593 	.size	_R_PKCL_ClearState,.-_R_PKCL_ClearState
+                         594 	.align	2
+                         595 --_ret	r29	local
+                         596 --_drv_ret	r27	local
+                         597 --_pkcl_state	r26	local
+                         598 
+                         599 	.section ".bss","awb"
+                         600 .L302:
+                         601 	.type	.L302,@object
+                         602 	.size	.L302,0
+                         603 	.section ".ghcalltbl",""
+0000001c 00000000*       604 .L339:	.word	.L338
+                         605 	.type	.L339,@object
+                         606 	.size	.L339,4
+00000020 00000000*       607 .L341:	.word	.L340
+                         608 	.type	.L341,@object
+                         609 	.size	.L341,4
+00000024 00000000*       610 .L343:	.word	.L342
+                         611 	.type	.L343,@object
+                         612 	.size	.L343,4
+00000028 00000000*       613 .L345:	.word	.L344
+                         614 	.type	.L345,@object
+                         615 	.size	.L345,4
+                         616 	.section ".ghrettbl",""
+00000010 00000000*       617 .L347:	.word	.L346
+                         618 	.type	.L347,@object
+                         619 	.size	.L347,4
+                         620 	.data
+                         621 	.section ".icum_library.text","ax"
+                         622 
+                         623 --218: }
+                         624 
+                         625 --219: /**********************************************************************************************************************
+                         626 --220: * End of function R_PKCL_ClearState()
+                         627 --221: **********************************************************************************************************************/
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         628 --223: /**********************************************************************************************************************
+                         629 --224: * Function Name : R_PKCL_GetVersion
+                         630 --225: **********************************************************************************************************************/
+                         631 --226: pkcl_ret_t R_PKCL_GetVersion(uint32_t* const p_major, uint32_t* const p_minor)
+                         632 	.align	2
+                         633 	.align	2
+                         634 	.align	2
+                         635 ..gh.f.a.2.e.5:
+                         636 	.type	..gh.f.a.2.e.5,@object
+                         637 	.size	..gh.f.a.2.e.5,0
+                         638 	.global	_R_PKCL_GetVersion
+                         639 _R_PKCL_GetVersion:
+00000130 06f0            640 	mov	r6,ep
+00000132 0798            641 	mov	r7,r19
+00000134 4016aaaa        642 	movhi	hi(-1431699456),zero,r2
+                         643 --	    .bf
+                         644 .LDW02:
+                         645 --227: {
+                         646 --228:     pkcl_ret_t ret = PKCL_RET_INTERNALERR;
+                         647 --line228
+                         648 ..lin.78e4554e..69df9ac4.0_27::
+                         649 .LDWlin27:
+00000138 400eaaaa        650 	movhi	hi(-1431699456),zero,r1
+                         651 --230:     /* Check NULL argument */
+                         652 --231:     if ((NULL != p_major) && (NULL != p_minor))
+                         653 --line231
+                         654 ..lin.78e4554e..69df9ac4.0_28::
+                         655 .LDWlin28:
+0000013c e0f1            656 	cmp	zero,ep
+0000013e b20d*           657 	be	.L350
+00000140 e099            658 	cmp	zero,r19
+00000142 920d*           659 	be	.L350
+                         660 --232:     {
+                         661 --233:         /* Get major version */
+                         662 --234:         *p_major = PKCL_VERSION_MAJOR;
+                         663 --line234
+                         664 ..lin.78e4554e..69df9ac4.0_29::
+                         665 .LDWlin29:
+00000144 0105            666 	sst.w	zero,0[ep]
+                         667 --236:         /* Get minor version */
+                         668 --237:         *p_minor = PKCL_VERSION_MINOR;
+00000146 0192            669 	mov	1,r18
+00000148 73970100        670 	st.w	r18,0[r19]
+                         671 --239:         ret = PKCL_RET_OK;
+0000014c 210655555555    672 	mov	1431655765,r1
+00000152 b505*           673 	br	.L353
+                         674 .L350:
+                         675 --240:     }
+                         676 --241:     else
+                         677 --242:     {
+                         678 --243:         ret = PKCL_RET_PARAMERR;
+                         679 --line243
+                         680 ..lin.78e4554e..69df9ac4.0_30::
+                         681 .LDWlin30:
+00000154 020e0200        682 	addi	2,r2,r1
+                         683 .L353:
+                         684 --244:     }
+                         685 --246:     return ret;
+00000158 0150            686 	mov	r1,r10
+                         687 --	    .ef
+                         688 .LDW12:
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         689 .L443:
+                         690 	.jumptype return
+0000015a 7f00            691 	jmp	[lp]
+                         692 --line243
+                         693 ..lin.78e4554e..69df9ac4.0_31::
+                         694 	.type	_R_PKCL_GetVersion,@function
+                         695 	.size	_R_PKCL_GetVersion,.-_R_PKCL_GetVersion
+                         696 	.align	2
+                         697 --_ret	r1	local
+                         698 
+                         699 --_p_major	ep	param
+                         700 --_p_minor	r19	param
+                         701 
+                         702 	.section ".bss","awb"
+                         703 .L410:
+                         704 	.type	.L410,@object
+                         705 	.size	.L410,0
+                         706 	.section ".ghrettbl",""
+00000014 00000000*       707 .L444:	.word	.L443
+                         708 	.type	.L444,@object
+                         709 	.size	.L444,4
+                         710 	.data
+                         711 	.section ".icum_library.text","ax"
+                         712 
+                         713 --247: }
+                         714 
+                         715 --248: /**********************************************************************************************************************
+                         716 --249: * End of function R_PKCL_GetVersion()
+                         717 --250: **********************************************************************************************************************/
+                         718 --252: /**********************************************************************************************************************
+                         719 --253: * Function Name : r_pkcl_cmn_pkcl_ret_from_pkcd_ret
+                         720 --254: **********************************************************************************************************************/
+                         721 --255: /*!****************************************************************************************************************//**
+                         722 --256:  * \ingroup     PKCLCommonAPIsInternal
+                         723 --257:  * \brief       Returns the return code corresponding to the return code of the PKC driver
+                         724 --258:  * \param        [in]   drv_ret                The PKC Driver return code
+                         725 --259:  * \return
+                         726 --260:  *  - #PKCL_RET_OK:                             The PKC driver return code PKCD_RET_OK entered.
+                         727 --261:  *  - #PKCL_RET_PROCESSING:                     The PKC driver return code PKCD_RET_PROCESSING enterd.
+                         728 --262:  *  - #PKCL_RET_DRV_INTERNALERR:                The PKC driver return code PKCD_RET_INTERNALERR entered.
+                         729 --263:  *  - #PKCL_RET_DRV_PARAMERR:                   The PKC driver return code PKCD_RET_PARAMERR entered.
+                         730 --264:  *  - #PKCL_RET_DRV_LENGTHERR:                  The PKC driver return code PKCD_RET_LENGTHERR entered.
+                         731 --265:  *  - #PKCL_RET_KEY_PARAMERR:                   The PKC driver return code PKCD_RET_KEY_PARAMERR entered.
+                         732 --266:  *  - #PKCL_RET_KEY_LENGTHERR:                  The PKC driver return code PKCD_RET_KEY_LENGTHERR entered.
+                         733 --267:  *  - #PKCL_RET_HASHAPIERR:                     The PKC driver return code PKCL_RET_HASHAPIERR entered.
+                         734 --268:  *  - #PKCL_RET_PKCCTIMEOUTERR:                 The PKC driver return code PKCD_RET_PKCCTIMEOUTERR entered.
+                         735 --269:  *  - #PKCL_RET_PKCCERR:                        The PKC driver return code PKCD_RET_PKCCERR entered.
+                         736 --270:  *  - #PKCL_RET_RSA_NON_COPRIME:                The PKC driver return code PKCD_RET_RSA_NON_COPRIME entered.
+                         737 --271:  *  - #PKCL_RET_RSA_COMPOSITE:                  The PKC driver return code PKCD_RET_RSA_COMPOSITE entered.
+                         738 --272:  *  - #PKCL_RET_EC_VERIFAIL:                    The PKC driver return code PKCD_RET_PKCD_RET_EC_VERIFAIL entered.
+                         739 --273:  *  - #PKCL_RET_EC_ZERO_SIGNATURE:              The PKC driver return code PKCD_RET_EC_ZERO_SIGNATURE entered.
+                         740 --274:  *  - #PKCL_RET_EDDSA_VERIFAIL:                 The PKC driver return code PKCD_RET_EDDSA_VERIFAIL entered.
+                         741 --275:  *  - #PKCL_RET_EDDSA_DECOMPERR:                The PKC driver return code PKCD_RET_EDDSA_DECOMPERR entered.
+                         742 --276:  *  - #PKCL_RET_DRV_TAMPERERR:                  The PKC driver return code PKCD_RET_TAMPERERR entered.
+                         743 --277:  *  - #PKCL_RET_DRV_FAIL:                       The PKC driver return code other than the above entered.
+                         744 --278:  *  - #PKCL_RET_TAMPERERR:                      Tampering has been detected.
+                         745 --279:  *  - #PKCL_RET_INTERNALERR:                    Internal processing failed
+                         746 --280:  * \par Global Variables
+                         747 --281:  *  - None
+                         748 --282:  * \par Call PKC-Driver API
+                         749 --283:  *  - None
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         750 --284:  * \par Precondition
+                         751 --285:  *  - None
+                         752 --286:  * \par Security components
+                         753 --287:  *  - no
+                         754 --288:  * \par Detailed description
+                         755 --289:  *      - Returns the return code corresponding to the return code of cipher driver
+                         756 --290:  *      - Implement the following as a glitch countermeasure :
+                         757 --291:  *        - Set success return value in two steps
+                         758 --292:  *
+                         759 --293:  * Pseudo-code for the function can be found below.
+                         760 --294:  *  -# Initialize the variable ret with #PKCL_RET_INTERNALERR.
+                         761 --295:  *  -# If drv_ret == PKCD_RET_OK.
+                         762 --296:  *    -# Set temp_ret to #PKCL_CMN_RET_OK_HALF_1.
+                         763 --297:  *  -# Else if drv_ret == PKCD_RET_PROCESSING
+                         764 --298:  *    -# Set temp_ret to #PKCL_CMN_RET_PROC_HALF_1.
+                         765 --299:  *  -# Else if drv_ret == PKCD_RET_PRIME_GENERATING
+                         766 --300:  *    -# Set temp_ret to #PKCL_CMN_RET_PRIMEGEN_HALF_1.
+                         767 --301:  *  -# Else if drv_ret == PKCD_RET_INTERNALERR
+                         768 --302:  *    -# Set temp_ret to #PKCL_RET_DRV_INTERNALERR.
+                         769 --303:  *  -# Else if drv_ret == PKCD_RET_PARAMERR
+                         770 --304:  *    -# Set temp_ret to #PKCL_RET_DRV_PARAMERR.
+                         771 --305:  *  -# Else if drv_ret == PKCD_RET_LENGTHERR
+                         772 --306:  *    -# Set temp_ret to #PKCL_RET_DRV_LENGTHERR.
+                         773 --307:  *  -# Else if drv_ret == PKCD_RET_KEY_PARAMERR
+                         774 --308:  *    -# Set temp_ret to #PKCL_RET_KEY_PARAMERR.
+                         775 --309:  *  -# Else if drv_ret == PKCD_RET_KEY_LENGTHERR
+                         776 --310:  *    -# Set temp_ret to #PKCL_RET_KEY_LENGTHERR.
+                         777 --311:  *  -# Else if drv_ret == PKCD_RET_HASHAPIERR
+                         778 --312:  *    -# Set temp_ret to #PKCL_RET_HASHAPIERR.
+                         779 --313:  *  -# Else if drv_ret == PKCD_RET_DRBGAPIERR
+                         780 --314:  *    -# Set temp_ret to #PKCL_RET_DRBGAPIERR.
+                         781 --315:  *  -# Else if drv_ret == PKCD_RET_PKCCTIMEOUTERR
+                         782 --316:  *    -# Set temp_ret to #PKCL_RET_PKCCTIMEOUTERR.
+                         783 --317:  *  -# Else if drv_ret == PKCD_RET_PKCCERR
+                         784 --318:  *    -# Set temp_ret to #PKCL_RET_PKCCERR.
+                         785 --319:  *  -# Else if drv_ret == PKCD_RET_RSA_NON_COPRIME
+                         786 --320:  *    -# Set temp_ret to #PKCL_RET_RSA_NON_COPRIME.
+                         787 --321:  *  -# Else if drv_ret == PKCD_RET_RSA_COMPOSITE
+                         788 --322:  *    -# Set temp_ret to #PKCL_RET_RSA_COMPOSITE.
+                         789 --323:  *  -# Else if drv_ret == PKCD_RET_DH_INVALID_SHAREDSECRET
+                         790 --324:  *    -# Set temp_ret to #PKCL_RET_DH_INVALID_SHAREDSECRET.
+                         791 --325:  *  -# Else if drv_ret == PKCD_RET_EC_VERIFAIL
+                         792 --326:  *    -# Set temp_ret to #PKCL_RET_EC_VERIFAIL.
+                         793 --327:  *  -# Else if drv_ret == PKCD_RET_EC_ZERO_SIGNATURE
+                         794 --328:  *    -# Set temp_ret to #PKCL_RET_EC_ZERO_SIGNATURE.
+                         795 --329:  *  -# Else if drv_ret == PKCD_RET_EDDSA_VERIFAIL
+                         796 --330:  *    -# Set temp_ret to #PKCL_RET_EDDSA_VERIFAIL.
+                         797 --331:  *  -# Else if drv_ret == PKCD_RET_EDDSA_DECOMPERR
+                         798 --332:  *    -# Set temp_ret to #PKCL_RET_EDDSA_DECOMPERR.
+                         799 --333:  *  -# Else if drv_ret == PKCD_RET_TAMPERERR
+                         800 --334:  *    -# Set temp_ret to #PKCL_RET_DRV_TAMPERERR.
+                         801 --335:  *  -# Else
+                         802 --336:  *    -# Set temp_ret to #PKCL_RET_DRV_FAIL.
+                         803 --337:  *  -# If drv_ret == PKCD_RET_OK
+                         804 --338:  *    -# Set temp_ret to (temp_ret + #PKCL_CMN_RET_OK_HALF_2).
+                         805 --339:  *  -# Else if drv_ret == PKCD_RET_PROCESSING
+                         806 --340:  *    -# Set temp_ret to (temp_ret + #PKCL_CMN_RET_PROC_HALF_2).
+                         807 --341:  *  -# Else if drv_ret == PKCD_RET_PRIME_GENERATING
+                         808 --342:  *    -# Set temp_ret to (temp_ret + #PKCL_CMN_RET_PRIMEGEN_HALF_2).
+                         809 --343:  *  -# Else
+                         810 --344:  *    -# Do nothing.
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         811 --345:  *  -# Set ret to temp_ret.
+                         812 --346:  *  -# If the return value in ret is an error code, then
+                         813 --347:  *    -# If ((#PKCL_RET_OK == ret) || (#PKCL_RET_PROCESSING == ret) || (#PKCL_RET_PRIME_GENERATING == ret)), then
+                         814 --348:  *      -# Do nohting.
+                         815 --349:  *    -# Else
+                         816 --350:  *      -# Set ret to #PKCL_RET_TAMPERERR.
+                         817 --351:  *  -# Else
+                         818 --352:  *    -# Do nothing.
+                         819 --353:  *  -# Return ret.
+                         820 --354:  *
+                         821 --355:  * \callgraph
+                         822 --356:  *********************************************************************************************************************/
+                         823 --357: pkcl_ret_t r_pkcl_cmn_pkcl_ret_from_pkcd_ret(const pkcd_ret_t drv_ret)
+                         824 	.align	2
+                         825 	.align	2
+                         826 	.align	2
+                         827 ..gh.f.a.2.e.6:
+                         828 	.type	..gh.f.a.2.e.6,@object
+                         829 	.size	..gh.f.a.2.e.6,0
+                         830 	.global	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret
+                         831 _r_pkcl_cmn_pkcl_ret_from_pkcd_ret:
+0000015c 031e60ff        832 	addi	-160,sp,sp
+00000160 0688            833 	mov	r6,r17
+00000162 4096aaaa        834 	movhi	hi(-1431699456),zero,r18
+                         835 --	    .bf
+                         836 .LDW22:
+                         837 --358: {
+                         838 --359:     pkcl_ret_t ret = PKCL_RET_INTERNALERR;
+                         839 --line359
+                         840 ..lin.78e4554e..6f698eed.0_32::
+                         841 .LDWlin32:
+00000166 4016aaaa        842 	movhi	hi(-1431699456),zero,r2
+                         843 --360:     pkcl_ret_t temp_ret;
+                         844 --361:     uint32_t i;
+                         845 --363:     /* Perfomance function struct */
+                         846 --364:     typedef struct
+                         847 --365:     {
+                         848 --366:         pkcd_ret_t driver_ret;
+                         849 --367:         pkcl_ret_t lib_ret;
+                         850 --368:     } drv_ret_tbl_t;
+                         851 --370:     /* Driver return table */
+                         852 --371:     const drv_ret_tbl_t drv_ret_tbl[20] =
+                         853 --line371
+                         854 ..lin.78e4554e..6f698eed.0_33::
+                         855 .LDWlin33:
+0000016a 210600000000*   856 	mov	.L666,r1
+00000170 239e0000        857 	movea	0,sp,r19
+00000174 0186a000        858 	addi	160,r1,r16
+                         859 .L596:
+00000178 a10709700000    860 	ld.dw	0[r1],r14
+0000017e 480a            861 	add	8,r1
+00000180 b3070f700000    862 	st.dw	r14,0[r19]
+00000186 489a            863 	add	8,r19
+00000188 e181            864 	cmp	r1,r16
+0000018a faf5*           865 	bne	.L596
+                         866 --372:     {
+                         867 --373:         {PKCD_RET_OK,                      PKCL_CMN_RET_OK_HALF_1},
+                         868 --374:         {PKCD_RET_PROCESSING,              PKCL_CMN_RET_PROC_HALF_1},
+                         869 --375:         {PKCD_RET_PRIME_GENERATING,        PKCL_CMN_RET_PRIMEGEN_HALF_1},
+                         870 --376:         {PKCD_RET_INTERNALERR,             PKCL_RET_DRV_INTERNALERR},
+                         871 --377:         {PKCD_RET_PARAMERR,                PKCL_RET_DRV_PARAMERR},
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         872 --378:         {PKCD_RET_LENGTHERR,               PKCL_RET_DRV_LENGTHERR},
+                         873 --379:         {PKCD_RET_KEY_PARAMERR,            PKCL_RET_KEY_PARAMERR},
+                         874 --380:         {PKCD_RET_KEY_LENGTHERR,           PKCL_RET_KEY_LENGTHERR},
+                         875 --381:         {PKCD_RET_HASHAPIERR,              PKCL_RET_HASHAPIERR},
+                         876 --382:         {PKCD_RET_DRBGAPIERR,              PKCL_RET_DRBGAPIERR},
+                         877 --383:         {PKCD_RET_PKCCTIMEOUTERR,          PKCL_RET_PKCCTIMEOUTERR},
+                         878 --384:         {PKCD_RET_PKCCERR,                 PKCL_RET_PKCCERR},
+                         879 --385:         {PKCD_RET_RSA_NON_COPRIME,         PKCL_RET_RSA_NON_COPRIME},
+                         880 --386:         {PKCD_RET_RSA_COMPOSITE,           PKCL_RET_RSA_COMPOSITE},
+                         881 --387:         {PKCD_RET_DH_INVALID_SHAREDSECRET, PKCL_RET_DH_INVALID_SHAREDSECRET},
+                         882 --388:         {PKCD_RET_EC_VERIFAIL,             PKCL_RET_EC_VERIFAIL},
+                         883 --389:         {PKCD_RET_EC_ZERO_SIGNATURE,       PKCL_RET_EC_ZERO_SIGNATURE},
+                         884 --390:         {PKCD_RET_EDDSA_VERIFAIL,          PKCL_RET_EDDSA_VERIFAIL},
+                         885 --391:         {PKCD_RET_EDDSA_DECOMPERR,         PKCL_RET_EDDSA_DECOMPERR},
+                         886 --392:         {PKCD_RET_TAMPERERR,               PKCL_RET_DRV_TAMPERERR},
+                         887 --393:     };
+                         888 --395:     /* Select test target */
+                         889 --396:     for (i = 0U; i < sizeof(drv_ret_tbl)/sizeof(drv_ret_tbl[0U]); i++)
+                         890 --line396
+                         891 ..lin.78e4554e..6f698eed.0_34::
+                         892 .LDWlin34:
+0000018c 009a            893 	mov	0,r19
+0000018e 9515*           894 	br	.L450
+                         895 .L449:
+                         896 --397:     {
+                         897 --398:         if (drv_ret == drv_ret_tbl[i].driver_ret)
+                         898 --line398
+                         899 ..lin.78e4554e..6f698eed.0_35::
+                         900 .LDWlin35:
+00000190 13f0            901 	mov	r19,ep
+00000192 c3f2            902 	shl	3,ep
+00000194 23860000        903 	movea	0,sp,r16
+00000198 d0f1            904 	add	r16,ep
+0000019a 000d            905 	sld.w	0[ep],r1
+0000019c e189            906 	cmp	r1,r17
+0000019e 8a0d*           907 	bne	.L448
+                         908 --399:         {
+                         909 --400:             temp_ret = drv_ret_tbl[i].lib_ret;
+                         910 --line400
+                         911 ..lin.78e4554e..6f698eed.0_36::
+                         912 .LDWlin36:
+000001a0 13f0            913 	mov	r19,ep
+000001a2 c3f2            914 	shl	3,ep
+000001a4 237e0000        915 	movea	0,sp,r15
+000001a8 cff1            916 	add	r15,ep
+000001aa 020d            917 	sld.w	4[ep],r1
+                         918 --401:             break;
+000001ac d505*           919 	br	.L453
+                         920 .L448:
+                         921 --402:         }
+                         922 --403:         else
+                         923 --404:         {
+                         924 --line396
+                         925 ..lin.78e4554e..6f698eed.0_37::
+                         926 .LDWlin37:
+000001ae 419a            927 	add	1,r19
+                         928 .L450:
+000001b0 1306ecff        929 	addi	-20,r19,zero
+000001b4 e9ed*           930 	bnl	.L449
+                         931 .L453:
+                         932 --405:             /* do nothing */
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         933 --406:         }
+                         934 --407:     }
+                         935 --409:     if (i == sizeof(drv_ret_tbl))
+                         936 --line409
+                         937 ..lin.78e4554e..6f698eed.0_38::
+                         938 .LDWlin38:
+000001b6 130660ff        939 	addi	-160,r19,zero
+000001ba ba05*           940 	bne	.L458
+                         941 --410:     {
+                         942 --411:         temp_ret = PKCL_RET_DRV_FAIL;
+                         943 --line411
+                         944 ..lin.78e4554e..6f698eed.0_39::
+                         945 .LDWlin39:
+000001bc 120e0708        946 	addi	2055,r18,r1
+                         947 .L458:
+                         948 --412:     }
+                         949 --413:     else
+                         950 --414:     {
+                         951 --415:         /* do nothing */
+                         952 --416:     }
+                         953 --418:     switch (drv_ret)
+000001c0 2b0601000055    954 	mov	1426063361,r11
+000001c6 eb89            955 	cmp	r11,r17
+000001c8 811d*           956 	bl	.L463
+000001ca 820d*           957 	be	.L460
+000001cc 2b0603000055    958 	mov	1426063363,r11
+000001d2 eb89            959 	cmp	r11,r17
+000001d4 810d*           960 	bl	.L461
+000001d6 c20d*           961 	be	.L462
+000001d8 8515*           962 	br	.L463
+                         963 .L460:
+                         964 --419:     {
+                         965 --420:         case PKCD_RET_OK:
+                         966 --421:             temp_ret += PKCL_CMN_RET_OK_HALF_2;
+                         967 --line421
+                         968 ..lin.78e4554e..6f698eed.0_40::
+                         969 .LDWlin40:
+000001da 300682afa133    970 	mov	866234242,r16
+000001e0 d009            971 	add	r16,r1
+                         972 --422:             break;
+                         973 --423:         case PKCD_RET_PROCESSING:
+                         974 --line422
+                         975 ..lin.78e4554e..6f698eed.0_41::
+                         976 .LDWlin41:
+000001e2 c50d*           977 	br	.L465
+                         978 .L461:
+                         979 --424:             temp_ret += PKCL_CMN_RET_PROC_HALF_2;
+                         980 --line424
+                         981 ..lin.78e4554e..6f698eed.0_42::
+                         982 .LDWlin42:
+000001e4 300628d1f52f    983 	mov	804639016,r16
+000001ea d009            984 	add	r16,r1
+                         985 --425:             break;
+                         986 --426:         case PKCD_RET_PRIME_GENERATING:
+                         987 --line425
+                         988 ..lin.78e4554e..6f698eed.0_43::
+                         989 .LDWlin43:
+000001ec f505*           990 	br	.L465
+                         991 .L462:
+                         992 --427:             temp_ret += PKCL_CMN_RET_PRIMEGEN_HALF_2;
+                         993 --line427
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                         994 ..lin.78e4554e..6f698eed.0_44::
+                         995 .LDWlin44:
+000001ee 3006e7070731    996 	mov	822544359,r16
+000001f4 d009            997 	add	r16,r1
+                         998 --428:             break;
+                         999 --429:         default: /* In case of error, do nothing because the return value has already been set */
+                        1000 --line428
+                        1001 ..lin.78e4554e..6f698eed.0_45::
+                        1002 .LDWlin45:
+000001f6 a505*          1003 	br	.L465
+                        1004 .L463:
+                        1005 --430:             break;
+                        1006 --line430
+                        1007 ..lin.78e4554e..6f698eed.0_46::
+                        1008 .LDWlin46:
+000001f8 0000           1009 	nop
+                        1010 .L465:
+                        1011 --431:     }
+                        1012 --433:     ret = temp_ret;
+000001fa 0110           1013 	mov	r1,r2
+                        1014 --435:     /* The if statement below assumes that all PKC-Lib error codes is in the form 0xAAAA**** */
+                        1015 --436:     if ((ret & PKCL_RET_INTERNALERR) != (PKCL_RET_INTERNALERR))
+000001fc 0280           1016 	mov	r2,r16
+000001fe 5281           1017 	and	r18,r16
+00000200 f281           1018 	cmp	r18,r16
+00000202 a215*          1019 	be	.L473
+                        1020 --437:     {
+                        1021 --438:         if ((PKCL_RET_OK == ret) || (PKCL_RET_PROCESSING == ret) || (PKCL_RET_PRIME_GENERATING == ret))
+                        1022 --line438
+                        1023 ..lin.78e4554e..6f698eed.0_47::
+                        1024 .LDWlin47:
+00000204 300655555555   1025 	mov	1431655765,r16
+0000020a f011           1026 	cmp	r16,r2
+0000020c d20d*          1027 	be	.L473
+0000020e 300601550055   1028 	mov	1426085121,r16
+00000214 f011           1029 	cmp	r16,r2
+00000216 820d*          1030 	be	.L473
+00000218 300602550055   1031 	mov	1426085122,r16
+0000021e f011           1032 	cmp	r16,r2
+00000220 b205*          1033 	be	.L473
+                        1034 --439:         {
+                        1035 --440:             /* Do nothing */
+                        1036 --441:         }
+                        1037 --442:         else
+                        1038 --443:         {
+                        1039 --444:             ret = PKCL_RET_TAMPERERR;
+                        1040 --line444
+                        1041 ..lin.78e4554e..6f698eed.0_48::
+                        1042 .LDWlin48:
+00000222 12160700       1043 	addi	7,r18,r2
+                        1044 .L473:
+                        1045 --445:         }
+                        1046 --446:     }
+                        1047 --447:     else
+                        1048 --448:     {
+                        1049 --449:         /* Do nothing */
+                        1050 --450:     }
+                        1051 --452:     return ret;
+00000226 0250           1052 	mov	r2,r10
+                        1053 --	    .ef
+                        1054 .LDW32:
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+00000228 031ea000       1055 	addi	160,sp,sp
+                        1056 .L699:
+                        1057 	.jumptype return
+0000022c 7f00           1058 	jmp	[lp]
+                        1059 --line444
+                        1060 ..lin.78e4554e..6f698eed.0_49::
+                        1061 	.type	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret,@function
+                        1062 	.size	_r_pkcl_cmn_pkcl_ret_from_pkcd_ret,.-_r_pkcl_cmn_pkcl_ret_from_pkcd_ret
+                        1063 	.align	2
+                        1064 --_ret	r2	local
+                        1065 --_temp_ret	r1	local
+                        1066 --_i	r19	local
+                        1067 --_drv_ret_tbl	0[sp]	local
+                        1068 --.L595	.L666	static
+                        1069 
+                        1070 --_drv_ret	r17	param
+                        1071 
+                        1072 	.section ".bss","awb"
+                        1073 .L594:
+                        1074 	.type	.L594,@object
+                        1075 	.size	.L594,0
+                        1076 	.section ".icum_library.rodata","a"
+                        1077 	.align	4
+00000000 01000055       1078 .L666:	.byte	1,0,0,85
+00000004 d3a5b321       1079 	.byte	211,165,179,33
+00000008 02000055       1080 	.byte	2,0,0,85
+0000000c d9830a25       1081 	.byte	217,131,10,37
+00000010 03000055       1082 	.byte	3,0,0,85
+00000014 1b4df923       1083 	.byte	27,77,249,35
+00000018 100000aa       1084 	.byte	16,0,0,170
+0000001c 0208aaaa       1085 	.byte	2,8,170,170
+00000020 010080aa       1086 	.byte	1,0,128,170
+00000024 0008aaaa       1087 	.byte	0,8,170,170
+00000028 020080aa       1088 	.byte	2,0,128,170
+0000002c 0108aaaa       1089 	.byte	1,8,170,170
+00000030 030080aa       1090 	.byte	3,0,128,170
+00000034 0508aaaa       1091 	.byte	5,8,170,170
+00000038 040080aa       1092 	.byte	4,0,128,170
+0000003c 0608aaaa       1093 	.byte	6,8,170,170
+00000040 050080aa       1094 	.byte	5,0,128,170
+00000044 0400aaaa       1095 	.byte	4,0,170,170
+00000048 060080aa       1096 	.byte	6,0,128,170
+0000004c 0500aaaa       1097 	.byte	5,0,170,170
+00000050 200000aa       1098 	.byte	32,0,0,170
+00000054 0308aaaa       1099 	.byte	3,8,170,170
+00000058 400000aa       1100 	.byte	64,0,0,170
+0000005c 0408aaaa       1101 	.byte	4,8,170,170
+00000060 800010aa       1102 	.byte	128,0,16,170
+00000064 0018aaaa       1103 	.byte	0,24,170,170
+00000068 000110aa       1104 	.byte	0,1,16,170
+0000006c 0118aaaa       1105 	.byte	1,24,170,170
+00000070 000220aa       1106 	.byte	0,2,32,170
+00000074 0028aaaa       1107 	.byte	0,40,170,170
+00000078 000430aa       1108 	.byte	0,4,48,170
+0000007c 0038aaaa       1109 	.byte	0,56,170,170
+00000080 000830aa       1110 	.byte	0,8,48,170
+00000084 0138aaaa       1111 	.byte	1,56,170,170
+00000088 001040aa       1112 	.byte	0,16,64,170
+0000008c 0048aaaa       1113 	.byte	0,72,170,170
+00000090 002040aa       1114 	.byte	0,32,64,170
+00000094 0148aaaa       1115 	.byte	1,72,170,170
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+00000098 080080aa       1116 	.byte	8,0,128,170
+0000009c 0808aaaa       1117 	.byte	8,8,170,170
+                        1118 	.type	.L666,@object
+                        1119 	.size	.L666,160
+                        1120 	.section ".ghrettbl",""
+00000018 00000000*      1121 .L700:	.word	.L699
+                        1122 	.type	.L700,@object
+                        1123 	.size	.L700,4
+                        1124 	.data
+                        1125 	.section ".icum_library.text","ax"
+                        1126 
+                        1127 --453: }
+                        1128 
+                        1129 --454: /**********************************************************************************************************************
+                        1130 --455: * End of function r_pkcl_cmn_pkcl_ret_from_pkcd_ret()
+                        1131 --456: **********************************************************************************************************************/
+                        1132 --458: /**********************************************************************************************************************
+                        1133 --459: * Function Name : r_pkcl_cmn_set_state
+                        1134 --460: **********************************************************************************************************************/
+                        1135 --461: /*!****************************************************************************************************************//**
+                        1136 --462:  * \ingroup     PKCLCommonAPIsInternal
+                        1137 --463:  * \brief       Set PKC State.
+                        1138 --464:  * \param       [in] state                 PKC State enum
+                        1139 --465:  * \return
+                        1140 --466:  *  - None
+                        1141 --467:  * \par Global Variables
+                        1142 --468:  *  - #s_pkcl_state
+                        1143 --469:  * \par Registers Used
+                        1144 --470:  *  - None
+                        1145 --471:  * \par Precondition
+                        1146 --472:  *  - None
+                        1147 --473:  * \par Security components
+                        1148 --474:  *  - no
+                        1149 --475:  * \par Detailed description
+                        1150 --476:  *      - Set PKC State.
+                        1151 --477:  *
+                        1152 --478:  * \callgraph
+                        1153 --479:  *********************************************************************************************************************/
+                        1154 --480: void r_pkcl_cmn_set_state(const e_pkcl_state_t state)
+                        1155 	.align	2
+                        1156 	.align	2
+                        1157 	.align	2
+                        1158 ..gh.f.a.2.e.7:
+                        1159 	.type	..gh.f.a.2.e.7,@object
+                        1160 	.size	..gh.f.a.2.e.7,0
+                        1161 	.global	_r_pkcl_cmn_set_state
+                        1162 _r_pkcl_cmn_set_state:
+0000022e 0608           1163 	mov	r6,r1
+                        1164 --	    .bf
+                        1165 .LDW42:
+                        1166 --481: {
+                        1167 --482:     s_pkcl_state = state;
+00000230 2b0600000000*  1168 	mov	_s_pkcl_state,r11
+00000236 6b0f0100       1169 	st.w	r1,0[r11]
+                        1170 --483: }
+                        1171 --	    .ef
+                        1172 .LDW52:
+                        1173 .L736:
+                        1174 --line483
+                        1175 ..lin.78e4554e..c872c607.0_50::
+                        1176 .LDWlin50:
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1177 	.jumptype return
+0000023a 7f00           1178 	jmp	[lp]
+                        1179 --line483
+                        1180 ..lin.78e4554e..c872c607.0_51::
+                        1181 	.type	_r_pkcl_cmn_set_state,@function
+                        1182 	.size	_r_pkcl_cmn_set_state,.-_r_pkcl_cmn_set_state
+                        1183 	.align	2
+                        1184 
+                        1185 --_state	r1	param
+                        1186 
+                        1187 	.section ".ghrettbl",""
+0000001c 00000000*      1188 .L737:	.word	.L736
+                        1189 	.type	.L737,@object
+                        1190 	.size	.L737,4
+                        1191 	.data
+                        1192 	.section ".icum_library.text","ax"
+                        1193 
+                        1194 
+                        1195 --484: /**********************************************************************************************************************
+                        1196 --485: * End of function r_pkcl_cmn_set_state()
+                        1197 --486: **********************************************************************************************************************/
+                        1198 --488: /**********************************************************************************************************************
+                        1199 --489: * Function Name : r_pkcl_cmn_get_state
+                        1200 --490: **********************************************************************************************************************/
+                        1201 --491: /*!*******************************************************************************************************************
+                        1202 --492:  * \ingroup     PKCLCommonAPIsInternal
+                        1203 --493:  * \brief       Get PKC State.
+                        1204 --494:  * \return
+                        1205 --495:  *  - PKCC state
+                        1206 --496:  * \par Global Variables
+                        1207 --497:  *  - #s_pkcl_state
+                        1208 --498:  * \par Registers Used
+                        1209 --499:  *  - None
+                        1210 --500:  * \par Precondition
+                        1211 --501:  *  - None
+                        1212 --502:  * \par Security components
+                        1213 --503:  *  - no
+                        1214 --504:  * \par Detailed description
+                        1215 --505:  *      - Get PKC State.
+                        1216 --506:  *
+                        1217 --507:  * \callgraph
+                        1218 --508:  *********************************************************************************************************************/
+                        1219 --509: e_pkcl_state_t r_pkcl_cmn_get_state(void)
+                        1220 	.align	2
+                        1221 	.align	2
+                        1222 	.align	2
+                        1223 ..gh.f.a.2.e.8:
+                        1224 	.type	..gh.f.a.2.e.8,@object
+                        1225 	.size	..gh.f.a.2.e.8,0
+                        1226 	.global	_r_pkcl_cmn_get_state
+                        1227 _r_pkcl_cmn_get_state:
+                        1228 --	    .bf
+                        1229 .LDW62:
+                        1230 --510: {
+                        1231 --511:     return s_pkcl_state;
+0000023c 2a0600000000*  1232 	mov	_s_pkcl_state,r10
+00000242 2a570100       1233 	ld.w	0[r10],r10
+                        1234 --	    .ef
+                        1235 .LDW72:
+                        1236 .L777:
+                        1237 --line512
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1238 ..lin.78e4554e..529d79fb.0_52::
+                        1239 .LDWlin52:
+                        1240 	.jumptype return
+00000246 7f00           1241 	jmp	[lp]
+                        1242 --line512
+                        1243 ..lin.78e4554e..529d79fb.0_53::
+                        1244 	.type	_r_pkcl_cmn_get_state,@function
+                        1245 	.size	_r_pkcl_cmn_get_state,.-_r_pkcl_cmn_get_state
+                        1246 	.align	2
+                        1247 
+                        1248 	.section ".ghrettbl",""
+00000020 00000000*      1249 .L778:	.word	.L777
+                        1250 	.type	.L778,@object
+                        1251 	.size	.L778,4
+                        1252 	.data
+                        1253 	.section ".icum_library.text","ax"
+                        1254 
+                        1255 --512: }
+                        1256 
+                        1257 --513: /**********************************************************************************************************************
+                        1258 --514: * End of function r_pkcl_cmn_get_state()
+                        1259 --515: **********************************************************************************************************************/
+                        1260 --517: /**********************************************************************************************************************
+                        1261 --518: * Function Name : r_pkcl_cmn_is_multiple_4
+                        1262 --519: **********************************************************************************************************************/
+                        1263 --520: /*!****************************************************************************************************************//**
+                        1264 --521:  * \ingroup     PKCCCommonAPIsInternal
+                        1265 --522:  * \brief       Fold multiplication of 4.
+                        1266 --523:  * \param       [in] val      Value to perform multiple determination.
+                        1267 --524:  * \return
+                        1268 --525:  *  - PKC_TRUE:       Multiples of 4.
+                        1269 --526:  *  - PKC_FALSE:      Not Multiples of 4.
+                        1270 --527:  * \par Global Variables
+                        1271 --528:  *  - None
+                        1272 --529:  * \par Registers Used
+                        1273 --530:  *  - None
+                        1274 --531:  * \par Precondition
+                        1275 --532:  *  - None
+                        1276 --533:  * \par Detailed description
+                        1277 --534:  *      - Fold multiplication of 4.
+                        1278 --535:  *
+                        1279 --536:  * \callgraph
+                        1280 --537:  *********************************************************************************************************************/
+                        1281 --538: e_pkc_bool_t r_pkcl_cmn_is_multiple_4(const uint32_t val)
+                        1282 	.align	2
+                        1283 	.align	2
+                        1284 	.align	2
+                        1285 ..gh.f.a.2.e.9:
+                        1286 	.type	..gh.f.a.2.e.9,@object
+                        1287 	.size	..gh.f.a.2.e.9,0
+                        1288 	.global	_r_pkcl_cmn_is_multiple_4
+                        1289 _r_pkcl_cmn_is_multiple_4:
+00000248 0608           1290 	mov	r6,r1
+                        1291 --	    .bf
+                        1292 .LDW82:
+                        1293 --539: {
+                        1294 --540:     return ((val & PKCL_CMN_MULTIPLE_4) == 0U) ? PKC_BOOL_TRUE : PKC_BOOL_FALSE;
+0000024a 2016aa0a       1295 	movea	2730,zero,r2
+0000024e 209e5505       1296 	movea	1365,zero,r19
+00000252 c1060300       1297 	andi	3,r1,zero
+00000256 e29f3453       1298 	cmovne	r2,r19,r10
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1299 --	    .ef
+                        1300 .LDW92:
+                        1301 .L821:
+                        1302 	.jumptype return
+0000025a 7f00           1303 	jmp	[lp]
+                        1304 --line539
+                        1305 ..lin.78e4554e..b14e3e35.0_54::
+                        1306 	.type	_r_pkcl_cmn_is_multiple_4,@function
+                        1307 	.size	_r_pkcl_cmn_is_multiple_4,.-_r_pkcl_cmn_is_multiple_4
+                        1308 	.align	2
+                        1309 
+                        1310 --_val	r1	param
+                        1311 
+                        1312 	.section ".bss","awb"
+                        1313 .L806:
+                        1314 	.type	.L806,@object
+                        1315 	.size	.L806,0
+                        1316 	.section ".ghrettbl",""
+00000024 00000000*      1317 .L822:	.word	.L821
+                        1318 	.type	.L822,@object
+                        1319 	.size	.L822,4
+                        1320 	.data
+                        1321 	.section ".icum_library.text","ax"
+                        1322 
+                        1323 --541: }
+                        1324 
+                        1325 --542: /**********************************************************************************************************************
+                        1326 --543: * End of function r_pkcl_cmn_is_multiple_4()
+                        1327 --544: **********************************************************************************************************************/
+                        1328 --546: /**********************************************************************************************************************
+                        1329 --547: * Function Name : r_pkcl_cmn_set_byte
+                        1330 --548: **********************************************************************************************************************/
+                        1331 --549: /*!****************************************************************************************************************//**
+                        1332 --550:  * \ingroup     PKCDCommonAPIsInternal
+                        1333 --551:  * \brief       Simple byte-wise value set function.
+                        1334 --552:  * \param       [out] p_dest      Destination address
+                        1335 --553:  * \param       [in] val          Set value
+                        1336 --554:  * \param       [in] len          Set length in byte
+                        1337 --555:  * \return
+                        1338 --556:  *  - None
+                        1339 --557:  * \par Global Variables
+                        1340 --558:  *  - None
+                        1341 --559:  * \par Registers Used
+                        1342 --560:  *  - None
+                        1343 --561:  * \par Precondition
+                        1344 --562:  *  - None
+                        1345 --563:  * \par Detailed description
+                        1346 --564:  *      - Simple byte-wise value set function.
+                        1347 --565:  *
+                        1348 --566:  * \callgraph
+                        1349 --567:  *********************************************************************************************************************/
+                        1350 --568: void r_pkcl_cmn_set_byte(uint8_t* const p_dest, const uint8_t val, const uint32_t len)
+                        1351 	.align	2
+                        1352 	.align	2
+                        1353 	.align	2
+                        1354 ..gh.f.a.2.e.10:
+                        1355 	.type	..gh.f.a.2.e.10,@object
+                        1356 	.size	..gh.f.a.2.e.10,0
+                        1357 	.global	_r_pkcl_cmn_set_byte
+                        1358 _r_pkcl_cmn_set_byte:
+0000025c 0610           1359 	mov	r6,r2
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+0000025e 0798           1360 	mov	r7,r19
+00000260 9300           1361 	zxb	r19
+00000262 0890           1362 	mov	r8,r18
+                        1363 --	    .bf
+                        1364 .LDW03:
+                        1365 --569: {
+                        1366 --570:     uint32_t i;
+                        1367 --572:     for (i = 0U; i < len; i++ )
+00000264 000a           1368 	mov	0,r1
+00000266 d505*          1369 	br	.L828
+                        1370 .L827:
+                        1371 --573:     {
+                        1372 --574:         p_dest[i] = val;
+                        1373 --line574
+                        1374 ..lin.78e4554e..b8765e9a.0_55::
+                        1375 .LDWlin55:
+00000268 01f0           1376 	mov	r1,ep
+0000026a c2f1           1377 	add	r2,ep
+0000026c 809b           1378 	sst.b	r19,0[ep]
+0000026e 410a           1379 	add	1,r1
+                        1380 .L828:
+00000270 f209           1381 	cmp	r18,r1
+00000272 b1fd*          1382 	bl	.L827
+                        1383 --575:     }
+                        1384 --576: }
+                        1385 --	    .ef
+                        1386 .LDW13:
+                        1387 .L886:
+                        1388 --line576
+                        1389 ..lin.78e4554e..b8765e9a.0_56::
+                        1390 .LDWlin56:
+                        1391 	.jumptype return
+00000274 7f00           1392 	jmp	[lp]
+                        1393 --line576
+                        1394 ..lin.78e4554e..b8765e9a.0_57::
+                        1395 	.type	_r_pkcl_cmn_set_byte,@function
+                        1396 	.size	_r_pkcl_cmn_set_byte,.-_r_pkcl_cmn_set_byte
+                        1397 	.align	2
+                        1398 --_i	r1	local
+                        1399 
+                        1400 --_p_dest	r2	param
+                        1401 --_val	r19	param
+                        1402 --_len	r18	param
+                        1403 
+                        1404 	.section ".bss","awb"
+                        1405 .L862:
+                        1406 	.type	.L862,@object
+                        1407 	.size	.L862,0
+                        1408 	.section ".ghrettbl",""
+00000028 00000000*      1409 .L887:	.word	.L886
+                        1410 	.type	.L887,@object
+                        1411 	.size	.L887,4
+                        1412 	.data
+                        1413 	.section ".icum_library.text","ax"
+                        1414 
+                        1415 
+                        1416 --577: /**********************************************************************************************************************
+                        1417 --578: * End of function r_pkcl_cmn_set_byte()
+                        1418 --579: **********************************************************************************************************************/
+                        1419 --581: /**********************************************************************************************************************
+                        1420 --582: * Function Name : r_pkcl_cmn_cpy_byte
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1421 --583: **********************************************************************************************************************/
+                        1422 --584: /*!****************************************************************************************************************//**
+                        1423 --585:  * \ingroup     PKCDCommonAPIsInternal
+                        1424 --586:  * \brief       Simple byte-wise copy function.
+                        1425 --587:  * \param       [out] p_dest      Destination address
+                        1426 --588:  * \param       [in] p_src        Source address
+                        1427 --589:  * \param       [in] len          Copying length in byte
+                        1428 --590:  * \return
+                        1429 --591:  *  - None
+                        1430 --592:  * \par Global Variables
+                        1431 --593:  *  - None
+                        1432 --594:  * \par Registers Used
+                        1433 --595:  *  - None
+                        1434 --596:  * \par Precondition
+                        1435 --597:  *  - None
+                        1436 --598:  * \par Detailed description
+                        1437 --599:  *      - Simple byte-wise copy function.
+                        1438 --600:  *
+                        1439 --601:  * \callgraph
+                        1440 --602:  *********************************************************************************************************************/
+                        1441 --603: void r_pkcl_cmn_cpy_byte(uint8_t* const p_dest, const uint8_t* const p_src, const uint32_t len)
+                        1442 	.align	2
+                        1443 	.align	2
+                        1444 	.align	2
+                        1445 ..gh.f.a.2.e.11:
+                        1446 	.type	..gh.f.a.2.e.11,@object
+                        1447 	.size	..gh.f.a.2.e.11,0
+                        1448 	.global	_r_pkcl_cmn_cpy_byte
+                        1449 _r_pkcl_cmn_cpy_byte:
+00000276 0698           1450 	mov	r6,r19
+00000278 0790           1451 	mov	r7,r18
+0000027a 0888           1452 	mov	r8,r17
+                        1453 --	    .bf
+                        1454 .LDW23:
+                        1455 --604: {
+                        1456 --605:     const uint32_t * const p_src32 =  (const uint32_t*)p_src;  /* No problem with casting to pointer size */
+0000027c 1280           1457 	mov	r18,r16
+                        1458 --606:     uint32_t * const p_dest32 = (uint32_t*)p_dest;
+0000027e 1378           1459 	mov	r19,r15
+                        1460 --607:     const uint32_t word_len = (len / PKCL_CMN_WORD_BYTE_SIZE) * PKCL_CMN_WORD_BYTE_SIZE;
+00000280 1108           1461 	mov	r17,r1
+00000282 820a           1462 	shr	2,r1
+00000284 0110           1463 	mov	r1,r2
+00000286 c212           1464 	shl	2,r2
+                        1465 --608:     const uint32_t rem_len = (len % PKCL_CMN_WORD_BYTE_SIZE);
+00000288 d1760300       1466 	andi	3,r17,r14
+                        1467 --609:     uint32_t i;
+                        1468 --611:     if (0U != word_len)
+0000028c e011           1469 	cmp	zero,r2
+0000028e 8215*          1470 	be	.L896
+                        1471 --612:     {
+                        1472 --613:         for (i = 0U; i < (word_len / PKCL_CMN_WORD_BYTE_SIZE); i++ )
+                        1473 --line613
+                        1474 ..lin.78e4554e..4ec377fa.0_58::
+                        1475 .LDWlin58:
+00000290 000a           1476 	mov	0,r1
+00000292 a50d*          1477 	br	.L895
+                        1478 .L894:
+                        1479 --614:         {
+                        1480 --615:             p_dest32[i] = p_src32[i];
+                        1481 --line615
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1482 ..lin.78e4554e..4ec377fa.0_59::
+                        1483 .LDWlin59:
+00000294 0168           1484 	mov	r1,r13
+00000296 c26a           1485 	shl	2,r13
+00000298 0df0           1486 	mov	r13,ep
+0000029a cff1           1487 	add	r15,ep
+0000029c d069           1488 	add	r16,r13
+0000029e 2d6f0100       1489 	ld.w	0[r13],r13
+000002a2 016d           1490 	sst.w	r13,0[ep]
+000002a4 410a           1491 	add	1,r1
+                        1492 .L895:
+000002a6 0268           1493 	mov	r2,r13
+000002a8 826a           1494 	shr	2,r13
+000002aa ed09           1495 	cmp	r13,r1
+000002ac c1f5*          1496 	bl	.L894
+                        1497 .L896:
+                        1498 --616:         }
+                        1499 --617:     }
+                        1500 --618:     else
+                        1501 --619:     {
+                        1502 --620:         /* Do nothing */
+                        1503 --621:     }
+                        1504 --623:     for (i = 0U; i < rem_len; i++ )
+                        1505 --line623
+                        1506 ..lin.78e4554e..4ec377fa.0_60::
+                        1507 .LDWlin60:
+000002ae 000a           1508 	mov	0,r1
+000002b0 a50d*          1509 	br	.L900
+                        1510 .L899:
+                        1511 --624:     {
+                        1512 --625:         p_dest[word_len + i] = p_src[word_len + i];
+                        1513 --line625
+                        1514 ..lin.78e4554e..4ec377fa.0_61::
+                        1515 .LDWlin61:
+000002b2 0168           1516 	mov	r1,r13
+000002b4 c269           1517 	add	r2,r13
+000002b6 0df0           1518 	mov	r13,ep
+000002b8 d3f1           1519 	add	r19,ep
+000002ba d269           1520 	add	r18,r13
+000002bc 8d6f0100       1521 	ld.bu	0[r13],r13
+000002c0 806b           1522 	sst.b	r13,0[ep]
+000002c2 410a           1523 	add	1,r1
+                        1524 .L900:
+000002c4 ee09           1525 	cmp	r14,r1
+000002c6 e1f5*          1526 	bl	.L899
+                        1527 --626:     }
+                        1528 --627: }
+                        1529 --	    .ef
+                        1530 .LDW33:
+                        1531 .L1036:
+                        1532 --line627
+                        1533 ..lin.78e4554e..4ec377fa.0_62::
+                        1534 .LDWlin62:
+                        1535 	.jumptype return
+000002c8 7f00           1536 	jmp	[lp]
+                        1537 --line627
+                        1538 ..lin.78e4554e..4ec377fa.0_63::
+                        1539 	.type	_r_pkcl_cmn_cpy_byte,@function
+                        1540 	.size	_r_pkcl_cmn_cpy_byte,.-_r_pkcl_cmn_cpy_byte
+                        1541 	.align	2
+                        1542 --_p_src32	r16	local
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1543 --_p_dest32	r15	local
+                        1544 --_word_len	r2	local
+                        1545 --_rem_len	r14	local
+                        1546 --_i	r1	local
+                        1547 
+                        1548 --_p_dest	r19	param
+                        1549 --_p_src	r18	param
+                        1550 --_len	r17	param
+                        1551 
+                        1552 	.section ".bss","awb"
+                        1553 .L982:
+                        1554 	.type	.L982,@object
+                        1555 	.size	.L982,0
+                        1556 	.section ".ghrettbl",""
+0000002c 00000000*      1557 .L1037:	.word	.L1036
+                        1558 	.type	.L1037,@object
+                        1559 	.size	.L1037,4
+                        1560 	.data
+                        1561 	.section ".icum_library.text","ax"
+                        1562 
+                        1563 
+                        1564 --628: /**********************************************************************************************************************
+                        1565 --629: * End of function r_pkcl_cmn_cpy_byte()
+                        1566 --630: **********************************************************************************************************************/
+                        1567 --632: /**********************************************************************************************************************
+                        1568 --633: * Function Name : r_pkcl_cmn_cmp_byte
+                        1569 --634: **********************************************************************************************************************/
+                        1570 --635: /*!****************************************************************************************************************//**
+                        1571 --636:  * \ingroup     PKCDCommonAPIsInternal
+                        1572 --637:  * \brief       Simple byte-wise compare function.
+                        1573 --638:  * \param       [in] p_data_a      A adress of data to be compared.
+                        1574 --639:  * \param       [in] p_data_b      A adress of data to be compared.
+                        1575 --640:  * \param       [in] len           Byte size of data to be compared.
+                        1576 --641:  * \return
+                        1577 --642:  *  - #PKC_BOOL_TRUE: equal, #PKC_BOOL_FALSE: not equal
+                        1578 --643:  * \par Global Variables
+                        1579 --644:  *  - None
+                        1580 --645:  * \par Registers Used
+                        1581 --646:  *  - None
+                        1582 --647:  * \par Precondition
+                        1583 --648:  *  - None
+                        1584 --649:  * \par Detailed description
+                        1585 --650:  *      - Simple byte-wise compare function.
+                        1586 --651:  *
+                        1587 --652:  * \callgraph
+                        1588 --653:  *********************************************************************************************************************/
+                        1589 --654: e_pkc_bool_t r_pkcl_cmn_cmp_byte(const uint8_t* const p_data_a, const uint8_t* const p_data_b, const uint32_t len)
+                        1590 	.align	2
+                        1591 	.align	2
+                        1592 	.align	2
+                        1593 ..gh.f.a.2.e.12:
+                        1594 	.type	..gh.f.a.2.e.12,@object
+                        1595 	.size	..gh.f.a.2.e.12,0
+                        1596 	.global	_r_pkcl_cmn_cmp_byte
+                        1597 _r_pkcl_cmn_cmp_byte:
+000002ca 0690           1598 	mov	r6,r18
+000002cc 0788           1599 	mov	r7,r17
+000002ce 0880           1600 	mov	r8,r16
+                        1601 --	    .bf
+                        1602 .LDW43:
+                        1603 --655: {
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1604 --656:     uint32_t i;
+                        1605 --657:     e_pkc_bool_t ret = PKC_BOOL_FALSE;
+000002d0 2016aa0a       1606 	movea	2730,zero,r2
+                        1607 --658:     uint32_t unmatch_flg = 0U;
+000002d4 009a           1608 	mov	0,r19
+                        1609 --660:     for (i = 0U; i < len; i++ )
+000002d6 000a           1610 	mov	0,r1
+000002d8 c50d*          1611 	br	.L1043
+                        1612 .L1042:
+                        1613 --661:     {
+                        1614 --662:         /* Cast to uint32_t for comparison */
+                        1615 --663:         if ((uint32_t)p_data_a[i] == (uint32_t)p_data_b[i])
+                        1616 --line663
+                        1617 ..lin.78e4554e..52d6540e.0_64::
+                        1618 .LDWlin64:
+000002da 01f0           1619 	mov	r1,ep
+000002dc d2f1           1620 	add	r18,ep
+000002de 0178           1621 	mov	r1,r15
+000002e0 d179           1622 	add	r17,r15
+000002e2 8f7f0100       1623 	ld.bu	0[r15],r15
+000002e6 6070           1624 	sld.bu	0[ep],r14
+000002e8 ef71           1625 	cmp	r15,r14
+000002ea a205*          1626 	be	.L1041
+                        1627 --664:         {
+                        1628 --665:             /* Do nothing */
+                        1629 --666:         }
+                        1630 --667:         else
+                        1631 --668:         {
+                        1632 --669:             unmatch_flg = 1U;
+                        1633 --line669
+                        1634 ..lin.78e4554e..52d6540e.0_65::
+                        1635 .LDWlin65:
+000002ec 019a           1636 	mov	1,r19
+                        1637 .L1041:
+000002ee 410a           1638 	add	1,r1
+                        1639 .L1043:
+000002f0 f009           1640 	cmp	r16,r1
+000002f2 c1f5*          1641 	bl	.L1042
+                        1642 --670:         }
+                        1643 --671:     }
+                        1644 --673:     if (0U == unmatch_flg)
+                        1645 --line673
+                        1646 ..lin.78e4554e..52d6540e.0_66::
+                        1647 .LDWlin66:
+000002f4 e099           1648 	cmp	zero,r19
+000002f6 ca05*          1649 	bne	.L1047
+                        1650 --674:     {
+                        1651 --675:         ret = PKC_BOOL_TRUE;
+                        1652 --line675
+                        1653 ..lin.78e4554e..52d6540e.0_67::
+                        1654 .LDWlin67:
+000002f8 20165505       1655 	movea	1365,zero,r2
+000002fc b505*          1656 	br	.L1049
+                        1657 .L1047:
+                        1658 --676:     }
+                        1659 --677:     else
+                        1660 --678:     {
+                        1661 --679:         ret = PKC_BOOL_FALSE;
+                        1662 --line679
+                        1663 ..lin.78e4554e..52d6540e.0_68::
+                        1664 .LDWlin68:
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+000002fe 2016aa0a       1665 	movea	2730,zero,r2
+                        1666 .L1049:
+                        1667 --680:     }
+                        1668 --682:     return ret;
+00000302 0250           1669 	mov	r2,r10
+                        1670 --	    .ef
+                        1671 .LDW53:
+                        1672 .L1159:
+                        1673 	.jumptype return
+00000304 7f00           1674 	jmp	[lp]
+                        1675 --line679
+                        1676 ..lin.78e4554e..52d6540e.0_69::
+                        1677 	.type	_r_pkcl_cmn_cmp_byte,@function
+                        1678 	.size	_r_pkcl_cmn_cmp_byte,.-_r_pkcl_cmn_cmp_byte
+                        1679 	.align	2
+                        1680 --_i	r1	local
+                        1681 --_ret	r2	local
+                        1682 --_unmatch_flg	r19	local
+                        1683 
+                        1684 --_p_data_a	r18	param
+                        1685 --_p_data_b	r17	param
+                        1686 --_len	r16	param
+                        1687 
+                        1688 	.section ".bss","awb"
+                        1689 .L1114:
+                        1690 	.type	.L1114,@object
+                        1691 	.size	.L1114,0
+                        1692 	.section ".ghrettbl",""
+00000030 00000000*      1693 .L1160:	.word	.L1159
+                        1694 	.type	.L1160,@object
+                        1695 	.size	.L1160,4
+                        1696 	.data
+                        1697 	.section ".icum_library.text","ax"
+                        1698 
+                        1699 --683: }
+                        1700 
+                        1701 --684: /**********************************************************************************************************************
+                        1702 --685: * End of function r_pkcl_cmn_cmp_byte()
+                        1703 --686: **********************************************************************************************************************/
+                        1704 --688: /**********************************************************************************************************************
+                        1705 --689: * Function Name : r_pkcl_cmn_ch_big_endian32
+                        1706 --690: **********************************************************************************************************************/
+                        1707 --691: /*!****************************************************************************************************************//**
+                        1708 --692:  * \ingroup     PKCLCommonAPIsInternal
+                        1709 --693:  * \brief       Change 32bit value to big endian
+                        1710 --694:  * \param       [in] val      A target 32bit value
+                        1711 --695:  * \return
+                        1712 --696:  *  - A 32bit value to big endian
+                        1713 --697:  * \par Security components
+                        1714 --698:  *  - No
+                        1715 --699:  * \par Global Variables
+                        1716 --700:  *  - None
+                        1717 --701:  * \par Registers Used
+                        1718 --702:  *  - None
+                        1719 --703:  * \par Precondition
+                        1720 --704:  *  - None
+                        1721 --705:  * \par Detailed description
+                        1722 --706:  *      - Change 32bit value to big endian
+                        1723 --707:  * \par Remarks
+                        1724 --708:  *  - None
+                        1725 --709:  *
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+                        1726 --710:  * \callgraph
+                        1727 --711:  *********************************************************************************************************************/
+                        1728 --712: uint32_t r_pkcl_cmn_ch_big_endian32(const uint32_t val)
+                        1729 	.align	2
+                        1730 	.align	2
+                        1731 	.align	2
+                        1732 ..gh.f.a.2.e.13:
+                        1733 	.type	..gh.f.a.2.e.13,@object
+                        1734 	.size	..gh.f.a.2.e.13,0
+                        1735 	.global	_r_pkcl_cmn_ch_big_endian32
+                        1736 _r_pkcl_cmn_ch_big_endian32:
+00000306 5c1a           1737 	add	-4,sp
+00000308 010a           1738 	mov	1,r1
+0000030a 0610           1739 	mov	r6,r2
+0000030c 630f0100       1740 	st.w	r1,0[sp]
+                        1741 --	    .bf
+                        1742 .LDW63:
+                        1743 --713: {
+                        1744 --714:     const uint32_t x = 1U;
+                        1745 --715:     uint32_t be_val;
+                        1746 --717:     /* change endian? */
+                        1747 --718:     if (0U != (*(const uint8_t*)&x))
+00000310 830f0100       1748 	ld.bu	0[sp],r1
+00000314 e009           1749 	cmp	zero,r1
+00000316 a215*          1750 	be	.L1163
+                        1751 --719:     {
+                        1752 --720:         /* little endian to big endian */
+                        1753 --721:         be_val = ((val & PKCL_CMN_CH_BIG_ENDIAN_CALC_1B) << PKCL_CMN_CH_BIG_ENDIAN_SHIFT_24_BIT);
+                        1754 --line721
+                        1755 ..lin.78e4554e..83d55c4a.0_70::
+                        1756 .LDWlin70:
+00000318 0298           1757 	mov	r2,r19
+0000031a 9300           1758 	zxb	r19
+0000031c 1308           1759 	mov	r19,r1
+0000031e d80a           1760 	shl	24,r1
+                        1761 --722:         be_val += ((val & PKCL_CMN_CH_BIG_ENDIAN_CALC_2B) << PKCL_CMN_CH_BIG_ENDIAN_SHIFT_8_BIT);
+00000320 c29e00ff       1762 	andi	65280,r2,r19
+00000324 c89a           1763 	shl	8,r19
+00000326 d309           1764 	add	r19,r1
+                        1765 --723:         be_val += ((val & PKCL_CMN_CH_BIG_ENDIAN_CALC_3B) >> PKCL_CMN_CH_BIG_ENDIAN_SHIFT_8_BIT);
+00000328 409eff00       1766 	movhi	hi(16711680),zero,r19
+0000032c 4299           1767 	and	r2,r19
+0000032e 889a           1768 	shr	8,r19
+00000330 d309           1769 	add	r19,r1
+                        1770 --724:         be_val += ((val & PKCL_CMN_CH_BIG_ENDIAN_CALC_4B) >> PKCL_CMN_CH_BIG_ENDIAN_SHIFT_24_BIT);
+                        1771 --line724
+                        1772 ..lin.78e4554e..83d55c4a.0_71::
+                        1773 .LDWlin71:
+00000332 0298           1774 	mov	r2,r19
+00000334 989a           1775 	shr	24,r19
+00000336 d309           1776 	add	r19,r1
+00000338 a505*          1777 	br	.L1165
+                        1778 .L1163:
+                        1779 --725:     }
+                        1780 --726:     else
+                        1781 --727:     {
+                        1782 --728:         /* big endian to big endian(No convert)*/
+                        1783 --729:         be_val = val;
+                        1784 --line729
+                        1785 ..lin.78e4554e..83d55c4a.0_72::
+                        1786 .LDWlin72:
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000svs1.si
+0000033a 0208           1787 	mov	r2,r1
+                        1788 .L1165:
+                        1789 --730:     }
+                        1790 --732:     return be_val;
+0000033c 0150           1791 	mov	r1,r10
+                        1792 --	    .ef
+                        1793 .LDW73:
+0000033e 441a           1794 	add	4,sp
+                        1795 .L1236:
+                        1796 	.jumptype return
+00000340 7f00           1797 	jmp	[lp]
+                        1798 --line729
+                        1799 ..lin.78e4554e..83d55c4a.0_73::
+                        1800 	.type	_r_pkcl_cmn_ch_big_endian32,@function
+                        1801 	.size	_r_pkcl_cmn_ch_big_endian32,.-_r_pkcl_cmn_ch_big_endian32
+                        1802 	.align	2
+                        1803 --_x	0[sp]	local
+                        1804 --_be_val	r1	local
+                        1805 
+                        1806 --_val	r2	param
+                        1807 
+                        1808 	.section ".bss","awb"
+                        1809 .L1206:
+                        1810 	.type	.L1206,@object
+                        1811 	.size	.L1206,0
+                        1812 	.section ".ghrettbl",""
+00000034 00000000*      1813 .L1237:	.word	.L1236
+                        1814 	.type	.L1237,@object
+                        1815 	.size	.L1237,4
+                        1816 	.data
+                        1817 	.section ".icum_library.text","ax"
+                        1818 
+                        1819 --733: }
+                        1820 	.align	2
+                        1821 --_s_pkcl_state	_s_pkcl_state	static
+                        1822 
+                        1823 	.data
+                        1824 	.ghsnote version,30
+                        1825 	.ghsnote tools,3
+                        1826 	.ghsnote options,656
+                        1827 	.section ".icum_library.text","ax"
+                        1828 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cr_pkcl_cmn_api...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF72..0::
+                        1829 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

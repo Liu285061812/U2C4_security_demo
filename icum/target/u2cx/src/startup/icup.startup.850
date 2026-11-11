@@ -1,0 +1,196 @@
+--/******************************************************************************/
+--/* Component Name   ICUP startup code                                         */
+--/******************************************************************************/
+--/* Product      : ICU-M Low Level Driver (Demo Part)                          */
+--/******************************************************************************/
+--/***********************************************************************************************************************
+--* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+--* 
+--* DISCLAIMER
+--* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+--* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+--* applicable laws, including copyright laws.
+--* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+--* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+--* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+--* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+--* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+--* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+--* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+--* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+--* following link:
+--* www.renesas.com/disclaimer
+--*
+--* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+--***********************************************************************************************************************/
+
+--/*******************************************************************************
+-- Macro definitions
+--*******************************************************************************/
+#define ICUM_DFECCCTL                   (0xFFC63400UL)
+#define ICUM_DFSERSTR                   (0xFFC63404UL)
+#define ICUM_DFDERSTR                   (0xFFC63408UL)
+#define ICUM_DFSERSTC                   (0xFFC6340CUL)
+#define ICUM_DFDERSTC                   (0xFFC63410UL)
+#define ICUM_DFERRINT                   (0xFFC6341CUL)
+#define ICUM_DFKCPROT                   (0xFFC634FCUL)
+#define UNLOCK_DATA                     (0xA5A5A501UL)
+#define LOCK_DATA                       (0xA5A5A500UL)
+#define ICUM_CMDREGICUM_ICU2PES0        (0xFF1F0010UL)
+#define ICUM_CMDREGICUM_ICU2PES1        (0xFF1F0128UL)
+#define ICUM_CMDREGICUM_ICU2PES2        (0xFF1F0158UL)
+#define ICUM_COMM_INF_ICU_ST_BOOTERR    (0x00800000UL)
+
+--/*******************************************************************************
+-- Local variables
+--*******************************************************************************/
+  .section ".icum_startup.bss","awb"
+  .align 4
+_g_firmware_entry:  .space 4
+  .size     _g_firmware_entry, 4
+
+----------------------------------------------------------------------------------
+
+    .global   RESET_ICUP
+
+    .section ".startup.text", .text
+--/*************************************************************************************************
+--* Function ID   : [ICUMFW_CD_MH_INIT_MNG_0006]:[ICUMFW_UD_MH_INIT_MNG_0006]
+--* Function Name : RESET_ICUP
+--* Description   : ICU-M firmware startup routine
+--* Arguments     : none
+--* Return Value  : none
+--**************************************************************************************************/
+RESET_ICUP:
+
+    mov     0xFF986300, r6  -- STAC_ICUM_LRAM (RZEROMD 1 to 0) settings of ICUM_LRAM_Initialization
+    mov     0x00000003, r7
+
+    ld.w    0[r6], r10      -- optb5 -> STAC_ICUM_LRAM
+    and     r7, r10
+    cmp     r7, r10         -- if H/W Ram CLEAR Enable
+    be      ram_clear_end   -- skip RAM CLEAR
+
+    -- ***************
+    -- RAM CLEAR
+    -- ***************
+ram_clear:
+
+    -- clear secure RAM
+    mov     ___ghsbegin_start_iRAM_Self, r6
+    mov     ___ghsbegin_end_iRAM_Self, r7
+    mov     r0, r1
+loop_clear:
+    st.dw   r0, 0[r6]
+    addi    8, r6, r6
+    cmp     r7, r6
+    bl      loop_clear
+ram_clear_end:
+
+    -- ***************
+    -- INTERRUPTS
+    -- ***************
+
+    -- disable interrupt on mis-aligned accesses
+    ori     0x02, r0, r1
+    ldsr    r1, 5, 1                    -- MCTL is 5, 1
+
+    -- ***************
+    -- LOW INIT
+    -- ***************
+
+    -- clear some control registers to 0
+    ldsr    r0, EIPC
+    ldsr    r0, FEPC
+    ldsr    r0, FEIC
+    ldsr    r0, CTBP
+    ldsr    r0, CTPC
+    ldsr    r0, EIWR
+    ldsr    r0, FEWR
+    ldsr    r0, MEA
+
+    -- CF PreLoad ON for Section Initialize  (ROM->RAM)
+    -- ICUM_FLPLCTL.XPL = 1;
+    -- Note: Make it PreLoad OFF at the beginning of main()
+
+    jarl    _copy_icum_startup_ram, lp
+    jarl    _preload_on, lp
+
+    -- ******************************
+    -- Determine active partition
+    -- ******************************
+select_partition:
+    jr      jmp_side_b
+
+jmp_side_b:
+    mov     ___ghsbegin_start_firmware_b, r8
+    mov     _g_firmware_entry, r6
+    st.dw   r8, 0[r6]
+    jmp     [r8]
+
+    .section ".startup.text", .text
+_copy_icum_startup_ram:
+    mov     ___ghsbegin_icum_startup_d, r6      -- src
+    mov     ___ghsbegin_icum_startup_ram, r7    -- dest
+    mov     ___ghssize_icum_startup_ram, r8     -- size
+    shr     2, r8
+    add     -1, r8
+
+_L10:
+    mov     r6, ep
+    add     4, r6
+    sld.w   0[ep], r10
+
+    mov     r7, ep
+    add     4, r7
+    sst.w   r10, 0[ep]
+    loop    r8, _L10
+
+    jmp     [lp]
+
+----------------------------------------------------------------------------------
+
+    .global  _preload_on
+
+    .section .icum_startup_ram
+_preload_on:
+    mov     0xFFFEE504, ep  -- ICUM_FLPLCTL
+    mov     1, r7
+    sst.w   r7, 0[ep]
+    syncm
+
+    jmp     [lp]
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of unused interrupts
+
+    .global  __startup_unused_isr
+
+    .section ".startup.text", .text
+__startup_unused_isr:
+    halt
+    br      __startup_unused_isr
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of unused interrupts
+
+    .global  __STARTUP_SYSERR
+
+    .section ".startup.text", .text
+__STARTUP_SYSERR:
+    mov     _g_firmware_entry, r6
+    ld.dw   0[r6], r8
+    addi    0x10, r8, r8
+    jmp     [r8]
+
+----------------------------------------------------------------------------------
+-------------  Interrupt service routine of FENMI interrupts
+
+    .global  __STARTUP_FENMI
+
+    .section ".startup.text", .text
+__STARTUP_FENMI:
+    mov     _g_firmware_entry, r6
+    ld.dw   0[r6], r8
+    addi    0xe0, r8, r8
+    jmp     [r8]

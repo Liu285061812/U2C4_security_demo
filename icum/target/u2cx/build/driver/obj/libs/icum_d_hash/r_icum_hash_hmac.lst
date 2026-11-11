@@ -1,0 +1,2158 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\ -I..\..\icum\sal\include\library\ -I..\..\icum\target\u2cx\include\driver\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\r_icum_hash_hmac.dbo -source=r_icum_hash_hmac.c -comp -o ..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\gh_0000tec1.o -list=..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\r_icum_hash_hmac.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+Source File: r_icum_hash_hmac.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\icumif\
+                           2 --		-I..\..\icum\generic\include\common\
+                           3 --		-I..\..\icum\sal\include\library\
+                           4 --		-I..\..\icum\target\u2cx\include\driver\
+                           5 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           6 --		-I..\..\icum\target\u2cx\include\device\
+                           7 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           8 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                           9 --		-I..\..\icum\target\u2cx\include\driver
+                          10 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          11 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          13 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          14 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          15 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          16 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          17 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          18 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          19 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          20 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          21 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          22 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          23 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          24 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          25 --		.text=.icum_driver.text -section .rodata=.icum_driver.rodata
+                          26 --		-section .bss=.icum_driver.bss -section .data=.icum_driver.data
+                          27 --		-filetype.c
+                          28 --		..\..\icum\target\u2cx\src\driver\d_hash\r_icum_hash_hmac.c -o
+                          29 --		..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_hash\r_icum_hash_hmac.o
+                          30 --Source File:   ..\..\icum\target\u2cx\src\driver\d_hash\r_icum_hash_hmac.c
+                          31 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          32 --Compile Date:  Wed Nov 11 11:22:20 2026
+                          33 --Host OS:       Win64
+                          34 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          35 --Release:       Compiler v2023.5.4
+                          36 --Revision Date: Wed Sep 06 02:44:56 2023
+                          37 --Release Date:  Wed Sep 06 02:00:00 2023
+                          38 -- ecom  -g -w
+                          39 	.section ".icum_driver.text","ax"
+                          40 
+                          41 --1: /******************************************************************************/
+                          42 --2: /* Component Name   ICU-M HASH Driver                                         */
+                          43 --3: /******************************************************************************/
+                          44 --4: /* Product      : ICU-M Low Level Driver                                      */
+                          45 --5: /******************************************************************************/
+                          46 --6: /***********************************************************************************************************************
+                          47 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          48 --8: * 
+                          49 --9: * DISCLAIMER
+                          50 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                          51 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          52 --12: * applicable laws, including copyright laws.
+                          53 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          54 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          55 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          56 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          57 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          58 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          59 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          60 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          61 --21: * following link:
+                          62 --22: * www.renesas.com/disclaimer
+                          63 --23: *
+                          64 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          65 --25: ***********************************************************************************************************************/
+                          66 --27: /* PRQA S 0303 ++ # D001 Cast for accessing the area of register address */
+                          67 --28: /* PRQA S 0751 ++ # D004 For commonality of functions, confirm that the size is correct and use the cast value */
+                          68 --29: /* PRQA S 1532 ++ # D007 Since files are grouped by function, they are called from different files. */
+                          69 --30: /* PRQA S 3383 ++ # D010 To affect processing time */
+                          70 --31: /* PRQA S 5002 ++ # D013 Exception according to file nomenclature */
+                          71 --33: /*=====================================================================================================================
+                          72 --34:  Includes <System Includes> , "Project Includes"
+                          73 --35: =====================================================================================================================*/
+                          74 --36: #include "r_icum_hash_api.h"
+                          75 --37: #include "r_icum_hash_cmn.h"
+                          76 --38: #include "r_icum_hash_hmac.h"
+                          77 --40: /*!***********************************************************
+                          78 --41:  * \addtogroup  HASHHMAC
+                          79 --42:  * \{
+                          80 --43:  * \addtogroup  HASHHMACTypes           HMAC Types
+                          81 --44:  * \addtogroup  HASHHMACAPIs            HMAC APIs
+                          82 --45:  * \addtogroup  HASHHMACAPIsInternal    HMAC Internal APIs
+                          83 --46:  * \}*********************************************************/
+                          84 --48: /*=====================================================================================================================
+                          85 --49:  Private function prototypes
+                          86 --50: =====================================================================================================================*/
+                          87 --51: static e_r_hash_ret_t r_hash_hmac_set_innerkey(const st_r_hash_ctx_t* const p_ctx,
+                          88 --52:                                                 const uint8_t* const p_key, const uint32_t key_len);
+                          89 --53: static e_r_hash_ret_t r_hash_hmac_set_outerkey(const st_r_hash_ctx_t* const p_ctx,
+                          90 --54:                                                 const uint8_t* const p_key, const uint32_t key_len);
+                          91 --56: /*=====================================================================================================================
+                          92 --57:  Public function definitions
+                          93 --58: =====================================================================================================================*/
+                          94 --60: /**********************************************************************************************************************
+                          95 --61: * Function Name : r_hash_hmac_chk_begin_arg
+                          96 --62: **********************************************************************************************************************/
+                          97 --63: /*!****************************************************************************************************************//**
+                          98 --64:  * \ingroup     HASHHMACAPIsInternal
+                          99 --65:  * \brief       HMACBegin API argument check
+                         100 --66:  * \param       [out]  p_ctx         An address of HMAC context
+                         101 --67:  * \param       [in]   type          HASH type
+                         102 --68:  * \param       [in]   p_opt         An address of HMAC option
+                         103 --69:  * \param       [in]   p_key         An address of key data
+                         104 --70:  * \param       [in]   key_len       Byte length of key data
+                         105 --71:  * \return
+                         106 --72:  *  - #HASH_RET_OK:                  Successfully done.
+                         107 --73:  *  - #HASH_RET_PARAMERR:            Argument parameter error
+                         108 --74:  *  - #HASH_RET_LENGTHERR:           Key length error
+                         109 --75:  *  - #HASH_RET_UNSUPPORTED_PARAM:   Unsupported value of hash option parameter
+                         110 --76:  * \par Global Variables
+                         111 --77:  *  - None
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         112 --78:  * \par Registers Used
+                         113 --79:  *  - None
+                         114 --80:  * \par Precondition
+                         115 --81:  *  - None
+                         116 --82:  * \par Detailed description
+                         117 --83:  *      - HMACBegin process argument check
+                         118 --84:  *
+                         119 --85:  * Pseudo-code for the function can be found below. 
+                         120 --86:  * -# If (p_ctx != NULL) && (p_opt != NULL)
+                         121 --87:  *   -# Check the HASH type with #r_hash_cmn_chk_type
+                         122 --88:  *   -# Set function result to ret
+                         123 --89:  *   -# If ret == HASH_RET_OK
+                         124 --90:  *     -# If p_key != NULL
+                         125 --91:  *       -# If key_len > HASH_HMAC_KEY_SIZE_MAX
+                         126 --92:  *         -# Set #HASH_RET_LENGTHERR to ret
+                         127 --93:  *       -# Else
+                         128 --94:  *         -# If p_opt->hash_opt.use_dma_transfer == HASH_USE_DMA_TRANSFER
+                         129 --95:  *           -# Set #HASH_RET_UNSUPPORTED_PARAM to ret
+                         130 --96:  *         -# Else
+                         131 --97:  *           -# If p_opt->use_aeskey == HASH_USE_AES_KEY
+                         132 --98:  *             -# Set #HASH_RET_UNSUPPORTED_PARAM to ret
+                         133 --99:  *           -# Else
+                         134 --100:  *             -# Do nothing
+                         135 --101:  *     -# Else
+                         136 --102:  *       -# Set #HASH_RET_PARAMERR to ret
+                         137 --103:  *   -# Else
+                         138 --104:  *     -# Do nothing
+                         139 --105:  * -# Else
+                         140 --106:  *   -# Set #HASH_RET_PARAMERR to ret
+                         141 --107:  * -# Return ret
+                         142 --108:  *
+                         143 --109:  * \callgraph
+                         144 --110:  *********************************************************************************************************************/
+                         145 --111: e_r_hash_ret_t r_hash_hmac_chk_begin_arg(const st_r_hmac_ctx_t* const p_ctx, const e_r_hash_type_t type,
+                         146 	.align	2
+                         147 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF6C..0::
+                         148 	.align	2
+                         149 	.align	2
+                         150 ..gh.f.a.2.e.0:
+                         151 	.type	..gh.f.a.2.e.0,@object
+                         152 	.size	..gh.f.a.2.e.0,0
+                         153 	.global	_r_hash_hmac_chk_begin_arg
+                         154 _r_hash_hmac_chk_begin_arg:
+00000000 031ee4ff        155 	addi	-28,sp,sp
+00000004 63ff1900        156 	st.w	lp,24[sp]
+00000008 63ef0100        157 	st.w	r29,0[sp]
+0000000c 63e70500        158 	st.w	r28,4[sp]
+00000010 63df0900        159 	st.w	r27,8[sp]
+00000014 63d70d00        160 	st.w	r26,12[sp]
+00000018 63cf1100        161 	st.w	r25,16[sp]
+0000001c 63c71500        162 	st.w	r24,20[sp]
+00000020 23df1d00        163 	ld.w	28[sp],r27
+00000024 09c0            164 	mov	r9,r24
+00000026 08e0            165 	mov	r8,r28
+00000028 07c8            166 	mov	r7,r25
+0000002a 06d0            167 	mov	r6,r26
+                         168 --	    .bf
+                         169 .LDW01:
+                         170 --112:                                             const st_r_hmac_opt_t* const p_opt,
+                         171 --113:                                             const uint8_t* const p_key, const uint32_t key_len)
+                         172 --114: {
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         173 --115:     /*-----------------------------------------------------------------------------------------------------------------
+                         174 --116:      Local variables
+                         175 --117:     -----------------------------------------------------------------------------------------------------------------*/
+                         176 --118:     e_r_hash_ret_t ret;
+                         177 --120:     /*-----------------------------------------------------------------------------------------------------------------
+                         178 --121:      Function body
+                         179 --122:     -----------------------------------------------------------------------------------------------------------------*/
+                         180 --123:     /* NULL check */
+                         181 --124:     if((p_ctx != NULL) && (p_opt != NULL))
+0000002c e0d1            182 	cmp	zero,r26
+0000002e e225*           183 	be	.L4
+00000030 e0e1            184 	cmp	zero,r28
+00000032 c225*           185 	be	.L4
+                         186 --125:     {
+                         187 --126:         /* check the type */
+                         188 --127:         ret = r_hash_cmn_chk_type(type);
+                         189 --line127
+                         190 ..lin.df0ab942..93549383.0_1::
+                         191 .LDWlin1:
+00000034 1930            192 	mov	r25,r6
+                         193 .L149:
+                         194 	jarl	_r_hash_cmn_chk_type,lp
+                         194 <EXPANSION BEGIN>
+                         194 jarl22 _r_hash_cmn_chk_type , lp 
+00000036 80ff0000*       194 <EXPANSION END>
+0000003a 0ae8            195 	mov	r10,r29
+                         196 --129:         if(ret == HASH_RET_OK)
+                         197 --line129
+                         198 ..lin.df0ab942..93549383.0_2::
+                         199 .LDWlin2:
+0000003c e0e9            200 	cmp	zero,r29
+0000003e 9a25*           201 	bne	.L22
+                         202 --130:         {
+                         203 --131:             /* check key */
+                         204 --132:             if(p_key != NULL)
+                         205 --line132
+                         206 ..lin.df0ab942..93549383.0_3::
+                         207 .LDWlin3:
+00000040 e0c1            208 	cmp	zero,r24
+00000042 821d*           209 	be	.L9
+                         210 --133:             {
+                         211 --134:                 if(key_len > HASH_HMAC_KEY_SIZE_MAX)
+                         212 --line134
+                         213 ..lin.df0ab942..93549383.0_4::
+                         214 .LDWlin4:
+00000044 1b06bfff        215 	addi	-65,r27,zero
+00000048 d905*           216 	bnl	.L11
+                         217 --135:                 {
+                         218 --136:                     ret = HASH_RET_LENGTHERR;
+                         219 --line136
+                         220 ..lin.df0ab942..93549383.0_5::
+                         221 .LDWlin5:
+0000004a 3d0602000800    222 	mov	524290,r29
+00000050 851d*           223 	br	.L22
+                         224 .L11:
+                         225 --137:                 }
+                         226 --138:                 else
+                         227 --139:                 {
+                         228 --140:                     /* DMA transfer must be unused until it corresponds to SHAB0. */
+                         229 --141:                     if(p_opt->hash_opt.use_dma_transfer == HASH_USE_DMA_TRANSFER)
+                         230 --line141
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         231 ..lin.df0ab942..93549383.0_6::
+                         232 .LDWlin6:
+00000052 3c0f0100        233 	ld.w	0[r28],r1
+00000056 610a            234 	cmp	1,r1
+00000058 da05*           235 	bne	.L14
+                         236 --142:                     {
+                         237 --143:                         ret = HASH_RET_UNSUPPORTED_PARAM;
+                         238 --line143
+                         239 ..lin.df0ab942..93549383.0_7::
+                         240 .LDWlin7:
+0000005a 3d0601f00800    241 	mov	585729,r29
+00000060 8515*           242 	br	.L22
+                         243 .L14:
+                         244 --144:                     }
+                         245 --145:                     else
+                         246 --146:                     {
+                         247 --147:                         /* AES key must be unused until it corresponds to SHAB0. */
+                         248 --148:                         if(p_opt->use_aeskey == HASH_USE_AES_KEY)
+                         249 --line148
+                         250 ..lin.df0ab942..93549383.0_8::
+                         251 .LDWlin8:
+00000062 3c0f0500        252 	ld.w	4[r28],r1
+00000066 610a            253 	cmp	1,r1
+00000068 ca0d*           254 	bne	.L22
+                         255 --149:                         {
+                         256 --150:                             ret = HASH_RET_UNSUPPORTED_PARAM;
+                         257 --line150
+                         258 ..lin.df0ab942..93549383.0_9::
+                         259 .LDWlin9:
+0000006a 3d0601f00800    260 	mov	585729,r29
+00000070 850d*           261 	br	.L22
+                         262 .L9:
+                         263 --151:                         }
+                         264 --152:                         else
+                         265 --153:                         {
+                         266 --154:                             /* Create a check function of AESKEY len type when supporting SHAB0. */
+                         267 --155:                             /* do nothing */
+                         268 --156:                         }
+                         269 --157:                     }
+                         270 --158:                 }
+                         271 --159:             }
+                         272 --160:             else
+                         273 --161:             {
+                         274 --162:                 ret = HASH_RET_PARAMERR;
+                         275 --line162
+                         276 ..lin.df0ab942..93549383.0_10::
+                         277 .LDWlin10:
+00000072 3d0601000800    278 	mov	524289,r29
+00000078 c505*           279 	br	.L22
+                         280 .L4:
+                         281 --163:             }
+                         282 --164:         }
+                         283 --165:         else
+                         284 --166:         {
+                         285 --167:             /* do nothing */
+                         286 --168:         }
+                         287 --169:     }
+                         288 --170:     else
+                         289 --171:     {
+                         290 --172:         ret = HASH_RET_PARAMERR;
+                         291 --line172
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         292 ..lin.df0ab942..93549383.0_11::
+                         293 .LDWlin11:
+0000007a 3d0601000800    294 	mov	524289,r29
+                         295 .L22:
+                         296 --173:     }
+                         297 --175:     return ret;
+                         298 --line175
+                         299 ..lin.df0ab942..93549383.0_12::
+                         300 .LDWlin12:
+00000080 1d50            301 	mov	r29,r10
+                         302 --	    .ef
+                         303 .LDW11:
+00000082 23ff1900        304 	ld.w	24[sp],lp
+00000086 23ef0100        305 	ld.w	0[sp],r29
+0000008a 23e70500        306 	ld.w	4[sp],r28
+0000008e 23df0900        307 	ld.w	8[sp],r27
+00000092 23d70d00        308 	ld.w	12[sp],r26
+00000096 23cf1100        309 	ld.w	16[sp],r25
+0000009a 23c71500        310 	ld.w	20[sp],r24
+0000009e 031e1c00        311 	addi	28,sp,sp
+                         312 .L151:
+                         313 	.jumptype return
+000000a2 7f00            314 	jmp	[lp]
+                         315 --line175
+                         316 ..lin.df0ab942..93549383.0_13::
+                         317 	.type	_r_hash_hmac_chk_begin_arg,@function
+                         318 	.size	_r_hash_hmac_chk_begin_arg,.-_r_hash_hmac_chk_begin_arg
+                         319 	.align	2
+                         320 --_ret	r29	local
+                         321 
+                         322 --_p_ctx	r26	param
+                         323 --_type	r25	param
+                         324 --_p_opt	r28	param
+                         325 --_p_key	r24	param
+                         326 --_key_len	r27	param
+                         327 
+                         328 	.section ".bss","awb"
+                         329 .L98:
+                         330 	.type	.L98,@object
+                         331 	.size	.L98,0
+                         332 	.section ".ghcalltbl",""
+                         333 	.align	4
+00000000 00000000*       334 .L150:	.word	.L149
+                         335 	.type	.L150,@object
+                         336 	.size	.L150,4
+                         337 	.section ".ghrettbl",""
+                         338 	.align	4
+00000000 00000000*       339 .L152:	.word	.L151
+                         340 	.type	.L152,@object
+                         341 	.size	.L152,4
+                         342 	.data
+                         343 	.section ".icum_driver.text","ax"
+                         344 
+                         345 --176: }
+                         346 
+                         347 --177: /**********************************************************************************************************************
+                         348 --178: * End of function r_hash_hmac_chk_begin_arg()
+                         349 --179: **********************************************************************************************************************/
+                         350 --181: /**********************************************************************************************************************
+                         351 --182: * Function Name : r_hash_hmac_begin
+                         352 --183: **********************************************************************************************************************/
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         353 --184: /*!****************************************************************************************************************//**
+                         354 --185:  * \ingroup     HASHHMACAPIsInternal
+                         355 --186:  * \brief       HMAC context initialization and inner key input
+                         356 --187:  * \param       [out]  p_ctx     An address of HMAC context
+                         357 --188:  * \param       [in]   type      HASH type
+                         358 --189:  * \param       [in]   p_key     An address of key data
+                         359 --190:  * \param       [in]   key_len   Key data size
+                         360 --191:  * \return
+                         361 --192:  *  - #HASH_RET_OK:                  API succeeded
+                         362 --193:  *  - #HASH_RET_PARAMERR:            Argument is invalid.
+                         363 --194:  *  - #HASH_RET_TIMEOUTERR:          Operation timeouted.
+                         364 --195:  * \par Global Variables
+                         365 --196:  *  - None
+                         366 --197:  * \par Registers Used
+                         367 --198:  *  - #ICUM_SHACNT, #ICUM_SHASTS, #ICUM_SHADCNT, #ICUM_SHAIDAT, #ICUM_SHAFIFOCNT, #ICUM_SHADOD0, #ICUM_SHADOD1, <br>
+                         368 --199:  *    #ICUM_SHADOD2, #ICUM_SHADOD3, #ICUM_SHADOD4, #ICUM_SHADOD5, #ICUM_SHADOD6, #ICUM_SHADOD7, #ICUM_SHADOL0, <br>
+                         369 --200:  *    #ICUM_SHADOL1, #ICUM_SHASTSC (Used by sub functions)
+                         370 --201:  * \par Precondition
+                         371 --202:  *  - None
+                         372 --203:  * \par Detailed description
+                         373 --204:  *      - Initialize the HMAC context.
+                         374 --205:  *      - Input inner key using key data set in context.
+                         375 --206:  *      - Get intermediate data up to here and save in context.
+                         376 --207:  * 
+                         377 --208:  * Pseudo-code for the function can be found below. 
+                         378 --209:  * -# If p_ctx != NULL
+                         379 --210:  *   -# Initialize p_ctx to 0 using #r_hash_cmn_set_byte
+                         380 --211:  *   -# Set the address of p_ctx->hash_ctx to p_hctx
+                         381 --212:  *   -# Set argument type to p_hctx->type
+                         382 --213:  *   -# Get the hash length with #r_hash_cmn_get_length and set it to p_hctx->hash_len
+                         383 --214:  *   -# Get mode for control register with #r_hash_cmn_get_mode and set it to cnt_mode
+                         384 --215:  *   -# If (cnt_mode == UNSUPPORTED_TYPE) || (p_hctx->hash_len == 0U))
+                         385 --216:  *     -# Set #HASH_RET_PARAMERR to ret
+                         386 --217:  *   -# Else
+                         387 --218:  *     -# Software initialize with #r_hash_cmn_init_register
+                         388 --219:  *     -# Set function result to ret
+                         389 --220:  *   -# If ret == HASH_RET_OK
+                         390 --221:  *     -# Set key data as context using #r_hash_cmn_cpy_byte
+                         391 --222:  *     -# Set key_len to p_ctx->key_len
+                         392 --223:  *     -# Input to inner key using #r_hash_hmac_set_innerkey
+                         393 --224:  *     -# Set function result to ret
+                         394 --225:  *     -# If ret == HASH_RET_OK
+                         395 --226:  *       -# Get intermediate data with # to inner key using #r_hash_hmac_set_innerkey
+                         396 --227:  *       -# Set function result to ret
+                         397 --228:  *     -# Else
+                         398 --229:  *       -# Do nothing
+                         399 --230:  *   -# Else
+                         400 --231:  *     -# Do nothing
+                         401 --232:  * -# Else
+                         402 --233:  *   -# Set #HASH_RET_PARAMERR to ret
+                         403 --234:  * -# Return ret
+                         404 --235:  * 
+                         405 --236:  * \callgraph
+                         406 --237:  *********************************************************************************************************************/
+                         407 --238: e_r_hash_ret_t r_hash_hmac_begin(st_r_hmac_ctx_t* const p_ctx, const e_r_hash_type_t type,
+                         408 	.align	2
+                         409 	.align	2
+                         410 	.align	2
+                         411 ..gh.f.a.2.e.1:
+                         412 	.type	..gh.f.a.2.e.1,@object
+                         413 	.size	..gh.f.a.2.e.1,0
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         414 	.global	_r_hash_hmac_begin
+                         415 _r_hash_hmac_begin:
+000000a4 031ee0ff        416 	addi	-32,sp,sp
+000000a8 63ff1d00        417 	st.w	lp,28[sp]
+000000ac 63bf1900        418 	st.w	r23,24[sp]
+000000b0 63c71500        419 	st.w	r24,20[sp]
+000000b4 63cf1100        420 	st.w	r25,16[sp]
+000000b8 63df0900        421 	st.w	r27,8[sp]
+000000bc 63d70d00        422 	st.w	r26,12[sp]
+000000c0 63e70500        423 	st.w	r28,4[sp]
+000000c4 63ef0100        424 	st.w	r29,0[sp]
+000000c8 06d8            425 	mov	r6,r27
+000000ca 07c0            426 	mov	r7,r24
+000000cc 08b8            427 	mov	r8,r23
+000000ce 09c8            428 	mov	r9,r25
+                         429 --	    .bf
+                         430 .LDW21:
+                         431 --239:                                     const uint8_t* const p_key, const uint32_t key_len)
+                         432 --240: {
+                         433 --241:     /*-----------------------------------------------------------------------------------------------------------------
+                         434 --242:      Local variables
+                         435 --243:     -----------------------------------------------------------------------------------------------------------------*/
+                         436 --244:     e_r_hash_ret_t   ret;
+                         437 --245:     st_r_hash_ctx_t* p_hctx;
+                         438 --246:     uint32_t         cnt_mode;
+                         439 --248:     /*-----------------------------------------------------------------------------------------------------------------
+                         440 --249:      Function body
+                         441 --250:     -----------------------------------------------------------------------------------------------------------------*/
+                         442 --251:     /* NULL check */
+                         443 --252:     if(p_ctx != NULL)
+000000d0 e0d9            444 	cmp	zero,r27
+000000d2 f23d*           445 	be	.L155
+                         446 --253:     {
+                         447 --254:         /* Initialize param */
+                         448 --255:         r_hash_cmn_set_byte((uint8_t*)p_ctx, 0U, sizeof(st_r_hmac_ctx_t));
+                         449 --line255
+                         450 ..lin.df0ab942..e1ad6b95.0_14::
+                         451 .LDWlin14:
+000000d4 1b30            452 	mov	r27,r6
+000000d6 003a            453 	mov	0,r7
+000000d8 2046e401        454 	movea	484,zero,r8
+                         455 .L321:
+                         456 	jarl	_r_hash_cmn_set_byte,lp
+                         456 <EXPANSION BEGIN>
+                         456 jarl22 _r_hash_cmn_set_byte , lp 
+000000dc 80ff0000*       456 <EXPANSION END>
+                         457 --257:         /* context set */
+                         458 --258:         p_hctx = &p_ctx->hash_ctx;
+                         459 --line258
+                         460 ..lin.df0ab942..e1ad6b95.0_15::
+                         461 .LDWlin15:
+000000e0 1be0            462 	mov	r27,r28
+                         463 --260:         /* set HASH type */
+                         464 --261:         p_hctx->type = type;
+000000e2 7cc70100        465 	st.w	r24,0[r28]
+                         466 --263:         /* set HASH length */
+                         467 --264:         p_hctx->hash_len = r_hash_cmn_get_length(p_hctx->type);
+000000e6 3c370100        468 	ld.w	0[r28],r6
+                         469 .L323:
+                         470 	jarl	_r_hash_cmn_get_length,lp
+                         470 <EXPANSION BEGIN>
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         470 jarl22 _r_hash_cmn_get_length , lp 
+000000ea 80ff0000*       470 <EXPANSION END>
+000000ee 7c570500        471 	st.w	r10,4[r28]
+                         472 --266:         /* get mode for Control Register */
+                         473 --267:         cnt_mode = r_hash_cmn_get_mode(p_hctx->type);
+                         474 --line267
+                         475 ..lin.df0ab942..e1ad6b95.0_16::
+                         476 .LDWlin16:
+000000f2 3c370100        477 	ld.w	0[r28],r6
+                         478 .L325:
+                         479 	jarl	_r_hash_cmn_get_mode,lp
+                         479 <EXPANSION BEGIN>
+                         479 jarl22 _r_hash_cmn_get_mode , lp 
+000000f6 80ff0000*       479 <EXPANSION END>
+000000fa 0ad0            480 	mov	r10,r26
+                         481 --269:         if((cnt_mode == UNSUPPORTED_TYPE) || (p_hctx->hash_len == 0U))
+                         482 --line269
+                         483 ..lin.df0ab942..e1ad6b95.0_17::
+                         484 .LDWlin17:
+000000fc 7fd2            485 	cmp	-1,r26
+000000fe d205*           486 	be	.L158
+00000100 3c0f0500        487 	ld.w	4[r28],r1
+00000104 e009            488 	cmp	zero,r1
+00000106 da05*           489 	bne	.L157
+                         490 .L158:
+                         491 --270:         {
+                         492 --271:             ret = HASH_RET_PARAMERR;
+                         493 --line271
+                         494 ..lin.df0ab942..e1ad6b95.0_18::
+                         495 .LDWlin18:
+00000108 3d0601000800    496 	mov	524289,r29
+0000010e d505*           497 	br	.L160
+                         498 .L157:
+                         499 --272:         }
+                         500 --273:         else
+                         501 --274:         {
+                         502 --275:             /* SHA software initialize */
+                         503 --276:             ret = r_hash_cmn_init_register(cnt_mode);
+                         504 --line276
+                         505 ..lin.df0ab942..e1ad6b95.0_19::
+                         506 .LDWlin19:
+00000110 1a30            507 	mov	r26,r6
+                         508 .L327:
+                         509 	jarl	_r_hash_cmn_init_register,lp
+                         509 <EXPANSION BEGIN>
+                         509 jarl22 _r_hash_cmn_init_register , lp 
+00000112 80ff0000*       509 <EXPANSION END>
+00000116 0ae8            510 	mov	r10,r29
+                         511 .L160:
+                         512 --277:         }
+                         513 --279:         if(ret == HASH_RET_OK)
+                         514 --line279
+                         515 ..lin.df0ab942..e1ad6b95.0_20::
+                         516 .LDWlin20:
+00000118 e0e9            517 	cmp	zero,r29
+0000011a ea1d*           518 	bne	.L167
+                         519 --280:         {
+                         520 --281:             /* key set */
+                         521 --282:             r_hash_cmn_cpy_byte(&p_ctx->key[0], p_key, key_len);
+                         522 --line282
+                         523 ..lin.df0ab942..e1ad6b95.0_21::
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         524 .LDWlin21:
+0000011c 1b369c01        525 	addi	412,r27,r6
+00000120 1738            526 	mov	r23,r7
+00000122 1940            527 	mov	r25,r8
+                         528 .L329:
+                         529 	jarl	_r_hash_cmn_cpy_byte,lp
+                         529 <EXPANSION BEGIN>
+                         529 jarl22 _r_hash_cmn_cpy_byte , lp 
+00000124 80ff0000*       529 <EXPANSION END>
+                         530 --283:             p_ctx->key_len = key_len;
+                         531 --line283
+                         532 ..lin.df0ab942..e1ad6b95.0_22::
+                         533 .LDWlin22:
+00000128 7bcf9901        534 	st.w	r25,408[r27]
+                         535 --285:             /* Inner KEY inputs operation */
+                         536 --286:             ret = r_hash_hmac_set_innerkey(p_hctx, p_ctx->key, p_ctx->key_len);
+0000012c 3b479901        537 	ld.w	408[r27],r8
+00000130 1c30            538 	mov	r28,r6
+00000132 1b3e9c01        539 	addi	412,r27,r7
+                         540 .L331:
+                         541 	jarl	_r_hash_hmac_set_innerkey,lp
+                         541 <EXPANSION BEGIN>
+                         541 jarl22 _r_hash_hmac_set_innerkey , lp 
+00000136 80ff0e02*       541 <EXPANSION END>
+0000013a 0ae8            542 	mov	r10,r29
+                         543 --288:             if(ret == HASH_RET_OK)
+                         544 --line288
+                         545 ..lin.df0ab942..e1ad6b95.0_23::
+                         546 .LDWlin23:
+0000013c e0e9            547 	cmp	zero,r29
+0000013e ca0d*           548 	bne	.L167
+                         549 --289:             {
+                         550 --290:                 /* get intermediate data in register */
+                         551 --291:                 ret = r_hash_cmn_get_intermediate(p_hctx->intermediate_data, p_hctx->intermediate_len);
+                         552 --line291
+                         553 ..lin.df0ab942..e1ad6b95.0_24::
+                         554 .LDWlin24:
+00000140 1c362000        555 	addi	32,r28,r6
+00000144 1c3e1000        556 	addi	16,r28,r7
+                         557 .L333:
+                         558 	jarl	_r_hash_cmn_get_intermediate,lp
+                         558 <EXPANSION BEGIN>
+                         558 jarl22 _r_hash_cmn_get_intermediate , lp 
+00000148 80ff0000*       558 <EXPANSION END>
+0000014c 0ae8            559 	mov	r10,r29
+0000014e c505*           560 	br	.L167
+                         561 .L155:
+                         562 --292:             }
+                         563 --293:             else
+                         564 --294:             {
+                         565 --295:                 /* do nothing */
+                         566 --296:             }
+                         567 --297:         }
+                         568 --298:         else
+                         569 --299:         {
+                         570 --300:             /* do nothing */
+                         571 --301:         }
+                         572 --302:     }
+                         573 --303:     else
+                         574 --304:     {
+                         575 --305:         ret = HASH_RET_PARAMERR;
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         576 --line305
+                         577 ..lin.df0ab942..e1ad6b95.0_25::
+                         578 .LDWlin25:
+00000150 3d0601000800    579 	mov	524289,r29
+                         580 .L167:
+                         581 --306:     }
+                         582 --308:     return ret;
+                         583 --line308
+                         584 ..lin.df0ab942..e1ad6b95.0_26::
+                         585 .LDWlin26:
+00000156 1d50            586 	mov	r29,r10
+                         587 --	    .ef
+                         588 .LDW31:
+00000158 23ff1d00        589 	ld.w	28[sp],lp
+0000015c 23ef0100        590 	ld.w	0[sp],r29
+00000160 23e70500        591 	ld.w	4[sp],r28
+00000164 23df0900        592 	ld.w	8[sp],r27
+00000168 23d70d00        593 	ld.w	12[sp],r26
+0000016c 23cf1100        594 	ld.w	16[sp],r25
+00000170 23c71500        595 	ld.w	20[sp],r24
+00000174 23bf1900        596 	ld.w	24[sp],r23
+00000178 031e2000        597 	addi	32,sp,sp
+                         598 .L335:
+                         599 	.jumptype return
+0000017c 7f00            600 	jmp	[lp]
+                         601 --line308
+                         602 ..lin.df0ab942..e1ad6b95.0_27::
+                         603 	.type	_r_hash_hmac_begin,@function
+                         604 	.size	_r_hash_hmac_begin,.-_r_hash_hmac_begin
+                         605 	.align	2
+                         606 --_ret	r29	local
+                         607 --_p_hctx	r28	local
+                         608 --_cnt_mode	r26	local
+                         609 
+                         610 --_p_ctx	r27	param
+                         611 --_type	r24	param
+                         612 --_p_key	r23	param
+                         613 --_key_len	r25	param
+                         614 
+                         615 	.section ".bss","awb"
+                         616 .L258:
+                         617 	.type	.L258,@object
+                         618 	.size	.L258,0
+                         619 	.section ".ghcalltbl",""
+00000004 00000000*       620 .L322:	.word	.L321
+                         621 	.type	.L322,@object
+                         622 	.size	.L322,4
+00000008 00000000*       623 .L324:	.word	.L323
+                         624 	.type	.L324,@object
+                         625 	.size	.L324,4
+0000000c 00000000*       626 .L326:	.word	.L325
+                         627 	.type	.L326,@object
+                         628 	.size	.L326,4
+00000010 00000000*       629 .L328:	.word	.L327
+                         630 	.type	.L328,@object
+                         631 	.size	.L328,4
+00000014 00000000*       632 .L330:	.word	.L329
+                         633 	.type	.L330,@object
+                         634 	.size	.L330,4
+00000018 00000000*       635 .L332:	.word	.L331
+                         636 	.type	.L332,@object
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         637 	.size	.L332,4
+0000001c 00000000*       638 .L334:	.word	.L333
+                         639 	.type	.L334,@object
+                         640 	.size	.L334,4
+                         641 	.section ".ghrettbl",""
+00000004 00000000*       642 .L336:	.word	.L335
+                         643 	.type	.L336,@object
+                         644 	.size	.L336,4
+                         645 	.data
+                         646 	.section ".icum_driver.text","ax"
+                         647 
+                         648 --309: }
+                         649 
+                         650 --310: /**********************************************************************************************************************
+                         651 --311: * End of function r_hash_hmac_begin()
+                         652 --312: **********************************************************************************************************************/
+                         653 --314: /**********************************************************************************************************************
+                         654 --315: * Function Name : r_hash_hmac_chk_update_arg
+                         655 --316: **********************************************************************************************************************/
+                         656 --317: /*!****************************************************************************************************************//**
+                         657 --318:  * \ingroup     HASHHMACAPIsInternal
+                         658 --319:  * \brief       HMACUpdate API argument check
+                         659 --320:  * \param       [in] p_ctx           An address of HMAC context
+                         660 --321:  * \param       [in] p_msg           An address of message
+                         661 --322:  * \param       [in] msg_len         The length of the message in bytes
+                         662 --323:  * \return
+                         663 --324:  *  - #HASH_RET_OK:                  Successfully done.
+                         664 --325:  *  - #HASH_RET_PARAMERR:            Argument parameter error.
+                         665 --326:  * \par Global Variables
+                         666 --327:  *  - None
+                         667 --328:  * \par Registers Used
+                         668 --329:  *  - None
+                         669 --330:  * \par Precondition
+                         670 --331:  *  - None
+                         671 --332:  * \par Detailed description
+                         672 --333:  *      - HMACUpdate process argument check.
+                         673 --334:  *
+                         674 --335:  * Pseudo-code for the function can be found below. 
+                         675 --336:  * -# If p_ctx != NULL
+                         676 --337:  *   -# Check the context with #r_hash_cmn_context_chk_arg
+                         677 --338:  *   -# Set function result to ret
+                         678 --339:  *   -# If ret == HASH_RET_OK
+                         679 --340:  *     -# If (p_msg == NULL) && (msg_len != 0U)
+                         680 --341:  *       -# Set #HASH_RET_PARAMERR to ret
+                         681 --342:  *     -# Else
+                         682 --343:  *       -# Do nothing
+                         683 --344:  *   -# Else
+                         684 --345:  *     -# Do nothing
+                         685 --346:  * -# Else
+                         686 --347:  *   -# Set #HASH_RET_PARAMERR to ret
+                         687 --348:  * -# Return ret
+                         688 --349:  *
+                         689 --350:  * \callgraph
+                         690 --351:  *********************************************************************************************************************/
+                         691 --352: e_r_hash_ret_t r_hash_hmac_chk_update_arg(const st_r_hmac_ctx_t* const p_ctx,
+                         692 	.align	2
+                         693 	.align	2
+                         694 	.align	2
+                         695 ..gh.f.a.2.e.2:
+                         696 	.type	..gh.f.a.2.e.2,@object
+                         697 	.size	..gh.f.a.2.e.2,0
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         698 	.global	_r_hash_hmac_chk_update_arg
+                         699 _r_hash_hmac_chk_update_arg:
+0000017e 031eecff        700 	addi	-20,sp,sp
+00000182 63ff1100        701 	st.w	lp,16[sp]
+00000186 63d70d00        702 	st.w	r26,12[sp]
+0000018a 63df0900        703 	st.w	r27,8[sp]
+0000018e 63e70500        704 	st.w	r28,4[sp]
+00000192 63ef0100        705 	st.w	r29,0[sp]
+00000196 06e0            706 	mov	r6,r28
+00000198 07d8            707 	mov	r7,r27
+0000019a 08d0            708 	mov	r8,r26
+                         709 --	    .bf
+                         710 .LDW41:
+                         711 --353:                                             const uint8_t* const p_msg, const uint32_t msg_len)
+                         712 --354: {
+                         713 --355:     /*-----------------------------------------------------------------------------------------------------------------
+                         714 --356:      Local variables
+                         715 --357:     -----------------------------------------------------------------------------------------------------------------*/
+                         716 --358:     e_r_hash_ret_t ret;
+                         717 --360:     /*-----------------------------------------------------------------------------------------------------------------
+                         718 --361:      Function body
+                         719 --362:     -----------------------------------------------------------------------------------------------------------------*/
+                         720 --363:     if(p_ctx != NULL)
+0000019c e0e1            721 	cmp	zero,r28
+0000019e f20d*           722 	be	.L339
+                         723 --364:     {
+                         724 --365:         /* check the context */
+                         725 --366:         ret = r_hash_cmn_context_chk_arg(&p_ctx->hash_ctx);
+                         726 --line366
+                         727 ..lin.df0ab942..2ddb6741.0_28::
+                         728 .LDWlin28:
+000001a0 1c30            729 	mov	r28,r6
+                         730 .L427:
+                         731 	jarl	_r_hash_cmn_context_chk_arg,lp
+                         731 <EXPANSION BEGIN>
+                         731 jarl22 _r_hash_cmn_context_chk_arg , lp 
+000001a2 80ff0000*       731 <EXPANSION END>
+000001a6 0ae8            732 	mov	r10,r29
+                         733 --368:         if(ret == HASH_RET_OK)
+                         734 --line368
+                         735 ..lin.df0ab942..2ddb6741.0_29::
+                         736 .LDWlin29:
+000001a8 e0e9            737 	cmp	zero,r29
+000001aa ca0d*           738 	bne	.L348
+                         739 --369:         {
+                         740 --370:             /* check the message */
+                         741 --371:             /* Even if p_msg is NULL, it is acceptable if msg_len is 0. */
+                         742 --372:             if((p_msg == NULL) && (msg_len != 0U))
+                         743 --line372
+                         744 ..lin.df0ab942..2ddb6741.0_30::
+                         745 .LDWlin30:
+000001ac e0d9            746 	cmp	zero,r27
+000001ae aa0d*           747 	bne	.L348
+000001b0 e0d1            748 	cmp	zero,r26
+000001b2 820d*           749 	be	.L348
+                         750 --373:             {
+                         751 --374:                 ret = HASH_RET_PARAMERR;
+                         752 --line374
+                         753 ..lin.df0ab942..2ddb6741.0_31::
+                         754 .LDWlin31:
+000001b4 3d0601000800    755 	mov	524289,r29
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+000001ba c505*           756 	br	.L348
+                         757 .L339:
+                         758 --375:             }
+                         759 --376:             else
+                         760 --377:             {
+                         761 --378:                 /* do nothing */
+                         762 --379:             }
+                         763 --380:         }
+                         764 --381:         else
+                         765 --382:         {
+                         766 --383:             /* do nothing */
+                         767 --384:         }
+                         768 --385:     }
+                         769 --386:     else
+                         770 --387:     {
+                         771 --388:         ret = HASH_RET_PARAMERR;
+                         772 --line388
+                         773 ..lin.df0ab942..2ddb6741.0_32::
+                         774 .LDWlin32:
+000001bc 3d0601000800    775 	mov	524289,r29
+                         776 .L348:
+                         777 --389:     }
+                         778 --391:     return ret;
+                         779 --line391
+                         780 ..lin.df0ab942..2ddb6741.0_33::
+                         781 .LDWlin33:
+000001c2 1d50            782 	mov	r29,r10
+                         783 --	    .ef
+                         784 .LDW51:
+000001c4 23ff1100        785 	ld.w	16[sp],lp
+000001c8 23ef0100        786 	ld.w	0[sp],r29
+000001cc 23e70500        787 	ld.w	4[sp],r28
+000001d0 23df0900        788 	ld.w	8[sp],r27
+000001d4 23d70d00        789 	ld.w	12[sp],r26
+000001d8 031e1400        790 	addi	20,sp,sp
+                         791 .L429:
+                         792 	.jumptype return
+000001dc 7f00            793 	jmp	[lp]
+                         794 --line391
+                         795 ..lin.df0ab942..2ddb6741.0_34::
+                         796 	.type	_r_hash_hmac_chk_update_arg,@function
+                         797 	.size	_r_hash_hmac_chk_update_arg,.-_r_hash_hmac_chk_update_arg
+                         798 	.align	2
+                         799 --_ret	r29	local
+                         800 
+                         801 --_p_ctx	r28	param
+                         802 --_p_msg	r27	param
+                         803 --_msg_len	r26	param
+                         804 
+                         805 	.section ".bss","awb"
+                         806 .L394:
+                         807 	.type	.L394,@object
+                         808 	.size	.L394,0
+                         809 	.section ".ghcalltbl",""
+00000020 00000000*       810 .L428:	.word	.L427
+                         811 	.type	.L428,@object
+                         812 	.size	.L428,4
+                         813 	.section ".ghrettbl",""
+00000008 00000000*       814 .L430:	.word	.L429
+                         815 	.type	.L430,@object
+                         816 	.size	.L430,4
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         817 	.data
+                         818 	.section ".icum_driver.text","ax"
+                         819 
+                         820 --392: }
+                         821 
+                         822 --393: /**********************************************************************************************************************
+                         823 --394: * End of function r_hash_hmac_chk_update_arg()
+                         824 --395: **********************************************************************************************************************/
+                         825 --397: /**********************************************************************************************************************
+                         826 --398: * Function Name : r_hash_hmac_chk_end_arg
+                         827 --399: **********************************************************************************************************************/
+                         828 --400: /*!****************************************************************************************************************//**
+                         829 --401:  * \ingroup     HASHHMACAPIsInternal
+                         830 --402:  * \brief       HMACEnd API argument check
+                         831 --403:  * \param       [in] p_ctx           An address of HMAC context
+                         832 --404:  * \param       [in] p_tag           An address of tag
+                         833 --405:  * \return
+                         834 --406:  *  - #HASH_RET_OK:                  Successfully done
+                         835 --407:  *  - #HASH_RET_PARAMERR:            Argument parameter error
+                         836 --408:  *  - #HASH_RET_LENGTHERR:           Key length error
+                         837 --409:  * \par Global Variables
+                         838 --410:  *  - None
+                         839 --411:  * \par Registers Used
+                         840 --412:  *  - None
+                         841 --413:  * \par Precondition
+                         842 --414:  *  - None
+                         843 --415:  * \par Detailed description
+                         844 --416:  *      - HMACEnd process argument check.
+                         845 --417:  *
+                         846 --418:  * Pseudo-code for the function can be found below. 
+                         847 --419:  * -# If p_ctx != NULL
+                         848 --420:  *   -# Check the context with #r_hash_cmn_context_chk_arg
+                         849 --421:  *   -# Set function result to ret
+                         850 --422:  *   -# If ret == HASH_RET_OK
+                         851 --423:  *     -# If p_ctx->key_len <= HASH_HMAC_KEY_SIZE_MAX
+                         852 --424:  *       -# If p_tag != NULL
+                         853 --425:  *         -# Do nothing
+                         854 --426:  *       -# Else
+                         855 --427:  *         -# Set #HASH_RET_PARAMERR to ret
+                         856 --428:  *     -# Else
+                         857 --429:  *       -# Set #HASH_RET_LENGTHERR to ret
+                         858 --430:  *   -# Else
+                         859 --431:  *     -# Do nothing
+                         860 --432:  * -# Else
+                         861 --433:  *   -# Set #HASH_RET_PARAMERR to ret
+                         862 --434:  * -# Return ret
+                         863 --435:  *
+                         864 --436:  * \callgraph
+                         865 --437:  *********************************************************************************************************************/
+                         866 --438: e_r_hash_ret_t r_hash_hmac_chk_end_arg(const st_r_hmac_ctx_t* const p_ctx, const uint8_t* const p_tag)
+                         867 	.align	2
+                         868 	.align	2
+                         869 	.align	2
+                         870 ..gh.f.a.2.e.3:
+                         871 	.type	..gh.f.a.2.e.3,@object
+                         872 	.size	..gh.f.a.2.e.3,0
+                         873 	.global	_r_hash_hmac_chk_end_arg
+                         874 _r_hash_hmac_chk_end_arg:
+000001de 501a            875 	add	-16,sp
+000001e0 63ff0d00        876 	st.w	lp,12[sp]
+000001e4 63df0900        877 	st.w	r27,8[sp]
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+000001e8 63e70500        878 	st.w	r28,4[sp]
+000001ec 63ef0100        879 	st.w	r29,0[sp]
+000001f0 06e0            880 	mov	r6,r28
+000001f2 07d8            881 	mov	r7,r27
+                         882 --	    .bf
+                         883 .LDW61:
+                         884 --439: {
+                         885 --440:     /*-----------------------------------------------------------------------------------------------------------------
+                         886 --441:      Local variables
+                         887 --442:     -----------------------------------------------------------------------------------------------------------------*/
+                         888 --443:     e_r_hash_ret_t ret;
+                         889 --445:     /*-----------------------------------------------------------------------------------------------------------------
+                         890 --446:      Function body
+                         891 --447:     -----------------------------------------------------------------------------------------------------------------*/
+                         892 --448:     /* NULL check */
+                         893 --449:     if(p_ctx != NULL)
+000001f4 e0e1            894 	cmp	zero,r28
+000001f6 e215*           895 	be	.L433
+                         896 --450:     {
+                         897 --451:         /* check the context */
+                         898 --452:         ret = r_hash_cmn_context_chk_arg(&p_ctx->hash_ctx);
+                         899 --line452
+                         900 ..lin.df0ab942..90658bb5.0_35::
+                         901 .LDWlin35:
+000001f8 1c30            902 	mov	r28,r6
+                         903 .L530:
+                         904 	jarl	_r_hash_cmn_context_chk_arg,lp
+                         904 <EXPANSION BEGIN>
+                         904 jarl22 _r_hash_cmn_context_chk_arg , lp 
+000001fa 80ff0000*       904 <EXPANSION END>
+000001fe 0ae8            905 	mov	r10,r29
+                         906 --454:         if(ret == HASH_RET_OK)
+                         907 --line454
+                         908 ..lin.df0ab942..90658bb5.0_36::
+                         909 .LDWlin36:
+00000200 e0e9            910 	cmp	zero,r29
+00000202 ba15*           911 	bne	.L444
+                         912 --455:         {
+                         913 --456:             if(p_ctx->key_len <= HASH_HMAC_KEY_SIZE_MAX)
+                         914 --line456
+                         915 ..lin.df0ab942..90658bb5.0_37::
+                         916 .LDWlin37:
+00000204 3c0f9901        917 	ld.w	408[r28],r1
+00000208 0106bfff        918 	addi	-65,r1,zero
+0000020c f105*           919 	bl	.L437
+                         920 --457:             {
+                         921 --458:                 /* NULL check */
+                         922 --459:                 if(p_tag != NULL)
+                         923 --line459
+                         924 ..lin.df0ab942..90658bb5.0_38::
+                         925 .LDWlin38:
+0000020e e0d9            926 	cmp	zero,r27
+00000210 ca0d*           927 	bne	.L444
+                         928 --460:                 {
+                         929 --461:                     /* do nothing */
+                         930 --462:                 }
+                         931 --463:                 else
+                         932 --464:                 {
+                         933 --465:                     ret = HASH_RET_PARAMERR;
+                         934 --line465
+                         935 ..lin.df0ab942..90658bb5.0_39::
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                         936 .LDWlin39:
+00000212 3d0601000800    937 	mov	524289,r29
+00000218 850d*           938 	br	.L444
+                         939 .L437:
+                         940 --466:                 }
+                         941 --467:             }
+                         942 --468:             else
+                         943 --469:             {
+                         944 --470:                 ret = HASH_RET_LENGTHERR;
+                         945 --line470
+                         946 ..lin.df0ab942..90658bb5.0_40::
+                         947 .LDWlin40:
+0000021a 3d0602000800    948 	mov	524290,r29
+00000220 c505*           949 	br	.L444
+                         950 .L433:
+                         951 --471:             }
+                         952 --472:         }
+                         953 --473:         else
+                         954 --474:         {
+                         955 --475:             /* do nothing */
+                         956 --476:         }
+                         957 --477:     }
+                         958 --478:     else
+                         959 --479:     {
+                         960 --480:         ret = HASH_RET_PARAMERR;
+                         961 --line480
+                         962 ..lin.df0ab942..90658bb5.0_41::
+                         963 .LDWlin41:
+00000222 3d0601000800    964 	mov	524289,r29
+                         965 .L444:
+                         966 --481:     }
+                         967 --483:     return ret;
+                         968 --line483
+                         969 ..lin.df0ab942..90658bb5.0_42::
+                         970 .LDWlin42:
+00000228 1d50            971 	mov	r29,r10
+                         972 --	    .ef
+                         973 .LDW71:
+0000022a 23ff0d00        974 	ld.w	12[sp],lp
+0000022e 23ef0100        975 	ld.w	0[sp],r29
+00000232 23e70500        976 	ld.w	4[sp],r28
+00000236 23df0900        977 	ld.w	8[sp],r27
+0000023a 031e1000        978 	addi	16,sp,sp
+                         979 .L532:
+                         980 	.jumptype return
+0000023e 7f00            981 	jmp	[lp]
+                         982 --line483
+                         983 ..lin.df0ab942..90658bb5.0_43::
+                         984 	.type	_r_hash_hmac_chk_end_arg,@function
+                         985 	.size	_r_hash_hmac_chk_end_arg,.-_r_hash_hmac_chk_end_arg
+                         986 	.align	2
+                         987 --_ret	r29	local
+                         988 
+                         989 --_p_ctx	r28	param
+                         990 --_p_tag	r27	param
+                         991 
+                         992 	.section ".bss","awb"
+                         993 .L494:
+                         994 	.type	.L494,@object
+                         995 	.size	.L494,0
+                         996 	.section ".ghcalltbl",""
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+00000024 00000000*       997 .L531:	.word	.L530
+                         998 	.type	.L531,@object
+                         999 	.size	.L531,4
+                        1000 	.section ".ghrettbl",""
+0000000c 00000000*      1001 .L533:	.word	.L532
+                        1002 	.type	.L533,@object
+                        1003 	.size	.L533,4
+                        1004 	.data
+                        1005 	.section ".icum_driver.text","ax"
+                        1006 
+                        1007 --484: }
+                        1008 
+                        1009 --485: /**********************************************************************************************************************
+                        1010 --486: * End of function r_hash_hmac_chk_end_arg()
+                        1011 --487: **********************************************************************************************************************/
+                        1012 --489: /**********************************************************************************************************************
+                        1013 --490: * Function Name : r_hash_hmac_end
+                        1014 --491: **********************************************************************************************************************/
+                        1015 --492: /*!****************************************************************************************************************//**
+                        1016 --493:  * \ingroup     HASHHMACAPIsInternal
+                        1017 --494:  * \brief       Perform hash block final processing and outer key input and acquire Tag.
+                        1018 --495:  * \param       [in] p_ctx           An address of HASH context
+                        1019 --496:  * \param       [out] p_tag          An address of digest
+                        1020 --497:  * \return
+                        1021 --498:  *  - #HASH_RET_OK:                  Successfully done.
+                        1022 --499:  *  - #HASH_RET_PARAMERR:            Argument parameter NULL.
+                        1023 --500:  *  - #HASH_RET_TIMEOUTERR:          process timeouted.
+                        1024 --501:  * \par Global Variables
+                        1025 --502:  *  - None
+                        1026 --503:  * \par Registers Used
+                        1027 --504:  *  - #ICUM_SHADCNT, #ICUM_SHAFIFOCNT
+                        1028 --505:  *  - #ICUM_SHAIDAT, #ICUM_SHAODAT, #ICUM_SHACNT, #ICUM_SHASTS, #ICUM_SHASTSC, #ICUM_SHADID0, #ICUM_SHADID1, <br>
+                        1029 --506:  *    #ICUM_SHADID2, #ICUM_SHADID3, #ICUM_SHADID4, #ICUM_SHADID5, #ICUM_SHADID6, #ICUM_SHADID7, #ICUM_SHADIL0, <br>
+                        1030 --507:  *    #ICUM_SHADIL1, #ICUM_SHADDCNT (Used by sub functions)
+                        1031 --508:  * \par Precondition
+                        1032 --509:  *  - None
+                        1033 --510:  * \par Detailed description
+                        1034 --511:  *      - Perform hash block final processing and outer key input, then output Tag from register.
+                        1035 --512:  *
+                        1036 --513:  * Pseudo-code for the function can be found below.
+                        1037 --514:  * -# If p_ctx != NULL
+                        1038 --515:  *   -# Set the address of p_ctx->hash_ctx to p_hctx
+                        1039 --516:  *   -# Perform block process preprocessing with #r_hash_cmn_preprocess_block
+                        1040 --517:  *   -# If ret == HASH_RET_OK
+                        1041 --518:  *     -# Get block size with #r_hash_cmn_get_block_size and set it to hash_block_size
+                        1042 --519:  *     -# If p_hctx->transfer_prm.icup.leftover_msg_len == 0U
+                        1043 --520:  *       -# 1 is set to the IDATA_LAST and IDATA_ZERO bit of the register #ICUM_SHADCNT
+                        1044 --521:  *     -# Else
+                        1045 --522:  *       -# Set left_idata_num as the remainder of the leftover_msg_len divided by HASH_WORD_SIZE
+                        1046 --523:  *       -# Convert last_idata_num from byte size to bit size
+                        1047 --524:  *       -# 1 is set to the IDATA_LAST bit of the register #ICUM_SHADCNT
+                        1048 --525:  *       -# last_idata_num is set to  the IDATA_NUM bit of the register #ICUM_SHADCNT
+                        1049 --526:  *       -# Execute block processing for leftover_msg_len size from leftover_msg using #r_hash_cmn_set_idat
+                        1050 --527:  *     -# Round up leftover_msg_len to a multiple of 4 using #r_hash_cmn_roundup_4 and set it to roundup_len.
+                        1051 --528:  *     -# If roundup_len != hash_block_size
+                        1052 --529:  *       -# 1 is set to the IDAT bit of the register #ICUM_SHAFIFOCNT
+                        1053 --530:  *     -# Else
+                        1054 --531:  *       -# Do nothing
+                        1055 --532:  *     -# Wait for IDATA_READY with #r_hash_cmn_wait_for_idata_ready
+                        1056 --533:  *     -# Set function result to ret
+                        1057 --534:  *     -# If ret == HASH_RET_OK
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1058 --535:  *       -# Input the outer key with #r_hash_hmac_set_outerkey
+                        1059 --536:  *       -# If ret == HASH_RET_OK
+                        1060 --537:  *         -# Get output data of size hash_len to p_digest with #r_hash_cmn_get_output_data
+                        1061 --538:  *         -# Set function result to ret
+                        1062 --539:  *       -# Else
+                        1063 --540:  *         -# Do nothing
+                        1064 --541:  *     -# Else
+                        1065 --542:  *       -# Do nothing
+                        1066 --543:  *   -# Else
+                        1067 --544:  *     -# Do nothing
+                        1068 --545:  * -# Else
+                        1069 --546:  *   -# Set #HASH_RET_PARAMERR to ret
+                        1070 --547:  * -# Clear p_ctx using #r_hash_cmn_set_byte.
+                        1071 --548:  * -# Return ret
+                        1072 --549:  *
+                        1073 --550:  * \callgraph
+                        1074 --551:  *********************************************************************************************************************/
+                        1075 --552: e_r_hash_ret_t r_hash_hmac_end(st_r_hmac_ctx_t* const p_ctx, uint8_t* const p_tag)
+                        1076 	.align	2
+                        1077 	.align	2
+                        1078 	.align	2
+                        1079 ..gh.f.a.2.e.4:
+                        1080 	.type	..gh.f.a.2.e.4,@object
+                        1081 	.size	..gh.f.a.2.e.4,0
+                        1082 	.global	_r_hash_hmac_end
+                        1083 _r_hash_hmac_end:
+00000240 031ee0ff       1084 	addi	-32,sp,sp
+00000244 63ff1d00       1085 	st.w	lp,28[sp]
+00000248 63bf1900       1086 	st.w	r23,24[sp]
+0000024c 63d70d00       1087 	st.w	r26,12[sp]
+00000250 63c71500       1088 	st.w	r24,20[sp]
+00000254 63cf1100       1089 	st.w	r25,16[sp]
+00000258 63df0900       1090 	st.w	r27,8[sp]
+0000025c 63e70500       1091 	st.w	r28,4[sp]
+00000260 63ef0100       1092 	st.w	r29,0[sp]
+00000264 06d0           1093 	mov	r6,r26
+00000266 07b8           1094 	mov	r7,r23
+                        1095 --	    .bf
+                        1096 .LDW81:
+                        1097 --553: {
+                        1098 --554:     /*-----------------------------------------------------------------------------------------------------------------
+                        1099 --555:      Local variables
+                        1100 --556:     -----------------------------------------------------------------------------------------------------------------*/
+                        1101 --557:     e_r_hash_ret_t    ret;
+                        1102 --558:     st_r_hash_ctx_t*  p_hctx;
+                        1103 --559:     uint32_t          last_idata_num;
+                        1104 --560:     uint32_t          roundup_len;
+                        1105 --561:     uint32_t          hash_block_size;
+                        1106 --563:     /*-----------------------------------------------------------------------------------------------------------------
+                        1107 --564:      Function body
+                        1108 --565:     -----------------------------------------------------------------------------------------------------------------*/
+                        1109 --566:     /* NULL check */
+                        1110 --567:     if(p_ctx != NULL)
+00000268 e0d1           1111 	cmp	zero,r26
+0000026a 8255*          1112 	be	.L536
+                        1113 --568:     {
+                        1114 --569:         /* context set */
+                        1115 --570:         p_hctx = &p_ctx->hash_ctx;
+                        1116 --line570
+                        1117 ..lin.df0ab942..34dd6c07.0_44::
+                        1118 .LDWlin44:
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+0000026c 1ae0           1119 	mov	r26,r28
+                        1120 --572:         /* preprocessing */
+                        1121 --573:         ret = r_hash_cmn_preprocess_block(p_hctx);
+0000026e 1c30           1122 	mov	r28,r6
+                        1123 .L747:
+                        1124 	jarl	_r_hash_cmn_preprocess_block,lp
+                        1124 <EXPANSION BEGIN>
+                        1124 jarl22 _r_hash_cmn_preprocess_block , lp 
+00000270 80ff0000*      1124 <EXPANSION END>
+00000274 0ae8           1125 	mov	r10,r29
+                        1126 --575:         if(ret == HASH_RET_OK)
+                        1127 --line575
+                        1128 ..lin.df0ab942..34dd6c07.0_45::
+                        1129 .LDWlin45:
+00000276 e0e9           1130 	cmp	zero,r29
+00000278 ca4d*          1131 	bne	.L556
+                        1132 --576:         {
+                        1133 --577:             /* get block size */
+                        1134 --578:             hash_block_size = r_hash_cmn_get_block_size(p_hctx->type);
+                        1135 --line578
+                        1136 ..lin.df0ab942..34dd6c07.0_46::
+                        1137 .LDWlin46:
+0000027a 3c370100       1138 	ld.w	0[r28],r6
+                        1139 .L749:
+                        1140 	jarl	_r_hash_cmn_get_block_size,lp
+                        1140 <EXPANSION BEGIN>
+                        1140 jarl22 _r_hash_cmn_get_block_size , lp 
+0000027e 80ff0000*      1140 <EXPANSION END>
+00000282 0ac8           1141 	mov	r10,r25
+                        1142 --580:             if(hash_block_size == 0U)
+                        1143 --line580
+                        1144 ..lin.df0ab942..34dd6c07.0_47::
+                        1145 .LDWlin47:
+00000284 e0c9           1146 	cmp	zero,r25
+00000286 da05*          1147 	bne	.L540
+                        1148 --581:             {
+                        1149 --582:                 ret = HASH_RET_LENGTHERR;
+                        1150 --line582
+                        1151 ..lin.df0ab942..34dd6c07.0_48::
+                        1152 .LDWlin48:
+00000288 3d0602000800   1153 	mov	524290,r29
+0000028e b52d*          1154 	br	.L542
+                        1155 .L540:
+                        1156 --583:             }
+                        1157 --584:             else
+                        1158 --585:             {
+                        1159 --586:                 /* set input data(last block) */
+                        1160 --587:                 if(p_hctx->transfer_prm.icup.leftover_msg_len == 0U)
+                        1161 --line587
+                        1162 ..lin.df0ab942..34dd6c07.0_49::
+                        1163 .LDWlin49:
+00000290 3c0fed00       1164 	ld.w	236[r28],r1
+00000294 e009           1165 	cmp	zero,r1
+00000296 fa05*          1166 	bne	.L543
+                        1167 --588:                 {
+                        1168 --589:                     /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1169 --590:                     ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS) |
+                        1170 --line590
+                        1171 ..lin.df0ab942..34dd6c07.0_50::
+                        1172 .LDWlin50:
+00000298 200e3000       1173 	movea	48,zero,r1
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+0000029c 80074f0fc3fd   1174 	st.w	r1,4294894068[zero]
+000002a2 b515*          1175 	br	.L545
+                        1176 .L543:
+                        1177 --591:                                     (0x1U << DCNT_IDATA_ZERO_POS);
+                        1178 --593:                     /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1179 --594:                     /* (0x0U << DCNT_HASH_GET_POS)
+                        1180 --595:                        (0x0U << DCNT_IPAD_POS)  
+                        1181 --596:                        (0x0U << DCNT_OPAD_POS) */
+                        1182 --597:                 }
+                        1183 --598:                 else
+                        1184 --599:                 {
+                        1185 --600:                     last_idata_num = p_hctx->transfer_prm.icup.leftover_msg_len % HASH_WORD_SIZE;
+                        1186 --line600
+                        1187 ..lin.df0ab942..34dd6c07.0_51::
+                        1188 .LDWlin51:
+000002a4 3cdfed00       1189 	ld.w	236[r28],r27
+000002a8 dbde0300       1190 	andi	3,r27,r27
+                        1191 --601:                     last_idata_num *= BYTE2BIT_VAL;
+000002ac c3da           1192 	shl	3,r27
+                        1193 --603:                     /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1194 --604:                     ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS) |
+000002ae 1b08           1195 	mov	r27,r1
+000002b0 c80a           1196 	shl	8,r1
+000002b2 810e1000       1197 	ori	16,r1,r1
+000002b6 80074f0fc3fd   1198 	st.w	r1,4294894068[zero]
+                        1199 --605:                                     (last_idata_num << DCNT_IDATA_NUM_POS);
+                        1200 --607:                     /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1201 --608:                     /* (0x0U << DCNT_HASH_GET_POS)
+                        1202 --609:                        (0x0U << DCNT_IPAD_POS)  
+                        1203 --610:                        (0x0U << DCNT_OPAD_POS) */
+                        1204 --612:                     r_hash_cmn_set_idat(p_hctx->transfer_prm.icup.leftover_msg,
+                        1205 --line612
+                        1206 ..lin.df0ab942..34dd6c07.0_52::
+                        1207 .LDWlin52:
+000002bc 3c3fed00       1208 	ld.w	236[r28],r7
+000002c0 1c36f000       1209 	addi	240,r28,r6
+                        1210 .L751:
+                        1211 	jarl	_r_hash_cmn_set_idat,lp
+                        1211 <EXPANSION BEGIN>
+                        1211 jarl22 _r_hash_cmn_set_idat , lp 
+000002c4 80ff0000*      1211 <EXPANSION END>
+                        1212 .L545:
+                        1213 --613:                                         p_hctx->transfer_prm.icup.leftover_msg_len);
+                        1214 --614:                 }
+                        1215 --616:                 /* When processing data length(round up multiple of 4) is not equal the block size, 
+                        1216 --617:                    transfer FIFO data to SHAA0 core. */
+                        1217 --618:                 roundup_len = r_hash_cmn_roundup_4(p_hctx->transfer_prm.icup.leftover_msg_len);
+                        1218 --line618
+                        1219 ..lin.df0ab942..34dd6c07.0_53::
+                        1220 .LDWlin53:
+000002c8 3c37ed00       1221 	ld.w	236[r28],r6
+                        1222 .L753:
+                        1223 	jarl	_r_hash_cmn_roundup_4,lp
+                        1223 <EXPANSION BEGIN>
+                        1223 jarl22 _r_hash_cmn_roundup_4 , lp 
+000002cc 80ff0000*      1223 <EXPANSION END>
+000002d0 0ac0           1224 	mov	r10,r24
+                        1225 --620:                 if(roundup_len != hash_block_size)
+                        1226 --line620
+                        1227 ..lin.df0ab942..34dd6c07.0_54::
+                        1228 .LDWlin54:
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+000002d2 f9c1           1229 	cmp	r25,r24
+000002d4 d205*          1230 	be	.L548
+                        1231 --621:                 {
+                        1232 --622:                     /* Define macro ICUM_SHAFIFOCNT is cast to access a register */
+                        1233 --623:                     ICUM_SHAFIFOCNT = (0x1U << FIFOCNT_IDAT_POS);
+                        1234 --line623
+                        1235 ..lin.df0ab942..34dd6c07.0_55::
+                        1236 .LDWlin55:
+000002d6 010a           1237 	mov	1,r1
+000002d8 80070f0fc3fd   1238 	st.w	r1,4294894064[zero]
+                        1239 .L548:
+                        1240 --624:                 }
+                        1241 --625:                 else
+                        1242 --626:                 {
+                        1243 --627:                     /* do nothing */
+                        1244 --628:                 }
+                        1245 --630:                 /* wait for IDATA_READY */
+                        1246 --631:                 ret = r_hash_cmn_wait_for_idata_ready();
+                        1247 .L755:
+                        1248 --line631
+                        1249 ..lin.df0ab942..34dd6c07.0_56::
+                        1250 .LDWlin56:
+                        1251 	jarl	_r_hash_cmn_wait_for_idata_ready,lp
+                        1251 <EXPANSION BEGIN>
+                        1251 jarl22 _r_hash_cmn_wait_for_idata_ready , lp 
+000002de 80ff0000*      1251 <EXPANSION END>
+000002e2 0ae8           1252 	mov	r10,r29
+                        1253 .L542:
+                        1254 --632:             }
+                        1255 --634:             if(ret == HASH_RET_OK)
+                        1256 --line634
+                        1257 ..lin.df0ab942..34dd6c07.0_57::
+                        1258 .LDWlin57:
+000002e4 e0e9           1259 	cmp	zero,r29
+000002e6 da15*          1260 	bne	.L556
+                        1261 --635:             {
+                        1262 --636:                 /* Outer KEY inputs operation */
+                        1263 --637:                 ret = r_hash_hmac_set_outerkey(p_hctx, p_ctx->key, p_ctx->key_len);
+                        1264 --line637
+                        1265 ..lin.df0ab942..34dd6c07.0_58::
+                        1266 .LDWlin58:
+000002e8 3a479901       1267 	ld.w	408[r26],r8
+000002ec 1c30           1268 	mov	r28,r6
+000002ee 1a3e9c01       1269 	addi	412,r26,r7
+                        1270 .L757:
+                        1271 	jarl	_r_hash_hmac_set_outerkey,lp
+                        1271 <EXPANSION BEGIN>
+                        1271 jarl22 _r_hash_hmac_set_outerkey , lp 
+000002f2 80ff0c01*      1271 <EXPANSION END>
+000002f6 0ae8           1272 	mov	r10,r29
+                        1273 --639:                 if(ret == HASH_RET_OK)
+                        1274 --line639
+                        1275 ..lin.df0ab942..34dd6c07.0_59::
+                        1276 .LDWlin59:
+000002f8 e0e9           1277 	cmp	zero,r29
+000002fa ba0d*          1278 	bne	.L556
+                        1279 --640:                 {
+                        1280 --641:                     /* get output data */
+                        1281 --642:                     ret = r_hash_cmn_get_output_data(p_hctx->hash_len, p_tag);
+                        1282 --line642
+                        1283 ..lin.df0ab942..34dd6c07.0_60::
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1284 .LDWlin60:
+000002fc 3c370500       1285 	ld.w	4[r28],r6
+00000300 1738           1286 	mov	r23,r7
+                        1287 .L759:
+                        1288 	jarl	_r_hash_cmn_get_output_data,lp
+                        1288 <EXPANSION BEGIN>
+                        1288 jarl22 _r_hash_cmn_get_output_data , lp 
+00000302 80ff0000*      1288 <EXPANSION END>
+00000306 0ae8           1289 	mov	r10,r29
+00000308 c505*          1290 	br	.L556
+                        1291 .L536:
+                        1292 --643:                 }
+                        1293 --644:                 else
+                        1294 --645:                 {
+                        1295 --646:                     /* do nothing */
+                        1296 --647:                 }
+                        1297 --648:             }
+                        1298 --649:             else
+                        1299 --650:             {
+                        1300 --651:                 /* do nothing */
+                        1301 --652:             }
+                        1302 --653:         }
+                        1303 --654:         else
+                        1304 --655:         {
+                        1305 --656:             /* do nothing */
+                        1306 --657:         }
+                        1307 --658:     }
+                        1308 --659:     else
+                        1309 --660:     {
+                        1310 --661:         ret = HASH_RET_PARAMERR;
+                        1311 --line661
+                        1312 ..lin.df0ab942..34dd6c07.0_61::
+                        1313 .LDWlin61:
+0000030a 3d0601000800   1314 	mov	524289,r29
+                        1315 .L556:
+                        1316 --662:     }
+                        1317 --664:     /* context clear */
+                        1318 --665:     r_hash_cmn_set_byte((uint8_t*)p_ctx, 0U, sizeof(st_r_hmac_ctx_t));
+                        1319 --line665
+                        1320 ..lin.df0ab942..34dd6c07.0_62::
+                        1321 .LDWlin62:
+00000310 1a30           1322 	mov	r26,r6
+00000312 003a           1323 	mov	0,r7
+00000314 2046e401       1324 	movea	484,zero,r8
+                        1325 .L761:
+                        1326 	jarl	_r_hash_cmn_set_byte,lp
+                        1326 <EXPANSION BEGIN>
+                        1326 jarl22 _r_hash_cmn_set_byte , lp 
+00000318 80ff0000*      1326 <EXPANSION END>
+                        1327 --667:     return ret;
+                        1328 --line667
+                        1329 ..lin.df0ab942..34dd6c07.0_63::
+                        1330 .LDWlin63:
+0000031c 1d50           1331 	mov	r29,r10
+                        1332 --	    .ef
+                        1333 .LDW91:
+0000031e 23ff1d00       1334 	ld.w	28[sp],lp
+00000322 23ef0100       1335 	ld.w	0[sp],r29
+00000326 23e70500       1336 	ld.w	4[sp],r28
+0000032a 23df0900       1337 	ld.w	8[sp],r27
+0000032e 23d70d00       1338 	ld.w	12[sp],r26
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+00000332 23cf1100       1339 	ld.w	16[sp],r25
+00000336 23c71500       1340 	ld.w	20[sp],r24
+0000033a 23bf1900       1341 	ld.w	24[sp],r23
+0000033e 031e2000       1342 	addi	32,sp,sp
+                        1343 .L763:
+                        1344 	.jumptype return
+00000342 7f00           1345 	jmp	[lp]
+                        1346 --line667
+                        1347 ..lin.df0ab942..34dd6c07.0_64::
+                        1348 	.type	_r_hash_hmac_end,@function
+                        1349 	.size	_r_hash_hmac_end,.-_r_hash_hmac_end
+                        1350 	.align	2
+                        1351 --_ret	r29	local
+                        1352 --_p_hctx	r28	local
+                        1353 --_last_idata_num	r27	local
+                        1354 --_roundup_len	r24	local
+                        1355 --_hash_block_size	r25	local
+                        1356 
+                        1357 --_p_ctx	r26	param
+                        1358 --_p_tag	r23	param
+                        1359 
+                        1360 	.section ".bss","awb"
+                        1361 .L666:
+                        1362 	.type	.L666,@object
+                        1363 	.size	.L666,0
+                        1364 	.section ".ghcalltbl",""
+00000028 00000000*      1365 .L748:	.word	.L747
+                        1366 	.type	.L748,@object
+                        1367 	.size	.L748,4
+0000002c 00000000*      1368 .L750:	.word	.L749
+                        1369 	.type	.L750,@object
+                        1370 	.size	.L750,4
+00000030 00000000*      1371 .L752:	.word	.L751
+                        1372 	.type	.L752,@object
+                        1373 	.size	.L752,4
+00000034 00000000*      1374 .L754:	.word	.L753
+                        1375 	.type	.L754,@object
+                        1376 	.size	.L754,4
+00000038 00000000*      1377 .L756:	.word	.L755
+                        1378 	.type	.L756,@object
+                        1379 	.size	.L756,4
+0000003c 00000000*      1380 .L758:	.word	.L757
+                        1381 	.type	.L758,@object
+                        1382 	.size	.L758,4
+00000040 00000000*      1383 .L760:	.word	.L759
+                        1384 	.type	.L760,@object
+                        1385 	.size	.L760,4
+00000044 00000000*      1386 .L762:	.word	.L761
+                        1387 	.type	.L762,@object
+                        1388 	.size	.L762,4
+                        1389 	.section ".ghrettbl",""
+00000010 00000000*      1390 .L764:	.word	.L763
+                        1391 	.type	.L764,@object
+                        1392 	.size	.L764,4
+                        1393 	.data
+                        1394 	.section ".icum_driver.text","ax"
+                        1395 
+                        1396 --668: }
+                        1397 
+                        1398 --669: /**********************************************************************************************************************
+                        1399 --670: * End of function r_hash_hmac_end()
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1400 --671: **********************************************************************************************************************/
+                        1401 --673: /*=====================================================================================================================
+                        1402 --674:  Private function definitions
+                        1403 --675: =====================================================================================================================*/
+                        1404 --677: /**********************************************************************************************************************
+                        1405 --678: * Function ID   : [ICUMFW_CD_S4_D_HASH_0017]:[ICUMFW_UD_S4_D_HASH_0017]
+                        1406 --679: * Function Name : r_hash_hmac_set_innerkey
+                        1407 --680: **********************************************************************************************************************/
+                        1408 --681: /*!****************************************************************************************************************//**
+                        1409 --682:  * \ingroup     HASHHMACAPIsInternal
+                        1410 --683:  * \brief       Input inner key to register
+                        1411 --684:  * \param       [in] p_ctx           An address of HASH context
+                        1412 --685:  * \param       [in] p_key           An address of key data
+                        1413 --686:  * \param       [in] key_len         Byte length of key data
+                        1414 --687:  * \return
+                        1415 --688:  *  - #HASH_RET_OK:                  Successfully done.
+                        1416 --689:  *  - #HASH_RET_PARAMERR:            Argument parameter NULL.
+                        1417 --690:  *  - #HASH_RET_LENGTHERR:           HASH block size error.
+                        1418 --691:  *  - #HASH_RET_TIMEOUTERR:          process timeouted.
+                        1419 --692:  * \par Global Variables
+                        1420 --693:  *  - None
+                        1421 --694:  * \par Registers Used
+                        1422 --695:  *  - #ICUM_SHADCNT, #ICUM_SHAFIFOCNT
+                        1423 --696:  *  - #ICUM_SHAIDAT,  #ICUM_SHASTS (Used by sub functions)
+                        1424 --697:  * \par Precondition
+                        1425 --698:  *  - None
+                        1426 --699:  * \par Detailed description
+                        1427 --700:  *      - Input inner key to register.
+                        1428 --701:  *
+                        1429 --702:  * Pseudo-code for the function can be found below.
+                        1430 --703:  * -# If p_ctx != NULL
+                        1431 --704:  *   -# Get block size with #r_hash_cmn_get_block_size and set it to hash_block_size
+                        1432 --705:  *   -# If hash_block_size == 0U
+                        1433 --706:  *     -# Set #HASH_RET_LENGTHERR to ret
+                        1434 --707:  *   -# Else
+                        1435 --708:  *     -# If key_len == 0U
+                        1436 --709:  *       -# 1 is set to the IDATA_LAST, IDATA_ZERO and IPAD bit of the register #ICUM_SHADCNT
+                        1437 --710:  *     -# Else
+                        1438 --711:  *       -# Set left_idata_num as the remainder of the key_len divided by HASH_WORD_SIZE
+                        1439 --712:  *       -# Convert last_idata_num from byte size to bit size
+                        1440 --713:  *       -# 1 is set to the IDATA_LAST and IPAD bit of the register #ICUM_SHADCNT
+                        1441 --714:  *       -# last_idata_num is set to  the IDATA_NUM bit of the register #ICUM_SHADCNT
+                        1442 --715:  *       -# Execute block processing for key_len size from p_key using #r_hash_cmn_set_idat
+                        1443 --716:  *     -# Round up leftover_msg_len to a multiple of 4 using #r_hash_cmn_roundup_4 and set it to roundup_len.
+                        1444 --717:  *     -# If roundup_len != hash_block_size
+                        1445 --718:  *       -# 1 is set to the IDAT bit of the register #ICUM_SHAFIFOCNT
+                        1446 --719:  *     -# Else
+                        1447 --720:  *       -# Do nothing
+                        1448 --721:  *     -# Wait for IDATA_READY with #r_hash_cmn_wait_for_idata_ready
+                        1449 --722:  *     -# Set function result to ret
+                        1450 --723:  * -# Else
+                        1451 --724:  *   -# Set #HASH_RET_PARAMERR to ret
+                        1452 --725:  * -# Return ret
+                        1453 --726:  *
+                        1454 --727:  * \callgraph
+                        1455 --728:  *********************************************************************************************************************/
+                        1456 --729: static e_r_hash_ret_t r_hash_hmac_set_innerkey(const st_r_hash_ctx_t* const p_ctx,
+                        1457 	.align	2
+                        1458 	.align	2
+                        1459 	.align	2
+                        1460 ..gh.f.a.2.e.5:
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1461 	.type	..gh.f.a.2.e.5,@object
+                        1462 	.size	..gh.f.a.2.e.5,0
+                        1463 	.global	_r_hash_hmac_set_innerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.
+                        1464 _r_hash_hmac_set_innerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.:
+                        1465 _r_hash_hmac_set_innerkey:
+00000344 031ee0ff       1466 	addi	-32,sp,sp
+00000348 63ff1d00       1467 	st.w	lp,28[sp]
+0000034c 63bf1900       1468 	st.w	r23,24[sp]
+00000350 63cf1100       1469 	st.w	r25,16[sp]
+00000354 63df0900       1470 	st.w	r27,8[sp]
+00000358 63c71500       1471 	st.w	r24,20[sp]
+0000035c 63d70d00       1472 	st.w	r26,12[sp]
+00000360 63e70500       1473 	st.w	r28,4[sp]
+00000364 63ef0100       1474 	st.w	r29,0[sp]
+00000368 06c8           1475 	mov	r6,r25
+0000036a 07b8           1476 	mov	r7,r23
+0000036c 08d8           1477 	mov	r8,r27
+                        1478 --	    .bf
+                        1479 .LDW02:
+                        1480 --730:                                                 const uint8_t* const p_key, const uint32_t key_len)
+                        1481 --731: {
+                        1482 --732:     /*-----------------------------------------------------------------------------------------------------------------
+                        1483 --733:      Local variables
+                        1484 --734:     -----------------------------------------------------------------------------------------------------------------*/
+                        1485 --735:     e_r_hash_ret_t ret;
+                        1486 --736:     uint32_t       last_idata_num;
+                        1487 --737:     uint32_t       roundup_len;
+                        1488 --738:     uint32_t       hash_block_size;
+                        1489 --740:     /*-----------------------------------------------------------------------------------------------------------------
+                        1490 --741:      Function body
+                        1491 --742:     -----------------------------------------------------------------------------------------------------------------*/
+                        1492 --743:     /* NULL check */
+                        1493 --744:     if(p_ctx != NULL)
+0000036e e0c9           1494 	cmp	zero,r25
+00000370 8235*          1495 	be	.L767
+                        1496 --745:     {
+                        1497 --746:         /* get block size */
+                        1498 --747:         hash_block_size = r_hash_cmn_get_block_size(p_ctx->type);
+                        1499 --line747
+                        1500 ..lin.df0ab942..9668480.0_65::
+                        1501 .LDWlin65:
+00000372 39370100       1502 	ld.w	0[r25],r6
+                        1503 .L915:
+                        1504 	jarl	_r_hash_cmn_get_block_size,lp
+                        1504 <EXPANSION BEGIN>
+                        1504 jarl22 _r_hash_cmn_get_block_size , lp 
+00000376 80ff0000*      1504 <EXPANSION END>
+0000037a 0ad0           1505 	mov	r10,r26
+                        1506 --749:         if(hash_block_size == 0U)
+                        1507 --line749
+                        1508 ..lin.df0ab942..9668480.0_66::
+                        1509 .LDWlin66:
+0000037c e0d1           1510 	cmp	zero,r26
+0000037e da05*          1511 	bne	.L769
+                        1512 --750:         {
+                        1513 --751:             ret = HASH_RET_LENGTHERR;
+                        1514 --line751
+                        1515 ..lin.df0ab942..9668480.0_67::
+                        1516 .LDWlin67:
+00000380 3d0602000800   1517 	mov	524290,r29
+00000386 852d*          1518 	br	.L778
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1519 .L769:
+                        1520 --752:         }
+                        1521 --753:         else
+                        1522 --754:         {
+                        1523 --755:             /* set input data(InnerKey) */
+                        1524 --756:             if(key_len == 0U)
+                        1525 --line756
+                        1526 ..lin.df0ab942..9668480.0_68::
+                        1527 .LDWlin68:
+00000388 e0d9           1528 	cmp	zero,r27
+0000038a fa05*          1529 	bne	.L772
+                        1530 --757:             {
+                        1531 --758:                 /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1532 --759:                 ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS)  |
+                        1533 --line759
+                        1534 ..lin.df0ab942..9668480.0_69::
+                        1535 .LDWlin69:
+0000038c 200e3800       1536 	movea	56,zero,r1
+00000390 80074f0fc3fd   1537 	st.w	r1,4294894068[zero]
+00000396 f50d*          1538 	br	.L774
+                        1539 .L772:
+                        1540 --760:                                 (0x1U << DCNT_IDATA_ZERO_POS) |
+                        1541 --761:                                 (0x1U << DCNT_IPAD_POS);
+                        1542 --763:                 /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1543 --764:                 /* (0x0U << DCNT_HASH_GET_POS)
+                        1544 --765:                    (0x0U << DCNT_OPAD_POS) */
+                        1545 --766:             }
+                        1546 --767:             else
+                        1547 --768:             {
+                        1548 --769:                 last_idata_num = key_len % HASH_WORD_SIZE;
+                        1549 --line769
+                        1550 ..lin.df0ab942..9668480.0_70::
+                        1551 .LDWlin70:
+00000398 dbe60300       1552 	andi	3,r27,r28
+                        1553 --770:                 last_idata_num *= BYTE2BIT_VAL;
+0000039c c3e2           1554 	shl	3,r28
+                        1555 --772:                 /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1556 --773:                 ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS) |
+0000039e 1c08           1557 	mov	r28,r1
+000003a0 c80a           1558 	shl	8,r1
+000003a2 810e1800       1559 	ori	24,r1,r1
+000003a6 80074f0fc3fd   1560 	st.w	r1,4294894068[zero]
+                        1561 --774:                                 (last_idata_num << DCNT_IDATA_NUM_POS) |
+                        1562 --775:                                 (0x1U << DCNT_IPAD_POS);
+                        1563 --777:                 /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1564 --778:                 /* (0x0U << DCNT_HASH_GET_POS)
+                        1565 --779:                    (0x0U << DCNT_OPAD_POS) */
+                        1566 --781:                 r_hash_cmn_set_idat(p_key, key_len);
+                        1567 --line781
+                        1568 ..lin.df0ab942..9668480.0_71::
+                        1569 .LDWlin71:
+000003ac 1730           1570 	mov	r23,r6
+000003ae 1b38           1571 	mov	r27,r7
+                        1572 .L917:
+                        1573 	jarl	_r_hash_cmn_set_idat,lp
+                        1573 <EXPANSION BEGIN>
+                        1573 jarl22 _r_hash_cmn_set_idat , lp 
+000003b0 80ff0000*      1573 <EXPANSION END>
+                        1574 .L774:
+                        1575 --782:             }
+                        1576 --784:             /* When processing data length(round up multiple of 4) is not equal the block size, 
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1577 --785:                transfer FIFO data to SHAA0 core. */
+                        1578 --786:             roundup_len = r_hash_cmn_roundup_4(key_len);
+                        1579 --line786
+                        1580 ..lin.df0ab942..9668480.0_72::
+                        1581 .LDWlin72:
+000003b4 1b30           1582 	mov	r27,r6
+                        1583 .L919:
+                        1584 	jarl	_r_hash_cmn_roundup_4,lp
+                        1584 <EXPANSION BEGIN>
+                        1584 jarl22 _r_hash_cmn_roundup_4 , lp 
+000003b6 80ff0000*      1584 <EXPANSION END>
+000003ba 0ac0           1585 	mov	r10,r24
+                        1586 --788:             if(roundup_len != hash_block_size)
+                        1587 --line788
+                        1588 ..lin.df0ab942..9668480.0_73::
+                        1589 .LDWlin73:
+000003bc fac1           1590 	cmp	r26,r24
+000003be d205*          1591 	be	.L777
+                        1592 --789:             {
+                        1593 --790:                 /* Define macro ICUM_SHAFIFOCNT is cast to access a register */
+                        1594 --791:                 ICUM_SHAFIFOCNT = (0x1U << FIFOCNT_IDAT_POS);
+                        1595 --line791
+                        1596 ..lin.df0ab942..9668480.0_74::
+                        1597 .LDWlin74:
+000003c0 010a           1598 	mov	1,r1
+000003c2 80070f0fc3fd   1599 	st.w	r1,4294894064[zero]
+                        1600 .L777:
+                        1601 --792:             }
+                        1602 --793:             else
+                        1603 --794:             {
+                        1604 --795:                 /* do nothing */
+                        1605 --796:             }
+                        1606 --798:             /* wait for IDATA_READY */
+                        1607 --799:             ret = r_hash_cmn_wait_for_idata_ready();
+                        1608 .L921:
+                        1609 --line799
+                        1610 ..lin.df0ab942..9668480.0_75::
+                        1611 .LDWlin75:
+                        1612 	jarl	_r_hash_cmn_wait_for_idata_ready,lp
+                        1612 <EXPANSION BEGIN>
+                        1612 jarl22 _r_hash_cmn_wait_for_idata_ready , lp 
+000003c8 80ff0000*      1612 <EXPANSION END>
+000003cc 0ae8           1613 	mov	r10,r29
+000003ce c505*          1614 	br	.L778
+                        1615 .L767:
+                        1616 --800:         }
+                        1617 --801:     }
+                        1618 --802:     else
+                        1619 --803:     {
+                        1620 --804:         ret = HASH_RET_PARAMERR;
+                        1621 --line804
+                        1622 ..lin.df0ab942..9668480.0_76::
+                        1623 .LDWlin76:
+000003d0 3d0601000800   1624 	mov	524289,r29
+                        1625 .L778:
+                        1626 --805:     }
+                        1627 --807:     return ret;
+                        1628 --line807
+                        1629 ..lin.df0ab942..9668480.0_77::
+                        1630 .LDWlin77:
+000003d6 1d50           1631 	mov	r29,r10
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1632 --	    .ef
+                        1633 .LDW12:
+000003d8 23ff1d00       1634 	ld.w	28[sp],lp
+000003dc 23ef0100       1635 	ld.w	0[sp],r29
+000003e0 23e70500       1636 	ld.w	4[sp],r28
+000003e4 23df0900       1637 	ld.w	8[sp],r27
+000003e8 23d70d00       1638 	ld.w	12[sp],r26
+000003ec 23cf1100       1639 	ld.w	16[sp],r25
+000003f0 23c71500       1640 	ld.w	20[sp],r24
+000003f4 23bf1900       1641 	ld.w	24[sp],r23
+000003f8 031e2000       1642 	addi	32,sp,sp
+                        1643 .L923:
+                        1644 	.jumptype return
+000003fc 7f00           1645 	jmp	[lp]
+                        1646 --line807
+                        1647 ..lin.df0ab942..9668480.0_78::
+                        1648 	.type	_r_hash_hmac_set_innerkey,@function
+                        1649 	.size	_r_hash_hmac_set_innerkey,.-_r_hash_hmac_set_innerkey
+                        1650 	.type	_r_hash_hmac_set_innerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.,@function
+                        1651 	.size	_r_hash_hmac_set_innerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.,.-_r_hash_hmac_set_innerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.
+                        1652 	.align	2
+                        1653 --_ret	r29	local
+                        1654 --_last_idata_num	r28	local
+                        1655 --_roundup_len	r24	local
+                        1656 --_hash_block_size	r26	local
+                        1657 
+                        1658 --_p_ctx	r25	param
+                        1659 --_p_key	r23	param
+                        1660 --_key_len	r27	param
+                        1661 
+                        1662 	.section ".bss","awb"
+                        1663 .L858:
+                        1664 	.type	.L858,@object
+                        1665 	.size	.L858,0
+                        1666 	.section ".ghcalltbl",""
+00000048 00000000*      1667 .L916:	.word	.L915
+                        1668 	.type	.L916,@object
+                        1669 	.size	.L916,4
+0000004c 00000000*      1670 .L918:	.word	.L917
+                        1671 	.type	.L918,@object
+                        1672 	.size	.L918,4
+00000050 00000000*      1673 .L920:	.word	.L919
+                        1674 	.type	.L920,@object
+                        1675 	.size	.L920,4
+00000054 00000000*      1676 .L922:	.word	.L921
+                        1677 	.type	.L922,@object
+                        1678 	.size	.L922,4
+                        1679 	.section ".ghrettbl",""
+00000014 00000000*      1680 .L924:	.word	.L923
+                        1681 	.type	.L924,@object
+                        1682 	.size	.L924,4
+                        1683 	.data
+                        1684 	.section ".icum_driver.text","ax"
+                        1685 
+                        1686 --808: }
+                        1687 
+                        1688 --809: /**********************************************************************************************************************
+                        1689 --810: * End of function r_hash_hmac_set_innerkey()
+                        1690 --811: **********************************************************************************************************************/
+                        1691 --813: /**********************************************************************************************************************
+                        1692 --814: * Function ID   : [ICUMFW_CD_S4_D_HASH_0018]:[ICUMFW_UD_S4_D_HASH_0018]
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1693 --815: * Function Name : r_hash_hmac_set_outerkey
+                        1694 --816: **********************************************************************************************************************/
+                        1695 --817: /*!****************************************************************************************************************//**
+                        1696 --818:  * \ingroup     HASHHMACAPIsInternal
+                        1697 --819:  * \brief       Input outer key to register
+                        1698 --820:  * \param       [in] p_ctx           An address of HASH context
+                        1699 --821:  * \param       [in] p_key           An address of key data
+                        1700 --822:  * \param       [in] key_len         Byte length of key data
+                        1701 --823:  * \return
+                        1702 --824:  *  - #HASH_RET_OK:                  Successfully done.
+                        1703 --825:  *  - #HASH_RET_PARAMERR:            Argument parameter NULL.
+                        1704 --826:  *  - #HASH_RET_LENGTHERR:           HASH block size error.
+                        1705 --827:  * \par Global Variables
+                        1706 --828:  *  - None
+                        1707 --829:  * \par Registers Used
+                        1708 --830:  *  - #ICUM_SHADCNT, #ICUM_SHAFIFOCNT
+                        1709 --831:  *  - #ICUM_SHAIDAT (Used by sub functions)
+                        1710 --832:  * \par Precondition
+                        1711 --833:  *  - None
+                        1712 --834:  * \par Detailed description
+                        1713 --835:  *      - Input outer key to register.
+                        1714 --836:  *
+                        1715 --837:  * Pseudo-code for the function can be found below.
+                        1716 --838:  * -# Set #HASH_RET_OK to ret
+                        1717 --839:  * -# If p_ctx != NULL
+                        1718 --840:  *   -# Get block size with #r_hash_cmn_get_block_size and set it to hash_block_size
+                        1719 --841:  *   -# If hash_block_size == 0U
+                        1720 --842:  *     -# Set #HASH_RET_LENGTHERR to ret
+                        1721 --843:  *   -# Else
+                        1722 --844:  *     -# If key_len == 0U
+                        1723 --845:  *       -# 1 is set to the IDATA_LAST, HASH_GET, IDATA_ZERO and OPAD bit of the register #ICUM_SHADCNT
+                        1724 --846:  *     -# Else
+                        1725 --847:  *       -# Set left_idata_num as the remainder of the key_len divided by HASH_WORD_SIZE
+                        1726 --848:  *       -# Convert last_idata_num from byte size to bit size
+                        1727 --849:  *       -# 1 is set to the IDATA_LAST, HASH_GET and OPAD bit of the register #ICUM_SHADCNT
+                        1728 --850:  *       -# last_idata_num is set to  the IDATA_NUM bit of the register #ICUM_SHADCNT
+                        1729 --851:  *       -# Execute block processing for key_len size from p_key using #r_hash_cmn_set_idat
+                        1730 --852:  *     -# Round up leftover_msg_len to a multiple of 4 using #r_hash_cmn_roundup_4 and set it to roundup_len.
+                        1731 --853:  *     -# If roundup_len != hash_block_size
+                        1732 --854:  *       -# 1 is set to the IDAT bit of the register #ICUM_SHAFIFOCNT
+                        1733 --855:  *     -# Else
+                        1734 --856:  *       -# Do nothing
+                        1735 --857:  * -# Else
+                        1736 --858:  *   -# Set #HASH_RET_PARAMERR to ret
+                        1737 --859:  * -# Return ret
+                        1738 --860:  *
+                        1739 --861:  * \callgraph
+                        1740 --862:  *********************************************************************************************************************/
+                        1741 --863: static e_r_hash_ret_t r_hash_hmac_set_outerkey(const st_r_hash_ctx_t* const p_ctx,
+                        1742 	.align	2
+                        1743 	.align	2
+                        1744 	.align	2
+                        1745 ..gh.f.a.2.e.6:
+                        1746 	.type	..gh.f.a.2.e.6,@object
+                        1747 	.size	..gh.f.a.2.e.6,0
+                        1748 	.global	_r_hash_hmac_set_outerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.
+                        1749 _r_hash_hmac_set_outerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.:
+                        1750 _r_hash_hmac_set_outerkey:
+000003fe 031ee0ff       1751 	addi	-32,sp,sp
+00000402 63ff1d00       1752 	st.w	lp,28[sp]
+00000406 63bf1900       1753 	st.w	r23,24[sp]
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+0000040a 63cf1100       1754 	st.w	r25,16[sp]
+0000040e 63df0900       1755 	st.w	r27,8[sp]
+00000412 63c71500       1756 	st.w	r24,20[sp]
+00000416 63d70d00       1757 	st.w	r26,12[sp]
+0000041a 63e70500       1758 	st.w	r28,4[sp]
+0000041e 63ef0100       1759 	st.w	r29,0[sp]
+00000422 06c8           1760 	mov	r6,r25
+00000424 07b8           1761 	mov	r7,r23
+00000426 08d8           1762 	mov	r8,r27
+                        1763 --	    .bf
+                        1764 .LDW22:
+                        1765 --864:                                                 const uint8_t* const p_key, const uint32_t key_len)
+                        1766 --865: {
+                        1767 --866:     /*-----------------------------------------------------------------------------------------------------------------
+                        1768 --867:      Local variables
+                        1769 --868:     -----------------------------------------------------------------------------------------------------------------*/
+                        1770 --869:     e_r_hash_ret_t ret = HASH_RET_OK;
+00000428 00ea           1771 	mov	0,r29
+                        1772 --870:     uint32_t last_idata_num;
+                        1773 --871:     uint32_t roundup_len;
+                        1774 --872:     uint32_t hash_block_size;
+                        1775 --874:     /*-----------------------------------------------------------------------------------------------------------------
+                        1776 --875:      Function body
+                        1777 --876:     -----------------------------------------------------------------------------------------------------------------*/
+                        1778 --877:     /* NULL check */
+                        1779 --878:     if(p_ctx != NULL)
+0000042a e0c9           1780 	cmp	zero,r25
+0000042c d22d*          1781 	be	.L927
+                        1782 --879:     {
+                        1783 --880:         /* get block size */
+                        1784 --881:         hash_block_size = r_hash_cmn_get_block_size(p_ctx->type);
+                        1785 --line881
+                        1786 ..lin.df0ab942..bbc81ed3.0_79::
+                        1787 .LDWlin79:
+0000042e 39370100       1788 	ld.w	0[r25],r6
+                        1789 .L1075:
+                        1790 	jarl	_r_hash_cmn_get_block_size,lp
+                        1790 <EXPANSION BEGIN>
+                        1790 jarl22 _r_hash_cmn_get_block_size , lp 
+00000432 80ff0000*      1790 <EXPANSION END>
+00000436 0ad0           1791 	mov	r10,r26
+                        1792 --883:         if(hash_block_size == 0U)
+                        1793 --line883
+                        1794 ..lin.df0ab942..bbc81ed3.0_80::
+                        1795 .LDWlin80:
+00000438 e0d1           1796 	cmp	zero,r26
+0000043a da05*          1797 	bne	.L929
+                        1798 --884:         {
+                        1799 --885:             ret = HASH_RET_LENGTHERR;
+                        1800 --line885
+                        1801 ..lin.df0ab942..bbc81ed3.0_81::
+                        1802 .LDWlin81:
+0000043c 3d0602000800   1803 	mov	524290,r29
+00000442 d525*          1804 	br	.L938
+                        1805 .L929:
+                        1806 --886:         }
+                        1807 --887:         else
+                        1808 --888:         {
+                        1809 --889:             /* set input data(OuterKey) */
+                        1810 --890:             if(key_len == 0U)
+                        1811 --line890
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1812 ..lin.df0ab942..bbc81ed3.0_82::
+                        1813 .LDWlin82:
+00000444 e0d9           1814 	cmp	zero,r27
+00000446 fa05*          1815 	bne	.L932
+                        1816 --891:             {
+                        1817 --892:                 /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1818 --893:                 ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS) |
+                        1819 --line893
+                        1820 ..lin.df0ab942..bbc81ed3.0_83::
+                        1821 .LDWlin83:
+00000448 200e7400       1822 	movea	116,zero,r1
+0000044c 80074f0fc3fd   1823 	st.w	r1,4294894068[zero]
+00000452 f50d*          1824 	br	.L934
+                        1825 .L932:
+                        1826 --894:                                 (0x1U << DCNT_HASH_GET_POS)   |
+                        1827 --895:                                 (0x1U << DCNT_IDATA_ZERO_POS) |
+                        1828 --896:                                 (0x1U << DCNT_OPAD_POS);
+                        1829 --898:                 /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1830 --899:                 /* (0x0U << DCNT_IPAD_POS) */
+                        1831 --900:             }
+                        1832 --901:             else
+                        1833 --902:             {
+                        1834 --903:                 last_idata_num = key_len % HASH_WORD_SIZE;
+                        1835 --line903
+                        1836 ..lin.df0ab942..bbc81ed3.0_84::
+                        1837 .LDWlin84:
+00000454 dbe60300       1838 	andi	3,r27,r28
+                        1839 --904:                 last_idata_num *= BYTE2BIT_VAL;
+00000458 c3e2           1840 	shl	3,r28
+                        1841 --906:                 /* Define macro ICUM_SHADCNT is cast to access a register */
+                        1842 --907:                 ICUM_SHADCNT = (0x1U << DCNT_IDATA_LAST_POS) |
+0000045a 1c08           1843 	mov	r28,r1
+0000045c c80a           1844 	shl	8,r1
+0000045e 810e5400       1845 	ori	84,r1,r1
+00000462 80074f0fc3fd   1846 	st.w	r1,4294894068[zero]
+                        1847 --908:                                 (0x1U << DCNT_HASH_GET_POS)  |
+                        1848 --909:                                 (last_idata_num << DCNT_IDATA_NUM_POS) |
+                        1849 --910:                                 (0x1U << DCNT_OPAD_POS);
+                        1850 --912:                 /* It is not set because the setting value is 0, but the subsequent bits must be 0. */
+                        1851 --913:                 /* (0x0U << DCNT_IPAD_POS) */
+                        1852 --915:                 r_hash_cmn_set_idat(p_key, key_len);
+                        1853 --line915
+                        1854 ..lin.df0ab942..bbc81ed3.0_85::
+                        1855 .LDWlin85:
+00000468 1730           1856 	mov	r23,r6
+0000046a 1b38           1857 	mov	r27,r7
+                        1858 .L1077:
+                        1859 	jarl	_r_hash_cmn_set_idat,lp
+                        1859 <EXPANSION BEGIN>
+                        1859 jarl22 _r_hash_cmn_set_idat , lp 
+0000046c 80ff0000*      1859 <EXPANSION END>
+                        1860 .L934:
+                        1861 --916:             }
+                        1862 --918:             /* When processing data length(round up multiple of 4) is not equal the block size, 
+                        1863 --919:                transfer FIFO data to SHAA0 core. */
+                        1864 --920:             roundup_len = r_hash_cmn_roundup_4(key_len);
+                        1865 --line920
+                        1866 ..lin.df0ab942..bbc81ed3.0_86::
+                        1867 .LDWlin86:
+00000470 1b30           1868 	mov	r27,r6
+                        1869 .L1079:
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1870 	jarl	_r_hash_cmn_roundup_4,lp
+                        1870 <EXPANSION BEGIN>
+                        1870 jarl22 _r_hash_cmn_roundup_4 , lp 
+00000472 80ff0000*      1870 <EXPANSION END>
+00000476 0ac0           1871 	mov	r10,r24
+                        1872 --922:             if(roundup_len != hash_block_size)
+                        1873 --line922
+                        1874 ..lin.df0ab942..bbc81ed3.0_87::
+                        1875 .LDWlin87:
+00000478 fac1           1876 	cmp	r26,r24
+0000047a 920d*          1877 	be	.L938
+                        1878 --923:             {
+                        1879 --924:                 /* Define macro ICUM_SHAFIFOCNT is cast to access a register */
+                        1880 --925:                 ICUM_SHAFIFOCNT = (0x1U << FIFOCNT_IDAT_POS);
+                        1881 --line925
+                        1882 ..lin.df0ab942..bbc81ed3.0_88::
+                        1883 .LDWlin88:
+0000047c 010a           1884 	mov	1,r1
+0000047e 80070f0fc3fd   1885 	st.w	r1,4294894064[zero]
+00000484 c505*          1886 	br	.L938
+                        1887 .L927:
+                        1888 --926:             }
+                        1889 --927:             else
+                        1890 --928:             {
+                        1891 --929:                 /* do nothing */
+                        1892 --930:             }
+                        1893 --931:         }
+                        1894 --932:     }
+                        1895 --933:     else
+                        1896 --934:     {
+                        1897 --935:         ret = HASH_RET_PARAMERR;
+                        1898 --line935
+                        1899 ..lin.df0ab942..bbc81ed3.0_89::
+                        1900 .LDWlin89:
+00000486 3d0601000800   1901 	mov	524289,r29
+                        1902 .L938:
+                        1903 --936:     }
+                        1904 --938:     return ret;
+                        1905 --line938
+                        1906 ..lin.df0ab942..bbc81ed3.0_90::
+                        1907 .LDWlin90:
+0000048c 1d50           1908 	mov	r29,r10
+                        1909 --	    .ef
+                        1910 .LDW32:
+0000048e 23ff1d00       1911 	ld.w	28[sp],lp
+00000492 23ef0100       1912 	ld.w	0[sp],r29
+00000496 23e70500       1913 	ld.w	4[sp],r28
+0000049a 23df0900       1914 	ld.w	8[sp],r27
+0000049e 23d70d00       1915 	ld.w	12[sp],r26
+000004a2 23cf1100       1916 	ld.w	16[sp],r25
+000004a6 23c71500       1917 	ld.w	20[sp],r24
+000004aa 23bf1900       1918 	ld.w	24[sp],r23
+000004ae 031e2000       1919 	addi	32,sp,sp
+                        1920 .L1081:
+                        1921 	.jumptype return
+000004b2 7f00           1922 	jmp	[lp]
+                        1923 --line938
+                        1924 ..lin.df0ab942..bbc81ed3.0_91::
+                        1925 	.type	_r_hash_hmac_set_outerkey,@function
+                        1926 	.size	_r_hash_hmac_set_outerkey,.-_r_hash_hmac_set_outerkey
+                        1927 	.type	_r_hash_hmac_set_outerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.,@function
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000tec1.si
+                        1928 	.size	_r_hash_hmac_set_outerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.,.-_r_hash_hmac_set_outerkey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac.
+                        1929 	.align	2
+                        1930 --_ret	r29	local
+                        1931 --_last_idata_num	r28	local
+                        1932 --_roundup_len	r24	local
+                        1933 --_hash_block_size	r26	local
+                        1934 
+                        1935 --_p_ctx	r25	param
+                        1936 --_p_key	r23	param
+                        1937 --_key_len	r27	param
+                        1938 
+                        1939 	.section ".bss","awb"
+                        1940 .L1018:
+                        1941 	.type	.L1018,@object
+                        1942 	.size	.L1018,0
+                        1943 	.section ".ghcalltbl",""
+00000058 00000000*      1944 .L1076:	.word	.L1075
+                        1945 	.type	.L1076,@object
+                        1946 	.size	.L1076,4
+0000005c 00000000*      1947 .L1078:	.word	.L1077
+                        1948 	.type	.L1078,@object
+                        1949 	.size	.L1078,4
+00000060 00000000*      1950 .L1080:	.word	.L1079
+                        1951 	.type	.L1080,@object
+                        1952 	.size	.L1080,4
+                        1953 	.section ".ghrettbl",""
+00000018 00000000*      1954 .L1082:	.word	.L1081
+                        1955 	.type	.L1082,@object
+                        1956 	.size	.L1082,4
+                        1957 	.data
+                        1958 	.section ".icum_driver.text","ax"
+                        1959 
+                        1960 --939: }
+                        1961 	.align	2
+                        1962 
+                        1963 	.data
+                        1964 	.ghsnote version,30
+                        1965 	.ghsnote tools,3
+                        1966 	.ghsnote options,656
+                        1967 	.section ".icum_driver.text","ax"
+                        1968 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_hash.5Cr_icum_hash_hmac...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF6C..0::
+                        1969 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

@@ -1,0 +1,1872 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\target\u2cx\include\common\ -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\middle\obj\libs\icum_mh_init\icum_mh_init.dbo -source=icum_mh_init.c -comp -o ..\..\icum\target\u2cx\build\middle\obj\libs\icum_mh_init\gh_00011ns1.o -list=..\..\icum\target\u2cx\build\middle\obj\libs\icum_mh_init\icum_mh_init.lst C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+Source File: icum_mh_init.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\target\u2cx\include\common\
+                           2 --		-I..\..\icum\generic\include\common\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\middle\
+                           5 --		-I..\..\icum\generic\include\service\
+                           6 --		-I..\..\icum\generic\include\kernel\
+                           7 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          28 --		.text=.icum_middle.text -section .rodata=.icum_middle.rodata
+                          29 --		-section .bss=.icum_middle.bss -section .data=.icum_middle.data
+                          30 --		-filetype.c ..\..\icum\generic\src\middle\mh_init\icum_mh_init.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\middle\obj\libs\icum_mh_init\icum_mh_init.o
+                          33 --Source File:   ..\..\icum\generic\src\middle\mh_init\icum_mh_init.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 14:08:04 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_middle.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name  INIT Manager                                               */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --26: /**************************************************************************************/
+                          70 --27: /* Header files                                                                       */
+                          71 --28: /**************************************************************************************/
+                          72 --29: /* PE I/F */
+                          73 --30: #include "r_icumif_api.h"
+                          74 --32: /* COMMOM */
+                          75 --33: #include "icum_common_pub.h"
+                          76 --34: #include "icum_irq_define_pub.h"
+                          77 --35: #include "renesas_types.h"
+                          78 --37: /* DRIVER */
+                          79 --38: #include "icum_d_comm_pub.h"
+                          80 --39: #include "icum_d_ecc_pub.h"
+                          81 --40: #include "icum_d_int_pub.h"
+                          82 --41: #include "icum_d_misc_pub.h"
+                          83 --42: #include "icum_d_ost_pub.h"
+                          84 --43: #include "icum_d_wdt_pub.h"
+                          85 --44: #include "icum_d_cr_pub.h"
+                          86 --45: #include "icum_d_clk_pub.h"
+                          87 --46: #include "icum_d_flash_pub.h"
+                          88 --47: #include "icum_d_mpu_pub.h"
+                          89 --48: #include "icum_d_cry_aes_pub.h"
+                          90 --49: #include "icum_d_info_pub.h"
+                          91 --50: #include "icum_d_trng_pub.h"
+                          92 --51: #include "icum_d_reset_pub.h"
+                          93 --53: #if defined(FSW_REMAP_DRIVER)
+                          94 --54: /* For call functions of remap driver. */
+                          95 --55: #include "icum_d_remap_pub.h"
+                          96 --56: #endif
+                          97 --58: /* LIBRARY */
+                          98 --59: #include "icum_l_toolbox_pub.h"
+                          99 --61: /* MIDDLE */
+                         100 --62: #include "icum_mh_init_pub.h"
+                         101 --63: #include "icum_mh_key_pub.h"
+                         102 --64: #include "icum_mh_sysinfo_pub.h"
+                         103 --65: #include MM_FLASH_PUBLIC_H
+                         104 --66: #include "icum_mm_cr_pub.h"
+                         105 --67: #include "icum_ml_abtr_api_pub.h"
+                         106 --68: #include "icum_ml_cfg_pub.h"
+                         107 --69: #include "icum_ml_ctx_pub.h"
+                         108 --70: #include "icum_ml_dvc_pub.h"
+                         109 --71: #include "icum_ml_prng_pub.h"
+                         110 --72: #include "icum_mh_mydata_pub.h"
+                         111 --74: /* SERVICE */
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         112 --75: #include "icum_s_02_rand_pub.h"
+                         113 --76: #include "icum_s_20_cr_pub.h"
+                         114 --77: #include "icum_s_pub.h"
+                         115 --79: /* KERNEL */
+                         116 --80: #include "icum_k_issd_pub.h"
+                         117 --82: /**************************************************************************************/
+                         118 --83: /* Definition                                                                         */
+                         119 --84: /**************************************************************************************/
+                         120 --85: #define SET                         (0x00000001uL)
+                         121 --86: #define CLR                         (0x00000000uL)
+                         122 --88: #define EXT_DEBUGGER_CONNECT        (0x00000001uL)
+                         123 --89: #define TRNG_PRE_START_VALID        (0x00000001uL)
+                         124 --91: #define TRNG_SHE_MODE               (0x00000000uL)
+                         125 --92: #define TRNG_CTR_DRBG_MODE          (0x00000001uL)
+                         126 --93: #define TRNG_OLT_MODE               (0x00000004uL)
+                         127 --94: #define TRNG_OLT_ENABLE             (0x00000001uL)
+                         128 --96: #define AUTH_SIZE                   (4u)
+                         129 --97: #define HEADER_TAG_SIZE             (3u)
+                         130 --98: #define AUTH_ENABLE                 (0x00000001uL)
+                         131 --99: #define AUTH_DISABLE                (0x00000000uL)
+                         132 --101: #define TAG_MARKER                  (0u)
+                         133 --102: #define TAG_BUILD                   (1u)
+                         134 --103: #define TAG_CHECKSUM                (2u)
+                         135 --104: #define TAG_OFFSET_1                (4uL)
+                         136 --105: #define TAG_OFFSET_2                (8uL)
+                         137 --107: #define CISM_MARKER                 "CISM"
+                         138 --108: #define BUID_TYPE_DBG               "-DBG"
+                         139 --109: #define BUID_TYPE_EV                "-EV-"
+                         140 --110: #define BUID_TYPE_MP                "-MP-"
+                         141 --112: #define INIT_AUTH_SIDEA_MASK        (0xFFFF0000uL)
+                         142 --113: #define INIT_AUTH_SIDEB_MASK        (0x0000FFFFuL)
+                         143 --115: #define INIT_AUTH_SIDEA_MASK        (0xFFFF0000uL)
+                         144 --116: #define INIT_AUTH_SIDEB_MASK        (0x0000FFFFuL)
+                         145 --118: extern uint8_t __ghsend_icum_middle_text[];
+                         146 --119: #define CHECKSUM_MIDDLETEXT __ghsend_icum_middle_text
+                         147 --120: #define CHECKSUM_OFFSET             (4uL)
+                         148 --122: #define LOGI_ADDR_MFISWPCNTR        (0xFD860900uL)
+                         149 --123: #define MFISWPCNTR_WPD_DIS          (0xACCE0001uL)
+                         150 --124: #define LOGI_ADDR_MFISWACNTR        (0xFD860904uL)
+                         151 --125: #define MFISWACNTR_BTSTSR_ADDR      (0xACCE0604uL)
+                         152 --127: #define LOGI_ADDR_MFISBTSTSR        (0xFD860604uL)
+                         153 --128: #define ICUMH_START_KEY_VAL         (0x5AuL << 24uL)
+                         154 --129: #define ICUMH_START_KEY_MASK        (0xFFuL << 24uL)
+                         155 --131: #define SIZE_OF_INIT_BUFFER      (128*25)
+                         156 --133: /* Callback functions for first initialization. */
+                         157 --134: typedef struct
+                         158 --135: {
+                         159 --136:     /* Registration information of the function to call back when receiving an interrupt */
+                         160 --137:     /* of clock monitor error for ICUM.                                                  */
+                         161 --138:     icum_clma_cb_regist_t *p_regist_info_clk;
+                         162 --139:     /* Registration information of the function to call back when receiving an interrupt */
+                         163 --140:     /* of system error.                                                                  */
+                         164 --141:     ICUM_INT_CB_REGIST_t *p_regist_info_int;
+                         165 --142: } r_mh_Init_InitParamFirst_t;
+                         166 --144: /* Callback functions for second initialization. */
+                         167 --145: typedef struct
+                         168 --146: {
+                         169 --147:     /* Registration information of the function to call back when receiving an interrupt */
+                         170 --148:     /* of watchdog timer.                                                                */
+                         171 --149:     s_WDT_init_prm_t *p_regist_info_timer;
+                         172 --150:     /* Registration information of the function to call back when receiving an interrupt */
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         173 --151:     /* of memory protection unit.                                                        */
+                         174 --152:     icum_mpu_cb_regist_t *p_regist_info_mpu;
+                         175 --153: } r_mh_Init_InitParamSecond_t;
+                         176 --155: static void mh_Init_JudgeStartupSide(void);
+                         177 --156: static uint32_t mh_INIT_IsEnableUpdate(uint32_t *result);
+                         178 --157: static uint32_t mh_INIT_InitFirst(r_mh_Init_InitParamFirst_t* p_initprm);
+                         179 --158: static uint32_t mh_Init_InitSecond(r_mh_Init_InitParamSecond_t* p_initprm);
+                         180 --160: /***************************************************************************************
+                         181 --161: * Function ID  : [ICUMFW_CD_MH_INIT_MNG_0001]:[ICUMFW_UD_MH_INIT_MNG_0001]
+                         182 --162: * Function name: MH_INIT_Init
+                         183 --163: * Description  : Initialize INIT MNG
+                         184 --164: * Arguments    : N/A
+                         185 --165: * Return Value : ER_OK
+                         186 --166: ***************************************************************************************/
+                         187 --167: uint32_t MH_INIT_Init(void)
+                         188 	.align	2
+                         189 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40645..0::
+                         190 	.align	2
+                         191 	.align	2
+                         192 ..gh.f.a.2.e.0:
+                         193 	.type	..gh.f.a.2.e.0,@object
+                         194 	.size	..gh.f.a.2.e.0,0
+                         195 	.global	_MH_INIT_Init
+                         196 _MH_INIT_Init:
+00000000 031ea0ff        197 	addi	-96,sp,sp
+00000004 63ff5d00        198 	st.w	lp,92[sp]
+00000008 63ef5900        199 	st.w	r29,88[sp]
+                         200 --	    .bf
+                         201 .LDW01:
+                         202 --168: {
+                         203 --169:     uint32_t err;
+                         204 --170:     r_mh_Init_InitParamFirst_t initprm_first;
+                         205 --171:     icum_clma_cb_regist_t regist_info_clk;
+                         206 --172:     ICUM_INT_CB_REGIST_t regist_info_int;
+                         207 --173:     r_mh_Init_InitParamSecond_t initprm_second;
+                         208 --174:     s_WDT_init_prm_t regist_info_timer;
+                         209 --175:     icum_mpu_cb_regist_t regist_info_mpu;
+                         210 --176:     ICUM_COMM_CB_REGIST_t comm_cb_regist;
+                         211 --177:     ICUM_COMM_CB_REGIST_t addjob_cb_regist;
+                         212 --178:     pkc_prng_func_t pkc_prng_func;
+                         213 --179:     uint32_t check_debugger = CLR;
+0000000c 63071100        214 	st.w	zero,16[sp]
+                         215 --180:     uint32_t status;
+                         216 --181:     uint8_t sys_cfg_testlock;
+                         217 --182:     uint32_t update_result;
+                         218 --184:     initprm_first.p_regist_info_clk = &regist_info_clk;
+00000010 230e0400        219 	movea	4,sp,r1
+00000014 630f5100        220 	st.w	r1,80[sp]
+                         221 --185:     initprm_first.p_regist_info_int = &regist_info_int;
+00000018 230e0800        222 	movea	8,sp,r1
+0000001c 630f5500        223 	st.w	r1,84[sp]
+                         224 --186:     initprm_second.p_regist_info_timer = &regist_info_timer;
+00000020 230e4000        225 	movea	64,sp,r1
+00000024 630f4900        226 	st.w	r1,72[sp]
+                         227 --187:     initprm_second.p_regist_info_mpu = &regist_info_mpu;
+00000028 230e0c00        228 	movea	12,sp,r1
+0000002c 630f4d00        229 	st.w	r1,76[sp]
+                         230 --189: #if defined(FSW_REMAP_DRIVER)
+                         231 --190:     /* Initialize the REMAP driver */
+                         232 --191:     (void)D_REMAP_Init();
+                         233 --192: #endif
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         234 --194:     /********** SHE status register setting start **********/
+                         235 --195:     /* 1-1. Clr SECURE_BOOT bit - ICU2PES register */
+                         236 --196:     (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_SEC_BOOT , CLR);
+00000030 0232            237 	mov	2,r6
+00000032 003a            238 	mov	0,r7
+                         239 .L499:
+                         240 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         240 <EXPANSION BEGIN>
+                         240 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000034 80ff0000*       240 <EXPANSION END>
+                         241 --198:     /* 1-2. Clr BOOT_OK bit - ICU2PES register */
+                         242 --199:     (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BOOT_OK , CLR);
+                         243 --line199
+                         244 ..lin.9a9a48c1..8e2a86df.0_1::
+                         245 .LDWlin1:
+00000038 20361000        246 	movea	16,zero,r6
+0000003c 003a            247 	mov	0,r7
+                         248 .L501:
+                         249 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         249 <EXPANSION BEGIN>
+                         249 jarl22 _D_COMM_SetICUStatusInfo , lp 
+0000003e 80ff0000*       249 <EXPANSION END>
+                         250 --200:     /* 1-3. Clr BOOT_FINISHED bit - ICU2PES register */
+                         251 --201:     (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BOOT_FIN , CLR);
+                         252 --line201
+                         253 ..lin.9a9a48c1..8e2a86df.0_2::
+                         254 .LDWlin2:
+00000042 0832            255 	mov	8,r6
+00000044 003a            256 	mov	0,r7
+                         257 .L503:
+                         258 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         258 <EXPANSION BEGIN>
+                         258 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000046 80ff0000*       258 <EXPANSION END>
+                         259 --203:     /* 1-4. Clr BOOT_INIT bit - ICU2PES register */
+                         260 --204:     (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BOOT_INIT , CLR);
+                         261 --line204
+                         262 ..lin.9a9a48c1..8e2a86df.0_3::
+                         263 .LDWlin3:
+0000004a 0432            264 	mov	4,r6
+0000004c 003a            265 	mov	0,r7
+                         266 .L505:
+                         267 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         267 <EXPANSION BEGIN>
+                         267 jarl22 _D_COMM_SetICUStatusInfo , lp 
+0000004e 80ff0000*       267 <EXPANSION END>
+                         268 --206:     /* 2. Ext debugger check */
+                         269 --207:     (void)D_CR_GetDCS(&check_debugger);
+                         270 --line207
+                         271 ..lin.9a9a48c1..8e2a86df.0_4::
+                         272 .LDWlin4:
+00000052 23361000        273 	movea	16,sp,r6
+                         274 .L507:
+                         275 	jarl	_D_CR_GetDCS,lp
+                         275 <EXPANSION BEGIN>
+                         275 jarl22 _D_CR_GetDCS , lp 
+00000056 80ff0000*       275 <EXPANSION END>
+                         276 --208:     if (EXT_DEBUGGER_CONNECT == check_debugger)
+                         277 --line208
+                         278 ..lin.9a9a48c1..8e2a86df.0_5::
+                         279 .LDWlin5:
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+0000005a 230f1100        280 	ld.w	16[sp],r1
+0000005e 610a            281 	cmp	1,r1
+00000060 fa05*           282 	bne	.L4
+                         283 --209:     {
+                         284 --210:         /* 2-1. Set EXT_DEBUGGER bit - ICU2PES register */
+                         285 --211:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_EXT_DEBUG , SET);
+                         286 --line211
+                         287 ..lin.9a9a48c1..8e2a86df.0_6::
+                         288 .LDWlin6:
+00000062 20364000        289 	movea	64,zero,r6
+00000066 013a            290 	mov	1,r7
+                         291 .L509:
+                         292 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         292 <EXPANSION BEGIN>
+                         292 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000068 80ff0000*       292 <EXPANSION END>
+0000006c e505*           293 	br	.L6
+                         294 .L4:
+                         295 --212:     }
+                         296 --213:     else
+                         297 --214:     {
+                         298 --215:         /* 2-2. Clr EXT_DEBUGGER bit - ICU2PES register */
+                         299 --216:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_EXT_DEBUG , CLR);
+                         300 --line216
+                         301 ..lin.9a9a48c1..8e2a86df.0_7::
+                         302 .LDWlin7:
+0000006e 20364000        303 	movea	64,zero,r6
+00000072 003a            304 	mov	0,r7
+                         305 .L511:
+                         306 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         306 <EXPANSION BEGIN>
+                         306 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000074 80ff0000*       306 <EXPANSION END>
+                         307 .L6:
+                         308 --217:     }
+                         309 --219:     /********** SHE status register setting end **********/
+                         310 --220:     /********** First init **********/
+                         311 --221:     initprm_first.p_regist_info_clk->p_cbfunc = (icum_clma_interrupt_type_t *)MH_SYSINFO_InterruptCLMACallBack;
+                         312 --line221
+                         313 ..lin.9a9a48c1..8e2a86df.0_8::
+                         314 .LDWlin8:
+00000078 23f75100        315 	ld.w	80[sp],ep
+0000007c 210600000000*   316 	mov	_MH_SYSINFO_InterruptCLMACallBack,r1
+00000082 010d            317 	sst.w	r1,0[ep]
+                         318 --222:     initprm_first.p_regist_info_int->p_cbfunc = (icum_intc_interrupt_type_t *)MH_SYSINFO_InterruptCallBack;
+                         319 --line222
+                         320 ..lin.9a9a48c1..8e2a86df.0_9::
+                         321 .LDWlin9:
+00000084 23f75500        322 	ld.w	84[sp],ep
+00000088 210600000000*   323 	mov	_MH_SYSINFO_InterruptCallBack,r1
+0000008e 010d            324 	sst.w	r1,0[ep]
+                         325 --223:     (void)mh_INIT_InitFirst(&initprm_first);
+                         326 --line223
+                         327 ..lin.9a9a48c1..8e2a86df.0_10::
+                         328 .LDWlin10:
+00000090 23365000        329 	movea	80,sp,r6
+                         330 .L513:
+                         331 	jarl	_mh_INIT_InitFirst,lp
+                         331 <EXPANSION BEGIN>
+                         331 jarl22 _mh_INIT_InitFirst , lp 
+00000094 80fffa01*       331 <EXPANSION END>
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         332 --225:     /* 4-2. Set serv_request handler */
+                         333 --226:     comm_cb_regist.channel = ICUM_COMM_ICH_FM_SERV_REQUEST;
+                         334 --line226
+                         335 ..lin.9a9a48c1..8e2a86df.0_11::
+                         336 .LDWlin11:
+00000098 020a            337 	mov	2,r1
+0000009a 630f3900        338 	st.w	r1,56[sp]
+                         339 --227:     comm_cb_regist.p_cbfunc = (p_func_addr *)K_ISSD_HandleRequest;
+0000009e 210600000000*   340 	mov	_K_ISSD_HandleRequest,r1
+000000a4 630f3d00        341 	st.w	r1,60[sp]
+                         342 --229:     (void)D_COMM_SetIntCallBackFunc(&comm_cb_regist);
+                         343 --line229
+                         344 ..lin.9a9a48c1..8e2a86df.0_12::
+                         345 .LDWlin12:
+000000a8 23363800        346 	movea	56,sp,r6
+                         347 .L515:
+                         348 	jarl	_D_COMM_SetIntCallBackFunc,lp
+                         348 <EXPANSION BEGIN>
+                         348 jarl22 _D_COMM_SetIntCallBackFunc , lp 
+000000ac 80ff0000*       348 <EXPANSION END>
+                         349 --231:     /* Set Callback function for single interrupt */
+                         350 --232:     addjob_cb_regist.channel = ICUM_COMM_ICH_FM_REGIST_ADDJOBFUNC;
+                         351 --line232
+                         352 ..lin.9a9a48c1..8e2a86df.0_13::
+                         353 .LDWlin13:
+000000b0 400e0080        354 	movhi	hi(-2147483648),zero,r1
+000000b4 630f3100        355 	st.w	r1,48[sp]
+                         356 --233:     addjob_cb_regist.p_cbfunc = (p_func_addr *)K_ISSD_FastestCmacAddJobQue;
+                         357 --line233
+                         358 ..lin.9a9a48c1..8e2a86df.0_14::
+                         359 .LDWlin14:
+000000b8 210600000000*   360 	mov	_K_ISSD_FastestCmacAddJobQue,r1
+000000be 630f3500        361 	st.w	r1,52[sp]
+                         362 --235:     (void)D_COMM_SetIntCallBackFunc(&addjob_cb_regist);
+                         363 --line235
+                         364 ..lin.9a9a48c1..8e2a86df.0_15::
+                         365 .LDWlin15:
+000000c2 23363000        366 	movea	48,sp,r6
+                         367 .L517:
+                         368 	jarl	_D_COMM_SetIntCallBackFunc,lp
+                         368 <EXPANSION BEGIN>
+                         368 jarl22 _D_COMM_SetIntCallBackFunc , lp 
+000000c6 80ff0000*       368 <EXPANSION END>
+                         369 --237:     /* 5. AES & Context & ABTR & INFO Init <- Prepare for DVC */
+                         370 --238:      /* return value is ER_OK only */
+                         371 --239:     (void)ML_ABTR_Init();
+                         372 .L519:
+                         373 --line239
+                         374 ..lin.9a9a48c1..8e2a86df.0_16::
+                         375 .LDWlin16:
+                         376 	jarl	_ML_ABTR_Init,lp
+                         376 <EXPANSION BEGIN>
+                         376 jarl22 _ML_ABTR_Init , lp 
+000000ca 80ff0000*       376 <EXPANSION END>
+                         377 --240:      /* return value is ER_OK only */
+                         378 --241:     (void)ML_CTX_Init();
+                         379 .L521:
+                         380 --line241
+                         381 ..lin.9a9a48c1..8e2a86df.0_17::
+                         382 .LDWlin17:
+                         383 	jarl	_ML_CTX_Init,lp
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         383 <EXPANSION BEGIN>
+                         383 jarl22 _ML_CTX_Init , lp 
+000000ce 80ff0000*       383 <EXPANSION END>
+                         384 --243:     /* 6. DVC Init */
+                         385 --244:     (void)ML_DVC_Init();
+                         386 .L523:
+                         387 --line244
+                         388 ..lin.9a9a48c1..8e2a86df.0_18::
+                         389 .LDWlin18:
+                         390 	jarl	_ML_DVC_Init,lp
+                         390 <EXPANSION BEGIN>
+                         390 jarl22 _ML_DVC_Init , lp 
+000000d2 80ff0000*       390 <EXPANSION END>
+                         391 --246:     /* 7-4. Flash mng Initialize */
+                         392 --247:     (void)MM_FLS_Init();
+                         393 .L525:
+                         394 --line247
+                         395 ..lin.9a9a48c1..8e2a86df.0_19::
+                         396 .LDWlin19:
+                         397 	jarl	_MM_FLS_Init,lp
+                         397 <EXPANSION BEGIN>
+                         397 jarl22 _MM_FLS_Init , lp 
+000000d6 80ff0000*       397 <EXPANSION END>
+                         398 --249:     /* xx. Prepare get System Configuration */
+                         399 --250:     /* xx-1. CFG mng Initialize */
+                         400 --251:     /* Setting default system comfig value. This func call before MH_SYSINFO_Init().*/ /* return value is ER_OK only */
+                         401 --252:     (void)ML_CFG_Init();
+                         402 .L527:
+                         403 --line252
+                         404 ..lin.9a9a48c1..8e2a86df.0_20::
+                         405 .LDWlin20:
+                         406 	jarl	_ML_CFG_Init,lp
+                         406 <EXPANSION BEGIN>
+                         406 jarl22 _ML_CFG_Init , lp 
+000000da 80ff0000*       406 <EXPANSION END>
+                         407 --254:     /* xx. Set Secure Data Flash mapping */
+                         408 --255:     err = MM_FLS_MapDataSet();
+                         409 .L529:
+                         410 --line255
+                         411 ..lin.9a9a48c1..8e2a86df.0_21::
+                         412 .LDWlin21:
+                         413 	jarl	_MM_FLS_MapDataSet,lp
+                         413 <EXPANSION BEGIN>
+                         413 jarl22 _MM_FLS_MapDataSet , lp 
+000000de 80ff0000*       413 <EXPANSION END>
+000000e2 0ae8            414 	mov	r10,r29
+                         415 --256:     if ((ER_OK == err) || (ER_MM_FLS_ALL_BLANK == err) || (ER_MM_FLS_FORMAT_ERR == err))
+                         416 --line256
+                         417 ..lin.9a9a48c1..8e2a86df.0_22::
+                         418 .LDWlin22:
+000000e4 e0e9            419 	cmp	zero,r29
+000000e6 b20d*           420 	be	.L8
+000000e8 210613006000    421 	mov	6291475,r1
+000000ee e1e9            422 	cmp	r1,r29
+000000f0 e205*           423 	be	.L8
+000000f2 210612006000    424 	mov	6291474,r1
+000000f8 e1e9            425 	cmp	r1,r29
+000000fa aa0d*           426 	bne	.L7
+                         427 .L8:
+                         428 --257:     {
+                         429 --258:         /* xx-2. SYSINFO mng Initialize */
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         430 --259:         /* Get system comfig value.*/
+                         431 --260:         err = MH_SYSINFO_Init();
+                         432 .L531:
+                         433 --line260
+                         434 ..lin.9a9a48c1..8e2a86df.0_23::
+                         435 .LDWlin23:
+                         436 	jarl	_MH_SYSINFO_Init,lp
+                         436 <EXPANSION BEGIN>
+                         436 jarl22 _MH_SYSINFO_Init , lp 
+000000fc 80ff0000*       436 <EXPANSION END>
+00000100 0ae8            437 	mov	r10,r29
+                         438 --262:         if (ER_OK == err)
+                         439 --line262
+                         440 ..lin.9a9a48c1..8e2a86df.0_24::
+                         441 .LDWlin24:
+00000102 e0e9            442 	cmp	zero,r29
+00000104 820d*           443 	be	.L14
+                         444 --263:         {
+                         445 --264:             /* Do nothing */
+                         446 --265:         }
+                         447 --266:         else
+                         448 --267:         {
+                         449 --268:             /* Stop initialization */
+                         450 --269:             err = ER_MH_INIT_M_SYSINFO_INITFAIL;
+                         451 --line269
+                         452 ..lin.9a9a48c1..8e2a86df.0_25::
+                         453 .LDWlin25:
+00000106 3d065d00e000    454 	mov	14680157,r29
+0000010c c505*           455 	br	.L14
+                         456 .L7:
+                         457 --270:         }
+                         458 --271:     }
+                         459 --272:     else
+                         460 --273:     {
+                         461 --274:         /* Stop initialization */
+                         462 --275:         err = ER_MH_INIT_M_SYSINFO_INITFAIL;
+                         463 --line275
+                         464 ..lin.9a9a48c1..8e2a86df.0_26::
+                         465 .LDWlin26:
+0000010e 3d065d00e000    466 	mov	14680157,r29
+                         467 .L14:
+                         468 --276:     }
+                         469 --278:     if (ER_OK == err)
+                         470 --line278
+                         471 ..lin.9a9a48c1..8e2a86df.0_27::
+                         472 .LDWlin27:
+00000114 e0e9            473 	cmp	zero,r29
+00000116 aa65*           474 	bne	.L23
+                         475 --279:     {
+                         476 --281:         /* xx. Side select for OTA */
+                         477 --282:         /* xx-1. Get Current Startup Side Status */
+                         478 --283:         (void)D_COMM_GetICUStatusInfo(&status);
+                         479 --line283
+                         480 ..lin.9a9a48c1..8e2a86df.0_28::
+                         481 .LDWlin28:
+00000118 23361400        482 	movea	20,sp,r6
+                         483 .L533:
+                         484 	jarl	_D_COMM_GetICUStatusInfo,lp
+                         484 <EXPANSION BEGIN>
+                         484 jarl22 _D_COMM_GetICUStatusInfo , lp 
+0000011c 80ff0000*       484 <EXPANSION END>
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         485 --285:         /* xx-2. Judge Startup Side for OTA */
+                         486 --286:         mh_Init_JudgeStartupSide();
+                         487 .L535:
+                         488 --line286
+                         489 ..lin.9a9a48c1..8e2a86df.0_29::
+                         490 .LDWlin29:
+                         491 	jarl	_mh_Init_JudgeStartupSide,lp
+                         491 <EXPANSION BEGIN>
+                         491 jarl22 _mh_Init_JudgeStartupSide , lp 
+00000120 80ff6a02*       491 <EXPANSION END>
+                         492 --288:         /**********************************************************************************************/
+                         493 --290:         /********** Firmware state check **********/
+                         494 --291:         /* this version no check */
+                         495 --293:         /********** PISM and CISM check **********/
+                         496 --294:         /* this version no check */
+                         497 --296:         /**********************************************************************************************/
+                         498 --298:         /********** DRIVER Init **********/
+                         499 --299:         /* xx-2. Set WDT param */
+                         500 --300:         initprm_second.p_regist_info_timer->mode = WDT_ERM_NMI;
+                         501 --line300
+                         502 ..lin.9a9a48c1..8e2a86df.0_30::
+                         503 .LDWlin30:
+00000124 23f74900        504 	ld.w	72[sp],ep
+00000128 8003            505 	sst.b	zero,0[ep]
+                         506 --301:         initprm_second.p_regist_info_timer->ovf = WDT_OVF_256MS;
+0000012a 23f74900        507 	ld.w	72[sp],ep
+0000012e 070a            508 	mov	7,r1
+00000130 810b            509 	sst.b	r1,1[ep]
+                         510 --302:         initprm_second.p_regist_info_timer->p_callback = (p_wdt_func_addr_t *)MH_SYSINFO_InterruptNMICallBack;
+00000132 23f74900        511 	ld.w	72[sp],ep
+00000136 210600000000*   512 	mov	_MH_SYSINFO_InterruptNMICallBack,r1
+0000013c 030d            513 	sst.w	r1,4[ep]
+                         514 --303:         /* xx-2. */
+                         515 --304:         initprm_second.p_regist_info_mpu->p_cbf_addr = (icum_mpu_interrupt_type_t *)MH_SYSINFO_InterruptMPUCallBack;
+                         516 --line304
+                         517 ..lin.9a9a48c1..8e2a86df.0_31::
+                         518 .LDWlin31:
+0000013e 23f74d00        519 	ld.w	76[sp],ep
+00000142 210600000000*   520 	mov	_MH_SYSINFO_InterruptMPUCallBack,r1
+00000148 010d            521 	sst.w	r1,0[ep]
+                         522 --306:         (void)mh_Init_InitSecond(&initprm_second);
+                         523 --line306
+                         524 ..lin.9a9a48c1..8e2a86df.0_32::
+                         525 .LDWlin32:
+0000014a 23364800        526 	movea	72,sp,r6
+                         527 .L537:
+                         528 	jarl	_mh_Init_InitSecond,lp
+                         528 <EXPANSION BEGIN>
+                         528 jarl22 _mh_Init_InitSecond , lp 
+0000014e 80ffc001*       528 <EXPANSION END>
+                         529 --308:         /********** LIBRARY Init **********/
+                         530 --309:         pkc_prng_func.res_id = ABTR_RESOURCE_TYPE_AES;
+                         531 --line309
+                         532 ..lin.9a9a48c1..8e2a86df.0_33::
+                         533 .LDWlin33:
+00000152 010a            534 	mov	1,r1
+00000154 630f2100        535 	st.w	r1,32[sp]
+                         536 --310:         pkc_prng_func.p_get = ML_ABTR_GetResource;
+00000158 210600000000*   537 	mov	_ML_ABTR_GetResource,r1
+0000015e 630f2500        538 	st.w	r1,36[sp]
+                         539 --311:         pkc_prng_func.p_free = ML_ABTR_FreeResource;
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         540 --line311
+                         541 ..lin.9a9a48c1..8e2a86df.0_34::
+                         542 .LDWlin34:
+00000162 210600000000*   543 	mov	_ML_ABTR_FreeResource,r1
+00000168 630f2900        544 	st.w	r1,40[sp]
+                         545 --312:         pkc_prng_func.p_generate = ML_PRNG_Gen;
+                         546 --line312
+                         547 ..lin.9a9a48c1..8e2a86df.0_35::
+                         548 .LDWlin35:
+0000016c 210600000000*   549 	mov	_ML_PRNG_Gen,r1
+00000172 630f2d00        550 	st.w	r1,44[sp]
+                         551 --313:         (void)L_PKC_Init(&pkc_prng_func);
+                         552 --line313
+                         553 ..lin.9a9a48c1..8e2a86df.0_36::
+                         554 .LDWlin36:
+00000176 23361c00        555 	movea	28,sp,r6
+                         556 .L539:
+                         557 	jarl	_L_PKC_Init,lp
+                         557 <EXPANSION BEGIN>
+                         557 jarl22 _L_PKC_Init , lp 
+0000017a 80ff0000*       557 <EXPANSION END>
+                         558 --315:         /********** MIDDLE Init **********/
+                         559 --316:         /* xx. */
+                         560 --317:         /* xx-1. KEY mng Initialize */
+                         561 --318:         /* Init Key value & mapping */ /* return value is ER_OK only */
+                         562 --319:         (void)MH_KEY_Init();
+                         563 .L541:
+                         564 --line319
+                         565 ..lin.9a9a48c1..8e2a86df.0_37::
+                         566 .LDWlin37:
+                         567 	jarl	_MH_KEY_Init,lp
+                         567 <EXPANSION BEGIN>
+                         567 jarl22 _MH_KEY_Init , lp 
+0000017e 80ff0000*       567 <EXPANSION END>
+                         568 --321:         /* xx-3. Flash mng configuration */
+                         569 --322:         (void)MM_FLS_Config();
+                         570 .L543:
+                         571 --line322
+                         572 ..lin.9a9a48c1..8e2a86df.0_38::
+                         573 .LDWlin38:
+                         574 	jarl	_MM_FLS_Config,lp
+                         574 <EXPANSION BEGIN>
+                         574 jarl22 _MM_FLS_Config , lp 
+00000182 80ff0000*       574 <EXPANSION END>
+                         575 --324:         /**************************************************/
+                         576 --325:         /* Other MNG(MYDATA,MTC) is not init this version */
+                         577 --326:         /**************************************************/
+                         578 --327:         /* xx. */
+                         579 --328:         /* xx-2. MyData mng Initialize */
+                         580 --329:         (void)MH_MYDATA_Init();
+                         581 .L545:
+                         582 --line329
+                         583 ..lin.9a9a48c1..8e2a86df.0_39::
+                         584 .LDWlin39:
+                         585 	jarl	_MH_MYDATA_Init,lp
+                         585 <EXPANSION BEGIN>
+                         585 jarl22 _MH_MYDATA_Init , lp 
+00000186 80ff0000*       585 <EXPANSION END>
+                         586 --331:         /* Initialization of variables in CF_MNG. return value is ER_OK only */
+                         587 --332:         (void)MM_CR_Init();
+                         588 .L547:
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         589 --line332
+                         590 ..lin.9a9a48c1..8e2a86df.0_40::
+                         591 .LDWlin40:
+                         592 	jarl	_MM_CR_Init,lp
+                         592 <EXPANSION BEGIN>
+                         592 jarl22 _MM_CR_Init , lp 
+0000018a 80ff0000*       592 <EXPANSION END>
+                         593 --334: #if defined (FSW_EXTERNAL_FLASH)
+                         594 --335:         /* xx. Set Secure Data Flash mapping */
+                         595 --336:         (void)MM_FLS_MapDataSetEx();
+                         596 --337: #endif
+                         597 --339:         /********** SERVICE **********/
+                         598 --340:         /* xx. */
+                         599 --341:         /* xx-1. S_02 RAND Initialize */
+                         600 --342:         /* return value is ER_OK only */
+                         601 --343:         (void)S_02_RAND_Init();
+                         602 .L549:
+                         603 --line343
+                         604 ..lin.9a9a48c1..8e2a86df.0_41::
+                         605 .LDWlin41:
+                         606 	jarl	_S_02_RAND_Init,lp
+                         606 <EXPANSION BEGIN>
+                         606 jarl22 _S_02_RAND_Init , lp 
+0000018e 80ff0000*       606 <EXPANSION END>
+                         607 --345: #if defined(CFG_USE_S_20_CR)
+                         608 --346:         /* return value is ER_OK only */
+                         609 --347:         /* xx-2. S_20 CR Initialize */
+                         610 --348:         (void)S_20_CR_Init();
+                         611 --349: #endif
+                         612 --351:         /********** Prepare StartPE **********/
+                         613 --352:         /* xx. */
+                         614 --353:         /* ICUM_LOCKCTRL register setting */
+                         615 --354:         (void)ML_CFG_GetSys(ML_CFG_SYS_TEST_ECC_LOCK , (uint32_t *)&sys_cfg_testlock);
+                         616 --line354
+                         617 ..lin.9a9a48c1..8e2a86df.0_42::
+                         618 .LDWlin42:
+00000192 233e0300        619 	movea	3,sp,r7
+00000196 20361400        620 	movea	20,zero,r6
+                         621 .L551:
+                         622 	jarl	_ML_CFG_GetSys,lp
+                         622 <EXPANSION BEGIN>
+                         622 jarl22 _ML_CFG_GetSys , lp 
+0000019a 80ff0000*       622 <EXPANSION END>
+                         623 --356:         if ((uint32_t)ECC_TEST_LOCK == (uint32_t)sys_cfg_testlock)
+                         624 --line356
+                         625 ..lin.9a9a48c1..8e2a86df.0_43::
+                         626 .LDWlin43:
+0000019e a30f0300        627 	ld.bu	3[sp],r1
+000001a2 610a            628 	cmp	1,r1
+000001a4 ea05*           629 	bne	.L17
+                         630 --357:         {
+                         631 --358:             (void)D_ECC_SetECCTestProtection(ICUM_ECC_TEST_TYPE_COLLECTIVE , ICUM_ECC_TEST_PROTECT_ON);
+                         632 --line358
+                         633 ..lin.9a9a48c1..8e2a86df.0_44::
+                         634 .LDWlin44:
+000001a6 0132            635 	mov	1,r6
+000001a8 013a            636 	mov	1,r7
+                         637 .L553:
+                         638 	jarl	_D_ECC_SetECCTestProtection,lp
+                         638 <EXPANSION BEGIN>
+                         638 jarl22 _D_ECC_SetECCTestProtection , lp 
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+000001aa 80ff0000*       638 <EXPANSION END>
+000001ae d505*           639 	br	.L19
+                         640 .L17:
+                         641 --359:         }
+                         642 --360:         else
+                         643 --361:         {
+                         644 --362:             (void)D_ECC_SetECCTestProtection(ICUM_ECC_TEST_TYPE_COLLECTIVE , ICUM_ECC_TEST_PROTECT_OFF);
+                         645 --line362
+                         646 ..lin.9a9a48c1..8e2a86df.0_45::
+                         647 .LDWlin45:
+000001b0 0132            648 	mov	1,r6
+000001b2 003a            649 	mov	0,r7
+                         650 .L555:
+                         651 	jarl	_D_ECC_SetECCTestProtection,lp
+                         651 <EXPANSION BEGIN>
+                         651 jarl22 _D_ECC_SetECCTestProtection , lp 
+000001b4 80ff0000*       651 <EXPANSION END>
+                         652 .L19:
+                         653 --363:         }
+                         654 --365:         /* xx-n. Start OS Timer */
+                         655 --366:         D_OST_ContinueCount();
+                         656 .L557:
+                         657 --line366
+                         658 ..lin.9a9a48c1..8e2a86df.0_46::
+                         659 .LDWlin46:
+                         660 	jarl	_D_OST_ContinueCount,lp
+                         660 <EXPANSION BEGIN>
+                         660 jarl22 _D_OST_ContinueCount , lp 
+000001b8 80ff0000*       660 <EXPANSION END>
+                         661 --368:         /* xx-n. Enable all Interrupt */
+                         662 --369:         (void)D_INT_EnableInterrupts();
+                         663 .L559:
+                         664 --line369
+                         665 ..lin.9a9a48c1..8e2a86df.0_47::
+                         666 .LDWlin47:
+                         667 	jarl	_D_INT_EnableInterrupts,lp
+                         667 <EXPANSION BEGIN>
+                         667 jarl22 _D_INT_EnableInterrupts , lp 
+000001bc 80ff0000*       667 <EXPANSION END>
+                         668 --371:         /* xx-n. ICUM_WDT Start */
+                         669 --372:         D_WDT_Start();
+                         670 .L561:
+                         671 --line372
+                         672 ..lin.9a9a48c1..8e2a86df.0_48::
+                         673 .LDWlin48:
+                         674 	jarl	_D_WDT_Start,lp
+                         674 <EXPANSION BEGIN>
+                         674 jarl22 _D_WDT_Start , lp 
+000001c0 80ff0000*       674 <EXPANSION END>
+                         675 --374:         /****** Prepare Secure boot ******/
+                         676 --375:         /* xx.  */
+                         677 --376:         /* xx-n. Retrieve the CMAC value from Data Flash */
+                         678 --377:         /* set cism state */
+                         679 --378:         (void)mh_INIT_IsEnableUpdate(&update_result);
+                         680 --line378
+                         681 ..lin.9a9a48c1..8e2a86df.0_49::
+                         682 .LDWlin49:
+000001c4 23361800        683 	movea	24,sp,r6
+                         684 .L563:
+                         685 	jarl	_mh_INIT_IsEnableUpdate,lp
+                         685 <EXPANSION BEGIN>
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         685 jarl22 _mh_INIT_IsEnableUpdate , lp 
+000001c8 80ffb600*       685 <EXPANSION END>
+                         686 --380:         if (AUTH_ENABLE == update_result)
+                         687 --line380
+                         688 ..lin.9a9a48c1..8e2a86df.0_50::
+                         689 .LDWlin50:
+000001cc 230f1900        690 	ld.w	24[sp],r1
+000001d0 610a            691 	cmp	1,r1
+000001d2 ca05*           692 	bne	.L23
+                         693 --381:         {
+                         694 --382:             (void)MH_SYSINFO_SetCISMState(SYSINFO_STATE_ON);
+                         695 --line382
+                         696 ..lin.9a9a48c1..8e2a86df.0_51::
+                         697 .LDWlin51:
+000001d4 0132            698 	mov	1,r6
+                         699 .L565:
+                         700 	jarl	_MH_SYSINFO_SetCISMState,lp
+                         700 <EXPANSION BEGIN>
+                         700 jarl22 _MH_SYSINFO_SetCISMState , lp 
+000001d6 80ff0000*       700 <EXPANSION END>
+                         701 .L23:
+                         702 --383:         }
+                         703 --384:         else
+                         704 --385:         {
+                         705 --386:             /* Do nothing */
+                         706 --387:         }
+                         707 --388:     }
+                         708 --389:     else
+                         709 --390:     {
+                         710 --391:         /* Do nothing */
+                         711 --392:     }
+                         712 --394:     return (err);
+                         713 --line394
+                         714 ..lin.9a9a48c1..8e2a86df.0_52::
+                         715 .LDWlin52:
+000001da 1d50            716 	mov	r29,r10
+                         717 --	    .ef
+                         718 .LDW11:
+000001dc 23ff5d00        719 	ld.w	92[sp],lp
+000001e0 23ef5900        720 	ld.w	88[sp],r29
+000001e4 031e6000        721 	addi	96,sp,sp
+                         722 .L567:
+                         723 	.jumptype return
+000001e8 7f00            724 	jmp	[lp]
+                         725 --line394
+                         726 ..lin.9a9a48c1..8e2a86df.0_53::
+                         727 	.type	_MH_INIT_Init,@function
+                         728 	.size	_MH_INIT_Init,.-_MH_INIT_Init
+                         729 	.align	2
+                         730 --_err	r29	local
+                         731 --_initprm_first	80[sp]	local
+                         732 --_regist_info_clk	4[sp]	local
+                         733 --_regist_info_int	8[sp]	local
+                         734 --_initprm_second	72[sp]	local
+                         735 --_regist_info_timer	64[sp]	local
+                         736 --_regist_info_mpu	12[sp]	local
+                         737 --_comm_cb_regist	56[sp]	local
+                         738 --_addjob_cb_regist	48[sp]	local
+                         739 --_pkc_prng_func	28[sp]	local
+                         740 --_check_debugger	16[sp]	local
+                         741 --_status	20[sp]	local
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         742 --_sys_cfg_testlock	3[sp]	local
+                         743 --_update_result	24[sp]	local
+                         744 
+                         745 	.section ".bss","awb"
+                         746 .L298:
+                         747 	.type	.L298,@object
+                         748 	.size	.L298,0
+                         749 	.section ".ghcalltbl",""
+                         750 	.align	4
+00000000 00000000*       751 .L500:	.word	.L499
+                         752 	.type	.L500,@object
+                         753 	.size	.L500,4
+00000004 00000000*       754 .L502:	.word	.L501
+                         755 	.type	.L502,@object
+                         756 	.size	.L502,4
+00000008 00000000*       757 .L504:	.word	.L503
+                         758 	.type	.L504,@object
+                         759 	.size	.L504,4
+0000000c 00000000*       760 .L506:	.word	.L505
+                         761 	.type	.L506,@object
+                         762 	.size	.L506,4
+00000010 00000000*       763 .L508:	.word	.L507
+                         764 	.type	.L508,@object
+                         765 	.size	.L508,4
+00000014 00000000*       766 .L510:	.word	.L509
+                         767 	.type	.L510,@object
+                         768 	.size	.L510,4
+00000018 00000000*       769 .L512:	.word	.L511
+                         770 	.type	.L512,@object
+                         771 	.size	.L512,4
+0000001c 00000000*       772 .L514:	.word	.L513
+                         773 	.type	.L514,@object
+                         774 	.size	.L514,4
+00000020 00000000*       775 .L516:	.word	.L515
+                         776 	.type	.L516,@object
+                         777 	.size	.L516,4
+00000024 00000000*       778 .L518:	.word	.L517
+                         779 	.type	.L518,@object
+                         780 	.size	.L518,4
+00000028 00000000*       781 .L520:	.word	.L519
+                         782 	.type	.L520,@object
+                         783 	.size	.L520,4
+0000002c 00000000*       784 .L522:	.word	.L521
+                         785 	.type	.L522,@object
+                         786 	.size	.L522,4
+00000030 00000000*       787 .L524:	.word	.L523
+                         788 	.type	.L524,@object
+                         789 	.size	.L524,4
+00000034 00000000*       790 .L526:	.word	.L525
+                         791 	.type	.L526,@object
+                         792 	.size	.L526,4
+00000038 00000000*       793 .L528:	.word	.L527
+                         794 	.type	.L528,@object
+                         795 	.size	.L528,4
+0000003c 00000000*       796 .L530:	.word	.L529
+                         797 	.type	.L530,@object
+                         798 	.size	.L530,4
+00000040 00000000*       799 .L532:	.word	.L531
+                         800 	.type	.L532,@object
+                         801 	.size	.L532,4
+00000044 00000000*       802 .L534:	.word	.L533
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         803 	.type	.L534,@object
+                         804 	.size	.L534,4
+00000048 00000000*       805 .L536:	.word	.L535
+                         806 	.type	.L536,@object
+                         807 	.size	.L536,4
+0000004c 00000000*       808 .L538:	.word	.L537
+                         809 	.type	.L538,@object
+                         810 	.size	.L538,4
+00000050 00000000*       811 .L540:	.word	.L539
+                         812 	.type	.L540,@object
+                         813 	.size	.L540,4
+00000054 00000000*       814 .L542:	.word	.L541
+                         815 	.type	.L542,@object
+                         816 	.size	.L542,4
+00000058 00000000*       817 .L544:	.word	.L543
+                         818 	.type	.L544,@object
+                         819 	.size	.L544,4
+0000005c 00000000*       820 .L546:	.word	.L545
+                         821 	.type	.L546,@object
+                         822 	.size	.L546,4
+00000060 00000000*       823 .L548:	.word	.L547
+                         824 	.type	.L548,@object
+                         825 	.size	.L548,4
+00000064 00000000*       826 .L550:	.word	.L549
+                         827 	.type	.L550,@object
+                         828 	.size	.L550,4
+00000068 00000000*       829 .L552:	.word	.L551
+                         830 	.type	.L552,@object
+                         831 	.size	.L552,4
+0000006c 00000000*       832 .L554:	.word	.L553
+                         833 	.type	.L554,@object
+                         834 	.size	.L554,4
+00000070 00000000*       835 .L556:	.word	.L555
+                         836 	.type	.L556,@object
+                         837 	.size	.L556,4
+00000074 00000000*       838 .L558:	.word	.L557
+                         839 	.type	.L558,@object
+                         840 	.size	.L558,4
+00000078 00000000*       841 .L560:	.word	.L559
+                         842 	.type	.L560,@object
+                         843 	.size	.L560,4
+0000007c 00000000*       844 .L562:	.word	.L561
+                         845 	.type	.L562,@object
+                         846 	.size	.L562,4
+00000080 00000000*       847 .L564:	.word	.L563
+                         848 	.type	.L564,@object
+                         849 	.size	.L564,4
+00000084 00000000*       850 .L566:	.word	.L565
+                         851 	.type	.L566,@object
+                         852 	.size	.L566,4
+                         853 	.section ".ghrettbl",""
+                         854 	.align	4
+00000000 00000000*       855 .L568:	.word	.L567
+                         856 	.type	.L568,@object
+                         857 	.size	.L568,4
+                         858 	.data
+                         859 	.section ".icum_middle.text","ax"
+                         860 
+                         861 --395: }
+                         862 
+                         863 --397: /***************************************************************************************
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         864 --398: * Function ID  : [ICUMFW_CD_MH_INIT_MNG_0005]:[ICUMFW_UD_MH_INIT_MNG_0005]
+                         865 --399: * Function name: MH_INIT_StartPE
+                         866 --400: * Description  : Startup PE
+                         867 --401: * Arguments    : N/A
+                         868 --402: * Return Value : ER_OK
+                         869 --403: *                ER_PARAM
+                         870 --404: ***************************************************************************************/
+                         871 --405: uint32_t MH_INIT_StartPE(void)
+                         872 	.align	2
+                         873 	.align	2
+                         874 	.align	2
+                         875 ..gh.f.a.2.e.1:
+                         876 	.type	..gh.f.a.2.e.1,@object
+                         877 	.size	..gh.f.a.2.e.1,0
+                         878 	.global	_MH_INIT_StartPE
+                         879 _MH_INIT_StartPE:
+000001ea 031ee8ff        880 	addi	-24,sp,sp
+000001ee 63ff1500        881 	st.w	lp,20[sp]
+000001f2 63ef1100        882 	st.w	r29,16[sp]
+                         883 --	    .bf
+                         884 .LDW21:
+                         885 --406: {
+                         886 --407:     uint32_t err;
+                         887 --408:     sys_cfg_rand_t sys_cfg_rand;
+                         888 --410:     sys_cfg_rand.rand_olt_no_ds_reset = CLR;
+000001f6 63070500        889 	st.w	zero,4[sp]
+                         890 --411:     sys_cfg_rand.rand_first_init_type = CLR;
+000001fa 63070d00        891 	st.w	zero,12[sp]
+                         892 --412:     
+                         893 --413:     /* 1. Startup PE0 */
+                         894 --414:     D_COMM_StartupPE();
+                         895 .L723:
+                         896 	jarl	_D_COMM_StartupPE,lp
+                         896 <EXPANSION BEGIN>
+                         896 jarl22 _D_COMM_StartupPE , lp 
+000001fe 80ff0000*       896 <EXPANSION END>
+                         897 --416:     /* 2. Set STARTPE bit - ICU2PES register */
+                         898 --417:     err = D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_STARTPE , SET);
+                         899 --line417
+                         900 ..lin.9a9a48c1..2f147d0e.0_54::
+                         901 .LDWlin54:
+00000202 40360080        902 	movhi	hi(-2147483648),zero,r6
+00000206 013a            903 	mov	1,r7
+                         904 .L725:
+                         905 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         905 <EXPANSION BEGIN>
+                         905 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000208 80ff0000*       905 <EXPANSION END>
+0000020c 0ae8            906 	mov	r10,r29
+                         907 --418:     if(err == ER_OK)
+                         908 --line418
+                         909 ..lin.9a9a48c1..2f147d0e.0_55::
+                         910 .LDWlin55:
+0000020e e0e9            911 	cmp	zero,r29
+00000210 fa2d*           912 	bne	.L585
+                         913 --419:     {
+                         914 --420:         /* 3. Get System Configuration */
+                         915 --421:         err = ML_CFG_GetSys(ML_CFG_SYS_RAND , (uint32_t*)&sys_cfg_rand);
+                         916 --line421
+                         917 ..lin.9a9a48c1..2f147d0e.0_56::
+                         918 .LDWlin56:
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+00000212 233e0000        919 	movea	0,sp,r7
+00000216 0f32            920 	mov	15,r6
+                         921 .L727:
+                         922 	jarl	_ML_CFG_GetSys,lp
+                         922 <EXPANSION BEGIN>
+                         922 jarl22 _ML_CFG_GetSys , lp 
+00000218 80ff0000*       922 <EXPANSION END>
+0000021c 0ae8            923 	mov	r10,r29
+                         924 --422:         if(err == ER_OK)
+                         925 --line422
+                         926 ..lin.9a9a48c1..2f147d0e.0_57::
+                         927 .LDWlin57:
+0000021e e0e9            928 	cmp	zero,r29
+00000220 fa25*           929 	bne	.L585
+                         930 --423:         {
+                         931 --424:             /* Clear TRNG bit - ICU2PES register */
+                         932 --425:             (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_TRNG, CLR);
+                         933 --line425
+                         934 ..lin.9a9a48c1..2f147d0e.0_58::
+                         935 .LDWlin58:
+00000222 40360002        936 	movhi	hi(33554432),zero,r6
+00000226 003a            937 	mov	0,r7
+                         938 .L729:
+                         939 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         939 <EXPANSION BEGIN>
+                         939 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000228 80ff0000*       939 <EXPANSION END>
+                         940 --426:             /* 4. TRNG pre start check */
+                         941 --427:             if(sys_cfg_rand.rand_trng_pre_init_start == TRNG_PRE_START_VALID)
+                         942 --line427
+                         943 ..lin.9a9a48c1..2f147d0e.0_59::
+                         944 .LDWlin59:
+0000022c 230f0100        945 	ld.w	0[sp],r1
+00000230 610a            946 	cmp	1,r1
+00000232 8a1d*           947 	bne	.L583
+                         948 --428:             {
+                         949 --429:                 /* 5. Start TRNG */
+                         950 --430:                 /* 5-1. Setting Online Test ON mode */
+                         951 --431:                 if ((uint32_t)RAND_NO_TEST != sys_cfg_rand.rand_olt_no_ds_reset)
+                         952 --line431
+                         953 ..lin.9a9a48c1..2f147d0e.0_60::
+                         954 .LDWlin60:
+00000234 230f0500        955 	ld.w	4[sp],r1
+00000238 e009            956 	cmp	zero,r1
+0000023a f205*           957 	be	.L577
+                         958 --432:                 {
+                         959 --433:                     (void)ML_PRNG_GenTrng(sys_cfg_rand.rand_olt_no_ds_reset, ML_TRNG_SIZE_TEST);
+                         960 --line433
+                         961 ..lin.9a9a48c1..2f147d0e.0_61::
+                         962 .LDWlin61:
+0000023c 23370500        963 	ld.w	4[sp],r6
+00000240 0a3a            964 	mov	10,r7
+                         965 .L731:
+                         966 	jarl	_ML_PRNG_GenTrng,lp
+                         966 <EXPANSION BEGIN>
+                         966 jarl22 _ML_PRNG_GenTrng , lp 
+00000242 80ff0000*       966 <EXPANSION END>
+00000246 e50d*           967 	br	.L583
+                         968 .L577:
+                         969 --434:                 }
+                         970 --435:                 /* 5-2. Setting SHE mode */
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                         971 --436:                 else if(sys_cfg_rand.rand_first_init_type == TRNG_SHE_MODE)
+                         972 --line436
+                         973 ..lin.9a9a48c1..2f147d0e.0_62::
+                         974 .LDWlin62:
+00000248 230f0d00        975 	ld.w	12[sp],r1
+0000024c e009            976 	cmp	zero,r1
+0000024e ea05*           977 	bne	.L580
+                         978 --437:                 {
+                         979 --438:                     (void)ML_PRNG_GenTrng(NUM0, ML_TRNG_SIZE_SHE);
+                         980 --line438
+                         981 ..lin.9a9a48c1..2f147d0e.0_63::
+                         982 .LDWlin63:
+00000250 0032            983 	mov	0,r6
+00000252 043a            984 	mov	4,r7
+                         985 .L733:
+                         986 	jarl	_ML_PRNG_GenTrng,lp
+                         986 <EXPANSION BEGIN>
+                         986 jarl22 _ML_PRNG_GenTrng , lp 
+00000254 80ff0000*       986 <EXPANSION END>
+00000258 d505*           987 	br	.L583
+                         988 .L580:
+                         989 --439:                 }
+                         990 --440:                 /* 5-3. Setting CTR DRBG mode */
+                         991 --441:                 else
+                         992 --442:                 {
+                         993 --443:                     (void)ML_PRNG_GenTrng(NUM0, ML_TRNG_SIZE_NIST);
+                         994 --line443
+                         995 ..lin.9a9a48c1..2f147d0e.0_64::
+                         996 .LDWlin64:
+0000025a 0032            997 	mov	0,r6
+0000025c 083a            998 	mov	8,r7
+                         999 .L735:
+                        1000 	jarl	_ML_PRNG_GenTrng,lp
+                        1000 <EXPANSION BEGIN>
+                        1000 jarl22 _ML_PRNG_GenTrng , lp 
+0000025e 80ff0000*      1000 <EXPANSION END>
+                        1001 .L583:
+                        1002 --444:                 }
+                        1003 --445:             }
+                        1004 --446:             else
+                        1005 --447:             {
+                        1006 --448:                 /* Do nothing */
+                        1007 --449:             }
+                        1008 --450:             /* 6. Set SERVAVAIL bit - ICU2PES register */
+                        1009 --451:             err = D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_SERVAVAIL , SET);
+                        1010 --line451
+                        1011 ..lin.9a9a48c1..2f147d0e.0_65::
+                        1012 .LDWlin65:
+00000262 40360010       1013 	movhi	hi(268435456),zero,r6
+00000266 013a           1014 	mov	1,r7
+                        1015 .L737:
+                        1016 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1016 <EXPANSION BEGIN>
+                        1016 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000268 80ff0000*      1016 <EXPANSION END>
+0000026c 0ae8           1017 	mov	r10,r29
+                        1018 .L585:
+                        1019 --452:         }
+                        1020 --453:         else
+                        1021 --454:         {
+                        1022 --455:             /* Do nothing */
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1023 --456:         }
+                        1024 --457:     }
+                        1025 --458:     else
+                        1026 --459:     {
+                        1027 --460:         /* Do nothing */
+                        1028 --461:     }
+                        1029 --463:     return(err);
+                        1030 --line463
+                        1031 ..lin.9a9a48c1..2f147d0e.0_66::
+                        1032 .LDWlin66:
+0000026e 1d50           1033 	mov	r29,r10
+                        1034 --	    .ef
+                        1035 .LDW31:
+00000270 23ff1500       1036 	ld.w	20[sp],lp
+00000274 23ef1100       1037 	ld.w	16[sp],r29
+00000278 031e1800       1038 	addi	24,sp,sp
+                        1039 .L739:
+                        1040 	.jumptype return
+0000027c 7f00           1041 	jmp	[lp]
+                        1042 --line463
+                        1043 ..lin.9a9a48c1..2f147d0e.0_67::
+                        1044 	.type	_MH_INIT_StartPE,@function
+                        1045 	.size	_MH_INIT_StartPE,.-_MH_INIT_StartPE
+                        1046 	.align	2
+                        1047 --_err	r29	local
+                        1048 --_sys_cfg_rand	0[sp]	local
+                        1049 
+                        1050 	.section ".bss","awb"
+                        1051 .L666:
+                        1052 	.type	.L666,@object
+                        1053 	.size	.L666,0
+                        1054 	.section ".ghcalltbl",""
+00000088 00000000*      1055 .L724:	.word	.L723
+                        1056 	.type	.L724,@object
+                        1057 	.size	.L724,4
+0000008c 00000000*      1058 .L726:	.word	.L725
+                        1059 	.type	.L726,@object
+                        1060 	.size	.L726,4
+00000090 00000000*      1061 .L728:	.word	.L727
+                        1062 	.type	.L728,@object
+                        1063 	.size	.L728,4
+00000094 00000000*      1064 .L730:	.word	.L729
+                        1065 	.type	.L730,@object
+                        1066 	.size	.L730,4
+00000098 00000000*      1067 .L732:	.word	.L731
+                        1068 	.type	.L732,@object
+                        1069 	.size	.L732,4
+0000009c 00000000*      1070 .L734:	.word	.L733
+                        1071 	.type	.L734,@object
+                        1072 	.size	.L734,4
+000000a0 00000000*      1073 .L736:	.word	.L735
+                        1074 	.type	.L736,@object
+                        1075 	.size	.L736,4
+000000a4 00000000*      1076 .L738:	.word	.L737
+                        1077 	.type	.L738,@object
+                        1078 	.size	.L738,4
+                        1079 	.section ".ghrettbl",""
+00000004 00000000*      1080 .L740:	.word	.L739
+                        1081 	.type	.L740,@object
+                        1082 	.size	.L740,4
+                        1083 	.data
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1084 	.section ".icum_middle.text","ax"
+                        1085 
+                        1086 --464: }
+                        1087 
+                        1088 --466: /***************************************************************************************
+                        1089 --467: * Function ID  : [ICUMFW_CD_MH_INIT_MNG_0003]:[ICUMFW_UD_MH_INIT_MNG_0003]
+                        1090 --468: * Function name: mh_INIT_IsEnableUpdate
+                        1091 --469: * Description  :
+                        1092 --470: * Arguments    : uint32_t update
+                        1093 --471: *              * uint32_t *result
+                        1094 --472: * Return Value : ER_OK
+                        1095 --473: ***************************************************************************************/
+                        1096 --474: static uint32_t mh_INIT_IsEnableUpdate(uint32_t *result)
+                        1097 	.align	2
+                        1098 	.align	2
+                        1099 	.align	2
+                        1100 ..gh.f.a.2.e.2:
+                        1101 	.type	..gh.f.a.2.e.2,@object
+                        1102 	.size	..gh.f.a.2.e.2,0
+                        1103 	.global	_mh_INIT_IsEnableUpdate..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1104 _mh_INIT_IsEnableUpdate..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.:
+                        1105 _mh_INIT_IsEnableUpdate:
+0000027e 06f0           1106 	mov	r6,ep
+                        1107 --	    .bf
+                        1108 .LDW41:
+                        1109 --475: {
+                        1110 --476:     if (NULL == result)
+00000280 e0f1           1111 	cmp	zero,ep
+00000282 ba05*          1112 	bne	.L743
+                        1113 --477:     {
+                        1114 --478:         return ER_PARAM;
+                        1115 --line478
+                        1116 ..lin.9a9a48c1..77781af1.0_68::
+                        1117 .LDWlin68:
+00000284 0152           1118 	mov	1,r10
+00000286 b505*          1119 	br	.L741
+                        1120 .L743:
+                        1121 --479:     }
+                        1122 --480:     *result = AUTH_DISABLE;
+                        1123 --line480
+                        1124 ..lin.9a9a48c1..77781af1.0_69::
+                        1125 .LDWlin69:
+00000288 0105           1126 	sst.w	zero,0[ep]
+                        1127 --481:     return (ER_OK);
+0000028a 0052           1128 	mov	0,r10
+                        1129 .L741:
+                        1130 --	    .ef
+                        1131 .LDW51:
+                        1132 .L799:
+                        1133 	.jumptype return
+0000028c 7f00           1134 	jmp	[lp]
+                        1135 --line480
+                        1136 ..lin.9a9a48c1..77781af1.0_70::
+                        1137 	.type	_mh_INIT_IsEnableUpdate,@function
+                        1138 	.size	_mh_INIT_IsEnableUpdate,.-_mh_INIT_IsEnableUpdate
+                        1139 	.type	_mh_INIT_IsEnableUpdate..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,@function
+                        1140 	.size	_mh_INIT_IsEnableUpdate..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,.-_mh_INIT_IsEnableUpdate..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1141 	.align	2
+                        1142 
+                        1143 --_result	ep	param
+                        1144 
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1145 	.section ".bss","awb"
+                        1146 .L778:
+                        1147 	.type	.L778,@object
+                        1148 	.size	.L778,0
+                        1149 	.section ".ghrettbl",""
+00000008 00000000*      1150 .L800:	.word	.L799
+                        1151 	.type	.L800,@object
+                        1152 	.size	.L800,4
+                        1153 	.data
+                        1154 	.section ".icum_middle.text","ax"
+                        1155 
+                        1156 --482: }
+                        1157 
+                        1158 --484: /***************************************************************************************
+                        1159 --485: * Function ID  : [ICUMFW_CD_UnifiedAPI_C3_0001]:[ICUMFW_UD_UnifiedAPI_C3_0001]
+                        1160 --486: * Function name: mh_INIT_InitFirst
+                        1161 --487: * Description  : 
+                        1162 --488: * Arguments    : p_initprm
+                        1163 --489: * Return Value : ER_OK
+                        1164 --490: ***************************************************************************************/
+                        1165 --491: static uint32_t mh_INIT_InitFirst(r_mh_Init_InitParamFirst_t* p_initprm)
+                        1166 	.align	2
+                        1167 	.align	2
+                        1168 	.align	2
+                        1169 ..gh.f.a.2.e.3:
+                        1170 	.type	..gh.f.a.2.e.3,@object
+                        1171 	.size	..gh.f.a.2.e.3,0
+                        1172 	.global	_mh_INIT_InitFirst..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1173 _mh_INIT_InitFirst..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.:
+                        1174 _mh_INIT_InitFirst:
+0000028e 031eecff       1175 	addi	-20,sp,sp
+00000292 63ff1100       1176 	st.w	lp,16[sp]
+00000296 63ef0900       1177 	st.w	r29,8[sp]
+0000029a 63e70d00       1178 	st.w	r28,12[sp]
+0000029e 06e8           1179 	mov	r6,r29
+                        1180 --	    .bf
+                        1181 .LDW61:
+                        1182 --492: {
+                        1183 --493:     /* Return value. */
+                        1184 --494:     uint32_t err;
+                        1185 --495:     /* Registration information of the function to call back when receiving an interrupt */
+                        1186 --496:     /* of clock monitor error for ICUM.                                                  */
+                        1187 --497:     icum_clma_cb_regist_t regist_info_clk;
+                        1188 --498:     /* Registration information of the function to call back when receiving an interrupt */
+                        1189 --499:     /* of system error.                                                                  */
+                        1190 --500:     ICUM_INT_CB_REGIST_t regist_info_int;
+                        1191 --502:     /* 1. Initialize clock driver. */
+                        1192 --503:     err = D_CLK_Init();
+                        1193 .L926:
+                        1194 	jarl	_D_CLK_Init,lp
+                        1194 <EXPANSION BEGIN>
+                        1194 jarl22 _D_CLK_Init , lp 
+000002a0 80ff0000*      1194 <EXPANSION END>
+000002a4 0ae0           1195 	mov	r10,r28
+                        1196 --504:     if (ER_OK == err)
+                        1197 --line504
+                        1198 ..lin.9a9a48c1..7aebe1c7.0_71::
+                        1199 .LDWlin71:
+000002a6 e0e1           1200 	cmp	zero,r28
+000002a8 fa05*          1201 	bne	.L803
+                        1202 --505:     {
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1203 --506:         /* 1-1. Set PLLSET bit - ICU2PES register */
+                        1204 --507:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_PLLSET, SET);
+                        1205 --line507
+                        1206 ..lin.9a9a48c1..7aebe1c7.0_72::
+                        1207 .LDWlin72:
+000002aa 40360040       1208 	movhi	hi(1073741824),zero,r6
+000002ae 013a           1209 	mov	1,r7
+                        1210 .L928:
+                        1211 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1211 <EXPANSION BEGIN>
+                        1211 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000002b0 80ff0000*      1211 <EXPANSION END>
+000002b4 e505*          1212 	br	.L805
+                        1213 .L803:
+                        1214 --508:     }
+                        1215 --509:     else
+                        1216 --510:     {
+                        1217 --511:         /* 1-2. Clear PLLSET bit - ICU2PES register */
+                        1218 --512:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_PLLSET, CLR);
+                        1219 --line512
+                        1220 ..lin.9a9a48c1..7aebe1c7.0_73::
+                        1221 .LDWlin73:
+000002b6 40360040       1222 	movhi	hi(1073741824),zero,r6
+000002ba 003a           1223 	mov	0,r7
+                        1224 .L930:
+                        1225 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1225 <EXPANSION BEGIN>
+                        1225 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000002bc 80ff0000*      1225 <EXPANSION END>
+                        1226 .L805:
+                        1227 --513:     }
+                        1228 --515:     /* 2. Start clock monitor. */
+                        1229 --516:     regist_info_clk = *(p_initprm->p_regist_info_clk);
+                        1230 --line516
+                        1231 ..lin.9a9a48c1..7aebe1c7.0_74::
+                        1232 .LDWlin74:
+000002c0 3df70100       1233 	ld.w	0[r29],ep
+000002c4 000d           1234 	sld.w	0[ep],r1
+000002c6 630f0100       1235 	st.w	r1,0[sp]
+                        1236 --517:     (void)D_CLK_StartCLMA(&regist_info_clk);
+000002ca 23360000       1237 	movea	0,sp,r6
+                        1238 .L932:
+                        1239 	jarl	_D_CLK_StartCLMA,lp
+                        1239 <EXPANSION BEGIN>
+                        1239 jarl22 _D_CLK_StartCLMA , lp 
+000002ce 80ff0000*      1239 <EXPANSION END>
+                        1240 --519:     /* 4. Initialize communication driver. */
+                        1241 --520:     D_COMM_Init();
+                        1242 .L934:
+                        1243 --line520
+                        1244 ..lin.9a9a48c1..7aebe1c7.0_75::
+                        1245 .LDWlin75:
+                        1246 	jarl	_D_COMM_Init,lp
+                        1246 <EXPANSION BEGIN>
+                        1246 jarl22 _D_COMM_Init , lp 
+000002d2 80ff0000*      1246 <EXPANSION END>
+                        1247 --522: #if defined(FSW_USE_CRAM)
+                        1248 --523:     /* Set CRAM guard */
+                        1249 --524:     (void)D_MPU_SetCramGuard();
+                        1250 --525: #endif
+                        1251 --527:     /* 5. Initialize the AES driver. */
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1252 --528:     (void)D_AES_Init((init_callback_t *)S_01_CIPHER_CallbackAes);
+                        1253 --line528
+                        1254 ..lin.9a9a48c1..7aebe1c7.0_76::
+                        1255 .LDWlin76:
+000002d6 260600000000*  1256 	mov	_S_01_CIPHER_CallbackAes,r6
+                        1257 .L936:
+                        1258 	jarl	_D_AES_Init,lp
+                        1258 <EXPANSION BEGIN>
+                        1258 jarl22 _D_AES_Init , lp 
+000002dc 80ff0000*      1258 <EXPANSION END>
+                        1259 --530:     /* 7. Initialize the information driver. */
+                        1260 --531:     (void)D_INFO_Init();
+                        1261 .L938:
+                        1262 --line531
+                        1263 ..lin.9a9a48c1..7aebe1c7.0_77::
+                        1264 .LDWlin77:
+                        1265 	jarl	_D_INFO_Init,lp
+                        1265 <EXPANSION BEGIN>
+                        1265 jarl22 _D_INFO_Init , lp 
+000002e0 80ff0000*      1265 <EXPANSION END>
+                        1266 --533:     /* 8. Initialize the OS timer of timer driver. */
+                        1267 --534:     D_OST_Init();
+                        1268 .L940:
+                        1269 --line534
+                        1270 ..lin.9a9a48c1..7aebe1c7.0_78::
+                        1271 .LDWlin78:
+                        1272 	jarl	_D_OST_Init,lp
+                        1272 <EXPANSION BEGIN>
+                        1272 jarl22 _D_OST_Init , lp 
+000002e4 80ff0000*      1272 <EXPANSION END>
+                        1273 --536:     /* 9. Initialize the interrupt driver. */
+                        1274 --537:     regist_info_int = *(p_initprm->p_regist_info_int);
+                        1275 --line537
+                        1276 ..lin.9a9a48c1..7aebe1c7.0_79::
+                        1277 .LDWlin79:
+000002e8 3df70500       1278 	ld.w	4[r29],ep
+000002ec 000d           1279 	sld.w	0[ep],r1
+000002ee 630f0500       1280 	st.w	r1,4[sp]
+                        1281 --538:     (void)D_INT_Init(&regist_info_int);
+000002f2 23360400       1282 	movea	4,sp,r6
+                        1283 .L942:
+                        1284 	jarl	_D_INT_Init,lp
+                        1284 <EXPANSION BEGIN>
+                        1284 jarl22 _D_INT_Init , lp 
+000002f6 80ff0000*      1284 <EXPANSION END>
+                        1285 --540:     return ER_OK;
+                        1286 --line540
+                        1287 ..lin.9a9a48c1..7aebe1c7.0_80::
+                        1288 .LDWlin80:
+000002fa 0052           1289 	mov	0,r10
+                        1290 --	    .ef
+                        1291 .LDW71:
+000002fc 23ff1100       1292 	ld.w	16[sp],lp
+00000300 23ef0900       1293 	ld.w	8[sp],r29
+00000304 23e70d00       1294 	ld.w	12[sp],r28
+00000308 031e1400       1295 	addi	20,sp,sp
+                        1296 .L944:
+                        1297 	.jumptype return
+0000030c 7f00           1298 	jmp	[lp]
+                        1299 --line540
+                        1300 ..lin.9a9a48c1..7aebe1c7.0_81::
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1301 	.type	_mh_INIT_InitFirst,@function
+                        1302 	.size	_mh_INIT_InitFirst,.-_mh_INIT_InitFirst
+                        1303 	.type	_mh_INIT_InitFirst..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,@function
+                        1304 	.size	_mh_INIT_InitFirst..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,.-_mh_INIT_InitFirst..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1305 	.align	2
+                        1306 --_err	r28	local
+                        1307 --_regist_info_clk	0[sp]	local
+                        1308 --_regist_info_int	4[sp]	local
+                        1309 
+                        1310 --_p_initprm	r29	param
+                        1311 
+                        1312 	.section ".bss","awb"
+                        1313 .L878:
+                        1314 	.type	.L878,@object
+                        1315 	.size	.L878,0
+                        1316 	.section ".ghcalltbl",""
+000000a8 00000000*      1317 .L927:	.word	.L926
+                        1318 	.type	.L927,@object
+                        1319 	.size	.L927,4
+000000ac 00000000*      1320 .L929:	.word	.L928
+                        1321 	.type	.L929,@object
+                        1322 	.size	.L929,4
+000000b0 00000000*      1323 .L931:	.word	.L930
+                        1324 	.type	.L931,@object
+                        1325 	.size	.L931,4
+000000b4 00000000*      1326 .L933:	.word	.L932
+                        1327 	.type	.L933,@object
+                        1328 	.size	.L933,4
+000000b8 00000000*      1329 .L935:	.word	.L934
+                        1330 	.type	.L935,@object
+                        1331 	.size	.L935,4
+000000bc 00000000*      1332 .L937:	.word	.L936
+                        1333 	.type	.L937,@object
+                        1334 	.size	.L937,4
+000000c0 00000000*      1335 .L939:	.word	.L938
+                        1336 	.type	.L939,@object
+                        1337 	.size	.L939,4
+000000c4 00000000*      1338 .L941:	.word	.L940
+                        1339 	.type	.L941,@object
+                        1340 	.size	.L941,4
+000000c8 00000000*      1341 .L943:	.word	.L942
+                        1342 	.type	.L943,@object
+                        1343 	.size	.L943,4
+                        1344 	.section ".ghrettbl",""
+0000000c 00000000*      1345 .L945:	.word	.L944
+                        1346 	.type	.L945,@object
+                        1347 	.size	.L945,4
+                        1348 	.data
+                        1349 	.section ".icum_middle.text","ax"
+                        1350 
+                        1351 --541: }
+                        1352 
+                        1353 --543: /***************************************************************************************
+                        1354 --544: * Function ID  : [ICUMFW_CD_UnifiedAPI_C3_0002]:[ICUMFW_UD_UnifiedAPI_C3_0002]
+                        1355 --545: * Function name: mh_Init_InitSecond
+                        1356 --546: * Description  : 
+                        1357 --547: * Arguments    : p_initprm
+                        1358 --548: * Return Value : ER_OK
+                        1359 --549: ***************************************************************************************/
+                        1360 --550: static uint32_t mh_Init_InitSecond(r_mh_Init_InitParamSecond_t* p_initprm)
+                        1361 	.align	2
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1362 	.align	2
+                        1363 	.align	2
+                        1364 ..gh.f.a.2.e.4:
+                        1365 	.type	..gh.f.a.2.e.4,@object
+                        1366 	.size	..gh.f.a.2.e.4,0
+                        1367 	.global	_mh_Init_InitSecond..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1368 _mh_Init_InitSecond..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.:
+                        1369 _mh_Init_InitSecond:
+0000030e 031ee8ff       1370 	addi	-24,sp,sp
+00000312 63ff1500       1371 	st.w	lp,20[sp]
+00000316 63ef1100       1372 	st.w	r29,16[sp]
+0000031a 06e8           1373 	mov	r6,r29
+                        1374 --	    .bf
+                        1375 .LDW81:
+                        1376 --551: {
+                        1377 --552:     /* Registration information of the function to call back when receiving an interrupt */
+                        1378 --553:     /* of watchdog timer.                                                                */
+                        1379 --554:     s_WDT_init_prm_t regist_info_timer;
+                        1380 --555:     /* Registration information of the function to call back when receiving an interrupt */
+                        1381 --556:     /* of memory protection unit.                                                        */
+                        1382 --557:     icum_mpu_cb_regist_t regist_info_mpu;
+                        1383 --558:     /* Structure for initializing the ECC driver. */
+                        1384 --559:     ICUM_ECC_CB_REGIST_t regist_info_ecc;
+                        1385 --561:     /* 1. Initialize the watchdog timer of timer driver. */
+                        1386 --562:     if ((NULL != p_initprm) && (NULL != p_initprm->p_regist_info_timer))
+0000031c e0e9           1387 	cmp	zero,r29
+0000031e e20d*          1388 	be	.L948
+00000320 3d0f0100       1389 	ld.w	0[r29],r1
+00000324 e009           1390 	cmp	zero,r1
+00000326 a20d*          1391 	be	.L948
+                        1392 --563:     {
+                        1393 --564:         /* 1-1. Initialize with the input value. */
+                        1394 --565:         regist_info_timer = *(p_initprm->p_regist_info_timer);
+                        1395 --line565
+                        1396 ..lin.9a9a48c1..68be8e1b.0_82::
+                        1397 .LDWlin82:
+00000328 3d0f0100       1398 	ld.w	0[r29],r1
+0000032c a10709900000   1399 	ld.dw	0[r1],r18
+00000332 a3078f900000   1400 	st.dw	r18,8[sp]
+00000338 850d*          1401 	br	.L951
+                        1402 .L948:
+                        1403 --566:     }
+                        1404 --567:     else
+                        1405 --568:     {
+                        1406 --569:         /* 1-2. Initialize with default value. */
+                        1407 --570:         regist_info_timer.mode = WDT_ERM_NMI;
+                        1408 --line570
+                        1409 ..lin.9a9a48c1..68be8e1b.0_83::
+                        1410 .LDWlin83:
+0000033a 43070800       1411 	st.b	zero,8[sp]
+                        1412 --571:         regist_info_timer.ovf = WDT_OVF_256MS;
+0000033e 070a           1413 	mov	7,r1
+00000340 430f0900       1414 	st.b	r1,9[sp]
+                        1415 --572:         regist_info_timer.p_callback = (p_wdt_func_addr_t *)NULL;
+00000344 63070d00       1416 	st.w	zero,12[sp]
+                        1417 .L951:
+                        1418 --573:     }
+                        1419 --574:     D_WDT_Init(&regist_info_timer);
+00000348 23360800       1420 	movea	8,sp,r6
+                        1421 .L1084:
+                        1422 	jarl	_D_WDT_Init,lp
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1422 <EXPANSION BEGIN>
+                        1422 jarl22 _D_WDT_Init , lp 
+0000034c 80ff0000*      1422 <EXPANSION END>
+                        1423 --576:     /* 2. Initialize MPU driver. */
+                        1424 --577:     regist_info_mpu = *(p_initprm->p_regist_info_mpu);
+                        1425 --line577
+                        1426 ..lin.9a9a48c1..68be8e1b.0_84::
+                        1427 .LDWlin84:
+00000350 3df70500       1428 	ld.w	4[r29],ep
+00000354 000d           1429 	sld.w	0[ep],r1
+00000356 630f0100       1430 	st.w	r1,0[sp]
+                        1431 --578:     (void)D_MPU_Init(&regist_info_mpu);
+0000035a 23360000       1432 	movea	0,sp,r6
+                        1433 .L1086:
+                        1434 	jarl	_D_MPU_Init,lp
+                        1434 <EXPANSION BEGIN>
+                        1434 jarl22 _D_MPU_Init , lp 
+0000035e 80ff0000*      1434 <EXPANSION END>
+                        1435 --580:     /* 3. Initialize flash driver. */
+                        1436 --581:     /* 4. Initialize ECC driver. */
+                        1437 --582:     regist_info_ecc.p_cbfunc = (p_eccfunc_addr *)NULL;
+                        1438 --line582
+                        1439 ..lin.9a9a48c1..68be8e1b.0_85::
+                        1440 .LDWlin85:
+00000362 63070500       1441 	st.w	zero,4[sp]
+                        1442 --583:     (void)D_ECC_Init(&regist_info_ecc);
+00000366 23360400       1443 	movea	4,sp,r6
+                        1444 .L1088:
+                        1445 	jarl	_D_ECC_Init,lp
+                        1445 <EXPANSION BEGIN>
+                        1445 jarl22 _D_ECC_Init , lp 
+0000036a 80ff0000*      1445 <EXPANSION END>
+                        1446 --585:     /* 4. Initialize TRNG driver. */
+                        1447 --586:     (void)D_TRNG_Init();
+                        1448 .L1090:
+                        1449 --line586
+                        1450 ..lin.9a9a48c1..68be8e1b.0_86::
+                        1451 .LDWlin86:
+                        1452 	jarl	_D_TRNG_Init,lp
+                        1452 <EXPANSION BEGIN>
+                        1452 jarl22 _D_TRNG_Init , lp 
+0000036e 80ff0000*      1452 <EXPANSION END>
+                        1453 --588:     /* 5. Initialize the challenge and response driver. */
+                        1454 --589:     (void)D_CR_Init();
+                        1455 .L1092:
+                        1456 --line589
+                        1457 ..lin.9a9a48c1..68be8e1b.0_87::
+                        1458 .LDWlin87:
+                        1459 	jarl	_D_CR_Init,lp
+                        1459 <EXPANSION BEGIN>
+                        1459 jarl22 _D_CR_Init , lp 
+00000372 80ff0000*      1459 <EXPANSION END>
+                        1460 --591:     /* 6. Initialize reset driver. */
+                        1461 --592:     (void)D_RESET_Init();
+                        1462 .L1094:
+                        1463 --line592
+                        1464 ..lin.9a9a48c1..68be8e1b.0_88::
+                        1465 .LDWlin88:
+                        1466 	jarl	_D_RESET_Init,lp
+                        1466 <EXPANSION BEGIN>
+                        1466 jarl22 _D_RESET_Init , lp 
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+00000376 80ff0000*      1466 <EXPANSION END>
+                        1467 --594:     return ER_OK;
+                        1468 --line594
+                        1469 ..lin.9a9a48c1..68be8e1b.0_89::
+                        1470 .LDWlin89:
+0000037a 0052           1471 	mov	0,r10
+                        1472 --	    .ef
+                        1473 .LDW91:
+0000037c 23ff1500       1474 	ld.w	20[sp],lp
+00000380 23ef1100       1475 	ld.w	16[sp],r29
+00000384 031e1800       1476 	addi	24,sp,sp
+                        1477 .L1096:
+                        1478 	.jumptype return
+00000388 7f00           1479 	jmp	[lp]
+                        1480 --line594
+                        1481 ..lin.9a9a48c1..68be8e1b.0_90::
+                        1482 	.type	_mh_Init_InitSecond,@function
+                        1483 	.size	_mh_Init_InitSecond,.-_mh_Init_InitSecond
+                        1484 	.type	_mh_Init_InitSecond..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,@function
+                        1485 	.size	_mh_Init_InitSecond..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,.-_mh_Init_InitSecond..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1486 	.align	2
+                        1487 --_regist_info_timer	8[sp]	local
+                        1488 --_regist_info_mpu	0[sp]	local
+                        1489 --_regist_info_ecc	4[sp]	local
+                        1490 
+                        1491 --_p_initprm	r29	param
+                        1492 
+                        1493 	.section ".bss","awb"
+                        1494 .L1030:
+                        1495 	.type	.L1030,@object
+                        1496 	.size	.L1030,0
+                        1497 	.section ".ghcalltbl",""
+000000cc 00000000*      1498 .L1085:	.word	.L1084
+                        1499 	.type	.L1085,@object
+                        1500 	.size	.L1085,4
+000000d0 00000000*      1501 .L1087:	.word	.L1086
+                        1502 	.type	.L1087,@object
+                        1503 	.size	.L1087,4
+000000d4 00000000*      1504 .L1089:	.word	.L1088
+                        1505 	.type	.L1089,@object
+                        1506 	.size	.L1089,4
+000000d8 00000000*      1507 .L1091:	.word	.L1090
+                        1508 	.type	.L1091,@object
+                        1509 	.size	.L1091,4
+000000dc 00000000*      1510 .L1093:	.word	.L1092
+                        1511 	.type	.L1093,@object
+                        1512 	.size	.L1093,4
+000000e0 00000000*      1513 .L1095:	.word	.L1094
+                        1514 	.type	.L1095,@object
+                        1515 	.size	.L1095,4
+                        1516 	.section ".ghrettbl",""
+00000010 00000000*      1517 .L1097:	.word	.L1096
+                        1518 	.type	.L1097,@object
+                        1519 	.size	.L1097,4
+                        1520 	.data
+                        1521 	.section ".icum_middle.text","ax"
+                        1522 
+                        1523 --595: }
+                        1524 
+                        1525 --597: /***************************************************************************************
+                        1526 --598: * Function ID  : [ICUMFW_CD_MH_INIT_MNG_0002]:[ICUMFW_UD_MH_INIT_MNG_0002]
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1527 --599: * Function name: mh_Init_JudgeStartupSide
+                        1528 --600: * Description  : Judge Startup Side for OTA
+                        1529 --601: * Arguments    : N/A
+                        1530 --602: * Return Value : N/A
+                        1531 --603: ***************************************************************************************/
+                        1532 --604: static void mh_Init_JudgeStartupSide(void)
+                        1533 	.align	2
+                        1534 	.align	2
+                        1535 	.align	2
+                        1536 ..gh.f.a.2.e.5:
+                        1537 	.type	..gh.f.a.2.e.5,@object
+                        1538 	.size	..gh.f.a.2.e.5,0
+                        1539 	.global	_mh_Init_JudgeStartupSide..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1540 _mh_Init_JudgeStartupSide..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.:
+                        1541 _mh_Init_JudgeStartupSide:
+0000038a 5c1a           1542 	add	-4,sp
+0000038c 63ff0100       1543 	st.w	lp,0[sp]
+                        1544 --	    .bf
+                        1545 .LDW02:
+                        1546 --605: {
+                        1547 --606:     (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_STARTUP, CLR);
+00000390 40364000       1548 	movhi	hi(4194304),zero,r6
+00000394 003a           1549 	mov	0,r7
+                        1550 .L1137:
+                        1551 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1551 <EXPANSION BEGIN>
+                        1551 jarl22 _D_COMM_SetICUStatusInfo , lp 
+00000396 80ff0000*      1551 <EXPANSION END>
+                        1552 --608:     return;
+                        1553 --line608
+                        1554 ..lin.9a9a48c1..4e980132.0_91::
+                        1555 .LDWlin91:
+0000039a 0000           1556 	nop
+                        1557 --	    .ef
+                        1558 .LDW12:
+0000039c 23ff0100       1559 	ld.w	0[sp],lp
+000003a0 441a           1560 	add	4,sp
+                        1561 .L1139:
+                        1562 	.jumptype return
+000003a2 7f00           1563 	jmp	[lp]
+                        1564 --line608
+                        1565 ..lin.9a9a48c1..4e980132.0_92::
+                        1566 	.type	_mh_Init_JudgeStartupSide,@function
+                        1567 	.size	_mh_Init_JudgeStartupSide,.-_mh_Init_JudgeStartupSide
+                        1568 	.type	_mh_Init_JudgeStartupSide..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,@function
+                        1569 	.size	_mh_Init_JudgeStartupSide..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.,.-_mh_Init_JudgeStartupSide..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init.
+                        1570 	.align	2
+                        1571 
+                        1572 	.section ".bss","awb"
+                        1573 .L1122:
+                        1574 	.type	.L1122,@object
+                        1575 	.size	.L1122,0
+                        1576 	.section ".ghcalltbl",""
+000000e4 00000000*      1577 .L1138:	.word	.L1137
+                        1578 	.type	.L1138,@object
+                        1579 	.size	.L1138,4
+                        1580 	.section ".ghrettbl",""
+00000014 00000000*      1581 .L1140:	.word	.L1139
+                        1582 	.type	.L1140,@object
+                        1583 	.size	.L1140,4
+                        1584 	.data
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011ns1.si
+                        1585 	.section ".icum_middle.text","ax"
+                        1586 
+                        1587 --609: }
+                        1588 	.align	2
+                        1589 
+                        1590 	.data
+                        1591 	.ghsnote version,30
+                        1592 	.ghsnote tools,3
+                        1593 	.ghsnote options,656
+                        1594 	.section ".icum_middle.text","ax"
+                        1595 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cmiddle.5Cobj.5Clibs.5Cicum_mh_init.5Cicum_mh_init...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40645..0::
+                        1596 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

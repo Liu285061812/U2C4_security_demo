@@ -1,0 +1,2511 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\libs\pe2\debug_sub.dbo -source=debug_sub.c -comp -o ..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\gh_0000qr81.o -list=..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\debug_sub.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+Source File: debug_sub.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\src\l_vrun\l_vrun_cmd
+                           4 --		-I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\target\u2cx\src\driver\comm_drv
+                           6 --		-I..\..\pe\target\u2cx\src\shared\src
+                           7 --		-I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include
+                           8 --		-I..\..\pe\generic
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          11 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          12 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          13 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          14 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          15 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          16 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          17 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          18 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          19 --		-D_PEID_=2 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle -DD_PEID=2
+                          20 --		-D_TARG_=U2C4 -filetype.c
+                          21 --		..\..\pe\generic\src\pe2\src\debug_sub.c -o
+                          22 --		..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\debug_sub.o
+                          23 --Source File:   ..\..\pe\generic\src\pe2\src\debug_sub.c
+                          24 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          25 --Compile Date:  Wed Nov 11 11:21:54 2026
+                          26 --Host OS:       Win64
+                          27 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          28 --Release:       Compiler v2023.5.4
+                          29 --Revision Date: Wed Sep 06 02:44:56 2023
+                          30 --Release Date:  Wed Sep 06 02:00:00 2023
+                          31 -- ecom  -g -w
+                          32 
+                          33 --1: /******************************************************************************/
+                          34 --2: /* Component Name   Testing the ICU-M                                         */
+                          35 --3: /******************************************************************************/
+                          36 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          37 --5: /******************************************************************************/
+                          38 --6: /***********************************************************************************************************************
+                          39 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          40 --8: * 
+                          41 --9: * DISCLAIMER
+                          42 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          43 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          44 --12: * applicable laws, including copyright laws.
+                          45 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          46 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          47 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          48 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          49 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          50 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                          51 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          52 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          53 --21: * following link:
+                          54 --22: * www.renesas.com/disclaimer
+                          55 --23: *
+                          56 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          57 --25: ***********************************************************************************************************************/
+                          58 --27: #include    "renesas_types.h"
+                          59 --28: #include    "debug_sub.h"
+                          60 --29: #include    "pe2.h"
+                          61 --30: #include    "pe_reg.h"
+                          62 --31: #include    <string.h>
+                          63 --32: #include    "shared.h"
+                          64 --33: #include    "vrun.api.h"
+                          65 --35: /*--------------------------------------*/
+                          66 --36: void regWrite32(volatile unsigned int  *address, unsigned int  data)
+                          67 	.text
+                          68 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF55..0::
+                          69 	.align	2
+                          70 	.align	2
+                          71 ..gh.f.a.2.e.0:
+                          72 	.type	..gh.f.a.2.e.0,@object
+                          73 	.size	..gh.f.a.2.e.0,0
+                          74 	.global	_regWrite32
+                          75 _regWrite32:
+00000000 06f0             76 	mov	r6,ep
+00000002 0708             77 	mov	r7,r1
+                          78 --	    .bf
+                          79 .LDW01:
+                          80 --37: {
+                          81 --38:     *address = data;
+00000004 010d             82 	sst.w	r1,0[ep]
+                          83 --39:     return;
+00000006 0000             84 	nop
+                          85 --	    .ef
+                          86 .LDW11:
+                          87 .L40:
+                          88 	.jumptype return
+00000008 7f00             89 	jmp	[lp]
+                          90 --line37
+                          91 ..lin.6aafec0d..73bf0232.0_1::
+                          92 	.type	_regWrite32,@function
+                          93 	.size	_regWrite32,.-_regWrite32
+                          94 	.align	2
+                          95 
+                          96 --_address	ep	param
+                          97 --_data	r1	param
+                          98 
+                          99 	.section ".ghrettbl",""
+                         100 	.align	4
+00000000 00000000*       101 .L41:	.word	.L40
+                         102 	.type	.L41,@object
+                         103 	.size	.L41,4
+                         104 	.data
+                         105 	.text
+                         106 
+                         107 --40: }/*--------------------------------------*/
+                         108 
+                         109 --42: #define UNLOCK_DATA (0xA5A5A501)
+                         110 --43: #define LOCK_DATA   (0xA5A5A500)
+                         111 --44: void protectRegWrite(volatile unsigned int *pAddress, volatile unsigned int *dAddress, unsigned int data)
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         112 	.align	2
+                         113 	.align	2
+                         114 	.align	2
+                         115 ..gh.f.a.2.e.1:
+                         116 	.type	..gh.f.a.2.e.1,@object
+                         117 	.size	..gh.f.a.2.e.1,0
+                         118 	.global	_protectRegWrite
+                         119 _protectRegWrite:
+0000000a 501a            120 	add	-16,sp
+0000000c 63ff0d00        121 	st.w	lp,12[sp]
+00000010 63df0900        122 	st.w	r27,8[sp]
+00000014 63e70500        123 	st.w	r28,4[sp]
+00000018 63ef0100        124 	st.w	r29,0[sp]
+0000001c 06e8            125 	mov	r6,r29
+0000001e 07e0            126 	mov	r7,r28
+00000020 08d8            127 	mov	r8,r27
+                         128 --	    .bf
+                         129 .LDW21:
+                         130 --45: {
+                         131 --46:   /* Enables write access of protected registers */
+                         132 --47:   regWrite32(pAddress, UNLOCK_DATA);
+00000022 1d30            133 	mov	r29,r6
+00000024 270601a5a5a5    134 	mov	-1515870975,r7
+                         135 .L82:
+                         136 	jarl	_regWrite32,lp
+                         136 <EXPANSION BEGIN>
+                         136 jarl22 _regWrite32 , lp 
+0000002a bfffd6ff*       136 <EXPANSION END>
+                         137 --49:   /* Generate System Reset 2 */
+                         138 --50:   regWrite32(dAddress, data);
+                         139 --line50
+                         140 ..lin.6aafec0d..a860a76e.0_2::
+                         141 .LDWlin2:
+0000002e 1c30            142 	mov	r28,r6
+00000030 1b38            143 	mov	r27,r7
+                         144 .L84:
+                         145 	jarl	_regWrite32,lp
+                         145 <EXPANSION BEGIN>
+                         145 jarl22 _regWrite32 , lp 
+00000032 bfffceff*       145 <EXPANSION END>
+                         146 --52:   /* Disables write access of protected registers */
+                         147 --53:   regWrite32(pAddress, LOCK_DATA);
+                         148 --line53
+                         149 ..lin.6aafec0d..a860a76e.0_3::
+                         150 .LDWlin3:
+00000036 1d30            151 	mov	r29,r6
+00000038 270600a5a5a5    152 	mov	-1515870976,r7
+                         153 .L86:
+                         154 	jarl	_regWrite32,lp
+                         154 <EXPANSION BEGIN>
+                         154 jarl22 _regWrite32 , lp 
+0000003e bfffc2ff*       154 <EXPANSION END>
+                         155 --55:   return;
+                         156 --line55
+                         157 ..lin.6aafec0d..a860a76e.0_4::
+                         158 .LDWlin4:
+00000042 0000            159 	nop
+                         160 --	    .ef
+                         161 .LDW31:
+00000044 23ff0d00        162 	ld.w	12[sp],lp
+00000048 23ef0100        163 	ld.w	0[sp],r29
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+0000004c 23e70500        164 	ld.w	4[sp],r28
+00000050 23df0900        165 	ld.w	8[sp],r27
+00000054 031e1000        166 	addi	16,sp,sp
+                         167 .L88:
+                         168 	.jumptype return
+00000058 7f00            169 	jmp	[lp]
+                         170 --line55
+                         171 ..lin.6aafec0d..a860a76e.0_5::
+                         172 	.type	_protectRegWrite,@function
+                         173 	.size	_protectRegWrite,.-_protectRegWrite
+                         174 	.align	2
+                         175 
+                         176 --_pAddress	r29	param
+                         177 --_dAddress	r28	param
+                         178 --_data	r27	param
+                         179 
+                         180 	.section ".ghcalltbl",""
+                         181 	.align	4
+00000000 00000000*       182 .L83:	.word	.L82
+                         183 	.type	.L83,@object
+                         184 	.size	.L83,4
+00000004 00000000*       185 .L85:	.word	.L84
+                         186 	.type	.L85,@object
+                         187 	.size	.L85,4
+00000008 00000000*       188 .L87:	.word	.L86
+                         189 	.type	.L87,@object
+                         190 	.size	.L87,4
+                         191 	.section ".ghrettbl",""
+00000004 00000000*       192 .L89:	.word	.L88
+                         193 	.type	.L89,@object
+                         194 	.size	.L89,4
+                         195 	.data
+                         196 	.text
+                         197 
+                         198 --56: }
+                         199 
+                         200 --58: /*------------------------------------------------------------------------------*/
+                         201 --59: /* SoftReset(For H / W control)                                                 */
+                         202 --60: /*------------------------------------------------------------------------------*/
+                         203 --61: void proc_SOFTRESET(void)
+                         204 	.align	2
+                         205 	.align	2
+                         206 	.align	2
+                         207 ..gh.f.a.2.e.2:
+                         208 	.type	..gh.f.a.2.e.2,@object
+                         209 	.size	..gh.f.a.2.e.2,0
+                         210 	.global	_proc_SOFTRESET
+                         211 _proc_SOFTRESET:
+0000005a 5c1a            212 	add	-4,sp
+0000005c 63ff0100        213 	st.w	lp,0[sp]
+                         214 --	    .bf
+                         215 .LDW41:
+                         216 --62: {
+                         217 --63:   protectRegWrite(&REG_PE_RESKCPROT, &REG_PE_SWSRESA, 0x00000001);
+00000060 2606000f98ff    218 	mov	-6811904,r6
+00000066 27060c8498ff    219 	mov	-6781940,r7
+0000006c 0142            220 	mov	1,r8
+                         221 .L120:
+                         222 	jarl	_protectRegWrite,lp
+                         222 <EXPANSION BEGIN>
+                         222 jarl22 _protectRegWrite , lp 
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+0000006e bfff9cff*       222 <EXPANSION END>
+                         223 --64:   return;
+                         224 --line64
+                         225 ..lin.6aafec0d..44582f76.0_6::
+                         226 .LDWlin6:
+00000072 0000            227 	nop
+                         228 --	    .ef
+                         229 .LDW51:
+00000074 23ff0100        230 	ld.w	0[sp],lp
+00000078 441a            231 	add	4,sp
+                         232 .L122:
+                         233 	.jumptype return
+0000007a 7f00            234 	jmp	[lp]
+                         235 --line64
+                         236 ..lin.6aafec0d..44582f76.0_7::
+                         237 	.type	_proc_SOFTRESET,@function
+                         238 	.size	_proc_SOFTRESET,.-_proc_SOFTRESET
+                         239 	.align	2
+                         240 
+                         241 	.section ".ghcalltbl",""
+0000000c 00000000*       242 .L121:	.word	.L120
+                         243 	.type	.L121,@object
+                         244 	.size	.L121,4
+                         245 	.section ".ghrettbl",""
+00000008 00000000*       246 .L123:	.word	.L122
+                         247 	.type	.L123,@object
+                         248 	.size	.L123,4
+                         249 	.data
+                         250 	.text
+                         251 
+                         252 --65: }
+                         253 
+                         254 --67: void console_get(void)
+                         255 	.align	2
+                         256 	.align	2
+                         257 	.align	2
+                         258 	.align	2
+                         259 ..gh.f.a.2.e.3:
+                         260 	.type	..gh.f.a.2.e.3,@object
+                         261 	.size	..gh.f.a.2.e.3,0
+                         262 	.global	_console_get
+                         263 _console_get:
+0000007c 581a            264 	add	-8,sp
+0000007e 63ff0500        265 	st.w	lp,4[sp]
+00000082 63ef0100        266 	st.w	r29,0[sp]
+                         267 --	    .bf
+                         268 .LDW61:
+                         269 --68: {
+                         270 --69:     char *p = vrun_iobuff_readparam(0);
+00000086 0032            271 	mov	0,r6
+                         272 .L163:
+                         273 	jarl	_vrun_iobuff_readparam,lp
+                         273 <EXPANSION BEGIN>
+                         273 jarl22 _vrun_iobuff_readparam , lp 
+00000088 80ff0000*       273 <EXPANSION END>
+0000008c 0ae8            274 	mov	r10,r29
+                         275 --70:     
+                         276 --71:     vrun_console_get();
+                         277 .L165:
+                         278 --line71
+                         279 ..lin.6aafec0d..6933a296.0_8::
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         280 .LDWlin8:
+                         281 	jarl	_vrun_console_get,lp
+                         281 <EXPANSION BEGIN>
+                         281 jarl22 _vrun_console_get , lp 
+0000008e 80ff0000*       281 <EXPANSION END>
+                         282 --72:     if(strncmp(p, "softreset", 9) == 0) 
+                         283 --line72
+                         284 ..lin.6aafec0d..6933a296.0_9::
+                         285 .LDWlin9:
+00000092 1d30            286 	mov	r29,r6
+00000094 270600000000*   287 	mov	.L154,r7
+0000009a 0942            288 	mov	9,r8
+                         289 .L167:
+                         290 	jarl	_strncmp,lp
+                         290 <EXPANSION BEGIN>
+                         290 jarl22 _strncmp , lp 
+0000009c 80ff0000*       290 <EXPANSION END>
+000000a0 e051            291 	cmp	zero,r10
+000000a2 ba05*           292 	bne	.L124
+                         293 --73:     { 
+                         294 --74:         proc_SOFTRESET(); 
+                         295 .L169:
+                         296 --line74
+                         297 ..lin.6aafec0d..6933a296.0_10::
+                         298 .LDWlin10:
+                         299 	jarl	_proc_SOFTRESET,lp
+                         299 <EXPANSION BEGIN>
+                         299 jarl22 _proc_SOFTRESET , lp 
+000000a4 bfffb6ff*       299 <EXPANSION END>
+                         300 .L124:
+                         301 --75:     } 
+                         302 --76: }
+                         303 --	    .ef
+                         304 .LDW71:
+                         305 --line76
+                         306 ..lin.6aafec0d..6933a296.0_11::
+                         307 .LDWlin11:
+000000a8 23ff0500        308 	ld.w	4[sp],lp
+000000ac 23ef0100        309 	ld.w	0[sp],r29
+000000b0 481a            310 	add	8,sp
+                         311 .L171:
+                         312 	.jumptype return
+000000b2 7f00            313 	jmp	[lp]
+                         314 --line76
+                         315 ..lin.6aafec0d..6933a296.0_12::
+                         316 	.type	_console_get,@function
+                         317 	.size	_console_get,.-_console_get
+                         318 	.align	2
+                         319 --_p	r29	local
+                         320 
+                         321 	.section ".rodata","a"
+                         322 .L154:--	"softreset"
+00000000 736f6674        323 	.byte	115,111,102,116
+00000004 72657365        324 	.byte	114,101,115,101
+00000008 7400            325 	.byte	116,0
+                         326 	.type	.L154,@object
+                         327 	.size	.L154,10
+                         328 	.section ".ghcalltbl",""
+00000010 00000000*       329 .L164:	.word	.L163
+                         330 	.type	.L164,@object
+                         331 	.size	.L164,4
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000014 00000000*       332 .L166:	.word	.L165
+                         333 	.type	.L166,@object
+                         334 	.size	.L166,4
+00000018 00000000*       335 .L168:	.word	.L167
+                         336 	.type	.L168,@object
+                         337 	.size	.L168,4
+0000001c 00000000*       338 .L170:	.word	.L169
+                         339 	.type	.L170,@object
+                         340 	.size	.L170,4
+                         341 	.section ".ghrettbl",""
+0000000c 00000000*       342 .L172:	.word	.L171
+                         343 	.type	.L172,@object
+                         344 	.size	.L172,4
+                         345 	.data
+                         346 	.text
+                         347 
+                         348 
+                         349 --78: /*------------------------------------------------------------------------------*/
+                         350 --79: /* Debug control                                                                */
+                         351 --80: /*------------------------------------------------------------------------------*/
+                         352 --81: char *DivideCommand(char *commandP, unsigned int unitNo, unsigned int *len)
+                         353 	.align	2
+                         354 	.align	2
+                         355 	.align	2
+                         356 ..gh.f.a.2.e.4:
+                         357 	.type	..gh.f.a.2.e.4,@object
+                         358 	.size	..gh.f.a.2.e.4,0
+                         359 	.global	_DivideCommand
+                         360 _DivideCommand:
+000000b4 0688            361 	mov	r6,r17
+000000b6 0798            362 	mov	r7,r19
+000000b8 0890            363 	mov	r8,r18
+                         364 --	    .bf
+                         365 .LDW81:
+                         366 --82: {
+                         367 --83:     unsigned int    cnt = 0;
+000000ba 0012            368 	mov	0,r2
+                         369 --84:     char            *p  = commandP;
+000000bc 11f0            370 	mov	r17,ep
+                         371 --85:     char            *rc = NULL;
+000000be 000a            372 	mov	0,r1
+                         373 --86:     
+                         374 --87:     if (unitNo == 0UL) rc = p;
+000000c0 e099            375 	cmp	zero,r19
+000000c2 aa05*           376 	bne	.L175
+                         377 --line87
+                         378 ..lin.6aafec0d..3a4dc6f8.0_13::
+                         379 .LDWlin13:
+000000c4 1e08            380 	mov	ep,r1
+                         381 .L175:
+                         382 --88:     *len = 0UL;
+000000c6 72070100        383 	st.w	zero,0[r18]
+                         384 --89:     
+                         385 --90:     while (1) {
+000000ca 0000            386 	nop
+                         387 .L179:
+                         388 --91:         if (*p == 0x00) break;
+000000cc 0083            389 	sld.b	0[ep],r16
+000000ce e081            390 	cmp	zero,r16
+000000d0 aa05*           391 	bne	.L180
+                         392 --line91
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         393 ..lin.6aafec0d..3a4dc6f8.0_14::
+                         394 .LDWlin14:
+000000d2 952d*           395 	br	.L182
+                         396 .L180:
+                         397 --92:         
+                         398 --93:         if (*p == ',')
+                         399 --line93
+                         400 ..lin.6aafec0d..3a4dc6f8.0_15::
+                         401 .LDWlin15:
+000000d4 0083            402 	sld.b	0[ep],r16
+000000d6 1006d4ff        403 	addi	-44,r16,zero
+000000da aa0d*           404 	bne	.L184
+                         405 --94:         {
+                         406 --95:             if (rc != NULL) break;
+                         407 --line95
+                         408 ..lin.6aafec0d..3a4dc6f8.0_16::
+                         409 .LDWlin16:
+000000dc e009            410 	cmp	zero,r1
+000000de a205*           411 	be	.L186
+                         412 --line95
+                         413 ..lin.6aafec0d..3a4dc6f8.0_17::
+                         414 .LDWlin17:
+000000e0 a525*           415 	br	.L182
+                         416 .L186:
+                         417 --96:             
+                         418 --97:             if (++cnt == unitNo)
+                         419 --line97
+                         420 ..lin.6aafec0d..3a4dc6f8.0_18::
+                         421 .LDWlin18:
+000000e2 4112            422 	add	1,r2
+000000e4 f311            423 	cmp	r19,r2
+000000e6 da1d*           424 	bne	.L191
+                         425 --98:             {
+                         426 --99:                 rc = p + 1;
+                         427 --line99
+                         428 ..lin.6aafec0d..3a4dc6f8.0_19::
+                         429 .LDWlin19:
+000000e8 1e0e0100        430 	addi	1,ep,r1
+000000ec a51d*           431 	br	.L191
+                         432 .L184:
+                         433 --100:             }
+                         434 --101:         }
+                         435 --102:         else if((*p == '\r') && (*(p+1) == '\n'))
+                         436 --line102
+                         437 ..lin.6aafec0d..3a4dc6f8.0_20::
+                         438 .LDWlin20:
+000000ee 0083            439 	sld.b	0[ep],r16
+000000f0 6d82            440 	cmp	13,r16
+000000f2 8a15*           441 	bne	.L192
+000000f4 1e860100        442 	addi	1,ep,r16
+000000f8 10870000        443 	ld.b	0[r16],r16
+000000fc 6a82            444 	cmp	10,r16
+000000fe aa0d*           445 	bne	.L192
+                         446 --103:         {
+                         447 --104:             if (rc != NULL) break;
+                         448 --line104
+                         449 ..lin.6aafec0d..3a4dc6f8.0_21::
+                         450 .LDWlin21:
+00000100 e009            451 	cmp	zero,r1
+00000102 a205*           452 	be	.L195
+                         453 --line104
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         454 ..lin.6aafec0d..3a4dc6f8.0_22::
+                         455 .LDWlin22:
+00000104 8515*           456 	br	.L182
+                         457 .L195:
+                         458 --105:             
+                         459 --106:             if (++cnt == unitNo)
+                         460 --line106
+                         461 ..lin.6aafec0d..3a4dc6f8.0_23::
+                         462 .LDWlin23:
+00000106 4112            463 	add	1,r2
+00000108 f311            464 	cmp	r19,r2
+0000010a ba0d*           465 	bne	.L191
+                         466 --107:             {
+                         467 --108:                 rc = p + 1;
+                         468 --line108
+                         469 ..lin.6aafec0d..3a4dc6f8.0_24::
+                         470 .LDWlin24:
+0000010c 1e0e0100        471 	addi	1,ep,r1
+00000110 850d*           472 	br	.L191
+                         473 .L192:
+                         474 --109:             }
+                         475 --110:         }
+                         476 --111:         else
+                         477 --112:         {
+                         478 --113:             if (rc != NULL) (*len)++;
+                         479 --line113
+                         480 ..lin.6aafec0d..3a4dc6f8.0_25::
+                         481 .LDWlin25:
+00000112 e009            482 	cmp	zero,r1
+00000114 e205*           483 	be	.L191
+                         484 --line113
+                         485 ..lin.6aafec0d..3a4dc6f8.0_26::
+                         486 .LDWlin26:
+00000116 32870100        487 	ld.w	0[r18],r16
+0000011a 4182            488 	add	1,r16
+0000011c 72870100        489 	st.w	r16,0[r18]
+                         490 .L191:
+                         491 --114:         }
+                         492 --115:         p++;
+00000120 41f2            493 	add	1,ep
+00000122 d5d5*           494 	br	.L179
+                         495 .L182:
+                         496 --116:     }
+                         497 --117:     
+                         498 --118:     return(rc);
+                         499 --line118
+                         500 ..lin.6aafec0d..3a4dc6f8.0_27::
+                         501 .LDWlin27:
+00000124 0150            502 	mov	r1,r10
+                         503 --	    .ef
+                         504 .LDW91:
+                         505 .L374:
+                         506 	.jumptype return
+00000126 7f00            507 	jmp	[lp]
+                         508 --line118
+                         509 ..lin.6aafec0d..3a4dc6f8.0_28::
+                         510 	.type	_DivideCommand,@function
+                         511 	.size	_DivideCommand,.-_DivideCommand
+                         512 	.align	2
+                         513 --_cnt	r2	local
+                         514 --_p	ep	local
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         515 --_rc	r1	local
+                         516 
+                         517 --_commandP	r17	param
+                         518 --_unitNo	r19	param
+                         519 --_len	r18	param
+                         520 
+                         521 	.section ".ghrettbl",""
+00000010 00000000*       522 .L375:	.word	.L374
+                         523 	.type	.L375,@object
+                         524 	.size	.L375,4
+                         525 	.data
+                         526 	.text
+                         527 
+                         528 --119: }
+                         529 
+                         530 --121: unsigned char ConvertCharToDec(char c)
+                         531 	.align	2
+                         532 	.align	2
+                         533 	.align	2
+                         534 ..gh.f.a.2.e.5:
+                         535 	.type	..gh.f.a.2.e.5,@object
+                         536 	.size	..gh.f.a.2.e.5,0
+                         537 	.global	_ConvertCharToDec
+                         538 _ConvertCharToDec:
+00000128 0608            539 	mov	r6,r1
+0000012a a100            540 	sxb	r1
+                         541 --	    .bf
+                         542 .LDW02:
+                         543 --122: {
+                         544 --123:     unsigned char   w = 0;
+0000012c 0012            545 	mov	0,r2
+                         546 --125:     if      ((c >= '0') && (c <= '9'))
+0000012e 0106d0ff        547 	addi	-48,r1,zero
+00000132 860d*           548 	blt	.L378
+00000134 0106c7ff        549 	addi	-57,r1,zero
+00000138 df05*           550 	bgt	.L378
+                         551 --126:     {
+                         552 --127:         w = c - '0';
+                         553 --line127
+                         554 ..lin.6aafec0d..39b076f2.0_29::
+                         555 .LDWlin29:
+0000013a 019ed0ff        556 	addi	-48,r1,r19
+0000013e 9300            557 	zxb	r19
+00000140 1310            558 	mov	r19,r2
+                         559 .L378:
+                         560 --128:     }
+                         561 --130:     return(w);
+00000142 0250            562 	mov	r2,r10
+                         563 --	    .ef
+                         564 .LDW12:
+                         565 .L423:
+                         566 	.jumptype return
+00000144 7f00            567 	jmp	[lp]
+                         568 --line127
+                         569 ..lin.6aafec0d..39b076f2.0_30::
+                         570 	.type	_ConvertCharToDec,@function
+                         571 	.size	_ConvertCharToDec,.-_ConvertCharToDec
+                         572 	.align	2
+                         573 --_w	r2	local
+                         574 
+                         575 --_c	r1	param
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         576 
+                         577 	.section ".ghrettbl",""
+00000014 00000000*       578 .L424:	.word	.L423
+                         579 	.type	.L424,@object
+                         580 	.size	.L424,4
+                         581 	.data
+                         582 	.text
+                         583 
+                         584 --131: }
+                         585 
+                         586 --133: void ConvertStrToDec(unsigned int *dst, char *src, unsigned int len)
+                         587 	.align	2
+                         588 	.align	2
+                         589 	.align	2
+                         590 ..gh.f.a.2.e.6:
+                         591 	.type	..gh.f.a.2.e.6,@object
+                         592 	.size	..gh.f.a.2.e.6,0
+                         593 	.global	_ConvertStrToDec
+                         594 _ConvertStrToDec:
+00000146 031eecff        595 	addi	-20,sp,sp
+0000014a 63ff1100        596 	st.w	lp,16[sp]
+0000014e 63d70d00        597 	st.w	r26,12[sp]
+00000152 63df0900        598 	st.w	r27,8[sp]
+00000156 63e70500        599 	st.w	r28,4[sp]
+0000015a 63ef0100        600 	st.w	r29,0[sp]
+0000015e 06e8            601 	mov	r6,r29
+00000160 07d8            602 	mov	r7,r27
+00000162 08d0            603 	mov	r8,r26
+                         604 --	    .bf
+                         605 .LDW22:
+                         606 --134: {
+                         607 --135:     int i;
+                         608 --137:     *dst = 0;
+00000164 7d070100        609 	st.w	zero,0[r29]
+                         610 --138:     for (i = 0; i < len; i++) {
+00000168 00e2            611 	mov	0,r28
+0000016a a515*           612 	br	.L430
+                         613 .L429:
+                         614 --139:         *dst *= 10;
+                         615 --line139
+                         616 ..lin.6aafec0d..1a9376ed.0_31::
+                         617 .LDWlin31:
+0000016c 3d0f0100        618 	ld.w	0[r29],r1
+00000170 ea0f4202        619 	mulu	10,r1,zero
+00000174 7d0f0100        620 	st.w	r1,0[r29]
+                         621 --140:         *dst += (unsigned int)ConvertCharToDec(*src);
+00000178 1b370000        622 	ld.b	0[r27],r6
+                         623 .L486:
+                         624 	jarl	_ConvertCharToDec,lp
+                         624 <EXPANSION BEGIN>
+                         624 jarl22 _ConvertCharToDec , lp 
+0000017c bfffacff*       624 <EXPANSION END>
+00000180 3d0f0100        625 	ld.w	0[r29],r1
+00000184 ca09            626 	add	r10,r1
+00000186 7d0f0100        627 	st.w	r1,0[r29]
+                         628 --141:         src++;
+                         629 --line141
+                         630 ..lin.6aafec0d..1a9376ed.0_32::
+                         631 .LDWlin32:
+0000018a 41da            632 	add	1,r27
+0000018c 41e2            633 	add	1,r28
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         634 .L430:
+0000018e fae1            635 	cmp	r26,r28
+00000190 e1ed*           636 	bl	.L429
+                         637 --142:     }
+                         638 --143: }
+                         639 --	    .ef
+                         640 .LDW32:
+                         641 --line143
+                         642 ..lin.6aafec0d..1a9376ed.0_33::
+                         643 .LDWlin33:
+00000192 23ff1100        644 	ld.w	16[sp],lp
+00000196 23ef0100        645 	ld.w	0[sp],r29
+0000019a 23e70500        646 	ld.w	4[sp],r28
+0000019e 23df0900        647 	ld.w	8[sp],r27
+000001a2 23d70d00        648 	ld.w	12[sp],r26
+000001a6 031e1400        649 	addi	20,sp,sp
+                         650 .L488:
+                         651 	.jumptype return
+000001aa 7f00            652 	jmp	[lp]
+                         653 --line143
+                         654 ..lin.6aafec0d..1a9376ed.0_34::
+                         655 	.type	_ConvertStrToDec,@function
+                         656 	.size	_ConvertStrToDec,.-_ConvertStrToDec
+                         657 	.align	2
+                         658 --_i	r28	local
+                         659 
+                         660 --_dst	r29	param
+                         661 --_src	r27	param
+                         662 --_len	r26	param
+                         663 
+                         664 	.section ".ghcalltbl",""
+00000020 00000000*       665 .L487:	.word	.L486
+                         666 	.type	.L487,@object
+                         667 	.size	.L487,4
+                         668 	.section ".ghrettbl",""
+00000018 00000000*       669 .L489:	.word	.L488
+                         670 	.type	.L489,@object
+                         671 	.size	.L489,4
+                         672 	.data
+                         673 	.text
+                         674 
+                         675 
+                         676 --145: void ConvertStrToDec64(unsigned long long *dst, char *src, unsigned int len)
+                         677 	.align	2
+                         678 	.align	2
+                         679 	.align	2
+                         680 ..gh.f.a.2.e.7:
+                         681 	.type	..gh.f.a.2.e.7,@object
+                         682 	.size	..gh.f.a.2.e.7,0
+                         683 	.global	_ConvertStrToDec64
+                         684 _ConvertStrToDec64:
+000001ac 031ee4ff        685 	addi	-28,sp,sp
+000001b0 63ff1900        686 	st.w	lp,24[sp]
+000001b4 63c71500        687 	st.w	r24,20[sp]
+000001b8 63cf1100        688 	st.w	r25,16[sp]
+000001bc 63d70d00        689 	st.w	r26,12[sp]
+000001c0 63df0900        690 	st.w	r27,8[sp]
+000001c4 63e70500        691 	st.w	r28,4[sp]
+000001c8 63ef0100        692 	st.w	r29,0[sp]
+000001cc 06d8            693 	mov	r6,r27
+000001ce 07c8            694 	mov	r7,r25
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+000001d0 08c0            695 	mov	r8,r24
+                         696 --	    .bf
+                         697 .LDW42:
+                         698 --146: {
+                         699 --147:     int i;
+                         700 --149:     *dst = 0;
+000001d2 0092            701 	mov	0,r18
+000001d4 009a            702 	mov	0,r19
+000001d6 bb070f900000    703 	st.dw	r18,0[r27]
+                         704 --150:     for (i = 0; i < len; i++) {
+                         705 --line150
+                         706 ..lin.6aafec0d..d4ced57.0_35::
+                         707 .LDWlin35:
+000001dc 00d2            708 	mov	0,r26
+000001de b52d*           709 	br	.L495
+                         710 .L494:
+                         711 --151:         *dst *= 10;
+                         712 --line151
+                         713 ..lin.6aafec0d..d4ced57.0_36::
+                         714 .LDWlin36:
+000001e0 bb0709900000    715 	ld.dw	0[r27],r18
+000001e6 1230            716 	mov	r18,r6
+000001e8 1338            717 	mov	r19,r7
+000001ea 0a42            718 	mov	10,r8
+000001ec 004a            719 	mov	0,r9
+                         720 .L550:
+                         721 	jarl	___gh_mul64,lp
+                         721 <EXPANSION BEGIN>
+                         721 jarl22 ___gh_mul64 , lp 
+000001ee 80ff0000*       721 <EXPANSION END>
+000001f2 0a50            722 	mov	r10,r10
+000001f4 0b58            723 	mov	r11,r11
+000001f6 0a90            724 	mov	r10,r18
+000001f8 0b98            725 	mov	r11,r19
+000001fa bb070f900000    726 	st.dw	r18,0[r27]
+                         727 --152:         *dst += (unsigned long long)ConvertCharToDec(*src);
+                         728 --line152
+                         729 ..lin.6aafec0d..d4ced57.0_37::
+                         730 .LDWlin37:
+00000200 bb0709e00000    731 	ld.dw	0[r27],r28
+00000206 19370000        732 	ld.b	0[r25],r6
+                         733 .L552:
+                         734 	jarl	_ConvertCharToDec,lp
+                         734 <EXPANSION BEGIN>
+                         734 jarl22 _ConvertCharToDec , lp 
+0000020a bfff1eff*       734 <EXPANSION END>
+0000020e 0a08            735 	mov	r10,r1
+00000210 0150            736 	mov	r1,r10
+00000212 005a            737 	mov	0,r11
+00000214 0a80            738 	mov	r10,r16
+00000216 0b88            739 	mov	r11,r17
+00000218 1c10            740 	mov	r28,r2
+0000021a 1008            741 	mov	r16,r1
+0000021c c209            742 	add	r2,r1
+0000021e 0190            743 	mov	r1,r18
+00000220 1d08            744 	mov	r29,r1
+00000222 1110            745 	mov	r17,r2
+00000224 e117a20b        746 	adfl	r1,r2,r1
+00000228 0198            747 	mov	r1,r19
+0000022a bb070f900000    748 	st.dw	r18,0[r27]
+                         749 --153:         src++;
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         750 --line153
+                         751 ..lin.6aafec0d..d4ced57.0_38::
+                         752 .LDWlin38:
+00000230 41ca            753 	add	1,r25
+00000232 41d2            754 	add	1,r26
+                         755 .L495:
+00000234 f8d1            756 	cmp	r24,r26
+00000236 d1d5*           757 	bl	.L494
+                         758 --154:     }
+                         759 --155: }
+                         760 --	    .ef
+                         761 .LDW52:
+                         762 --line155
+                         763 ..lin.6aafec0d..d4ced57.0_39::
+                         764 .LDWlin39:
+00000238 23ff1900        765 	ld.w	24[sp],lp
+0000023c 23ef0100        766 	ld.w	0[sp],r29
+00000240 23e70500        767 	ld.w	4[sp],r28
+00000244 23df0900        768 	ld.w	8[sp],r27
+00000248 23d70d00        769 	ld.w	12[sp],r26
+0000024c 23cf1100        770 	ld.w	16[sp],r25
+00000250 23c71500        771 	ld.w	20[sp],r24
+00000254 031e1c00        772 	addi	28,sp,sp
+                         773 .L554:
+                         774 	.jumptype return
+00000258 7f00            775 	jmp	[lp]
+                         776 --line155
+                         777 ..lin.6aafec0d..d4ced57.0_40::
+                         778 	.type	_ConvertStrToDec64,@function
+                         779 	.size	_ConvertStrToDec64,.-_ConvertStrToDec64
+                         780 	.align	2
+                         781 --_i	r26	local
+                         782 
+                         783 --_dst	r27	param
+                         784 --_src	r25	param
+                         785 --_len	r24	param
+                         786 
+                         787 	.section ".ghcalltbl",""
+00000024 00000000*       788 .L551:	.word	.L550
+                         789 	.type	.L551,@object
+                         790 	.size	.L551,4
+00000028 00000000*       791 .L553:	.word	.L552
+                         792 	.type	.L553,@object
+                         793 	.size	.L553,4
+                         794 	.section ".ghrettbl",""
+0000001c 00000000*       795 .L555:	.word	.L554
+                         796 	.type	.L555,@object
+                         797 	.size	.L555,4
+                         798 	.data
+                         799 	.text
+                         800 
+                         801 
+                         802 --157: static unsigned char ConvertCharToHex(char c)
+                         803 	.align	2
+                         804 	.align	2
+                         805 	.align	2
+                         806 ..gh.f.a.2.e.8:
+                         807 	.type	..gh.f.a.2.e.8,@object
+                         808 	.size	..gh.f.a.2.e.8,0
+                         809 	.global	_ConvertCharToHex..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                         810 _ConvertCharToHex..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.:
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         811 _ConvertCharToHex:
+0000025a 0608            812 	mov	r6,r1
+0000025c a100            813 	sxb	r1
+                         814 --	    .bf
+                         815 .LDW62:
+                         816 --158: {
+                         817 --159:     unsigned char   w = 0;
+0000025e 0012            818 	mov	0,r2
+                         819 --161:     if      ((c >= '0') && (c <= '9'))
+00000260 0106d0ff        820 	addi	-48,r1,zero
+00000264 960d*           821 	blt	.L558
+00000266 0106c7ff        822 	addi	-57,r1,zero
+0000026a ef05*           823 	bgt	.L558
+                         824 --162:     {
+                         825 --163:         w = c - '0';
+                         826 --line163
+                         827 ..lin.6aafec0d..39b0880b.0_41::
+                         828 .LDWlin41:
+0000026c 019ed0ff        829 	addi	-48,r1,r19
+00000270 9300            830 	zxb	r19
+00000272 1310            831 	mov	r19,r2
+00000274 e515*           832 	br	.L561
+                         833 .L558:
+                         834 --164:     }
+                         835 --165:     else if ((c >= 'A') && (c <= 'F'))
+                         836 --line165
+                         837 ..lin.6aafec0d..39b0880b.0_42::
+                         838 .LDWlin42:
+00000276 0106bfff        839 	addi	-65,r1,zero
+0000027a 960d*           840 	blt	.L562
+0000027c 0106baff        841 	addi	-70,r1,zero
+00000280 ef05*           842 	bgt	.L562
+                         843 --166:     {
+                         844 --167:         w = c - 'A' + 10;
+                         845 --line167
+                         846 ..lin.6aafec0d..39b0880b.0_43::
+                         847 .LDWlin43:
+00000282 019ec9ff        848 	addi	-55,r1,r19
+00000286 9300            849 	zxb	r19
+00000288 1310            850 	mov	r19,r2
+0000028a b50d*           851 	br	.L561
+                         852 .L562:
+                         853 --168:     }
+                         854 --169:     else if ((c >= 'a') && (c <= 'f'))
+                         855 --line169
+                         856 ..lin.6aafec0d..39b0880b.0_44::
+                         857 .LDWlin44:
+0000028c 01069fff        858 	addi	-97,r1,zero
+00000290 860d*           859 	blt	.L561
+00000292 01069aff        860 	addi	-102,r1,zero
+00000296 df05*           861 	bgt	.L561
+                         862 --170:     {
+                         863 --171:         w = c - 'a' + 10;
+                         864 --line171
+                         865 ..lin.6aafec0d..39b0880b.0_45::
+                         866 .LDWlin45:
+00000298 019ea9ff        867 	addi	-87,r1,r19
+0000029c 9300            868 	zxb	r19
+0000029e 1310            869 	mov	r19,r2
+                         870 .L561:
+                         871 --172:     }
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         872 --174:     return(w);
+000002a0 0250            873 	mov	r2,r10
+                         874 --	    .ef
+                         875 .LDW72:
+                         876 .L645:
+                         877 	.jumptype return
+000002a2 7f00            878 	jmp	[lp]
+                         879 --line171
+                         880 ..lin.6aafec0d..39b0880b.0_46::
+                         881 	.type	_ConvertCharToHex,@function
+                         882 	.size	_ConvertCharToHex,.-_ConvertCharToHex
+                         883 	.type	_ConvertCharToHex..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,@function
+                         884 	.size	_ConvertCharToHex..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,.-_ConvertCharToHex..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                         885 	.align	2
+                         886 --_w	r2	local
+                         887 
+                         888 --_c	r1	param
+                         889 
+                         890 	.section ".ghrettbl",""
+00000020 00000000*       891 .L646:	.word	.L645
+                         892 	.type	.L646,@object
+                         893 	.size	.L646,4
+                         894 	.data
+                         895 	.text
+                         896 
+                         897 --175: }
+                         898 
+                         899 --177: unsigned char ConvertStrToHexSub(char *p)
+                         900 	.align	2
+                         901 	.align	2
+                         902 	.align	2
+                         903 ..gh.f.a.2.e.9:
+                         904 	.type	..gh.f.a.2.e.9,@object
+                         905 	.size	..gh.f.a.2.e.9,0
+                         906 	.global	_ConvertStrToHexSub
+                         907 _ConvertStrToHexSub:
+000002a4 541a            908 	add	-12,sp
+000002a6 63ff0900        909 	st.w	lp,8[sp]
+000002aa 63e70500        910 	st.w	r28,4[sp]
+000002ae 63ef0100        911 	st.w	r29,0[sp]
+000002b2 06e8            912 	mov	r6,r29
+                         913 --	    .bf
+                         914 .LDW82:
+                         915 --178: {
+                         916 --179:     return((ConvertCharToHex(*p)<<4)+ConvertCharToHex(*(p+1)));
+000002b4 1d370000        917 	ld.b	0[r29],r6
+                         918 .L675:
+                         919 	jarl	_ConvertCharToHex,lp
+                         919 <EXPANSION BEGIN>
+                         919 jarl22 _ConvertCharToHex , lp 
+000002b8 bfffa2ff*       919 <EXPANSION END>
+000002bc 0ae0            920 	mov	r10,r28
+000002be c4e2            921 	shl	4,r28
+000002c0 1df60100        922 	addi	1,r29,ep
+000002c4 0033            923 	sld.b	0[ep],r6
+                         924 .L677:
+                         925 	jarl	_ConvertCharToHex,lp
+                         925 <EXPANSION BEGIN>
+                         925 jarl22 _ConvertCharToHex , lp 
+000002c6 bfff94ff*       925 <EXPANSION END>
+000002ca 0a08            926 	mov	r10,r1
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+000002cc dc09            927 	add	r28,r1
+000002ce 8100            928 	zxb	r1
+000002d0 0150            929 	mov	r1,r10
+                         930 --	    .ef
+                         931 .LDW92:
+                         932 --line180
+                         933 ..lin.6aafec0d..c04b42d0.0_47::
+                         934 .LDWlin47:
+000002d2 23ff0900        935 	ld.w	8[sp],lp
+000002d6 23ef0100        936 	ld.w	0[sp],r29
+000002da 23e70500        937 	ld.w	4[sp],r28
+000002de 4c1a            938 	add	12,sp
+                         939 .L679:
+                         940 	.jumptype return
+000002e0 7f00            941 	jmp	[lp]
+                         942 --line180
+                         943 ..lin.6aafec0d..c04b42d0.0_48::
+                         944 	.type	_ConvertStrToHexSub,@function
+                         945 	.size	_ConvertStrToHexSub,.-_ConvertStrToHexSub
+                         946 	.align	2
+                         947 
+                         948 --_p	r29	param
+                         949 
+                         950 	.section ".ghcalltbl",""
+0000002c 00000000*       951 .L676:	.word	.L675
+                         952 	.type	.L676,@object
+                         953 	.size	.L676,4
+00000030 00000000*       954 .L678:	.word	.L677
+                         955 	.type	.L678,@object
+                         956 	.size	.L678,4
+                         957 	.section ".ghrettbl",""
+00000024 00000000*       958 .L680:	.word	.L679
+                         959 	.type	.L680,@object
+                         960 	.size	.L680,4
+                         961 	.data
+                         962 	.text
+                         963 
+                         964 --180: }
+                         965 
+                         966 --182: void ConvertStrToHex(char *dst, char *src, unsigned int len)
+                         967 	.align	2
+                         968 	.align	2
+                         969 	.align	2
+                         970 ..gh.f.a.2.e.10:
+                         971 	.type	..gh.f.a.2.e.10,@object
+                         972 	.size	..gh.f.a.2.e.10,0
+                         973 	.global	_ConvertStrToHex
+                         974 _ConvertStrToHex:
+000002e2 031eecff        975 	addi	-20,sp,sp
+000002e6 63ff1100        976 	st.w	lp,16[sp]
+000002ea 63d70d00        977 	st.w	r26,12[sp]
+000002ee 63df0900        978 	st.w	r27,8[sp]
+000002f2 63e70500        979 	st.w	r28,4[sp]
+000002f6 63ef0100        980 	st.w	r29,0[sp]
+000002fa 06d8            981 	mov	r6,r27
+000002fc 07e8            982 	mov	r7,r29
+000002fe 08d0            983 	mov	r8,r26
+                         984 --	    .bf
+                         985 .LDW03:
+                         986 --183: {
+                         987 --184:     unsigned int   i;
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                         988 --186:     for (i = 0; i < (len/2); i++) {
+00000300 00e2            989 	mov	0,r28
+00000302 b50d*           990 	br	.L686
+                         991 .L685:
+                         992 --187:         *dst = ConvertStrToHexSub(src);
+                         993 --line187
+                         994 ..lin.6aafec0d..1a938806.0_49::
+                         995 .LDWlin49:
+00000304 1d30            996 	mov	r29,r6
+                         997 .L742:
+                         998 	jarl	_ConvertStrToHexSub,lp
+                         998 <EXPANSION BEGIN>
+                         998 jarl22 _ConvertStrToHexSub , lp 
+00000306 bfff9eff*       998 <EXPANSION END>
+0000030a aa00            999 	sxb	r10
+0000030c 5b570000       1000 	st.b	r10,0[r27]
+                        1001 --188:         dst++;
+                        1002 --line188
+                        1003 ..lin.6aafec0d..1a938806.0_50::
+                        1004 .LDWlin50:
+00000310 41da           1005 	add	1,r27
+                        1006 --189:         src++;
+00000312 41ea           1007 	add	1,r29
+                        1008 --190:         src++;
+00000314 41ea           1009 	add	1,r29
+00000316 41e2           1010 	add	1,r28
+                        1011 .L686:
+00000318 1a08           1012 	mov	r26,r1
+0000031a 810a           1013 	shr	1,r1
+0000031c e1e1           1014 	cmp	r1,r28
+0000031e b1f5*          1015 	bl	.L685
+                        1016 --191:     }
+                        1017 --192: }
+                        1018 --	    .ef
+                        1019 .LDW13:
+                        1020 --line192
+                        1021 ..lin.6aafec0d..1a938806.0_51::
+                        1022 .LDWlin51:
+00000320 23ff1100       1023 	ld.w	16[sp],lp
+00000324 23ef0100       1024 	ld.w	0[sp],r29
+00000328 23e70500       1025 	ld.w	4[sp],r28
+0000032c 23df0900       1026 	ld.w	8[sp],r27
+00000330 23d70d00       1027 	ld.w	12[sp],r26
+00000334 031e1400       1028 	addi	20,sp,sp
+                        1029 .L744:
+                        1030 	.jumptype return
+00000338 7f00           1031 	jmp	[lp]
+                        1032 --line192
+                        1033 ..lin.6aafec0d..1a938806.0_52::
+                        1034 	.type	_ConvertStrToHex,@function
+                        1035 	.size	_ConvertStrToHex,.-_ConvertStrToHex
+                        1036 	.align	2
+                        1037 --_i	r28	local
+                        1038 
+                        1039 --_dst	r27	param
+                        1040 --_src	r29	param
+                        1041 --_len	r26	param
+                        1042 
+                        1043 	.section ".ghcalltbl",""
+00000034 00000000*      1044 .L743:	.word	.L742
+                        1045 	.type	.L743,@object
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1046 	.size	.L743,4
+                        1047 	.section ".ghrettbl",""
+00000028 00000000*      1048 .L745:	.word	.L744
+                        1049 	.type	.L745,@object
+                        1050 	.size	.L745,4
+                        1051 	.data
+                        1052 	.text
+                        1053 
+                        1054 
+                        1055 --194: static char ConvertHexToChar(unsigned char d)
+                        1056 	.align	2
+                        1057 	.align	2
+                        1058 	.align	2
+                        1059 ..gh.f.a.2.e.11:
+                        1060 	.type	..gh.f.a.2.e.11,@object
+                        1061 	.size	..gh.f.a.2.e.11,0
+                        1062 	.global	_ConvertHexToChar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                        1063 _ConvertHexToChar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.:
+                        1064 _ConvertHexToChar:
+0000033a 0608           1065 	mov	r6,r1
+0000033c 8100           1066 	zxb	r1
+                        1067 --	    .bf
+                        1068 .LDW23:
+                        1069 --195: {
+                        1070 --196:     unsigned char   w;
+                        1071 --198:     if ((d >= 0x0a) && (d <= 0x0f))
+0000033e 6a0a           1072 	cmp	10,r1
+00000340 810d*          1073 	bl	.L748
+00000342 6f0a           1074 	cmp	15,r1
+00000344 eb05*          1075 	bh	.L748
+                        1076 --199:     {
+                        1077 --200:         w = (d - 10) + 'a';
+                        1078 --line200
+                        1079 ..lin.6aafec0d..61aaed6b.0_53::
+                        1080 .LDWlin53:
+00000346 019e5700       1081 	addi	87,r1,r19
+0000034a 9300           1082 	zxb	r19
+0000034c 1310           1083 	mov	r19,r2
+0000034e d505*          1084 	br	.L751
+                        1085 .L748:
+                        1086 --201:     }
+                        1087 --202:     else
+                        1088 --203:     {
+                        1089 --204:         w =  d       + '0';
+                        1090 --line204
+                        1091 ..lin.6aafec0d..61aaed6b.0_54::
+                        1092 .LDWlin54:
+00000350 019e3000       1093 	addi	48,r1,r19
+00000354 9300           1094 	zxb	r19
+00000356 1310           1095 	mov	r19,r2
+                        1096 .L751:
+                        1097 --205:     }
+                        1098 --208:     return(w);
+00000358 0298           1099 	mov	r2,r19
+0000035a b300           1100 	sxb	r19
+0000035c 1350           1101 	mov	r19,r10
+                        1102 --	    .ef
+                        1103 .LDW33:
+                        1104 .L791:
+                        1105 	.jumptype return
+0000035e 7f00           1106 	jmp	[lp]
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1107 --line204
+                        1108 ..lin.6aafec0d..61aaed6b.0_55::
+                        1109 	.type	_ConvertHexToChar,@function
+                        1110 	.size	_ConvertHexToChar,.-_ConvertHexToChar
+                        1111 	.type	_ConvertHexToChar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,@function
+                        1112 	.size	_ConvertHexToChar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,.-_ConvertHexToChar..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                        1113 	.align	2
+                        1114 --_w	r2	local
+                        1115 
+                        1116 --_d	r1	param
+                        1117 
+                        1118 	.section ".ghrettbl",""
+0000002c 00000000*      1119 .L792:	.word	.L791
+                        1120 	.type	.L792,@object
+                        1121 	.size	.L792,4
+                        1122 	.data
+                        1123 	.text
+                        1124 
+                        1125 --209: }
+                        1126 
+                        1127 --211: static unsigned char ConvertHexToStrSub(char *p, int sw)
+                        1128 	.align	2
+                        1129 	.align	2
+                        1130 	.align	2
+                        1131 ..gh.f.a.2.e.12:
+                        1132 	.type	..gh.f.a.2.e.12,@object
+                        1133 	.size	..gh.f.a.2.e.12,0
+                        1134 	.global	_ConvertHexToStrSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                        1135 _ConvertHexToStrSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.:
+                        1136 _ConvertHexToStrSub:
+00000360 541a           1137 	add	-12,sp
+00000362 63ff0900       1138 	st.w	lp,8[sp]
+00000366 63e70500       1139 	st.w	r28,4[sp]
+0000036a 63ef0100       1140 	st.w	r29,0[sp]
+0000036e 06e8           1141 	mov	r6,r29
+00000370 07e0           1142 	mov	r7,r28
+                        1143 --	    .bf
+                        1144 .LDW43:
+                        1145 --212: {
+                        1146 --213:     if (sw == UPPER_NIBBLE)
+00000372 e0e1           1147 	cmp	zero,r28
+00000374 ca0d*          1148 	bne	.L795
+                        1149 --214:     {
+                        1150 --215:         return(ConvertHexToChar(((*p) >> 4) & 0x0f));
+                        1151 --line215
+                        1152 ..lin.6aafec0d..9e508250.0_56::
+                        1153 .LDWlin56:
+00000376 1d0f0000       1154 	ld.b	0[r29],r1
+0000037a a40a           1155 	sar	4,r1
+0000037c c10e0f00       1156 	andi	15,r1,r1
+00000380 8100           1157 	zxb	r1
+00000382 0130           1158 	mov	r1,r6
+                        1159 .L829:
+                        1160 	jarl	_ConvertHexToChar,lp
+                        1160 <EXPANSION BEGIN>
+                        1160 jarl22 _ConvertHexToChar , lp 
+00000384 bfffb6ff*      1160 <EXPANSION END>
+00000388 8a00           1161 	zxb	r10
+0000038a a50d*          1162 	br	.L793
+                        1163 .L795:
+                        1164 --216:     }
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1165 --217:     else
+                        1166 --218:     {
+                        1167 --219:         return(ConvertHexToChar( (*p)       & 0x0f));
+                        1168 --line219
+                        1169 ..lin.6aafec0d..9e508250.0_57::
+                        1170 .LDWlin57:
+0000038c 1d0f0000       1171 	ld.b	0[r29],r1
+00000390 c10e0f00       1172 	andi	15,r1,r1
+00000394 8100           1173 	zxb	r1
+00000396 0130           1174 	mov	r1,r6
+                        1175 .L831:
+                        1176 	jarl	_ConvertHexToChar,lp
+                        1176 <EXPANSION BEGIN>
+                        1176 jarl22 _ConvertHexToChar , lp 
+00000398 bfffa2ff*      1176 <EXPANSION END>
+0000039c 8a00           1177 	zxb	r10
+                        1178 .L793:
+                        1179 --	    .ef
+                        1180 .LDW53:
+                        1181 --line221
+                        1182 ..lin.6aafec0d..9e508250.0_58::
+                        1183 .LDWlin58:
+0000039e 23ff0900       1184 	ld.w	8[sp],lp
+000003a2 23ef0100       1185 	ld.w	0[sp],r29
+000003a6 23e70500       1186 	ld.w	4[sp],r28
+000003aa 4c1a           1187 	add	12,sp
+                        1188 .L833:
+                        1189 	.jumptype return
+000003ac 7f00           1190 	jmp	[lp]
+                        1191 --line221
+                        1192 ..lin.6aafec0d..9e508250.0_59::
+                        1193 	.type	_ConvertHexToStrSub,@function
+                        1194 	.size	_ConvertHexToStrSub,.-_ConvertHexToStrSub
+                        1195 	.type	_ConvertHexToStrSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,@function
+                        1196 	.size	_ConvertHexToStrSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.,.-_ConvertHexToStrSub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub.
+                        1197 	.align	2
+                        1198 
+                        1199 --_p	r29	param
+                        1200 --_sw	r28	param
+                        1201 
+                        1202 	.section ".ghcalltbl",""
+00000038 00000000*      1203 .L830:	.word	.L829
+                        1204 	.type	.L830,@object
+                        1205 	.size	.L830,4
+0000003c 00000000*      1206 .L832:	.word	.L831
+                        1207 	.type	.L832,@object
+                        1208 	.size	.L832,4
+                        1209 	.section ".ghrettbl",""
+00000030 00000000*      1210 .L834:	.word	.L833
+                        1211 	.type	.L834,@object
+                        1212 	.size	.L834,4
+                        1213 	.data
+                        1214 	.text
+                        1215 
+                        1216 --220:     }
+                        1217 --221: }
+                        1218 
+                        1219 --223: void ConvertHexToStr(char *dst, char *src, unsigned int len)
+                        1220 	.align	2
+                        1221 	.align	2
+                        1222 	.align	2
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1223 ..gh.f.a.2.e.13:
+                        1224 	.type	..gh.f.a.2.e.13,@object
+                        1225 	.size	..gh.f.a.2.e.13,0
+                        1226 	.global	_ConvertHexToStr
+                        1227 _ConvertHexToStr:
+000003ae 031eecff       1228 	addi	-20,sp,sp
+000003b2 63ff1100       1229 	st.w	lp,16[sp]
+000003b6 63d70d00       1230 	st.w	r26,12[sp]
+000003ba 63df0900       1231 	st.w	r27,8[sp]
+000003be 63e70500       1232 	st.w	r28,4[sp]
+000003c2 63ef0100       1233 	st.w	r29,0[sp]
+000003c6 06e8           1234 	mov	r6,r29
+000003c8 07e0           1235 	mov	r7,r28
+000003ca 08d0           1236 	mov	r8,r26
+                        1237 --	    .bf
+                        1238 .LDW63:
+                        1239 --224: {
+                        1240 --225:     int i;
+                        1241 --227:     for (i = 0; i < len; i++) {
+000003cc 00da           1242 	mov	0,r27
+000003ce b515*          1243 	br	.L840
+                        1244 .L839:
+                        1245 --228:         *dst = ConvertHexToStrSub(src, UPPER_NIBBLE);
+                        1246 --line228
+                        1247 ..lin.6aafec0d..7f14f786.0_60::
+                        1248 .LDWlin60:
+000003d0 1c30           1249 	mov	r28,r6
+000003d2 003a           1250 	mov	0,r7
+                        1251 .L917:
+                        1252 	jarl	_ConvertHexToStrSub,lp
+                        1252 <EXPANSION BEGIN>
+                        1252 jarl22 _ConvertHexToStrSub , lp 
+000003d4 bfff8cff*      1252 <EXPANSION END>
+000003d8 aa00           1253 	sxb	r10
+000003da 5d570000       1254 	st.b	r10,0[r29]
+                        1255 --229:         dst++;
+                        1256 --line229
+                        1257 ..lin.6aafec0d..7f14f786.0_61::
+                        1258 .LDWlin61:
+000003de 41ea           1259 	add	1,r29
+                        1260 --230:         *dst = ConvertHexToStrSub(src, LOWER_NIBBLE);
+000003e0 1c30           1261 	mov	r28,r6
+000003e2 013a           1262 	mov	1,r7
+                        1263 .L919:
+                        1264 	jarl	_ConvertHexToStrSub,lp
+                        1264 <EXPANSION BEGIN>
+                        1264 jarl22 _ConvertHexToStrSub , lp 
+000003e4 bfff7cff*      1264 <EXPANSION END>
+000003e8 aa00           1265 	sxb	r10
+000003ea 5d570000       1266 	st.b	r10,0[r29]
+                        1267 --231:         dst++;
+                        1268 --line231
+                        1269 ..lin.6aafec0d..7f14f786.0_62::
+                        1270 .LDWlin62:
+000003ee 41ea           1271 	add	1,r29
+                        1272 --232:         src++;
+000003f0 41e2           1273 	add	1,r28
+000003f2 41da           1274 	add	1,r27
+                        1275 .L840:
+000003f4 fad9           1276 	cmp	r26,r27
+000003f6 d1ed*          1277 	bl	.L839
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1278 --233:     }
+                        1279 --234:     *dst = 0x00;
+                        1280 --line234
+                        1281 ..lin.6aafec0d..7f14f786.0_63::
+                        1282 .LDWlin63:
+000003f8 5d070000       1283 	st.b	zero,0[r29]
+                        1284 --235: }
+                        1285 --	    .ef
+                        1286 .LDW73:
+000003fc 23ff1100       1287 	ld.w	16[sp],lp
+00000400 23ef0100       1288 	ld.w	0[sp],r29
+00000404 23e70500       1289 	ld.w	4[sp],r28
+00000408 23df0900       1290 	ld.w	8[sp],r27
+0000040c 23d70d00       1291 	ld.w	12[sp],r26
+00000410 031e1400       1292 	addi	20,sp,sp
+                        1293 .L921:
+                        1294 	.jumptype return
+00000414 7f00           1295 	jmp	[lp]
+                        1296 --line234
+                        1297 ..lin.6aafec0d..7f14f786.0_64::
+                        1298 	.type	_ConvertHexToStr,@function
+                        1299 	.size	_ConvertHexToStr,.-_ConvertHexToStr
+                        1300 	.align	2
+                        1301 --_i	r27	local
+                        1302 
+                        1303 --_dst	r29	param
+                        1304 --_src	r28	param
+                        1305 --_len	r26	param
+                        1306 
+                        1307 	.section ".ghcalltbl",""
+00000040 00000000*      1308 .L918:	.word	.L917
+                        1309 	.type	.L918,@object
+                        1310 	.size	.L918,4
+00000044 00000000*      1311 .L920:	.word	.L919
+                        1312 	.type	.L920,@object
+                        1313 	.size	.L920,4
+                        1314 	.section ".ghrettbl",""
+00000034 00000000*      1315 .L922:	.word	.L921
+                        1316 	.type	.L922,@object
+                        1317 	.size	.L922,4
+                        1318 	.data
+                        1319 	.text
+                        1320 
+                        1321 
+                        1322 --237: int ConvertStrToEnum(int *dst, char *src, unsigned int len, const cvt_enum_tbl* cvt_tbl)
+                        1323 	.align	2
+                        1324 	.align	2
+                        1325 	.align	2
+                        1326 ..gh.f.a.2.e.14:
+                        1327 	.type	..gh.f.a.2.e.14,@object
+                        1328 	.size	..gh.f.a.2.e.14,0
+                        1329 	.global	_ConvertStrToEnum
+                        1330 _ConvertStrToEnum:
+00000416 031ee8ff       1331 	addi	-24,sp,sp
+0000041a 63ff1500       1332 	st.w	lp,20[sp]
+0000041e 63cf1100       1333 	st.w	r25,16[sp]
+00000422 63d70d00       1334 	st.w	r26,12[sp]
+00000426 63df0900       1335 	st.w	r27,8[sp]
+0000042a 63e70500       1336 	st.w	r28,4[sp]
+0000042e 63ef0100       1337 	st.w	r29,0[sp]
+00000432 06d0           1338 	mov	r6,r26
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000434 07c8           1339 	mov	r7,r25
+00000436 08d8           1340 	mov	r8,r27
+00000438 09e0           1341 	mov	r9,r28
+                        1342 --	    .bf
+                        1343 .LDW83:
+                        1344 --238: {
+                        1345 --239:     int i = 0;
+0000043a 00ea           1346 	mov	0,r29
+                        1347 --240:     
+                        1348 --241:     while(1)
+0000043c 0000           1349 	nop
+                        1350 .L927:
+                        1351 --242:     {
+                        1352 --243:         if(strncmp("END", cvt_tbl[i].str, 3) == 0)
+0000043e 1d08           1353 	mov	r29,r1
+00000440 c30a           1354 	shl	3,r1
+00000442 01f0           1355 	mov	r1,ep
+00000444 dcf1           1356 	add	r28,ep
+00000446 003d           1357 	sld.w	0[ep],r7
+00000448 260600000000*  1358 	mov	.L1016,r6
+0000044e 0342           1359 	mov	3,r8
+                        1360 .L1033:
+                        1361 	jarl	_strncmp,lp
+                        1361 <EXPANSION BEGIN>
+                        1361 jarl22 _strncmp , lp 
+00000450 80ff0000*      1361 <EXPANSION END>
+00000454 e051           1362 	cmp	zero,r10
+00000456 fa05*          1363 	bne	.L928
+                        1364 --244:         {
+                        1365 --245:             ConvertStrToDec((unsigned int*)dst, src, len);
+                        1366 --line245
+                        1367 ..lin.6aafec0d..6d0309f6.0_65::
+                        1368 .LDWlin65:
+00000458 1a30           1369 	mov	r26,r6
+0000045a 1938           1370 	mov	r25,r7
+0000045c 1b40           1371 	mov	r27,r8
+                        1372 .L1035:
+                        1373 	jarl	_ConvertStrToDec,lp
+                        1373 <EXPANSION BEGIN>
+                        1373 jarl22 _ConvertStrToDec , lp 
+0000045e bfffe8fc*      1373 <EXPANSION END>
+                        1374 --246:             break;
+                        1375 --line246
+                        1376 ..lin.6aafec0d..6d0309f6.0_66::
+                        1377 .LDWlin66:
+00000462 f51d*          1378 	br	.L930
+                        1379 .L928:
+                        1380 --247:         }
+                        1381 --248:         if(strncmp(src, cvt_tbl[i].str, len) == 0)
+                        1382 --line248
+                        1383 ..lin.6aafec0d..6d0309f6.0_67::
+                        1384 .LDWlin67:
+00000464 1930           1385 	mov	r25,r6
+00000466 1d08           1386 	mov	r29,r1
+00000468 c30a           1387 	shl	3,r1
+0000046a 01f0           1388 	mov	r1,ep
+0000046c dcf1           1389 	add	r28,ep
+0000046e 003d           1390 	sld.w	0[ep],r7
+00000470 1b40           1391 	mov	r27,r8
+                        1392 .L1037:
+                        1393 	jarl	_strncmp,lp
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1393 <EXPANSION BEGIN>
+                        1393 jarl22 _strncmp , lp 
+00000472 80ff0000*      1393 <EXPANSION END>
+00000476 e051           1394 	cmp	zero,r10
+00000478 aa15*          1395 	bne	.L932
+                        1396 --249:         {
+                        1397 --250:             if(strlen(cvt_tbl[i].str) == len)
+                        1398 --line250
+                        1399 ..lin.6aafec0d..6d0309f6.0_68::
+                        1400 .LDWlin68:
+0000047a 1d08           1401 	mov	r29,r1
+0000047c c30a           1402 	shl	3,r1
+0000047e 01f0           1403 	mov	r1,ep
+00000480 dcf1           1404 	add	r28,ep
+00000482 0035           1405 	sld.w	0[ep],r6
+                        1406 .L1039:
+                        1407 	jarl	_strlen,lp
+                        1407 <EXPANSION BEGIN>
+                        1407 jarl22 _strlen , lp 
+00000484 80ff0000*      1407 <EXPANSION END>
+00000488 fb51           1408 	cmp	r27,r10
+0000048a 9a0d*          1409 	bne	.L932
+                        1410 --251:             {
+                        1411 --252:                 *dst = cvt_tbl[i].e_num;
+                        1412 --line252
+                        1413 ..lin.6aafec0d..6d0309f6.0_69::
+                        1414 .LDWlin69:
+0000048c 1d08           1415 	mov	r29,r1
+0000048e c30a           1416 	shl	3,r1
+00000490 01f0           1417 	mov	r1,ep
+00000492 dcf1           1418 	add	r28,ep
+00000494 020d           1419 	sld.w	4[ep],r1
+00000496 7a0f0100       1420 	st.w	r1,0[r26]
+                        1421 --253:                 break;
+0000049a b505*          1422 	br	.L930
+                        1423 .L932:
+                        1424 --254:             }
+                        1425 --255:         }
+                        1426 --256:         i++;
+                        1427 --line256
+                        1428 ..lin.6aafec0d..6d0309f6.0_70::
+                        1429 .LDWlin70:
+0000049c 41ea           1430 	add	1,r29
+0000049e 85d5*          1431 	br	.L927
+                        1432 .L930:
+                        1433 --257:     }
+                        1434 --258:     return 0;
+                        1435 --line258
+                        1436 ..lin.6aafec0d..6d0309f6.0_71::
+                        1437 .LDWlin71:
+000004a0 0052           1438 	mov	0,r10
+                        1439 --	    .ef
+                        1440 .LDW93:
+000004a2 23ff1500       1441 	ld.w	20[sp],lp
+000004a6 23ef0100       1442 	ld.w	0[sp],r29
+000004aa 23e70500       1443 	ld.w	4[sp],r28
+000004ae 23df0900       1444 	ld.w	8[sp],r27
+000004b2 23d70d00       1445 	ld.w	12[sp],r26
+000004b6 23cf1100       1446 	ld.w	16[sp],r25
+000004ba 031e1800       1447 	addi	24,sp,sp
+                        1448 .L1041:
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1449 	.jumptype return
+000004be 7f00           1450 	jmp	[lp]
+                        1451 --line258
+                        1452 ..lin.6aafec0d..6d0309f6.0_72::
+                        1453 	.type	_ConvertStrToEnum,@function
+                        1454 	.size	_ConvertStrToEnum,.-_ConvertStrToEnum
+                        1455 	.align	2
+                        1456 --_i	r29	local
+                        1457 
+                        1458 --_dst	r26	param
+                        1459 --_src	r25	param
+                        1460 --_len	r27	param
+                        1461 --_cvt_tbl	r28	param
+                        1462 
+                        1463 	.section ".rodata","a"
+                        1464 .L1016:--	"END"
+0000000a 454e4400       1465 	.byte	69,78,68,0
+                        1466 	.type	.L1016,@object
+                        1467 	.size	.L1016,4
+                        1468 	.section ".ghcalltbl",""
+00000048 00000000*      1469 .L1034:	.word	.L1033
+                        1470 	.type	.L1034,@object
+                        1471 	.size	.L1034,4
+0000004c 00000000*      1472 .L1036:	.word	.L1035
+                        1473 	.type	.L1036,@object
+                        1474 	.size	.L1036,4
+00000050 00000000*      1475 .L1038:	.word	.L1037
+                        1476 	.type	.L1038,@object
+                        1477 	.size	.L1038,4
+00000054 00000000*      1478 .L1040:	.word	.L1039
+                        1479 	.type	.L1040,@object
+                        1480 	.size	.L1040,4
+                        1481 	.section ".ghrettbl",""
+00000038 00000000*      1482 .L1042:	.word	.L1041
+                        1483 	.type	.L1042,@object
+                        1484 	.size	.L1042,4
+                        1485 	.data
+                        1486 	.text
+                        1487 
+                        1488 --259: }
+                        1489 
+                        1490 --261: void ConvertStrToArrayAddr(unsigned int *dst, char *src, unsigned int len) 
+                        1491 	.align	2
+                        1492 	.align	2
+                        1493 	.align	2
+                        1494 ..gh.f.a.2.e.15:
+                        1495 	.type	..gh.f.a.2.e.15,@object
+                        1496 	.size	..gh.f.a.2.e.15,0
+                        1497 	.global	_ConvertStrToArrayAddr
+                        1498 _ConvertStrToArrayAddr:
+000004c0 031ee8ff       1499 	addi	-24,sp,sp
+000004c4 63ff1500       1500 	st.w	lp,20[sp]
+000004c8 63cf1100       1501 	st.w	r25,16[sp]
+000004cc 63d70d00       1502 	st.w	r26,12[sp]
+000004d0 63df0900       1503 	st.w	r27,8[sp]
+000004d4 63e70500       1504 	st.w	r28,4[sp]
+000004d8 63ef0100       1505 	st.w	r29,0[sp]
+000004dc 06c8           1506 	mov	r6,r25
+000004de 07e8           1507 	mov	r7,r29
+000004e0 08e0           1508 	mov	r8,r28
+                        1509 --	    .bf
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1510 .LDW04:
+                        1511 --262: {
+                        1512 --263:     unsigned int i,j;
+                        1513 --264:     
+                        1514 --265:     i = 0;
+000004e2 00da           1515 	mov	0,r27
+                        1516 --266:     j = 0;
+000004e4 00d2           1517 	mov	0,r26
+                        1518 --267:     *dst = (unsigned int)&BIG_BUFFER[0][0];
+000004e6 210600000000*  1519 	mov	_BIG_BUFFER,r1
+000004ec 790f0100       1520 	st.w	r1,0[r25]
+                        1521 --268:     while (len) {
+                        1522 --line268
+                        1523 ..lin.6aafec0d..280195bb.0_73::
+                        1524 .LDWlin73:
+000004f0 e50d*          1525 	br	.L1045
+                        1526 .L1047:
+                        1527 --269:         if (*src == 0x00) break;
+                        1528 --line269
+                        1529 ..lin.6aafec0d..280195bb.0_74::
+                        1530 .LDWlin74:
+000004f2 1d0f0000       1531 	ld.b	0[r29],r1
+000004f6 e009           1532 	cmp	zero,r1
+000004f8 aa05*          1533 	bne	.L1048
+                        1534 --line269
+                        1535 ..lin.6aafec0d..280195bb.0_75::
+                        1536 .LDWlin75:
+000004fa b50d*          1537 	br	.L1050
+                        1538 .L1048:
+                        1539 --270:         if (*src == '[')  break;
+                        1540 --line270
+                        1541 ..lin.6aafec0d..280195bb.0_76::
+                        1542 .LDWlin76:
+000004fc 1d0f0000       1543 	ld.b	0[r29],r1
+00000500 0106a5ff       1544 	addi	-91,r1,zero
+00000504 aa05*          1545 	bne	.L1052
+                        1546 --line270
+                        1547 ..lin.6aafec0d..280195bb.0_77::
+                        1548 .LDWlin77:
+00000506 d505*          1549 	br	.L1050
+                        1550 .L1052:
+                        1551 --271:         len--;
+                        1552 --line271
+                        1553 ..lin.6aafec0d..280195bb.0_78::
+                        1554 .LDWlin78:
+00000508 5fe2           1555 	add	-1,r28
+                        1556 --272:         src++;
+0000050a 41ea           1557 	add	1,r29
+                        1558 .L1045:
+0000050c e0e1           1559 	cmp	zero,r28
+0000050e aaf5*          1560 	bne	.L1047
+                        1561 .L1050:
+                        1562 --273:     }
+                        1563 --274:     if (!len) return;
+                        1564 --line274
+                        1565 ..lin.6aafec0d..280195bb.0_79::
+                        1566 .LDWlin79:
+00000510 e0e1           1567 	cmp	zero,r28
+00000512 aa05*          1568 	bne	.L1055
+                        1569 --line274
+                        1570 ..lin.6aafec0d..280195bb.0_80::
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1571 .LDWlin80:
+00000514 855d*          1572 	br	.L1043
+                        1573 .L1055:
+                        1574 --275:     len--;
+                        1575 --line275
+                        1576 ..lin.6aafec0d..280195bb.0_81::
+                        1577 .LDWlin81:
+00000516 5fe2           1578 	add	-1,r28
+                        1579 --276:     src++;
+00000518 41ea           1580 	add	1,r29
+                        1581 --277:     
+                        1582 --278:     while (len) {
+0000051a f515*          1583 	br	.L1058
+                        1584 .L1060:
+                        1585 --279:         if (*src == 0x00) break;
+                        1586 --line279
+                        1587 ..lin.6aafec0d..280195bb.0_82::
+                        1588 .LDWlin82:
+0000051c 1d0f0000       1589 	ld.b	0[r29],r1
+00000520 e009           1590 	cmp	zero,r1
+00000522 aa05*          1591 	bne	.L1061
+                        1592 --line279
+                        1593 ..lin.6aafec0d..280195bb.0_83::
+                        1594 .LDWlin83:
+00000524 c515*          1595 	br	.L1063
+                        1596 .L1061:
+                        1597 --280:         if (*src == ']')  break;
+                        1598 --line280
+                        1599 ..lin.6aafec0d..280195bb.0_84::
+                        1600 .LDWlin84:
+00000526 1d0f0000       1601 	ld.b	0[r29],r1
+0000052a 0106a3ff       1602 	addi	-93,r1,zero
+0000052e aa05*          1603 	bne	.L1065
+                        1604 --line280
+                        1605 ..lin.6aafec0d..280195bb.0_85::
+                        1606 .LDWlin85:
+00000530 e50d*          1607 	br	.L1063
+                        1608 .L1065:
+                        1609 --281:         i *= 10;
+                        1610 --line281
+                        1611 ..lin.6aafec0d..280195bb.0_86::
+                        1612 .LDWlin86:
+00000532 1b08           1613 	mov	r27,r1
+00000534 ea0f4202       1614 	mulu	10,r1,zero
+00000538 01d8           1615 	mov	r1,r27
+                        1616 --282:         i += (unsigned int)ConvertCharToDec(*src);
+0000053a 1d370000       1617 	ld.b	0[r29],r6
+                        1618 .L1403:
+                        1619 	jarl	_ConvertCharToDec,lp
+                        1619 <EXPANSION BEGIN>
+                        1619 jarl22 _ConvertCharToDec , lp 
+0000053e bfffeafb*      1619 <EXPANSION END>
+00000542 cad9           1620 	add	r10,r27
+                        1621 --283:         len--;
+                        1622 --line283
+                        1623 ..lin.6aafec0d..280195bb.0_87::
+                        1624 .LDWlin87:
+00000544 5fe2           1625 	add	-1,r28
+                        1626 --284:         src++;
+00000546 41ea           1627 	add	1,r29
+                        1628 .L1058:
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000548 e0e1           1629 	cmp	zero,r28
+0000054a 9aed*          1630 	bne	.L1060
+                        1631 .L1063:
+                        1632 --285:     }
+                        1633 --286:     if (!len) return;
+                        1634 --line286
+                        1635 ..lin.6aafec0d..280195bb.0_88::
+                        1636 .LDWlin88:
+0000054c e0e1           1637 	cmp	zero,r28
+0000054e aa05*          1638 	bne	.L1068
+                        1639 --line286
+                        1640 ..lin.6aafec0d..280195bb.0_89::
+                        1641 .LDWlin89:
+00000550 a53d*          1642 	br	.L1043
+                        1643 .L1068:
+                        1644 --287:     len--;
+                        1645 --line287
+                        1646 ..lin.6aafec0d..280195bb.0_90::
+                        1647 .LDWlin90:
+00000552 5fe2           1648 	add	-1,r28
+                        1649 --288:     src++;
+00000554 41ea           1650 	add	1,r29
+                        1651 --289:     
+                        1652 --290:     while (len) {
+00000556 e50d*          1653 	br	.L1071
+                        1654 .L1073:
+                        1655 --291:         if (*src == 0x00) break;
+                        1656 --line291
+                        1657 ..lin.6aafec0d..280195bb.0_91::
+                        1658 .LDWlin91:
+00000558 1d0f0000       1659 	ld.b	0[r29],r1
+0000055c e009           1660 	cmp	zero,r1
+0000055e aa05*          1661 	bne	.L1074
+                        1662 --line291
+                        1663 ..lin.6aafec0d..280195bb.0_92::
+                        1664 .LDWlin92:
+00000560 b50d*          1665 	br	.L1076
+                        1666 .L1074:
+                        1667 --292:         if (*src == '[')  break;
+                        1668 --line292
+                        1669 ..lin.6aafec0d..280195bb.0_93::
+                        1670 .LDWlin93:
+00000562 1d0f0000       1671 	ld.b	0[r29],r1
+00000566 0106a5ff       1672 	addi	-91,r1,zero
+0000056a aa05*          1673 	bne	.L1078
+                        1674 --line292
+                        1675 ..lin.6aafec0d..280195bb.0_94::
+                        1676 .LDWlin94:
+0000056c d505*          1677 	br	.L1076
+                        1678 .L1078:
+                        1679 --293:         len--;
+                        1680 --line293
+                        1681 ..lin.6aafec0d..280195bb.0_95::
+                        1682 .LDWlin95:
+0000056e 5fe2           1683 	add	-1,r28
+                        1684 --294:         src++;
+00000570 41ea           1685 	add	1,r29
+                        1686 .L1071:
+00000572 e0e1           1687 	cmp	zero,r28
+00000574 aaf5*          1688 	bne	.L1073
+                        1689 .L1076:
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1690 --295:     }
+                        1691 --296:     if (!len) return;
+                        1692 --line296
+                        1693 ..lin.6aafec0d..280195bb.0_96::
+                        1694 .LDWlin96:
+00000576 e0e1           1695 	cmp	zero,r28
+00000578 aa05*          1696 	bne	.L1081
+                        1697 --line296
+                        1698 ..lin.6aafec0d..280195bb.0_97::
+                        1699 .LDWlin97:
+0000057a d525*          1700 	br	.L1043
+                        1701 .L1081:
+                        1702 --297:     len--;
+                        1703 --line297
+                        1704 ..lin.6aafec0d..280195bb.0_98::
+                        1705 .LDWlin98:
+0000057c 5fe2           1706 	add	-1,r28
+                        1707 --298:     src++;
+0000057e 41ea           1708 	add	1,r29
+                        1709 --299:     
+                        1710 --300:     while (len) {
+00000580 f515*          1711 	br	.L1084
+                        1712 .L1086:
+                        1713 --301:         if (*src == 0x00) break;
+                        1714 --line301
+                        1715 ..lin.6aafec0d..280195bb.0_99::
+                        1716 .LDWlin99:
+00000582 1d0f0000       1717 	ld.b	0[r29],r1
+00000586 e009           1718 	cmp	zero,r1
+00000588 aa05*          1719 	bne	.L1087
+                        1720 --line301
+                        1721 ..lin.6aafec0d..280195bb.0_100::
+                        1722 .LDWlin100:
+0000058a c515*          1723 	br	.L1089
+                        1724 .L1087:
+                        1725 --302:         if (*src == ']')  break;
+                        1726 --line302
+                        1727 ..lin.6aafec0d..280195bb.0_101::
+                        1728 .LDWlin101:
+0000058c 1d0f0000       1729 	ld.b	0[r29],r1
+00000590 0106a3ff       1730 	addi	-93,r1,zero
+00000594 aa05*          1731 	bne	.L1091
+                        1732 --line302
+                        1733 ..lin.6aafec0d..280195bb.0_102::
+                        1734 .LDWlin102:
+00000596 e50d*          1735 	br	.L1089
+                        1736 .L1091:
+                        1737 --303:         j *= 10;
+                        1738 --line303
+                        1739 ..lin.6aafec0d..280195bb.0_103::
+                        1740 .LDWlin103:
+00000598 1a08           1741 	mov	r26,r1
+0000059a ea0f4202       1742 	mulu	10,r1,zero
+0000059e 01d0           1743 	mov	r1,r26
+                        1744 --304:         j += (unsigned int)ConvertCharToDec(*src);
+000005a0 1d370000       1745 	ld.b	0[r29],r6
+                        1746 .L1405:
+                        1747 	jarl	_ConvertCharToDec,lp
+                        1747 <EXPANSION BEGIN>
+                        1747 jarl22 _ConvertCharToDec , lp 
+000005a4 bfff84fb*      1747 <EXPANSION END>
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+000005a8 cad1           1748 	add	r10,r26
+                        1749 --305:         len--;
+                        1750 --line305
+                        1751 ..lin.6aafec0d..280195bb.0_104::
+                        1752 .LDWlin104:
+000005aa 5fe2           1753 	add	-1,r28
+                        1754 --306:         src++;
+000005ac 41ea           1755 	add	1,r29
+                        1756 .L1084:
+000005ae e0e1           1757 	cmp	zero,r28
+000005b0 9aed*          1758 	bne	.L1086
+                        1759 .L1089:
+                        1760 --307:     }
+                        1761 --309:     *dst = (unsigned int)&BIG_BUFFER[i][j];
+                        1762 --line309
+                        1763 ..lin.6aafec0d..280195bb.0_105::
+                        1764 .LDWlin105:
+000005b2 1b08           1765 	mov	r27,r1
+000005b4 cc0a           1766 	shl	12,r1
+000005b6 da09           1767 	add	r26,r1
+000005b8 220600000000*  1768 	mov	_BIG_BUFFER,r2
+000005be c209           1769 	add	r2,r1
+000005c0 790f0100       1770 	st.w	r1,0[r25]
+                        1771 --310: }
+                        1772 .L1043:
+                        1773 --	    .ef
+                        1774 .LDW14:
+                        1775 --line310
+                        1776 ..lin.6aafec0d..280195bb.0_106::
+                        1777 .LDWlin106:
+000005c4 23ff1500       1778 	ld.w	20[sp],lp
+000005c8 23ef0100       1779 	ld.w	0[sp],r29
+000005cc 23e70500       1780 	ld.w	4[sp],r28
+000005d0 23df0900       1781 	ld.w	8[sp],r27
+000005d4 23d70d00       1782 	ld.w	12[sp],r26
+000005d8 23cf1100       1783 	ld.w	16[sp],r25
+000005dc 031e1800       1784 	addi	24,sp,sp
+                        1785 .L1407:
+                        1786 	.jumptype return
+000005e0 7f00           1787 	jmp	[lp]
+                        1788 --line310
+                        1789 ..lin.6aafec0d..280195bb.0_107::
+                        1790 	.type	_ConvertStrToArrayAddr,@function
+                        1791 	.size	_ConvertStrToArrayAddr,.-_ConvertStrToArrayAddr
+                        1792 	.align	2
+                        1793 --_i	r27	local
+                        1794 --_j	r26	local
+                        1795 
+                        1796 --_dst	r25	param
+                        1797 --_src	r29	param
+                        1798 --_len	r28	param
+                        1799 
+                        1800 	.section ".ghcalltbl",""
+00000058 00000000*      1801 .L1404:	.word	.L1403
+                        1802 	.type	.L1404,@object
+                        1803 	.size	.L1404,4
+0000005c 00000000*      1804 .L1406:	.word	.L1405
+                        1805 	.type	.L1406,@object
+                        1806 	.size	.L1406,4
+                        1807 	.section ".ghrettbl",""
+0000003c 00000000*      1808 .L1408:	.word	.L1407
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1809 	.type	.L1408,@object
+                        1810 	.size	.L1408,4
+                        1811 	.data
+                        1812 	.text
+                        1813 
+                        1814 
+                        1815 --312: unsigned int ConvertStrToValue(unsigned int *dst, char *src, unsigned int len)
+                        1816 	.align	2
+                        1817 	.align	2
+                        1818 	.align	2
+                        1819 ..gh.f.a.2.e.16:
+                        1820 	.type	..gh.f.a.2.e.16,@object
+                        1821 	.size	..gh.f.a.2.e.16,0
+                        1822 	.global	_ConvertStrToValue
+                        1823 _ConvertStrToValue:
+000005e2 031eecff       1824 	addi	-20,sp,sp
+000005e6 63ff1100       1825 	st.w	lp,16[sp]
+000005ea 63d70d00       1826 	st.w	r26,12[sp]
+000005ee 63df0900       1827 	st.w	r27,8[sp]
+000005f2 63e70500       1828 	st.w	r28,4[sp]
+000005f6 63ef0100       1829 	st.w	r29,0[sp]
+000005fa 06e0           1830 	mov	r6,r28
+000005fc 07e8           1831 	mov	r7,r29
+000005fe 08d0           1832 	mov	r8,r26
+                        1833 --	    .bf
+                        1834 .LDW24:
+                        1835 --313: {
+                        1836 --314:     int i;
+                        1837 --315:     
+                        1838 --316:     if(strncmp(src, "0x", 2) == 0)
+00000600 1d30           1839 	mov	r29,r6
+00000602 270600000000*  1840 	mov	.L1478,r7
+00000608 0242           1841 	mov	2,r8
+                        1842 .L1494:
+                        1843 	jarl	_strncmp,lp
+                        1843 <EXPANSION BEGIN>
+                        1843 jarl22 _strncmp , lp 
+0000060a 80ff0000*      1843 <EXPANSION END>
+0000060e e051           1844 	cmp	zero,r10
+00000610 ba05*          1845 	bne	.L1411
+                        1846 --317:     {
+                        1847 --318:         src+=2;
+                        1848 --line318
+                        1849 ..lin.6aafec0d..e90a37e.0_108::
+                        1850 .LDWlin108:
+00000612 42ea           1851 	add	2,r29
+                        1852 --319:         len-=2;
+00000614 5ed2           1853 	add	-2,r26
+                        1854 .L1411:
+                        1855 --320:     }
+                        1856 --321:     for (*dst = 0, i = 0; i < (len/2); i++) { 
+00000616 7c070100       1857 	st.w	zero,0[r28]
+0000061a 00da           1858 	mov	0,r27
+0000061c 8515*          1859 	br	.L1416
+                        1860 .L1415:
+                        1861 --322:         *dst <<= 8;
+                        1862 --line322
+                        1863 ..lin.6aafec0d..e90a37e.0_109::
+                        1864 .LDWlin109:
+0000061e 3c0f0100       1865 	ld.w	0[r28],r1
+00000622 c80a           1866 	shl	8,r1
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000624 7c0f0100       1867 	st.w	r1,0[r28]
+                        1868 --323:         *dst |= ConvertStrToHexSub(src); 
+00000628 1d30           1869 	mov	r29,r6
+                        1870 .L1496:
+                        1871 	jarl	_ConvertStrToHexSub,lp
+                        1871 <EXPANSION BEGIN>
+                        1871 jarl22 _ConvertStrToHexSub , lp 
+0000062a bfff7afc*      1871 <EXPANSION END>
+0000062e 3c0f0100       1872 	ld.w	0[r28],r1
+00000632 0a09           1873 	or	r10,r1
+00000634 7c0f0100       1874 	st.w	r1,0[r28]
+                        1875 --324:         src+=2;
+                        1876 --line324
+                        1877 ..lin.6aafec0d..e90a37e.0_110::
+                        1878 .LDWlin110:
+00000638 42ea           1879 	add	2,r29
+0000063a 41da           1880 	add	1,r27
+                        1881 .L1416:
+0000063c 1a08           1882 	mov	r26,r1
+0000063e 810a           1883 	shr	1,r1
+00000640 e1d9           1884 	cmp	r1,r27
+00000642 e1ed*          1885 	bl	.L1415
+                        1886 --325:     }
+                        1887 --326:     return 0;
+                        1888 --line326
+                        1889 ..lin.6aafec0d..e90a37e.0_111::
+                        1890 .LDWlin111:
+00000644 0052           1891 	mov	0,r10
+                        1892 --	    .ef
+                        1893 .LDW34:
+00000646 23ff1100       1894 	ld.w	16[sp],lp
+0000064a 23ef0100       1895 	ld.w	0[sp],r29
+0000064e 23e70500       1896 	ld.w	4[sp],r28
+00000652 23df0900       1897 	ld.w	8[sp],r27
+00000656 23d70d00       1898 	ld.w	12[sp],r26
+0000065a 031e1400       1899 	addi	20,sp,sp
+                        1900 .L1498:
+                        1901 	.jumptype return
+0000065e 7f00           1902 	jmp	[lp]
+                        1903 --line326
+                        1904 ..lin.6aafec0d..e90a37e.0_112::
+                        1905 	.type	_ConvertStrToValue,@function
+                        1906 	.size	_ConvertStrToValue,.-_ConvertStrToValue
+                        1907 	.align	2
+                        1908 --_i	r27	local
+                        1909 
+                        1910 --_dst	r28	param
+                        1911 --_src	r29	param
+                        1912 --_len	r26	param
+                        1913 
+                        1914 	.section ".rodata","a"
+                        1915 .L1478:--	"0x"
+0000000e 3078           1916 	.byte	48,120
+00000010 00             1917 	.byte	0
+                        1918 	.type	.L1478,@object
+                        1919 	.size	.L1478,3
+                        1920 	.section ".ghcalltbl",""
+00000060 00000000*      1921 .L1495:	.word	.L1494
+                        1922 	.type	.L1495,@object
+                        1923 	.size	.L1495,4
+00000064 00000000*      1924 .L1497:	.word	.L1496
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        1925 	.type	.L1497,@object
+                        1926 	.size	.L1497,4
+                        1927 	.section ".ghrettbl",""
+00000040 00000000*      1928 .L1499:	.word	.L1498
+                        1929 	.type	.L1499,@object
+                        1930 	.size	.L1499,4
+                        1931 	.data
+                        1932 	.text
+                        1933 
+                        1934 --327: }
+                        1935 
+                        1936 --329: unsigned int ConvertStrToValue64(unsigned long long *dst, char *src, unsigned int len)
+                        1937 	.align	2
+                        1938 	.align	2
+                        1939 	.align	2
+                        1940 ..gh.f.a.2.e.17:
+                        1941 	.type	..gh.f.a.2.e.17,@object
+                        1942 	.size	..gh.f.a.2.e.17,0
+                        1943 	.global	_ConvertStrToValue64
+                        1944 _ConvertStrToValue64:
+00000660 031ee4ff       1945 	addi	-28,sp,sp
+00000664 63ff1900       1946 	st.w	lp,24[sp]
+00000668 63c71500       1947 	st.w	r24,20[sp]
+0000066c 63cf1100       1948 	st.w	r25,16[sp]
+00000670 63d70d00       1949 	st.w	r26,12[sp]
+00000674 63df0900       1950 	st.w	r27,8[sp]
+00000678 63e70500       1951 	st.w	r28,4[sp]
+0000067c 63ef0100       1952 	st.w	r29,0[sp]
+00000680 06e0           1953 	mov	r6,r28
+00000682 07e8           1954 	mov	r7,r29
+00000684 08d0           1955 	mov	r8,r26
+                        1956 --	    .bf
+                        1957 .LDW44:
+                        1958 --330: {
+                        1959 --331:     int i;
+                        1960 --332:     
+                        1961 --333:     if(strncmp(src, "0x", 2) == 0)
+00000686 1d30           1962 	mov	r29,r6
+00000688 270600000000*  1963 	mov	.L1478,r7
+0000068e 0242           1964 	mov	2,r8
+                        1965 .L1589:
+                        1966 	jarl	_strncmp,lp
+                        1966 <EXPANSION BEGIN>
+                        1966 jarl22 _strncmp , lp 
+00000690 80ff0000*      1966 <EXPANSION END>
+00000694 e051           1967 	cmp	zero,r10
+00000696 ba05*          1968 	bne	.L1502
+                        1969 --334:     {
+                        1970 --335:         src+=2;
+                        1971 --line335
+                        1972 ..lin.6aafec0d..f5478228.0_113::
+                        1973 .LDWlin113:
+00000698 42ea           1974 	add	2,r29
+                        1975 --336:         len-=2;
+0000069a 5ed2           1976 	add	-2,r26
+                        1977 .L1502:
+                        1978 --337:     }
+                        1979 --338:     for (*dst = 0, i = 0; i < (len/2); i++) { 
+0000069c 0092           1980 	mov	0,r18
+0000069e 009a           1981 	mov	0,r19
+000006a0 bc070f900000   1982 	st.dw	r18,0[r28]
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+000006a6 00da           1983 	mov	0,r27
+                        1984 --line338
+                        1985 ..lin.6aafec0d..f5478228.0_114::
+                        1986 .LDWlin114:
+000006a8 8525*          1987 	br	.L1507
+                        1988 .L1506:
+                        1989 --339:         *dst <<= 8;
+                        1990 --line339
+                        1991 ..lin.6aafec0d..f5478228.0_115::
+                        1992 .LDWlin115:
+000006aa bc0709900000   1993 	ld.dw	0[r28],r18
+000006b0 c89a           1994 	shl	8,r19
+000006b2 1208           1995 	mov	r18,r1
+000006b4 980a           1996 	shr	24,r1
+000006b6 0199           1997 	or	r1,r19
+000006b8 c892           1998 	shl	8,r18
+000006ba bc070f900000   1999 	st.dw	r18,0[r28]
+                        2000 --340:         *dst |= ConvertStrToHexSub(src); 
+                        2001 --line340
+                        2002 ..lin.6aafec0d..f5478228.0_116::
+                        2003 .LDWlin116:
+000006c0 bc0709c00000   2004 	ld.dw	0[r28],r24
+000006c6 1d30           2005 	mov	r29,r6
+                        2006 .L1591:
+                        2007 	jarl	_ConvertStrToHexSub,lp
+                        2007 <EXPANSION BEGIN>
+                        2007 jarl22 _ConvertStrToHexSub , lp 
+000006c8 bfffdcfb*      2007 <EXPANSION END>
+000006cc 0a08           2008 	mov	r10,r1
+000006ce 0150           2009 	mov	r1,r10
+000006d0 005a           2010 	mov	0,r11
+000006d2 0a90           2011 	mov	r10,r18
+000006d4 0b98           2012 	mov	r11,r19
+000006d6 1208           2013 	mov	r18,r1
+000006d8 01c1           2014 	or	r1,r24
+000006da 1308           2015 	mov	r19,r1
+000006dc 01c9           2016 	or	r1,r25
+000006de bc070fc00000   2017 	st.dw	r24,0[r28]
+                        2018 --341:         src+=2;
+                        2019 --line341
+                        2020 ..lin.6aafec0d..f5478228.0_117::
+                        2021 .LDWlin117:
+000006e4 42ea           2022 	add	2,r29
+000006e6 41da           2023 	add	1,r27
+                        2024 .L1507:
+000006e8 1a08           2025 	mov	r26,r1
+000006ea 810a           2026 	shr	1,r1
+000006ec e1d9           2027 	cmp	r1,r27
+000006ee e1dd*          2028 	bl	.L1506
+                        2029 --342:     }
+                        2030 --343:     return 0;
+                        2031 --line343
+                        2032 ..lin.6aafec0d..f5478228.0_118::
+                        2033 .LDWlin118:
+000006f0 0052           2034 	mov	0,r10
+                        2035 --	    .ef
+                        2036 .LDW54:
+000006f2 23ff1900       2037 	ld.w	24[sp],lp
+000006f6 23ef0100       2038 	ld.w	0[sp],r29
+000006fa 23e70500       2039 	ld.w	4[sp],r28
+000006fe 23df0900       2040 	ld.w	8[sp],r27
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000702 23d70d00       2041 	ld.w	12[sp],r26
+00000706 23cf1100       2042 	ld.w	16[sp],r25
+0000070a 23c71500       2043 	ld.w	20[sp],r24
+0000070e 031e1c00       2044 	addi	28,sp,sp
+                        2045 .L1593:
+                        2046 	.jumptype return
+00000712 7f00           2047 	jmp	[lp]
+                        2048 --line343
+                        2049 ..lin.6aafec0d..f5478228.0_119::
+                        2050 	.type	_ConvertStrToValue64,@function
+                        2051 	.size	_ConvertStrToValue64,.-_ConvertStrToValue64
+                        2052 	.align	2
+                        2053 --_i	r27	local
+                        2054 
+                        2055 --_dst	r28	param
+                        2056 --_src	r29	param
+                        2057 --_len	r26	param
+                        2058 
+                        2059 	.section ".ghcalltbl",""
+00000068 00000000*      2060 .L1590:	.word	.L1589
+                        2061 	.type	.L1590,@object
+                        2062 	.size	.L1590,4
+0000006c 00000000*      2063 .L1592:	.word	.L1591
+                        2064 	.type	.L1592,@object
+                        2065 	.size	.L1592,4
+                        2066 	.section ".ghrettbl",""
+00000044 00000000*      2067 .L1594:	.word	.L1593
+                        2068 	.type	.L1594,@object
+                        2069 	.size	.L1594,4
+                        2070 	.data
+                        2071 	.text
+                        2072 
+                        2073 --344: }
+                        2074 
+                        2075 --346: int ConvertStrToInteger(int *dst, char *src, unsigned int len)
+                        2076 	.align	2
+                        2077 	.align	2
+                        2078 	.align	2
+                        2079 ..gh.f.a.2.e.18:
+                        2080 	.type	..gh.f.a.2.e.18,@object
+                        2081 	.size	..gh.f.a.2.e.18,0
+                        2082 	.global	_ConvertStrToInteger
+                        2083 _ConvertStrToInteger:
+00000714 501a           2084 	add	-16,sp
+00000716 63ff0d00       2085 	st.w	lp,12[sp]
+0000071a 63df0900       2086 	st.w	r27,8[sp]
+0000071e 63e70500       2087 	st.w	r28,4[sp]
+00000722 63ef0100       2088 	st.w	r29,0[sp]
+00000726 06e0           2089 	mov	r6,r28
+00000728 07e8           2090 	mov	r7,r29
+0000072a 08d8           2091 	mov	r8,r27
+                        2092 --	    .bf
+                        2093 .LDW64:
+                        2094 --347: {
+                        2095 --348:     if(strncmp(src, "0x", 2) == 0){
+0000072c 1d30           2096 	mov	r29,r6
+0000072e 270600000000*  2097 	mov	.L1478,r7
+00000734 0242           2098 	mov	2,r8
+                        2099 .L1634:
+                        2100 	jarl	_strncmp,lp
+                        2100 <EXPANSION BEGIN>
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        2100 jarl22 _strncmp , lp 
+00000736 80ff0000*      2100 <EXPANSION END>
+0000073a e051           2101 	cmp	zero,r10
+0000073c fa05*          2102 	bne	.L1597
+                        2103 --349:         ConvertStrToValue((unsigned int*)dst, src, len);
+                        2104 --line349
+                        2105 ..lin.6aafec0d..2b6d894f.0_120::
+                        2106 .LDWlin120:
+0000073e 1c30           2107 	mov	r28,r6
+00000740 1d38           2108 	mov	r29,r7
+00000742 1b40           2109 	mov	r27,r8
+                        2110 .L1636:
+                        2111 	jarl	_ConvertStrToValue,lp
+                        2111 <EXPANSION BEGIN>
+                        2111 jarl22 _ConvertStrToValue , lp 
+00000744 bfff9efe*      2111 <EXPANSION END>
+00000748 e505*          2112 	br	.L1599
+                        2113 .L1597:
+                        2114 --350:     }
+                        2115 --351:     else
+                        2116 --352:     {
+                        2117 --353:         ConvertStrToDec((unsigned int*)dst, src, len);
+                        2118 --line353
+                        2119 ..lin.6aafec0d..2b6d894f.0_121::
+                        2120 .LDWlin121:
+0000074a 1c30           2121 	mov	r28,r6
+0000074c 1d38           2122 	mov	r29,r7
+0000074e 1b40           2123 	mov	r27,r8
+                        2124 .L1638:
+                        2125 	jarl	_ConvertStrToDec,lp
+                        2125 <EXPANSION BEGIN>
+                        2125 jarl22 _ConvertStrToDec , lp 
+00000750 bffff6f9*      2125 <EXPANSION END>
+                        2126 .L1599:
+                        2127 --354:     }
+                        2128 --355:     return 0;
+                        2129 --line355
+                        2130 ..lin.6aafec0d..2b6d894f.0_122::
+                        2131 .LDWlin122:
+00000754 0052           2132 	mov	0,r10
+                        2133 --	    .ef
+                        2134 .LDW74:
+00000756 23ff0d00       2135 	ld.w	12[sp],lp
+0000075a 23ef0100       2136 	ld.w	0[sp],r29
+0000075e 23e70500       2137 	ld.w	4[sp],r28
+00000762 23df0900       2138 	ld.w	8[sp],r27
+00000766 031e1000       2139 	addi	16,sp,sp
+                        2140 .L1640:
+                        2141 	.jumptype return
+0000076a 7f00           2142 	jmp	[lp]
+                        2143 --line355
+                        2144 ..lin.6aafec0d..2b6d894f.0_123::
+                        2145 	.type	_ConvertStrToInteger,@function
+                        2146 	.size	_ConvertStrToInteger,.-_ConvertStrToInteger
+                        2147 	.align	2
+                        2148 
+                        2149 --_dst	r28	param
+                        2150 --_src	r29	param
+                        2151 --_len	r27	param
+                        2152 
+                        2153 	.section ".ghcalltbl",""
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+00000070 00000000*      2154 .L1635:	.word	.L1634
+                        2155 	.type	.L1635,@object
+                        2156 	.size	.L1635,4
+00000074 00000000*      2157 .L1637:	.word	.L1636
+                        2158 	.type	.L1637,@object
+                        2159 	.size	.L1637,4
+00000078 00000000*      2160 .L1639:	.word	.L1638
+                        2161 	.type	.L1639,@object
+                        2162 	.size	.L1639,4
+                        2163 	.section ".ghrettbl",""
+00000048 00000000*      2164 .L1641:	.word	.L1640
+                        2165 	.type	.L1641,@object
+                        2166 	.size	.L1641,4
+                        2167 	.data
+                        2168 	.text
+                        2169 
+                        2170 --356: }
+                        2171 
+                        2172 --358: int ConvertStrToInteger64(unsigned long long *dst, char *src, unsigned int len)
+                        2173 	.align	2
+                        2174 	.align	2
+                        2175 	.align	2
+                        2176 ..gh.f.a.2.e.19:
+                        2177 	.type	..gh.f.a.2.e.19,@object
+                        2178 	.size	..gh.f.a.2.e.19,0
+                        2179 	.global	_ConvertStrToInteger64
+                        2180 _ConvertStrToInteger64:
+0000076c 501a           2181 	add	-16,sp
+0000076e 63ff0d00       2182 	st.w	lp,12[sp]
+00000772 63df0900       2183 	st.w	r27,8[sp]
+00000776 63e70500       2184 	st.w	r28,4[sp]
+0000077a 63ef0100       2185 	st.w	r29,0[sp]
+0000077e 06e0           2186 	mov	r6,r28
+00000780 07e8           2187 	mov	r7,r29
+00000782 08d8           2188 	mov	r8,r27
+                        2189 --	    .bf
+                        2190 .LDW84:
+                        2191 --359: {
+                        2192 --360:     if(strncmp(src, "0x", 2) == 0){
+00000784 1d30           2193 	mov	r29,r6
+00000786 270600000000*  2194 	mov	.L1478,r7
+0000078c 0242           2195 	mov	2,r8
+                        2196 .L1682:
+                        2197 	jarl	_strncmp,lp
+                        2197 <EXPANSION BEGIN>
+                        2197 jarl22 _strncmp , lp 
+0000078e 80ff0000*      2197 <EXPANSION END>
+00000792 e051           2198 	cmp	zero,r10
+00000794 fa05*          2199 	bne	.L1644
+                        2200 --361:         ConvertStrToValue64(dst, src, len);
+                        2201 --line361
+                        2202 ..lin.6aafec0d..bcf52039.0_124::
+                        2203 .LDWlin124:
+00000796 1c30           2204 	mov	r28,r6
+00000798 1d38           2205 	mov	r29,r7
+0000079a 1b40           2206 	mov	r27,r8
+                        2207 .L1684:
+                        2208 	jarl	_ConvertStrToValue64,lp
+                        2208 <EXPANSION BEGIN>
+                        2208 jarl22 _ConvertStrToValue64 , lp 
+0000079c bfffc4fe*      2208 <EXPANSION END>
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+000007a0 e505*          2209 	br	.L1646
+                        2210 .L1644:
+                        2211 --362:     }
+                        2212 --363:     else
+                        2213 --364:     {
+                        2214 --365:         ConvertStrToDec64(dst, src, len);
+                        2215 --line365
+                        2216 ..lin.6aafec0d..bcf52039.0_125::
+                        2217 .LDWlin125:
+000007a2 1c30           2218 	mov	r28,r6
+000007a4 1d38           2219 	mov	r29,r7
+000007a6 1b40           2220 	mov	r27,r8
+                        2221 .L1686:
+                        2222 	jarl	_ConvertStrToDec64,lp
+                        2222 <EXPANSION BEGIN>
+                        2222 jarl22 _ConvertStrToDec64 , lp 
+000007a8 bfff04fa*      2222 <EXPANSION END>
+                        2223 .L1646:
+                        2224 --366:     }
+                        2225 --367:     return 0;
+                        2226 --line367
+                        2227 ..lin.6aafec0d..bcf52039.0_126::
+                        2228 .LDWlin126:
+000007ac 0052           2229 	mov	0,r10
+                        2230 --	    .ef
+                        2231 .LDW94:
+000007ae 23ff0d00       2232 	ld.w	12[sp],lp
+000007b2 23ef0100       2233 	ld.w	0[sp],r29
+000007b6 23e70500       2234 	ld.w	4[sp],r28
+000007ba 23df0900       2235 	ld.w	8[sp],r27
+000007be 031e1000       2236 	addi	16,sp,sp
+                        2237 .L1688:
+                        2238 	.jumptype return
+000007c2 7f00           2239 	jmp	[lp]
+                        2240 --line367
+                        2241 ..lin.6aafec0d..bcf52039.0_127::
+                        2242 	.type	_ConvertStrToInteger64,@function
+                        2243 	.size	_ConvertStrToInteger64,.-_ConvertStrToInteger64
+                        2244 	.align	2
+                        2245 
+                        2246 --_dst	r28	param
+                        2247 --_src	r29	param
+                        2248 --_len	r27	param
+                        2249 
+                        2250 	.section ".ghcalltbl",""
+0000007c 00000000*      2251 .L1683:	.word	.L1682
+                        2252 	.type	.L1683,@object
+                        2253 	.size	.L1683,4
+00000080 00000000*      2254 .L1685:	.word	.L1684
+                        2255 	.type	.L1685,@object
+                        2256 	.size	.L1685,4
+00000084 00000000*      2257 .L1687:	.word	.L1686
+                        2258 	.type	.L1687,@object
+                        2259 	.size	.L1687,4
+                        2260 	.section ".ghrettbl",""
+0000004c 00000000*      2261 .L1689:	.word	.L1688
+                        2262 	.type	.L1689,@object
+                        2263 	.size	.L1689,4
+                        2264 	.data
+                        2265 	.text
+                        2266 
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qr81.si
+                        2267 --368: }
+                        2268 	.align	2
+                        2269 --_BIG_BUFFER	_BIG_BUFFER	import
+                        2270 
+                        2271 	.data
+                        2272 	.ghsnote version,30
+                        2273 	.ghsnote tools,3
+                        2274 	.ghsnote options,656
+                        2275 	.text
+                        2276 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cdebug_sub...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF55..0::
+                        2277 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

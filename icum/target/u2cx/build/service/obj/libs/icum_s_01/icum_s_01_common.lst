@@ -1,0 +1,1674 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_common.dbo -source=icum_s_01_common.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\gh_000119g1.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_common.lst C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+Source File: icum_s_01_common.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\
+                           7 --		-I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          28 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          29 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          30 --		-filetype.c
+                          31 --		..\..\icum\generic\src\service\s_01\icum_s_01_common.c -o
+                          32 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_common.o
+                          33 --Source File:   ..\..\icum\generic\src\service\s_01\icum_s_01_common.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 14:08:35 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_service.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICU-M Service                                             */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /**********************************************************************************
+                          70 --28: * Header files
+                          71 --29: ***********************************************************************************/
+                          72 --30: #include "renesas_types.h"
+                          73 --31: #include "r_icumif_api.h"
+                          74 --33: #include "icum_s_pub.h"
+                          75 --34: #include "icum_s_01_common.h"
+                          76 --36: #include "icum_ml_abtr_api_pub.h"
+                          77 --37: #include "icum_ml_cfg_pub.h"
+                          78 --38: #include "icum_ml_ctx_pub.h"
+                          79 --40: #include "icum_d_wdt_pub.h"
+                          80 --41: #include "icum_d_cry_aes_pub.h"
+                          81 --43: #include "icum_l_toolbox_pub.h"
+                          82 --44: #include "icum_ml_prng_pub.h"
+                          83 --45: #include "icum_service_common.h"
+                          84 --48: /**********************************************************************************
+                          85 --49: * Local defines
+                          86 --50: **********************************************************************************/
+                          87 --51: #define PRNG_SIZE_IN_BYTES          (16u)
+                          88 --52: #define NUMBER_OF_ERROR_TABLE (47)
+                          89 --54: /**********************************************************************************
+                          90 --55: * Structure
+                          91 --56: ***********************************************************************************/
+                          92 --57: /* Service and middle error conversion structure */
+                          93 --58: typedef struct {
+                          94 --59:     uint32_t                    internal_code;
+                          95 --60:     r_icumif_service_result_t   external_code;
+                          96 --61: } errcode_tuple_t;
+                          97 --63: /**********************************************************************************
+                          98 --64: * Variable
+                          99 --65: ***********************************************************************************/
+                         100 --66: /* Service 01 and middle layer error conversion table */
+                         101 --67: static const errcode_tuple_t s_01_errcode_tuples[NUMBER_OF_ERROR_TABLE] =
+                         102 --68: {
+                         103 --69:     /* Common error */
+                         104 --70:     {ER_OK,                         SERV_OK                 },
+                         105 --71:     {ER_PARAM,                      SERV_PRM_ERROR          },
+                         106 --72:     {ER_PENDING_ARB,                SERV_PENDING            },
+                         107 --73:     {ER_PENDING,                    SERV_PENDING            },
+                         108 --74:     {ER_IN_PROCESS,                 SERV_IN_PROCESS         },
+                         109 --75:     /* ER_MH_KEY */
+                         110 --76:     {ER_MH_KEY_SLOT_EMPTY,          SERV_KEY_SLOT_EMPTY     },
+                         111 --77:     {ER_MH_KEY_INVALID_KEY_GROUP,   SERV_INVALID_KEY_GROUP  },
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         112 --78:     {ER_MH_KEY_INVALID_KEY_INDEX,   SERV_INVALID_KEY_INDEX  },
+                         113 --79:     {ER_MH_KEY_WRITE_PROTECTED,     SERV_KEY_WRITE_PROTECTED},
+                         114 --80:     {ER_MH_KEY_IN_USE,              SERV_KEY_NOT_USABLE     },
+                         115 --81:     {ER_MH_KEY_DATA_NOT_FOUND,      SERV_KEY_NOT_USABLE     },
+                         116 --82:     {ER_MH_KEY_WRITING,             SERV_PENDING            },
+                         117 --83:     {ER_MH_KEY_USER_OVER,           SERV_KEY_NOT_USABLE     },
+                         118 --84:     {ER_MH_KEY_NOT_USABLE,          SERV_KEY_NOT_USABLE     },
+                         119 --85:     {ER_MH_KEY_AES_TIMEOUT_ERROR,   SERV_AES_TIMEOUT_ERROR  },
+                         120 --86:     {ER_MH_KEY_DATA_INVALID,        SERV_DATA_INVALID       },
+                         121 --87:     {ER_MH_KEY_NVM_UNAVAILABLE,     SERV_NVM_UNAVAILABLE    },
+                         122 --88:     {ER_MH_KEY_NVM_SYS_CRITICAL,    SERV_NVM_SYS_ERROR_CRITICAL},
+                         123 --89:     {ER_MH_KEY_NVM_SYS,             SERV_NVM_SYS_ERROR      },
+                         124 --90:     {ER_MH_KEY_NVM_PROG,            SERV_NVM_PROG_ERROR     },
+                         125 --91:     {ER_MH_KEY_NVM_SIZE,            SERV_NVM_SIZE_ERROR     },
+                         126 --92:     {ER_MH_KEY_SRC_MEM_ERROR,       SERV_SRC_MEM_ERROR      },
+                         127 --93:     {ER_MH_KEY_DEST_MEM_ERROR,      SERV_DEST_MEM_ERROR     },
+                         128 --94:     {ER_MH_KEY_SYS_ERROR,           SERV_SYS_ERROR          },
+                         129 --95:     {ER_MH_KEY_AES_PRM_ERROR,       SERV_AES_PRM_ERROR      },
+                         130 --96:     {ER_MH_KEY_INVALID_CURVE_ID,    SERV_INVALID_CURVE_ID   },
+                         131 --97:     /* ER_MH_CTX */
+                         132 --98:     {ER_ML_CTX_ALL_USE,             SERV_PENDING            },
+                         133 --99:     {ER_ML_CTX_NOT_FOUND,           SERV_PRM_ERROR          },
+                         134 --100:     /* ER_ML_ABTR */
+                         135 --101:     {ER_ML_ABTR_EMPTY,              SERV_PENDING            },
+                         136 --102:     {ER_ML_ABTR_NOT_RELEASED,       SERV_SYS_ERROR          },
+                         137 --103:     {ER_ML_ABTR_INVALID_ID,         SERV_SYS_ERROR          },
+                         138 --104:     {ER_ML_ABTR_TIMER_SET_FAILURE,  SERV_SYS_ERROR          },
+                         139 --105:     {ER_ML_ABTR_NOT_INITIALIZED,    SERV_SYS_ERROR          },
+                         140 --106:     {ER_ML_ABTR_SYS_ERROR,          SERV_SYS_ERROR          },
+                         141 --107:     /* ER_ML_PRNG */
+                         142 --108:     {ER_ML_PRNG_STATUS,             SERV_NO_INIT_RNG        },
+                         143 --109:     {ER_ML_PRNG_RESEED,             SERV_NEED_RESEED        },
+                         144 --110:     {ER_ML_PRNG_TIMEOUT,            SERV_AES_TIMEOUT_ERROR  },
+                         145 --111:     {ER_ML_PRNG_PARAMETER,          SERV_PRM_ERROR          },
+                         146 --112:     {ER_ML_PRNG_AES_PRM,            SERV_PRM_ERROR          },
+                         147 --113:     /* ER_L_PKC ECC */
+                         148 --114:     {ER_L_ECC_SYS_ERROR,            SERV_SYS_ERROR          },
+                         149 --115:     {ER_L_ECC_ERROR,                SERV_CRYPT_ERROR        },
+                         150 --116:     {ER_L_ECC_INVALID_ARG,          SERV_PRM_ERROR          },
+                         151 --117:     {ER_L_ECC_LENGTHERR,            SERV_CRYPT_ERROR        },
+                         152 --118:     /* Driver */
+                         153 --119:     {ER_L_RSA_INVALID_PARM,         SERV_PRM_ERROR          },
+                         154 --120:     {ER_D_AES_TIMEOUT_ERROR,        SERV_CRYPT_ERROR        },
+                         155 --121:     /* ER_L_BIGNUM */
+                         156 --122:     {ER_L_BIGNUM_BUFFER_OVERFLOW,   SERV_CRYPT_ERROR        },
+                         157 --123:     {ER_L_BIGNUM_INVALID_ARG,       SERV_PRM_ERROR          },
+                         158 --124: };
+                         159 --126: /**********************************************************************************
+                         160 --127: * Function
+                         161 --128: ***********************************************************************************/
+                         162 --129: static uint32_t s_01_ContainsZero(const uint8_t *p_target_bytes, uint32_t length, bool *p_exists);
+                         163 --131: /****************************************************************************************
+                         164 --132: * Function ID  : [ICUMFW_CD_S_01_PK_0016]:[ICUMFW_UD_S_01_PK_0016]
+                         165 --133: * Function name: s_01_GetDecimalStrlenFromBitCnt
+                         166 --134: * Description  : get decimal figure length from bit_length.
+                         167 --135: *                     (decimal figure length) = (bit length) * log(2)
+                         168 --136: *                in below coding, (30103 / 100000) is used instead of log(2) (= 0.30102999...)
+                         169 --137: * Arguments    : (IN)       bits
+                         170 --138: *                (OUT)      p_figure10Max
+                         171 --139: * Return Value : ER_OK
+                         172 --140: ****************************************************************************************/
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         173 --141: uint32_t s_01_GetDecimalStrlenFromBitCnt(uint16_t bits, uint16_t *p_figure10Max)
+                         174 	.align	2
+                         175 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40664..0::
+                         176 	.align	2
+                         177 	.align	2
+                         178 ..gh.f.a.2.e.0:
+                         179 	.type	..gh.f.a.2.e.0,@object
+                         180 	.size	..gh.f.a.2.e.0,0
+                         181 	.global	_s_01_GetDecimalStrlenFromBitCnt
+                         182 _s_01_GetDecimalStrlenFromBitCnt:
+00000000 0610            183 	mov	r6,r2
+00000002 c200            184 	zxh	r2
+00000004 07f0            185 	mov	r7,ep
+                         186 --	    .bf
+                         187 .LDW01:
+                         188 --142: {
+                         189 --143:     /* if you want to calculate Minimum, show below code */
+                         190 --144: /*    *figure10Min = (uint16_t)((((uint32_t)(bits-1u) * 30103U) + 99999U) / 100000U);*/
+                         191 --145:     /* (+ 99999) to round up */
+                         192 --147:     *p_figure10Max = (uint16_t)((((uint32_t)bits      * 30103U) + 99999U) / 100000U);
+00000006 200e9775        193 	movea	30103,zero,r1
+0000000a e20f2202        194 	mulu	r2,r1,zero
+0000000e 33069f860100    195 	mov	99999,r19
+00000014 2b06c55a7c0a    196 	mov	175921861,r11
+0000001a d309            197 	add	r19,r1
+0000001c 850a            198 	shr	5,r1
+0000001e eb0f229a        199 	mulu	r11,r1,r19
+00000022 879a            200 	shr	7,r19
+00000024 809c            201 	sst.h	r19,0[ep]
+                         202 --149:     return (ER_OK);
+                         203 --line149
+                         204 ..lin.e10a4da1..d5789755.0_1::
+                         205 .LDWlin1:
+00000026 0052            206 	mov	0,r10
+                         207 --	    .ef
+                         208 .LDW11:
+                         209 .L49:
+                         210 	.jumptype return
+00000028 7f00            211 	jmp	[lp]
+                         212 --line149
+                         213 ..lin.e10a4da1..d5789755.0_2::
+                         214 	.type	_s_01_GetDecimalStrlenFromBitCnt,@function
+                         215 	.size	_s_01_GetDecimalStrlenFromBitCnt,.-_s_01_GetDecimalStrlenFromBitCnt
+                         216 	.align	2
+                         217 
+                         218 --_bits	r2	param
+                         219 --_p_figure10Max	ep	param
+                         220 
+                         221 	.section ".bss","awb"
+                         222 .L34:
+                         223 	.type	.L34,@object
+                         224 	.size	.L34,0
+                         225 	.section ".ghrettbl",""
+                         226 	.align	4
+00000000 00000000*       227 .L50:	.word	.L49
+                         228 	.type	.L50,@object
+                         229 	.size	.L50,4
+                         230 	.data
+                         231 	.section ".icum_service.text","ax"
+                         232 
+                         233 --150: }
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         234 
+                         235 --153: /****************************************************************************************
+                         236 --154: * Function ID  : [ICUMFW_CD_S_01_PK_0017]:[ICUMFW_UD_S_01_PK_0017]
+                         237 --155: * Function name: s_01_GenerateRandomSequence
+                         238 --156: * Description  : Generate random sequence
+                         239 --157: *
+                         240 --158: * Arguments    : (IN)       size_in_bytes
+                         241 --159: *                           emePkcsFlag
+                         242 --160: *                (OUT)      p_udwRandom
+                         243 --161: * Return Value : SERV_OK
+                         244 --162: *                SERV_PENDING
+                         245 --163: *                SERV_UNAVAILABLE
+                         246 --164: *                SERV_SYS_ERROR
+                         247 --165: *                SERV_NO_INIT_RNG
+                         248 --166: *                SERV_NEED_RESEED
+                         249 --167: *                SERV_AES_TIMEOUT_ERROR
+                         250 --168: ****************************************************************************************/
+                         251 --169: uint32_t s_01_GenerateRandomSequence(uint32_t *p_udwRandom, uint16_t size_in_bytes, bool emePkcsFlag)
+                         252 	.align	2
+                         253 	.align	2
+                         254 	.align	2
+                         255 ..gh.f.a.2.e.1:
+                         256 	.type	..gh.f.a.2.e.1,@object
+                         257 	.size	..gh.f.a.2.e.1,0
+                         258 	.global	_s_01_GenerateRandomSequence
+                         259 _s_01_GenerateRandomSequence:
+0000002a 031ec8ff        260 	addi	-56,sp,sp
+0000002e 63ff3500        261 	st.w	lp,52[sp]
+00000032 63bf3100        262 	st.w	r23,48[sp]
+00000036 63c72d00        263 	st.w	r24,44[sp]
+0000003a 63cf2900        264 	st.w	r25,40[sp]
+0000003e 63d72500        265 	st.w	r26,36[sp]
+00000042 63df2100        266 	st.w	r27,32[sp]
+00000046 63e71d00        267 	st.w	r28,28[sp]
+0000004a 63ef1900        268 	st.w	r29,24[sp]
+0000004e 06c8            269 	mov	r6,r25
+00000050 07c0            270 	mov	r7,r24
+00000052 d800            271 	zxh	r24
+00000054 08b8            272 	mov	r8,r23
+00000056 9700            273 	zxb	r23
+                         274 --	    .bf
+                         275 .LDW21:
+                         276 --170: {
+                         277 --171:     uint32_t    p_resource_id;
+                         278 --172:     /* buffer for random : 128 bits */
+                         279 --173:     uint32_t    buffer[4];
+                         280 --174:     int32_t     remain_bytes;
+                         281 --175:     uint32_t    i = 0u;
+00000058 00d2            282 	mov	0,r26
+                         283 --176:     bool        exists;
+                         284 --177:     uint32_t    err;
+                         285 --178:     uint32_t    skip_flg = FLG_OFF;
+0000005a 00da            286 	mov	0,r27
+                         287 --180:     err = ML_ABTR_GetResource(ABTR_RESOURCE_TYPE_AES, &p_resource_id);
+0000005c 0132            288 	mov	1,r6
+0000005e 233e0400        289 	movea	4,sp,r7
+                         290 .L539:
+                         291 	jarl	_ML_ABTR_GetResource,lp
+                         291 <EXPANSION BEGIN>
+                         291 jarl22 _ML_ABTR_GetResource , lp 
+00000062 80ff0000*       291 <EXPANSION END>
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+00000066 0ae8            292 	mov	r10,r29
+                         293 --181:     switch (err)
+                         294 --line181
+                         295 ..lin.e10a4da1..cdd79c9b.0_3::
+                         296 .LDWlin3:
+00000068 1d08            297 	mov	r29,r1
+0000006a 2b0602002000    298 	mov	2097154,r11
+00000070 eb09            299 	cmp	r11,r1
+00000072 990d*           300 	bnl	.L324
+00000074 e009            301 	cmp	zero,r1
+00000076 c215*           302 	be	.L54
+00000078 2b0601002000    303 	mov	2097153,r11
+0000007e eb09            304 	cmp	r11,r1
+00000080 8215*           305 	be	.L55
+00000082 b51d*           306 	br	.L59
+                         307 .L324:
+00000084 eb09            308 	cmp	r11,r1
+00000086 8215*           309 	be	.L56
+00000088 2b0604002000    310 	mov	2097156,r11
+0000008e eb09            311 	cmp	r11,r1
+00000090 e20d*           312 	be	.L57
+00000092 2b0605002000    313 	mov	2097157,r11
+00000098 eb09            314 	cmp	r11,r1
+0000009a c20d*           315 	be	.L58
+0000009c e50d*           316 	br	.L59
+                         317 .L54:
+                         318 --182:     {
+                         319 --183:         case ER_OK:
+                         320 --184:             break;
+                         321 --185:         case ER_ML_ABTR_EMPTY:
+                         322 --line184
+                         323 ..lin.e10a4da1..cdd79c9b.0_4::
+                         324 .LDWlin4:
+0000009e 8515*           325 	br	.L61
+                         326 .L55:
+                         327 --186:             err = (uint32_t)SERV_PENDING;
+                         328 --line186
+                         329 ..lin.e10a4da1..cdd79c9b.0_5::
+                         330 .LDWlin5:
+000000a0 80eef2ff        331 	ori	65522,zero,r29
+                         332 --187:             break;
+                         333 --188:         case ER_ML_ABTR_NOT_RELEASED:
+000000a4 d50d*           334 	br	.L61
+                         335 .L56:
+                         336 --189:             err = (uint32_t)SERV_SYS_ERROR;
+                         337 --line189
+                         338 ..lin.e10a4da1..cdd79c9b.0_6::
+                         339 .LDWlin6:
+000000a6 20ee1100        340 	movea	17,zero,r29
+                         341 --190:             break;
+                         342 --191:         case ER_ML_ABTR_NOT_INITIALIZED:
+000000aa a50d*           343 	br	.L61
+                         344 .L57:
+                         345 --192:             err = (uint32_t)SERV_SYS_ERROR;
+                         346 --line192
+                         347 ..lin.e10a4da1..cdd79c9b.0_7::
+                         348 .LDWlin7:
+000000ac 20ee1100        349 	movea	17,zero,r29
+                         350 --193:             break;
+                         351 --194:         case ER_ML_ABTR_TIMER_SET_FAILURE:
+000000b0 f505*           352 	br	.L61
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         353 .L58:
+                         354 --195:             err = (uint32_t)SERV_SYS_ERROR;
+                         355 --line195
+                         356 ..lin.e10a4da1..cdd79c9b.0_8::
+                         357 .LDWlin8:
+000000b2 20ee1100        358 	movea	17,zero,r29
+                         359 --196:             break;
+                         360 --197:         default:
+000000b6 c505*           361 	br	.L61
+                         362 .L59:
+                         363 --198:             /* Never Occur !! */
+                         364 --199:             err = (uint32_t)SERV_SYS_ERROR;
+                         365 --line199
+                         366 ..lin.e10a4da1..cdd79c9b.0_9::
+                         367 .LDWlin9:
+000000b8 20ee1100        368 	movea	17,zero,r29
+                         369 --200:             break;
+000000bc 0000            370 	nop
+                         371 .L61:
+                         372 --201:     }
+                         373 --202:     if (err != ER_OK)
+000000be e0e9            374 	cmp	zero,r29
+000000c0 a205*           375 	be	.L64
+                         376 --203:     {
+                         377 --204:         skip_flg = FLG_ON;
+                         378 --line204
+                         379 ..lin.e10a4da1..cdd79c9b.0_10::
+                         380 .LDWlin10:
+000000c2 01da            381 	mov	1,r27
+                         382 .L64:
+                         383 --205:     }
+                         384 --206:     else
+                         385 --207:     {
+                         386 --208:         /* do nothing */
+                         387 --209:     }
+                         388 --210:     if (skip_flg == FLG_OFF)
+000000c4 e0d9            389 	cmp	zero,r27
+000000c6 ea65*           390 	bne	.L97
+                         391 --211:     {
+                         392 --212:         remain_bytes = (int32_t)size_in_bytes;
+                         393 --line212
+                         394 ..lin.e10a4da1..cdd79c9b.0_11::
+                         395 .LDWlin11:
+000000c8 18e0            396 	mov	r24,r28
+                         397 --213:         while ((remain_bytes > 0) && (skip_flg == FLG_OFF))
+000000ca b55d*           398 	br	.L67
+                         399 .L69:
+                         400 --214:         {
+                         401 --215:             /* get random : 128bits(=16 bytes =4 long word) */
+                         402 --216:             /* 1st parameter, 2 : auto judgement type */
+                         403 --217:             err = ML_PRNG_Gen(buffer);
+                         404 --line217
+                         405 ..lin.e10a4da1..cdd79c9b.0_12::
+                         406 .LDWlin12:
+000000cc 23360800        407 	movea	8,sp,r6
+                         408 .L541:
+                         409 	jarl	_ML_PRNG_Gen,lp
+                         409 <EXPANSION BEGIN>
+                         409 jarl22 _ML_PRNG_Gen , lp 
+000000d0 80ff0000*       409 <EXPANSION END>
+000000d4 0ae8            410 	mov	r10,r29
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         411 --218:             switch (err)
+                         412 --line218
+                         413 ..lin.e10a4da1..cdd79c9b.0_13::
+                         414 .LDWlin13:
+000000d6 1d08            415 	mov	r29,r1
+000000d8 405ef000        416 	movhi	hi(15728640),zero,r11
+000000dc eb09            417 	cmp	r11,r1
+000000de e905*           418 	bnl	.L332
+000000e0 e009            419 	cmp	zero,r1
+000000e2 9215*           420 	be	.L71
+000000e4 630a            421 	cmp	3,r1
+000000e6 921d*           422 	be	.L75
+000000e8 b51d*           423 	br	.L76
+                         424 .L332:
+000000ea eb09            425 	cmp	r11,r1
+000000ec d20d*           426 	be	.L72
+000000ee 2b061000f000    427 	mov	15728656,r11
+000000f4 eb09            428 	cmp	r11,r1
+000000f6 b20d*           429 	be	.L73
+000000f8 2b061200f000    430 	mov	15728658,r11
+000000fe eb09            431 	cmp	r11,r1
+00000100 920d*           432 	be	.L74
+00000102 e50d*           433 	br	.L76
+                         434 .L71:
+                         435 --219:             {
+                         436 --220:                 case ER_OK:
+                         437 --221:                     break;
+                         438 --222:                 case ER_ML_PRNG_STATUS:
+                         439 --line221
+                         440 ..lin.e10a4da1..cdd79c9b.0_14::
+                         441 .LDWlin14:
+00000104 8515*           442 	br	.L78
+                         443 .L72:
+                         444 --223:                     err = (uint32_t)SERV_NO_INIT_RNG;
+                         445 --line223
+                         446 ..lin.e10a4da1..cdd79c9b.0_15::
+                         447 .LDWlin15:
+00000106 20ee3400        448 	movea	52,zero,r29
+                         449 --224:                     break;
+                         450 --225:                 case ER_ML_PRNG_RESEED:
+0000010a d50d*           451 	br	.L78
+                         452 .L73:
+                         453 --226:                     err = (uint32_t)SERV_NEED_RESEED;
+                         454 --line226
+                         455 ..lin.e10a4da1..cdd79c9b.0_16::
+                         456 .LDWlin16:
+0000010c 20ee3600        457 	movea	54,zero,r29
+                         458 --227:                     break;
+                         459 --228:                 case ER_ML_PRNG_TIMEOUT:
+00000110 a50d*           460 	br	.L78
+                         461 .L74:
+                         462 --229:                     err = (uint32_t)SERV_AES_TIMEOUT_ERROR;
+                         463 --line229
+                         464 ..lin.e10a4da1..cdd79c9b.0_17::
+                         465 .LDWlin17:
+00000112 20ee3000        466 	movea	48,zero,r29
+                         467 --230:                     break;
+                         468 --231:                 case ER_PENDING:
+00000116 f505*           469 	br	.L78
+                         470 .L75:
+                         471 --232:                     err = (uint32_t)SERV_PENDING;
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         472 --line232
+                         473 ..lin.e10a4da1..cdd79c9b.0_18::
+                         474 .LDWlin18:
+00000118 80eef2ff        475 	ori	65522,zero,r29
+                         476 --233:                     break;
+                         477 --234:                 default:
+0000011c c505*           478 	br	.L78
+                         479 .L76:
+                         480 --235:                     /* Never Occur !! */
+                         481 --236:                     err = (uint32_t)SERV_SYS_ERROR;
+                         482 --line236
+                         483 ..lin.e10a4da1..cdd79c9b.0_19::
+                         484 .LDWlin19:
+0000011e 20ee1100        485 	movea	17,zero,r29
+                         486 --237:                     break;
+00000122 0000            487 	nop
+                         488 .L78:
+                         489 --238:             }
+                         490 --239:             if (err != ER_OK)
+00000124 e0e9            491 	cmp	zero,r29
+00000126 a205*           492 	be	.L81
+                         493 --240:             {
+                         494 --241:                 skip_flg = FLG_ON;
+                         495 --line241
+                         496 ..lin.e10a4da1..cdd79c9b.0_20::
+                         497 .LDWlin20:
+00000128 01da            498 	mov	1,r27
+                         499 .L81:
+                         500 --242:             }
+                         501 --243:             else
+                         502 --244:             {
+                         503 --245:                 /* do nothing */
+                         504 --246:             }
+                         505 --247:             if (skip_flg == FLG_OFF)
+0000012a e0d9            506 	cmp	zero,r27
+0000012c aa2d*           507 	bne	.L67
+                         508 --248:             {
+                         509 --249:                 /* register call back function for WDT restart */
+                         510 --250:                 D_WDT_StartIfNeeded();
+                         511 .L543:
+                         512 --line250
+                         513 ..lin.e10a4da1..cdd79c9b.0_21::
+                         514 .LDWlin21:
+                         515 	jarl	_D_WDT_StartIfNeeded,lp
+                         515 <EXPANSION BEGIN>
+                         515 jarl22 _D_WDT_StartIfNeeded , lp 
+0000012e 80ff0000*       515 <EXPANSION END>
+                         516 --252:                 if ((int32_t)emePkcsFlag == true)
+                         517 --line252
+                         518 ..lin.e10a4da1..cdd79c9b.0_22::
+                         519 .LDWlin22:
+00000132 e0b9            520 	cmp	zero,r23
+00000134 e20d*           521 	be	.L91
+                         522 --253:                 {
+                         523 --254:                     (void)s_01_ContainsZero((uint8_t *)buffer, PRNG_SIZE_IN_BYTES, &exists);
+                         524 --line254
+                         525 ..lin.e10a4da1..cdd79c9b.0_23::
+                         526 .LDWlin23:
+00000136 23360800        527 	movea	8,sp,r6
+0000013a 203e1000        528 	movea	16,zero,r7
+0000013e 23460300        529 	movea	3,sp,r8
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         530 .L545:
+                         531 	jarl	_s_01_ContainsZero,lp
+                         531 <EXPANSION BEGIN>
+                         531 jarl22 _s_01_ContainsZero , lp 
+00000142 80ff7800*       531 <EXPANSION END>
+                         532 --255:                     if ((int8_t)exists == true)
+                         533 --line255
+                         534 ..lin.e10a4da1..cdd79c9b.0_24::
+                         535 .LDWlin24:
+00000146 030f0300        536 	ld.b	3[sp],r1
+0000014a e009            537 	cmp	zero,r1
+0000014c a205*           538 	be	.L91
+                         539 --256:                     {
+                         540 --257:                         continue;
+                         541 --line257
+                         542 ..lin.e10a4da1..cdd79c9b.0_25::
+                         543 .LDWlin25:
+0000014e 951d*           544 	br	.L67
+                         545 .L91:
+                         546 --258:                     }
+                         547 --259:                     else
+                         548 --260:                     {
+                         549 --261:                         /* do nothing */
+                         550 --262:                     }
+                         551 --263:                 }
+                         552 --264:                 else
+                         553 --265:                 {
+                         554 --266:                     /* do nothing */
+                         555 --267:                 }
+                         556 --268:                 if (remain_bytes < (int32_t)PRNG_SIZE_IN_BYTES)
+                         557 --line268
+                         558 ..lin.e10a4da1..cdd79c9b.0_26::
+                         559 .LDWlin26:
+00000150 1c06f0ff        560 	addi	-16,r28,zero
+00000154 be0d*           561 	bge	.L92
+                         562 --269:                 {
+                         563 --270:                     L_Toolbox_MemCpy((uint8_t *)&p_udwRandom[i * (PRNG_SIZE_IN_BYTES / sizeof(uint32_t))],
+                         564 --line270
+                         565 ..lin.e10a4da1..cdd79c9b.0_27::
+                         566 .LDWlin27:
+00000156 1a30            567 	mov	r26,r6
+00000158 c432            568 	shl	4,r6
+0000015a d931            569 	add	r25,r6
+0000015c 233e0800        570 	movea	8,sp,r7
+00000160 1c40            571 	mov	r28,r8
+00000162 e800            572 	sxh	r8
+                         573 .L547:
+                         574 	jarl	_L_Toolbox_MemCpy,lp
+                         574 <EXPANSION BEGIN>
+                         574 jarl22 _L_Toolbox_MemCpy , lp 
+00000164 80ff0000*       574 <EXPANSION END>
+00000168 a50d*           575 	br	.L94
+                         576 .L92:
+                         577 --271:                             (const uint8_t *)buffer, (int16_t)remain_bytes);
+                         578 --272:                 }
+                         579 --273:                 else
+                         580 --274:                 {
+                         581 --275:                     L_Toolbox_MemCpy((uint8_t *)&p_udwRandom[i * (PRNG_SIZE_IN_BYTES / sizeof(uint32_t))],
+                         582 --line275
+                         583 ..lin.e10a4da1..cdd79c9b.0_28::
+                         584 .LDWlin28:
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+0000016a 1a30            585 	mov	r26,r6
+0000016c c432            586 	shl	4,r6
+0000016e d931            587 	add	r25,r6
+00000170 233e0800        588 	movea	8,sp,r7
+00000174 20461000        589 	movea	16,zero,r8
+                         590 .L549:
+                         591 	jarl	_L_Toolbox_MemCpy,lp
+                         591 <EXPANSION BEGIN>
+                         591 jarl22 _L_Toolbox_MemCpy , lp 
+00000178 80ff0000*       591 <EXPANSION END>
+                         592 .L94:
+                         593 --276:                             (const uint8_t *)buffer, (int16_t)PRNG_SIZE_IN_BYTES);
+                         594 --277:                 }
+                         595 --278:                 i++;
+                         596 --line278
+                         597 ..lin.e10a4da1..cdd79c9b.0_29::
+                         598 .LDWlin29:
+0000017c 41d2            599 	add	1,r26
+                         600 --279:                 remain_bytes -= (int32_t)PRNG_SIZE_IN_BYTES;
+0000017e 50e2            601 	add	-16,r28
+                         602 .L67:
+                         603 --280:             }
+                         604 --281:             else
+                         605 --282:             {
+00000180 e0e1            606 	cmp	zero,r28
+00000182 b705*           607 	ble	.L68
+00000184 e0d9            608 	cmp	zero,r27
+00000186 b2a5*           609 	be	.L69
+                         610 .L68:
+                         611 --283:                 /* do nothing */
+                         612 --284:             }
+                         613 --285:         }
+                         614 --287:         (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, p_resource_id);
+                         615 --line287
+                         616 ..lin.e10a4da1..cdd79c9b.0_30::
+                         617 .LDWlin30:
+00000188 233f0500        618 	ld.w	4[sp],r7
+0000018c 0132            619 	mov	1,r6
+                         620 .L551:
+                         621 	jarl	_ML_ABTR_FreeResource,lp
+                         621 <EXPANSION BEGIN>
+                         621 jarl22 _ML_ABTR_FreeResource , lp 
+0000018e 80ff0000*       621 <EXPANSION END>
+                         622 .L97:
+                         623 --288:     }
+                         624 --289:     else
+                         625 --290:     {
+                         626 --291:         /* do nothing */
+                         627 --292:     }
+                         628 --294:     return (err);
+                         629 --line294
+                         630 ..lin.e10a4da1..cdd79c9b.0_31::
+                         631 .LDWlin31:
+00000192 1d50            632 	mov	r29,r10
+                         633 --	    .ef
+                         634 .LDW31:
+00000194 23ff3500        635 	ld.w	52[sp],lp
+00000198 23ef1900        636 	ld.w	24[sp],r29
+0000019c 23e71d00        637 	ld.w	28[sp],r28
+000001a0 23df2100        638 	ld.w	32[sp],r27
+000001a4 23d72500        639 	ld.w	36[sp],r26
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+000001a8 23cf2900        640 	ld.w	40[sp],r25
+000001ac 23c72d00        641 	ld.w	44[sp],r24
+000001b0 23bf3100        642 	ld.w	48[sp],r23
+000001b4 031e3800        643 	addi	56,sp,sp
+                         644 .L553:
+                         645 	.jumptype return
+000001b8 7f00            646 	jmp	[lp]
+                         647 --line294
+                         648 ..lin.e10a4da1..cdd79c9b.0_32::
+                         649 	.type	_s_01_GenerateRandomSequence,@function
+                         650 	.size	_s_01_GenerateRandomSequence,.-_s_01_GenerateRandomSequence
+                         651 	.align	2
+                         652 --_p_resource_id	4[sp]	local
+                         653 --_buffer	8[sp]	local
+                         654 --_remain_bytes	r28	local
+                         655 --_i	r26	local
+                         656 --_exists	3[sp]	local
+                         657 --_err	r29	local
+                         658 --_skip_flg	r27	local
+                         659 
+                         660 --_p_udwRandom	r25	param
+                         661 --_size_in_bytes	r24	param
+                         662 --_emePkcsFlag	r23	param
+                         663 
+                         664 	.section ".bss","awb"
+                         665 .L322:
+                         666 	.type	.L322,@object
+                         667 	.size	.L322,0
+                         668 	.section ".ghcalltbl",""
+                         669 	.align	4
+00000000 00000000*       670 .L540:	.word	.L539
+                         671 	.type	.L540,@object
+                         672 	.size	.L540,4
+00000004 00000000*       673 .L542:	.word	.L541
+                         674 	.type	.L542,@object
+                         675 	.size	.L542,4
+00000008 00000000*       676 .L544:	.word	.L543
+                         677 	.type	.L544,@object
+                         678 	.size	.L544,4
+0000000c 00000000*       679 .L546:	.word	.L545
+                         680 	.type	.L546,@object
+                         681 	.size	.L546,4
+00000010 00000000*       682 .L548:	.word	.L547
+                         683 	.type	.L548,@object
+                         684 	.size	.L548,4
+00000014 00000000*       685 .L550:	.word	.L549
+                         686 	.type	.L550,@object
+                         687 	.size	.L550,4
+00000018 00000000*       688 .L552:	.word	.L551
+                         689 	.type	.L552,@object
+                         690 	.size	.L552,4
+                         691 	.section ".ghrettbl",""
+00000004 00000000*       692 .L554:	.word	.L553
+                         693 	.type	.L554,@object
+                         694 	.size	.L554,4
+                         695 	.data
+                         696 	.section ".icum_service.text","ax"
+                         697 
+                         698 --295: }
+                         699 
+                         700 --298: /****************************************************************************************
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         701 --299: * Function ID  : [ICUMFW_CD_S_01_PK_0018]:[ICUMFW_UD_S_01_PK_0018]
+                         702 --300: * Function name: s_01_ContainsZero
+                         703 --301: * Description  : check for existence of byte zero in the specified byte sequence
+                         704 --302: *
+                         705 --303: * Arguments    : (in)       p_target_bytes
+                         706 --304: *                           length
+                         707 --305: *                (out)      p_exists       Range: boolean (true/false)
+                         708 --306: * Return Value : ER_OK
+                         709 --307: ****************************************************************************************/
+                         710 --308: static uint32_t s_01_ContainsZero(const uint8_t *p_target_bytes, uint32_t length, bool *p_exists)
+                         711 	.align	2
+                         712 	.align	2
+                         713 	.align	2
+                         714 ..gh.f.a.2.e.2:
+                         715 	.type	..gh.f.a.2.e.2,@object
+                         716 	.size	..gh.f.a.2.e.2,0
+                         717 	.global	_s_01_ContainsZero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.
+                         718 _s_01_ContainsZero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.:
+                         719 _s_01_ContainsZero:
+000001ba 0610            720 	mov	r6,r2
+000001bc 0798            721 	mov	r7,r19
+000001be 08f0            722 	mov	r8,ep
+                         723 --	    .bf
+                         724 .LDW41:
+                         725 --309: {
+                         726 --310:     uint32_t     i;
+                         727 --312:     *p_exists = false;
+000001c0 8003            728 	sst.b	zero,0[ep]
+                         729 --313:     for (i = 0u; i < length; i++)
+000001c2 000a            730 	mov	0,r1
+000001c4 b50d*           731 	br	.L560
+                         732 .L559:
+                         733 --314:     {
+                         734 --315:         if (0x00u == (uint32_t)p_target_bytes[i])
+                         735 --line315
+                         736 ..lin.e10a4da1..e9bd70f5.0_33::
+                         737 .LDWlin33:
+000001c6 0190            738 	mov	r1,r18
+000001c8 c291            739 	add	r2,r18
+000001ca 92970100        740 	ld.bu	0[r18],r18
+000001ce e091            741 	cmp	zero,r18
+000001d0 ca05*           742 	bne	.L558
+                         743 --316:         {
+                         744 --317:             *p_exists = true;
+                         745 --line317
+                         746 ..lin.e10a4da1..e9bd70f5.0_34::
+                         747 .LDWlin34:
+000001d2 0192            748 	mov	1,r18
+000001d4 8093            749 	sst.b	r18,0[ep]
+                         750 --318:             break;
+000001d6 c505*           751 	br	.L563
+                         752 .L558:
+                         753 --319:         }
+                         754 --320:         else
+                         755 --321:         {
+                         756 --line313
+                         757 ..lin.e10a4da1..e9bd70f5.0_35::
+                         758 .LDWlin35:
+000001d8 410a            759 	add	1,r1
+                         760 .L560:
+000001da f309            761 	cmp	r19,r1
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+000001dc d1f5*           762 	bl	.L559
+                         763 .L563:
+                         764 --322:             /* do nothing */
+                         765 --323:         }
+                         766 --324:     }
+                         767 --325:     return (ER_OK);
+                         768 --line325
+                         769 ..lin.e10a4da1..e9bd70f5.0_36::
+                         770 .LDWlin36:
+000001de 0052            771 	mov	0,r10
+                         772 --	    .ef
+                         773 .LDW51:
+                         774 .L658:
+                         775 	.jumptype return
+000001e0 7f00            776 	jmp	[lp]
+                         777 --line325
+                         778 ..lin.e10a4da1..e9bd70f5.0_37::
+                         779 	.type	_s_01_ContainsZero,@function
+                         780 	.size	_s_01_ContainsZero,.-_s_01_ContainsZero
+                         781 	.type	_s_01_ContainsZero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.,@function
+                         782 	.size	_s_01_ContainsZero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.,.-_s_01_ContainsZero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.
+                         783 	.align	2
+                         784 --_i	r1	local
+                         785 
+                         786 --_p_target_bytes	r2	param
+                         787 --_length	r19	param
+                         788 --_p_exists	ep	param
+                         789 
+                         790 	.section ".bss","awb"
+                         791 .L622:
+                         792 	.type	.L622,@object
+                         793 	.size	.L622,0
+                         794 	.section ".ghrettbl",""
+00000008 00000000*       795 .L659:	.word	.L658
+                         796 	.type	.L659,@object
+                         797 	.size	.L659,4
+                         798 	.data
+                         799 	.section ".icum_service.text","ax"
+                         800 
+                         801 --326: }
+                         802 
+                         803 --329: /****************************************************************************************
+                         804 --330: * Function ID  : [ICUMFW_CD_S_01_PK_0023]:[ICUMFW_UD_S_01_PK_0023]
+                         805 --331: * Function name: s_01_IsDigitString
+                         806 --332: * Description  : check character in decimal string
+                         807 --333: *
+                         808 --334: * Arguments    : (in)       p_target_bytes
+                         809 --335: *                           length
+                         810 --336: *                (out)      p_isdigit     Range: uint8_t (TRUE/FALSE)
+                         811 --337: * Return Value : ER_OK
+                         812 --338: ****************************************************************************************/
+                         813 --339: uint32_t s_01_IsDigitString(const uint8_t *p_target_bytes, uint32_t length, uint8_t *p_isdigit)
+                         814 	.align	2
+                         815 	.align	2
+                         816 	.align	2
+                         817 ..gh.f.a.2.e.3:
+                         818 	.type	..gh.f.a.2.e.3,@object
+                         819 	.size	..gh.f.a.2.e.3,0
+                         820 	.global	_s_01_IsDigitString
+                         821 _s_01_IsDigitString:
+000001e2 0610            822 	mov	r6,r2
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+000001e4 0798            823 	mov	r7,r19
+000001e6 08f0            824 	mov	r8,ep
+                         825 --	    .bf
+                         826 .LDW61:
+                         827 --340: {
+                         828 --341:     uint32_t     i;
+                         829 --343:     *p_isdigit = FALSE;
+000001e8 8003            830 	sst.b	zero,0[ep]
+                         831 --344:     for (i = 0u; i < length; i++)
+000001ea 000a            832 	mov	0,r1
+000001ec a525*           833 	br	.L665
+                         834 .L664:
+                         835 --345:     {
+                         836 --346:         if (0x00u == (uint32_t)p_target_bytes[i])
+                         837 --line346
+                         838 ..lin.e10a4da1..f3c9bb7a.0_38::
+                         839 .LDWlin38:
+000001ee 0190            840 	mov	r1,r18
+000001f0 c291            841 	add	r2,r18
+000001f2 92970100        842 	ld.bu	0[r18],r18
+000001f6 e091            843 	cmp	zero,r18
+000001f8 ea05*           844 	bne	.L673
+                         845 --347:         {
+                         846 --348:             /* found terminator(NULL). */
+                         847 --349:             if(i != 0u)
+                         848 --line349
+                         849 ..lin.e10a4da1..f3c9bb7a.0_39::
+                         850 .LDWlin39:
+000001fa e009            851 	cmp	zero,r1
+000001fc b205*           852 	be	.L670
+                         853 --350:             {
+                         854 --351:                 /* string length not equals zero */
+                         855 --352:                 *p_isdigit = TRUE;
+                         856 --line352
+                         857 ..lin.e10a4da1..f3c9bb7a.0_40::
+                         858 .LDWlin40:
+000001fe 0192            859 	mov	1,r18
+00000200 8093            860 	sst.b	r18,0[ep]
+                         861 .L670:
+                         862 --353:             }
+                         863 --354:             else
+                         864 --355:             {
+                         865 --356:                 /* do nothing */
+                         866 --357:             }
+                         867 --358:             break;
+00000202 951d*           868 	br	.L671
+                         869 .L673:
+                         870 --359:         }
+                         871 --360:         else
+                         872 --361:         {
+                         873 --362:             /* do nothing */
+                         874 --363:         }
+                         875 --365:         if (i == (length - 1u))
+                         876 --line365
+                         877 ..lin.e10a4da1..f3c9bb7a.0_41::
+                         878 .LDWlin41:
+00000204 1396ffff        879 	addi	-1,r19,r18
+00000208 f209            880 	cmp	r18,r1
+0000020a aa05*           881 	bne	.L677
+                         882 --366:         {
+                         883 --367:             /* not found terminator(NULL), after all */
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         884 --368:             break;
+                         885 --line368
+                         886 ..lin.e10a4da1..f3c9bb7a.0_42::
+                         887 .LDWlin42:
+0000020c c515*           888 	br	.L671
+                         889 .L677:
+                         890 --369:         }
+                         891 --370:         else
+                         892 --371:         {
+                         893 --372:             /* do nothing */
+                         894 --373:         }
+                         895 --375:         if (((uint32_t)'0' <= (uint32_t)p_target_bytes[i]) && ((uint32_t)p_target_bytes[i] <= (uint32_t)'9'))
+                         896 --line375
+                         897 ..lin.e10a4da1..f3c9bb7a.0_43::
+                         898 .LDWlin43:
+0000020e 0190            899 	mov	r1,r18
+00000210 c291            900 	add	r2,r18
+00000212 92970100        901 	ld.bu	0[r18],r18
+00000216 1206d0ff        902 	addi	-48,r18,zero
+0000021a 990d*           903 	bnl	.L683
+0000021c 0190            904 	mov	r1,r18
+0000021e c291            905 	add	r2,r18
+00000220 92970100        906 	ld.bu	0[r18],r18
+00000224 1206c6ff        907 	addi	-58,r18,zero
+00000228 a105*           908 	bl	.L683
+                         909 --376:         {
+                         910 --377:             continue;
+                         911 --line377
+                         912 ..lin.e10a4da1..f3c9bb7a.0_44::
+                         913 .LDWlin44:
+0000022a a505*           914 	br	.L663
+                         915 .L683:
+                         916 --378:         }
+                         917 --379:         else
+                         918 --380:         {
+                         919 --381:             /* do nothing */
+                         920 --382:         }
+                         921 --384:         /* illegal character */
+                         922 --385:         break;
+                         923 --line385
+                         924 ..lin.e10a4da1..f3c9bb7a.0_45::
+                         925 .LDWlin45:
+0000022c c505*           926 	br	.L671
+                         927 .L663:
+                         928 --line344
+                         929 ..lin.e10a4da1..f3c9bb7a.0_46::
+                         930 .LDWlin46:
+0000022e 410a            931 	add	1,r1
+                         932 .L665:
+00000230 f309            933 	cmp	r19,r1
+00000232 e1dd*           934 	bl	.L664
+                         935 .L671:
+                         936 --386:     }
+                         937 --387:     return (ER_OK);
+                         938 --line387
+                         939 ..lin.e10a4da1..f3c9bb7a.0_47::
+                         940 .LDWlin47:
+00000234 0052            941 	mov	0,r10
+                         942 --	    .ef
+                         943 .LDW71:
+                         944 .L819:
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                         945 	.jumptype return
+00000236 7f00            946 	jmp	[lp]
+                         947 --line387
+                         948 ..lin.e10a4da1..f3c9bb7a.0_48::
+                         949 	.type	_s_01_IsDigitString,@function
+                         950 	.size	_s_01_IsDigitString,.-_s_01_IsDigitString
+                         951 	.align	2
+                         952 --_i	r1	local
+                         953 
+                         954 --_p_target_bytes	r2	param
+                         955 --_length	r19	param
+                         956 --_p_isdigit	ep	param
+                         957 
+                         958 	.section ".bss","awb"
+                         959 .L762:
+                         960 	.type	.L762,@object
+                         961 	.size	.L762,0
+                         962 	.section ".ghrettbl",""
+0000000c 00000000*       963 .L820:	.word	.L819
+                         964 	.type	.L820,@object
+                         965 	.size	.L820,4
+                         966 	.data
+                         967 	.section ".icum_service.text","ax"
+                         968 
+                         969 --388: }
+                         970 
+                         971 --390: /****************************************************************************************
+                         972 --391: * Function ID  : [ICUMFW_CD_S_01_PK_0024]:[ICUMFW_UD_S_01_PK_0024]
+                         973 --392: * Function name: s_01_IsHexDigitString
+                         974 --393: * Description  : check character in hexadecimal string
+                         975 --394: *
+                         976 --395: * Arguments    : (in)       p_target_bytes
+                         977 --396: *                           length
+                         978 --397: *                (out)      p_isdigit     Range: uint8_t (TRUE/FALSE)
+                         979 --398: * Return Value : ER_OK
+                         980 --399: ****************************************************************************************/
+                         981 --400: uint32_t s_01_IsHexDigitString(const uint8_t *p_target_bytes, uint32_t length, uint8_t *p_isdigit)
+                         982 	.align	2
+                         983 	.align	2
+                         984 	.align	2
+                         985 ..gh.f.a.2.e.4:
+                         986 	.type	..gh.f.a.2.e.4,@object
+                         987 	.size	..gh.f.a.2.e.4,0
+                         988 	.global	_s_01_IsHexDigitString
+                         989 _s_01_IsHexDigitString:
+00000238 0610            990 	mov	r6,r2
+0000023a 0798            991 	mov	r7,r19
+0000023c 0890            992 	mov	r8,r18
+                         993 --	    .bf
+                         994 .LDW81:
+                         995 --401: {
+                         996 --402:     uint32_t     i;
+                         997 --404:     *p_isdigit = FALSE;
+0000023e 52070000        998 	st.b	zero,0[r18]
+                         999 --405:     for (i = 0u; i < length; i++)
+00000242 000a           1000 	mov	0,r1
+00000244 9535*          1001 	br	.L826
+                        1002 .L825:
+                        1003 --406:     {
+                        1004 --407:         if (0x00u == (uint32_t)p_target_bytes[i])
+                        1005 --line407
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1006 ..lin.e10a4da1..88c658df.0_49::
+                        1007 .LDWlin49:
+00000246 01f0           1008 	mov	r1,ep
+00000248 c2f1           1009 	add	r2,ep
+0000024a 6088           1010 	sld.bu	0[ep],r17
+0000024c e089           1011 	cmp	zero,r17
+0000024e fa05*          1012 	bne	.L834
+                        1013 --408:         {
+                        1014 --409:             /* found terminator(NULL). */
+                        1015 --410:             if(i != 0u)
+                        1016 --line410
+                        1017 ..lin.e10a4da1..88c658df.0_50::
+                        1018 .LDWlin50:
+00000250 e009           1019 	cmp	zero,r1
+00000252 c205*          1020 	be	.L831
+                        1021 --411:             {
+                        1022 --412:                 /* string length not equals zero */
+                        1023 --413:                 *p_isdigit = TRUE;
+                        1024 --line413
+                        1025 ..lin.e10a4da1..88c658df.0_51::
+                        1026 .LDWlin51:
+00000254 018a           1027 	mov	1,r17
+00000256 528f0000       1028 	st.b	r17,0[r18]
+                        1029 .L831:
+                        1030 --414:             }
+                        1031 --415:             else
+                        1032 --416:             {
+                        1033 --417:                 /* do nothing */
+                        1034 --418:             }
+                        1035 --419:             break;
+0000025a 852d*          1036 	br	.L832
+                        1037 .L834:
+                        1038 --420:         }
+                        1039 --421:         else
+                        1040 --422:         {
+                        1041 --423:             /* do nothing */
+                        1042 --424:         }
+                        1043 --426:         if (i == (length - 1u))
+                        1044 --line426
+                        1045 ..lin.e10a4da1..88c658df.0_52::
+                        1046 .LDWlin52:
+0000025c 138effff       1047 	addi	-1,r19,r17
+00000260 f109           1048 	cmp	r17,r1
+00000262 aa05*          1049 	bne	.L838
+                        1050 --427:         {
+                        1051 --428:             /* not found terminator(NULL), after all */
+                        1052 --429:             break;
+                        1053 --line429
+                        1054 ..lin.e10a4da1..88c658df.0_53::
+                        1055 .LDWlin53:
+00000264 b525*          1056 	br	.L832
+                        1057 .L838:
+                        1058 --430:         }
+                        1059 --431:         else
+                        1060 --432:         {
+                        1061 --433:             /* do nothing */
+                        1062 --434:         }
+                        1063 --436:         if (((uint32_t)'0' <= (uint32_t)p_target_bytes[i]) && ((uint32_t)p_target_bytes[i] <= (uint32_t)'9'))
+                        1064 --line436
+                        1065 ..lin.e10a4da1..88c658df.0_54::
+                        1066 .LDWlin54:
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+00000266 01f0           1067 	mov	r1,ep
+00000268 c2f1           1068 	add	r2,ep
+0000026a 6088           1069 	sld.bu	0[ep],r17
+0000026c 1106d0ff       1070 	addi	-48,r17,zero
+00000270 d905*          1071 	bnl	.L844
+00000272 1106c6ff       1072 	addi	-58,r17,zero
+00000276 a105*          1073 	bl	.L844
+                        1074 --437:         {
+                        1075 --438:             continue;
+                        1076 --line438
+                        1077 ..lin.e10a4da1..88c658df.0_55::
+                        1078 .LDWlin55:
+00000278 e515*          1079 	br	.L824
+                        1080 .L844:
+                        1081 --439:         }
+                        1082 --440:         else
+                        1083 --441:         {
+                        1084 --442:             /* do nothing */
+                        1085 --443:         }
+                        1086 --444:         if (((uint32_t)'A' <= (uint32_t)p_target_bytes[i]) && ((uint32_t)p_target_bytes[i] <= (uint32_t)'F'))
+                        1087 --line444
+                        1088 ..lin.e10a4da1..88c658df.0_56::
+                        1089 .LDWlin56:
+0000027a 01f0           1090 	mov	r1,ep
+0000027c c2f1           1091 	add	r2,ep
+0000027e 6088           1092 	sld.bu	0[ep],r17
+00000280 1106bfff       1093 	addi	-65,r17,zero
+00000284 d905*          1094 	bnl	.L849
+00000286 1106b9ff       1095 	addi	-71,r17,zero
+0000028a a105*          1096 	bl	.L849
+                        1097 --445:         {
+                        1098 --446:             continue;
+                        1099 --line446
+                        1100 ..lin.e10a4da1..88c658df.0_57::
+                        1101 .LDWlin57:
+0000028c c50d*          1102 	br	.L824
+                        1103 .L849:
+                        1104 --447:         }
+                        1105 --448:         else
+                        1106 --449:         {
+                        1107 --450:             /* do nothing */
+                        1108 --451:         }
+                        1109 --452:         if (((uint32_t)'a' <= (uint32_t)p_target_bytes[i]) && ((uint32_t)p_target_bytes[i] <= (uint32_t)'f'))
+                        1110 --line452
+                        1111 ..lin.e10a4da1..88c658df.0_58::
+                        1112 .LDWlin58:
+0000028e 01f0           1113 	mov	r1,ep
+00000290 c2f1           1114 	add	r2,ep
+00000292 6088           1115 	sld.bu	0[ep],r17
+00000294 11069fff       1116 	addi	-97,r17,zero
+00000298 d905*          1117 	bnl	.L854
+0000029a 110699ff       1118 	addi	-103,r17,zero
+0000029e a105*          1119 	bl	.L854
+                        1120 --453:         {
+                        1121 --454:             continue;
+                        1122 --line454
+                        1123 ..lin.e10a4da1..88c658df.0_59::
+                        1124 .LDWlin59:
+000002a0 a505*          1125 	br	.L824
+                        1126 .L854:
+                        1127 --455:         }
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1128 --456:         else
+                        1129 --457:         {
+                        1130 --458:             /* do nothing */
+                        1131 --459:         }
+                        1132 --461:         /* illegal character */
+                        1133 --462:         break;
+                        1134 --line462
+                        1135 ..lin.e10a4da1..88c658df.0_60::
+                        1136 .LDWlin60:
+000002a2 c505*          1137 	br	.L832
+                        1138 .L824:
+                        1139 --line405
+                        1140 ..lin.e10a4da1..88c658df.0_61::
+                        1141 .LDWlin61:
+000002a4 410a           1142 	add	1,r1
+                        1143 .L826:
+000002a6 f309           1144 	cmp	r19,r1
+000002a8 f1cd*          1145 	bl	.L825
+                        1146 .L832:
+                        1147 --463:     }
+                        1148 --464:     return (ER_OK);
+                        1149 --line464
+                        1150 ..lin.e10a4da1..88c658df.0_62::
+                        1151 .LDWlin62:
+000002aa 0052           1152 	mov	0,r10
+                        1153 --	    .ef
+                        1154 .LDW91:
+                        1155 .L1037:
+                        1156 	.jumptype return
+000002ac 7f00           1157 	jmp	[lp]
+                        1158 --line464
+                        1159 ..lin.e10a4da1..88c658df.0_63::
+                        1160 	.type	_s_01_IsHexDigitString,@function
+                        1161 	.size	_s_01_IsHexDigitString,.-_s_01_IsHexDigitString
+                        1162 	.align	2
+                        1163 --_i	r1	local
+                        1164 
+                        1165 --_p_target_bytes	r2	param
+                        1166 --_length	r19	param
+                        1167 --_p_isdigit	r18	param
+                        1168 
+                        1169 	.section ".bss","awb"
+                        1170 .L962:
+                        1171 	.type	.L962,@object
+                        1172 	.size	.L962,0
+                        1173 	.section ".ghrettbl",""
+00000010 00000000*      1174 .L1038:	.word	.L1037
+                        1175 	.type	.L1038,@object
+                        1176 	.size	.L1038,4
+                        1177 	.data
+                        1178 	.section ".icum_service.text","ax"
+                        1179 
+                        1180 --465: }
+                        1181 
+                        1182 --467: /***************************************************************************************
+                        1183 --468: * Function ID  : [ICUMFW_CD_S_01_PK_0019]:[ICUMFW_UD_S_01_PK_0019]
+                        1184 --469: * Function name: s_01_CanUseKeyIfDbgConnected
+                        1185 --470: * Description  : Determine whether the key is usable
+                        1186 --471: * Arguments    : (in) disable_on_debug     : flag for whether key is usable when the debugger is connected
+                        1187 --472: *                                           Range: 0 (key is usable when debugger is connected)
+                        1188 --473: *                                                  1 (key is unusable when debugger is connected)
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1189 --474: *                (out) p_is_allowed       : Range: TRUE  (key is usable)
+                        1190 --475: *                                                  FALSE (key is unusable)
+                        1191 --476: * Return Value : ER_OK
+                        1192 --477: ***************************************************************************************/
+                        1193 --478: uint32_t s_01_CanUseKeyIfDbgConnected(key_flags_t disable_on_debug, uint8_t *p_is_allowed)
+                        1194 	.align	2
+                        1195 	.align	2
+                        1196 	.align	2
+                        1197 ..gh.f.a.2.e.5:
+                        1198 	.type	..gh.f.a.2.e.5,@object
+                        1199 	.size	..gh.f.a.2.e.5,0
+                        1200 	.global	_s_01_CanUseKeyIfDbgConnected
+                        1201 _s_01_CanUseKeyIfDbgConnected:
+000002ae 501a           1202 	add	-16,sp
+000002b0 63ff0d00       1203 	st.w	lp,12[sp]
+000002b4 63e70900       1204 	st.w	r28,8[sp]
+000002b8 63ef0500       1205 	st.w	r29,4[sp]
+000002bc 06e0           1206 	mov	r6,r28
+000002be dc00           1207 	zxh	r28
+000002c0 07e8           1208 	mov	r7,r29
+                        1209 --	    .bf
+                        1210 .LDW02:
+                        1211 --479: {
+                        1212 --480:     uint32_t    icu_status;
+                        1213 --482:     *p_is_allowed = TRUE;
+000002c2 010a           1214 	mov	1,r1
+000002c4 5d0f0000       1215 	st.b	r1,0[r29]
+                        1216 --483:     (void)D_COMM_GetICUStatusInfo(&icu_status);
+000002c8 23360000       1217 	movea	0,sp,r6
+                        1218 .L1117:
+                        1219 	jarl	_D_COMM_GetICUStatusInfo,lp
+                        1219 <EXPANSION BEGIN>
+                        1219 jarl22 _D_COMM_GetICUStatusInfo , lp 
+000002cc 80ff0000*      1219 <EXPANSION END>
+                        1220 --485:     if ((1u == (uint32_t)disable_on_debug) &&
+                        1221 --line485
+                        1222 ..lin.e10a4da1..9524cdad.0_64::
+                        1223 .LDWlin64:
+000002d0 61e2           1224 	cmp	1,r28
+000002d2 aa0d*          1225 	bne	.L1044
+                        1226 --line486
+                        1227 ..lin.e10a4da1..9524cdad.0_65::
+                        1228 .LDWlin65:
+000002d4 230f0100       1229 	ld.w	0[sp],r1
+000002d8 c10e4000       1230 	andi	64,r1,r1
+000002dc 0106c0ff       1231 	addi	-64,r1,zero
+000002e0 ba05*          1232 	bne	.L1044
+                        1233 --486:         ((ICUM_COMM_INF_ICU_ST_EXT_DEBUG & icu_status) == ICUM_COMM_INF_ICU_ST_EXT_DEBUG))
+                        1234 --487:     {
+                        1235 --488:         *p_is_allowed = FALSE;
+                        1236 --line488
+                        1237 ..lin.e10a4da1..9524cdad.0_66::
+                        1238 .LDWlin66:
+000002e2 5d070000       1239 	st.b	zero,0[r29]
+                        1240 .L1044:
+                        1241 --489:     }
+                        1242 --490:     else
+                        1243 --491:     {
+                        1244 --492:         /* do nothing */
+                        1245 --493:     }
+                        1246 --494:     return (ER_OK);
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+000002e6 0052           1247 	mov	0,r10
+                        1248 --	    .ef
+                        1249 .LDW12:
+000002e8 23ff0d00       1250 	ld.w	12[sp],lp
+000002ec 23ef0500       1251 	ld.w	4[sp],r29
+000002f0 23e70900       1252 	ld.w	8[sp],r28
+000002f4 031e1000       1253 	addi	16,sp,sp
+                        1254 .L1119:
+                        1255 	.jumptype return
+000002f8 7f00           1256 	jmp	[lp]
+                        1257 --line488
+                        1258 ..lin.e10a4da1..9524cdad.0_67::
+                        1259 	.type	_s_01_CanUseKeyIfDbgConnected,@function
+                        1260 	.size	_s_01_CanUseKeyIfDbgConnected,.-_s_01_CanUseKeyIfDbgConnected
+                        1261 	.align	2
+                        1262 --_icu_status	0[sp]	local
+                        1263 
+                        1264 --_disable_on_debug	r28	param
+                        1265 --_p_is_allowed	r29	param
+                        1266 
+                        1267 	.section ".bss","awb"
+                        1268 .L1090:
+                        1269 	.type	.L1090,@object
+                        1270 	.size	.L1090,0
+                        1271 	.section ".ghcalltbl",""
+0000001c 00000000*      1272 .L1118:	.word	.L1117
+                        1273 	.type	.L1118,@object
+                        1274 	.size	.L1118,4
+                        1275 	.section ".ghrettbl",""
+00000014 00000000*      1276 .L1120:	.word	.L1119
+                        1277 	.type	.L1120,@object
+                        1278 	.size	.L1120,4
+                        1279 	.data
+                        1280 	.section ".icum_service.text","ax"
+                        1281 
+                        1282 --495: }
+                        1283 
+                        1284 --497: /***************************************************************************************
+                        1285 --498: * Function ID  : [ICUMFW_CD_S_01_PK_0022]:[ICUMFW_UD_S_01_PK_0022]
+                        1286 --499: * Function name: s_01_ConvertErr
+                        1287 --500: * Description  : Convert the set error code to another error code
+                        1288 --501: * Arguments    : (in) arg                        : Error code to be set
+                        1289 --502: *                                                  Range: ER_OK
+                        1290 --503: *                                                         ER_PARAM
+                        1291 --504: *                                                         ER_PENDING_ARB
+                        1292 --505: *                                                         ER_PENDING
+                        1293 --506: *                                                         ER_IN_PROCESS
+                        1294 --507: *                                                         ER_MH_KEY_SLOT_EMPTY
+                        1295 --508: *                                                         ER_MH_KEY_INVALID_KEY_GROUP
+                        1296 --509: *                                                         ER_MH_KEY_INVALID_KEY_INDEX
+                        1297 --510: *                                                         ER_MH_KEY_WRITE_PROTECTED
+                        1298 --511: *                                                         ER_MH_KEY_IN_USE
+                        1299 --512: *                                                         ER_MH_KEY_DATA_NOT_FOUND
+                        1300 --513: *                                                         ER_MH_KEY_WRITING
+                        1301 --514: *                                                         ER_MH_KEY_USER_OVER
+                        1302 --515: *                                                         ER_MH_KEY_NOT_USABLE
+                        1303 --516: *                                                         ER_MH_KEY_AES_TIMEOUT_ERROR
+                        1304 --517: *                                                         ER_MH_KEY_DATA_INVALID
+                        1305 --518: *                                                         ER_MH_KEY_NVM_UNAVAILABLE
+                        1306 --519: *                                                         ER_MH_KEY_NVM_SYS_CRITICAL
+                        1307 --520: *                                                         ER_MH_KEY_NVM_SYS
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1308 --521: *                                                         ER_MH_KEY_NVM_PROG
+                        1309 --522: *                                                         ER_MH_KEY_NVM_SIZE
+                        1310 --523: *                                                         ER_MH_KEY_SRC_MEM_ERROR
+                        1311 --524: *                                                         ER_MH_KEY_DEST_MEM_ERROR
+                        1312 --525: *                                                         ER_MH_KEY_SYS_ERROR
+                        1313 --526: *                                                         ER_MH_KEY_AES_PRM_ERROR
+                        1314 --527: *                                                         ER_ML_CTX_ALL_USE
+                        1315 --528: *                                                         ER_ML_CTX_NOT_FOUND
+                        1316 --529: *                                                         ER_ML_ABTR_EMPTY
+                        1317 --530: *                                                         ER_ML_ABTR_NOT_RELEASED
+                        1318 --531: *                                                         ER_ML_ABTR_INVALID_ID
+                        1319 --532: *                                                         ER_ML_ABTR_TIMER_SET_FAILURE
+                        1320 --533: *                                                         ER_ML_ABTR_NOT_INITIALIZED
+                        1321 --534: *                                                         R_SALIF_ER_OK
+                        1322 --535: *                                                         R_SALIF_ER_IN_PROCESS
+                        1323 --536: *                                                         R_SALIF_ER_PARAM
+                        1324 --537: *                                                         R_SALIF_ER_CRY_STATUS_ERROR
+                        1325 --538: *                                                         R_SALIF_ER_CRY_PKCC_ERROR
+                        1326 --539: *                                                         R_SALIF_ER_CRY_TIMEOUT
+                        1327 --540: *                (out) p_service_result            : converted error code
+                        1328 --541: *                                                    Range: SERV_OK
+                        1329 --542: *                                                           SERV_PRM_ERROR
+                        1330 --543: *                                                           SERV_PENDING
+                        1331 --544: *                                                           SERV_IN_PROCESS
+                        1332 --545: *                                                           SERV_CRYPT_ERROR
+                        1333 --546: *                                                           SERV_KEY_SLOT_EMPTY
+                        1334 --547: *                                                           SERV_INVALID_KEY_GROUP
+                        1335 --548: *                                                           SERV_INVALID_KEY_INDEX
+                        1336 --549: *                                                           SERV_SEQUENCE_ERROR
+                        1337 --550: *                                                           SERV_KEY_WRITE_PROTECTED
+                        1338 --551: *                                                           SERV_DATA_INVALID
+                        1339 --552: *                                                           SERV_NVM_UNAVAILABLE
+                        1340 --553: *                                                           SERV_NVM_SYS_ERROR_CRITICAL
+                        1341 --554: *                                                           SERV_NVM_SYS_ERROR
+                        1342 --555: *                                                           SERV_NVM_PROG_ERROR
+                        1343 --556: *                                                           SERV_NVM_SIZE_ERROR
+                        1344 --557: *                                                           SERV_SRC_MEM_ERROR
+                        1345 --558: *                                                           SERV_DEST_MEM_ERROR
+                        1346 --559: *                                                           SERV_SYS_ERROR
+                        1347 --560: *                                                           SERV_AES_PRM_ERROR
+                        1348 --561: * Return Value : ER_OK
+                        1349 --562: ***************************************************************************************/
+                        1350 --563: uint32_t s_01_ConvertErr(uint32_t arg, volatile r_icumif_service_result_t *p_service_result)
+                        1351 	.align	2
+                        1352 	.align	2
+                        1353 	.align	2
+                        1354 	.align	2
+                        1355 ..gh.f.a.2.e.6:
+                        1356 	.type	..gh.f.a.2.e.6,@object
+                        1357 	.size	..gh.f.a.2.e.6,0
+                        1358 	.global	_s_01_ConvertErr
+                        1359 _s_01_ConvertErr:
+000002fa 0610           1360 	mov	r6,r2
+000002fc 07f0           1361 	mov	r7,ep
+000002fe 330600000000*  1362 	mov	_s_01_errcode_tuples,r19
+                        1363 --	    .bf
+                        1364 .LDW22:
+                        1365 --564: {
+                        1366 --565:     int32_t i;
+                        1367 --567:     *p_service_result = (r_icumif_service_result_t)arg;
+                        1368 --line567
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1369 ..lin.e10a4da1..dd815f20.0_68::
+                        1370 .LDWlin68:
+00000304 0115           1371 	sst.w	r2,0[ep]
+                        1372 --568:     for (i = 0; i < NUMBER_OF_ERROR_TABLE; i++)
+00000306 000a           1373 	mov	0,r1
+00000308 8515*          1374 	br	.L1126
+                        1375 .L1125:
+                        1376 --569:     {
+                        1377 --570:         if (arg == s_01_errcode_tuples[i].internal_code)
+                        1378 --line570
+                        1379 ..lin.e10a4da1..dd815f20.0_69::
+                        1380 .LDWlin69:
+0000030a 0190           1381 	mov	r1,r18
+0000030c c392           1382 	shl	3,r18
+0000030e d391           1383 	add	r19,r18
+00000310 32970100       1384 	ld.w	0[r18],r18
+00000314 f211           1385 	cmp	r18,r2
+00000316 8a0d*          1386 	bne	.L1124
+                        1387 --571:         {
+                        1388 --572:             *p_service_result = s_01_errcode_tuples[i].external_code;
+                        1389 --line572
+                        1390 ..lin.e10a4da1..dd815f20.0_70::
+                        1391 .LDWlin70:
+00000318 0190           1392 	mov	r1,r18
+0000031a c392           1393 	shl	3,r18
+0000031c d391           1394 	add	r19,r18
+0000031e 32970500       1395 	ld.w	4[r18],r18
+00000322 0195           1396 	sst.w	r18,0[ep]
+                        1397 --573:             break;
+00000324 d505*          1398 	br	.L1129
+                        1399 .L1124:
+                        1400 --574:         }
+                        1401 --575:         else
+                        1402 --576:         {
+                        1403 --line568
+                        1404 ..lin.e10a4da1..dd815f20.0_71::
+                        1405 .LDWlin71:
+00000326 410a           1406 	add	1,r1
+                        1407 .L1126:
+00000328 0106d1ff       1408 	addi	-47,r1,zero
+0000032c f6ed*          1409 	blt	.L1125
+                        1410 .L1129:
+                        1411 --577:             /* do nothing */
+                        1412 --578:         }
+                        1413 --579:     }
+                        1414 --580:     return (ER_OK);
+                        1415 --line580
+                        1416 ..lin.e10a4da1..dd815f20.0_72::
+                        1417 .LDWlin72:
+0000032e 0052           1418 	mov	0,r10
+                        1419 --	    .ef
+                        1420 .LDW32:
+                        1421 .L1218:
+                        1422 	.jumptype return
+00000330 7f00           1423 	jmp	[lp]
+                        1424 --line580
+                        1425 ..lin.e10a4da1..dd815f20.0_73::
+                        1426 	.type	_s_01_ConvertErr,@function
+                        1427 	.size	_s_01_ConvertErr,.-_s_01_ConvertErr
+                        1428 	.align	2
+                        1429 --_i	r1	local
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1430 
+                        1431 --_arg	r2	param
+                        1432 --_p_service_result	ep	param
+                        1433 
+                        1434 	.section ".bss","awb"
+                        1435 .L1182:
+                        1436 	.type	.L1182,@object
+                        1437 	.size	.L1182,0
+                        1438 	.section ".icum_service.rodata","a"
+                        1439 	.align	4
+                        1440 	.global	_s_01_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.
+                        1441 _s_01_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.:
+00000000 000000000000   1442 _s_01_errcode_tuples:	.space	8
+00000006 0000 
+00000008 01000000       1443 	.byte	1,0,0,0
+0000000c 04000000       1444 	.byte	4,0,0,0
+00000010 02000000       1445 	.byte	2,0,0,0
+00000014 f2ff0000       1446 	.byte	242,255,0,0
+00000018 03000000       1447 	.byte	3,0,0,0
+0000001c f2ff0000       1448 	.byte	242,255,0,0
+00000020 04000000       1449 	.byte	4,0,0,0
+00000024 ffff0000       1450 	.byte	255,255,0,0
+00000028 01009000       1451 	.byte	1,0,144,0
+0000002c 09000000       1452 	.byte	9,0,0,0
+00000030 02009000       1453 	.byte	2,0,144,0
+00000034 07000000       1454 	.byte	7,0,0,0
+00000038 03009000       1455 	.byte	3,0,144,0
+0000003c 08000000       1456 	.byte	8,0,0,0
+00000040 05009000       1457 	.byte	5,0,144,0
+00000044 0a000000       1458 	.byte	10,0,0,0
+00000048 04009000       1459 	.byte	4,0,144,0
+0000004c 06000000       1460 	.byte	6,0,0,0
+00000050 06009000       1461 	.byte	6,0,144,0
+00000054 06000000       1462 	.byte	6,0,0,0
+00000058 07009000       1463 	.byte	7,0,144,0
+0000005c f2ff0000       1464 	.byte	242,255,0,0
+00000060 08009000       1465 	.byte	8,0,144,0
+00000064 06000000       1466 	.byte	6,0,0,0
+00000068 09009000       1467 	.byte	9,0,144,0
+0000006c 06000000       1468 	.byte	6,0,0,0
+00000070 0b009000       1469 	.byte	11,0,144,0
+00000074 30000000       1470 	.byte	48,0,0,0
+00000078 0c009000       1471 	.byte	12,0,144,0
+0000007c 17000000       1472 	.byte	23,0,0,0
+00000080 0d009000       1473 	.byte	13,0,144,0
+00000084 16000000       1474 	.byte	22,0,0,0
+00000088 0e009000       1475 	.byte	14,0,144,0
+0000008c 15000000       1476 	.byte	21,0,0,0
+00000090 0f009000       1477 	.byte	15,0,144,0
+00000094 14000000       1478 	.byte	20,0,0,0
+00000098 10009000       1479 	.byte	16,0,144,0
+0000009c 13000000       1480 	.byte	19,0,0,0
+000000a0 11009000       1481 	.byte	17,0,144,0
+000000a4 19000000       1482 	.byte	25,0,0,0
+000000a8 12009000       1483 	.byte	18,0,144,0
+000000ac 0c000000       1484 	.byte	12,0,0,0
+000000b0 13009000       1485 	.byte	19,0,144,0
+000000b4 0d000000       1486 	.byte	13,0,0,0
+000000b8 14009000       1487 	.byte	20,0,144,0
+000000bc 11000000       1488 	.byte	17,0,0,0
+000000c0 15009000       1489 	.byte	21,0,144,0
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+000000c4 32000000       1490 	.byte	50,0,0,0
+000000c8 16009000       1491 	.byte	22,0,144,0
+000000cc 23000000       1492 	.byte	35,0,0,0
+000000d0 01001000       1493 	.byte	1,0,16,0
+000000d4 f2ff0000       1494 	.byte	242,255,0,0
+000000d8 02001000       1495 	.byte	2,0,16,0
+000000dc 04000000       1496 	.byte	4,0,0,0
+000000e0 01002000       1497 	.byte	1,0,32,0
+000000e4 f2ff0000       1498 	.byte	242,255,0,0
+000000e8 02002000       1499 	.byte	2,0,32,0
+000000ec 11000000       1500 	.byte	17,0,0,0
+000000f0 03002000       1501 	.byte	3,0,32,0
+000000f4 11000000       1502 	.byte	17,0,0,0
+000000f8 05002000       1503 	.byte	5,0,32,0
+000000fc 11000000       1504 	.byte	17,0,0,0
+00000100 04002000       1505 	.byte	4,0,32,0
+00000104 11000000       1506 	.byte	17,0,0,0
+00000108 06002000       1507 	.byte	6,0,32,0
+0000010c 11000000       1508 	.byte	17,0,0,0
+00000110 0000f000       1509 	.byte	0,0,240,0
+00000114 34000000       1510 	.byte	52,0,0,0
+00000118 1000f000       1511 	.byte	16,0,240,0
+0000011c 36000000       1512 	.byte	54,0,0,0
+00000120 1200f000       1513 	.byte	18,0,240,0
+00000124 30000000       1514 	.byte	48,0,0,0
+00000128 01000000       1515 	.byte	1,0,0,0
+0000012c 04000000       1516 	.byte	4,0,0,0
+00000130 1300f000       1517 	.byte	19,0,240,0
+00000134 04000000       1518 	.byte	4,0,0,0
+00000138 90000600       1519 	.byte	144,0,6,0
+0000013c 11000000       1520 	.byte	17,0,0,0
+00000140 10000600       1521 	.byte	16,0,6,0
+00000144 1a000000       1522 	.byte	26,0,0,0
+00000148 01000600       1523 	.byte	1,0,6,0
+0000014c 04000000       1524 	.byte	4,0,0,0
+00000150 80000600       1525 	.byte	128,0,6,0
+00000154 1a000000       1526 	.byte	26,0,0,0
+00000158 06000500       1527 	.byte	6,0,5,0
+0000015c 04000000       1528 	.byte	4,0,0,0
+00000160 010c0000       1529 	.byte	1,12,0,0
+00000164 1a000000       1530 	.byte	26,0,0,0
+00000168 02000700       1531 	.byte	2,0,7,0
+0000016c 1a000000       1532 	.byte	26,0,0,0
+00000170 01000700       1533 	.byte	1,0,7,0
+00000174 04000000       1534 	.byte	4,0,0,0
+                        1535 	.type	_s_01_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.,@object
+                        1536 	.size	_s_01_errcode_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common.,376
+                        1537 	.type	_s_01_errcode_tuples,@object
+                        1538 	.size	_s_01_errcode_tuples,376
+                        1539 	.section ".ghrettbl",""
+00000018 00000000*      1540 .L1219:	.word	.L1218
+                        1541 	.type	.L1219,@object
+                        1542 	.size	.L1219,4
+                        1543 	.data
+                        1544 	.section ".icum_service.text","ax"
+                        1545 
+                        1546 --581: }
+                        1547 	.align	2
+                        1548 --_s_01_errcode_tuples	_s_01_errcode_tuples	static
+                        1549 
+                        1550 	.data
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000119g1.si
+                        1551 	.ghsnote version,30
+                        1552 	.ghsnote tools,3
+                        1553 	.ghsnote options,656
+                        1554 	.section ".icum_service.text","ax"
+                        1555 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_common...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40664..0::
+                        1556 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

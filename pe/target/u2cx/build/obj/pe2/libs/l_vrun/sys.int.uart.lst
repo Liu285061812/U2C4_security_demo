@@ -1,0 +1,992 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\common -I..\..\pe\target\u2cx\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.int.uart.dbo -source=sys.int.uart.c -comp -o ..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\gh_0000v5c1.o -list=..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.int.uart.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+Source File: sys.int.uart.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\common
+                           2 --		-I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\include
+                           3 --		-I..\..\pe\generic
+                           4 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           5 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                           6 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                           7 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                           8 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                           9 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          10 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          11 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          12 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          13 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          14 --		-D_PEID_=2 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle -DD_PEID=2
+                          15 --		-filetype.c ..\..\pe\target\u2cx\src\l_vrun\sys.int.uart.c -o
+                          16 --		..\..\pe\target\u2cx\build\obj\pe2\libs\l_vrun\sys.int.uart.o
+                          17 --Source File:   ..\..\pe\target\u2cx\src\l_vrun\sys.int.uart.c
+                          18 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          19 --Compile Date:  Wed Nov 11 11:21:56 2026
+                          20 --Host OS:       Win64
+                          21 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          22 --Release:       Compiler v2023.5.4
+                          23 --Revision Date: Wed Sep 06 02:44:56 2023
+                          24 --Release Date:  Wed Sep 06 02:00:00 2023
+                          25 -- ecom  -g -w
+                          26 
+                          27 --1: /******************************************************************************/
+                          28 --2: /* Component Name   Testing the ICU-M                                         */
+                          29 --3: /******************************************************************************/
+                          30 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          31 --5: /******************************************************************************/
+                          32 --6: /***********************************************************************************************************************
+                          33 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          34 --8: * 
+                          35 --9: * DISCLAIMER
+                          36 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          37 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          38 --12: * applicable laws, including copyright laws.
+                          39 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          40 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          41 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          42 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          43 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          44 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          45 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          46 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          47 --21: * following link:
+                          48 --22: * www.renesas.com/disclaimer
+                          49 --23: *
+                          50 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                          51 --25: ***********************************************************************************************************************/
+                          52 --26: // force the integration of the copyright notice
+                          53 --27: #pragma ghs reference sys_get_package_info
+                          54 --29: #include DEVICE_FILE
+                          55 --30: #include "v850.toolbox.h"
+                          56 --32: #include "sys.config.h"
+                          57 --34: #if (SYS_QUARTZ_FREQ != 20000000)
+                          58 --35:     #error INCORRECT FREQUENCY
+                          59 --36: #endif
+                          60 --38: #undef PASTER
+                          61 --39: #undef EVALUATOR
+                          62 --40: /*
+                          63 --41:  [Overview]\n
+                          64 --42:  Connect a symbol
+                          65 --44:  [Description]\n
+                          66 --45:  Concatenate the two symbols specified by the arguments x and y to generate 
+                          67 --46:  one symbol.
+                          68 --48:  [Parameters(in)]\n
+                          69 --49:  x      - Symbols to connet (1st word)\n
+                          70 --50:  y      - Symbols to connet (2nd word)\n
+                          71 --51:  z      - Symbols to connet (last word)
+                          72 --53:  [Return value]\n
+                          73 --54:  Connected symbol
+                          74 --55: */
+                          75 --56: #define PASTER(x, y, z)        PORT ## x ## y ## z
+                          76 --57: /** PASTER's alias */
+                          77 --58: #define EVALUATOR(x, y, z)     PASTER(x, y, z)
+                          78 --60: /* For port configuration, the following is set.   */
+                          79 --61: /*    the port unit (PU)  0 or 1                   */
+                          80 --62: /*    the port groups in the port unit (PG)        */
+                          81 --63: /*    the port number in the group (Pn)            */
+                          82 --65: /* Tx:P12_6 */
+                          83 --66: #define PG_VUART0_TX    17
+                          84 --67: #define Pn_VUART0_TX    2
+                          85 --68: /* Rx:P12_5 */
+                          86 --69: #define PG_VUART0_RX    17
+                          87 --70: #define Pn_VUART0_RX    3
+                          88 --72: #define INT_VUART0_RCV  EIINT180
+                          89 --73: #define INT_VUART0_SND  EIINT179
+                          90 --74: #define INT_VUART0_ERR  EIINT181
+                          91 --77: /* Note !! */
+                          92 --78: /* DEVICE_FILE definition is prohibited !!                                   */
+                          93 --79: /* Because the register address shifts due to erroneous boundary adjustment. */
+                          94 --80: /* Alternatively, address definition is performed for each register.         */
+                          95 --82: /**
+                          96 --83:      LIN/UART Interface (RLIN3)\n
+                          97 --84:      List of registers for RLIN30 port
+                          98 --85: */
+                          99 --86: /** Base address */
+                         100 --87: #undef RLN35LWBR
+                         101 --88: #undef RLN35LBRP01
+                         102 --89: #undef RLN35LSTC
+                         103 --90: #undef RLN35LMD
+                         104 --91: #undef RLN35LBFC
+                         105 --92: #undef RLN35LSC
+                         106 --93: #undef RLN35LIE
+                         107 --94: #undef RLN35LEDE
+                         108 --95: #undef RLN35LCUC
+                         109 --96: #undef RLN35LTRC
+                         110 --97: #undef RLN35LMST
+                         111 --98: #undef RLN35LST
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         112 --99: #undef RLN35LEST
+                         113 --100: #undef RLN35LUOER
+                         114 --101: #undef RLN35LUTDR
+                         115 --102: #undef RLN35LURDR
+                         116 --103: #define RLN35LWBR RLN31LWBR
+                         117 --104: #define RLN35LBRP01 RLN31LBRP01
+                         118 --105: #define RLN35LSTC RLN31LSTC
+                         119 --106: #define RLN35LMD RLN31LMD
+                         120 --107: #define RLN35LBFC RLN31LBFC
+                         121 --108: #define RLN35LSC RLN31LSC
+                         122 --109: #define RLN35LIE RLN31LIE
+                         123 --110: #define RLN35LEDE RLN31LEDE
+                         124 --111: #define RLN35LCUC RLN31LCUC
+                         125 --112: #define RLN35LTRC RLN31LTRC
+                         126 --113: #define RLN35LMST RLN31LMST
+                         127 --114: #define RLN35LST RLN31LST
+                         128 --115: #define RLN35LEST RLN31LEST
+                         129 --116: #define RLN35LUOER RLN31LUOER
+                         130 --117: #define RLN35LUTDR RLN31LUTDR
+                         131 --118: #define RLN35LURDR RLN31LURDR
+                         132 --120: #define INTC2_base    (0xFFF80000UL)
+                         133 --121: //#define INTC2EIC621   (*(volatile unsigned short *)(INTC2_base + 0x4DAU))
+                         134 --122: //#define INTC2EIC622   (*(volatile unsigned short *)(INTC2_base + 0x4DCU))
+                         135 --123: //#define INTC2EIC623   (*(volatile unsigned short *)(INTC2_base + 0x4DEU))
+                         136 --125: //#define INTC2EIC437   (*(volatile unsigned short *)(INTC2_base + 0x36AU))
+                         137 --126: //#define INTC2EIC438   (*(volatile unsigned short *)(INTC2_base + 0x36CU))
+                         138 --127: //#define INTC2EIC439   (*(volatile unsigned short *)(INTC2_base + 0x36EU))
+                         139 --129: #define MSRKCPROT SYSCTRLMSRKCPROT
+                         140 --130: #define MSR_RLIN3 SYSCTRLMSR_RLIN3
+                         141 --132: #define PORT_PWE PORT0PWE
+                         142 --135: // ------------------------------------------------------------
+                         143 --136: // external variables
+                         144 --137: // ------------------------------------------------------------
+                         145 --139: /** Clock frequency of VUART0 */
+                         146 --140: extern unsigned char VUART0_CLK;
+                         147 --141: /** Clock frequency of VTIMER0 */
+                         148 --142: extern unsigned char VTIMER0_CLK;
+                         149 --143: /** Clock frequency of VTIMER1 */
+                         150 --144: extern unsigned char VTIMER1_CLK;
+                         151 --146: // ************************************************************************************************************************
+                         152 --147: // VUART0 management
+                         153 --148: // ************************************************************************************************************************
+                         154 --150: /* the below global variables are declared in lib.vrun */
+                         155 --151: /** vrun_receiveflag is 1 when a byte has been received (update in irq function) */
+                         156 --152: extern volatile char vrun_receiveflag;
+                         157 --153: /* vrun_sendflag is 1 when a byte has been sent (update in irq function) */
+                         158 --154: extern volatile char vrun_sendflag;
+                         159 --156: /**
+                         160 --157:  [Overview]\n
+                         161 --158:  VUART interrupt vector upon transmission
+                         162 --160:  [Description]\n
+                         163 --161:  Interrupt occurs after correct character transmission
+                         164 --163:  [Parameters]\n
+                         165 --164:  None
+                         166 --166:  [Return value]\n
+                         167 --167:  None
+                         168 --169:  [Output variables]\n
+                         169 --170:  vrun_sendflag
+                         170 --171: */
+                         171 --172: __interrupt void INT_VUART0_SND(void)
+                         172 	.text
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         173 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Eint.2Euart...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF57..0::
+                         174 	.align	2
+                         175 	.align	2
+                         176 ..gh.f.a.2.e.0:
+                         177 	.type	..gh.f.a.2.e.0,@object
+                         178 	.size	..gh.f.a.2.e.0,0
+                         179 	.global	_EIINT179
+                         180 _EIINT179:
+00000000 231efcff        181 	movea	-4,sp,sp
+00000004 630f0100        182 	st.w	r1,0[sp]
+00000008 231efcff        183 	movea	-4,sp,sp
+0000000c 63f70100        184 	st.w	ep,0[sp]
+                         185 	stsr	6,ep -- FPSR
+                         185 <EXPANSION BEGIN>
+                         185 stsr 6 , ep , 0
+00000010 e6f74000        185 <EXPANSION END>
+00000014 231efcff        186 	movea	-4,sp,sp
+00000018 63f70100        187 	st.w	ep,0[sp]
+                         188 	stsr	7,ep -- FPEPC
+                         188 <EXPANSION BEGIN>
+                         188 stsr 7 , ep , 0
+0000001c e7f74000        188 <EXPANSION END>
+00000020 231efcff        189 	movea	-4,sp,sp
+00000024 63f70100        190 	st.w	ep,0[sp]
+                         191 --	    .bf
+                         192 .LDW01:
+                         193 --173: {
+                         194 --174:     /* indicate to the control layer that a byte has been sent */
+                         195 --175:     vrun_sendflag = 1;
+00000028 010a            196 	mov	1,r1
+0000002a 3e0600000000*   197 	mov	_vrun_sendflag,ep
+00000030 800b            198 	sst.b	r1,0[ep]
+                         199 --176: }
+                         200 --	    .ef
+                         201 .LDW11:
+                         202 --line176
+                         203 ..lin.c1cb555c..7d5f227e.0_1::
+                         204 .LDWlin1:
+00000032 23f70100        205 	ld.w	0[sp],ep
+00000036 231e0400        206 	movea	4,sp,sp
+                         207 	ldsr	ep,7 -- FPEPC
+                         207 <EXPANSION BEGIN>
+                         207 ldsr ep , 7 , 0
+0000003a fe3f2000        207 <EXPANSION END>
+0000003e 23f70100        208 	ld.w	0[sp],ep
+00000042 231e0400        209 	movea	4,sp,sp
+                         210 	ldsr	ep,6 -- FPSR
+                         210 <EXPANSION BEGIN>
+                         210 ldsr ep , 6 , 0
+00000046 fe372000        210 <EXPANSION END>
+0000004a 23f70100        211 	ld.w	0[sp],ep
+0000004e 231e0400        212 	movea	4,sp,sp
+00000052 230f0100        213 	ld.w	0[sp],r1
+00000056 231e0400        214 	movea	4,sp,sp
+                         215 .L40:
+0000005a e0074801        216 	eiret
+                         217 	.type	_EIINT179,@function
+                         218 	.size	_EIINT179,.-_EIINT179
+                         219 	.align	2
+                         220 
+                         221 	.section ".ghrettbl",""
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         222 	.align	4
+00000000 00000000*       223 .L41:	.word	.L40
+                         224 	.type	.L41,@object
+                         225 	.size	.L41,4
+                         226 	.data
+                         227 	.text
+                         228 
+                         229 
+                         230 --178: /**
+                         231 --179:  [Overview]\n
+                         232 --180:  VUART interrupt vector upon reception
+                         233 --182:  [Description]\n
+                         234 --183:  Interrupt occurs after correct character reception
+                         235 --185:  [Parameters]\n
+                         236 --186:  None
+                         237 --188:  [Return value]\n
+                         238 --189:  None
+                         239 --191:  [Output variables]\n
+                         240 --192:  vrun_receiveflag
+                         241 --193: */
+                         242 --194: __interrupt void INT_VUART0_RCV(void)
+                         243 	.align	2
+                         244 	.align	2
+                         245 	.align	2
+                         246 ..gh.f.a.2.e.1:
+                         247 	.type	..gh.f.a.2.e.1,@object
+                         248 	.size	..gh.f.a.2.e.1,0
+                         249 	.global	_EIINT180
+                         250 _EIINT180:
+0000005e 231efcff        251 	movea	-4,sp,sp
+00000062 630f0100        252 	st.w	r1,0[sp]
+00000066 231efcff        253 	movea	-4,sp,sp
+0000006a 63f70100        254 	st.w	ep,0[sp]
+                         255 	stsr	6,ep -- FPSR
+                         255 <EXPANSION BEGIN>
+                         255 stsr 6 , ep , 0
+0000006e e6f74000        255 <EXPANSION END>
+00000072 231efcff        256 	movea	-4,sp,sp
+00000076 63f70100        257 	st.w	ep,0[sp]
+                         258 	stsr	7,ep -- FPEPC
+                         258 <EXPANSION BEGIN>
+                         258 stsr 7 , ep , 0
+0000007a e7f74000        258 <EXPANSION END>
+0000007e 231efcff        259 	movea	-4,sp,sp
+00000082 63f70100        260 	st.w	ep,0[sp]
+                         261 --	    .bf
+                         262 .LDW21:
+                         263 --195: {
+                         264 --196:     /* indicate to the control layer that a byte has been received */
+                         265 --197:     vrun_receiveflag = 1;
+00000086 010a            266 	mov	1,r1
+00000088 3e0600000000*   267 	mov	_vrun_receiveflag,ep
+0000008e 800b            268 	sst.b	r1,0[ep]
+                         269 --198: }
+                         270 --	    .ef
+                         271 .LDW31:
+                         272 --line198
+                         273 ..lin.c1cb555c..7d5f2296.0_2::
+                         274 .LDWlin2:
+00000090 23f70100        275 	ld.w	0[sp],ep
+00000094 231e0400        276 	movea	4,sp,sp
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         277 	ldsr	ep,7 -- FPEPC
+                         277 <EXPANSION BEGIN>
+                         277 ldsr ep , 7 , 0
+00000098 fe3f2000        277 <EXPANSION END>
+0000009c 23f70100        278 	ld.w	0[sp],ep
+000000a0 231e0400        279 	movea	4,sp,sp
+                         280 	ldsr	ep,6 -- FPSR
+                         280 <EXPANSION BEGIN>
+                         280 ldsr ep , 6 , 0
+000000a4 fe372000        280 <EXPANSION END>
+000000a8 23f70100        281 	ld.w	0[sp],ep
+000000ac 231e0400        282 	movea	4,sp,sp
+000000b0 230f0100        283 	ld.w	0[sp],r1
+000000b4 231e0400        284 	movea	4,sp,sp
+                         285 .L72:
+000000b8 e0074801        286 	eiret
+                         287 	.type	_EIINT180,@function
+                         288 	.size	_EIINT180,.-_EIINT180
+                         289 	.align	2
+                         290 
+                         291 	.section ".ghrettbl",""
+00000004 00000000*       292 .L73:	.word	.L72
+                         293 	.type	.L73,@object
+                         294 	.size	.L73,4
+                         295 	.data
+                         296 	.text
+                         297 
+                         298 
+                         299 --200: /**
+                         300 --201:  [Overview]\n
+                         301 --202:  VUART interrupt vector upon status
+                         302 --204:  [Description]\n
+                         303 --205:  Interrupt occurs in case of error during reception
+                         304 --207:  [Parameters]\n
+                         305 --208:  None
+                         306 --210:  [Return value]\n
+                         307 --211:  None
+                         308 --213:  [Output variables]\n
+                         309 --214:  vrun_receiveflag
+                         310 --215: */
+                         311 --216: __interrupt void INT_VUART0_ERR(void)
+                         312 	.align	2
+                         313 	.align	2
+                         314 	.align	2
+                         315 ..gh.f.a.2.e.2:
+                         316 	.type	..gh.f.a.2.e.2,@object
+                         317 	.size	..gh.f.a.2.e.2,0
+                         318 	.global	_EIINT181
+                         319 _EIINT181:
+000000bc 231efcff        320 	movea	-4,sp,sp
+000000c0 630f0100        321 	st.w	r1,0[sp]
+000000c4 231efcff        322 	movea	-4,sp,sp
+000000c8 63f70100        323 	st.w	ep,0[sp]
+                         324 	stsr	6,ep -- FPSR
+                         324 <EXPANSION BEGIN>
+                         324 stsr 6 , ep , 0
+000000cc e6f74000        324 <EXPANSION END>
+000000d0 231efcff        325 	movea	-4,sp,sp
+000000d4 63f70100        326 	st.w	ep,0[sp]
+                         327 	stsr	7,ep -- FPEPC
+                         327 <EXPANSION BEGIN>
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         327 stsr 7 , ep , 0
+000000d8 e7f74000        327 <EXPANSION END>
+000000dc 231efcff        328 	movea	-4,sp,sp
+000000e0 63f70100        329 	st.w	ep,0[sp]
+                         330 --	    .bf
+                         331 .LDW41:
+                         332 --217: {
+                         333 --218:     /* indicate to the control layer that a byte has been received with error */
+                         334 --219:     vrun_receiveflag = -1;
+000000e4 1f0a            335 	mov	-1,r1
+000000e6 3e0600000000*   336 	mov	_vrun_receiveflag,ep
+000000ec 800b            337 	sst.b	r1,0[ep]
+                         338 --220: }
+                         339 --	    .ef
+                         340 .LDW51:
+                         341 --line220
+                         342 ..lin.c1cb555c..7d5f2297.0_3::
+                         343 .LDWlin3:
+000000ee 23f70100        344 	ld.w	0[sp],ep
+000000f2 231e0400        345 	movea	4,sp,sp
+                         346 	ldsr	ep,7 -- FPEPC
+                         346 <EXPANSION BEGIN>
+                         346 ldsr ep , 7 , 0
+000000f6 fe3f2000        346 <EXPANSION END>
+000000fa 23f70100        347 	ld.w	0[sp],ep
+000000fe 231e0400        348 	movea	4,sp,sp
+                         349 	ldsr	ep,6 -- FPSR
+                         349 <EXPANSION BEGIN>
+                         349 ldsr ep , 6 , 0
+00000102 fe372000        349 <EXPANSION END>
+00000106 23f70100        350 	ld.w	0[sp],ep
+0000010a 231e0400        351 	movea	4,sp,sp
+0000010e 230f0100        352 	ld.w	0[sp],r1
+00000112 231e0400        353 	movea	4,sp,sp
+                         354 .L104:
+00000116 e0074801        355 	eiret
+                         356 	.type	_EIINT181,@function
+                         357 	.size	_EIINT181,.-_EIINT181
+                         358 	.align	2
+                         359 
+                         360 	.section ".ghrettbl",""
+00000008 00000000*       361 .L105:	.word	.L104
+                         362 	.type	.L105,@object
+                         363 	.size	.L105,4
+                         364 	.data
+                         365 	.text
+                         366 
+                         367 
+                         368 --222: /*
+                         369 --223:  [Overview]\n
+                         370 --224:  reads one byte from the VUART
+                         371 --226:  [Description]\n
+                         372 --227:  Check the UART status, and if there is received data, extract 1-byte of data
+                         373 --228:  from it and return it as a return value.\n
+                         374 --229:  If there is no received data, 0xFF is returned as a return value.
+                         375 --231:  [Parameters]\n
+                         376 --232:  None
+                         377 --234:  [Return value]\n
+                         378 --235:  0xFF           - No received data\n
+                         379 --236:  Other values   - Extracted 1-byte data
+                         380 --238:  [Used registers]\n
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         381 --239:  SCI31SSR, SCI31RDRL
+                         382 --240: */
+                         383 --241: unsigned char sys_vuart_getbyte(void)
+                         384 	.align	2
+                         385 	.align	2
+                         386 	.align	2
+                         387 ..gh.f.a.2.e.3:
+                         388 	.type	..gh.f.a.2.e.3,@object
+                         389 	.size	..gh.f.a.2.e.3,0
+                         390 	.global	_sys_vuart_getbyte
+                         391 _sys_vuart_getbyte:
+                         392 --	    .bf
+                         393 .LDW61:
+                         394 --242: {
+                         395 --243:     return (RLN35LURDR);
+0000011a 2b0626b189ff    396 	mov	-7753434,r11
+00000120 eb0f0100        397 	ld.hu	0[r11],r1
+00000124 8100            398 	zxb	r1
+00000126 0150            399 	mov	r1,r10
+                         400 --	    .ef
+                         401 .LDW71:
+                         402 .L131:
+                         403 --line244
+                         404 ..lin.c1cb555c..772a10a7.0_4::
+                         405 .LDWlin4:
+                         406 	.jumptype return
+00000128 7f00            407 	jmp	[lp]
+                         408 --line244
+                         409 ..lin.c1cb555c..772a10a7.0_5::
+                         410 	.type	_sys_vuart_getbyte,@function
+                         411 	.size	_sys_vuart_getbyte,.-_sys_vuart_getbyte
+                         412 	.align	2
+                         413 
+                         414 	.section ".ghrettbl",""
+0000000c 00000000*       415 .L132:	.word	.L131
+                         416 	.type	.L132,@object
+                         417 	.size	.L132,4
+                         418 	.data
+                         419 	.text
+                         420 
+                         421 --244: }
+                         422 
+                         423 --246: /**
+                         424 --247: [Overview]\n
+                         425 --248:  sends one byte via the VUART
+                         426 --250:  [Description]\n
+                         427 --251:  Monitor the UART status and wait for the transmittable status (transmission data
+                         428 --252:  register is empty).
+                         429 --253:  Send 1-byte data when it is ready to be sent.
+                         430 --255:  [Parameters]\n
+                         431 --256:  1-byte data to send
+                         432 --258:  [Return value]\n
+                         433 --259:  None
+                         434 --261:  [Used registers]\n
+                         435 --262:  SCI31SSR, SCI31TDRL
+                         436 --264:  [Remarks]\n
+                         437 --265:  In this implementation, the loop that monitors the transmittable status may
+                         438 --266:  become an endless loop. When using it as a customer, take measures such as timeout.
+                         439 --267: */
+                         440 --268: void sys_vuart_sendbyte(unsigned char byte_to_send)
+                         441 	.align	2
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         442 	.align	2
+                         443 	.align	2
+                         444 ..gh.f.a.2.e.4:
+                         445 	.type	..gh.f.a.2.e.4,@object
+                         446 	.size	..gh.f.a.2.e.4,0
+                         447 	.global	_sys_vuart_sendbyte
+                         448 _sys_vuart_sendbyte:
+0000012a 0608            449 	mov	r6,r1
+0000012c 8100            450 	zxb	r1
+                         451 --	    .bf
+                         452 .LDW81:
+                         453 --269: {
+                         454 --270:     RLN35LUTDR = byte_to_send;
+0000012e 2b0624b189ff    455 	mov	-7753436,r11
+00000134 6b0f0000        456 	st.h	r1,0[r11]
+                         457 --271: }
+                         458 --	    .ef
+                         459 .LDW91:
+                         460 .L168:
+                         461 --line271
+                         462 ..lin.c1cb555c..619ad831.0_6::
+                         463 .LDWlin6:
+                         464 	.jumptype return
+00000138 7f00            465 	jmp	[lp]
+                         466 --line271
+                         467 ..lin.c1cb555c..619ad831.0_7::
+                         468 	.type	_sys_vuart_sendbyte,@function
+                         469 	.size	_sys_vuart_sendbyte,.-_sys_vuart_sendbyte
+                         470 	.align	2
+                         471 
+                         472 --_byte_to_send	r1	param
+                         473 
+                         474 	.section ".ghrettbl",""
+00000010 00000000*       475 .L169:	.word	.L168
+                         476 	.type	.L169,@object
+                         477 	.size	.L169,4
+                         478 	.data
+                         479 	.text
+                         480 
+                         481 
+                         482 --273: /**
+                         483 --274:  [Overview]\n
+                         484 --275:  Configure the VUART
+                         485 --277:  [Description]\n
+                         486 --278:  Configure the logical UART(VUART) used in the VRUN module.
+                         487 --279:  In this implementation, SCI3(Serial Communication Interface 3) is used as VUART.
+                         488 --281:  [Parameters]\n
+                         489 --282:  None
+                         490 --284:  [Return value]\n
+                         491 --285:  None
+                         492 --287:  [Used registers]\n
+                         493 --288:  MSRKCPROT, MSR_SCI, PKCPROT, PWE,
+                         494 --289:  SCI31SCR, SCI31SMR, SCI31SCMR, SCI31SEMR, SCI31BRR, SCI31MDDR
+                         495 --291:  [Remarks]\n
+                         496 --292:  VUART is mainly used for console input/output. Make various settings according
+                         497 --293:  to the console tool used by the customer.
+                         498 --294: */
+                         499 --295: void sys_vuart_config(void)
+                         500 	.align	2
+                         501 	.align	2
+                         502 	.align	2
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         503 ..gh.f.a.2.e.5:
+                         504 	.type	..gh.f.a.2.e.5,@object
+                         505 	.size	..gh.f.a.2.e.5,0
+                         506 	.global	_sys_vuart_config
+                         507 _sys_vuart_config:
+                         508 --	    .bf
+                         509 .LDW02:
+                         510 --296: {
+                         511 --297:     /* RLN35 module Active */
+                         512 --298:     MSRKCPROT = 0xA5A5A501;
+0000013a 210601a5a5a5    513 	mov	-1515870975,r1
+00000140 2b06101798ff    514 	mov	-6809840,r11
+00000146 6b0f0100        515 	st.w	r1,0[r11]
+                         516 --299:     MSR_RLIN3 |= 0x80000000;
+                         517 --line299
+                         518 ..lin.c1cb555c..29852729.0_8::
+                         519 .LDWlin8:
+0000014a 2b06601098ff    520 	mov	-6811552,r11
+00000150 2b0f0100        521 	ld.w	0[r11],r1
+00000154 40160080        522 	movhi	hi(-2147483648),zero,r2
+00000158 0209            523 	or	r2,r1
+0000015a 2c06601098ff    524 	mov	-6811552,r12
+00000160 6c0f0100        525 	st.w	r1,0[r12]
+                         526 --300:     MSR_RLIN3 &= 0xFFFFFFDF;	// RLN35
+                         527 --line300
+                         528 ..lin.c1cb555c..29852729.0_9::
+                         529 .LDWlin9:
+00000164 2b06601098ff    530 	mov	-6811552,r11
+0000016a 2b0f0100        531 	ld.w	0[r11],r1
+0000016e 2016dfff        532 	movea	-33,zero,r2
+00000172 4209            533 	and	r2,r1
+00000174 2c06601098ff    534 	mov	-6811552,r12
+0000017a 6c0f0100        535 	st.w	r1,0[r12]
+                         536 --301:     MSRKCPROT = 0xA5A5A500;
+                         537 --line301
+                         538 ..lin.c1cb555c..29852729.0_10::
+                         539 .LDWlin10:
+0000017e 210600a5a5a5    540 	mov	-1515870976,r1
+00000184 2b06101798ff    541 	mov	-6809840,r11
+0000018a 6b0f0100        542 	st.w	r1,0[r11]
+                         543 --303:     /* RLN35 is configured in UART mode */
+                         544 --304:     // UART reset & disable
+                         545 --305:     RLN35LUOER  = 0x00;
+                         546 --line305
+                         547 ..lin.c1cb555c..29852729.0_11::
+                         548 .LDWlin11:
+0000018e 2b0620b189ff    549 	mov	-7753440,r11
+00000194 4b070000        550 	st.b	zero,0[r11]
+                         551 --306:     RLN35LCUC   = 0x00;
+                         552 --line306
+                         553 ..lin.c1cb555c..29852729.0_12::
+                         554 .LDWlin12:
+00000198 2b060eb189ff    555 	mov	-7753458,r11
+0000019e 4b070000        556 	st.b	zero,0[r11]
+                         557 --307:     
+                         558 --308:     while (RLN35LMST != 0 );
+                         559 .L172:
+                         560 --line308
+                         561 ..lin.c1cb555c..29852729.0_13::
+                         562 .LDWlin13:
+000001a2 2b0611b189ff    563 	mov	-7753455,r11
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+000001a8 8b0f0100        564 	ld.bu	0[r11],r1
+000001ac e009            565 	cmp	zero,r1
+000001ae aafd*           566 	bne	.L172
+                         567 --309:     
+                         568 --310:     // select UART mode
+                         569 --311:     RLN35LMD    = 0x01;
+                         570 --line311
+                         571 ..lin.c1cb555c..29852729.0_14::
+                         572 .LDWlin14:
+000001b0 010a            573 	mov	1,r1
+000001b2 2b0608b189ff    574 	mov	-7753464,r11
+000001b8 4b0f0000        575 	st.b	r1,0[r11]
+                         576 --313:     // UART config
+                         577 --314:     // 8-bit communication
+                         578 --315:     // LSB first
+                         579 --316:     // Stop Bit 1 bit
+                         580 --317:     // Parity Disabled
+                         581 --318:     // Without RX inversion
+                         582 --319:     // Without RX inversion
+                         583 --320:     RLN35LBFC   = 0x00;
+                         584 --line320
+                         585 ..lin.c1cb555c..29852729.0_15::
+                         586 .LDWlin15:
+000001bc 2b0609b189ff    587 	mov	-7753463,r11
+000001c2 4b070000        588 	st.b	zero,0[r11]
+                         589 --322:     // disable error detection
+                         590 --323:     RLN35LEDE   = 0x00;
+                         591 --line323
+                         592 ..lin.c1cb555c..29852729.0_16::
+                         593 .LDWlin16:
+000001c6 2b060db189ff    594 	mov	-7753459,r11
+000001cc 4b070000        595 	st.b	zero,0[r11]
+                         596 --325:     // UART Bps setup
+                         597 --326: #define SAMPLING    6
+                         598 --327:     /* RLN35LWB[7..4] Bit Sampling Count Select : 6 sampling */
+                         599 --328:     /* RLN35LWB[3..1] Prescaler Clock Select    : 1/1        */ 
+                         600 --329:     RLN35LWBR   = (SAMPLING - 1) << 4;
+                         601 --line329
+                         602 ..lin.c1cb555c..29852729.0_17::
+                         603 .LDWlin17:
+000001d0 200e5000        604 	movea	80,zero,r1
+000001d4 2b0601b189ff    605 	mov	-7753471,r11
+000001da 4b0f0000        606 	st.b	r1,0[r11]
+                         607 --331:     /* RLN35LBRP01 = (PCLK /  (SYS_COM_SPEED * SAMPLING)) - 1 */
+                         608 --332:     RLN35LBRP01 = ((VUART0_CLK * 1000 * 1000) / (SYS_COM_SPEED * SAMPLING)) - 1;
+                         609 --line332
+                         610 ..lin.c1cb555c..29852729.0_18::
+                         611 .LDWlin18:
+000001de 2b0600000000*   612 	mov	_VUART0_CLK,r11
+000001e4 8b0f0100        613 	ld.bu	0[r11],r1
+000001e8 e10ee803        614 	mulhi	1000,r1,r1
+000001ec 2016e803        615 	movea	1000,zero,r2
+000001f0 e20f2002        616 	mul	r2,r1,zero
+000001f4 2206008c0a00    617 	mov	691200,r2
+000001fa e20ffc02        618 	divq	r2,r1,zero
+000001fe 5f0a            619 	add	-1,r1
+00000200 c100            620 	zxh	r1
+00000202 2c0602b189ff    621 	mov	-7753470,r12
+00000208 6c0f0000        622 	st.h	r1,0[r12]
+                         623 --334:     // release UART from reset
+                         624 --335:     RLN35LCUC   = 0x01;
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         625 --line335
+                         626 ..lin.c1cb555c..29852729.0_19::
+                         627 .LDWlin19:
+0000020c 010a            628 	mov	1,r1
+0000020e 2b060eb189ff    629 	mov	-7753458,r11
+00000214 4b0f0000        630 	st.b	r1,0[r11]
+                         631 --337:     while (RLN35LMST != 1 );
+                         632 .L175:
+                         633 --line337
+                         634 ..lin.c1cb555c..29852729.0_20::
+                         635 .LDWlin20:
+00000218 2b0611b189ff    636 	mov	-7753455,r11
+0000021e 8b0f0100        637 	ld.bu	0[r11],r1
+00000222 610a            638 	cmp	1,r1
+00000224 aafd*           639 	bne	.L175
+                         640 --339:     // enable UART (TR + RX)
+                         641 --340:     RLN35LUOER  = 0x03;
+                         642 --line340
+                         643 ..lin.c1cb555c..29852729.0_21::
+                         644 .LDWlin21:
+00000226 030a            645 	mov	3,r1
+00000228 2b0620b189ff    646 	mov	-7753440,r11
+0000022e 4b0f0000        647 	st.b	r1,0[r11]
+                         648 --342:     /* Configure Pin Function */
+                         649 --344:     /* Port Keycode Protection Disable */
+                         650 --345:     PORT0PKCPROT = 0xA5A5A501;
+                         651 --line345
+                         652 ..lin.c1cb555c..29852729.0_22::
+                         653 .LDWlin22:
+00000232 210601a5a5a5    654 	mov	-1515870975,r1
+00000238 80070f0c5eb2    655 	st.w	r1,4292423488[zero]
+                         656 --347:     /* Port Write Enable */
+                         657 --348:     PORT_PWE |= 0x00000400;
+                         658 --line348
+                         659 ..lin.c1cb555c..29852729.0_23::
+                         660 .LDWlin23:
+0000023e 8007490c5eb2    661 	ld.w	4292423492[zero],r1
+00000244 810e0004        662 	ori	1024,r1,r1
+00000248 80074f0c5eb2    663 	st.w	r1,4292423492[zero]
+                         664 --350:     /* I/O mode is selected by PMn.PMn_m (S/W I/O control alternative mode). */
+                         665 --351:     EVALUATOR(0 , PIPC , PG_VUART0_RX) &=  ~(1 << Pn_VUART0_RX);
+                         666 --line351
+                         667 ..lin.c1cb555c..29852729.0_24::
+                         668 .LDWlin24:
+0000024e a007870c88b2    669 	ld.hu	4292428872[zero],r1
+00000254 c10ef7ff        670 	andi	65527,r1,r1
+00000258 a0078d0c88b2    671 	st.h	r1,4292428872[zero]
+                         672 --352:     EVALUATOR(0 , PIPC , PG_VUART0_TX) &=  ~(1 << Pn_VUART0_TX);
+                         673 --line352
+                         674 ..lin.c1cb555c..29852729.0_25::
+                         675 .LDWlin25:
+0000025e a007870c88b2    676 	ld.hu	4292428872[zero],r1
+00000264 c10efbff        677 	andi	65531,r1,r1
+00000268 a0078d0c88b2    678 	st.h	r1,4292428872[zero]
+                         679 --354:     /* Configure VUART0 TX port */
+                         680 --355:     /* ALT_OUT5    */
+                         681 --356:     /*  PFC    = 0 */
+                         682 --357:     /*  PFCE   = 0 */
+                         683 --358:     /*  PFCAE  = 1 */
+                         684 --359:     /*  PFCEAE = 0 ( not supported by HW ) */
+                         685 --360:     /*  PMC    = 1 */
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         686 --361:     /*  PM     = 0 */
+                         687 --362:     EVALUATOR(0 , PFC   , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
+                         688 --line362
+                         689 ..lin.c1cb555c..29852729.0_26::
+                         690 .LDWlin26:
+0000026e a007870d08b2    691 	ld.hu	4292412504[zero],r1
+00000274 c10efbff        692 	andi	65531,r1,r1
+00000278 a0078d0d08b2    693 	st.h	r1,4292412504[zero]
+                         694 --363:     EVALUATOR(0 , PFCE  , PG_VUART0_TX) |=  (1 << Pn_VUART0_TX);
+                         695 --line363
+                         696 ..lin.c1cb555c..29852729.0_27::
+                         697 .LDWlin27:
+0000027e a007c70d08b2    698 	ld.hu	4292412508[zero],r1
+00000284 810e0400        699 	ori	4,r1,r1
+00000288 a007cd0d08b2    700 	st.h	r1,4292412508[zero]
+                         701 --364:     EVALUATOR(0 , PFCAE , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
+                         702 --line364
+                         703 ..lin.c1cb555c..29852729.0_28::
+                         704 .LDWlin28:
+0000028e a007870e08b2    705 	ld.hu	4292412520[zero],r1
+00000294 c10efbff        706 	andi	65531,r1,r1
+00000298 a0078d0e08b2    707 	st.h	r1,4292412520[zero]
+                         708 --365:     EVALUATOR(0 , PFCEAE , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
+                         709 --line365
+                         710 ..lin.c1cb555c..29852729.0_29::
+                         711 .LDWlin29:
+0000029e a007c70e08b2    712 	ld.hu	4292412524[zero],r1
+000002a4 c10efbff        713 	andi	65531,r1,r1
+000002a8 a007cd0e08b2    714 	st.h	r1,4292412524[zero]
+                         715 --366:     EVALUATOR(0 , PMC   , PG_VUART0_TX) |=  (1 << Pn_VUART0_TX);
+                         716 --line366
+                         717 ..lin.c1cb555c..29852729.0_30::
+                         718 .LDWlin30:
+000002ae a007470d08b2    719 	ld.hu	4292412500[zero],r1
+000002b4 810e0400        720 	ori	4,r1,r1
+000002b8 a0074d0d08b2    721 	st.h	r1,4292412500[zero]
+                         722 --367:     EVALUATOR(0 , PM    , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
+                         723 --line367
+                         724 ..lin.c1cb555c..29852729.0_31::
+                         725 .LDWlin31:
+000002be a007070d08b2    726 	ld.hu	4292412496[zero],r1
+000002c4 c10efbff        727 	andi	65531,r1,r1
+000002c8 a0070d0d08b2    728 	st.h	r1,4292412496[zero]
+                         729 --369:     /* Configure VUART0 RX port */
+                         730 --370:     /* ALT_IN6     */
+                         731 --371:     /*  PFC    = 1 */
+                         732 --372:     /*  PFCE   = 0 */
+                         733 --373:     /*  PFCAE  = 1 */
+                         734 --374:     /*  PFCEAE = 0 ( not supported by HW ) */
+                         735 --375:     /*  PMC    = 1 */
+                         736 --376:     /*  PM     = 1 */
+                         737 --377:     EVALUATOR(0 , PFC   , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
+                         738 --line377
+                         739 ..lin.c1cb555c..29852729.0_32::
+                         740 .LDWlin32:
+000002ce a007870d08b2    741 	ld.hu	4292412504[zero],r1
+000002d4 c10ef7ff        742 	andi	65527,r1,r1
+000002d8 a0078d0d08b2    743 	st.h	r1,4292412504[zero]
+                         744 --378:     EVALUATOR(0 , PFCE  , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
+                         745 --line378
+                         746 ..lin.c1cb555c..29852729.0_33::
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         747 .LDWlin33:
+000002de a007c70d08b2    748 	ld.hu	4292412508[zero],r1
+000002e4 c10ef7ff        749 	andi	65527,r1,r1
+000002e8 a007cd0d08b2    750 	st.h	r1,4292412508[zero]
+                         751 --379:     EVALUATOR(0 , PFCAE , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
+                         752 --line379
+                         753 ..lin.c1cb555c..29852729.0_34::
+                         754 .LDWlin34:
+000002ee a007870e08b2    755 	ld.hu	4292412520[zero],r1
+000002f4 810e0800        756 	ori	8,r1,r1
+000002f8 a0078d0e08b2    757 	st.h	r1,4292412520[zero]
+                         758 --380:     EVALUATOR(0 , PFCEAE , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
+                         759 --line380
+                         760 ..lin.c1cb555c..29852729.0_35::
+                         761 .LDWlin35:
+000002fe a007c70e08b2    762 	ld.hu	4292412524[zero],r1
+00000304 c10ef7ff        763 	andi	65527,r1,r1
+00000308 a007cd0e08b2    764 	st.h	r1,4292412524[zero]
+                         765 --381:     EVALUATOR(0 , PIBC , PG_VUART0_RX) |= (1 << Pn_VUART0_RX);
+                         766 --line381
+                         767 ..lin.c1cb555c..29852729.0_36::
+                         768 .LDWlin36:
+0000030e a007070c88b2    769 	ld.hu	4292428864[zero],r1
+00000314 810e0800        770 	ori	8,r1,r1
+00000318 a0070d0c88b2    771 	st.h	r1,4292428864[zero]
+                         772 --382:     EVALUATOR(0 , PMC   , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
+                         773 --line382
+                         774 ..lin.c1cb555c..29852729.0_37::
+                         775 .LDWlin37:
+0000031e a007470d08b2    776 	ld.hu	4292412500[zero],r1
+00000324 810e0800        777 	ori	8,r1,r1
+00000328 a0074d0d08b2    778 	st.h	r1,4292412500[zero]
+                         779 --383:     EVALUATOR(0 , PM    , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
+                         780 --line383
+                         781 ..lin.c1cb555c..29852729.0_38::
+                         782 .LDWlin38:
+0000032e a007070d08b2    783 	ld.hu	4292412496[zero],r1
+00000334 810e0800        784 	ori	8,r1,r1
+00000338 a0070d0d08b2    785 	st.h	r1,4292412496[zero]
+                         786 --385:     
+                         787 --386:     /* Port Write Disable */
+                         788 --387:     PORT_PWE &= ~(0x00000400);
+                         789 --line387
+                         790 ..lin.c1cb555c..29852729.0_39::
+                         791 .LDWlin39:
+0000033e 8007490c5eb2    792 	ld.w	4292423492[zero],r1
+00000344 2016fffb        793 	movea	-1025,zero,r2
+00000348 4209            794 	and	r2,r1
+0000034a 80074f0c5eb2    795 	st.w	r1,4292423492[zero]
+                         796 --388:     
+                         797 --389:     /* Port Keycode Protection Enable */
+                         798 --390:     PORT0PKCPROT = 0xA5A5A500;
+                         799 --line390
+                         800 ..lin.c1cb555c..29852729.0_40::
+                         801 .LDWlin40:
+00000350 210600a5a5a5    802 	mov	-1515870976,r1
+00000356 80070f0c5eb2    803 	st.w	r1,4292423488[zero]
+                         804 --391:     
+                         805 --392:     // wait for UART Tx line stabilization (help ext. receivers to detect first Byte correctly)
+                         806 --393:     {int i; for (i = 0x10000; i; i--) __asm("nop");}
+                         807 --	    .bs
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         808 .LDW12:
+                         809 --line393
+                         810 ..lin.c1cb555c..29852729.0_41::
+                         811 .LDWlin41:
+0000035c 400e0100        812 	movhi	hi(65536),zero,r1
+                         813 --line393
+                         814 ..lin.c1cb555c..29852729.0_42::
+                         815 .LDWlin42:
+00000360 b505*           816 	br	.L181
+                         817 .L180:
+                         818 --line393
+                         819 ..lin.c1cb555c..29852729.0_43::
+                         820 .LDWlin43:
+                         821 ..gh.beginasm.6:
+                         822 	.type	..gh.beginasm.6,@object
+                         823 	.size	..gh.beginasm.6,0
+00000362 0000            824 nop
+                         825 
+                         826 ..gh.endasm.7:
+                         827 	.type	..gh.endasm.7,@object
+                         828 	.size	..gh.endasm.7,0
+                         829 --line393
+                         830 ..lin.c1cb555c..29852729.0_44::
+                         831 .LDWlin44:
+00000364 5f0a            832 	add	-1,r1
+                         833 .L181:
+00000366 e009            834 	cmp	zero,r1
+00000368 dafd*           835 	bne	.L180
+                         836 --	    .es
+                         837 .LDW22:
+                         838 --395:     // unmask UART interrupts and set priority level (0 for trasmit, 1 for receive , 1 for error)
+                         839 --396:     INTC2EIC179 = 0x40;
+                         840 --line396
+                         841 ..lin.c1cb555c..29852729.0_45::
+                         842 .LDWlin45:
+0000036a 20164000        843 	movea	64,zero,r2
+0000036e a0076d1602f0    844 	st.h	r2,4294443366[zero]
+                         845 --397:     INTC2EIC180 = 0x41;
+                         846 --line397
+                         847 ..lin.c1cb555c..29852729.0_46::
+                         848 .LDWlin46:
+00000374 20164100        849 	movea	65,zero,r2
+00000378 a0078d1602f0    850 	st.h	r2,4294443368[zero]
+                         851 --398:     INTC2EIC181 = 0x41;
+                         852 --line398
+                         853 ..lin.c1cb555c..29852729.0_47::
+                         854 .LDWlin47:
+0000037e 20164100        855 	movea	65,zero,r2
+00000382 a007ad1602f0    856 	st.h	r2,4294443370[zero]
+                         857 --399: }
+                         858 --	    .ef
+                         859 .LDW32:
+                         860 .L431:
+                         861 --line399
+                         862 ..lin.c1cb555c..29852729.0_48::
+                         863 .LDWlin48:
+                         864 	.jumptype return
+00000388 7f00            865 	jmp	[lp]
+                         866 --line399
+                         867 ..lin.c1cb555c..29852729.0_49::
+                         868 	.type	_sys_vuart_config,@function
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v5c1.si
+                         869 	.size	_sys_vuart_config,.-_sys_vuart_config
+                         870 	.align	2
+                         871 --_i	r1	local
+                         872 
+                         873 	.section ".ghrettbl",""
+00000014 00000000*       874 .L432:	.word	.L431
+                         875 	.type	.L432,@object
+                         876 	.size	.L432,4
+                         877 	.data
+                         878 	.text
+                         879 
+                         880 	.align	2
+                         881 --_RLN31	4287213824	import
+                         882 --_SYSCTRL	4288151552	import
+                         883 --_PORT0	4292411392	import
+                         884 --_INTC2	4294443072	import
+                         885 --_VUART0_CLK	_VUART0_CLK	import
+                         886 --_vrun_receiveflag	_vrun_receiveflag	import
+                         887 --_vrun_sendflag	_vrun_sendflag	import
+                         888 
+                         889 	.data
+                         890 	.need	_sys_get_package_info
+                         891 	.ghsnote version,30
+                         892 	.ghsnote tools,8195
+                         893 	.ghsnote options,656
+                         894 	.text
+                         895 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cl_vrun.5Csys.2Eint.2Euart...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF57..0::
+                         896 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

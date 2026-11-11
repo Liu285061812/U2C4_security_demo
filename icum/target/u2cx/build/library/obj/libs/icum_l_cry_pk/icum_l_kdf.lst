@@ -1,0 +1,2895 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common -I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif -I..\..\icum\sal\include\library -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_kdf.dbo -source=icum_l_kdf.c -comp -o ..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\gh_0000rt01.o -list=..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_kdf.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+Source File: icum_l_kdf.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common
+                           2 --		-I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif
+                           3 --		-I..\..\icum\sal\include\library
+                           4 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common
+                           5 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\device\
+                           8 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           9 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          10 --		-I..\..\icum\target\u2cx\include\driver
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          14 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          15 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          16 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          17 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          18 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          19 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          20 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          21 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          22 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          23 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          24 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          25 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          26 --		.text=.icum_library.text -section .rodata=.icum_library.rodata
+                          27 --		-section .bss=.icum_library.bss -section .data=.icum_library.data
+                          28 --		-DTFM_ALREADY_SET -DTFM_TIMING_RESISTANT -DENDIAN_LITTLE
+                          29 --		-DENDIAN_32BITWORD -DLTC_RH850 -filetype.c
+                          30 --		..\..\icum\sal\src\library\l_cry\cry_pk\cry_ecc\icum_l_kdf.c -o
+                          31 --		..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_kdf.o
+                          32 --Source File:   ..\..\icum\sal\src\library\l_cry\cry_pk\cry_ecc\icum_l_kdf.c
+                          33 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          34 --Compile Date:  Wed Nov 11 11:22:26 2026
+                          35 --Host OS:       Win64
+                          36 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          37 --Release:       Compiler v2023.5.4
+                          38 --Revision Date: Wed Sep 06 02:44:56 2023
+                          39 --Release Date:  Wed Sep 06 02:00:00 2023
+                          40 -- ecom  -g -w
+                          41 	.section ".icum_library.text","ax"
+                          42 
+                          43 --1: /******************************************************************************/
+                          44 --2: /* Component Name   Library Crypto ECC Component                              */
+                          45 --3: /******************************************************************************/
+                          46 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          47 --5: /******************************************************************************/
+                          48 --6: /***********************************************************************************************************************
+                          49 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          50 --8: * 
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                          51 --9: * DISCLAIMER
+                          52 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          53 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          54 --12: * applicable laws, including copyright laws.
+                          55 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          56 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          57 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          58 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          59 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          60 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          61 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          62 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          63 --21: * following link:
+                          64 --22: * www.renesas.com/disclaimer
+                          65 --23: *
+                          66 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          67 --25: ***********************************************************************************************************************/
+                          68 --27: /**********************************************************************************
+                          69 --28: * Header files
+                          70 --29: ***********************************************************************************/
+                          71 --31: #include "icum_l_cry_pk_pub.h"
+                          72 --32: #include "../cry_common/icum_l_my_toolbox.h"
+                          73 --33: #include "../cry_bignum/icum_l_bignum.h"
+                          74 --34: #include "icum_l_toolbox_pub.h"
+                          75 --35: #include "icum_d_misc_pub.h"
+                          76 --36: #include "icum_d_remap_pub.h"
+                          77 --38: /**********************************************************************************
+                          78 --39: * Local define
+                          79 --40: ***********************************************************************************/
+                          80 --42: #define MAX_HASH_SIZE_IN_BYTES  (512u / 8u)
+                          81 --43: /* assuming 8 x maximum hash size */
+                          82 --44: #define SIZEOF_T_IN_BYTES       (8u * MAX_HASH_SIZE_IN_BYTES)
+                          83 --45: #define SIZEOF_C_IN_BYTES       (4u)
+                          84 --47: /* Value definition */
+                          85 --48: #define NUM0                     (0u)
+                          86 --50: /**********************************************************************************
+                          87 --51: * Functions
+                          88 --52: ***********************************************************************************/
+                          89 --54: static const uint8_t CONST_ZERO[16] =
+                          90 --55:     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                          91 --56: /*===========================================================================
+                          92 --57:   Process a KDF according to E_KDF1/KDF2/KDF3 algorithm
+                          93 --58:   E_KDF1/KDF2/KFD3 are defined in ISO 18033-2
+                          94 --59:   E_KDF3 is defined in NIST SP800-56A
+                          95 --60:   - p_kdf: pointer to KDF parameters
+                          96 --61:   - returns 0 if OK
+                          97 --62:     - in this case p_kdf->p_derived_key points to the derived key
+                          98 --63:   - retruns a value different from 0 if NG
+                          99 --64:   [PRIVATE]
+                         100 --65:   ===========================================================================*/
+                         101 --66: /***************************************************************************************
+                         102 --67: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0039]:[ICUMFW_UD_L_CRY_ECC_0039]
+                         103 --68: * Function name: l_ECC_Kdfn
+                         104 --69: * Description  : Process a KDF according to E_KDF1/KDF2/KDF3 algorithm
+                         105 --70: *                E_KDF1/KDF2/KFD3 are defined in ISO 18033-2
+                         106 --71: *                E_KDF3 is defined in NIST SP800-56A
+                         107 --72: *                - p_kdf: pointer to KDF parameters
+                         108 --73: *                - returns 0 if OK
+                         109 --74: *                - in this case p_kdf->p_derived_key points to the derived key
+                         110 --75: *                - retruns a value different from 0 if NG
+                         111 --76: * Arguments    : p_kdf  :[in/out]     :pointer to KDF parameters
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         112 --77: * Return Value : ER_OK
+                         113 --78: *                ER_L_ECC_INVALID_ARG
+                         114 --79: *                ER_L_HASH_INVALID_ARG
+                         115 --80: ***************************************************************************************/
+                         116 --81: static uint32_t l_ECC_Kdfn(const kdf_t *p_kdf)
+                         117 	.align	2
+                         118 	.align	2
+                         119 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF76..0::
+                         120 	.align	2
+                         121 	.align	2
+                         122 ..gh.f.a.2.e.0:
+                         123 	.type	..gh.f.a.2.e.0,@object
+                         124 	.size	..gh.f.a.2.e.0,0
+                         125 	.global	_l_ECC_Kdfn..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                         126 _l_ECC_Kdfn..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.:
+                         127 _l_ECC_Kdfn:
+00000000 031eccfb        128 	addi	-1076,sp,sp
+00000004 63ff3104        129 	st.w	lp,1072[sp]
+00000008 63e71104        130 	st.w	r28,1040[sp]
+0000000c 63af2d04        131 	st.w	r21,1068[sp]
+00000010 63b72904        132 	st.w	r22,1064[sp]
+00000014 63bf2504        133 	st.w	r23,1060[sp]
+00000018 63c72104        134 	st.w	r24,1056[sp]
+0000001c 63cf1d04        135 	st.w	r25,1052[sp]
+00000020 63d71904        136 	st.w	r26,1048[sp]
+00000024 63df1504        137 	st.w	r27,1044[sp]
+00000028 63ef0d04        138 	st.w	r29,1036[sp]
+0000002c 06e0            139 	mov	r6,r28
+                         140 --	    .bf
+                         141 .LDW01:
+                         142 --82: {
+                         143 --83:     hash_ctx_t      hash_ctx;
+                         144 --84:     uint8_t         T[SIZEOF_T_IN_BYTES];
+                         145 --85:     uint16_t        idx;
+                         146 --86:     uint16_t        hlen;
+                         147 --87:     uint8_t         ceil_cnt;
+                         148 --88:     uint8_t         counter;
+                         149 --89:     uint8_t         counter_tab[SIZEOF_C_IN_BYTES];
+                         150 --90:     uint8_t         count_start;
+                         151 --91:     uint8_t         count_stop;
+                         152 --92:     int32_t         i;
+                         153 --93:     uint32_t        err;
+                         154 --94:     
+                         155 --95:     l_CMN_MemSet(T, 0x00, SIZEOF_T_IN_BYTES);
+0000002e 23360400        156 	movea	4,sp,r6
+00000032 003a            157 	mov	0,r7
+00000034 20460002        158 	movea	512,zero,r8
+                         159 .L482:
+                         160 	jarl	_l_CMN_MemSet,lp
+                         160 <EXPANSION BEGIN>
+                         160 jarl22 _l_CMN_MemSet , lp 
+00000038 80ff0000*       160 <EXPANSION END>
+                         161 --97:     /* register the hash */
+                         162 --98:     err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+                         163 --line98
+                         164 ..lin.6348b96a..cddc0cdc.0_1::
+                         165 .LDWlin1:
+0000003c 3c3f0500        166 	ld.w	4[r28],r7
+00000040 23360402        167 	movea	516,sp,r6
+                         168 .L484:
+                         169 	jarl	_L_HASH_Init,lp
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         169 <EXPANSION BEGIN>
+                         169 jarl22 _L_HASH_Init , lp 
+00000044 80ff0000*       169 <EXPANSION END>
+00000048 0ae8            170 	mov	r10,r29
+                         171 --99:     
+                         172 --100:     /* sanity check */
+                         173 --101:     if ((ER_OK == err) && (p_kdf->kdf_algo == E_KDF3) && ((uint32_t)p_kdf->count.pAmt < (uint32_t)4u))
+                         174 --line101
+                         175 ..lin.6348b96a..cddc0cdc.0_2::
+                         176 .LDWlin2:
+0000004a e0e9            177 	cmp	zero,r29
+0000004c da0d*           178 	bne	.L4
+0000004e 3c0f0100        179 	ld.w	0[r28],r1
+00000052 620a            180 	cmp	2,r1
+00000054 9a0d*           181 	bne	.L4
+00000056 fc0f1900        182 	ld.hu	24[r28],r1
+0000005a 640a            183 	cmp	4,r1
+0000005c d905*           184 	bnl	.L4
+                         185 --102:     {
+                         186 --103:         err = ER_L_ECC_INVALID_ARG;
+                         187 --line103
+                         188 ..lin.6348b96a..cddc0cdc.0_3::
+                         189 .LDWlin3:
+0000005e 3d0601000600    190 	mov	393217,r29
+00000064 d525*           191 	br	.L8
+                         192 .L4:
+                         193 --104:     }
+                         194 --105:     else
+                         195 --106:     {
+                         196 --107:         /* get the size of the hash (in bytes) */
+                         197 --108:         hlen = (uint16_t)(hash_ctx.hash_desc.hash_bitlen / 8u);
+                         198 --line108
+                         199 ..lin.6348b96a..cddc0cdc.0_4::
+                         200 .LDWlin4:
+00000066 230f0902        201 	ld.w	520[sp],r1
+0000006a 01b0            202 	mov	r1,r22
+0000006c 83b2            203 	shr	3,r22
+0000006e d600            204 	zxh	r22
+                         205 --110:         /* calculate ceil_cnt = ceil_counting(key_len/hash_len) */
+                         206 --111:         /* calculation method with integers: ceil_cnt = (key_len + hash_len - 1) / hash_len */
+                         207 --112:         ceil_cnt = (uint8_t)(p_kdf->deriv_key_size_in_bytes + hlen - 1);
+00000070 9c0f2100        208 	ld.bu	32[r28],r1
+00000074 d609            209 	add	r22,r1
+00000076 01ceffff        210 	addi	-1,r1,r25
+0000007a 9900            211 	zxb	r25
+                         212 --113:         ceil_cnt = (uint8_t)(ceil_cnt / hlen);
+0000007c 1908            213 	mov	r25,r1
+0000007e f60ffc02        214 	divq	r22,r1,zero
+00000082 8100            215 	zxb	r1
+00000084 01c8            216 	mov	r1,r25
+                         217 --114:         
+                         218 --115:         /* init processing variables */
+                         219 --116:         *(uint32_t *)counter_tab = 0;
+00000086 63070100        220 	st.w	zero,0[sp]
+                         221 --117:         count_start = 0;
+0000008a 00c2            222 	mov	0,r24
+                         223 --118:         count_stop  = ceil_cnt;
+0000008c 19b8            224 	mov	r25,r23
+                         225 --120:         /* tweak on counter start/stop values in E_KDF2 */
+                         226 --121:         if((E_KDF2 == p_kdf->kdf_algo) ||
+0000008e 3c0f0100        227 	ld.w	0[r28],r1
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000092 610a            228 	cmp	1,r1
+00000094 920d*           229 	be	.L10
+                         230 --line122
+                         231 ..lin.6348b96a..cddc0cdc.0_5::
+                         232 .LDWlin5:
+00000096 3c0f0100        233 	ld.w	0[r28],r1
+0000009a 620a            234 	cmp	2,r1
+0000009c d205*           235 	be	.L10
+                         236 --line123
+                         237 ..lin.6348b96a..cddc0cdc.0_6::
+                         238 .LDWlin6:
+0000009e 3c0f0100        239 	ld.w	0[r28],r1
+000000a2 650a            240 	cmp	5,r1
+000000a4 da05*           241 	bne	.L8
+                         242 .L10:
+                         243 --122:             (E_KDF3 == p_kdf->kdf_algo) ||
+                         244 --123:             (E_CONCAT_KDF == p_kdf->kdf_algo))
+                         245 --124:         {
+                         246 --125:             count_start++;
+                         247 --line125
+                         248 ..lin.6348b96a..cddc0cdc.0_7::
+                         249 .LDWlin7:
+000000a6 41c2            250 	add	1,r24
+000000a8 9800            251 	zxb	r24
+                         252 --126:             count_stop++;
+000000aa 41ba            253 	add	1,r23
+000000ac 9700            254 	zxb	r23
+                         255 .L8:
+                         256 --127:         }
+                         257 --128:         else
+                         258 --129:         {
+                         259 --130:             /* Do nothing */
+                         260 --131:         }
+                         261 --132:     }
+                         262 --133:     
+                         263 --134:     /* core of the KDFn */
+                         264 --135:     for(idx = 0u, counter = count_start;
+000000ae 00d2            265 	mov	0,r26
+000000b0 18d8            266 	mov	r24,r27
+000000b2 80071801*       267 	br	.L17
+                         268 .L16:
+                         269 --136:         (ER_OK == err) && (counter < count_stop);
+                         270 --137:         idx += hlen, counter++)
+                         271 --138:     {
+                         272 --139:         /* sanity check */
+                         273 --140:         /* assert(idx <= (SIZEOF_T_IN_BYTES - hlen)); */
+                         274 --141:         /* counter cannot be above 256 */
+                         275 --142:         counter_tab[SIZEOF_C_IN_BYTES - 1u] = counter;
+                         276 --line142
+                         277 ..lin.6348b96a..cddc0cdc.0_8::
+                         278 .LDWlin8:
+000000b6 43df0300        279 	st.b	r27,3[sp]
+                         280 --143:         /* hash */
+                         281 --144:         err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+000000ba 3c3f0500        282 	ld.w	4[r28],r7
+000000be 23360402        283 	movea	516,sp,r6
+                         284 .L486:
+                         285 	jarl	_L_HASH_Init,lp
+                         285 <EXPANSION BEGIN>
+                         285 jarl22 _L_HASH_Init , lp 
+000000c2 80ff0000*       285 <EXPANSION END>
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000000c6 0ae8            286 	mov	r10,r29
+                         287 --146:         if ((ER_OK == err) &&
+                         288 --line146
+                         289 ..lin.6348b96a..cddc0cdc.0_9::
+                         290 .LDWlin9:
+000000c8 e0e9            291 	cmp	zero,r29
+000000ca aa4d*           292 	bne	.L18
+                         293 --line147
+                         294 ..lin.6348b96a..cddc0cdc.0_10::
+                         295 .LDWlin10:
+000000cc 3c0f0100        296 	ld.w	0[r28],r1
+000000d0 620a            297 	cmp	2,r1
+000000d2 b205*           298 	be	.L19
+000000d4 650a            299 	cmp	5,r1
+000000d6 ca45*           300 	bne	.L18
+                         301 .L19:
+                         302 --147:             ((p_kdf->kdf_algo == E_KDF3) || (p_kdf->kdf_algo == E_CONCAT_KDF)))
+                         303 --148:         {
+                         304 --149:             if (E_KDF3 == p_kdf->kdf_algo)
+                         305 --line149
+                         306 ..lin.6348b96a..cddc0cdc.0_11::
+                         307 .LDWlin11:
+000000d8 3c0f0100        308 	ld.w	0[r28],r1
+000000dc 620a            309 	cmp	2,r1
+000000de fa15*           310 	bne	.L33
+                         311 --150:             {
+                         312 --151:                 for(i = 0; i < (int32_t)(p_kdf->count.pAmt - (uint16_t)4); i++)
+                         313 --line151
+                         314 ..lin.6348b96a..cddc0cdc.0_12::
+                         315 .LDWlin12:
+000000e0 00aa            316 	mov	0,r21
+000000e2 8515*           317 	br	.L27
+                         318 .L26:
+                         319 --152:                 {
+                         320 --153:                     err = L_HASH_Update(&hash_ctx, CONST_ZERO, 1);
+                         321 --line153
+                         322 ..lin.6348b96a..cddc0cdc.0_13::
+                         323 .LDWlin13:
+000000e4 23360402        324 	movea	516,sp,r6
+000000e8 270600000000*   325 	mov	_CONST_ZERO,r7
+000000ee 0142            326 	mov	1,r8
+                         327 .L488:
+                         328 	jarl	_L_HASH_Update,lp
+                         328 <EXPANSION BEGIN>
+                         328 jarl22 _L_HASH_Update , lp 
+000000f0 80ff0000*       328 <EXPANSION END>
+000000f4 0ae8            329 	mov	r10,r29
+                         330 --154:                     if(ER_OK == err)
+                         331 --line154
+                         332 ..lin.6348b96a..cddc0cdc.0_14::
+                         333 .LDWlin14:
+000000f6 e0e9            334 	cmp	zero,r29
+000000f8 a205*           335 	be	.L30
+                         336 --155:                     {
+                         337 --156:                         /* Do nothing */
+                         338 --157:                     }
+                         339 --158:                     else
+                         340 --159:                     {
+                         341 --160:                         break;
+                         342 --line160
+                         343 ..lin.6348b96a..cddc0cdc.0_15::
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         344 .LDWlin15:
+000000fa 950d*           345 	br	.L33
+                         346 .L30:
+                         347 --161:                     }
+                         348 --162:                     (void)l_PKC_KickCallBackWDT();
+                         349 .L490:
+                         350 --line162
+                         351 ..lin.6348b96a..cddc0cdc.0_16::
+                         352 .LDWlin16:
+                         353 	jarl	_l_PKC_KickCallBackWDT,lp
+                         353 <EXPANSION BEGIN>
+                         353 jarl22 _l_PKC_KickCallBackWDT , lp 
+000000fc 80ff0000*       353 <EXPANSION END>
+                         354 --line151
+                         355 ..lin.6348b96a..cddc0cdc.0_17::
+                         356 .LDWlin17:
+00000100 41aa            357 	add	1,r21
+                         358 .L27:
+00000102 fc0f1900        359 	ld.hu	24[r28],r1
+00000106 5c0a            360 	add	-4,r1
+00000108 e1a9            361 	cmp	r1,r21
+0000010a d6ed*           362 	blt	.L26
+                         363 .L33:
+                         364 --163:                 }
+                         365 --164:             }
+                         366 --165:             else
+                         367 --166:             {
+                         368 --167:                 /* Do nothing */
+                         369 --168:             }
+                         370 --169:             if (ER_OK == err)
+                         371 --line169
+                         372 ..lin.6348b96a..cddc0cdc.0_18::
+                         373 .LDWlin18:
+0000010c e0e9            374 	cmp	zero,r29
+0000010e 9a0d*           375 	bne	.L36
+                         376 --170:             {
+                         377 --171:                 err = L_HASH_Update(&hash_ctx, counter_tab, SIZEOF_C_IN_BYTES);
+                         378 --line171
+                         379 ..lin.6348b96a..cddc0cdc.0_19::
+                         380 .LDWlin19:
+00000110 23360402        381 	movea	516,sp,r6
+00000114 233e0000        382 	movea	0,sp,r7
+00000118 0442            383 	mov	4,r8
+                         384 .L492:
+                         385 	jarl	_L_HASH_Update,lp
+                         385 <EXPANSION BEGIN>
+                         385 jarl22 _L_HASH_Update , lp 
+0000011a 80ff0000*       385 <EXPANSION END>
+0000011e 0ae8            386 	mov	r10,r29
+                         387 .L36:
+                         388 --172:             }
+                         389 --173:             else
+                         390 --174:             {
+                         391 --175:                 /* Do nothing */
+                         392 --176:             }
+                         393 --177:             if ((ER_OK == err) && (p_kdf->secret.shared_secret.size_in_bytes > 0u))
+                         394 --line177
+                         395 ..lin.6348b96a..cddc0cdc.0_20::
+                         396 .LDWlin20:
+00000120 e0e9            397 	cmp	zero,r29
+00000122 ea0d*           398 	bne	.L40
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000124 3c0f0d00        399 	ld.w	12[r28],r1
+00000128 e009            400 	cmp	zero,r1
+0000012a a30d*           401 	bnh	.L40
+                         402 --178:             {
+                         403 --179:                 err = L_HASH_Update(&hash_ctx,
+                         404 --line179
+                         405 ..lin.6348b96a..cddc0cdc.0_21::
+                         406 .LDWlin21:
+0000012c 3c3f0900        407 	ld.w	8[r28],r7
+00000130 3c470d00        408 	ld.w	12[r28],r8
+00000134 23360402        409 	movea	516,sp,r6
+                         410 .L494:
+                         411 	jarl	_L_HASH_Update,lp
+                         411 <EXPANSION BEGIN>
+                         411 jarl22 _L_HASH_Update , lp 
+00000138 80ff0000*       411 <EXPANSION END>
+0000013c 0ae8            412 	mov	r10,r29
+                         413 .L40:
+                         414 --180:                                     p_kdf->secret.shared_secret.p_data,
+                         415 --181:                                     p_kdf->secret.shared_secret.size_in_bytes);
+                         416 --182:             }
+                         417 --183:             else
+                         418 --184:             {
+                         419 --185:                 /* Do nothing */
+                         420 --186:             }
+                         421 --187:             if ((ER_OK == err) && (p_kdf->addition.info.size_in_bytes > 0u))
+                         422 --line187
+                         423 ..lin.6348b96a..cddc0cdc.0_22::
+                         424 .LDWlin22:
+0000013e e0e9            425 	cmp	zero,r29
+00000140 fa35*           426 	bne	.L45
+00000142 3c0f1500        427 	ld.w	20[r28],r1
+00000146 e009            428 	cmp	zero,r1
+00000148 b335*           429 	bnh	.L45
+                         430 --188:             {
+                         431 --189:                 err = L_HASH_Update(&hash_ctx,
+                         432 --line189
+                         433 ..lin.6348b96a..cddc0cdc.0_23::
+                         434 .LDWlin23:
+0000014a 3c3f1100        435 	ld.w	16[r28],r7
+0000014e 3c471500        436 	ld.w	20[r28],r8
+00000152 23360402        437 	movea	516,sp,r6
+                         438 .L496:
+                         439 	jarl	_L_HASH_Update,lp
+                         439 <EXPANSION BEGIN>
+                         439 jarl22 _L_HASH_Update , lp 
+00000156 80ff0000*       439 <EXPANSION END>
+0000015a 0ae8            440 	mov	r10,r29
+0000015c 952d*           441 	br	.L45
+                         442 .L18:
+                         443 --190:                                     p_kdf->addition.info.p_data,
+                         444 --191:                                     p_kdf->addition.info.size_in_bytes);
+                         445 --192:             }
+                         446 --193:             else
+                         447 --194:             {
+                         448 --195:                 /* Do nothing */
+                         449 --196:             }
+                         450 --197:         }
+                         451 --198:         else
+                         452 --199:         {
+                         453 --200:             if ((ER_OK == err) && (p_kdf->secret.shared_secret.size_in_bytes > 0u))
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         454 --line200
+                         455 ..lin.6348b96a..cddc0cdc.0_24::
+                         456 .LDWlin24:
+0000015e e0e9            457 	cmp	zero,r29
+00000160 ea0d*           458 	bne	.L49
+00000162 3c0f0d00        459 	ld.w	12[r28],r1
+00000166 e009            460 	cmp	zero,r1
+00000168 a30d*           461 	bnh	.L49
+                         462 --201:             {
+                         463 --202:                 err = L_HASH_Update(&hash_ctx,
+                         464 --line202
+                         465 ..lin.6348b96a..cddc0cdc.0_25::
+                         466 .LDWlin25:
+0000016a 3c3f0900        467 	ld.w	8[r28],r7
+0000016e 3c470d00        468 	ld.w	12[r28],r8
+00000172 23360402        469 	movea	516,sp,r6
+                         470 .L498:
+                         471 	jarl	_L_HASH_Update,lp
+                         471 <EXPANSION BEGIN>
+                         471 jarl22 _L_HASH_Update , lp 
+00000176 80ff0000*       471 <EXPANSION END>
+0000017a 0ae8            472 	mov	r10,r29
+                         473 .L49:
+                         474 --203:                                     p_kdf->secret.shared_secret.p_data,
+                         475 --204:                                     p_kdf->secret.shared_secret.size_in_bytes);
+                         476 --205:             }
+                         477 --206:             else
+                         478 --207:             {
+                         479 --208:                 /* Do nothing */
+                         480 --209:             }
+                         481 --210:             if (ER_OK == err)
+                         482 --line210
+                         483 ..lin.6348b96a..cddc0cdc.0_26::
+                         484 .LDWlin26:
+0000017c e0e9            485 	cmp	zero,r29
+0000017e 9a0d*           486 	bne	.L52
+                         487 --211:             {
+                         488 --212:                 err = L_HASH_Update(&hash_ctx, counter_tab, SIZEOF_C_IN_BYTES);
+                         489 --line212
+                         490 ..lin.6348b96a..cddc0cdc.0_27::
+                         491 .LDWlin27:
+00000180 23360402        492 	movea	516,sp,r6
+00000184 233e0000        493 	movea	0,sp,r7
+00000188 0442            494 	mov	4,r8
+                         495 .L500:
+                         496 	jarl	_L_HASH_Update,lp
+                         496 <EXPANSION BEGIN>
+                         496 jarl22 _L_HASH_Update , lp 
+0000018a 80ff0000*       496 <EXPANSION END>
+0000018e 0ae8            497 	mov	r10,r29
+                         498 .L52:
+                         499 --213:             }
+                         500 --214:             else
+                         501 --215:             {
+                         502 --216:                 /* Do nothing */
+                         503 --217:             }
+                         504 --218:             if ((ER_OK == err) && (p_kdf->addition.info.size_in_bytes > 0u))
+                         505 --line218
+                         506 ..lin.6348b96a..cddc0cdc.0_28::
+                         507 .LDWlin28:
+00000190 e0e9            508 	cmp	zero,r29
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000192 ea0d*           509 	bne	.L45
+00000194 3c0f1500        510 	ld.w	20[r28],r1
+00000198 e009            511 	cmp	zero,r1
+0000019a a30d*           512 	bnh	.L45
+                         513 --219:             {
+                         514 --220:                 err = L_HASH_Update(&hash_ctx,
+                         515 --line220
+                         516 ..lin.6348b96a..cddc0cdc.0_29::
+                         517 .LDWlin29:
+0000019c 3c3f1100        518 	ld.w	16[r28],r7
+000001a0 3c471500        519 	ld.w	20[r28],r8
+000001a4 23360402        520 	movea	516,sp,r6
+                         521 .L502:
+                         522 	jarl	_L_HASH_Update,lp
+                         522 <EXPANSION BEGIN>
+                         522 jarl22 _L_HASH_Update , lp 
+000001a8 80ff0000*       522 <EXPANSION END>
+000001ac 0ae8            523 	mov	r10,r29
+                         524 .L45:
+                         525 --221:                                     p_kdf->addition.info.p_data,
+                         526 --222:                                     p_kdf->addition.info.size_in_bytes);
+                         527 --223:             }
+                         528 --224:             else
+                         529 --225:             {
+                         530 --226:                 /* Do nothing */
+                         531 --227:             }
+                         532 --228:         }
+                         533 --230:         if(ER_OK == err)
+                         534 --line230
+                         535 ..lin.6348b96a..cddc0cdc.0_30::
+                         536 .LDWlin30:
+000001ae e0e9            537 	cmp	zero,r29
+000001b0 9a0d*           538 	bne	.L15
+                         539 --231:         {
+                         540 --232:             err = L_HASH_Finish(&hash_ctx, &T[idx]);
+                         541 --line232
+                         542 ..lin.6348b96a..cddc0cdc.0_31::
+                         543 .LDWlin31:
+000001b2 233e0400        544 	movea	4,sp,r7
+000001b6 da39            545 	add	r26,r7
+000001b8 23360402        546 	movea	516,sp,r6
+                         547 .L504:
+                         548 	jarl	_L_HASH_Finish,lp
+                         548 <EXPANSION BEGIN>
+                         548 jarl22 _L_HASH_Finish , lp 
+000001bc 80ff0000*       548 <EXPANSION END>
+000001c0 0ae8            549 	mov	r10,r29
+                         550 .L15:
+                         551 --233:         }
+                         552 --234:         else
+                         553 --235:         {
+                         554 --line135
+                         555 ..lin.6348b96a..cddc0cdc.0_32::
+                         556 .LDWlin32:
+000001c2 d6d1            557 	add	r22,r26
+000001c4 41da            558 	add	1,r27
+000001c6 da00            559 	zxh	r26
+000001c8 9b00            560 	zxb	r27
+                         561 .L17:
+000001ca e0e9            562 	cmp	zero,r29
+000001cc ca05*           563 	bne	.L14
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000001ce f7d9            564 	cmp	r23,r27
+000001d0 f107e7fe*       565 	bl	.L16
+                         566 .L14:
+                         567 --236:             /* Do nothing */
+                         568 --237:         }
+                         569 --238:     }
+                         570 --240:     if (ER_OK == err)
+                         571 --line240
+                         572 ..lin.6348b96a..cddc0cdc.0_33::
+                         573 .LDWlin33:
+000001d4 e0e9            574 	cmp	zero,r29
+000001d6 9a0d*           575 	bne	.L63
+                         576 --241:     {
+                         577 --242:         /* return the derived key */
+                         578 --243:         l_CMN_MemCpy(p_kdf->p_deriv_key, T, p_kdf->deriv_key_size_in_bytes);
+                         579 --line243
+                         580 ..lin.6348b96a..cddc0cdc.0_34::
+                         581 .LDWlin34:
+000001d8 3c371d00        582 	ld.w	28[r28],r6
+000001dc 9c472100        583 	ld.bu	32[r28],r8
+000001e0 233e0400        584 	movea	4,sp,r7
+                         585 .L506:
+                         586 	jarl	_l_CMN_MemCpy,lp
+                         586 <EXPANSION BEGIN>
+                         586 jarl22 _l_CMN_MemCpy , lp 
+000001e4 80ff0000*       586 <EXPANSION END>
+                         587 .L63:
+                         588 --244:     }
+                         589 --245:     else
+                         590 --246:     {
+                         591 --247:         /* Do nothing */
+                         592 --248:     }
+                         593 --250:     return(err);
+                         594 --line250
+                         595 ..lin.6348b96a..cddc0cdc.0_35::
+                         596 .LDWlin35:
+000001e8 1d50            597 	mov	r29,r10
+                         598 --	    .ef
+                         599 .LDW11:
+000001ea 23ff3104        600 	ld.w	1072[sp],lp
+000001ee 23ef0d04        601 	ld.w	1036[sp],r29
+000001f2 23e71104        602 	ld.w	1040[sp],r28
+000001f6 23df1504        603 	ld.w	1044[sp],r27
+000001fa 23d71904        604 	ld.w	1048[sp],r26
+000001fe 23cf1d04        605 	ld.w	1052[sp],r25
+00000202 23c72104        606 	ld.w	1056[sp],r24
+00000206 23bf2504        607 	ld.w	1060[sp],r23
+0000020a 23b72904        608 	ld.w	1064[sp],r22
+0000020e 23af2d04        609 	ld.w	1068[sp],r21
+00000212 031e3404        610 	addi	1076,sp,sp
+                         611 .L508:
+                         612 	.jumptype return
+00000216 7f00            613 	jmp	[lp]
+                         614 --line250
+                         615 ..lin.6348b96a..cddc0cdc.0_36::
+                         616 	.type	_l_ECC_Kdfn,@function
+                         617 	.size	_l_ECC_Kdfn,.-_l_ECC_Kdfn
+                         618 	.type	_l_ECC_Kdfn..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,@function
+                         619 	.size	_l_ECC_Kdfn..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,.-_l_ECC_Kdfn..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                         620 	.align	2
+                         621 --_hash_ctx	516[sp]	local
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         622 --_T	4[sp]	local
+                         623 --_idx	r26	local
+                         624 --_hlen	r22	local
+                         625 --_ceil_cnt	r25	local
+                         626 --_counter	r27	local
+                         627 --_counter_tab	0[sp]	local
+                         628 --_count_start	r24	local
+                         629 --_count_stop	r23	local
+                         630 --_i	r21	local
+                         631 --_err	r29	local
+                         632 
+                         633 --_p_kdf	r28	param
+                         634 
+                         635 	.section ".bss","awb"
+                         636 .L302:
+                         637 	.type	.L302,@object
+                         638 	.size	.L302,0
+                         639 	.section ".icum_library.rodata","a"
+                         640 	.global	_CONST_ZERO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                         641 _CONST_ZERO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.:
+00000000 000000000000    642 _CONST_ZERO:	.space	16
+00000006 000000000000 
+0000000c 00000000 
+                         643 	.type	_CONST_ZERO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,@object
+                         644 	.size	_CONST_ZERO..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,16
+                         645 	.type	_CONST_ZERO,@object
+                         646 	.size	_CONST_ZERO,16
+                         647 	.section ".ghcalltbl",""
+                         648 	.align	4
+00000000 00000000*       649 .L483:	.word	.L482
+                         650 	.type	.L483,@object
+                         651 	.size	.L483,4
+00000004 00000000*       652 .L485:	.word	.L484
+                         653 	.type	.L485,@object
+                         654 	.size	.L485,4
+00000008 00000000*       655 .L487:	.word	.L486
+                         656 	.type	.L487,@object
+                         657 	.size	.L487,4
+0000000c 00000000*       658 .L489:	.word	.L488
+                         659 	.type	.L489,@object
+                         660 	.size	.L489,4
+00000010 00000000*       661 .L491:	.word	.L490
+                         662 	.type	.L491,@object
+                         663 	.size	.L491,4
+00000014 00000000*       664 .L493:	.word	.L492
+                         665 	.type	.L493,@object
+                         666 	.size	.L493,4
+00000018 00000000*       667 .L495:	.word	.L494
+                         668 	.type	.L495,@object
+                         669 	.size	.L495,4
+0000001c 00000000*       670 .L497:	.word	.L496
+                         671 	.type	.L497,@object
+                         672 	.size	.L497,4
+00000020 00000000*       673 .L499:	.word	.L498
+                         674 	.type	.L499,@object
+                         675 	.size	.L499,4
+00000024 00000000*       676 .L501:	.word	.L500
+                         677 	.type	.L501,@object
+                         678 	.size	.L501,4
+00000028 00000000*       679 .L503:	.word	.L502
+                         680 	.type	.L503,@object
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         681 	.size	.L503,4
+0000002c 00000000*       682 .L505:	.word	.L504
+                         683 	.type	.L505,@object
+                         684 	.size	.L505,4
+00000030 00000000*       685 .L507:	.word	.L506
+                         686 	.type	.L507,@object
+                         687 	.size	.L507,4
+                         688 	.section ".ghrettbl",""
+                         689 	.align	4
+00000000 00000000*       690 .L509:	.word	.L508
+                         691 	.type	.L509,@object
+                         692 	.size	.L509,4
+                         693 	.data
+                         694 	.section ".icum_library.text","ax"
+                         695 
+                         696 --251: }
+                         697 
+                         698 --253: /***************************************************************************************
+                         699 --254: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0040]:[ICUMFW_UD_L_CRY_ECC_0040]
+                         700 --255: * Function name: l_ECC_Pbkdf1
+                         701 --256: * Description  : Process a KDF according to PBKDF1
+                         702 --257: *                PBKDF1 is defined in PKCS5-v1
+                         703 --258: *                - p_kdf: pointer to KDF parameters
+                         704 --259: *                - returns 0 if OK
+                         705 --260: *                - in this case p_kdf->p_derived_key points to the derived key
+                         706 --261: *                - retruns a value different from 0 if NG
+                         707 --262: * Arguments    : p_kdf  :[in/out]     :pointer to KDF parameters   
+                         708 --263: * Return Value : ER_OK
+                         709 --264: *                ER_L_ECC_INVALID_ARG
+                         710 --265: *                ER_L_HASH_INVALID_ARG
+                         711 --266: ***************************************************************************************/
+                         712 --267: static uint32_t l_ECC_Pbkdf1(const kdf_t *p_kdf)
+                         713 	.align	2
+                         714 	.align	2
+                         715 	.align	2
+                         716 ..gh.f.a.2.e.1:
+                         717 	.type	..gh.f.a.2.e.1,@object
+                         718 	.size	..gh.f.a.2.e.1,0
+                         719 	.global	_l_ECC_Pbkdf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                         720 _l_ECC_Pbkdf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.:
+                         721 _l_ECC_Pbkdf1:
+00000218 031ea4fd        722 	addi	-604,sp,sp
+0000021c 63ff5902        723 	st.w	lp,600[sp]
+00000220 63e74d02        724 	st.w	r28,588[sp]
+00000224 63d75502        725 	st.w	r26,596[sp]
+00000228 63df5102        726 	st.w	r27,592[sp]
+0000022c 63ef4902        727 	st.w	r29,584[sp]
+00000230 06e0            728 	mov	r6,r28
+                         729 --	    .bf
+                         730 .LDW21:
+                         731 --268: {
+                         732 --269:     hash_ctx_t      hash_ctx;
+                         733 --270:     uint8_t         T[MAX_HASH_SIZE_IN_BYTES];
+                         734 --271:     uint16_t        hlen;
+                         735 --272:     int32_t         i;
+                         736 --273:     uint32_t        err;
+                         737 --275:     err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+00000232 3c3f0500        738 	ld.w	4[r28],r7
+00000236 23364000        739 	movea	64,sp,r6
+                         740 .L789:
+                         741 	jarl	_L_HASH_Init,lp
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         741 <EXPANSION BEGIN>
+                         741 jarl22 _L_HASH_Init , lp 
+0000023a 80ff0000*       741 <EXPANSION END>
+0000023e 0ae8            742 	mov	r10,r29
+                         743 --277:     if (ER_OK == err)
+                         744 --line277
+                         745 ..lin.6348b96a..c09aeeb1.0_37::
+                         746 .LDWlin37:
+00000240 e0e9            747 	cmp	zero,r29
+00000242 ea05*           748 	bne	.L514
+                         749 --278:     {
+                         750 --279:         /* get the size of the hash (in bytes) */
+                         751 --280:         hlen = (uint16_t)(hash_ctx.hash_desc.hash_bitlen / 8u);
+                         752 --line280
+                         753 ..lin.6348b96a..c09aeeb1.0_38::
+                         754 .LDWlin38:
+00000244 230f4500        755 	ld.w	68[sp],r1
+00000248 01d8            756 	mov	r1,r27
+0000024a 83da            757 	shr	3,r27
+0000024c db00            758 	zxh	r27
+                         759 .L514:
+                         760 --281:     }
+                         761 --282:     else
+                         762 --283:     {
+                         763 --284:         /* Do nothing */
+                         764 --285:     }
+                         765 --286:     
+                         766 --287:     /* 20170306 */
+                         767 --288:     if ((ER_OK == err) && ((uint32_t)p_kdf->deriv_key_size_in_bytes > (uint32_t)hlen))
+0000024e e0e9            768 	cmp	zero,r29
+00000250 8a0d*           769 	bne	.L518
+00000252 9c0f2100        770 	ld.bu	32[r28],r1
+00000256 fb09            771 	cmp	r27,r1
+00000258 c305*           772 	bnh	.L518
+                         773 --289:     {
+                         774 --290:         /* key too long: stop */
+                         775 --291:         err = ER_L_ECC_INVALID_ARG;
+                         776 --line291
+                         777 ..lin.6348b96a..c09aeeb1.0_39::
+                         778 .LDWlin39:
+0000025a 3d0601000600    779 	mov	393217,r29
+                         780 .L518:
+                         781 --292:     }
+                         782 --293:     else
+                         783 --294:     {
+                         784 --295:         /* Do nothing */
+                         785 --296:     }
+                         786 --297:     
+                         787 --298:     if (ER_OK == err)
+                         788 --line298
+                         789 ..lin.6348b96a..c09aeeb1.0_40::
+                         790 .LDWlin40:
+00000260 e0e9            791 	cmp	zero,r29
+00000262 8a0d*           792 	bne	.L521
+                         793 --299:     {
+                         794 --300:         /* initial hash */
+                         795 --301:         err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+                         796 --line301
+                         797 ..lin.6348b96a..c09aeeb1.0_41::
+                         798 .LDWlin41:
+00000264 3c3f0500        799 	ld.w	4[r28],r7
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000268 23364000        800 	movea	64,sp,r6
+                         801 .L791:
+                         802 	jarl	_L_HASH_Init,lp
+                         802 <EXPANSION BEGIN>
+                         802 jarl22 _L_HASH_Init , lp 
+0000026c 80ff0000*       802 <EXPANSION END>
+00000270 0ae8            803 	mov	r10,r29
+                         804 .L521:
+                         805 --302:     }
+                         806 --303:     else
+                         807 --304:     {
+                         808 --305:         /* Do nothing */
+                         809 --306:     }
+                         810 --307:     
+                         811 --308:     if ((ER_OK == err) && (p_kdf->secret.pwd.size_in_bytes > 0u))
+                         812 --line308
+                         813 ..lin.6348b96a..c09aeeb1.0_42::
+                         814 .LDWlin42:
+00000272 e0e9            815 	cmp	zero,r29
+00000274 ea0d*           816 	bne	.L525
+00000276 3c0f0d00        817 	ld.w	12[r28],r1
+0000027a e009            818 	cmp	zero,r1
+0000027c a30d*           819 	bnh	.L525
+                         820 --309:     {
+                         821 --310:         err = L_HASH_Update(&hash_ctx, p_kdf->secret.pwd.p_data, p_kdf->secret.pwd.size_in_bytes);
+                         822 --line310
+                         823 ..lin.6348b96a..c09aeeb1.0_43::
+                         824 .LDWlin43:
+0000027e 3c3f0900        825 	ld.w	8[r28],r7
+00000282 3c470d00        826 	ld.w	12[r28],r8
+00000286 23364000        827 	movea	64,sp,r6
+                         828 .L793:
+                         829 	jarl	_L_HASH_Update,lp
+                         829 <EXPANSION BEGIN>
+                         829 jarl22 _L_HASH_Update , lp 
+0000028a 80ff0000*       829 <EXPANSION END>
+0000028e 0ae8            830 	mov	r10,r29
+                         831 .L525:
+                         832 --311:     }
+                         833 --312:     else
+                         834 --313:     {
+                         835 --314:         /* Do nothing */
+                         836 --315:     }
+                         837 --316:     
+                         838 --317:     if ((ER_OK == err) && (p_kdf->addition.salt.size_in_bytes > 0u))
+                         839 --line317
+                         840 ..lin.6348b96a..c09aeeb1.0_44::
+                         841 .LDWlin44:
+00000290 e0e9            842 	cmp	zero,r29
+00000292 ea0d*           843 	bne	.L529
+00000294 3c0f1500        844 	ld.w	20[r28],r1
+00000298 e009            845 	cmp	zero,r1
+0000029a a30d*           846 	bnh	.L529
+                         847 --318:     {
+                         848 --319:         err = L_HASH_Update(&hash_ctx, p_kdf->addition.salt.p_data, p_kdf->addition.salt.size_in_bytes);
+                         849 --line319
+                         850 ..lin.6348b96a..c09aeeb1.0_45::
+                         851 .LDWlin45:
+0000029c 3c3f1100        852 	ld.w	16[r28],r7
+000002a0 3c471500        853 	ld.w	20[r28],r8
+000002a4 23364000        854 	movea	64,sp,r6
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         855 .L795:
+                         856 	jarl	_L_HASH_Update,lp
+                         856 <EXPANSION BEGIN>
+                         856 jarl22 _L_HASH_Update , lp 
+000002a8 80ff0000*       856 <EXPANSION END>
+000002ac 0ae8            857 	mov	r10,r29
+                         858 .L529:
+                         859 --320:     }
+                         860 --321:     else
+                         861 --322:     {
+                         862 --323:         /* Do nothing */
+                         863 --324:     }
+                         864 --326:     if (ER_OK == err)
+                         865 --line326
+                         866 ..lin.6348b96a..c09aeeb1.0_46::
+                         867 .LDWlin46:
+000002ae e0e9            868 	cmp	zero,r29
+000002b0 8a0d*           869 	bne	.L532
+                         870 --327:     {
+                         871 --328:         err = L_HASH_Finish(&hash_ctx, T);
+                         872 --line328
+                         873 ..lin.6348b96a..c09aeeb1.0_47::
+                         874 .LDWlin47:
+000002b2 23364000        875 	movea	64,sp,r6
+000002b6 233e0000        876 	movea	0,sp,r7
+                         877 .L797:
+                         878 	jarl	_L_HASH_Finish,lp
+                         878 <EXPANSION BEGIN>
+                         878 jarl22 _L_HASH_Finish , lp 
+000002ba 80ff0000*       878 <EXPANSION END>
+000002be 0ae8            879 	mov	r10,r29
+                         880 .L532:
+                         881 --329:     }
+                         882 --330:     else
+                         883 --331:     {
+                         884 --332:         /* Do nothing */
+                         885 --333:     }
+                         886 --334:     
+                         887 --335:     /* hash loop */
+                         888 --336:     for (i = 2; (ER_OK == err) && (i <= (int32_t)p_kdf->count.counter); i++)
+                         889 --line336
+                         890 ..lin.6348b96a..c09aeeb1.0_48::
+                         891 .LDWlin48:
+000002c0 02d2            892 	mov	2,r26
+000002c2 e51d*           893 	br	.L536
+                         894 .L535:
+                         895 --337:     {
+                         896 --338:         err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+                         897 --line338
+                         898 ..lin.6348b96a..c09aeeb1.0_49::
+                         899 .LDWlin49:
+000002c4 3c3f0500        900 	ld.w	4[r28],r7
+000002c8 23364000        901 	movea	64,sp,r6
+                         902 .L799:
+                         903 	jarl	_L_HASH_Init,lp
+                         903 <EXPANSION BEGIN>
+                         903 jarl22 _L_HASH_Init , lp 
+000002cc 80ff0000*       903 <EXPANSION END>
+000002d0 0ae8            904 	mov	r10,r29
+                         905 --339:         if (ER_OK == err)
+                         906 --line339
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                         907 ..lin.6348b96a..c09aeeb1.0_50::
+                         908 .LDWlin50:
+000002d2 e0e9            909 	cmp	zero,r29
+000002d4 9a0d*           910 	bne	.L539
+                         911 --340:         {
+                         912 --341:             err = L_HASH_Update(&hash_ctx, T, (uint32_t)hlen);
+                         913 --line341
+                         914 ..lin.6348b96a..c09aeeb1.0_51::
+                         915 .LDWlin51:
+000002d6 1b40            916 	mov	r27,r8
+000002d8 23364000        917 	movea	64,sp,r6
+000002dc 233e0000        918 	movea	0,sp,r7
+                         919 .L801:
+                         920 	jarl	_L_HASH_Update,lp
+                         920 <EXPANSION BEGIN>
+                         920 jarl22 _L_HASH_Update , lp 
+000002e0 80ff0000*       920 <EXPANSION END>
+000002e4 0ae8            921 	mov	r10,r29
+                         922 .L539:
+                         923 --342:         }
+                         924 --343:         else
+                         925 --344:         {
+                         926 --345:             /* Do nothing */
+                         927 --346:         }
+                         928 --347:         if (ER_OK == err)
+                         929 --line347
+                         930 ..lin.6348b96a..c09aeeb1.0_52::
+                         931 .LDWlin52:
+000002e6 e0e9            932 	cmp	zero,r29
+000002e8 8a0d*           933 	bne	.L542
+                         934 --348:         {
+                         935 --349:             err = L_HASH_Finish(&hash_ctx, T);
+                         936 --line349
+                         937 ..lin.6348b96a..c09aeeb1.0_53::
+                         938 .LDWlin53:
+000002ea 23364000        939 	movea	64,sp,r6
+000002ee 233e0000        940 	movea	0,sp,r7
+                         941 .L803:
+                         942 	jarl	_L_HASH_Finish,lp
+                         942 <EXPANSION BEGIN>
+                         942 jarl22 _L_HASH_Finish , lp 
+000002f2 80ff0000*       942 <EXPANSION END>
+000002f6 0ae8            943 	mov	r10,r29
+                         944 .L542:
+                         945 --350:         }
+                         946 --351:         else
+                         947 --352:         {
+                         948 --353:             /* Do nothing */
+                         949 --354:         }
+                         950 --355:         (void)l_PKC_KickCallBackWDT();
+                         951 .L805:
+                         952 --line355
+                         953 ..lin.6348b96a..c09aeeb1.0_54::
+                         954 .LDWlin54:
+                         955 	jarl	_l_PKC_KickCallBackWDT,lp
+                         955 <EXPANSION BEGIN>
+                         955 jarl22 _l_PKC_KickCallBackWDT , lp 
+000002f8 80ff0000*       955 <EXPANSION END>
+                         956 --line336
+                         957 ..lin.6348b96a..c09aeeb1.0_55::
+                         958 .LDWlin55:
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000002fc 41d2            959 	add	1,r26
+                         960 .L536:
+000002fe e0e9            961 	cmp	zero,r29
+00000300 da05*           962 	bne	.L533
+00000302 fc0f1900        963 	ld.hu	24[r28],r1
+00000306 e1d1            964 	cmp	r1,r26
+00000308 e7dd*           965 	ble	.L535
+                         966 .L533:
+                         967 --356:     }
+                         968 --358:     if (ER_OK == err)
+                         969 --line358
+                         970 ..lin.6348b96a..c09aeeb1.0_56::
+                         971 .LDWlin56:
+0000030a e0e9            972 	cmp	zero,r29
+0000030c 9a0d*           973 	bne	.L546
+                         974 --359:     {
+                         975 --360:         /* return the derived key */
+                         976 --361:         l_CMN_MemCpy(p_kdf->p_deriv_key, T, (uint32_t)p_kdf->deriv_key_size_in_bytes);
+                         977 --line361
+                         978 ..lin.6348b96a..c09aeeb1.0_57::
+                         979 .LDWlin57:
+0000030e 3c371d00        980 	ld.w	28[r28],r6
+00000312 9c472100        981 	ld.bu	32[r28],r8
+00000316 233e0000        982 	movea	0,sp,r7
+                         983 .L807:
+                         984 	jarl	_l_CMN_MemCpy,lp
+                         984 <EXPANSION BEGIN>
+                         984 jarl22 _l_CMN_MemCpy , lp 
+0000031a 80ff0000*       984 <EXPANSION END>
+                         985 .L546:
+                         986 --362:     }
+                         987 --363:     else
+                         988 --364:     {
+                         989 --365:         /* Do nothing */
+                         990 --366:     }
+                         991 --368:     return(err);
+                         992 --line368
+                         993 ..lin.6348b96a..c09aeeb1.0_58::
+                         994 .LDWlin58:
+0000031e 1d50            995 	mov	r29,r10
+                         996 --	    .ef
+                         997 .LDW31:
+00000320 23ff5902        998 	ld.w	600[sp],lp
+00000324 23ef4902        999 	ld.w	584[sp],r29
+00000328 23e74d02       1000 	ld.w	588[sp],r28
+0000032c 23df5102       1001 	ld.w	592[sp],r27
+00000330 23d75502       1002 	ld.w	596[sp],r26
+00000334 031e5c02       1003 	addi	604,sp,sp
+                        1004 .L809:
+                        1005 	.jumptype return
+00000338 7f00           1006 	jmp	[lp]
+                        1007 --line368
+                        1008 ..lin.6348b96a..c09aeeb1.0_59::
+                        1009 	.type	_l_ECC_Pbkdf1,@function
+                        1010 	.size	_l_ECC_Pbkdf1,.-_l_ECC_Pbkdf1
+                        1011 	.type	_l_ECC_Pbkdf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,@function
+                        1012 	.size	_l_ECC_Pbkdf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,.-_l_ECC_Pbkdf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                        1013 	.align	2
+                        1014 --_hash_ctx	64[sp]	local
+                        1015 --_T	0[sp]	local
+                        1016 --_hlen	r27	local
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1017 --_i	r26	local
+                        1018 --_err	r29	local
+                        1019 
+                        1020 --_p_kdf	r28	param
+                        1021 
+                        1022 	.section ".bss","awb"
+                        1023 .L690:
+                        1024 	.type	.L690,@object
+                        1025 	.size	.L690,0
+                        1026 	.section ".ghcalltbl",""
+00000034 00000000*      1027 .L790:	.word	.L789
+                        1028 	.type	.L790,@object
+                        1029 	.size	.L790,4
+00000038 00000000*      1030 .L792:	.word	.L791
+                        1031 	.type	.L792,@object
+                        1032 	.size	.L792,4
+0000003c 00000000*      1033 .L794:	.word	.L793
+                        1034 	.type	.L794,@object
+                        1035 	.size	.L794,4
+00000040 00000000*      1036 .L796:	.word	.L795
+                        1037 	.type	.L796,@object
+                        1038 	.size	.L796,4
+00000044 00000000*      1039 .L798:	.word	.L797
+                        1040 	.type	.L798,@object
+                        1041 	.size	.L798,4
+00000048 00000000*      1042 .L800:	.word	.L799
+                        1043 	.type	.L800,@object
+                        1044 	.size	.L800,4
+0000004c 00000000*      1045 .L802:	.word	.L801
+                        1046 	.type	.L802,@object
+                        1047 	.size	.L802,4
+00000050 00000000*      1048 .L804:	.word	.L803
+                        1049 	.type	.L804,@object
+                        1050 	.size	.L804,4
+00000054 00000000*      1051 .L806:	.word	.L805
+                        1052 	.type	.L806,@object
+                        1053 	.size	.L806,4
+00000058 00000000*      1054 .L808:	.word	.L807
+                        1055 	.type	.L808,@object
+                        1056 	.size	.L808,4
+                        1057 	.section ".ghrettbl",""
+00000004 00000000*      1058 .L810:	.word	.L809
+                        1059 	.type	.L810,@object
+                        1060 	.size	.L810,4
+                        1061 	.data
+                        1062 	.section ".icum_library.text","ax"
+                        1063 
+                        1064 --369: }
+                        1065 
+                        1066 --371: /***************************************************************************************
+                        1067 --372: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0041]:[ICUMFW_UD_L_CRY_ECC_0041]
+                        1068 --373: * Function name: l_ECC_Hmac
+                        1069 --374: * Description  : Initialization processing of HASH generation
+                        1070 --375: * Arguments    : p_hash_ctx             :[in]   :hash context
+                        1071 --376: *                hash_type              :[in]   :hash type
+                        1072 --377: *                p_key                  :[in]   :Pointer to secret key
+                        1073 --378: *                key_size_in_bytes      :[out]  :Secret key size
+                        1074 --379: *                p_text                 :[in]   :Pointer size
+                        1075 --380: *                text_size_in_bytes     :[in]   :Message size
+                        1076 --381: *                p_hmac                 :[out]  :Pointer to MAC value to output
+                        1077 --382:                  p_hmac_size_in_bytes   :[out]  :Pointer to MAC size to output
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1078 --383: * Return Value : ER_OK
+                        1079 --384: *                ER_L_HASH_INVALID_ARG
+                        1080 --385: ***************************************************************************************/
+                        1081 --386: static uint32_t l_ECC_Hmac(  hash_ctx_t *p_hash_ctx,
+                        1082 	.align	2
+                        1083 	.align	2
+                        1084 	.align	2
+                        1085 ..gh.f.a.2.e.2:
+                        1086 	.type	..gh.f.a.2.e.2,@object
+                        1087 	.size	..gh.f.a.2.e.2,0
+                        1088 	.global	_l_ECC_Hmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                        1089 _l_ECC_Hmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.:
+                        1090 _l_ECC_Hmac:
+0000033a 031ed4fe       1091 	addi	-300,sp,sp
+0000033e 63ff2901       1092 	st.w	lp,296[sp]
+00000342 63ef0101       1093 	st.w	r29,256[sp]
+00000346 63e70501       1094 	st.w	r28,260[sp]
+0000034a 63df0901       1095 	st.w	r27,264[sp]
+0000034e 63d70d01       1096 	st.w	r26,268[sp]
+00000352 63cf1101       1097 	st.w	r25,272[sp]
+00000356 63c71501       1098 	st.w	r24,276[sp]
+0000035a 63bf1901       1099 	st.w	r23,280[sp]
+0000035e 63b71d01       1100 	st.w	r22,284[sp]
+00000362 63af2101       1101 	st.w	r21,288[sp]
+00000366 63a72501       1102 	st.w	r20,292[sp]
+0000036a 23c73901       1103 	ld.w	312[sp],r24
+0000036e 23cf3501       1104 	ld.w	308[sp],r25
+00000372 23a73101       1105 	ld.w	304[sp],r20
+00000376 23af2d01       1106 	ld.w	300[sp],r21
+0000037a 09b0           1107 	mov	r9,r22
+0000037c 08b8           1108 	mov	r8,r23
+0000037e 07d0           1109 	mov	r7,r26
+00000380 06e0           1110 	mov	r6,r28
+                        1111 --	    .bf
+                        1112 .LDW41:
+                        1113 --387:                              hash_type_t hash_type,
+                        1114 --388:                              const uint8_t *p_key,
+                        1115 --389:                              uint32_t key_size_in_bytes,
+                        1116 --390:                              const uint8_t *p_text,
+                        1117 --391:                              uint32_t text_size_in_bytes,
+                        1118 --392:                              uint8_t *p_hmac,
+                        1119 --393:                              uint32_t *p_hmac_size_in_bytes)
+                        1120 --394: {
+                        1121 --395:     uint32_t o_key_pad[]={0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,
+00000382 210600000000*  1122 	mov	.L1065,r1
+00000388 23168000       1123 	movea	128,sp,r2
+0000038c 019e8000       1124 	addi	128,r1,r19
+                        1125 .L981:
+00000390 a10709800000   1126 	ld.dw	0[r1],r16
+00000396 480a           1127 	add	8,r1
+00000398 a2070f800000   1128 	st.dw	r16,0[r2]
+0000039e 4812           1129 	add	8,r2
+000003a0 e199           1130 	cmp	r1,r19
+000003a2 faf5*          1131 	bne	.L981
+                        1132 --396:                           0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,
+                        1133 --397:                           0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,
+                        1134 --398:                           0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c,0x5c5c5c5c};
+                        1135 --399:     uint32_t i_key_pad[]={0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,
+                        1136 --line399
+                        1137 ..lin.6348b96a..cdda8d52.0_60::
+                        1138 .LDWlin60:
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000003a4 210600000000*  1139 	mov	.L1066,r1
+000003aa 23160000       1140 	movea	0,sp,r2
+000003ae 019e8000       1141 	addi	128,r1,r19
+                        1142 .L983:
+000003b2 a10709800000   1143 	ld.dw	0[r1],r16
+000003b8 480a           1144 	add	8,r1
+000003ba a2070f800000   1145 	st.dw	r16,0[r2]
+000003c0 4812           1146 	add	8,r2
+000003c2 e199           1147 	cmp	r1,r19
+000003c4 faf5*          1148 	bne	.L983
+                        1149 --400:                           0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,
+                        1150 --401:                           0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,
+                        1151 --402:                           0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636,0x36363636};
+                        1152 --403:     
+                        1153 --404:     /* hash_state_t        hash_state; */
+                        1154 --405:     uint16_t    block_size;
+                        1155 --406:     uint32_t    err;
+                        1156 --407:     
+                        1157 --408:     /* init the hash */
+                        1158 --409:     /* err = p_hash_desc->p_hash_init(&hash_state); */
+                        1159 --410:     err = L_HASH_Init(p_hash_ctx, hash_type);
+                        1160 --line410
+                        1161 ..lin.6348b96a..cdda8d52.0_61::
+                        1162 .LDWlin61:
+000003c6 1c30           1163 	mov	r28,r6
+000003c8 1a38           1164 	mov	r26,r7
+                        1165 .L1105:
+                        1166 	jarl	_L_HASH_Init,lp
+                        1166 <EXPANSION BEGIN>
+                        1166 jarl22 _L_HASH_Init , lp 
+000003ca 80ff0000*      1166 <EXPANSION END>
+000003ce 0ae8           1167 	mov	r10,r29
+                        1168 --411:     if(err != ER_OK)
+                        1169 --line411
+                        1170 ..lin.6348b96a..cdda8d52.0_62::
+                        1171 .LDWlin62:
+000003d0 e0e9           1172 	cmp	zero,r29
+000003d2 ba65*          1173 	bne	.L815
+                        1174 --412:     {
+                        1175 --413:         /* Do nothing */
+                        1176 --414:     }
+                        1177 --415:     else
+                        1178 --416:     {
+                        1179 --417:         /* calculate the expected hmac size */
+                        1180 --418:         *p_hmac_size_in_bytes = p_hash_ctx->hash_desc.hash_bitlen / 8u;
+                        1181 --line418
+                        1182 ..lin.6348b96a..cdda8d52.0_63::
+                        1183 .LDWlin63:
+000003d4 3c0f0500       1184 	ld.w	4[r28],r1
+000003d8 830a           1185 	shr	3,r1
+000003da 780f0100       1186 	st.w	r1,0[r24]
+                        1187 --420:         switch(p_hash_ctx->hash_desc.hash_bitlen)
+000003de 3c0f0500       1188 	ld.w	4[r28],r1
+000003e2 010680fe       1189 	addi	-384,r1,zero
+000003e6 c205*          1190 	be	.L817
+000003e8 010600fe       1191 	addi	-512,r1,zero
+000003ec ca05*          1192 	bne	.L818
+                        1193 .L817:
+                        1194 --421:         {
+                        1195 --422:             case 384u:
+                        1196 --423:             case 512u:
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1197 --424:                 /* 1024 bits */
+                        1198 --425:                 block_size = 128u;
+                        1199 --line425
+                        1200 ..lin.6348b96a..cdda8d52.0_64::
+                        1201 .LDWlin64:
+000003ee 20de8000       1202 	movea	128,zero,r27
+                        1203 --426:                 break;
+                        1204 --427:             default:
+000003f2 c505*          1205 	br	.L820
+                        1206 .L818:
+                        1207 --428:                 /* 512 bits */
+                        1208 --429:                 block_size = 64u;
+                        1209 --line429
+                        1210 ..lin.6348b96a..cdda8d52.0_65::
+                        1211 .LDWlin65:
+000003f4 20de4000       1212 	movea	64,zero,r27
+                        1213 --430:                 break;
+000003f8 0000           1214 	nop
+                        1215 .L820:
+                        1216 --431:         }
+                        1217 --433:         /* sanity check */
+                        1218 --434:         /* note: in the hmac algorithm, the key is shortened with an addition hash operation not done here */
+                        1219 --435:         /* assert(key_size_in_bytes <= block_size); */
+                        1220 --437:         /* init o_key_pad */
+                        1221 --438:         l_CMN_MemXor((uint8_t *)o_key_pad, p_key, (uint16_t)key_size_in_bytes);
+000003fa 23368000       1222 	movea	128,sp,r6
+000003fe 1738           1223 	mov	r23,r7
+00000400 1640           1224 	mov	r22,r8
+00000402 c800           1225 	zxh	r8
+                        1226 .L1107:
+                        1227 	jarl	_l_CMN_MemXor,lp
+                        1227 <EXPANSION BEGIN>
+                        1227 jarl22 _l_CMN_MemXor , lp 
+00000404 80ff0000*      1227 <EXPANSION END>
+                        1228 --440:         /* init i_key_pad */
+                        1229 --441:         l_CMN_MemXor((uint8_t *)i_key_pad, p_key, (uint16_t)key_size_in_bytes);
+                        1230 --line441
+                        1231 ..lin.6348b96a..cdda8d52.0_66::
+                        1232 .LDWlin66:
+00000408 23360000       1233 	movea	0,sp,r6
+0000040c 1738           1234 	mov	r23,r7
+0000040e 1640           1235 	mov	r22,r8
+00000410 c800           1236 	zxh	r8
+                        1237 .L1109:
+                        1238 	jarl	_l_CMN_MemXor,lp
+                        1238 <EXPANSION BEGIN>
+                        1238 jarl22 _l_CMN_MemXor , lp 
+00000412 80ff0000*      1238 <EXPANSION END>
+                        1239 --443:         /* first hash on i_key_pad || message */
+                        1240 --444:         err = L_HASH_Init(p_hash_ctx, hash_type);
+                        1241 --line444
+                        1242 ..lin.6348b96a..cdda8d52.0_67::
+                        1243 .LDWlin67:
+00000416 1c30           1244 	mov	r28,r6
+00000418 1a38           1245 	mov	r26,r7
+                        1246 .L1111:
+                        1247 	jarl	_L_HASH_Init,lp
+                        1247 <EXPANSION BEGIN>
+                        1247 jarl22 _L_HASH_Init , lp 
+0000041a 80ff0000*      1247 <EXPANSION END>
+0000041e 0ae8           1248 	mov	r10,r29
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1249 --445:         if(err != ER_OK)
+                        1250 --line445
+                        1251 ..lin.6348b96a..cdda8d52.0_68::
+                        1252 .LDWlin68:
+00000420 e0e9           1253 	cmp	zero,r29
+00000422 8a0d*          1254 	bne	.L823
+                        1255 --446:         {
+                        1256 --447:             /* Do nothing */
+                        1257 --448:         }
+                        1258 --449:         else
+                        1259 --450:         {
+                        1260 --451:             err = L_HASH_Update(p_hash_ctx, (const uint8_t *)i_key_pad, block_size);
+                        1261 --line451
+                        1262 ..lin.6348b96a..cdda8d52.0_69::
+                        1263 .LDWlin69:
+00000424 1c30           1264 	mov	r28,r6
+00000426 233e0000       1265 	movea	0,sp,r7
+0000042a 1b40           1266 	mov	r27,r8
+                        1267 .L1113:
+                        1268 	jarl	_L_HASH_Update,lp
+                        1268 <EXPANSION BEGIN>
+                        1268 jarl22 _L_HASH_Update , lp 
+0000042c 80ff0000*      1268 <EXPANSION END>
+00000430 0ae8           1269 	mov	r10,r29
+                        1270 .L823:
+                        1271 --452:         }
+                        1272 --454:         if(err != ER_OK)
+                        1273 --line454
+                        1274 ..lin.6348b96a..cdda8d52.0_70::
+                        1275 .LDWlin70:
+00000432 e0e9           1276 	cmp	zero,r29
+00000434 fa05*          1277 	bne	.L826
+                        1278 --455:         {
+                        1279 --456:             /* Do nothing */
+                        1280 --457:         }
+                        1281 --458:         else
+                        1282 --459:         {
+                        1283 --460:             err = L_HASH_Update(p_hash_ctx, p_text, text_size_in_bytes);
+                        1284 --line460
+                        1285 ..lin.6348b96a..cdda8d52.0_71::
+                        1286 .LDWlin71:
+00000436 1c30           1287 	mov	r28,r6
+00000438 1538           1288 	mov	r21,r7
+0000043a 1440           1289 	mov	r20,r8
+                        1290 .L1115:
+                        1291 	jarl	_L_HASH_Update,lp
+                        1291 <EXPANSION BEGIN>
+                        1291 jarl22 _L_HASH_Update , lp 
+0000043c 80ff0000*      1291 <EXPANSION END>
+00000440 0ae8           1292 	mov	r10,r29
+                        1293 .L826:
+                        1294 --461:         }
+                        1295 --463:         if(err != ER_OK)
+                        1296 --line463
+                        1297 ..lin.6348b96a..cdda8d52.0_72::
+                        1298 .LDWlin72:
+00000442 e0e9           1299 	cmp	zero,r29
+00000444 ea05*          1300 	bne	.L829
+                        1301 --464:         {
+                        1302 --465:             /* Do nothing */
+                        1303 --466:         }
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1304 --467:         else
+                        1305 --468:         {
+                        1306 --469:             err = L_HASH_Finish(p_hash_ctx, p_hmac);
+                        1307 --line469
+                        1308 ..lin.6348b96a..cdda8d52.0_73::
+                        1309 .LDWlin73:
+00000446 1c30           1310 	mov	r28,r6
+00000448 1938           1311 	mov	r25,r7
+                        1312 .L1117:
+                        1313 	jarl	_L_HASH_Finish,lp
+                        1313 <EXPANSION BEGIN>
+                        1313 jarl22 _L_HASH_Finish , lp 
+0000044a 80ff0000*      1313 <EXPANSION END>
+0000044e 0ae8           1314 	mov	r10,r29
+                        1315 .L829:
+                        1316 --470:         }
+                        1317 --472:         if(err != ER_OK)
+                        1318 --line472
+                        1319 ..lin.6348b96a..cdda8d52.0_74::
+                        1320 .LDWlin74:
+00000450 e0e9           1321 	cmp	zero,r29
+00000452 ea05*          1322 	bne	.L832
+                        1323 --473:         {
+                        1324 --474:             /* Do nothing */
+                        1325 --475:         }
+                        1326 --476:         else
+                        1327 --477:         {
+                        1328 --478:             /* second hash on o_key_pad || prev. hash */
+                        1329 --479:             err = L_HASH_Init(p_hash_ctx, hash_type);
+                        1330 --line479
+                        1331 ..lin.6348b96a..cdda8d52.0_75::
+                        1332 .LDWlin75:
+00000454 1c30           1333 	mov	r28,r6
+00000456 1a38           1334 	mov	r26,r7
+                        1335 .L1119:
+                        1336 	jarl	_L_HASH_Init,lp
+                        1336 <EXPANSION BEGIN>
+                        1336 jarl22 _L_HASH_Init , lp 
+00000458 80ff0000*      1336 <EXPANSION END>
+0000045c 0ae8           1337 	mov	r10,r29
+                        1338 .L832:
+                        1339 --480:         }
+                        1340 --482:         if(err != ER_OK)
+                        1341 --line482
+                        1342 ..lin.6348b96a..cdda8d52.0_76::
+                        1343 .LDWlin76:
+0000045e e0e9           1344 	cmp	zero,r29
+00000460 8a0d*          1345 	bne	.L835
+                        1346 --483:         {
+                        1347 --484:             /* Do nothing */
+                        1348 --485:         }
+                        1349 --486:         else
+                        1350 --487:         {
+                        1351 --488:             err = L_HASH_Update(p_hash_ctx, (const uint8_t *)o_key_pad, block_size);
+                        1352 --line488
+                        1353 ..lin.6348b96a..cdda8d52.0_77::
+                        1354 .LDWlin77:
+00000462 1c30           1355 	mov	r28,r6
+00000464 233e8000       1356 	movea	128,sp,r7
+00000468 1b40           1357 	mov	r27,r8
+                        1358 .L1121:
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1359 	jarl	_L_HASH_Update,lp
+                        1359 <EXPANSION BEGIN>
+                        1359 jarl22 _L_HASH_Update , lp 
+0000046a 80ff0000*      1359 <EXPANSION END>
+0000046e 0ae8           1360 	mov	r10,r29
+                        1361 .L835:
+                        1362 --489:         }
+                        1363 --491:         if(err != ER_OK)
+                        1364 --line491
+                        1365 ..lin.6348b96a..cdda8d52.0_78::
+                        1366 .LDWlin78:
+00000470 e0e9           1367 	cmp	zero,r29
+00000472 8a0d*          1368 	bne	.L838
+                        1369 --492:         {
+                        1370 --493:             /* Do nothing */
+                        1371 --494:         }
+                        1372 --495:         else
+                        1373 --496:         {
+                        1374 --497:             err = L_HASH_Update(p_hash_ctx, p_hmac, *p_hmac_size_in_bytes);
+                        1375 --line497
+                        1376 ..lin.6348b96a..cdda8d52.0_79::
+                        1377 .LDWlin79:
+00000474 38470100       1378 	ld.w	0[r24],r8
+00000478 1c30           1379 	mov	r28,r6
+0000047a 1938           1380 	mov	r25,r7
+                        1381 .L1123:
+                        1382 	jarl	_L_HASH_Update,lp
+                        1382 <EXPANSION BEGIN>
+                        1382 jarl22 _L_HASH_Update , lp 
+0000047c 80ff0000*      1382 <EXPANSION END>
+00000480 0ae8           1383 	mov	r10,r29
+                        1384 .L838:
+                        1385 --498:         }
+                        1386 --500:         if(err != ER_OK)
+                        1387 --line500
+                        1388 ..lin.6348b96a..cdda8d52.0_80::
+                        1389 .LDWlin80:
+00000482 e0e9           1390 	cmp	zero,r29
+00000484 ea05*          1391 	bne	.L841
+                        1392 --501:         {
+                        1393 --502:             /* Do nothing */
+                        1394 --503:         }
+                        1395 --504:         else
+                        1396 --505:         {
+                        1397 --506:             err = L_HASH_Finish(p_hash_ctx, p_hmac);
+                        1398 --line506
+                        1399 ..lin.6348b96a..cdda8d52.0_81::
+                        1400 .LDWlin81:
+00000486 1c30           1401 	mov	r28,r6
+00000488 1938           1402 	mov	r25,r7
+                        1403 .L1125:
+                        1404 	jarl	_L_HASH_Finish,lp
+                        1404 <EXPANSION BEGIN>
+                        1404 jarl22 _L_HASH_Finish , lp 
+0000048a 80ff0000*      1404 <EXPANSION END>
+0000048e 0ae8           1405 	mov	r10,r29
+                        1406 .L841:
+                        1407 --507:         }
+                        1408 --509:         if(err != ER_OK)
+                        1409 --line509
+                        1410 ..lin.6348b96a..cdda8d52.0_82::
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1411 .LDWlin82:
+00000490 e0e9           1412 	cmp	zero,r29
+00000492 b205*          1413 	be	.L815
+                        1414 --510:         {
+                        1415 --511:             *p_hmac_size_in_bytes = 0;
+                        1416 --line511
+                        1417 ..lin.6348b96a..cdda8d52.0_83::
+                        1418 .LDWlin83:
+00000494 78070100       1419 	st.w	zero,0[r24]
+                        1420 .L815:
+                        1421 --512:         }
+                        1422 --513:         else
+                        1423 --514:         {
+                        1424 --515:             /* Do nothing */
+                        1425 --516:         }
+                        1426 --517:     }
+                        1427 --519:     return (err);
+00000498 1d50           1428 	mov	r29,r10
+                        1429 --	    .ef
+                        1430 .LDW51:
+0000049a 23ff2901       1431 	ld.w	296[sp],lp
+0000049e 23ef0101       1432 	ld.w	256[sp],r29
+000004a2 23e70501       1433 	ld.w	260[sp],r28
+000004a6 23df0901       1434 	ld.w	264[sp],r27
+000004aa 23d70d01       1435 	ld.w	268[sp],r26
+000004ae 23cf1101       1436 	ld.w	272[sp],r25
+000004b2 23c71501       1437 	ld.w	276[sp],r24
+000004b6 23bf1901       1438 	ld.w	280[sp],r23
+000004ba 23b71d01       1439 	ld.w	284[sp],r22
+000004be 23af2101       1440 	ld.w	288[sp],r21
+000004c2 23a72501       1441 	ld.w	292[sp],r20
+000004c6 031e2c01       1442 	addi	300,sp,sp
+                        1443 .L1127:
+                        1444 	.jumptype return
+000004ca 7f00           1445 	jmp	[lp]
+                        1446 --line511
+                        1447 ..lin.6348b96a..cdda8d52.0_84::
+                        1448 	.type	_l_ECC_Hmac,@function
+                        1449 	.size	_l_ECC_Hmac,.-_l_ECC_Hmac
+                        1450 	.type	_l_ECC_Hmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,@function
+                        1451 	.size	_l_ECC_Hmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,.-_l_ECC_Hmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                        1452 	.align	2
+                        1453 --_o_key_pad	128[sp]	local
+                        1454 --_i_key_pad	0[sp]	local
+                        1455 --_block_size	r27	local
+                        1456 --_err	r29	local
+                        1457 --.L979	.L1065	static
+                        1458 --.L980	.L1066	static
+                        1459 
+                        1460 --_p_hash_ctx	r28	param
+                        1461 --_hash_type	r26	param
+                        1462 --_p_key	r23	param
+                        1463 --_key_size_in_bytes	r22	param
+                        1464 --_p_text	r21	param
+                        1465 --_text_size_in_bytes	r20	param
+                        1466 --_p_hmac	r25	param
+                        1467 --_p_hmac_size_in_bytes	r24	param
+                        1468 
+                        1469 	.section ".bss","awb"
+                        1470 .L978:
+                        1471 	.type	.L978,@object
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1472 	.size	.L978,0
+                        1473 	.section ".icum_library.rodata","a"
+                        1474 	.align	4
+00000010 5c5c5c5c       1475 .L1065:	.byte	92,92,92,92
+00000014 5c5c5c5c       1476 	.byte	92,92,92,92
+00000018 5c5c5c5c       1477 	.byte	92,92,92,92
+0000001c 5c5c5c5c       1478 	.byte	92,92,92,92
+00000020 5c5c5c5c       1479 	.byte	92,92,92,92
+00000024 5c5c5c5c       1480 	.byte	92,92,92,92
+00000028 5c5c5c5c       1481 	.byte	92,92,92,92
+0000002c 5c5c5c5c       1482 	.byte	92,92,92,92
+00000030 5c5c5c5c       1483 	.byte	92,92,92,92
+00000034 5c5c5c5c       1484 	.byte	92,92,92,92
+00000038 5c5c5c5c       1485 	.byte	92,92,92,92
+0000003c 5c5c5c5c       1486 	.byte	92,92,92,92
+00000040 5c5c5c5c       1487 	.byte	92,92,92,92
+00000044 5c5c5c5c       1488 	.byte	92,92,92,92
+00000048 5c5c5c5c       1489 	.byte	92,92,92,92
+0000004c 5c5c5c5c       1490 	.byte	92,92,92,92
+00000050 5c5c5c5c       1491 	.byte	92,92,92,92
+00000054 5c5c5c5c       1492 	.byte	92,92,92,92
+00000058 5c5c5c5c       1493 	.byte	92,92,92,92
+0000005c 5c5c5c5c       1494 	.byte	92,92,92,92
+00000060 5c5c5c5c       1495 	.byte	92,92,92,92
+00000064 5c5c5c5c       1496 	.byte	92,92,92,92
+00000068 5c5c5c5c       1497 	.byte	92,92,92,92
+0000006c 5c5c5c5c       1498 	.byte	92,92,92,92
+00000070 5c5c5c5c       1499 	.byte	92,92,92,92
+00000074 5c5c5c5c       1500 	.byte	92,92,92,92
+00000078 5c5c5c5c       1501 	.byte	92,92,92,92
+0000007c 5c5c5c5c       1502 	.byte	92,92,92,92
+00000080 5c5c5c5c       1503 	.byte	92,92,92,92
+00000084 5c5c5c5c       1504 	.byte	92,92,92,92
+00000088 5c5c5c5c       1505 	.byte	92,92,92,92
+0000008c 5c5c5c5c       1506 	.byte	92,92,92,92
+                        1507 	.type	.L1065,@object
+                        1508 	.size	.L1065,128
+00000090 36363636       1509 .L1066:	.byte	54,54,54,54
+00000094 36363636       1510 	.byte	54,54,54,54
+00000098 36363636       1511 	.byte	54,54,54,54
+0000009c 36363636       1512 	.byte	54,54,54,54
+000000a0 36363636       1513 	.byte	54,54,54,54
+000000a4 36363636       1514 	.byte	54,54,54,54
+000000a8 36363636       1515 	.byte	54,54,54,54
+000000ac 36363636       1516 	.byte	54,54,54,54
+000000b0 36363636       1517 	.byte	54,54,54,54
+000000b4 36363636       1518 	.byte	54,54,54,54
+000000b8 36363636       1519 	.byte	54,54,54,54
+000000bc 36363636       1520 	.byte	54,54,54,54
+000000c0 36363636       1521 	.byte	54,54,54,54
+000000c4 36363636       1522 	.byte	54,54,54,54
+000000c8 36363636       1523 	.byte	54,54,54,54
+000000cc 36363636       1524 	.byte	54,54,54,54
+000000d0 36363636       1525 	.byte	54,54,54,54
+000000d4 36363636       1526 	.byte	54,54,54,54
+000000d8 36363636       1527 	.byte	54,54,54,54
+000000dc 36363636       1528 	.byte	54,54,54,54
+000000e0 36363636       1529 	.byte	54,54,54,54
+000000e4 36363636       1530 	.byte	54,54,54,54
+000000e8 36363636       1531 	.byte	54,54,54,54
+000000ec 36363636       1532 	.byte	54,54,54,54
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000000f0 36363636       1533 	.byte	54,54,54,54
+000000f4 36363636       1534 	.byte	54,54,54,54
+000000f8 36363636       1535 	.byte	54,54,54,54
+000000fc 36363636       1536 	.byte	54,54,54,54
+00000100 36363636       1537 	.byte	54,54,54,54
+00000104 36363636       1538 	.byte	54,54,54,54
+00000108 36363636       1539 	.byte	54,54,54,54
+0000010c 36363636       1540 	.byte	54,54,54,54
+                        1541 	.type	.L1066,@object
+                        1542 	.size	.L1066,128
+                        1543 	.section ".ghcalltbl",""
+0000005c 00000000*      1544 .L1106:	.word	.L1105
+                        1545 	.type	.L1106,@object
+                        1546 	.size	.L1106,4
+00000060 00000000*      1547 .L1108:	.word	.L1107
+                        1548 	.type	.L1108,@object
+                        1549 	.size	.L1108,4
+00000064 00000000*      1550 .L1110:	.word	.L1109
+                        1551 	.type	.L1110,@object
+                        1552 	.size	.L1110,4
+00000068 00000000*      1553 .L1112:	.word	.L1111
+                        1554 	.type	.L1112,@object
+                        1555 	.size	.L1112,4
+0000006c 00000000*      1556 .L1114:	.word	.L1113
+                        1557 	.type	.L1114,@object
+                        1558 	.size	.L1114,4
+00000070 00000000*      1559 .L1116:	.word	.L1115
+                        1560 	.type	.L1116,@object
+                        1561 	.size	.L1116,4
+00000074 00000000*      1562 .L1118:	.word	.L1117
+                        1563 	.type	.L1118,@object
+                        1564 	.size	.L1118,4
+00000078 00000000*      1565 .L1120:	.word	.L1119
+                        1566 	.type	.L1120,@object
+                        1567 	.size	.L1120,4
+0000007c 00000000*      1568 .L1122:	.word	.L1121
+                        1569 	.type	.L1122,@object
+                        1570 	.size	.L1122,4
+00000080 00000000*      1571 .L1124:	.word	.L1123
+                        1572 	.type	.L1124,@object
+                        1573 	.size	.L1124,4
+00000084 00000000*      1574 .L1126:	.word	.L1125
+                        1575 	.type	.L1126,@object
+                        1576 	.size	.L1126,4
+                        1577 	.section ".ghrettbl",""
+00000008 00000000*      1578 .L1128:	.word	.L1127
+                        1579 	.type	.L1128,@object
+                        1580 	.size	.L1128,4
+                        1581 	.data
+                        1582 	.section ".icum_library.text","ax"
+                        1583 
+                        1584 --520: }
+                        1585 
+                        1586 --522: /***************************************************************************************
+                        1587 --523: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0042]:[ICUMFW_UD_L_CRY_ECC_0042]
+                        1588 --524: * Function name: l_ECC_Pbkdf2
+                        1589 --525: * Description  : Process a KDF according to PBKDF12
+                        1590 --526: *                PBKDF2 is defined in PKCS5-v2
+                        1591 --527: *                - p_kdf: pointer to KDF parameters
+                        1592 --528: *                - returns 0 if OK
+                        1593 --529: *                - in this case p_kdf->p_derived_key points to the derived key
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1594 --530: *                - retruns a value different from 0 if NG
+                        1595 --531: * Arguments    : p_kdf  :[in/out]     :pointer to KDF parameters
+                        1596 --532: * Return Value : ER_OK
+                        1597 --533: *                ER_L_HASH_INVALID_ARG
+                        1598 --534: ***************************************************************************************/
+                        1599 --535: static uint32_t l_ECC_Pbkdf2(const kdf_t *p_kdf)
+                        1600 	.align	2
+                        1601 	.align	2
+                        1602 	.align	2
+                        1603 ..gh.f.a.2.e.3:
+                        1604 	.type	..gh.f.a.2.e.3,@object
+                        1605 	.size	..gh.f.a.2.e.3,0
+                        1606 	.global	_l_ECC_Pbkdf2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                        1607 _l_ECC_Pbkdf2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.:
+                        1608 _l_ECC_Pbkdf2:
+000004cc 031e38fb       1609 	addi	-1224,sp,sp
+000004d0 63ffc504       1610 	st.w	lp,1220[sp]
+000004d4 63efa104       1611 	st.w	r29,1184[sp]
+000004d8 63afc104       1612 	st.w	r21,1216[sp]
+000004dc 63b7bd04       1613 	st.w	r22,1212[sp]
+000004e0 63bfb904       1614 	st.w	r23,1208[sp]
+000004e4 63c7b504       1615 	st.w	r24,1204[sp]
+000004e8 63cfb104       1616 	st.w	r25,1200[sp]
+000004ec 63d7ad04       1617 	st.w	r26,1196[sp]
+000004f0 63dfa904       1618 	st.w	r27,1192[sp]
+000004f4 63e7a504       1619 	st.w	r28,1188[sp]
+000004f8 06e8           1620 	mov	r6,r29
+                        1621 --	    .bf
+                        1622 .LDW61:
+                        1623 --536: {
+                        1624 --537:     hash_ctx_t  hash_ctx;
+                        1625 --538:     uint8_t     T[SIZEOF_T_IN_BYTES];
+                        1626 --539:     uint8_t     U[2][MAX_HASH_SIZE_IN_BYTES];
+                        1627 --540:     uint8_t     hlen;
+                        1628 --541:     uint8_t     ceil_cnt;
+                        1629 --542:     uint16_t    idx;
+                        1630 --543:     uint8_t     counter;
+                        1631 --544:     uint8_t     counter_tab[SIZEOF_C_IN_BYTES];
+                        1632 --545:     int32_t     i;
+                        1633 --546:     int32_t     n;
+                        1634 --547:     uint32_t    p = 0;
+000004fa 63071500       1635 	st.w	zero,20[sp]
+                        1636 --548:     uint32_t    err;
+                        1637 --549:     
+                        1638 --550:     /* register the hash */
+                        1639 --551:     /* err = l_HASH_Register(p_kdf->hash_type, &hash_desc); */
+                        1640 --552:     err = L_HASH_Init(&hash_ctx, p_kdf->hash_type);
+000004fe 3d3f0500       1641 	ld.w	4[r29],r7
+00000502 23369802       1642 	movea	664,sp,r6
+                        1643 .L1381:
+                        1644 	jarl	_L_HASH_Init,lp
+                        1644 <EXPANSION BEGIN>
+                        1644 jarl22 _L_HASH_Init , lp 
+00000506 80ff0000*      1644 <EXPANSION END>
+0000050a 0ab0           1645 	mov	r10,r22
+                        1646 --	    .bs
+                        1647 .LDW71:
+                        1648 --553:     if(err != ER_OK)
+                        1649 --line553
+                        1650 ..lin.6348b96a..c09aeeb2.0_85::
+                        1651 .LDWlin85:
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+0000050c e0b1           1652 	cmp	zero,r22
+0000050e ea074101*      1653 	bne	.L1133
+                        1654 --554:     {
+                        1655 --555:         /* error: stop here */
+                        1656 --556:     }
+                        1657 --557:     else
+                        1658 --558:     {
+                        1659 --	    .bs
+                        1660 .LDW81:
+                        1661 --559:         l_CMN_MemSet(counter_tab, 0x00, SIZEOF_C_IN_BYTES);
+                        1662 --line559
+                        1663 ..lin.6348b96a..c09aeeb2.0_86::
+                        1664 .LDWlin86:
+00000512 23361000       1665 	movea	16,sp,r6
+00000516 003a           1666 	mov	0,r7
+00000518 0442           1667 	mov	4,r8
+                        1668 .L1383:
+                        1669 	jarl	_l_CMN_MemSet,lp
+                        1669 <EXPANSION BEGIN>
+                        1669 jarl22 _l_CMN_MemSet , lp 
+0000051a 80ff0000*      1669 <EXPANSION END>
+                        1670 --560:         l_CMN_MemSet(T, 0x00, SIZEOF_T_IN_BYTES);
+                        1671 --line560
+                        1672 ..lin.6348b96a..c09aeeb2.0_87::
+                        1673 .LDWlin87:
+0000051e 23369800       1674 	movea	152,sp,r6
+00000522 003a           1675 	mov	0,r7
+00000524 20460002       1676 	movea	512,zero,r8
+                        1677 .L1385:
+                        1678 	jarl	_l_CMN_MemSet,lp
+                        1678 <EXPANSION BEGIN>
+                        1678 jarl22 _l_CMN_MemSet , lp 
+00000528 80ff0000*      1678 <EXPANSION END>
+                        1679 --562:         /* get the size of the hash (in bytes) */
+                        1680 --563:         hlen = (uint8_t)(hash_ctx.hash_desc.hash_bitlen / 8u);
+                        1681 --line563
+                        1682 ..lin.6348b96a..c09aeeb2.0_88::
+                        1683 .LDWlin88:
+0000052c 230f9d02       1684 	ld.w	668[sp],r1
+00000530 01c0           1685 	mov	r1,r24
+00000532 83c2           1686 	shr	3,r24
+00000534 9800           1687 	zxb	r24
+                        1688 --565:         /* calculate ceil_cnt = ceiling(key_len/hash_len) */
+                        1689 --566:         /* calculation method with integers: ceil_cnt = (key_len + hash_len - 1) / hash_len */
+                        1690 --567:         ceil_cnt = p_kdf->deriv_key_size_in_bytes + hlen - 1;
+00000536 9d0f2100       1691 	ld.bu	32[r29],r1
+0000053a d809           1692 	add	r24,r1
+0000053c 01d6ffff       1693 	addi	-1,r1,r26
+00000540 9a00           1694 	zxb	r26
+                        1695 --568:         ceil_cnt = (uint8_t)(ceil_cnt / hlen);
+00000542 1a08           1696 	mov	r26,r1
+00000544 f80ffc02       1697 	divq	r24,r1,zero
+00000548 8100           1698 	zxb	r1
+0000054a 01d0           1699 	mov	r1,r26
+                        1700 --570:         /* sanity check */
+                        1701 --571:         /* assert(ceil_cnt <= 255); */
+                        1702 --573:         n = p_kdf->addition.salt.size_in_bytes + SIZEOF_C_IN_BYTES;
+0000054c 3d0f1500       1703 	ld.w	20[r29],r1
+00000550 01ae0400       1704 	addi	4,r1,r21
+                        1705 --	    .bs
+                        1706 .LDW91:
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1707 --575:         for(idx = 0, counter = 1; counter <= ceil_cnt; counter++)
+00000554 00e2           1708 	mov	0,r28
+00000556 01da           1709 	mov	1,r27
+00000558 9575*          1710 	br	.L1137
+                        1711 .L1136:
+                        1712 --576:         {
+                        1713 --	    .bs
+                        1714 .LDW02:
+                        1715 --577:             /* counter cannot be above 256 */
+                        1716 --578:             counter_tab[SIZEOF_C_IN_BYTES - 1u] = counter;
+                        1717 --line578
+                        1718 ..lin.6348b96a..c09aeeb2.0_89::
+                        1719 .LDWlin89:
+0000055a 43df1300       1720 	st.b	r27,19[sp]
+                        1721 --580:             /* initial HMAC */
+                        1722 --581:             l_CMN_MemCpy(&T[idx], p_kdf->addition.salt.p_data, p_kdf->addition.salt.size_in_bytes);
+0000055e 3d3f1100       1723 	ld.w	16[r29],r7
+00000562 3d471500       1724 	ld.w	20[r29],r8
+00000566 23369800       1725 	movea	152,sp,r6
+0000056a dc31           1726 	add	r28,r6
+                        1727 .L1387:
+                        1728 	jarl	_l_CMN_MemCpy,lp
+                        1728 <EXPANSION BEGIN>
+                        1728 jarl22 _l_CMN_MemCpy , lp 
+0000056c 80ff0000*      1728 <EXPANSION END>
+                        1729 --582:             l_CMN_MemCpy(&T[idx + p_kdf->addition.salt.size_in_bytes], counter_tab, SIZEOF_C_IN_BYTES);
+                        1730 --line582
+                        1731 ..lin.6348b96a..c09aeeb2.0_90::
+                        1732 .LDWlin90:
+00000570 3d0f1500       1733 	ld.w	20[r29],r1
+00000574 23369800       1734 	movea	152,sp,r6
+00000578 233e1000       1735 	movea	16,sp,r7
+0000057c 0442           1736 	mov	4,r8
+0000057e dc09           1737 	add	r28,r1
+00000580 c131           1738 	add	r1,r6
+                        1739 .L1389:
+                        1740 	jarl	_l_CMN_MemCpy,lp
+                        1740 <EXPANSION BEGIN>
+                        1740 jarl22 _l_CMN_MemCpy , lp 
+00000582 80ff0000*      1740 <EXPANSION END>
+                        1741 --583:             (void)l_ECC_Hmac(&hash_ctx, p_kdf->hash_type, 
+                        1742 --line583
+                        1743 ..lin.6348b96a..c09aeeb2.0_91::
+                        1744 .LDWlin91:
+00000586 3d3f0500       1745 	ld.w	4[r29],r7
+0000058a 3d470900       1746 	ld.w	8[r29],r8
+0000058e 3d4f0d00       1747 	ld.w	12[r29],r9
+00000592 23369802       1748 	movea	664,sp,r6
+00000596 23661400       1749 	movea	20,sp,r12
+0000059a 236e1800       1750 	movea	24,sp,r13
+0000059e 237e9800       1751 	movea	152,sp,r15
+000005a2 1570           1752 	mov	r21,r14
+000005a4 dc79           1753 	add	r28,r15
+000005a6 031e1000       1754 	addi	16,sp,sp
+000005aa ec476079       1755 	pushsp	r12-r15
+                        1756 .L1391:
+                        1757 	jarl	_l_ECC_Hmac,lp
+                        1757 <EXPANSION BEGIN>
+                        1757 jarl22 _l_ECC_Hmac , lp 
+000005ae bfff8cfd*      1757 <EXPANSION END>
+                        1758 --584:                             p_kdf->secret.pwd.p_data, p_kdf->secret.pwd.size_in_bytes,
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1759 --585:                             &T[idx], (uint32_t)n, U[0],
+                        1760 --586:                             &p);
+                        1761 --587:             l_CMN_MemCpy(&T[idx], (const uint8_t *)U[0], p);
+                        1762 --line587
+                        1763 ..lin.6348b96a..c09aeeb2.0_92::
+                        1764 .LDWlin92:
+000005b2 23471500       1765 	ld.w	20[sp],r8
+000005b6 23369800       1766 	movea	152,sp,r6
+000005ba dc31           1767 	add	r28,r6
+000005bc 233e1800       1768 	movea	24,sp,r7
+                        1769 .L1393:
+                        1770 	jarl	_l_CMN_MemCpy,lp
+                        1770 <EXPANSION BEGIN>
+                        1770 jarl22 _l_CMN_MemCpy , lp 
+000005c0 80ff0000*      1770 <EXPANSION END>
+                        1771 --	    .bs
+                        1772 .LDW12:
+                        1773 --589:             /* hmac loop */
+                        1774 --590:             for(i = 0; i < (int32_t)p_kdf->count.counter - 1; i++)
+                        1775 --line590
+                        1776 ..lin.6348b96a..c09aeeb2.0_93::
+                        1777 .LDWlin93:
+000005c4 00ba           1778 	mov	0,r23
+000005c6 f52d*          1779 	br	.L1141
+                        1780 .L1140:
+                        1781 --591:             {
+                        1782 --	    .bs
+                        1783 .LDW22:
+                        1784 --592:                 uint8_t u_idx;
+                        1785 --593:                 u_idx = (uint8_t)((uint32_t)i & 1u);
+                        1786 --line593
+                        1787 ..lin.6348b96a..c09aeeb2.0_94::
+                        1788 .LDWlin94:
+000005c8 d7ce0100       1789 	andi	1,r23,r25
+000005cc 9900           1790 	zxb	r25
+                        1791 --594:                 (void)l_ECC_Hmac(&hash_ctx, p_kdf->hash_type,
+000005ce 23771500       1792 	ld.w	20[sp],r14
+000005d2 b96e0100       1793 	xori	1,r25,r13
+000005d6 3d3f0500       1794 	ld.w	4[r29],r7
+000005da 3d470900       1795 	ld.w	8[r29],r8
+000005de 3d4f0d00       1796 	ld.w	12[r29],r9
+000005e2 23369802       1797 	movea	664,sp,r6
+000005e6 23661400       1798 	movea	20,sp,r12
+000005ea c66a           1799 	shl	6,r13
+000005ec 230e1800       1800 	movea	24,sp,r1
+000005f0 1978           1801 	mov	r25,r15
+000005f2 c67a           1802 	shl	6,r15
+000005f4 c169           1803 	add	r1,r13
+000005f6 c179           1804 	add	r1,r15
+000005f8 031e1000       1805 	addi	16,sp,sp
+000005fc ec476079       1806 	pushsp	r12-r15
+                        1807 .L1395:
+                        1808 	jarl	_l_ECC_Hmac,lp
+                        1808 <EXPANSION BEGIN>
+                        1808 jarl22 _l_ECC_Hmac , lp 
+00000600 bfff3afd*      1808 <EXPANSION END>
+                        1809 --595:                                 p_kdf->secret.pwd.p_data, p_kdf->secret.pwd.size_in_bytes,
+                        1810 --596:                                 U[u_idx], (uint32_t)p, U[ u_idx^1u ],
+                        1811 --597:                                 &p);
+                        1812 --598:                 l_CMN_MemXor(&T[idx], (const uint8_t *)U[ u_idx^1u ], (uint16_t)p);
+                        1813 --line598
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1814 ..lin.6348b96a..c09aeeb2.0_95::
+                        1815 .LDWlin95:
+00000604 e3471500       1816 	ld.hu	20[sp],r8
+00000608 b90e0100       1817 	xori	1,r25,r1
+0000060c 23369800       1818 	movea	152,sp,r6
+00000610 c60a           1819 	shl	6,r1
+00000612 233e1800       1820 	movea	24,sp,r7
+00000616 dc31           1821 	add	r28,r6
+00000618 c139           1822 	add	r1,r7
+                        1823 .L1397:
+                        1824 	jarl	_l_CMN_MemXor,lp
+                        1824 <EXPANSION BEGIN>
+                        1824 jarl22 _l_CMN_MemXor , lp 
+0000061a 80ff0000*      1824 <EXPANSION END>
+                        1825 --599:                 (void)l_PKC_KickCallBackWDT();
+                        1826 .L1399:
+                        1827 --line599
+                        1828 ..lin.6348b96a..c09aeeb2.0_96::
+                        1829 .LDWlin96:
+                        1830 	jarl	_l_PKC_KickCallBackWDT,lp
+                        1830 <EXPANSION BEGIN>
+                        1830 jarl22 _l_PKC_KickCallBackWDT , lp 
+0000061e 80ff0000*      1830 <EXPANSION END>
+                        1831 --	    .es
+                        1832 .LDW32:
+                        1833 --line590
+                        1834 ..lin.6348b96a..c09aeeb2.0_97::
+                        1835 .LDWlin97:
+00000622 41ba           1836 	add	1,r23
+                        1837 .L1141:
+00000624 fd0f1900       1838 	ld.hu	24[r29],r1
+00000628 5f0a           1839 	add	-1,r1
+0000062a e1b9           1840 	cmp	r1,r23
+0000062c e6cd*          1841 	blt	.L1140
+                        1842 --	    .es
+                        1843 .LDW42:
+                        1844 --600:             }
+                        1845 --602:             idx += (uint16_t)p;
+                        1846 --line602
+                        1847 ..lin.6348b96a..c09aeeb2.0_98::
+                        1848 .LDWlin98:
+0000062e e30f1500       1849 	ld.hu	20[sp],r1
+00000632 c1e1           1850 	add	r1,r28
+00000634 dc00           1851 	zxh	r28
+                        1852 --	    .es
+                        1853 .LDW52:
+00000636 41da           1854 	add	1,r27
+00000638 9b00           1855 	zxb	r27
+                        1856 .L1137:
+0000063a fad9           1857 	cmp	r26,r27
+0000063c f38d*          1858 	bnh	.L1136
+                        1859 --	    .es
+                        1860 .LDW62:
+                        1861 --603:         }
+                        1862 --605:         /* return the derived key */
+                        1863 --606:         l_CMN_MemCpy(p_kdf->p_deriv_key, T, p_kdf->deriv_key_size_in_bytes);
+                        1864 --line606
+                        1865 ..lin.6348b96a..c09aeeb2.0_99::
+                        1866 .LDWlin99:
+0000063e 3d371d00       1867 	ld.w	28[r29],r6
+00000642 9d472100       1868 	ld.bu	32[r29],r8
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000646 233e9800       1869 	movea	152,sp,r7
+                        1870 .L1401:
+                        1871 	jarl	_l_CMN_MemCpy,lp
+                        1871 <EXPANSION BEGIN>
+                        1871 jarl22 _l_CMN_MemCpy , lp 
+0000064a 80ff0000*      1871 <EXPANSION END>
+                        1872 --	    .es
+                        1873 .LDW72:
+                        1874 .L1133:
+                        1875 --	    .es
+                        1876 .LDW82:
+                        1877 --607:     }
+                        1878 --609:     return(err);
+                        1879 --line609
+                        1880 ..lin.6348b96a..c09aeeb2.0_100::
+                        1881 .LDWlin100:
+0000064e 1650           1882 	mov	r22,r10
+                        1883 --	    .ef
+                        1884 .LDW92:
+00000650 23ffc504       1885 	ld.w	1220[sp],lp
+00000654 23efa104       1886 	ld.w	1184[sp],r29
+00000658 23e7a504       1887 	ld.w	1188[sp],r28
+0000065c 23dfa904       1888 	ld.w	1192[sp],r27
+00000660 23d7ad04       1889 	ld.w	1196[sp],r26
+00000664 23cfb104       1890 	ld.w	1200[sp],r25
+00000668 23c7b504       1891 	ld.w	1204[sp],r24
+0000066c 23bfb904       1892 	ld.w	1208[sp],r23
+00000670 23b7bd04       1893 	ld.w	1212[sp],r22
+00000674 23afc104       1894 	ld.w	1216[sp],r21
+00000678 031ec804       1895 	addi	1224,sp,sp
+                        1896 .L1403:
+                        1897 	.jumptype return
+0000067c 7f00           1898 	jmp	[lp]
+                        1899 --line609
+                        1900 ..lin.6348b96a..c09aeeb2.0_101::
+                        1901 	.type	_l_ECC_Pbkdf2,@function
+                        1902 	.size	_l_ECC_Pbkdf2,.-_l_ECC_Pbkdf2
+                        1903 	.type	_l_ECC_Pbkdf2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,@function
+                        1904 	.size	_l_ECC_Pbkdf2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.,.-_l_ECC_Pbkdf2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf.
+                        1905 	.align	2
+                        1906 --_hash_ctx	664[sp]	local
+                        1907 --_T	152[sp]	local
+                        1908 --_U	24[sp]	local
+                        1909 --_hlen	r24	local
+                        1910 --_ceil_cnt	r26	local
+                        1911 --_idx	r28	local
+                        1912 --_counter	r27	local
+                        1913 --_counter_tab	16[sp]	local
+                        1914 --_i	r23	local
+                        1915 --_n	r21	local
+                        1916 --_p	20[sp]	local
+                        1917 --_err	r22	local
+                        1918 --_u_idx	r25	local
+                        1919 
+                        1920 --_p_kdf	r29	param
+                        1921 
+                        1922 	.section ".bss","awb"
+                        1923 .L1282:
+                        1924 	.type	.L1282,@object
+                        1925 	.size	.L1282,0
+                        1926 	.section ".ghcalltbl",""
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000088 00000000*      1927 .L1382:	.word	.L1381
+                        1928 	.type	.L1382,@object
+                        1929 	.size	.L1382,4
+0000008c 00000000*      1930 .L1384:	.word	.L1383
+                        1931 	.type	.L1384,@object
+                        1932 	.size	.L1384,4
+00000090 00000000*      1933 .L1386:	.word	.L1385
+                        1934 	.type	.L1386,@object
+                        1935 	.size	.L1386,4
+00000094 00000000*      1936 .L1388:	.word	.L1387
+                        1937 	.type	.L1388,@object
+                        1938 	.size	.L1388,4
+00000098 00000000*      1939 .L1390:	.word	.L1389
+                        1940 	.type	.L1390,@object
+                        1941 	.size	.L1390,4
+0000009c 00000000*      1942 .L1392:	.word	.L1391
+                        1943 	.type	.L1392,@object
+                        1944 	.size	.L1392,4
+000000a0 00000000*      1945 .L1394:	.word	.L1393
+                        1946 	.type	.L1394,@object
+                        1947 	.size	.L1394,4
+000000a4 00000000*      1948 .L1396:	.word	.L1395
+                        1949 	.type	.L1396,@object
+                        1950 	.size	.L1396,4
+000000a8 00000000*      1951 .L1398:	.word	.L1397
+                        1952 	.type	.L1398,@object
+                        1953 	.size	.L1398,4
+000000ac 00000000*      1954 .L1400:	.word	.L1399
+                        1955 	.type	.L1400,@object
+                        1956 	.size	.L1400,4
+000000b0 00000000*      1957 .L1402:	.word	.L1401
+                        1958 	.type	.L1402,@object
+                        1959 	.size	.L1402,4
+                        1960 	.section ".ghrettbl",""
+0000000c 00000000*      1961 .L1404:	.word	.L1403
+                        1962 	.type	.L1404,@object
+                        1963 	.size	.L1404,4
+                        1964 	.data
+                        1965 	.section ".icum_library.text","ax"
+                        1966 
+                        1967 --610: }
+                        1968 
+                        1969 --612: /***************************************************************************************
+                        1970 --613: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0043]:[ICUMFW_UD_L_CRY_ECC_0043]
+                        1971 --614: * Function name: L_ECC_Kdf
+                        1972 --615: * Description  : Process a KDF according to one of the selected algorithms
+                        1973 --616: *                - returns 0 if OK
+                        1974 --617: *                - in this case p_kdf->p_derived_key points to the derived key
+                        1975 --618: *                - retruns a value different from 0 if NG
+                        1976 --619: * Arguments    : p_kdf  :[in/out]     :pointer to KDF parameters
+                        1977 --620: * Return Value : ER_OK
+                        1978 --621: *                ER_L_ECC_INVALID_ARG
+                        1979 --622: ***************************************************************************************/
+                        1980 --623: uint32_t L_ECC_Kdf(kdf_t *p_kdf)
+                        1981 	.align	2
+                        1982 	.align	2
+                        1983 	.align	2
+                        1984 ..gh.f.a.2.e.4:
+                        1985 	.type	..gh.f.a.2.e.4,@object
+                        1986 	.size	..gh.f.a.2.e.4,0
+                        1987 	.global	_L_ECC_Kdf
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        1988 _L_ECC_Kdf:
+0000067e 541a           1989 	add	-12,sp
+00000680 63ff0900       1990 	st.w	lp,8[sp]
+00000684 63e70500       1991 	st.w	r28,4[sp]
+00000688 63ef0100       1992 	st.w	r29,0[sp]
+0000068c 06e0           1993 	mov	r6,r28
+                        1994 --	    .bf
+                        1995 .LDW03:
+                        1996 --624: {
+                        1997 --625:     uint32_t err;
+                        1998 --626:     
+                        1999 --627:     switch(p_kdf->kdf_algo)
+0000068e 3c0f0100       2000 	ld.w	0[r28],r1
+00000692 630a           2001 	cmp	3,r1
+00000694 d105*          2002 	bl	.L1408
+00000696 920d*          2003 	be	.L1409
+00000698 650a           2004 	cmp	5,r1
+0000069a c10d*          2005 	bl	.L1410
+0000069c 8a15*          2006 	bne	.L1411
+                        2007 .L1408:
+                        2008 --628:     {
+                        2009 --629:         case E_KDF1:
+                        2010 --630:         case E_KDF2:
+                        2011 --631:         case E_KDF3:
+                        2012 --632:         case E_CONCAT_KDF:
+                        2013 --633:             err = l_ECC_Kdfn(p_kdf);
+                        2014 --line633
+                        2015 ..lin.6348b96a..57a7168e.0_102::
+                        2016 .LDWlin102:
+0000069e 1c30           2017 	mov	r28,r6
+                        2018 .L1535:
+                        2019 	jarl	_l_ECC_Kdfn,lp
+                        2019 <EXPANSION BEGIN>
+                        2019 jarl22 _l_ECC_Kdfn , lp 
+000006a0 bfff60f9*      2019 <EXPANSION END>
+000006a4 0ae8           2020 	mov	r10,r29
+                        2021 --634:             break;
+                        2022 --635:         case E_PKDF1:
+                        2023 --line634
+                        2024 ..lin.6348b96a..57a7168e.0_103::
+                        2025 .LDWlin103:
+000006a6 f50d*          2026 	br	.L1413
+                        2027 .L1409:
+                        2028 --636:             err = l_ECC_Pbkdf1(p_kdf);
+                        2029 --line636
+                        2030 ..lin.6348b96a..57a7168e.0_104::
+                        2031 .LDWlin104:
+000006a8 1c30           2032 	mov	r28,r6
+                        2033 .L1537:
+                        2034 	jarl	_l_ECC_Pbkdf1,lp
+                        2034 <EXPANSION BEGIN>
+                        2034 jarl22 _l_ECC_Pbkdf1 , lp 
+000006aa bfff6efb*      2034 <EXPANSION END>
+000006ae 0ae8           2035 	mov	r10,r29
+                        2036 --637:             break;
+                        2037 --638:         case E_PKDF2:
+                        2038 --line637
+                        2039 ..lin.6348b96a..57a7168e.0_105::
+                        2040 .LDWlin105:
+000006b0 a50d*          2041 	br	.L1413
+                        2042 .L1410:
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2043 --639:             err = l_ECC_Pbkdf2(p_kdf);
+                        2044 --line639
+                        2045 ..lin.6348b96a..57a7168e.0_106::
+                        2046 .LDWlin106:
+000006b2 1c30           2047 	mov	r28,r6
+                        2048 .L1539:
+                        2049 	jarl	_l_ECC_Pbkdf2,lp
+                        2049 <EXPANSION BEGIN>
+                        2049 jarl22 _l_ECC_Pbkdf2 , lp 
+000006b4 bfff18fe*      2049 <EXPANSION END>
+000006b8 0ae8           2050 	mov	r10,r29
+                        2051 --640:             break;
+                        2052 --641:         default:
+                        2053 --line640
+                        2054 ..lin.6348b96a..57a7168e.0_107::
+                        2055 .LDWlin107:
+000006ba d505*          2056 	br	.L1413
+                        2057 .L1411:
+                        2058 --642:             err = ER_L_ECC_INVALID_ARG;
+                        2059 --line642
+                        2060 ..lin.6348b96a..57a7168e.0_108::
+                        2061 .LDWlin108:
+000006bc 3d0601000600   2062 	mov	393217,r29
+                        2063 --643:             break;
+                        2064 --line643
+                        2065 ..lin.6348b96a..57a7168e.0_109::
+                        2066 .LDWlin109:
+000006c2 0000           2067 	nop
+                        2068 .L1413:
+                        2069 --644:     }
+                        2070 --645:     
+                        2071 --646:     if(err == ER_L_HASH_INVALID_ARG)
+000006c4 210601000300   2072 	mov	196609,r1
+000006ca e1e9           2073 	cmp	r1,r29
+000006cc ca05*          2074 	bne	.L1416
+                        2075 --647:     {
+                        2076 --648:         err = ER_L_ECC_INVALID_ARG;
+                        2077 --line648
+                        2078 ..lin.6348b96a..57a7168e.0_110::
+                        2079 .LDWlin110:
+000006ce 3d0601000600   2080 	mov	393217,r29
+                        2081 .L1416:
+                        2082 --649:     }
+                        2083 --650:     else
+                        2084 --651:     {
+                        2085 --652:         /* Do nothing */
+                        2086 --653:     }
+                        2087 --654:     
+                        2088 --655:     return(err);
+                        2089 --line655
+                        2090 ..lin.6348b96a..57a7168e.0_111::
+                        2091 .LDWlin111:
+000006d4 1d50           2092 	mov	r29,r10
+                        2093 --	    .ef
+                        2094 .LDW13:
+000006d6 23ff0900       2095 	ld.w	8[sp],lp
+000006da 23ef0100       2096 	ld.w	0[sp],r29
+000006de 23e70500       2097 	ld.w	4[sp],r28
+000006e2 4c1a           2098 	add	12,sp
+                        2099 .L1541:
+                        2100 	.jumptype return
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+000006e4 7f00           2101 	jmp	[lp]
+                        2102 --line655
+                        2103 ..lin.6348b96a..57a7168e.0_112::
+                        2104 	.type	_L_ECC_Kdf,@function
+                        2105 	.size	_L_ECC_Kdf,.-_L_ECC_Kdf
+                        2106 	.align	2
+                        2107 --_err	r29	local
+                        2108 
+                        2109 --_p_kdf	r28	param
+                        2110 
+                        2111 	.section ".bss","awb"
+                        2112 .L1482:
+                        2113 	.type	.L1482,@object
+                        2114 	.size	.L1482,0
+                        2115 	.section ".ghcalltbl",""
+000000b4 00000000*      2116 .L1536:	.word	.L1535
+                        2117 	.type	.L1536,@object
+                        2118 	.size	.L1536,4
+000000b8 00000000*      2119 .L1538:	.word	.L1537
+                        2120 	.type	.L1538,@object
+                        2121 	.size	.L1538,4
+000000bc 00000000*      2122 .L1540:	.word	.L1539
+                        2123 	.type	.L1540,@object
+                        2124 	.size	.L1540,4
+                        2125 	.section ".ghrettbl",""
+00000010 00000000*      2126 .L1542:	.word	.L1541
+                        2127 	.type	.L1542,@object
+                        2128 	.size	.L1542,4
+                        2129 	.data
+                        2130 	.section ".icum_library.text","ax"
+                        2131 
+                        2132 --656: }
+                        2133 
+                        2134 --658: /***************************************************************************************
+                        2135 --659: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0061]:[ICUMFW_UD_L_CRY_ECC_0061]
+                        2136 --660: * Function name: CISM_DerivKeyValue()
+                        2137 --661: * Description  : L_ECC_Kdf() wrapper API
+                        2138 --662: * Arguments    : p_kdf
+                        2139 --663: * Return Value : SERV_OK
+                        2140 --664: *              : SERV_PRM_ERROR
+                        2141 --665: ***************************************************************************************/
+                        2142 --666: PRAGMA(ghs reference CISM_DerivKeyValue)
+                        2143 --667: r_icumif_service_result_t CISM_DerivKeyValue(r_kdf_t *p_kdf)
+                        2144 	.align	2
+                        2145 	.align	2
+                        2146 	.align	2
+                        2147 ..gh.f.a.2.e.5:
+                        2148 	.type	..gh.f.a.2.e.5,@object
+                        2149 	.size	..gh.f.a.2.e.5,0
+                        2150 	.global	_CISM_DerivKeyValue
+                        2151 _CISM_DerivKeyValue:
+000006e6 031eb4ff       2152 	addi	-76,sp,sp
+000006ea 63ff4900       2153 	st.w	lp,72[sp]
+000006ee 63e74500       2154 	st.w	r28,68[sp]
+000006f2 63ef4100       2155 	st.w	r29,64[sp]
+000006f6 06e0           2156 	mov	r6,r28
+                        2157 --	    .bf
+                        2158 .LDW23:
+                        2159 --668: {
+                        2160 --669:     uint32_t                    err;
+                        2161 --670:     r_icumif_service_result_t   rtn;
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2162 --671:     kdf_t                       kdf_prm;
+                        2163 --672:     kdf_type_t                  kdf_type;
+                        2164 --673:     hash_type_t                 hash_type;
+                        2165 --674:     uint16_t                    hash_size;
+                        2166 --675:     r_kdf_t                     *p_kdf_logical;
+                        2167 --676:     uint8_t                     *p_secret_key_value_logical;
+                        2168 --677:     uint8_t                     *p_info_logical;
+                        2169 --678:     uint8_t                     *p_derived_key_value_logical;
+                        2170 --680:     err = ER_OK;
+000006f8 00ea           2171 	mov	0,r29
+                        2172 --682:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_kdf, (uint32_t *)&p_kdf_logical);
+000006fa 1c30           2173 	mov	r28,r6
+000006fc 233e0c00       2174 	movea	12,sp,r7
+                        2175 .L1797:
+                        2176 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        2176 <EXPANSION BEGIN>
+                        2176 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+00000700 80ff0000*      2176 <EXPANSION END>
+                        2177 --683:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_kdf_logical->p_secret_key_value,
+                        2178 --line683
+                        2179 ..lin.6348b96a..ebe2604f.0_113::
+                        2180 .LDWlin113:
+00000704 23f70d00       2181 	ld.w	12[sp],ep
+00000708 233e1000       2182 	movea	16,sp,r7
+0000070c 0435           2183 	sld.w	8[ep],r6
+                        2184 .L1799:
+                        2185 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        2185 <EXPANSION BEGIN>
+                        2185 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+0000070e 80ff0000*      2185 <EXPANSION END>
+                        2186 --684:                                   (uint32_t *)&p_secret_key_value_logical);
+                        2187 --685:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_kdf_logical->p_info, (uint32_t *)&p_info_logical);
+                        2188 --line685
+                        2189 ..lin.6348b96a..ebe2604f.0_114::
+                        2190 .LDWlin114:
+00000712 23f70d00       2191 	ld.w	12[sp],ep
+00000716 233e1400       2192 	movea	20,sp,r7
+0000071a 0835           2193 	sld.w	16[ep],r6
+                        2194 .L1801:
+                        2195 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        2195 <EXPANSION BEGIN>
+                        2195 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+0000071c 80ff0000*      2195 <EXPANSION END>
+                        2196 --686:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_kdf_logical->p_deriv_key_value,
+                        2197 --line686
+                        2198 ..lin.6348b96a..ebe2604f.0_115::
+                        2199 .LDWlin115:
+00000720 23f70d00       2200 	ld.w	12[sp],ep
+00000724 233e1800       2201 	movea	24,sp,r7
+00000728 0e35           2202 	sld.w	28[ep],r6
+                        2203 .L1803:
+                        2204 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        2204 <EXPANSION BEGIN>
+                        2204 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+0000072a 80ff0000*      2204 <EXPANSION END>
+                        2205 --687:                                   (uint32_t *)&p_derived_key_value_logical);
+                        2206 --689:     L_Toolbox_MemSet((uint8_t *)&kdf_prm, 0x00, sizeof(kdf_t));
+                        2207 --line689
+                        2208 ..lin.6348b96a..ebe2604f.0_116::
+                        2209 .LDWlin116:
+0000072e 23361c00       2210 	movea	28,sp,r6
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+00000732 003a           2211 	mov	0,r7
+00000734 20462400       2212 	movea	36,zero,r8
+                        2213 .L1805:
+                        2214 	jarl	_L_Toolbox_MemSet,lp
+                        2214 <EXPANSION BEGIN>
+                        2214 jarl22 _L_Toolbox_MemSet , lp 
+00000738 80ff0000*      2214 <EXPANSION END>
+                        2215 --691:     /* param check */
+                        2216 --692:     (void)L_ECC_ToInternalKdfType(p_kdf_logical->kdf_algo, &kdf_type);
+                        2217 --line692
+                        2218 ..lin.6348b96a..ebe2604f.0_117::
+                        2219 .LDWlin117:
+0000073c 23f70d00       2220 	ld.w	12[sp],ep
+00000740 233e0000       2221 	movea	0,sp,r7
+00000744 0035           2222 	sld.w	0[ep],r6
+                        2223 .L1807:
+                        2224 	jarl	_L_ECC_ToInternalKdfType,lp
+                        2224 <EXPANSION BEGIN>
+                        2224 jarl22 _L_ECC_ToInternalKdfType , lp 
+00000746 80ffc200*      2224 <EXPANSION END>
+                        2225 --693:     if (E_LAST_ITEM_KDF_TYPE == kdf_type)
+                        2226 --line693
+                        2227 ..lin.6348b96a..ebe2604f.0_118::
+                        2228 .LDWlin118:
+0000074a 23170100       2229 	ld.w	0[sp],r2
+0000074e 400e0001       2230 	movhi	hi(16777216),zero,r1
+00000752 e111           2231 	cmp	r1,r2
+00000754 ba05*          2232 	bne	.L1545
+                        2233 --694:     {
+                        2234 --695:         err = ER_PARAM;
+                        2235 --line695
+                        2236 ..lin.6348b96a..ebe2604f.0_119::
+                        2237 .LDWlin119:
+00000756 01ea           2238 	mov	1,r29
+00000758 f50d*          2239 	br	.L1547
+                        2240 .L1545:
+                        2241 --696:     }
+                        2242 --697:     else
+                        2243 --698:     {
+                        2244 --699:         (void)L_HASH_GetInternalHashType(p_kdf_logical->hash_primitive, &hash_type, &hash_size);
+                        2245 --line699
+                        2246 ..lin.6348b96a..ebe2604f.0_120::
+                        2247 .LDWlin120:
+0000075a 23f70d00       2248 	ld.w	12[sp],ep
+0000075e 233e0400       2249 	movea	4,sp,r7
+00000762 23460a00       2250 	movea	10,sp,r8
+00000766 0235           2251 	sld.w	4[ep],r6
+                        2252 .L1809:
+                        2253 	jarl	_L_HASH_GetInternalHashType,lp
+                        2253 <EXPANSION BEGIN>
+                        2253 jarl22 _L_HASH_GetInternalHashType , lp 
+00000768 80ff0000*      2253 <EXPANSION END>
+                        2254 --700:         if (NUM0 == (uint32_t)hash_size)
+                        2255 --line700
+                        2256 ..lin.6348b96a..ebe2604f.0_121::
+                        2257 .LDWlin121:
+0000076c e30f0b00       2258 	ld.hu	10[sp],r1
+00000770 e009           2259 	cmp	zero,r1
+00000772 aa05*          2260 	bne	.L1547
+                        2261 --701:         {
+                        2262 --702:             err = ER_PARAM;
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2263 --line702
+                        2264 ..lin.6348b96a..ebe2604f.0_122::
+                        2265 .LDWlin122:
+00000774 01ea           2266 	mov	1,r29
+                        2267 .L1547:
+                        2268 --703:         }
+                        2269 --704:         else
+                        2270 --705:         {
+                        2271 --706:             /* Do nothing */
+                        2272 --707:         }
+                        2273 --708:     }
+                        2274 --709:     /* end of else */
+                        2275 --711:     /* KDF */
+                        2276 --712:     if (ER_OK == err)
+00000776 e0e9           2277 	cmp	zero,r29
+00000778 fa2d*          2278 	bne	.L1553
+                        2279 --713:     {
+                        2280 --714:         kdf_prm.kdf_algo                           = kdf_type;
+                        2281 --line714
+                        2282 ..lin.6348b96a..ebe2604f.0_123::
+                        2283 .LDWlin123:
+0000077a 230f0100       2284 	ld.w	0[sp],r1
+0000077e 630f1d00       2285 	st.w	r1,28[sp]
+                        2286 --715:         kdf_prm.hash_type                          = hash_type;
+00000782 230f0500       2287 	ld.w	4[sp],r1
+00000786 630f2100       2288 	st.w	r1,32[sp]
+                        2289 --716:         kdf_prm.secret.shared_secret.p_data        = p_secret_key_value_logical;
+0000078a 230f1100       2290 	ld.w	16[sp],r1
+0000078e 630f2500       2291 	st.w	r1,36[sp]
+                        2292 --717:         kdf_prm.secret.shared_secret.size_in_bytes = p_kdf_logical->secret_key_size_in_bytes;
+00000792 23f70d00       2293 	ld.w	12[sp],ep
+00000796 060d           2294 	sld.w	12[ep],r1
+00000798 630f2900       2295 	st.w	r1,40[sp]
+                        2296 --718:         kdf_prm.addition.info.p_data               = p_info_logical;
+0000079c 230f1500       2297 	ld.w	20[sp],r1
+000007a0 630f2d00       2298 	st.w	r1,44[sp]
+                        2299 --719:         kdf_prm.addition.info.size_in_bytes        = p_kdf_logical->info_size_in_bytes;
+000007a4 23f70d00       2300 	ld.w	12[sp],ep
+000007a8 0a0d           2301 	sld.w	20[ep],r1
+000007aa 630f3100       2302 	st.w	r1,48[sp]
+                        2303 --720:         kdf_prm.count.counter                      = p_kdf_logical->counter;
+000007ae 23f70d00       2304 	ld.w	12[sp],ep
+000007b2 7c08           2305 	sld.hu	24[ep],r1
+000007b4 630f3400       2306 	st.h	r1,52[sp]
+                        2307 --721:         kdf_prm.p_deriv_key                        = p_derived_key_value_logical;
+000007b8 230f1900       2308 	ld.w	24[sp],r1
+000007bc 630f3900       2309 	st.w	r1,56[sp]
+                        2310 --722:         kdf_prm.deriv_key_size_in_bytes            = p_kdf_logical->deriv_key_size_in_bytes;
+000007c0 230f0d00       2311 	ld.w	12[sp],r1
+000007c4 810f2100       2312 	ld.bu	32[r1],r1
+000007c8 430f3c00       2313 	st.b	r1,60[sp]
+                        2314 --724:         err = L_ECC_Kdf(&kdf_prm);
+000007cc 23361c00       2315 	movea	28,sp,r6
+                        2316 .L1811:
+                        2317 	jarl	_L_ECC_Kdf,lp
+                        2317 <EXPANSION BEGIN>
+                        2317 jarl22 _L_ECC_Kdf , lp 
+000007d0 bfffaefe*      2317 <EXPANSION END>
+000007d4 0ae8           2318 	mov	r10,r29
+                        2319 .L1553:
+                        2320 --725:     }
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2321 --726:     /* end of if (ER_OK == err) */
+                        2322 --727:     else
+                        2323 --728:     {
+                        2324 --729:         /* Do nothing */
+                        2325 --730:     }
+                        2326 --732:     /* return value */
+                        2327 --733:     if (ER_OK == err)
+                        2328 --line733
+                        2329 ..lin.6348b96a..ebe2604f.0_124::
+                        2330 .LDWlin124:
+000007d6 e0e9           2331 	cmp	zero,r29
+000007d8 ba05*          2332 	bne	.L1554
+                        2333 --734:     {
+                        2334 --735:         rtn = SERV_OK;
+                        2335 --line735
+                        2336 ..lin.6348b96a..ebe2604f.0_125::
+                        2337 .LDWlin125:
+000007da 000a           2338 	mov	0,r1
+000007dc c50d*          2339 	br	.L1556
+                        2340 .L1554:
+                        2341 --736:     }
+                        2342 --737:     else if ((ER_PARAM == err) || (ER_L_ECC_INVALID_ARG == err))
+                        2343 --line737
+                        2344 ..lin.6348b96a..ebe2604f.0_126::
+                        2345 .LDWlin126:
+000007de 61ea           2346 	cmp	1,r29
+000007e0 e205*          2347 	be	.L1558
+000007e2 210601000600   2348 	mov	393217,r1
+000007e8 e1e9           2349 	cmp	r1,r29
+000007ea ba05*          2350 	bne	.L1557
+                        2351 .L1558:
+                        2352 --738:     {
+                        2353 --739:         rtn = SERV_PRM_ERROR;
+                        2354 --line739
+                        2355 ..lin.6348b96a..ebe2604f.0_127::
+                        2356 .LDWlin127:
+000007ec 040a           2357 	mov	4,r1
+000007ee b505*          2358 	br	.L1556
+                        2359 .L1557:
+                        2360 --740:     }
+                        2361 --741:     else
+                        2362 --742:     {
+                        2363 --743:         rtn = SERV_SYS_ERROR;
+                        2364 --line743
+                        2365 ..lin.6348b96a..ebe2604f.0_128::
+                        2366 .LDWlin128:
+000007f0 200e1100       2367 	movea	17,zero,r1
+                        2368 .L1556:
+                        2369 --744:     }
+                        2370 --746:     return rtn;
+000007f4 0150           2371 	mov	r1,r10
+                        2372 --	    .ef
+                        2373 .LDW33:
+000007f6 23ff4900       2374 	ld.w	72[sp],lp
+000007fa 23ef4100       2375 	ld.w	64[sp],r29
+000007fe 23e74500       2376 	ld.w	68[sp],r28
+00000802 031e4c00       2377 	addi	76,sp,sp
+                        2378 .L1813:
+                        2379 	.jumptype return
+00000806 7f00           2380 	jmp	[lp]
+                        2381 --line743
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2382 ..lin.6348b96a..ebe2604f.0_129::
+                        2383 	.type	_CISM_DerivKeyValue,@function
+                        2384 	.size	_CISM_DerivKeyValue,.-_CISM_DerivKeyValue
+                        2385 	.align	2
+                        2386 --_err	r29	local
+                        2387 --_rtn	r1	local
+                        2388 --_kdf_prm	28[sp]	local
+                        2389 --_kdf_type	0[sp]	local
+                        2390 --_hash_type	4[sp]	local
+                        2391 --_hash_size	10[sp]	local
+                        2392 --_p_kdf_logical	12[sp]	local
+                        2393 --_p_secret_key_value_logical	16[sp]	local
+                        2394 --_p_info_logical	20[sp]	local
+                        2395 --_p_derived_key_value_logical	24[sp]	local
+                        2396 
+                        2397 --_p_kdf	r28	param
+                        2398 
+                        2399 	.section ".bss","awb"
+                        2400 .L1698:
+                        2401 	.type	.L1698,@object
+                        2402 	.size	.L1698,0
+                        2403 	.section ".ghcalltbl",""
+000000c0 00000000*      2404 .L1798:	.word	.L1797
+                        2405 	.type	.L1798,@object
+                        2406 	.size	.L1798,4
+000000c4 00000000*      2407 .L1800:	.word	.L1799
+                        2408 	.type	.L1800,@object
+                        2409 	.size	.L1800,4
+000000c8 00000000*      2410 .L1802:	.word	.L1801
+                        2411 	.type	.L1802,@object
+                        2412 	.size	.L1802,4
+000000cc 00000000*      2413 .L1804:	.word	.L1803
+                        2414 	.type	.L1804,@object
+                        2415 	.size	.L1804,4
+000000d0 00000000*      2416 .L1806:	.word	.L1805
+                        2417 	.type	.L1806,@object
+                        2418 	.size	.L1806,4
+000000d4 00000000*      2419 .L1808:	.word	.L1807
+                        2420 	.type	.L1808,@object
+                        2421 	.size	.L1808,4
+000000d8 00000000*      2422 .L1810:	.word	.L1809
+                        2423 	.type	.L1810,@object
+                        2424 	.size	.L1810,4
+000000dc 00000000*      2425 .L1812:	.word	.L1811
+                        2426 	.type	.L1812,@object
+                        2427 	.size	.L1812,4
+                        2428 	.section ".ghrettbl",""
+00000014 00000000*      2429 .L1814:	.word	.L1813
+                        2430 	.type	.L1814,@object
+                        2431 	.size	.L1814,4
+                        2432 	.data
+                        2433 	.section ".icum_library.text","ax"
+                        2434 
+                        2435 --747: }
+                        2436 
+                        2437 --749: /****************************************************************************************
+                        2438 --750: * Function ID  : [ICUMFW_CD_L_CRY_ECC_0062]:[ICUMFW_UD_L_CRY_ECC_0062]
+                        2439 --751: * Function name: L_ECC_ToInternalKdfType
+                        2440 --752: * Description  : Set the value to kdf_type.
+                        2441 --753: * Arguments    : kdf_algo   :[in]
+                        2442 --754: *                kdf_type   :[out]
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2443 --755: * Return Value : ER_OK
+                        2444 --756: ****************************************************************************************/
+                        2445 --757: uint32_t L_ECC_ToInternalKdfType(r_kdf_algo_t kdf_algo, kdf_type_t *kdf_type)
+                        2446 	.align	2
+                        2447 	.align	2
+                        2448 	.align	2
+                        2449 ..gh.f.a.2.e.6:
+                        2450 	.type	..gh.f.a.2.e.6,@object
+                        2451 	.size	..gh.f.a.2.e.6,0
+                        2452 	.global	_L_ECC_ToInternalKdfType
+                        2453 _L_ECC_ToInternalKdfType:
+00000808 0608           2454 	mov	r6,r1
+0000080a 07f0           2455 	mov	r7,ep
+                        2456 --	    .bf
+                        2457 .LDW43:
+                        2458 --758: {
+                        2459 --760:     switch (kdf_algo)
+0000080c 620a           2460 	cmp	2,r1
+0000080e c905*          2461 	bnl	.L1908
+00000810 610a           2462 	cmp	1,r1
+00000812 810d*          2463 	bl	.L1818
+00000814 950d*          2464 	br	.L1819
+                        2465 .L1908:
+00000816 630a           2466 	cmp	3,r1
+00000818 a10d*          2467 	bl	.L1820
+0000081a c20d*          2468 	be	.L1821
+0000081c 640a           2469 	cmp	4,r1
+0000081e d20d*          2470 	be	.L1822
+00000820 f50d*          2471 	br	.L1823
+                        2472 .L1818:
+                        2473 --761:     {
+                        2474 --762:         case KDF_ALGO_KDF1:
+                        2475 --763:             *kdf_type = E_KDF1;
+                        2476 --line763
+                        2477 ..lin.6348b96a..3f34c770.0_130::
+                        2478 .LDWlin130:
+00000822 0105           2479 	sst.w	zero,0[ep]
+                        2480 --764:             break;
+                        2481 --765:         case KDF_ALGO_KDF2:
+00000824 9515*          2482 	br	.L1825
+                        2483 .L1819:
+                        2484 --766:             *kdf_type = E_KDF2;
+                        2485 --line766
+                        2486 ..lin.6348b96a..3f34c770.0_131::
+                        2487 .LDWlin131:
+00000826 0112           2488 	mov	1,r2
+00000828 0115           2489 	sst.w	r2,0[ep]
+                        2490 --767:             break;
+                        2491 --768:         case KDF_ALGO_KDF3:
+0000082a e50d*          2492 	br	.L1825
+                        2493 .L1820:
+                        2494 --769:             *kdf_type = E_KDF3;
+                        2495 --line769
+                        2496 ..lin.6348b96a..3f34c770.0_132::
+                        2497 .LDWlin132:
+0000082c 0212           2498 	mov	2,r2
+0000082e 0115           2499 	sst.w	r2,0[ep]
+                        2500 --770:             break;
+                        2501 --771:         case KDF_ALGO_PKDF1:
+00000830 b50d*          2502 	br	.L1825
+                        2503 .L1821:
+
+                                                                      Page 45
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2504 --772:             *kdf_type = E_PKDF1;
+                        2505 --line772
+                        2506 ..lin.6348b96a..3f34c770.0_133::
+                        2507 .LDWlin133:
+00000832 0312           2508 	mov	3,r2
+00000834 0115           2509 	sst.w	r2,0[ep]
+                        2510 --773:             break;
+                        2511 --774:         case KDF_ALGO_PKDF2:
+00000836 850d*          2512 	br	.L1825
+                        2513 .L1822:
+                        2514 --775:             *kdf_type = E_PKDF2;
+                        2515 --line775
+                        2516 ..lin.6348b96a..3f34c770.0_134::
+                        2517 .LDWlin134:
+00000838 0412           2518 	mov	4,r2
+0000083a 0115           2519 	sst.w	r2,0[ep]
+                        2520 --776:             break;
+                        2521 --777:         default:
+0000083c d505*          2522 	br	.L1825
+                        2523 .L1823:
+                        2524 --778:             *kdf_type = E_LAST_ITEM_KDF_TYPE;
+                        2525 --line778
+                        2526 ..lin.6348b96a..3f34c770.0_135::
+                        2527 .LDWlin135:
+0000083e 40160001       2528 	movhi	hi(16777216),zero,r2
+00000842 0115           2529 	sst.w	r2,0[ep]
+                        2530 --779:             break;
+                        2531 --line779
+                        2532 ..lin.6348b96a..3f34c770.0_136::
+                        2533 .LDWlin136:
+00000844 0000           2534 	nop
+                        2535 .L1825:
+                        2536 --780:     }
+                        2537 --781:     return (ER_OK);
+00000846 0052           2538 	mov	0,r10
+                        2539 --	    .ef
+                        2540 .LDW53:
+                        2541 .L1975:
+                        2542 	.jumptype return
+00000848 7f00           2543 	jmp	[lp]
+                        2544 --line779
+                        2545 ..lin.6348b96a..3f34c770.0_137::
+                        2546 	.type	_L_ECC_ToInternalKdfType,@function
+                        2547 	.size	_L_ECC_ToInternalKdfType,.-_L_ECC_ToInternalKdfType
+                        2548 	.align	2
+                        2549 
+                        2550 --_kdf_algo	r1	param
+                        2551 --_kdf_type	ep	param
+                        2552 
+                        2553 	.section ".bss","awb"
+                        2554 .L1906:
+                        2555 	.type	.L1906,@object
+                        2556 	.size	.L1906,0
+                        2557 	.section ".ghrettbl",""
+00000018 00000000*      2558 .L1976:	.word	.L1975
+                        2559 	.type	.L1976,@object
+                        2560 	.size	.L1976,4
+                        2561 	.data
+                        2562 	.section ".icum_library.text","ax"
+                        2563 
+                        2564 --782: }
+
+                                                                      Page 46
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rt01.si
+                        2565 	.align	2
+                        2566 --_CONST_ZERO	_CONST_ZERO	static
+                        2567 
+                        2568 	.data
+                        2569 	.need	_CISM_DerivKeyValue
+                        2570 	.ghsnote version,30
+                        2571 	.ghsnote tools,3
+                        2572 	.ghsnote options,656
+                        2573 	.section ".icum_library.text","ax"
+                        2574 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_kdf...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF76..0::
+                        2575 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

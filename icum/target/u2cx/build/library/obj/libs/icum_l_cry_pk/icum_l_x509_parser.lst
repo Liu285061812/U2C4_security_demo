@@ -1,0 +1,2339 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common -I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif -I..\..\icum\sal\include\library -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common -I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_x509_parser.dbo -source=icum_l_x509_parser.c -comp -o ..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\gh_0000opk1.o -list=..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_x509_parser.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+Source File: icum_l_x509_parser.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common
+                           2 --		-I..\..\icum\target\u2cx\include\driver -I..\..\pe\generic\icumif
+                           3 --		-I..\..\icum\sal\include\library
+                           4 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_common
+                           5 --		-I..\..\icum\sal\src\library\l_cry\cry_pk\cry_pkc
+                           6 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           7 --		-I..\..\icum\target\u2cx\include\device\
+                           8 --		-I..\..\icum\target\u2cx\include\device\rfd
+                           9 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          10 --		-I..\..\icum\target\u2cx\include\driver
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          12 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          13 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          14 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          15 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          16 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          17 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          18 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          19 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          20 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          21 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          22 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          23 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          24 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          25 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          26 --		.text=.icum_library.text -section .rodata=.icum_library.rodata
+                          27 --		-section .bss=.icum_library.bss -section .data=.icum_library.data
+                          28 --		-DTFM_ALREADY_SET -DTFM_TIMING_RESISTANT -DENDIAN_LITTLE
+                          29 --		-DENDIAN_32BITWORD -DLTC_RH850 -filetype.c
+                          30 --		..\..\icum\sal\src\library\l_cry\cry_pk\cry_x_509\icum_l_x509_parser.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\library\obj\libs\icum_l_cry_pk\icum_l_x509_parser.o
+                          33 --Source File:   ..\..\icum\sal\src\library\l_cry\cry_pk\cry_x_509\icum_l_x509_parser.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:28 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_library.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   Cryptographic Library X509                                */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: #include "icum_l_cry_pk_pub.h"
+                          70 --28: #include "icum_l_x509.h"
+                          71 --29: #include "../cry_common/icum_l_my_toolbox.h"
+                          72 --31: /* OID list */
+                          73 --32: /* source RFC 3279 */
+                          74 --33: /* additional algo identifier in RFC 4055 */
+                          75 --34: #define OID_ISO                 (1u)
+                          76 --36: #define OID_MEMBER_BODY         (2u)
+                          77 --37: #define OID_IDENTIFIED_ORG      (3u)
+                          78 --39: #define OID_US                  (840u)
+                          79 --40: #define OID_TELETRUST           (36u)
+                          80 --41: #define OID_CERTICOM            (132u)
+                          81 --43: #define OID_RSADSI              (113549u)
+                          82 --44: #define OID_PKCS                (1u)
+                          83 --45: #define OID_PKCS_1              (1u)
+                          84 --47: #define OID_RSA_ENCRYPTION      (1u)
+                          85 --49: /* OID list */
+                          86 --50: /* source RFC 5480 */
+                          87 --51: #define OID_X9_62               (10045u)
+                          88 --52: #define OID_CURVE               (0u)
+                          89 --53: #define OID_KEY_TYPE            (2u)
+                          90 --54: #define OID_CURVES              (3u)
+                          91 --55: #define OID_PRIME               (1u)
+                          92 --57: #define OID_PRIME192V1          (1u)       /* secp192r1 */
+                          93 --58: #define OID_PRIME256V1          (7u)       /* secp256r1 */
+                          94 --59: #define OID_SECP224R1           (33u)
+                          95 --60: #define OID_SECP384R1           (34u)
+                          96 --62: /* OID list */
+                          97 --63: /* source RFC 5639 */
+                          98 --64: #define OID_ALGO                (3)
+                          99 --65: #define OID_SIG_ALGO            (3)
+                         100 --66: #define OID_ECSIGN              (2)
+                         101 --67: #define OID_ECSTDCURVES_GENERATION    (8)
+                         102 --68: #define OID_BRAINPOOL_P256R1    (7u)
+                         103 --69: #define OID_BRAINPOOL_P320R1    (9u)
+                         104 --72: static const uint32_t OID_xxxWithRSAEncryption[] = {OID_ISO, OID_MEMBER_BODY, OID_US, OID_RSADSI, OID_PKCS, OID_PKCS_1};
+                         105 --73: static const uint32_t OID_ecPublicKey[] ={OID_ISO, OID_MEMBER_BODY,    OID_US,     OID_X9_62, OID_KEY_TYPE, 1};
+                         106 --74: static const uint32_t OID_curveX962[]  = {OID_ISO, OID_MEMBER_BODY,    OID_US,     OID_X9_62, OID_CURVES, OID_PRIME};
+                         107 --75: static const uint32_t OID_curveSEC2[]  = {OID_ISO, OID_IDENTIFIED_ORG, OID_CERTICOM, OID_CURVE};
+                         108 --76: static const uint32_t OID_curveBPool[]  =
+                         109 --77:     {OID_ISO, OID_IDENTIFIED_ORG, OID_TELETRUST, OID_ALGO, OID_SIG_ALGO, OID_ECSIGN, OID_ECSTDCURVES_GENERATION, 1, 1};
+                         110 --79: static const uint16_t key_size_tab[] =
+                         111 --80: {
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         112 --81:     192u,       /* ECC_CURVE_NIST_P192 */
+                         113 --82:     224u,       /* ECC_CURVE_NIST_P224 */
+                         114 --83:     256u,       /* ECC_CURVE_NIST_P256 */
+                         115 --84:     384u,       /* ECC_CURVE_NIST_P384 */
+                         116 --85:     544u,       /* ECC_CURVE_NIST_P521 */
+                         117 --86:     192u,       /* ECC_CURVE_BRAINPOOL_P192 */
+                         118 --87:     224u,       /* ECC_CURVE_BRAINPOOL_P224 */
+                         119 --88:     256u,       /* ECC_CURVE_BRAINPOOL_P256 */
+                         120 --89:     320u,       /* ECC_CURVE_BRAINPOOL_P320 */
+                         121 --90:     384u,       /* ECC_CURVE_BRAINPOOL_P384 */
+                         122 --91:     512u,       /* ECC_CURVE_BRAINPOOL_P512 */
+                         123 --92:     256u,       /* ECC_CURVE_BRAINPOOL_P256_T */
+                         124 --93:     320u,       /* ECC_CURVE_BRAINPOOL_P320_T */
+                         125 --94:     384u,       /* ECC_CURVE_BRAINPOOL_P384_T */
+                         126 --95:     512u,       /* ECC_CURVE_BRAINPOOL_P512_T */
+                         127 --96:     256u,       /* ECC_CURVE_CURVE25519 */
+                         128 --97:     448u,       /* ECC_CURVE_CURVE448 */
+                         129 --98:     256u,       /* ECC_CURVE_ED25519 */
+                         130 --99:     480u,       /* ECC_CURVE_ED448 */
+                         131 --100: };
+                         132 --102: /***************************************************************************************
+                         133 --103: * Function ID  : [ICUMFW_CD_L_CRY_X509_0003]:[ICUMFW_UD_L_CRY_X509_0003]
+                         134 --104: * Function name: l_X509_ParseTop
+                         135 --105: * Description  : Parse x.509 certificate top hierarchy
+                         136 --106: *            X.509 certificate v3
+                         137 --107: *            - on top: 1 member, which is a sequence
+                         138 --108: *            - in the sequence : 3 members has follows:
+                         139 --109: *                 - the certificate to be signed
+                         140 --110: *                 - the signature algorithm
+                         141 --111: *                 - the signature value
+                         142 --112: *
+                         143 --113: *            SEQUENCE {
+                         144 --114: *                SEQUENCE {
+                         145 --115: *                    [0] {
+                         146 --116: *                        INTEGER 2
+                         147 --117: *                        }
+                         148 --118: *                    INTEGER
+                         149 --119: *                     5E EB E4 CB 24 23 90 EF 72 AE 44 79 40 50 DE 2F
+                         150 --120: *                    SEQUENCE {
+                         151 --121: *                        OBJECT IDENTIFIER md5withRSAEncryption (1 2 840 113549 1 1 4)
+                         152 --122: *                        NULL
+                         153 --123: *                        }
+                         154 --124: *                    .../...
+                         155 --125: *
+                         156 --126: *                SEQUENCE {
+                         157 --127: *                    OBJECT IDENTIFIER md5withRSAEncryption (1 2 840 113549 1 1 4)
+                         158 --128: *                    NULL
+                         159 --129: *                    }
+                         160 --130: *                BIT STRING 0 unused bits
+                         161 --131: *                    A8 88 57 C0 6D AD 3B 35 8D 64 00 72 B8 D5 BE 46
+                         162 --132: *                    .../...
+                         163 --133: *                }
+                         164 --134: * Arguments    : p_X509_cert    :[in]       :address of x.509 certificate
+                         165 --135: *                sizeof_cert    :[in]       :byte size of x.509 certificate
+                         166 --136: *                p_fields_cert  :[out]      :list of ASN1 DER objects
+                         167 --137: *                p_nb_items     :[in/out]   :the number of objects found
+                         168 --138: * Return Value : ER_OK
+                         169 --139: *                ER_L_X509_INVALID_ARG
+                         170 --140: ***************************************************************************************/
+                         171 --141: static uint32_t l_X509_ParseTop (const uint8_t  *p_X509_cert,
+                         172 	.align	2
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         173 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF74..0::
+                         174 	.align	2
+                         175 	.align	2
+                         176 ..gh.f.a.2.e.0:
+                         177 	.type	..gh.f.a.2.e.0,@object
+                         178 	.size	..gh.f.a.2.e.0,0
+                         179 	.global	_l_X509_ParseTop..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         180 _l_X509_ParseTop..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+                         181 _l_X509_ParseTop:
+00000000 031eccff        182 	addi	-52,sp,sp
+00000004 63ff3100        183 	st.w	lp,48[sp]
+00000008 63c72d00        184 	st.w	r24,44[sp]
+0000000c 63cf2900        185 	st.w	r25,40[sp]
+00000010 63d72500        186 	st.w	r26,36[sp]
+00000014 63e71d00        187 	st.w	r28,28[sp]
+00000018 63df2100        188 	st.w	r27,32[sp]
+0000001c 63ef1900        189 	st.w	r29,24[sp]
+00000020 06d0            190 	mov	r6,r26
+00000022 07c8            191 	mov	r7,r25
+00000024 d900            192 	zxh	r25
+00000026 08c0            193 	mov	r8,r24
+00000028 09e0            194 	mov	r9,r28
+                         195 --	    .bf
+                         196 .LDW01:
+                         197 --142:                                        uint16_t  sizeof_cert,
+                         198 --143:                                        asn1_t   *p_fields_cert,
+                         199 --144:                                        uint32_t *p_nb_items)
+                         200 --145: {
+                         201 --146:     uint32_t    max_nb_items;
+                         202 --147:     uint32_t    err;
+                         203 --148:     asn1_t      top_field[2];
+                         204 --149:     
+                         205 --150:     err = ER_L_X509_INVALID_ARG;
+0000002a 3d0601000800    206 	mov	524289,r29
+                         207 --151:     
+                         208 --152:     max_nb_items = *p_nb_items;
+                         209 --line152
+                         210 ..lin.1dfb757..c31d8e72.0_1::
+                         211 .LDWlin1:
+00000030 3cdf0100        212 	ld.w	0[r28],r27
+                         213 --153:     if (max_nb_items < 3u)
+00000034 63da            214 	cmp	3,r27
+00000036 c12d*           215 	bl	.L6
+                         216 --154:     {
+                         217 --155:         /* Do nothing */
+                         218 --156:     }
+                         219 --157:     else
+                         220 --158:     {
+                         221 --159:         /* get the top sequence member */
+                         222 --160:         *p_nb_items = 2;
+                         223 --line160
+                         224 ..lin.1dfb757..c31d8e72.0_2::
+                         225 .LDWlin2:
+00000038 020a            226 	mov	2,r1
+0000003a 7c0f0100        227 	st.w	r1,0[r28]
+                         228 --161:         err = l_X509_ParseDerFormat(p_X509_cert, sizeof_cert, top_field, p_nb_items);
+0000003e 1a30            229 	mov	r26,r6
+00000040 1938            230 	mov	r25,r7
+00000042 1c48            231 	mov	r28,r9
+00000044 23460000        232 	movea	0,sp,r8
+                         233 .L156:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         234 	jarl	_l_X509_ParseDerFormat,lp
+                         234 <EXPANSION BEGIN>
+                         234 jarl22 _l_X509_ParseDerFormat , lp 
+00000048 80ff0000*       234 <EXPANSION END>
+0000004c 0ae8            235 	mov	r10,r29
+                         236 --162:         if (err != ER_OK)
+                         237 --line162
+                         238 ..lin.1dfb757..c31d8e72.0_3::
+                         239 .LDWlin3:
+0000004e e0e9            240 	cmp	zero,r29
+00000050 fa1d*           241 	bne	.L6
+                         242 --163:         {
+                         243 --164:             /* Do nothing */
+                         244 --165:         }
+                         245 --166:         else
+                         246 --167:         {
+                         247 --168:             /* should have only 1 member */
+                         248 --169:             if (*p_nb_items != 1u)
+                         249 --line169
+                         250 ..lin.1dfb757..c31d8e72.0_4::
+                         251 .LDWlin4:
+00000052 3c0f0100        252 	ld.w	0[r28],r1
+00000056 610a            253 	cmp	1,r1
+00000058 d205*           254 	be	.L10
+                         255 --170:             {
+                         256 --171:                 err = ER_L_X509_INVALID_ARG;
+                         257 --line171
+                         258 ..lin.1dfb757..c31d8e72.0_5::
+                         259 .LDWlin5:
+0000005a 3d0601000800    260 	mov	524289,r29
+00000060 f515*           261 	br	.L6
+                         262 .L10:
+                         263 --172:             }
+                         264 --173:             else
+                         265 --174:             {
+                         266 --175:                 *p_nb_items = max_nb_items;
+                         267 --line175
+                         268 ..lin.1dfb757..c31d8e72.0_6::
+                         269 .LDWlin6:
+00000062 7cdf0100        270 	st.w	r27,0[r28]
+                         271 --176:                 err = l_X509_ParseDerFormat(top_field[0].p_data, top_field[0].size, p_fields_cert, p_nb_items);
+00000066 23370500        272 	ld.w	4[sp],r6
+0000006a 233f0100        273 	ld.w	0[sp],r7
+0000006e 1840            274 	mov	r24,r8
+00000070 1c48            275 	mov	r28,r9
+                         276 .L158:
+                         277 	jarl	_l_X509_ParseDerFormat,lp
+                         277 <EXPANSION BEGIN>
+                         277 jarl22 _l_X509_ParseDerFormat , lp 
+00000072 80ff0000*       277 <EXPANSION END>
+00000076 0ae8            278 	mov	r10,r29
+                         279 --177:                 if (err != ER_OK)
+                         280 --line177
+                         281 ..lin.1dfb757..c31d8e72.0_7::
+                         282 .LDWlin7:
+00000078 e0e9            283 	cmp	zero,r29
+0000007a aa0d*           284 	bne	.L6
+                         285 --178:                 {
+                         286 --179:                     /* Do nothing */
+                         287 --180:                 }
+                         288 --181:                 else
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         289 --182:                 {
+                         290 --183:                     /* should have only 3 members */
+                         291 --184:                     if (*p_nb_items != 3u)
+                         292 --line184
+                         293 ..lin.1dfb757..c31d8e72.0_8::
+                         294 .LDWlin8:
+0000007c 3c0f0100        295 	ld.w	0[r28],r1
+00000080 630a            296 	cmp	3,r1
+00000082 d205*           297 	be	.L16
+                         298 --185:                     {
+                         299 --186:                         err = ER_L_X509_INVALID_ARG;
+                         300 --line186
+                         301 ..lin.1dfb757..c31d8e72.0_9::
+                         302 .LDWlin9:
+00000084 3d0601000800    303 	mov	524289,r29
+0000008a a505*           304 	br	.L6
+                         305 .L16:
+                         306 --187:                     }
+                         307 --188:                     else
+                         308 --189:                     {
+                         309 --190:                         /* all good */
+                         310 --191:                         err = ER_OK;
+                         311 --line191
+                         312 ..lin.1dfb757..c31d8e72.0_10::
+                         313 .LDWlin10:
+0000008c 00ea            314 	mov	0,r29
+                         315 .L6:
+                         316 --192:                     }
+                         317 --193:                 }
+                         318 --194:             }
+                         319 --195:         }
+                         320 --196:     }
+                         321 --198:     return (err);
+0000008e 1d50            322 	mov	r29,r10
+                         323 --	    .ef
+                         324 .LDW11:
+00000090 23ff3100        325 	ld.w	48[sp],lp
+00000094 23ef1900        326 	ld.w	24[sp],r29
+00000098 23e71d00        327 	ld.w	28[sp],r28
+0000009c 23df2100        328 	ld.w	32[sp],r27
+000000a0 23d72500        329 	ld.w	36[sp],r26
+000000a4 23cf2900        330 	ld.w	40[sp],r25
+000000a8 23c72d00        331 	ld.w	44[sp],r24
+000000ac 031e3400        332 	addi	52,sp,sp
+                         333 .L160:
+                         334 	.jumptype return
+000000b0 7f00            335 	jmp	[lp]
+                         336 --line191
+                         337 ..lin.1dfb757..c31d8e72.0_11::
+                         338 	.type	_l_X509_ParseTop,@function
+                         339 	.size	_l_X509_ParseTop,.-_l_X509_ParseTop
+                         340 	.type	_l_X509_ParseTop..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@function
+                         341 	.size	_l_X509_ParseTop..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,.-_l_X509_ParseTop..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         342 	.align	2
+                         343 --_max_nb_items	r27	local
+                         344 --_err	r29	local
+                         345 --_top_field	0[sp]	local
+                         346 
+                         347 --_p_X509_cert	r26	param
+                         348 --_sizeof_cert	r25	param
+                         349 --_p_fields_cert	r24	param
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         350 --_p_nb_items	r28	param
+                         351 
+                         352 	.section ".bss","awb"
+                         353 .L102:
+                         354 	.type	.L102,@object
+                         355 	.size	.L102,0
+                         356 	.section ".ghcalltbl",""
+                         357 	.align	4
+00000000 00000000*       358 .L157:	.word	.L156
+                         359 	.type	.L157,@object
+                         360 	.size	.L157,4
+00000004 00000000*       361 .L159:	.word	.L158
+                         362 	.type	.L159,@object
+                         363 	.size	.L159,4
+                         364 	.section ".ghrettbl",""
+                         365 	.align	4
+00000000 00000000*       366 .L161:	.word	.L160
+                         367 	.type	.L161,@object
+                         368 	.size	.L161,4
+                         369 	.data
+                         370 	.section ".icum_library.text","ax"
+                         371 
+                         372 --199: }
+                         373 
+                         374 --202: /***************************************************************************************
+                         375 --203: * Function ID  : [ICUMFW_CD_L_CRY_X509_0005]:[ICUMFW_UD_L_CRY_X509_0005]
+                         376 --204: * Function name: l_X509_IdentifyKeyType
+                         377 --205: * Description  : Identify RSA KEY or ECC KEY
+                         378 --206: * Arguments    : p_part_cert    [in]       :list of ASN1 DER objects
+                         379 --207: *                p_key_type     [out]      :Range :E_KEY_TYPE_UNKNOWN
+                         380 --208: *                                                  E_KEY_TYPE_RSA_PUB_KEY
+                         381 --209: *                                                  E_KEY_TYPE_ECC_PUB_KEY
+                         382 --210: * Return Value : E_KEY_TYPE_UNKNOWN
+                         383 --211: *                E_KEY_TYPE_RSA_PUB_KEY
+                         384 --212: *                E_KEY_TYPE_ECC_PUB_KEY
+                         385 --213: ***************************************************************************************/
+                         386 --214: static uint32_t l_X509_IdentifyKeyType(asn1_t *p_part_cert, key_type_t *p_key_type)
+                         387 	.align	2
+                         388 	.align	2
+                         389 	.align	2
+                         390 	.align	2
+                         391 ..gh.f.a.2.e.1:
+                         392 	.type	..gh.f.a.2.e.1,@object
+                         393 	.size	..gh.f.a.2.e.1,0
+                         394 	.global	_l_X509_IdentifyKeyType..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         395 _l_X509_IdentifyKeyType..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+                         396 _l_X509_IdentifyKeyType:
+000000b2 031e90ff        397 	addi	-112,sp,sp
+000000b6 63ff6d00        398 	st.w	lp,108[sp]
+000000ba 63d76900        399 	st.w	r26,104[sp]
+000000be 63df6500        400 	st.w	r27,100[sp]
+000000c2 63e76100        401 	st.w	r28,96[sp]
+000000c6 63ef5d00        402 	st.w	r29,92[sp]
+000000ca 06d0            403 	mov	r6,r26
+000000cc 07d8            404 	mov	r7,r27
+                         405 --	    .bf
+                         406 .LDW21:
+                         407 --215: {
+                         408 --216:     asn1_t      fields_temp[2];
+                         409 --217:     uint8_t     compare;
+                         410 --218:     uint32_t    OID[16];
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         411 --219:     uint32_t    n;
+                         412 --220:     uint32_t    err;
+                         413 --221:     
+                         414 --222:     *p_key_type = E_KEY_TYPE_UNKNOWN;
+000000ce 7b070100        415 	st.w	zero,0[r27]
+                         416 --223:         
+                         417 --224:     /* decode the DER in OID fields */
+                         418 --225:     n = 2;
+000000d2 020a            419 	mov	2,r1
+000000d4 630f0100        420 	st.w	r1,0[sp]
+                         421 --226:     err = l_X509_ParseDerFormat(p_part_cert->p_data, p_part_cert->size, fields_temp, &n);
+000000d8 3a370500        422 	ld.w	4[r26],r6
+000000dc 3a3f0100        423 	ld.w	0[r26],r7
+000000e0 23464400        424 	movea	68,sp,r8
+000000e4 234e0000        425 	movea	0,sp,r9
+                         426 .L316:
+                         427 	jarl	_l_X509_ParseDerFormat,lp
+                         427 <EXPANSION BEGIN>
+                         427 jarl22 _l_X509_ParseDerFormat , lp 
+000000e8 80ff0000*       427 <EXPANSION END>
+000000ec 0ae8            428 	mov	r10,r29
+                         429 --227:     if (err != ER_OK)
+                         430 --line227
+                         431 ..lin.1dfb757..54fe8c2b.0_12::
+                         432 .LDWlin12:
+000000ee e0e9            433 	cmp	zero,r29
+000000f0 ca3d*           434 	bne	.L166
+                         435 --228:     {
+                         436 --229:         /* Do nothing */
+                         437 --230:     }
+                         438 --231:     else
+                         439 --232:     {
+                         440 --233:         n = sizeof(OID) / sizeof(OID[0]);
+                         441 --line233
+                         442 ..lin.1dfb757..54fe8c2b.0_13::
+                         443 .LDWlin13:
+000000f2 200e1000        444 	movea	16,zero,r1
+000000f6 630f0100        445 	st.w	r1,0[sp]
+                         446 --234:         err = l_X509_DecodeFromDerFormat(&fields_temp[0], (uint8_t *)OID, &n);
+000000fa 233e0400        447 	movea	4,sp,r7
+000000fe 23364400        448 	movea	68,sp,r6
+00000102 23460000        449 	movea	0,sp,r8
+                         450 .L318:
+                         451 	jarl	_l_X509_DecodeFromDerFormat,lp
+                         451 <EXPANSION BEGIN>
+                         451 jarl22 _l_X509_DecodeFromDerFormat , lp 
+00000106 80ff0000*       451 <EXPANSION END>
+0000010a 0ae8            452 	mov	r10,r29
+                         453 --235:         if (err != ER_OK)
+                         454 --line235
+                         455 ..lin.1dfb757..54fe8c2b.0_14::
+                         456 .LDWlin14:
+0000010c e0e9            457 	cmp	zero,r29
+0000010e da2d*           458 	bne	.L166
+                         459 --236:         {
+                         460 --237:             /* Do nothing */
+                         461 --238:         }
+                         462 --239:         else
+                         463 --240:         {
+                         464 --241:             compare = l_CMN_MemCmp((const uint8_t *)OID, (const uint8_t *)OID_xxxWithRSAEncryption, (n - 1u) * 4u);
+                         465 --line241
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         466 ..lin.1dfb757..54fe8c2b.0_15::
+                         467 .LDWlin15:
+00000110 23470100        468 	ld.w	0[sp],r8
+00000114 23360400        469 	movea	4,sp,r6
+00000118 270600000000*   470 	mov	_OID_xxxWithRSAEncryption,r7
+0000011e 5f42            471 	add	-1,r8
+00000120 c242            472 	shl	2,r8
+                         473 .L320:
+                         474 	jarl	_l_CMN_MemCmp,lp
+                         474 <EXPANSION BEGIN>
+                         474 jarl22 _l_CMN_MemCmp , lp 
+00000122 80ff0000*       474 <EXPANSION END>
+00000126 0ae0            475 	mov	r10,r28
+                         476 --242:             if ((uint32_t)compare == 0u)
+                         477 --line242
+                         478 ..lin.1dfb757..54fe8c2b.0_16::
+                         479 .LDWlin16:
+00000128 e0e1            480 	cmp	zero,r28
+0000012a fa0d*           481 	bne	.L170
+                         482 --243:             {
+                         483 --244:                 /* this is a RSA key */
+                         484 --245:                 /* search for the type of key */
+                         485 --246:                 if (OID[n-1u] == OID_RSA_ENCRYPTION)
+                         486 --line246
+                         487 ..lin.1dfb757..54fe8c2b.0_17::
+                         488 .LDWlin17:
+0000012c 23f70100        489 	ld.w	0[sp],ep
+00000130 23160400        490 	movea	4,sp,r2
+00000134 5ff2            491 	add	-1,ep
+00000136 c2f2            492 	shl	2,ep
+00000138 c2f1            493 	add	r2,ep
+0000013a 000d            494 	sld.w	0[ep],r1
+0000013c 610a            495 	cmp	1,r1
+0000013e da15*           496 	bne	.L166
+                         497 --247:                 {
+                         498 --248:                     *p_key_type = E_KEY_TYPE_RSA_PUB_KEY;
+                         499 --line248
+                         500 ..lin.1dfb757..54fe8c2b.0_18::
+                         501 .LDWlin18:
+00000140 010a            502 	mov	1,r1
+00000142 7b0f0100        503 	st.w	r1,0[r27]
+00000146 9515*           504 	br	.L166
+                         505 .L170:
+                         506 --249:                 }
+                         507 --250:                 else
+                         508 --251:                 {
+                         509 --252:                     /* Do nothing */
+                         510 --253:                 }
+                         511 --254:             }
+                         512 --255:             else 
+                         513 --256:             {
+                         514 --257:                 compare = l_CMN_MemCmp((const uint8_t *)OID, (const uint8_t *)OID_ecPublicKey, n * 4u);
+                         515 --line257
+                         516 ..lin.1dfb757..54fe8c2b.0_19::
+                         517 .LDWlin19:
+00000148 23470100        518 	ld.w	0[sp],r8
+0000014c 23360400        519 	movea	4,sp,r6
+00000150 270600000000*   520 	mov	_OID_ecPublicKey,r7
+00000156 c242            521 	shl	2,r8
+                         522 .L322:
+                         523 	jarl	_l_CMN_MemCmp,lp
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         523 <EXPANSION BEGIN>
+                         523 jarl22 _l_CMN_MemCmp , lp 
+00000158 80ff0000*       523 <EXPANSION END>
+0000015c 0ae0            524 	mov	r10,r28
+                         525 --258:                 if ((uint32_t)compare == 0u)
+                         526 --line258
+                         527 ..lin.1dfb757..54fe8c2b.0_20::
+                         528 .LDWlin20:
+0000015e e0e1            529 	cmp	zero,r28
+00000160 ca05*           530 	bne	.L166
+                         531 --259:                 {
+                         532 --260:                     /* this is an ECC key */
+                         533 --261:                     *p_key_type = E_KEY_TYPE_ECC_PUB_KEY;
+                         534 --line261
+                         535 ..lin.1dfb757..54fe8c2b.0_21::
+                         536 .LDWlin21:
+00000162 020a            537 	mov	2,r1
+00000164 7b0f0100        538 	st.w	r1,0[r27]
+                         539 .L166:
+                         540 --262:                 }
+                         541 --263:                 else
+                         542 --264:                 {
+                         543 --265:                     /* Do nothing */
+                         544 --266:                 }
+                         545 --267:             }
+                         546 --268:         }
+                         547 --269:     }
+                         548 --271:     return (err);
+00000168 1d50            549 	mov	r29,r10
+                         550 --	    .ef
+                         551 .LDW31:
+0000016a 23ff6d00        552 	ld.w	108[sp],lp
+0000016e 23ef5d00        553 	ld.w	92[sp],r29
+00000172 23e76100        554 	ld.w	96[sp],r28
+00000176 23df6500        555 	ld.w	100[sp],r27
+0000017a 23d76900        556 	ld.w	104[sp],r26
+0000017e 031e7000        557 	addi	112,sp,sp
+                         558 .L324:
+                         559 	.jumptype return
+00000182 7f00            560 	jmp	[lp]
+                         561 --line261
+                         562 ..lin.1dfb757..54fe8c2b.0_22::
+                         563 	.type	_l_X509_IdentifyKeyType,@function
+                         564 	.size	_l_X509_IdentifyKeyType,.-_l_X509_IdentifyKeyType
+                         565 	.type	_l_X509_IdentifyKeyType..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@function
+                         566 	.size	_l_X509_IdentifyKeyType..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,.-_l_X509_IdentifyKeyType..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         567 	.align	2
+                         568 --_fields_temp	68[sp]	local
+                         569 --_compare	r28	local
+                         570 --_OID	4[sp]	local
+                         571 --_n	0[sp]	local
+                         572 --_err	r29	local
+                         573 
+                         574 --_p_part_cert	r26	param
+                         575 --_p_key_type	r27	param
+                         576 
+                         577 	.section ".bss","awb"
+                         578 .L262:
+                         579 	.type	.L262,@object
+                         580 	.size	.L262,0
+                         581 	.section ".icum_library.rodata","a"
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         582 	.align	4
+                         583 	.global	_OID_xxxWithRSAEncryption..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         584 _OID_xxxWithRSAEncryption..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+00000000 01000000        585 _OID_xxxWithRSAEncryption:	.byte	1,0,0,0
+00000004 02000000        586 	.byte	2,0,0,0
+00000008 48030000        587 	.byte	72,3,0,0
+0000000c 8dbb0100        588 	.byte	141,187,1,0
+00000010 01000000        589 	.byte	1,0,0,0
+00000014 01000000        590 	.byte	1,0,0,0
+                         591 	.type	_OID_xxxWithRSAEncryption..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                         592 	.size	_OID_xxxWithRSAEncryption..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,24
+                         593 	.type	_OID_xxxWithRSAEncryption,@object
+                         594 	.size	_OID_xxxWithRSAEncryption,24
+                         595 	.global	_OID_ecPublicKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         596 _OID_ecPublicKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+00000018 01000000        597 _OID_ecPublicKey:	.byte	1,0,0,0
+0000001c 02000000        598 	.byte	2,0,0,0
+00000020 48030000        599 	.byte	72,3,0,0
+00000024 3d270000        600 	.byte	61,39,0,0
+00000028 02000000        601 	.byte	2,0,0,0
+0000002c 01000000        602 	.byte	1,0,0,0
+                         603 	.type	_OID_ecPublicKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                         604 	.size	_OID_ecPublicKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,24
+                         605 	.type	_OID_ecPublicKey,@object
+                         606 	.size	_OID_ecPublicKey,24
+                         607 	.section ".ghcalltbl",""
+00000008 00000000*       608 .L317:	.word	.L316
+                         609 	.type	.L317,@object
+                         610 	.size	.L317,4
+0000000c 00000000*       611 .L319:	.word	.L318
+                         612 	.type	.L319,@object
+                         613 	.size	.L319,4
+00000010 00000000*       614 .L321:	.word	.L320
+                         615 	.type	.L321,@object
+                         616 	.size	.L321,4
+00000014 00000000*       617 .L323:	.word	.L322
+                         618 	.type	.L323,@object
+                         619 	.size	.L323,4
+                         620 	.section ".ghrettbl",""
+00000004 00000000*       621 .L325:	.word	.L324
+                         622 	.type	.L325,@object
+                         623 	.size	.L325,4
+                         624 	.data
+                         625 	.section ".icum_library.text","ax"
+                         626 
+                         627 --272: }
+                         628 
+                         629 --274: /***************************************************************************************
+                         630 --275: * Function ID  : [ICUMFW_CD_L_CRY_X509_0004]:[ICUMFW_UD_L_CRY_X509_0004]
+                         631 --276: * Function name: l_X509_IdentifyCurveId
+                         632 --277: * Description  : Identify ECC Curve Id
+                         633 --278: * Arguments    : p_part_cert    :[in]       :list of ASN1 DER objects
+                         634 --279: *                p_curve_id     :[out]      Range:  LAST_ITEM_ECC_TYPE
+                         635 --280: *                                                   ECC_CURVE_NIST_P192
+                         636 --281: *                                                   ECC_CURVE_NIST_P224
+                         637 --282: *                                                   ECC_CURVE_NIST_P256
+                         638 --283: *                                                   ECC_CURVE_BRAINPOOL_P256
+                         639 --284: *                                                   ECC_CURVE_BRAINPOOL_P320
+                         640 --285: *                                                   ECC_CURVE_BRAINPOOL_P384
+                         641 --286: * Return Value : ER_OK
+                         642 --287: *                ER_L_X509_INVALID_ARG
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         643 --288: ***************************************************************************************/
+                         644 --289: static uint32_t l_X509_IdentifyCurveId(asn1_t *p_part_cert, r_ecc_curve_t *p_curve_id)
+                         645 	.align	2
+                         646 	.align	2
+                         647 	.align	2
+                         648 ..gh.f.a.2.e.2:
+                         649 	.type	..gh.f.a.2.e.2,@object
+                         650 	.size	..gh.f.a.2.e.2,0
+                         651 	.global	_l_X509_IdentifyCurveId..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         652 _l_X509_IdentifyCurveId..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+                         653 _l_X509_IdentifyCurveId:
+00000184 031ea8ff        654 	addi	-88,sp,sp
+00000188 63ff5500        655 	st.w	lp,84[sp]
+0000018c 63d75100        656 	st.w	r26,80[sp]
+00000190 63e74900        657 	st.w	r28,72[sp]
+00000194 63df4d00        658 	st.w	r27,76[sp]
+00000198 63ef4500        659 	st.w	r29,68[sp]
+0000019c 06d0            660 	mov	r6,r26
+0000019e 07e0            661 	mov	r7,r28
+                         662 --	    .bf
+                         663 .LDW41:
+                         664 --290: {
+                         665 --291:     uint8_t         compare;
+                         666 --292:     uint32_t        OID[16];
+                         667 --293:     uint32_t        n;
+                         668 --294:     uint32_t        err;
+                         669 --296:     *p_curve_id = LAST_ITEM_ECC_TYPE;
+000001a0 400e0001        670 	movhi	hi(16777216),zero,r1
+000001a4 7c0f0100        671 	st.w	r1,0[r28]
+                         672 --298:     /* decode the DER in OID fields */
+                         673 --299:     n = sizeof(OID) / sizeof(OID[0]);
+                         674 --line299
+                         675 ..lin.1dfb757..1212cf72.0_23::
+                         676 .LDWlin23:
+000001a8 200e1000        677 	movea	16,zero,r1
+000001ac 630f0100        678 	st.w	r1,0[sp]
+                         679 --300:     err = l_X509_DecodeFromDerFormat(p_part_cert, (uint8_t *)OID, &n);
+000001b0 1a30            680 	mov	r26,r6
+000001b2 233e0400        681 	movea	4,sp,r7
+000001b6 23460000        682 	movea	0,sp,r8
+                         683 .L617:
+                         684 	jarl	_l_X509_DecodeFromDerFormat,lp
+                         684 <EXPANSION BEGIN>
+                         684 jarl22 _l_X509_DecodeFromDerFormat , lp 
+000001ba 80ff0000*       684 <EXPANSION END>
+000001be 0ad8            685 	mov	r10,r27
+                         686 --301:     if (err != ER_OK)
+                         687 --line301
+                         688 ..lin.1dfb757..1212cf72.0_24::
+                         689 .LDWlin24:
+000001c0 e0d9            690 	cmp	zero,r27
+000001c2 ca6d*           691 	bne	.L330
+                         692 --302:     {
+                         693 --303:         /* Do nothing */
+                         694 --304:     }
+                         695 --305:     else
+                         696 --306:     {
+                         697 --307:         if (n == 7u)
+                         698 --line307
+                         699 ..lin.1dfb757..1212cf72.0_25::
+                         700 .LDWlin25:
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+000001c4 230f0100        701 	ld.w	0[sp],r1
+000001c8 670a            702 	cmp	7,r1
+000001ca aa25*           703 	bne	.L331
+                         704 --308:         {
+                         705 --309:             compare = l_CMN_MemCmp((const uint8_t *)OID, (const uint8_t *)OID_curveX962, 6 * 4);
+                         706 --line309
+                         707 ..lin.1dfb757..1212cf72.0_26::
+                         708 .LDWlin26:
+000001cc 23360400        709 	movea	4,sp,r6
+000001d0 270600000000*   710 	mov	_OID_curveX962,r7
+000001d6 20461800        711 	movea	24,zero,r8
+                         712 .L619:
+                         713 	jarl	_l_CMN_MemCmp,lp
+                         713 <EXPANSION BEGIN>
+                         713 jarl22 _l_CMN_MemCmp , lp 
+000001da 80ff0000*       713 <EXPANSION END>
+000001de 0ae8            714 	mov	r10,r29
+                         715 --310:             if ((uint32_t)compare == 0u)
+                         716 --line310
+                         717 ..lin.1dfb757..1212cf72.0_27::
+                         718 .LDWlin27:
+000001e0 e0e9            719 	cmp	zero,r29
+000001e2 ca5d*           720 	bne	.L330
+                         721 --311:             {
+                         722 --312:                 /* this is a X9.62 curve */
+                         723 --313:                 switch (OID[n-1u])
+                         724 --line313
+                         725 ..lin.1dfb757..1212cf72.0_28::
+                         726 .LDWlin28:
+000001e4 23f70100        727 	ld.w	0[sp],ep
+000001e8 23160400        728 	movea	4,sp,r2
+000001ec 5ff2            729 	add	-1,ep
+000001ee c2f2            730 	shl	2,ep
+000001f0 c2f1            731 	add	r2,ep
+000001f2 000d            732 	sld.w	0[ep],r1
+000001f4 610a            733 	cmp	1,r1
+000001f6 c205*           734 	be	.L336
+000001f8 670a            735 	cmp	7,r1
+000001fa d205*           736 	be	.L337
+000001fc 850d*           737 	br	.L338
+                         738 .L336:
+                         739 --314:                 {
+                         740 --315:                     case OID_PRIME192V1:
+                         741 --316:                         *p_curve_id = ECC_CURVE_NIST_P192;
+                         742 --line316
+                         743 ..lin.1dfb757..1212cf72.0_29::
+                         744 .LDWlin29:
+000001fe 7c070100        745 	st.w	zero,0[r28]
+                         746 --317:                         break;
+                         747 --318:                     case OID_PRIME256V1:
+00000202 c54d*           748 	br	.L330
+                         749 .L337:
+                         750 --319:                         *p_curve_id = ECC_CURVE_NIST_P256;
+                         751 --line319
+                         752 ..lin.1dfb757..1212cf72.0_30::
+                         753 .LDWlin30:
+00000204 020a            754 	mov	2,r1
+00000206 7c0f0100        755 	st.w	r1,0[r28]
+                         756 --320:                         break;
+                         757 --321:                     default:
+0000020a 854d*           758 	br	.L330
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         759 .L338:
+                         760 --322:                         break;
+                         761 --line322
+                         762 ..lin.1dfb757..1212cf72.0_31::
+                         763 .LDWlin31:
+0000020c f545*           764 	br	.L330
+                         765 .L331:
+                         766 --323:                 }
+                         767 --324:             }
+                         768 --325:             else
+                         769 --326:             {
+                         770 --327:                 /* Do nothing */
+                         771 --328:             }
+                         772 --329:         }
+                         773 --330:         else if (n == 5u)
+                         774 --line330
+                         775 ..lin.1dfb757..1212cf72.0_32::
+                         776 .LDWlin32:
+0000020e 230f0100        777 	ld.w	0[sp],r1
+00000212 650a            778 	cmp	5,r1
+00000214 da1d*           779 	bne	.L343
+                         780 --331:         {
+                         781 --332:             compare = l_CMN_MemCmp((const uint8_t *)OID, (const uint8_t *)OID_curveSEC2, 4 * 4);
+                         782 --line332
+                         783 ..lin.1dfb757..1212cf72.0_33::
+                         784 .LDWlin33:
+00000216 23360400        785 	movea	4,sp,r6
+0000021a 270600000000*   786 	mov	_OID_curveSEC2,r7
+00000220 20461000        787 	movea	16,zero,r8
+                         788 .L621:
+                         789 	jarl	_l_CMN_MemCmp,lp
+                         789 <EXPANSION BEGIN>
+                         789 jarl22 _l_CMN_MemCmp , lp 
+00000224 80ff0000*       789 <EXPANSION END>
+00000228 0ae8            790 	mov	r10,r29
+                         791 --333:             if ((uint32_t)compare == 0u)
+                         792 --line333
+                         793 ..lin.1dfb757..1212cf72.0_34::
+                         794 .LDWlin34:
+0000022a e0e9            795 	cmp	zero,r29
+0000022c fa35*           796 	bne	.L330
+                         797 --334:             {
+                         798 --335:                 /* this is a SEC 2 curve */
+                         799 --336:                 switch (OID[n-1u])
+                         800 --line336
+                         801 ..lin.1dfb757..1212cf72.0_35::
+                         802 .LDWlin35:
+0000022e 23f70100        803 	ld.w	0[sp],ep
+00000232 23160400        804 	movea	4,sp,r2
+00000236 5ff2            805 	add	-1,ep
+00000238 c2f2            806 	shl	2,ep
+0000023a c2f1            807 	add	r2,ep
+0000023c 000d            808 	sld.w	0[ep],r1
+0000023e 0106dfff        809 	addi	-33,r1,zero
+00000242 da05*           810 	bne	.L349
+                         811 --337:                 {
+                         812 --338:                     case OID_SECP224R1:
+                         813 --339:                         *p_curve_id = ECC_CURVE_NIST_P224;
+                         814 --line339
+                         815 ..lin.1dfb757..1212cf72.0_36::
+                         816 .LDWlin36:
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+00000244 010a            817 	mov	1,r1
+00000246 7c0f0100        818 	st.w	r1,0[r28]
+                         819 --340:                         break;
+                         820 --341:                     default:
+0000024a 852d*           821 	br	.L330
+                         822 .L349:
+                         823 --342:                         break;
+                         824 --line342
+                         825 ..lin.1dfb757..1212cf72.0_37::
+                         826 .LDWlin37:
+0000024c f525*           827 	br	.L330
+                         828 .L343:
+                         829 --343:                 }
+                         830 --344:             }
+                         831 --345:             else
+                         832 --346:             {
+                         833 --347:                 /* Do nothing */
+                         834 --348:             }
+                         835 --349:         }
+                         836 --350:         else if (n == 10u)
+                         837 --line350
+                         838 ..lin.1dfb757..1212cf72.0_38::
+                         839 .LDWlin38:
+0000024e 230f0100        840 	ld.w	0[sp],r1
+00000252 6a0a            841 	cmp	10,r1
+00000254 ba25*           842 	bne	.L330
+                         843 --351:         {
+                         844 --352:             compare = l_CMN_MemCmp((const uint8_t *)OID, (const uint8_t *)OID_curveBPool, 9 * 4);
+                         845 --line352
+                         846 ..lin.1dfb757..1212cf72.0_39::
+                         847 .LDWlin39:
+00000256 23360400        848 	movea	4,sp,r6
+0000025a 270600000000*   849 	mov	_OID_curveBPool,r7
+00000260 20462400        850 	movea	36,zero,r8
+                         851 .L623:
+                         852 	jarl	_l_CMN_MemCmp,lp
+                         852 <EXPANSION BEGIN>
+                         852 jarl22 _l_CMN_MemCmp , lp 
+00000264 80ff0000*       852 <EXPANSION END>
+00000268 0ae8            853 	mov	r10,r29
+                         854 --353:             if ((uint32_t)compare == 0u)
+                         855 --line353
+                         856 ..lin.1dfb757..1212cf72.0_40::
+                         857 .LDWlin40:
+0000026a e0e9            858 	cmp	zero,r29
+0000026c fa15*           859 	bne	.L330
+                         860 --354:             {
+                         861 --355:                 /* this is a Brain Pool curve */
+                         862 --356:                 switch (OID[n-1u])
+                         863 --line356
+                         864 ..lin.1dfb757..1212cf72.0_41::
+                         865 .LDWlin41:
+0000026e 23f70100        866 	ld.w	0[sp],ep
+00000272 23160400        867 	movea	4,sp,r2
+00000276 5ff2            868 	add	-1,ep
+00000278 c2f2            869 	shl	2,ep
+0000027a c2f1            870 	add	r2,ep
+0000027c 000d            871 	sld.w	0[ep],r1
+0000027e 670a            872 	cmp	7,r1
+00000280 c205*           873 	be	.L359
+00000282 690a            874 	cmp	9,r1
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+00000284 e205*           875 	be	.L360
+00000286 950d*           876 	br	.L361
+                         877 .L359:
+                         878 --357:                 {
+                         879 --358:                     case OID_BRAINPOOL_P256R1:
+                         880 --359:                         *p_curve_id = ECC_CURVE_BRAINPOOL_P256;
+                         881 --line359
+                         882 ..lin.1dfb757..1212cf72.0_42::
+                         883 .LDWlin42:
+00000288 070a            884 	mov	7,r1
+0000028a 7c0f0100        885 	st.w	r1,0[r28]
+                         886 --360:                         break;
+                         887 --361:                     case OID_BRAINPOOL_P320R1:
+0000028e e505*           888 	br	.L330
+                         889 .L360:
+                         890 --362:                         *p_curve_id = ECC_CURVE_BRAINPOOL_P320;
+                         891 --line362
+                         892 ..lin.1dfb757..1212cf72.0_43::
+                         893 .LDWlin43:
+00000290 080a            894 	mov	8,r1
+00000292 7c0f0100        895 	st.w	r1,0[r28]
+                         896 --363:                         break;
+                         897 --364:                     default:
+00000296 a505*           898 	br	.L330
+                         899 .L361:
+                         900 --365:                         break;
+                         901 --line365
+                         902 ..lin.1dfb757..1212cf72.0_44::
+                         903 .LDWlin44:
+00000298 0000            904 	nop
+                         905 .L330:
+                         906 --366:                 }
+                         907 --367:             }
+                         908 --368:             else
+                         909 --369:             {
+                         910 --370:                 /* Do nothing */
+                         911 --371:             }
+                         912 --372:         }
+                         913 --373:         else
+                         914 --374:         {
+                         915 --375:             /* not support curve */
+                         916 --376:         }
+                         917 --377:     }
+                         918 --379:     return (err);
+0000029a 1b50            919 	mov	r27,r10
+                         920 --	    .ef
+                         921 .LDW51:
+0000029c 23ff5500        922 	ld.w	84[sp],lp
+000002a0 23ef4500        923 	ld.w	68[sp],r29
+000002a4 23e74900        924 	ld.w	72[sp],r28
+000002a8 23df4d00        925 	ld.w	76[sp],r27
+000002ac 23d75100        926 	ld.w	80[sp],r26
+000002b0 031e5800        927 	addi	88,sp,sp
+                         928 .L625:
+                         929 	.jumptype return
+000002b4 7f00            930 	jmp	[lp]
+                         931 --line365
+                         932 ..lin.1dfb757..1212cf72.0_45::
+                         933 	.type	_l_X509_IdentifyCurveId,@function
+                         934 	.size	_l_X509_IdentifyCurveId,.-_l_X509_IdentifyCurveId
+                         935 	.type	_l_X509_IdentifyCurveId..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@function
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         936 	.size	_l_X509_IdentifyCurveId..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,.-_l_X509_IdentifyCurveId..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         937 	.align	2
+                         938 --_compare	r29	local
+                         939 --_OID	4[sp]	local
+                         940 --_n	0[sp]	local
+                         941 --_err	r27	local
+                         942 
+                         943 --_p_part_cert	r26	param
+                         944 --_p_curve_id	r28	param
+                         945 
+                         946 	.section ".bss","awb"
+                         947 .L498:
+                         948 	.type	.L498,@object
+                         949 	.size	.L498,0
+                         950 	.section ".icum_library.rodata","a"
+                         951 	.global	_OID_curveX962..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         952 _OID_curveX962..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+00000030 01000000        953 _OID_curveX962:	.byte	1,0,0,0
+00000034 02000000        954 	.byte	2,0,0,0
+00000038 48030000        955 	.byte	72,3,0,0
+0000003c 3d270000        956 	.byte	61,39,0,0
+00000040 03000000        957 	.byte	3,0,0,0
+00000044 01000000        958 	.byte	1,0,0,0
+                         959 	.type	_OID_curveX962..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                         960 	.size	_OID_curveX962..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,24
+                         961 	.type	_OID_curveX962,@object
+                         962 	.size	_OID_curveX962,24
+                         963 	.global	_OID_curveSEC2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         964 _OID_curveSEC2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+00000048 01000000        965 _OID_curveSEC2:	.byte	1,0,0,0
+0000004c 03000000        966 	.byte	3,0,0,0
+00000050 84000000        967 	.byte	132,0,0,0
+00000054 00000000        968 	.space	4
+                         969 	.type	_OID_curveSEC2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                         970 	.size	_OID_curveSEC2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,16
+                         971 	.type	_OID_curveSEC2,@object
+                         972 	.size	_OID_curveSEC2,16
+                         973 	.global	_OID_curveBPool..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                         974 _OID_curveBPool..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+00000058 01000000        975 _OID_curveBPool:	.byte	1,0,0,0
+0000005c 03000000        976 	.byte	3,0,0,0
+00000060 24000000        977 	.byte	36,0,0,0
+00000064 03000000        978 	.byte	3,0,0,0
+00000068 03000000        979 	.byte	3,0,0,0
+0000006c 02000000        980 	.byte	2,0,0,0
+00000070 08000000        981 	.byte	8,0,0,0
+00000074 01000000        982 	.byte	1,0,0,0
+00000078 01000000        983 	.byte	1,0,0,0
+                         984 	.type	_OID_curveBPool..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                         985 	.size	_OID_curveBPool..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,36
+                         986 	.type	_OID_curveBPool,@object
+                         987 	.size	_OID_curveBPool,36
+                         988 	.section ".ghcalltbl",""
+00000018 00000000*       989 .L618:	.word	.L617
+                         990 	.type	.L618,@object
+                         991 	.size	.L618,4
+0000001c 00000000*       992 .L620:	.word	.L619
+                         993 	.type	.L620,@object
+                         994 	.size	.L620,4
+00000020 00000000*       995 .L622:	.word	.L621
+                         996 	.type	.L622,@object
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                         997 	.size	.L622,4
+00000024 00000000*       998 .L624:	.word	.L623
+                         999 	.type	.L624,@object
+                        1000 	.size	.L624,4
+                        1001 	.section ".ghrettbl",""
+00000008 00000000*      1002 .L626:	.word	.L625
+                        1003 	.type	.L626,@object
+                        1004 	.size	.L626,4
+                        1005 	.data
+                        1006 	.section ".icum_library.text","ax"
+                        1007 
+                        1008 --380: }
+                        1009 
+                        1010 --382: /***************************************************************************************
+                        1011 --383: * Function ID  : [ICUMFW_CD_L_CRY_X509_0002]:[ICUMFW_UD_L_CRY_X509_0002]
+                        1012 --384: * Function name: l_X509_ExtractPubKey
+                        1013 --385: * Description  : RSA/ECC public key & signature extraction from DER encoded X.509 certificate
+                        1014 --386: * Arguments    : p_part_cert                :[in]       :address of x.509 certificate
+                        1015 --387: *                sizeof_cert                :[in]       :byte size of x.509 certificate
+                        1016 --388: *                key_type                   :[out]      :RSA/ECC Key Type
+                        1017 --389: *                p_signed_data              :[out]      :the result of the signed data in the buffer p_signed_data
+                        1018 --390: *                p_signed_data_size_in_byte :[out]      :number of bytes signed data
+                        1019 --391: *                p_field_data               :[out]      :list of ASN1 DER objects (key, signature)
+                        1020 --392: * Return Value : ER_OK
+                        1021 --393: *                ER_L_X509_KEYTYPE_UNKOWN
+                        1022 --394: ***************************************************************************************/
+                        1023 --395: static uint32_t l_X509_ExtractPubKey (const uint8_t         *p_cert, 
+                        1024 	.align	2
+                        1025 	.align	2
+                        1026 	.align	2
+                        1027 ..gh.f.a.2.e.3:
+                        1028 	.type	..gh.f.a.2.e.3,@object
+                        1029 	.size	..gh.f.a.2.e.3,0
+                        1030 	.global	_l_X509_ExtractPubKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                        1031 _l_X509_ExtractPubKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+                        1032 _l_X509_ExtractPubKey:
+000002b6 031eccfd       1033 	addi	-564,sp,sp
+000002ba 63ff3102       1034 	st.w	lp,560[sp]
+000002be 63ef0d02       1035 	st.w	r29,524[sp]
+000002c2 63e71102       1036 	st.w	r28,528[sp]
+000002c6 63df1502       1037 	st.w	r27,532[sp]
+000002ca 63d71902       1038 	st.w	r26,536[sp]
+000002ce 63cf1d02       1039 	st.w	r25,540[sp]
+000002d2 63c72102       1040 	st.w	r24,544[sp]
+000002d6 63bf2502       1041 	st.w	r23,548[sp]
+000002da 63b72902       1042 	st.w	r22,552[sp]
+000002de 63af2d02       1043 	st.w	r21,556[sp]
+000002e2 23e73902       1044 	ld.w	568[sp],r28
+000002e6 23af3502       1045 	ld.w	564[sp],r21
+000002ea 09b0           1046 	mov	r9,r22
+000002ec 08c8           1047 	mov	r8,r25
+000002ee 07b8           1048 	mov	r7,r23
+000002f0 d700           1049 	zxh	r23
+000002f2 06c0           1050 	mov	r6,r24
+                        1051 --	    .bf
+                        1052 .LDW61:
+                        1053 --396:                                             uint16_t        sizeof_cert,
+                        1054 --397:                                             /*x509_sig_algo_t *p_sig_algo, */
+                        1055 --398:                                             key_type_t      *p_key_type,
+                        1056 --399:                                             uint8_t         **p_signed_data,
+                        1057 --400:                                             uint16_t        *p_signed_data_size_in_byte,
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1058 --401:                                             asn1_t          *p_field_data)
+                        1059 --402: {
+                        1060 --403:     asn1_t      fields_cert[3];
+                        1061 --404:     asn1_t      fields_tbs_cert[32];
+                        1062 --405:     asn1_t      fields_temp[8];
+                        1063 --407:     uint32_t    number_items;
+                        1064 --408:     int32_t     i;
+                        1065 --409:     uint16_t    header_size;
+                        1066 --410:     uint32_t    err;
+                        1067 --411:     
+                        1068 --412:     /* start the certificate parsing */
+                        1069 --413:     number_items = 3u;
+000002f4 030a           1070 	mov	3,r1
+000002f6 630f0100       1071 	st.w	r1,0[sp]
+                        1072 --414:     err = l_X509_ParseTop(p_cert, sizeof_cert, fields_cert, &number_items);
+000002fa 1830           1073 	mov	r24,r6
+000002fc 1738           1074 	mov	r23,r7
+000002fe 2346e801       1075 	movea	488,sp,r8
+00000302 234e0000       1076 	movea	0,sp,r9
+                        1077 .L1106:
+                        1078 	jarl	_l_X509_ParseTop,lp
+                        1078 <EXPANSION BEGIN>
+                        1078 jarl22 _l_X509_ParseTop , lp 
+00000306 bffffafc*      1078 <EXPANSION END>
+0000030a 0ae8           1079 	mov	r10,r29
+                        1080 --415:     if (err != ER_OK)
+                        1081 --line415
+                        1082 ..lin.1dfb757..cbcd47af.0_46::
+                        1083 .LDWlin46:
+0000030c e0e9           1084 	cmp	zero,r29
+0000030e b205*          1085 	be	.L633
+                        1086 --416:     {
+                        1087 --417:         goto end;
+                        1088 --line417
+                        1089 ..lin.1dfb757..cbcd47af.0_47::
+                        1090 .LDWlin47:
+00000310 8007d801*      1091 	br	.L631
+                        1092 .L633:
+                        1093 --418:     }
+                        1094 --419:     else
+                        1095 --420:     {
+                        1096 --421:         /* Do nothing */
+                        1097 --422:     }
+                        1098 --423:     
+                        1099 --424:     /* at this stage in fields_cert[] */
+                        1100 --425:     /* 1st member in the list (0) has the certificate to be signed */
+                        1101 --426:     /* 2nd member in the list (1) has the signature algorithm */
+                        1102 --427:     /* 3rd member in the list (2) has the signature value */
+                        1103 --429:     /* calc header size */
+                        1104 --430:     if (fields_cert[0].size < 128u)
+                        1105 --line430
+                        1106 ..lin.1dfb757..cbcd47af.0_48::
+                        1107 .LDWlin48:
+00000314 230fe901       1108 	ld.w	488[sp],r1
+00000318 010680ff       1109 	addi	-128,r1,zero
+0000031c b105*          1110 	bl	.L634
+                        1111 --431:     {
+                        1112 --432:         header_size = 2u;
+                        1113 --line432
+                        1114 ..lin.1dfb757..cbcd47af.0_49::
+                        1115 .LDWlin49:
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+0000031e 02da           1116 	mov	2,r27
+00000320 d51d*          1117 	br	.L636
+                        1118 .L634:
+                        1119 --433:     }
+                        1120 --434:     else if (fields_cert[0].size < 256u)
+                        1121 --line434
+                        1122 ..lin.1dfb757..cbcd47af.0_50::
+                        1123 .LDWlin50:
+00000322 230fe901       1124 	ld.w	488[sp],r1
+00000326 010600ff       1125 	addi	-256,r1,zero
+0000032a b105*          1126 	bl	.L637
+                        1127 --435:     {
+                        1128 --436:        /* 0x30 0x81 LL */
+                        1129 --437:         header_size = 3u;
+                        1130 --line437
+                        1131 ..lin.1dfb757..cbcd47af.0_51::
+                        1132 .LDWlin51:
+0000032c 03da           1133 	mov	3,r27
+0000032e e515*          1134 	br	.L636
+                        1135 .L637:
+                        1136 --438:     }
+                        1137 --439:     else if (fields_cert[0].size < 65536u)
+                        1138 --line439
+                        1139 ..lin.1dfb757..cbcd47af.0_52::
+                        1140 .LDWlin52:
+00000330 2317e901       1141 	ld.w	488[sp],r2
+00000334 400e0100       1142 	movhi	hi(65536),zero,r1
+00000338 e111           1143 	cmp	r1,r2
+0000033a b905*          1144 	bnl	.L640
+                        1145 --440:     {
+                        1146 --441:        /* 0x30 0x82 LL LL */
+                        1147 --442:         header_size = 4u;
+                        1148 --line442
+                        1149 ..lin.1dfb757..cbcd47af.0_53::
+                        1150 .LDWlin53:
+0000033c 04da           1151 	mov	4,r27
+0000033e e50d*          1152 	br	.L636
+                        1153 .L640:
+                        1154 --443:     }
+                        1155 --444:     else if (fields_cert[0].size < 16777216u)
+                        1156 --line444
+                        1157 ..lin.1dfb757..cbcd47af.0_54::
+                        1158 .LDWlin54:
+00000340 2317e901       1159 	ld.w	488[sp],r2
+00000344 400e0001       1160 	movhi	hi(16777216),zero,r1
+00000348 e111           1161 	cmp	r1,r2
+0000034a b905*          1162 	bnl	.L643
+                        1163 --445:     {
+                        1164 --446:        /* 0x30 0x83 LL LL LL */
+                        1165 --447:         header_size = 5u;
+                        1166 --line447
+                        1167 ..lin.1dfb757..cbcd47af.0_55::
+                        1168 .LDWlin55:
+0000034c 05da           1169 	mov	5,r27
+0000034e e505*          1170 	br	.L636
+                        1171 .L643:
+                        1172 --448:     }
+                        1173 --449:     else
+                        1174 --450:     {
+                        1175 --451:        err = ER_L_X509_INVALID_ARG;
+                        1176 --line451
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1177 ..lin.1dfb757..cbcd47af.0_56::
+                        1178 .LDWlin56:
+00000350 3d0601000800   1179 	mov	524289,r29
+                        1180 --452:        goto end;
+                        1181 --line452
+                        1182 ..lin.1dfb757..cbcd47af.0_57::
+                        1183 .LDWlin57:
+00000356 80079201*      1184 	br	.L631
+                        1185 .L636:
+                        1186 --453:     }
+                        1187 --454:     /* signed_data include header */
+                        1188 --455:     *(p_signed_data)              = fields_cert[0].p_data - header_size;
+                        1189 --line455
+                        1190 ..lin.1dfb757..cbcd47af.0_58::
+                        1191 .LDWlin58:
+0000035a 230fed01       1192 	ld.w	492[sp],r1
+0000035e bb09           1193 	sub	r27,r1
+00000360 760f0100       1194 	st.w	r1,0[r22]
+                        1195 --456:     *(p_signed_data_size_in_byte) = (uint16_t)fields_cert[0].size + header_size;
+00000364 e30fe901       1196 	ld.hu	488[sp],r1
+00000368 db09           1197 	add	r27,r1
+0000036a 750f0000       1198 	st.h	r1,0[r21]
+                        1199 --458:     l_CMN_MemCpy((uint8_t *)&p_field_data[0], (const uint8_t *)&fields_cert[2], sizeof(asn1_t));
+0000036e 1c30           1200 	mov	r28,r6
+00000370 233e0002       1201 	movea	512,sp,r7
+00000374 0c42           1202 	mov	12,r8
+                        1203 .L1108:
+                        1204 	jarl	_l_CMN_MemCpy,lp
+                        1204 <EXPANSION BEGIN>
+                        1204 jarl22 _l_CMN_MemCpy , lp 
+00000376 80ff0000*      1204 <EXPANSION END>
+                        1205 --459:     
+                        1206 --460:     /* parse the certificate to be signed */
+                        1207 --461:     number_items = sizeof(fields_tbs_cert) / sizeof(asn1_t);
+                        1208 --line461
+                        1209 ..lin.1dfb757..cbcd47af.0_59::
+                        1210 .LDWlin59:
+0000037a 200e2000       1211 	movea	32,zero,r1
+0000037e 630f0100       1212 	st.w	r1,0[sp]
+                        1213 --462:     err = l_X509_ParseDerFormat(fields_cert[0].p_data, fields_cert[0].size, fields_tbs_cert, &number_items);
+00000382 2337ed01       1214 	ld.w	492[sp],r6
+00000386 233fe901       1215 	ld.w	488[sp],r7
+0000038a 23466800       1216 	movea	104,sp,r8
+0000038e 234e0000       1217 	movea	0,sp,r9
+                        1218 .L1110:
+                        1219 	jarl	_l_X509_ParseDerFormat,lp
+                        1219 <EXPANSION BEGIN>
+                        1219 jarl22 _l_X509_ParseDerFormat , lp 
+00000392 80ff0000*      1219 <EXPANSION END>
+00000396 0ae8           1220 	mov	r10,r29
+                        1221 --463:     if (err != ER_OK)
+                        1222 --line463
+                        1223 ..lin.1dfb757..cbcd47af.0_60::
+                        1224 .LDWlin60:
+00000398 e0e9           1225 	cmp	zero,r29
+0000039a b205*          1226 	be	.L650
+                        1227 --464:     {
+                        1228 --465:         goto end;
+                        1229 --line465
+                        1230 ..lin.1dfb757..cbcd47af.0_61::
+                        1231 .LDWlin61:
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+0000039c 80074c01*      1232 	br	.L631
+                        1233 .L650:
+                        1234 --466:     }
+                        1235 --467:     else
+                        1236 --468:     {
+                        1237 --	    .bs
+                        1238 .LDW71:
+                        1239 --469:         /* Do nothing */
+                        1240 --470:     }
+                        1241 --471:     
+                        1242 --472:     /* search for the RSA or ECC public key */
+                        1243 --473:     for (i = 0; i < (int32_t)number_items; i++)
+                        1244 --line473
+                        1245 ..lin.1dfb757..cbcd47af.0_62::
+                        1246 .LDWlin62:
+000003a0 00d2           1247 	mov	0,r26
+000003a2 80073c01*      1248 	br	.L654
+                        1249 .L653:
+                        1250 --474:     {
+                        1251 --	    .bs
+                        1252 .LDW81:
+                        1253 --475:         uint32_t p;
+                        1254 --476:         err = ER_L_X509_INVALID_ARG;
+                        1255 --line476
+                        1256 ..lin.1dfb757..cbcd47af.0_63::
+                        1257 .LDWlin63:
+000003a6 3d0601000800   1258 	mov	524289,r29
+                        1259 --477:         if ((uint32_t)fields_tbs_cert[i].constructed != 0u)
+                        1260 --line477
+                        1261 ..lin.1dfb757..cbcd47af.0_64::
+                        1262 .LDWlin64:
+000003ac 1af0           1263 	mov	r26,ep
+000003ae fe00           1264 	sxh	ep
+000003b0 fef60c00       1265 	mulhi	12,ep,ep
+000003b4 23166800       1266 	movea	104,sp,r2
+000003b8 c2f1           1267 	add	r2,ep
+000003ba 6908           1268 	sld.bu	9[ep],r1
+000003bc e009           1269 	cmp	zero,r1
+000003be e2071f01*      1270 	be	.L682
+                        1271 --478:         {
+                        1272 --479:             p = sizeof(fields_temp) / sizeof(asn1_t);
+                        1273 --line479
+                        1274 ..lin.1dfb757..cbcd47af.0_65::
+                        1275 .LDWlin65:
+000003c2 080a           1276 	mov	8,r1
+000003c4 630f0500       1277 	st.w	r1,4[sp]
+                        1278 --480:             err = l_X509_ParseDerFormat(fields_tbs_cert[i].p_data, fields_tbs_cert[i].size, fields_temp, &p);
+000003c8 1af0           1279 	mov	r26,ep
+000003ca fe00           1280 	sxh	ep
+000003cc fef60c00       1281 	mulhi	12,ep,ep
+000003d0 23166800       1282 	movea	104,sp,r2
+000003d4 23460800       1283 	movea	8,sp,r8
+000003d8 234e0400       1284 	movea	4,sp,r9
+000003dc c2f1           1285 	add	r2,ep
+000003de 0235           1286 	sld.w	4[ep],r6
+000003e0 003d           1287 	sld.w	0[ep],r7
+                        1288 .L1112:
+                        1289 	jarl	_l_X509_ParseDerFormat,lp
+                        1289 <EXPANSION BEGIN>
+                        1289 jarl22 _l_X509_ParseDerFormat , lp 
+000003e2 80ff0000*      1289 <EXPANSION END>
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+000003e6 0ae8           1290 	mov	r10,r29
+                        1291 --481:             /**********************************************************************************
+                        1292 --482:             * looking for this (RSA public key):
+                        1293 --483:             *      SEQUENCE {
+                        1294 --484:             *          SEQUENCE {
+                        1295 --485:             *              OBJECT IDENTIFIER rsaEncryption (1 2 840 113549 1 1 1)
+                        1296 --486:             *              NULL
+                        1297 --487:             *          }
+                        1298 --488:             *          BIT STRING 0 unused bits, encapsulates {
+                        1299 --489:             *              SEQUENCE {
+                        1300 --490:             *                  INTEGER <modulus>
+                        1301 --491:             *                  INTEGER <public exponent>
+                        1302 --492:             *              }
+                        1303 --493:             *          }
+                        1304 --494:             *      }
+                        1305 --495:             * looking for this (ECC public key):
+                        1306 --496:             *      SEQUENCE {
+                        1307 --497:             *          SEQUENCE {
+                        1308 --498:             *              OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+                        1309 --499:             *              OBJECT IDENTIFIER sect571r1 (1 3 132 0 39)
+                        1310 --500:             *          }
+                        1311 --501:             *          BIT STRING {
+                        1312 --502:             *              04 ... <ECC point>
+                        1313 --503:             *              }
+                        1314 --504:             *          }
+                        1315 --505:             *      }
+                        1316 --506:             ***********************************************************************************/
+                        1317 --507:             if (err == ER_OK)
+                        1318 --line507
+                        1319 ..lin.1dfb757..cbcd47af.0_66::
+                        1320 .LDWlin66:
+000003e8 e0e9           1321 	cmp	zero,r29
+000003ea 9a7d*          1322 	bne	.L682
+                        1323 --508:             {
+                        1324 --509:                 if ((p == 2u) && (fields_temp[0].constructed != 0u) && (fields_temp[1].type == ASN1_BIT_STRING))
+                        1325 --line509
+                        1326 ..lin.1dfb757..cbcd47af.0_67::
+                        1327 .LDWlin67:
+000003ec 230f0500       1328 	ld.w	4[sp],r1
+000003f0 620a           1329 	cmp	2,r1
+000003f2 da75*          1330 	bne	.L682
+000003f4 a30f1100       1331 	ld.bu	17[sp],r1
+000003f8 e009           1332 	cmp	zero,r1
+000003fa 9275*          1333 	be	.L682
+000003fc 830f1d00       1334 	ld.bu	28[sp],r1
+00000400 630a           1335 	cmp	3,r1
+00000402 da6d*          1336 	bne	.L682
+                        1337 --510:                 {
+                        1338 --511:                     (void)l_X509_IdentifyKeyType(&fields_temp[0], p_key_type);
+                        1339 --line511
+                        1340 ..lin.1dfb757..cbcd47af.0_68::
+                        1341 .LDWlin68:
+00000404 1938           1342 	mov	r25,r7
+00000406 23360800       1343 	movea	8,sp,r6
+                        1344 .L1114:
+                        1345 	jarl	_l_X509_IdentifyKeyType,lp
+                        1345 <EXPANSION BEGIN>
+                        1345 jarl22 _l_X509_IdentifyKeyType , lp 
+0000040a bfffa8fc*      1345 <EXPANSION END>
+                        1346 --512:                     if (*p_key_type == E_KEY_TYPE_RSA_PUB_KEY)
+                        1347 --line512
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1348 ..lin.1dfb757..cbcd47af.0_69::
+                        1349 .LDWlin69:
+0000040e 390f0100       1350 	ld.w	0[r25],r1
+00000412 610a           1351 	cmp	1,r1
+00000414 8a45*          1352 	bne	.L663
+                        1353 --513:                     {
+                        1354 --514:                         /* found RSA public key */
+                        1355 --515:                         /* first content byte is number of unused bits */
+                        1356 --516:                         /* second content byte should be the start of the sequence (encapsulated integer) */
+                        1357 --517:                         /* parsing the sequence should return 2 integers */
+                        1358 --518:                         /* - first integer is the modulus */
+                        1359 --519:                         /* - seconde integer is the public exponent */
+                        1360 --520:                         p = sizeof(fields_temp) / sizeof(asn1_t);
+                        1361 --line520
+                        1362 ..lin.1dfb757..cbcd47af.0_70::
+                        1363 .LDWlin70:
+00000416 080a           1364 	mov	8,r1
+00000418 630f0500       1365 	st.w	r1,4[sp]
+                        1366 --521:                         err = l_X509_ParseDerFormat(fields_temp[1].p_data + 1, (fields_temp[1].size - 2u), fields_temp, &p);
+0000041c 23371900       1367 	ld.w	24[sp],r6
+00000420 233f1500       1368 	ld.w	20[sp],r7
+00000424 23460800       1369 	movea	8,sp,r8
+00000428 234e0400       1370 	movea	4,sp,r9
+0000042c 4132           1371 	add	1,r6
+0000042e 5e3a           1372 	add	-2,r7
+                        1373 .L1116:
+                        1374 	jarl	_l_X509_ParseDerFormat,lp
+                        1374 <EXPANSION BEGIN>
+                        1374 jarl22 _l_X509_ParseDerFormat , lp 
+00000430 80ff0000*      1374 <EXPANSION END>
+00000434 0ae8           1375 	mov	r10,r29
+                        1376 --522:                         if ((err == ER_OK) && (p == 1u))
+                        1377 --line522
+                        1378 ..lin.1dfb757..cbcd47af.0_71::
+                        1379 .LDWlin71:
+00000436 e0e9           1380 	cmp	zero,r29
+00000438 aa55*          1381 	bne	.L682
+0000043a 230f0500       1382 	ld.w	4[sp],r1
+0000043e 610a           1383 	cmp	1,r1
+00000440 ea4d*          1384 	bne	.L682
+                        1385 --523:                         {
+                        1386 --524:                             /* get the pointers to the modulus and public exponent, then exit */
+                        1387 --525:                             p = sizeof(fields_temp) / sizeof(asn1_t);
+                        1388 --line525
+                        1389 ..lin.1dfb757..cbcd47af.0_72::
+                        1390 .LDWlin72:
+00000442 080a           1391 	mov	8,r1
+00000444 630f0500       1392 	st.w	r1,4[sp]
+                        1393 --526:                             err = l_X509_ParseDerFormat(fields_temp[0].p_data, fields_temp[0].size, fields_temp, &p);
+00000448 23370d00       1394 	ld.w	12[sp],r6
+0000044c 233f0900       1395 	ld.w	8[sp],r7
+00000450 23460800       1396 	movea	8,sp,r8
+00000454 234e0400       1397 	movea	4,sp,r9
+                        1398 .L1118:
+                        1399 	jarl	_l_X509_ParseDerFormat,lp
+                        1399 <EXPANSION BEGIN>
+                        1399 jarl22 _l_X509_ParseDerFormat , lp 
+00000458 80ff0000*      1399 <EXPANSION END>
+0000045c 0ae8           1400 	mov	r10,r29
+                        1401 --527:                             if ((p == 2u) && (fields_temp[0].type == ASN1_INTEGER) && (fields_temp[1].type == ASN1_INTEGER))
+                        1402 --line527
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1403 ..lin.1dfb757..cbcd47af.0_73::
+                        1404 .LDWlin73:
+0000045e 230f0500       1405 	ld.w	4[sp],r1
+00000462 620a           1406 	cmp	2,r1
+00000464 fa15*          1407 	bne	.L672
+00000466 830f1100       1408 	ld.bu	16[sp],r1
+0000046a 620a           1409 	cmp	2,r1
+0000046c ba15*          1410 	bne	.L672
+0000046e 830f1d00       1411 	ld.bu	28[sp],r1
+00000472 620a           1412 	cmp	2,r1
+00000474 fa0d*          1413 	bne	.L672
+                        1414 --528:                             {
+                        1415 --529:                                 l_CMN_MemCpy((uint8_t *)&p_field_data[1], (const uint8_t *)&fields_temp[0], sizeof(asn1_t));
+                        1416 --line529
+                        1417 ..lin.1dfb757..cbcd47af.0_74::
+                        1418 .LDWlin74:
+00000476 1c360c00       1419 	addi	12,r28,r6
+0000047a 233e0800       1420 	movea	8,sp,r7
+0000047e 0c42           1421 	mov	12,r8
+                        1422 .L1120:
+                        1423 	jarl	_l_CMN_MemCpy,lp
+                        1423 <EXPANSION BEGIN>
+                        1423 jarl22 _l_CMN_MemCpy , lp 
+00000480 80ff0000*      1423 <EXPANSION END>
+                        1424 --530:                                 l_CMN_MemCpy((uint8_t *)&p_field_data[2], (const uint8_t *)&fields_temp[1], sizeof(asn1_t));
+                        1425 --line530
+                        1426 ..lin.1dfb757..cbcd47af.0_75::
+                        1427 .LDWlin75:
+00000484 1c361800       1428 	addi	24,r28,r6
+00000488 233e1400       1429 	movea	20,sp,r7
+0000048c 0c42           1430 	mov	12,r8
+                        1431 .L1122:
+                        1432 	jarl	_l_CMN_MemCpy,lp
+                        1432 <EXPANSION BEGIN>
+                        1432 jarl22 _l_CMN_MemCpy , lp 
+0000048e 80ff0000*      1432 <EXPANSION END>
+                        1433 .L672:
+                        1434 --531:                             }
+                        1435 --532:                             else
+                        1436 --533:                             {
+                        1437 --534:                                 /* Do nothing */
+                        1438 --535:                             }
+                        1439 --536:                             goto end;
+                        1440 --line536
+                        1441 ..lin.1dfb757..cbcd47af.0_76::
+                        1442 .LDWlin76:
+00000492 b52d*          1443 	br	.L631
+                        1444 .L663:
+                        1445 --537:                         }
+                        1446 --538:                         else
+                        1447 --539:                         {
+                        1448 --540:                             /* Do nothing */
+                        1449 --541:                         }
+                        1450 --542:                     }
+                        1451 --543:                     else if (*p_key_type == E_KEY_TYPE_ECC_PUB_KEY)
+                        1452 --line543
+                        1453 ..lin.1dfb757..cbcd47af.0_77::
+                        1454 .LDWlin77:
+00000494 390f0100       1455 	ld.w	0[r25],r1
+00000498 620a           1456 	cmp	2,r1
+0000049a ea1d*          1457 	bne	.L676
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1458 --544:                     {
+                        1459 --545:                         /* found ECC public key */
+                        1460 --546:                         /* first content byte indicate the key format as follows: */
+                        1461 --547:                         /* - 0x04 : uncompressed (this format MUST be supported) */
+                        1462 --548:                         /* - 0x02 or 0x03 : compressed (this format MAY be supported) */
+                        1463 --549:                         /* in the uncompressed form, the X and Y coordinate are following */
+                        1464 --550:                         /* for the compressed form, not sure... */
+                        1465 --551:                         /* get the pointer to the X & Y coordinates */
+                        1466 --552:                         l_CMN_MemCpy((uint8_t *)&p_field_data[1], (const uint8_t *)&fields_temp[1], sizeof(asn1_t));
+                        1467 --line552
+                        1468 ..lin.1dfb757..cbcd47af.0_78::
+                        1469 .LDWlin78:
+0000049c 1c360c00       1470 	addi	12,r28,r6
+000004a0 233e1400       1471 	movea	20,sp,r7
+000004a4 0c42           1472 	mov	12,r8
+                        1473 .L1124:
+                        1474 	jarl	_l_CMN_MemCpy,lp
+                        1474 <EXPANSION BEGIN>
+                        1474 jarl22 _l_CMN_MemCpy , lp 
+000004a6 80ff0000*      1474 <EXPANSION END>
+                        1475 --553:                         /* get the pointer to the curve identifier, then exit */
+                        1476 --554:                         p = sizeof(fields_temp) / sizeof(asn1_t);
+                        1477 --line554
+                        1478 ..lin.1dfb757..cbcd47af.0_79::
+                        1479 .LDWlin79:
+000004aa 080a           1480 	mov	8,r1
+000004ac 630f0500       1481 	st.w	r1,4[sp]
+                        1482 --555:                         err = l_X509_ParseDerFormat(fields_temp[0].p_data, fields_temp[0].size, fields_temp, &p);
+000004b0 23370d00       1483 	ld.w	12[sp],r6
+000004b4 233f0900       1484 	ld.w	8[sp],r7
+000004b8 23460800       1485 	movea	8,sp,r8
+000004bc 234e0400       1486 	movea	4,sp,r9
+                        1487 .L1126:
+                        1488 	jarl	_l_X509_ParseDerFormat,lp
+                        1488 <EXPANSION BEGIN>
+                        1488 jarl22 _l_X509_ParseDerFormat , lp 
+000004c0 80ff0000*      1488 <EXPANSION END>
+000004c4 0ae8           1489 	mov	r10,r29
+                        1490 --556:                         l_CMN_MemCpy((uint8_t *)&p_field_data[2], (const uint8_t *)&fields_temp[1], sizeof(asn1_t));
+                        1491 --line556
+                        1492 ..lin.1dfb757..cbcd47af.0_80::
+                        1493 .LDWlin80:
+000004c6 1c361800       1494 	addi	24,r28,r6
+000004ca 233e1400       1495 	movea	20,sp,r7
+000004ce 0c42           1496 	mov	12,r8
+                        1497 .L1128:
+                        1498 	jarl	_l_CMN_MemCpy,lp
+                        1498 <EXPANSION BEGIN>
+                        1498 jarl22 _l_CMN_MemCpy , lp 
+000004d0 80ff0000*      1498 <EXPANSION END>
+                        1499 --557:                         goto end;
+                        1500 --line557
+                        1501 ..lin.1dfb757..cbcd47af.0_81::
+                        1502 .LDWlin81:
+000004d4 a50d*          1503 	br	.L631
+                        1504 .L676:
+                        1505 --558:                     }
+                        1506 --559:                     else
+                        1507 --560:                     {
+                        1508 --561:                         err = ER_L_X509_KEYTYPE_UNKOWN;
+                        1509 --line561
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1510 ..lin.1dfb757..cbcd47af.0_82::
+                        1511 .LDWlin82:
+000004d6 3d0603000800   1512 	mov	524291,r29
+                        1513 .L682:
+                        1514 --562:                     }
+                        1515 --563:                 }
+                        1516 --564:                 else
+                        1517 --565:                 {
+                        1518 --566:                     /* Do nothing */
+                        1519 --567:                 }
+                        1520 --568:             }
+                        1521 --569:             else
+                        1522 --570:             {
+                        1523 --571:                 /* Do nothing */
+                        1524 --572:             }
+                        1525 --573:         }
+                        1526 --574:         else
+                        1527 --575:         {
+                        1528 --	    .es
+                        1529 .LDW91:
+                        1530 --line473
+                        1531 ..lin.1dfb757..cbcd47af.0_83::
+                        1532 .LDWlin83:
+000004dc 41d2           1533 	add	1,r26
+                        1534 .L654:
+000004de 230f0100       1535 	ld.w	0[sp],r1
+000004e2 e1d1           1536 	cmp	r1,r26
+000004e4 f607c3fe*      1537 	blt	.L653
+                        1538 --	    .es
+                        1539 .LDW02:
+                        1540 --576:             /* Do nothing */
+                        1541 --577:         }
+                        1542 --578:     }
+                        1543 --580: end:
+                        1544 .L631:
+                        1545 .LDW12:
+                        1546 --581:     return (err);
+                        1547 --line581
+                        1548 ..lin.1dfb757..cbcd47af.0_84::
+                        1549 .LDWlin84:
+000004e8 1d50           1550 	mov	r29,r10
+                        1551 --	    .ef
+                        1552 .LDW22:
+000004ea 23ff3102       1553 	ld.w	560[sp],lp
+000004ee 23ef0d02       1554 	ld.w	524[sp],r29
+000004f2 23e71102       1555 	ld.w	528[sp],r28
+000004f6 23df1502       1556 	ld.w	532[sp],r27
+000004fa 23d71902       1557 	ld.w	536[sp],r26
+000004fe 23cf1d02       1558 	ld.w	540[sp],r25
+00000502 23c72102       1559 	ld.w	544[sp],r24
+00000506 23bf2502       1560 	ld.w	548[sp],r23
+0000050a 23b72902       1561 	ld.w	552[sp],r22
+0000050e 23af2d02       1562 	ld.w	556[sp],r21
+00000512 031e3402       1563 	addi	564,sp,sp
+                        1564 .L1130:
+                        1565 	.jumptype return
+00000516 7f00           1566 	jmp	[lp]
+                        1567 --line581
+                        1568 ..lin.1dfb757..cbcd47af.0_85::
+                        1569 	.type	_l_X509_ExtractPubKey,@function
+                        1570 	.size	_l_X509_ExtractPubKey,.-_l_X509_ExtractPubKey
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1571 	.type	_l_X509_ExtractPubKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@function
+                        1572 	.size	_l_X509_ExtractPubKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,.-_l_X509_ExtractPubKey..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                        1573 	.align	2
+                        1574 --_fields_cert	488[sp]	local
+                        1575 --_fields_tbs_cert	104[sp]	local
+                        1576 --_fields_temp	8[sp]	local
+                        1577 --_number_items	0[sp]	local
+                        1578 --_i	r26	local
+                        1579 --_header_size	r27	local
+                        1580 --_err	r29	local
+                        1581 --_p	4[sp]	local
+                        1582 
+                        1583 --_p_cert	r24	param
+                        1584 --_sizeof_cert	r23	param
+                        1585 --_p_key_type	r25	param
+                        1586 --_p_signed_data	r22	param
+                        1587 --_p_signed_data_size_in_byte	r21	param
+                        1588 --_p_field_data	r28	param
+                        1589 
+                        1590 	.section ".bss","awb"
+                        1591 .L926:
+                        1592 	.type	.L926,@object
+                        1593 	.size	.L926,0
+                        1594 	.section ".ghcalltbl",""
+00000028 00000000*      1595 .L1107:	.word	.L1106
+                        1596 	.type	.L1107,@object
+                        1597 	.size	.L1107,4
+0000002c 00000000*      1598 .L1109:	.word	.L1108
+                        1599 	.type	.L1109,@object
+                        1600 	.size	.L1109,4
+00000030 00000000*      1601 .L1111:	.word	.L1110
+                        1602 	.type	.L1111,@object
+                        1603 	.size	.L1111,4
+00000034 00000000*      1604 .L1113:	.word	.L1112
+                        1605 	.type	.L1113,@object
+                        1606 	.size	.L1113,4
+00000038 00000000*      1607 .L1115:	.word	.L1114
+                        1608 	.type	.L1115,@object
+                        1609 	.size	.L1115,4
+0000003c 00000000*      1610 .L1117:	.word	.L1116
+                        1611 	.type	.L1117,@object
+                        1612 	.size	.L1117,4
+00000040 00000000*      1613 .L1119:	.word	.L1118
+                        1614 	.type	.L1119,@object
+                        1615 	.size	.L1119,4
+00000044 00000000*      1616 .L1121:	.word	.L1120
+                        1617 	.type	.L1121,@object
+                        1618 	.size	.L1121,4
+00000048 00000000*      1619 .L1123:	.word	.L1122
+                        1620 	.type	.L1123,@object
+                        1621 	.size	.L1123,4
+0000004c 00000000*      1622 .L1125:	.word	.L1124
+                        1623 	.type	.L1125,@object
+                        1624 	.size	.L1125,4
+00000050 00000000*      1625 .L1127:	.word	.L1126
+                        1626 	.type	.L1127,@object
+                        1627 	.size	.L1127,4
+00000054 00000000*      1628 .L1129:	.word	.L1128
+                        1629 	.type	.L1129,@object
+                        1630 	.size	.L1129,4
+                        1631 	.section ".ghrettbl",""
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+0000000c 00000000*      1632 .L1131:	.word	.L1130
+                        1633 	.type	.L1131,@object
+                        1634 	.size	.L1131,4
+                        1635 	.data
+                        1636 	.section ".icum_library.text","ax"
+                        1637 
+                        1638 --582: }
+                        1639 
+                        1640 --584: /* MAX ECC KEYSIZE(byte) * 2 + 2 */
+                        1641 --585: #define TEMP_BUFFER_SIZE    (((R_CRYPT_SMALLBIGNUM_BITSIZE + 7u) / 8u) * 2u + 2u)
+                        1642 --587: /***************************************************************************************
+                        1643 --588: * Function ID  : [ICUMFW_CD_L_CRY_X509_0001]:[ICUMFW_UD_L_CRY_X509_0001]
+                        1644 --589: * Function name: L_X509_ParseCertificate
+                        1645 --590: * Description  : RSA/ECC public key & signature extraction from DER encoded X.509 certificate
+                        1646 --591: * Arguments    : p_x509_cert_prm   [in/out]       :address of structure for parsing x.509 certificate
+                        1647 --592: * Return Value : ER_OK
+                        1648 --593: *                ER_L_X509_INVALID_ARG
+                        1649 --594: *                ER_L_X509_BUFFER_OVERFLOW
+                        1650 --595: *                ER_L_X509_INVALID_CURVE
+                        1651 --596: *                ER_L_X509_KEYTYPE_UNKOWN
+                        1652 --597: ***************************************************************************************/
+                        1653 --598: uint32_t L_X509_ParseCertificate(x509_cert_prm_t *p_x509_cert_prm)
+                        1654 	.align	2
+                        1655 	.align	2
+                        1656 	.align	2
+                        1657 ..gh.f.a.2.e.4:
+                        1658 	.type	..gh.f.a.2.e.4,@object
+                        1659 	.size	..gh.f.a.2.e.4,0
+                        1660 	.global	_L_X509_ParseCertificate
+                        1661 _L_X509_ParseCertificate:
+00000518 031e34ff       1662 	addi	-204,sp,sp
+0000051c 63ffc900       1663 	st.w	lp,200[sp]
+00000520 63e7c100       1664 	st.w	r28,192[sp]
+00000524 63dfc500       1665 	st.w	r27,196[sp]
+00000528 63efbd00       1666 	st.w	r29,188[sp]
+0000052c 06e0           1667 	mov	r6,r28
+                        1668 --	    .bf
+                        1669 .LDW32:
+                        1670 --599: {
+                        1671 --600:     uint8_t     ecc_key_buffer[TEMP_BUFFER_SIZE];
+                        1672 --601:     asn1_t      field_data[3];
+                        1673 --602:     uint32_t    size;
+                        1674 --603:     uint16_t    key_size;
+                        1675 --605:     uint32_t    err;
+                        1676 --607:     err = l_X509_ExtractPubKey(p_x509_cert_prm->p_cert, 
+0000052e 3c370100       1677 	ld.w	0[r28],r6
+00000532 1c0e2c00       1678 	addi	44,r28,r1
+00000536 fc3f0500       1679 	ld.hu	4[r28],r7
+0000053a 630f0100       1680 	st.w	r1,0[sp]
+0000053e 230e0c00       1681 	movea	12,sp,r1
+00000542 1c461000       1682 	addi	16,r28,r8
+00000546 1c4e2800       1683 	addi	40,r28,r9
+0000054a 630f0500       1684 	st.w	r1,4[sp]
+                        1685 .L1470:
+                        1686 	jarl	_l_X509_ExtractPubKey,lp
+                        1686 <EXPANSION BEGIN>
+                        1686 jarl22 _l_X509_ExtractPubKey , lp 
+0000054e bfff68fd*      1686 <EXPANSION END>
+00000552 0ae8           1687 	mov	r10,r29
+                        1688 --608:                                p_x509_cert_prm->cert_size_in_bytes,
+                        1689 --609:                                /*&(x509_cert_prm->sig_algo),*/
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1690 --610:                                &(p_x509_cert_prm->key_type),
+                        1691 --611:                                &(p_x509_cert_prm->p_signed_data),
+                        1692 --612:                                &(p_x509_cert_prm->signed_data_size_in_bytes),
+                        1693 --613:                                field_data);
+                        1694 --614:     if (err != ER_OK)
+                        1695 --line614
+                        1696 ..lin.1dfb757..eaf2c962.0_86::
+                        1697 .LDWlin86:
+00000554 e0e9           1698 	cmp	zero,r29
+00000556 ea074101*      1699 	bne	.L1136
+                        1700 --615:     {
+                        1701 --616:         /* Do nothing */
+                        1702 --617:     }
+                        1703 --618:     else if (p_x509_cert_prm->key_type == E_KEY_TYPE_RSA_PUB_KEY)
+                        1704 --line618
+                        1705 ..lin.1dfb757..eaf2c962.0_87::
+                        1706 .LDWlin87:
+0000055a 3c0f1100       1707 	ld.w	16[r28],r1
+0000055e 610a           1708 	cmp	1,r1
+00000560 aa25*          1709 	bne	.L1137
+                        1710 --619:     {
+                        1711 --620:         /* dump the signature (0), the modulus (1) and the public exponent (2) */
+                        1712 --621:         err = l_X509_DecodeFromDerFormat(&field_data[0],
+                        1713 --line621
+                        1714 ..lin.1dfb757..eaf2c962.0_88::
+                        1715 .LDWlin88:
+00000562 3c3f0900       1716 	ld.w	8[r28],r7
+00000566 1c460c00       1717 	addi	12,r28,r8
+0000056a 23360c00       1718 	movea	12,sp,r6
+                        1719 .L1472:
+                        1720 	jarl	_l_X509_DecodeFromDerFormat,lp
+                        1720 <EXPANSION BEGIN>
+                        1720 jarl22 _l_X509_DecodeFromDerFormat , lp 
+0000056e 80ff0000*      1720 <EXPANSION END>
+00000572 0ae8           1721 	mov	r10,r29
+                        1722 --622:                                         p_x509_cert_prm->p_signature,
+                        1723 --623:                                         (uint32_t *)&(p_x509_cert_prm->sign_size_in_bytes) );
+                        1724 --624:         if (err != ER_OK)
+                        1725 --line624
+                        1726 ..lin.1dfb757..eaf2c962.0_89::
+                        1727 .LDWlin89:
+00000574 e0e9           1728 	cmp	zero,r29
+00000576 aa0d*          1729 	bne	.L1141
+                        1730 --625:         {
+                        1731 --626:             /* Do nothing */
+                        1732 --627:         }
+                        1733 --628:         else
+                        1734 --629:         {
+                        1735 --630:             err = l_X509_DecodeFromDerFormat(&field_data[1],
+                        1736 --line630
+                        1737 ..lin.1dfb757..eaf2c962.0_90::
+                        1738 .LDWlin90:
+00000578 3c3f1500       1739 	ld.w	20[r28],r7
+0000057c 23361800       1740 	movea	24,sp,r6
+00000580 1c461800       1741 	addi	24,r28,r8
+                        1742 .L1474:
+                        1743 	jarl	_l_X509_DecodeFromDerFormat,lp
+                        1743 <EXPANSION BEGIN>
+                        1743 jarl22 _l_X509_DecodeFromDerFormat , lp 
+00000584 80ff0000*      1743 <EXPANSION END>
+00000588 0ae8           1744 	mov	r10,r29
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1745 .L1141:
+                        1746 --631:                                             p_x509_cert_prm->key.rsa.p_modulus,
+                        1747 --632:                                             (uint32_t *)&(p_x509_cert_prm->key.rsa.modulus_size_in_bytes) );
+                        1748 --633:         }
+                        1749 --635:         if (err != ER_OK)
+                        1750 --line635
+                        1751 ..lin.1dfb757..eaf2c962.0_91::
+                        1752 .LDWlin91:
+0000058a e0e9           1753 	cmp	zero,r29
+0000058c ea070b01*      1754 	bne	.L1136
+                        1755 --636:         {
+                        1756 --637:             /* Do nothing */
+                        1757 --638:         }
+                        1758 --639:         else
+                        1759 --640:         {
+                        1760 --641:             err = l_X509_DecodeFromDerFormat(&field_data[2],
+                        1761 --line641
+                        1762 ..lin.1dfb757..eaf2c962.0_92::
+                        1763 .LDWlin92:
+00000590 3c3f1d00       1764 	ld.w	28[r28],r7
+00000594 23362400       1765 	movea	36,sp,r6
+00000598 1c462000       1766 	addi	32,r28,r8
+                        1767 .L1476:
+                        1768 	jarl	_l_X509_DecodeFromDerFormat,lp
+                        1768 <EXPANSION BEGIN>
+                        1768 jarl22 _l_X509_DecodeFromDerFormat , lp 
+0000059c 80ff0000*      1768 <EXPANSION END>
+000005a0 0ae8           1769 	mov	r10,r29
+000005a2 a57d*          1770 	br	.L1136
+                        1771 .L1137:
+                        1772 --642:                                             p_x509_cert_prm->key.rsa.p_pub_exp,
+                        1773 --643:                                             (uint32_t *)&(p_x509_cert_prm->key.rsa.pub_exp_size_in_bytes) );
+                        1774 --644:         }
+                        1775 --645:     }
+                        1776 --646:     else if (p_x509_cert_prm->key_type == E_KEY_TYPE_ECC_PUB_KEY)
+                        1777 --line646
+                        1778 ..lin.1dfb757..eaf2c962.0_93::
+                        1779 .LDWlin93:
+000005a4 3c0f1100       1780 	ld.w	16[r28],r1
+000005a8 620a           1781 	cmp	2,r1
+000005aa ba75*          1782 	bne	.L1146
+                        1783 --647:     {
+                        1784 --648:         /* dump the signature (0) */
+                        1785 --649:         err = l_X509_DecodeFromDerFormat(&field_data[0], 
+                        1786 --line649
+                        1787 ..lin.1dfb757..eaf2c962.0_94::
+                        1788 .LDWlin94:
+000005ac 3c3f0900       1789 	ld.w	8[r28],r7
+000005b0 1c460c00       1790 	addi	12,r28,r8
+000005b4 23360c00       1791 	movea	12,sp,r6
+                        1792 .L1478:
+                        1793 	jarl	_l_X509_DecodeFromDerFormat,lp
+                        1793 <EXPANSION BEGIN>
+                        1793 jarl22 _l_X509_DecodeFromDerFormat , lp 
+000005b8 80ff0000*      1793 <EXPANSION END>
+000005bc 0ae8           1794 	mov	r10,r29
+                        1795 --650:                                         p_x509_cert_prm->p_signature,
+                        1796 --651:                                         (uint32_t *)&(p_x509_cert_prm->sign_size_in_bytes) );
+                        1797 --652:         if (err != ER_OK)
+                        1798 --line652
+                        1799 ..lin.1dfb757..eaf2c962.0_95::
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1800 .LDWlin95:
+000005be e0e9           1801 	cmp	zero,r29
+000005c0 ba35*          1802 	bne	.L1150
+                        1803 --653:         {
+                        1804 --654:             /* Do nothing */
+                        1805 --655:         }
+                        1806 --656:         else
+                        1807 --657:         {
+                        1808 --658:             /* get the curve type */
+                        1809 --659:             (void)l_X509_IdentifyCurveId(&field_data[2], &p_x509_cert_prm->curve_id);
+                        1810 --line659
+                        1811 ..lin.1dfb757..eaf2c962.0_96::
+                        1812 .LDWlin96:
+000005c2 23362400       1813 	movea	36,sp,r6
+000005c6 1c3e2400       1814 	addi	36,r28,r7
+                        1815 .L1480:
+                        1816 	jarl	_l_X509_IdentifyCurveId,lp
+                        1816 <EXPANSION BEGIN>
+                        1816 jarl22 _l_X509_IdentifyCurveId , lp 
+000005ca bfffbafb*      1816 <EXPANSION END>
+                        1817 --660:             if (p_x509_cert_prm->curve_id == LAST_ITEM_ECC_TYPE)
+                        1818 --line660
+                        1819 ..lin.1dfb757..eaf2c962.0_97::
+                        1820 .LDWlin97:
+000005ce 3c172500       1821 	ld.w	36[r28],r2
+000005d2 400e0001       1822 	movhi	hi(16777216),zero,r1
+000005d6 e111           1823 	cmp	r1,r2
+000005d8 da05*          1824 	bne	.L1151
+                        1825 --661:             {
+                        1826 --662:                 err = ER_L_X509_INVALID_CURVE;
+                        1827 --line662
+                        1828 ..lin.1dfb757..eaf2c962.0_98::
+                        1829 .LDWlin98:
+000005da 3d0604000800   1830 	mov	524292,r29
+000005e0 b525*          1831 	br	.L1150
+                        1832 .L1151:
+                        1833 --663:             }
+                        1834 --664:             else
+                        1835 --665:             {
+                        1836 --666:                 /* retrieve the public key point */
+                        1837 --667:                 key_size = (key_size_tab[p_x509_cert_prm->curve_id] + 7u) / 8u;
+                        1838 --line667
+                        1839 ..lin.1dfb757..eaf2c962.0_99::
+                        1840 .LDWlin99:
+000005e2 3cf72500       1841 	ld.w	36[r28],ep
+000005e6 220600000000*  1842 	mov	_key_size_tab,r2
+000005ec c1f2           1843 	shl	1,ep
+000005ee c2f1           1844 	add	r2,ep
+000005f0 7008           1845 	sld.hu	0[ep],r1
+000005f2 470a           1846 	add	7,r1
+000005f4 01d8           1847 	mov	r1,r27
+000005f6 83da           1848 	shr	3,r27
+000005f8 db00           1849 	zxh	r27
+                        1850 --668:                 if ((key_size == 0u) || ((key_size % 2u) != 0u))
+                        1851 --line668
+                        1852 ..lin.1dfb757..eaf2c962.0_100::
+                        1853 .LDWlin100:
+000005fa e0d9           1854 	cmp	zero,r27
+000005fc c205*          1855 	be	.L1155
+000005fe 1b08           1856 	mov	r27,r1
+00000600 810a           1857 	shr	1,r1
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+00000602 d905*          1858 	bnl	.L1154
+                        1859 .L1155:
+                        1860 --669:                 {
+                        1861 --670:                     err = ER_L_X509_INVALID_ARG;
+                        1862 --line670
+                        1863 ..lin.1dfb757..eaf2c962.0_101::
+                        1864 .LDWlin101:
+00000604 3d0601000800   1865 	mov	524289,r29
+0000060a e50d*          1866 	br	.L1150
+                        1867 .L1154:
+                        1868 --671:                 }
+                        1869 --672:                 else
+                        1870 --673:                 {
+                        1871 --674:                     /* decode the public key */
+                        1872 --675:                     size = TEMP_BUFFER_SIZE;
+                        1873 --line675
+                        1874 ..lin.1dfb757..eaf2c962.0_102::
+                        1875 .LDWlin102:
+0000060c 200e8a00       1876 	movea	138,zero,r1
+00000610 630f0900       1877 	st.w	r1,8[sp]
+                        1878 --676:                     err = l_X509_DecodeFromDerFormat(&field_data[1], &ecc_key_buffer[0], &size);
+00000614 23361800       1879 	movea	24,sp,r6
+00000618 233e3200       1880 	movea	50,sp,r7
+0000061c 23460800       1881 	movea	8,sp,r8
+                        1882 .L1482:
+                        1883 	jarl	_l_X509_DecodeFromDerFormat,lp
+                        1883 <EXPANSION BEGIN>
+                        1883 jarl22 _l_X509_DecodeFromDerFormat , lp 
+00000620 80ff0000*      1883 <EXPANSION END>
+00000624 0ae8           1884 	mov	r10,r29
+                        1885 .L1150:
+                        1886 --677:                 }
+                        1887 --678:             }
+                        1888 --679:         }
+                        1889 --681:         if (err != ER_OK)
+                        1890 --line681
+                        1891 ..lin.1dfb757..eaf2c962.0_103::
+                        1892 .LDWlin103:
+00000626 e0e9           1893 	cmp	zero,r29
+00000628 fa35*          1894 	bne	.L1136
+                        1895 --682:         {
+                        1896 --683:             /* Do nothing */
+                        1897 --684:         }
+                        1898 --685:         else
+                        1899 --686:         {
+                        1900 --687:             /* not sure why there is a leading 0; need to check later */
+                        1901 --688:             switch (ecc_key_buffer[0])
+                        1902 --line688
+                        1903 ..lin.1dfb757..eaf2c962.0_104::
+                        1904 .LDWlin104:
+0000062a 830f3300       1905 	ld.bu	50[sp],r1
+0000062e e009           1906 	cmp	zero,r1
+00000630 c225*          1907 	be	.L1163
+00000632 5e0a           1908 	add	-2,r1
+00000634 620a           1909 	cmp	2,r1
+00000636 d125*          1910 	bl	.L1164
+00000638 8a2d*          1911 	bne	.L1165
+                        1912 --689:             {
+                        1913 --690:                 case 0x04u:
+                        1914 --691:                     if ((uint16_t)size == (2u * key_size + 1u))
+                        1915 --line691
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1916 ..lin.1dfb757..eaf2c962.0_105::
+                        1917 .LDWlin105:
+0000063a e3170900       1918 	ld.hu	8[sp],r2
+0000063e 1b08           1919 	mov	r27,r1
+00000640 c10a           1920 	shl	1,r1
+00000642 410a           1921 	add	1,r1
+00000644 e111           1922 	cmp	r1,r2
+00000646 da15*          1923 	bne	.L1167
+                        1924 --692:                     {
+                        1925 --693:                         /* uncompressed form: OK! */
+                        1926 --694:                         /* get X and y coordinate */
+                        1927 --695:                         l_CMN_MemCpy(p_x509_cert_prm->key.ecc.p_pub_point_x, &ecc_key_buffer[1],             key_size);
+                        1928 --line695
+                        1929 ..lin.1dfb757..eaf2c962.0_106::
+                        1930 .LDWlin106:
+00000648 3c371500       1931 	ld.w	20[r28],r6
+0000064c 233e3300       1932 	movea	51,sp,r7
+00000650 1b40           1933 	mov	r27,r8
+                        1934 .L1484:
+                        1935 	jarl	_l_CMN_MemCpy,lp
+                        1935 <EXPANSION BEGIN>
+                        1935 jarl22 _l_CMN_MemCpy , lp 
+00000652 80ff0000*      1935 <EXPANSION END>
+                        1936 --696:                         l_CMN_MemCpy(p_x509_cert_prm->key.ecc.p_pub_point_y, &ecc_key_buffer[1u + key_size], key_size);
+                        1937 --line696
+                        1938 ..lin.1dfb757..eaf2c962.0_107::
+                        1939 .LDWlin107:
+00000656 3c371d00       1940 	ld.w	28[r28],r6
+0000065a 233e3300       1941 	movea	51,sp,r7
+0000065e db39           1942 	add	r27,r7
+00000660 1b40           1943 	mov	r27,r8
+                        1944 .L1486:
+                        1945 	jarl	_l_CMN_MemCpy,lp
+                        1945 <EXPANSION BEGIN>
+                        1945 jarl22 _l_CMN_MemCpy , lp 
+00000662 80ff0000*      1945 <EXPANSION END>
+                        1946 --697:                         p_x509_cert_prm->key.ecc.point_x_size_in_bytes = key_size;
+                        1947 --line697
+                        1948 ..lin.1dfb757..eaf2c962.0_108::
+                        1949 .LDWlin108:
+00000666 7cdf1800       1950 	st.h	r27,24[r28]
+                        1951 --698:                         p_x509_cert_prm->key.ecc.point_y_size_in_bytes = key_size;
+0000066a 7cdf2000       1952 	st.h	r27,32[r28]
+0000066e c505*          1953 	br	.L1169
+                        1954 .L1167:
+                        1955 --699:                     }
+                        1956 --700:                     else
+                        1957 --701:                     {
+                        1958 --702:                         err = ER_L_X509_INVALID_ARG;
+                        1959 --line702
+                        1960 ..lin.1dfb757..eaf2c962.0_109::
+                        1961 .LDWlin109:
+00000670 3d0601000800   1962 	mov	524289,r29
+                        1963 .L1169:
+                        1964 --703:                     }
+                        1965 --704:                     break;
+                        1966 --705:                 case 0x00u:
+                        1967 --line704
+                        1968 ..lin.1dfb757..eaf2c962.0_110::
+                        1969 .LDWlin110:
+00000676 8515*          1970 	br	.L1136
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        1971 .L1163:
+                        1972 --706:                     /* point at infinity */
+                        1973 --707:                     err = ER_L_X509_INVALID_ARG;
+                        1974 --line707
+                        1975 ..lin.1dfb757..eaf2c962.0_111::
+                        1976 .LDWlin111:
+00000678 3d0601000800   1977 	mov	524289,r29
+                        1978 --708:                     break;
+                        1979 --709:                 case 0x02u:
+                        1980 --line708
+                        1981 ..lin.1dfb757..eaf2c962.0_112::
+                        1982 .LDWlin112:
+0000067e c50d*          1983 	br	.L1136
+                        1984 .L1164:
+                        1985 --710:                 case 0x03u:
+                        1986 --711:                     /* compressed form (only x coordinate) not support currently */
+                        1987 --712:                     err = ER_L_X509_INVALID_ARG;
+                        1988 --line712
+                        1989 ..lin.1dfb757..eaf2c962.0_113::
+                        1990 .LDWlin113:
+00000680 3d0601000800   1991 	mov	524289,r29
+                        1992 --713:                     break;
+                        1993 --714:                 default:
+                        1994 --line713
+                        1995 ..lin.1dfb757..eaf2c962.0_114::
+                        1996 .LDWlin114:
+00000686 850d*          1997 	br	.L1136
+                        1998 .L1165:
+                        1999 --715:                     /* invalid x.509 certificate */
+                        2000 --716:                     err = ER_L_X509_INVALID_ARG;
+                        2001 --line716
+                        2002 ..lin.1dfb757..eaf2c962.0_115::
+                        2003 .LDWlin115:
+00000688 3d0601000800   2004 	mov	524289,r29
+                        2005 --717:                     break;
+                        2006 --line717
+                        2007 ..lin.1dfb757..eaf2c962.0_116::
+                        2008 .LDWlin116:
+0000068e c505*          2009 	br	.L1136
+                        2010 .L1146:
+                        2011 --718:             }
+                        2012 --719:         }
+                        2013 --720:     }
+                        2014 --721:     else
+                        2015 --722:     {
+                        2016 --723:         /* key type is unknown */
+                        2017 --724:         err = ER_L_X509_KEYTYPE_UNKOWN;
+                        2018 --line724
+                        2019 ..lin.1dfb757..eaf2c962.0_117::
+                        2020 .LDWlin117:
+00000690 3d0603000800   2021 	mov	524291,r29
+                        2022 .L1136:
+                        2023 --725:     }
+                        2024 --727:     return (err);
+                        2025 --line727
+                        2026 ..lin.1dfb757..eaf2c962.0_118::
+                        2027 .LDWlin118:
+00000696 1d50           2028 	mov	r29,r10
+                        2029 --	    .ef
+                        2030 .LDW42:
+00000698 23ffc900       2031 	ld.w	200[sp],lp
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+0000069c 23efbd00       2032 	ld.w	188[sp],r29
+000006a0 23e7c100       2033 	ld.w	192[sp],r28
+000006a4 23dfc500       2034 	ld.w	196[sp],r27
+000006a8 031ecc00       2035 	addi	204,sp,sp
+                        2036 .L1488:
+                        2037 	.jumptype return
+000006ac 7f00           2038 	jmp	[lp]
+                        2039 --line727
+                        2040 ..lin.1dfb757..eaf2c962.0_119::
+                        2041 	.type	_L_X509_ParseCertificate,@function
+                        2042 	.size	_L_X509_ParseCertificate,.-_L_X509_ParseCertificate
+                        2043 	.align	2
+                        2044 --_ecc_key_buffer	50[sp]	local
+                        2045 --_field_data	12[sp]	local
+                        2046 --_size	8[sp]	local
+                        2047 --_key_size	r27	local
+                        2048 --_err	r29	local
+                        2049 
+                        2050 --_p_x509_cert_prm	r28	param
+                        2051 
+                        2052 	.section ".bss","awb"
+                        2053 .L1342:
+                        2054 	.type	.L1342,@object
+                        2055 	.size	.L1342,0
+                        2056 	.section ".icum_library.rodata","a"
+                        2057 	.global	_key_size_tab..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.
+                        2058 _key_size_tab..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.:
+0000007c c000e000       2059 _key_size_tab:	.byte	192,0,224,0
+00000080 00018001       2060 	.byte	0,1,128,1
+00000084 2002c000       2061 	.byte	32,2,192,0
+00000088 e0000001       2062 	.byte	224,0,0,1
+0000008c 40018001       2063 	.byte	64,1,128,1
+00000090 00020001       2064 	.byte	0,2,0,1
+00000094 40018001       2065 	.byte	64,1,128,1
+00000098 00020001       2066 	.byte	0,2,0,1
+0000009c c0010001       2067 	.byte	192,1,0,1
+000000a0 e001           2068 	.byte	224,1
+                        2069 	.type	_key_size_tab..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,@object
+                        2070 	.size	_key_size_tab..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser.,38
+                        2071 	.type	_key_size_tab,@object
+                        2072 	.size	_key_size_tab,38
+                        2073 	.section ".ghcalltbl",""
+00000058 00000000*      2074 .L1471:	.word	.L1470
+                        2075 	.type	.L1471,@object
+                        2076 	.size	.L1471,4
+0000005c 00000000*      2077 .L1473:	.word	.L1472
+                        2078 	.type	.L1473,@object
+                        2079 	.size	.L1473,4
+00000060 00000000*      2080 .L1475:	.word	.L1474
+                        2081 	.type	.L1475,@object
+                        2082 	.size	.L1475,4
+00000064 00000000*      2083 .L1477:	.word	.L1476
+                        2084 	.type	.L1477,@object
+                        2085 	.size	.L1477,4
+00000068 00000000*      2086 .L1479:	.word	.L1478
+                        2087 	.type	.L1479,@object
+                        2088 	.size	.L1479,4
+0000006c 00000000*      2089 .L1481:	.word	.L1480
+                        2090 	.type	.L1481,@object
+                        2091 	.size	.L1481,4
+00000070 00000000*      2092 .L1483:	.word	.L1482
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000opk1.si
+                        2093 	.type	.L1483,@object
+                        2094 	.size	.L1483,4
+00000074 00000000*      2095 .L1485:	.word	.L1484
+                        2096 	.type	.L1485,@object
+                        2097 	.size	.L1485,4
+00000078 00000000*      2098 .L1487:	.word	.L1486
+                        2099 	.type	.L1487,@object
+                        2100 	.size	.L1487,4
+                        2101 	.section ".ghrettbl",""
+00000010 00000000*      2102 .L1489:	.word	.L1488
+                        2103 	.type	.L1489,@object
+                        2104 	.size	.L1489,4
+                        2105 	.data
+                        2106 	.section ".icum_library.text","ax"
+                        2107 
+                        2108 --728: }
+                        2109 	.align	2
+                        2110 --_OID_xxxWithRSAEncryption	_OID_xxxWithRSAEncryption	static
+                        2111 --_OID_ecPublicKey	_OID_ecPublicKey	static
+                        2112 --_OID_curveX962	_OID_curveX962	static
+                        2113 --_OID_curveSEC2	_OID_curveSEC2	static
+                        2114 --_OID_curveBPool	_OID_curveBPool	static
+                        2115 --_key_size_tab	_key_size_tab	static
+                        2116 
+                        2117 	.data
+                        2118 	.ghsnote version,30
+                        2119 	.ghsnote tools,3
+                        2120 	.ghsnote options,656
+                        2121 	.section ".icum_library.text","ax"
+                        2122 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Clibrary.5Cobj.5Clibs.5Cicum_l_cry_pk.5Cicum_l_x509_parser...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF74..0::
+                        2123 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

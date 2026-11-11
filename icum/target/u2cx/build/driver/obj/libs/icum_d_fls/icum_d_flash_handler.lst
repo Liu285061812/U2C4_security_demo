@@ -1,0 +1,583 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\target\u2cx\src\driver\d_fls\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\ -I..\..\icum\sal\include\library\ -I..\..\icum\target\u2cx\include\common\ -I..\..\icum\target\u2cx\include\driver\ -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_flash_handler.dbo -source=icum_d_flash_handler.c -comp -o ..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\gh_00013vk1.o -list=..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_flash_handler.lst C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+Source File: icum_d_flash_handler.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\target\u2cx\src\driver\d_fls\
+                           2 --		-I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\common\
+                           3 --		-I..\..\icum\sal\include\library\
+                           4 --		-I..\..\icum\target\u2cx\include\common\
+                           5 --		-I..\..\icum\target\u2cx\include\driver\
+                           6 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                           7 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -G -section .text=.icum_driver.text -section
+                          28 --		.rodata=.icum_driver.rodata -section .bss=.icum_driver.bss
+                          29 --		-section .data=.icum_driver.data -Osize -inline_prologue
+                          30 --		-prepare_dispose -filetype.c
+                          31 --		..\..\icum\target\u2cx\src\driver\d_fls\icum_d_flash_handler.c -o
+                          32 --		..\..\icum\target\u2cx\build\driver\obj\libs\icum_d_fls\icum_d_flash_handler.o
+                          33 --Source File:   ..\..\icum\target\u2cx\src\driver\d_fls\icum_d_flash_handler.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 11:22:10 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w -OS
+                          42 	.section ".icum_handler.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICUM Flash Driver                                         */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /********************************************************************************
+                          70 --28: * Includes <System Includes> , ProjectIncludes
+                          71 --29: *********************************************************************************/
+                          72 --30: #include ICUM_DEVICE_FILE
+                          73 --31: #include "r_icumif_api.h"
+                          74 --32: #include "renesas_types.h"
+                          75 --33: #include "icum_common_pub.h"
+                          76 --34: #include "icum_int_declaration_pub.h"
+                          77 --35: #include "icum_d_misc_pub.h"
+                          78 --36: #include "icum_d_comm_pub.h"
+                          79 --37: #include "icum_d_flash_pub.h"
+                          80 --38: #include "icum_d_flash.h"
+                          81 --40: #include "r_rfd_constant.h"
+                          82 --41: #include "r_rfd_common.h"
+                          83 --42: #include "r_rfd_df.h"
+                          84 --43: /********************************************************************************
+                          85 --44:  QAC Suppression message list
+                          86 --45: *********************************************************************************/
+                          87 --47: /********************************************************************************
+                          88 --48:  Memory allocation section specification
+                          89 --49: *********************************************************************************/
+                          90 --50: CHANGE_SEC(text, ".icum_handler.text")
+                          91 --51: CHANGE_SEC(rodata, ".icum_handler.rodata")
+                          92 --52: CHANGE_SEC(data, ".icum_handler.data")
+                          93 --53: CHANGE_SEC(bss, ".icum_handler.bss")
+                          94 --55: /********************************************************************************
+                          95 --56:  Macro definitions
+                          96 --57: *********************************************************************************/
+                          97 --59: /*******************************************************************************
+                          98 --60:  Typedef definitions
+                          99 --61: *********************************************************************************/
+                         100 --63: /********************************************************************************
+                         101 --64:  Exported global variables (to be accessed by other files)
+                         102 --65: *********************************************************************************/
+                         103 --67: /*******************************************************************************
+                         104 --68: * Functions
+                         105 --69: ********************************************************************************/
+                         106 --71: /********************************************************************************
+                         107 --72: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0105]:[ICUMFW_UD_U2B_D_FLS_0105]
+                         108 --73: * Function Name : INTFSACSREQ0
+                         109 --74: * Description   : FACI0 programming request interrupt handler from PE
+                         110 --75: * Arguments     : none
+                         111 --76: * Return Value  : none
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         112 --77: *********************************************************************************/
+                         113 	.align	2
+                         114 	.align	2
+                         115 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_flash_handler...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..0::
+                         116 	.align	2
+                         117 	.align	2
+                         118 ..gh.f.a.2.e.0:
+                         119 	.type	..gh.f.a.2.e.0,@object
+                         120 	.size	..gh.f.a.2.e.0,0
+                         121 	.global	_INTFSACSREQ0
+                         122 _INTFSACSREQ0:
+00000000 82076100        123 	prepare	{r29,r31},1
+                         124 --	    .bf
+                         125 .LDW01:
+                         126 --78: void INTFSACSREQ0(void)
+                         127 --79: {
+                         128 --80:     uint32_t    err;
+                         129 --81:     uint8_t     pe_status;
+                         130 --83:     err = ER_OK;
+                         131 --84:     pe_status = D_FLS_ZERO_U8;
+00000004 43070300        132 	st.b	zero,3[sp]
+                         133 --86:     /* Judge the flash area accessed by PE and the start / end of access */
+                         134 --87:     err = D_COMM_GetPEStatusInfo(&pe_status);
+00000008 23360300        135 	movea	3,sp,r6
+                         136 .L1221:
+                         137 	jarl	_D_COMM_GetPEStatusInfo,lp
+                         137 <EXPANSION BEGIN>
+                         137 jarl22 _D_COMM_GetPEStatusInfo , lp 
+0000000c 80ff0000*       137 <EXPANSION END>
+                         138 --88:     if (ER_OK == err)
+                         139 --line88
+                         140 ..lin.dd000224..6d9a68b7.0_1::
+                         141 .LDWlin1:
+00000010 e051            142 	cmp	zero,r10
+00000012 ca1d*           143 	bne	.L27
+                         144 --89:     {
+                         145 --90:         if ((uint8_t)ICUM_COMM_STS_DF_PRG == (pe_status & (uint8_t)ICUM_COMM_STS_DF_PRG))
+                         146 --line90
+                         147 ..lin.dd000224..6d9a68b7.0_2::
+                         148 .LDWlin2:
+00000014 a30f0300        149 	ld.bu	3[sp],r1
+00000018 c1160100        150 	andi	1,r1,r2
+0000001c a20d*           151 	be	.L6
+                         152 --91:         {
+                         153 --92:             if (PEFSACS0REQ_ACSREQ == (DFLS_PEFSACS0REQ & PEFSACS0REQ_ACSREQ))
+                         154 --line92
+                         155 ..lin.dd000224..6d9a68b7.0_3::
+                         156 .LDWlin3:
+0000001e 400e1fff        157 	movhi	65311,zero,r1
+00000022 210fc100        158 	ld.w	192[r1],r1
+                         159 --93:             {
+                         160 --94:                 /* DF0 P/E mode Entry */
+                         161 --95:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_DF_ACQ);
+                         162 --line95
+                         163 ..lin.dd000224..6d9a68b7.0_4::
+                         164 .LDWlin4:
+00000026 0232            165 	mov	2,r6
+00000028 810a            166 	shr	1,r1
+                         167 --96:             }
+                         168 --97:             else
+                         169 --98:             {
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         170 --99:                 /* DF0 Read Mode Entry */
+                         171 --100:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_DF_REL);
+0000002a e3371233        172 	cmovnl	3,r6,r6
+0000002e a50d*           173 	br	.L1210
+                         174 .L6:
+                         175 --101:             }
+                         176 --102:         }
+                         177 --103:         else if ((uint8_t)ICUM_COMM_STS_CF_PRG == (pe_status & (uint8_t)ICUM_COMM_STS_CF_PRG))
+                         178 --line103
+                         179 ..lin.dd000224..6d9a68b7.0_5::
+                         180 .LDWlin5:
+00000030 820a            181 	shr	2,r1
+00000032 a90d*           182 	bnl	.L18
+                         183 .L13:
+                         184 --104:         {
+                         185 --105:             if (PEFSACS0REQ_ACSREQ == (DFLS_PEFSACS0REQ & PEFSACS0REQ_ACSREQ))
+                         186 --line105
+                         187 ..lin.dd000224..6d9a68b7.0_6::
+                         188 .LDWlin6:
+00000034 400e1fff        189 	movhi	65311,zero,r1
+00000038 210fc100        190 	ld.w	192[r1],r1
+0000003c 810a            191 	shr	1,r1
+                         192 --106:             {
+                         193 --107:                 /* CF0 P/E mode Entry */
+                         194 --108:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_CF_ACQ);
+                         195 --109:             }
+                         196 --110:             else
+                         197 --111:             {
+                         198 --112:                 /* CF0 Read Mode Entry */
+                         199 --113:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_CF_REL);
+                         200 --line113
+                         201 ..lin.dd000224..6d9a68b7.0_7::
+                         202 .LDWlin7:
+0000003e e1171233        203 	cmovnl	1,r2,r6
+                         204 .L1210:
+                         205 .L1223:
+                         206 	jarl	_d_FLS_StateMachineIf0,lp
+                         206 <EXPANSION BEGIN>
+                         206 jarl22 _d_FLS_StateMachineIf0 , lp 
+00000042 80ff0000*       206 <EXPANSION END>
+                         207 .L18:
+                         208 --114:             }
+                         209 --115:         }
+                         210 --116:         else
+                         211 --117:         {
+                         212 --118:             /* Do nothing */
+                         213 --119:         }
+                         214 --120:     }
+                         215 --121:     else
+                         216 --122:     {
+                         217 --123:         /* Do nothing */
+                         218 --124:     }
+                         219 --126:     /* Check StateMachine */
+                         220 --127:     if (ER_OK != err)
+                         221 --line127
+                         222 ..lin.dd000224..6d9a68b7.0_8::
+                         223 .LDWlin8:
+00000046 e051            224 	cmp	zero,r10
+00000048 a205*           225 	be	.L19
+                         226 .L27:
+                         227 --128:     {
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         228 --129:         /* Sataus Error */
+                         229 --130:         ASSERT(0);
+                         230 --line130
+                         231 ..lin.dd000224..6d9a68b7.0_9::
+                         232 .LDWlin9:
+0000004a 8505*           233 	br	.L27
+                         234 .L19:
+                         235 --131:     }
+                         236 --132:     else
+                         237 --133:     {
+                         238 --134:         if ((uint32_t)g_d_cf_pe_notify != (uint32_t)CF_PE_INIT)
+                         239 --line134
+                         240 ..lin.dd000224..6d9a68b7.0_10::
+                         241 .LDWlin10:
+0000004c 3d0600000000*   242 	mov	_g_d_cf_pe_notify,r29
+00000052 9d370100        243 	ld.bu	0[r29],r6
+00000056 060601ff        244 	addi	-255,r6,zero
+0000005a e20d*           245 	be	.L2
+                         246 --138:             p_d_fls_cbfunc_addr((uint32_t)g_d_cf_pe_notify);
+                         247 --line138
+                         248 ..lin.dd000224..6d9a68b7.0_11::
+                         249 .LDWlin11:
+0000005c 400e0000*       250 	movhi	hi(_p_d_fls_cbfunc_addr),zero,r1
+00000060 210f0100*       251 	ld.w	lo(_p_d_fls_cbfunc_addr)[r1],r1
+                         252 --135:         {
+                         253 --136:             /* Call back to notify CF_P/E Mode to start or end */
+                         254 --137:             g_d_cf_pe_notify_faci = R_RFD_FACI0;
+                         255 --line137
+                         256 ..lin.dd000224..6d9a68b7.0_12::
+                         257 .LDWlin12:
+00000064 405e0000*       258 	movhi	hi(_g_d_cf_pe_notify_faci),zero,r11
+00000068 6b070100*       259 	st.w	zero,lo(_g_d_cf_pe_notify_faci)[r11]
+                         260 .L1225:
+0000006c e1c760f9        261 	jarl	[r1],lp
+                         262 --139:             g_d_cf_pe_notify = CF_PE_INIT;
+                         263 --line139
+                         264 ..lin.dd000224..6d9a68b7.0_13::
+                         265 .LDWlin13:
+00000070 1f0a            266 	mov	-1,r1
+00000072 5d0f0000        267 	st.b	r1,0[r29]
+                         268 .L2:
+                         269 --140:         }
+                         270 --141:         else
+                         271 --142:         {
+                         272 --143:             /* No notification */
+                         273 --144:         }
+                         274 --145:     }
+                         275 --147:     return;
+                         276 --	    .ef
+                         277 .LDW11:
+                         278 .L1227:
+00000076 42067f00        279 	dispose	1,{r29,r31},[lp]
+                         280 --line139
+                         281 ..lin.dd000224..6d9a68b7.0_14::
+                         282 	.type	_INTFSACSREQ0,@function
+                         283 	.size	_INTFSACSREQ0,.-_INTFSACSREQ0
+                         284 	.align	2
+                         285 --_err	r10	local
+                         286 --_pe_status	3[sp]	local
+                         287 
+                         288 	.section ".bss","awb"
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         289 .L1086:
+                         290 	.type	.L1086,@object
+                         291 	.size	.L1086,0
+                         292 	.section ".ghcalltbl",""
+                         293 	.align	4
+00000000 00000000*       294 .L1222:	.word	.L1221
+                         295 	.type	.L1222,@object
+                         296 	.size	.L1222,4
+00000004 00000000*       297 .L1224:	.word	.L1223
+                         298 	.type	.L1224,@object
+                         299 	.size	.L1224,4
+00000008 00000000*       300 .L1226:	.word	.L1225
+                         301 	.type	.L1226,@object
+                         302 	.size	.L1226,4
+                         303 	.section ".ghrettbl",""
+                         304 	.align	4
+00000000 00000000*       305 .L1228:	.word	.L1227
+                         306 	.type	.L1228,@object
+                         307 	.size	.L1228,4
+                         308 	.data
+                         309 	.section ".icum_handler.text","ax"
+                         310 
+                         311 --148: }
+                         312 	.section ".icum_handler_ram","ax"
+                         313 
+                         314 --150: /* Code executed on RAM             */
+                         315 --151: CHANGE_SEC(text, ".icum_handler_ram")
+                         316 --152: /* Read only data referenced on RAM */
+                         317 --153: CHANGE_SEC(rodata, ".icum_handler_const_ram")
+                         318 --154: /********************************************************************************
+                         319 --155: * Function ID   : [ICUMFW_CD_U2B_D_FLS_0106]:[ICUMFW_UD_U2B_D_FLS_0105]
+                         320 --156: * Function Name : INTFSACSREQ0_RAM
+                         321 --157: * Description   : FACI0 programming request interrupt handler from PE
+                         322 --158: * Arguments     : none
+                         323 --159: * Return Value  : none
+                         324 --160: *********************************************************************************/
+                         325 	.align	2
+                         326 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_flash_handler...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..1::
+                         327 	.align	2
+                         328 	.align	2
+                         329 ..gh.f.a.2.e.1:
+                         330 	.type	..gh.f.a.2.e.1,@object
+                         331 	.size	..gh.f.a.2.e.1,0
+                         332 	.global	_INTFSACSREQ0_RAM
+                         333 _INTFSACSREQ0_RAM:
+00000000 82076100        334 	prepare	{r29,r31},1
+                         335 --	    .bf
+                         336 .LDW21:
+                         337 --161: void INTFSACSREQ0_RAM(void)
+                         338 --162: {
+                         339 --163:     uint32_t    err;
+                         340 --164:     uint8_t     pe_status;
+                         341 --166:     err = ER_OK;
+                         342 --167:     pe_status = D_FLS_ZERO_U8;
+00000004 43070300        343 	st.b	zero,3[sp]
+                         344 --169:     /* Judge the flash area accessed by PE and the start / end of access */
+                         345 --170:     err = D_COMM_GetPEStatusInfo(&pe_status);
+00000008 23360300        346 	movea	3,sp,r6
+                         347 .L2437:
+                         348 	jarl	_D_COMM_GetPEStatusInfo,lp
+                         348 <EXPANSION BEGIN>
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         348 jarl22 _D_COMM_GetPEStatusInfo , lp 
+0000000c 80ff0000*       348 <EXPANSION END>
+                         349 --171:     if (ER_OK == err)
+                         350 --line171
+                         351 ..lin.dd000224..11b369b6.1_15::
+                         352 .LDWlin15:
+00000010 e051            353 	cmp	zero,r10
+00000012 ca1d*           354 	bne	.L1254
+                         355 --172:     {
+                         356 --173:         if ((uint8_t)ICUM_COMM_STS_DF_PRG == (pe_status & (uint8_t)ICUM_COMM_STS_DF_PRG))
+                         357 --line173
+                         358 ..lin.dd000224..11b369b6.1_16::
+                         359 .LDWlin16:
+00000014 a30f0300        360 	ld.bu	3[sp],r1
+00000018 c1160100        361 	andi	1,r1,r2
+0000001c a20d*           362 	be	.L1233
+                         363 --174:         {
+                         364 --175:             if (PEFSACS0REQ_ACSREQ == (DFLS_PEFSACS0REQ & PEFSACS0REQ_ACSREQ))
+                         365 --line175
+                         366 ..lin.dd000224..11b369b6.1_17::
+                         367 .LDWlin17:
+0000001e 400e1fff        368 	movhi	65311,zero,r1
+00000022 210fc100        369 	ld.w	192[r1],r1
+                         370 --176:             {
+                         371 --177:                 /* DF0 P/E mode Entry */
+                         372 --178:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_DF_ACQ);
+                         373 --line178
+                         374 ..lin.dd000224..11b369b6.1_18::
+                         375 .LDWlin18:
+00000026 0232            376 	mov	2,r6
+00000028 810a            377 	shr	1,r1
+                         378 --179:             }
+                         379 --180:             else
+                         380 --181:             {
+                         381 --182:                 /* DF0 Read Mode Entry */
+                         382 --183:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_DF_REL);
+0000002a e3371233        383 	cmovnl	3,r6,r6
+0000002e a50d*           384 	br	.L2426
+                         385 .L1233:
+                         386 --184:             }
+                         387 --185:         }
+                         388 --186:         else if ((uint8_t)ICUM_COMM_STS_CF_PRG == (pe_status & (uint8_t)ICUM_COMM_STS_CF_PRG))
+                         389 --line186
+                         390 ..lin.dd000224..11b369b6.1_19::
+                         391 .LDWlin19:
+00000030 820a            392 	shr	2,r1
+00000032 a90d*           393 	bnl	.L1245
+                         394 .L1240:
+                         395 --187:         {
+                         396 --188:             if (PEFSACS0REQ_ACSREQ == (DFLS_PEFSACS0REQ & PEFSACS0REQ_ACSREQ))
+                         397 --line188
+                         398 ..lin.dd000224..11b369b6.1_20::
+                         399 .LDWlin20:
+00000034 400e1fff        400 	movhi	65311,zero,r1
+00000038 210fc100        401 	ld.w	192[r1],r1
+0000003c 810a            402 	shr	1,r1
+                         403 --189:             {
+                         404 --190:                 /* CF0 P/E mode Entry */
+                         405 --191:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_CF_ACQ);
+                         406 --192:             }
+                         407 --193:             else
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         408 --194:             {
+                         409 --195:                 /* CF0 Read Mode Entry */
+                         410 --196:                 err = d_FLS_StateMachineIf0(D_FLS_IF0_HOST_CF_REL);
+                         411 --line196
+                         412 ..lin.dd000224..11b369b6.1_21::
+                         413 .LDWlin21:
+0000003e e1171233        414 	cmovnl	1,r2,r6
+                         415 .L2426:
+                         416 .L2439:
+                         417 	jarl	_d_FLS_StateMachineIf0,lp
+                         417 <EXPANSION BEGIN>
+                         417 jarl22 _d_FLS_StateMachineIf0 , lp 
+00000042 80ff0000*       417 <EXPANSION END>
+                         418 .L1245:
+                         419 --197:             }
+                         420 --198:         }
+                         421 --199:         else
+                         422 --200:         {
+                         423 --201:             /* Do nothing */
+                         424 --202:         }
+                         425 --203:     }
+                         426 --204:     else
+                         427 --205:     {
+                         428 --206:         /* Do nothing */
+                         429 --207:     }
+                         430 --209:     /* Check StateMachine */
+                         431 --210:     if (ER_OK != err)
+                         432 --line210
+                         433 ..lin.dd000224..11b369b6.1_22::
+                         434 .LDWlin22:
+00000046 e051            435 	cmp	zero,r10
+00000048 a205*           436 	be	.L1246
+                         437 .L1254:
+                         438 --211:     {
+                         439 --212:         /* Sataus Error */
+                         440 --213:         ASSERT(0);
+                         441 --line213
+                         442 ..lin.dd000224..11b369b6.1_23::
+                         443 .LDWlin23:
+0000004a 8505*           444 	br	.L1254
+                         445 .L1246:
+                         446 --214:     }
+                         447 --215:     else
+                         448 --216:     {
+                         449 --217:         if ((uint32_t)g_d_cf_pe_notify != (uint32_t)CF_PE_INIT)
+                         450 --line217
+                         451 ..lin.dd000224..11b369b6.1_24::
+                         452 .LDWlin24:
+0000004c 3d0600000000*   453 	mov	_g_d_cf_pe_notify,r29
+00000052 9d370100        454 	ld.bu	0[r29],r6
+00000056 060601ff        455 	addi	-255,r6,zero
+0000005a a20d*           456 	be	.L1229
+                         457 --218:         {
+                         458 --219:             /* Call back to notify CF_P/E Mode to start or end */
+                         459 --220:             p_d_fls_cbfunc_addr((uint32_t)g_d_cf_pe_notify);
+                         460 --line220
+                         461 ..lin.dd000224..11b369b6.1_25::
+                         462 .LDWlin25:
+0000005c 400e0000*       463 	movhi	hi(_p_d_fls_cbfunc_addr),zero,r1
+00000060 210f0100*       464 	ld.w	lo(_p_d_fls_cbfunc_addr)[r1],r1
+                         465 .L2441:
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+00000064 e1c760f9        466 	jarl	[r1],lp
+                         467 --221:             g_d_cf_pe_notify = CF_PE_INIT;
+                         468 --line221
+                         469 ..lin.dd000224..11b369b6.1_26::
+                         470 .LDWlin26:
+00000068 1f0a            471 	mov	-1,r1
+0000006a 5d0f0000        472 	st.b	r1,0[r29]
+                         473 .L1229:
+                         474 --222:         }
+                         475 --223:         else
+                         476 --224:         {
+                         477 --225:             /* No notification */
+                         478 --226:         }
+                         479 --227:     }
+                         480 --229:     return;
+                         481 --	    .ef
+                         482 .LDW31:
+                         483 .L2443:
+0000006e 42067f00        484 	dispose	1,{r29,r31},[lp]
+                         485 --line221
+                         486 ..lin.dd000224..11b369b6.1_27::
+                         487 	.type	_INTFSACSREQ0_RAM,@function
+                         488 	.size	_INTFSACSREQ0_RAM,.-_INTFSACSREQ0_RAM
+                         489 	.align	2
+                         490 --_err	r10	local
+                         491 --_pe_status	3[sp]	local
+                         492 
+                         493 	.section ".bss","awb"
+                         494 .L2302:
+                         495 	.type	.L2302,@object
+                         496 	.size	.L2302,0
+                         497 	.section ".ghcalltbl",""
+0000000c 00000000*       498 .L2438:	.word	.L2437
+                         499 	.type	.L2438,@object
+                         500 	.size	.L2438,4
+00000010 00000000*       501 .L2440:	.word	.L2439
+                         502 	.type	.L2440,@object
+                         503 	.size	.L2440,4
+00000014 00000000*       504 .L2442:	.word	.L2441
+                         505 	.type	.L2442,@object
+                         506 	.size	.L2442,4
+                         507 	.section ".ghrettbl",""
+00000004 00000000*       508 .L2444:	.word	.L2443
+                         509 	.type	.L2444,@object
+                         510 	.size	.L2444,4
+                         511 	.data
+                         512 	.section ".icum_handler_ram","ax"
+                         513 
+                         514 --230: }
+                         515 	.align	2
+                         516 --_g_d_cf_pe_notify	_g_d_cf_pe_notify	import
+                         517 --_g_d_cf_pe_notify_faci	_g_d_cf_pe_notify_faci	import
+                         518 --_p_d_fls_cbfunc_addr	_p_d_fls_cbfunc_addr	import
+                         519 
+                         520 	.data
+                         521 	.ghsnote version,30
+                         522 	.ghsnote tools,3
+                         523 	.ghsnote options,656
+                         524 	.section ".icum_handler_ram","ax"
+                         525 	.section ".icum_handler.text","ax"
+                         526 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_flash_handler...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..0::
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00013vk1.si
+                         527 	.section ".icum_handler_ram","ax"
+                         528 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cdriver.5Cobj.5Clibs.5Cicum_d_fls.5Cicum_d_flash_handler...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF67..1::
+                         529 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

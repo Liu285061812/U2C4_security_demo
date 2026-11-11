@@ -1,0 +1,1480 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hmac.dbo -source=icum_s_01_hmac.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\gh_0000ruo1.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hmac.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+Source File: icum_s_01_hmac.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\
+                           7 --		-I..\..\icum\generic\src\service\ -I..\..\pe\generic\icumif\
+                           8 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                           9 --		-I..\..\icum\target\u2cx\include\device\
+                          10 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          11 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          12 --		-I..\..\icum\target\u2cx\include\driver
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          14 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          16 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          17 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          18 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          19 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          20 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          21 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          22 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          23 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          24 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          25 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          26 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          27 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          28 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          29 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          30 --		-filetype.c ..\..\icum\generic\src\service\s_01\icum_s_01_hmac.c
+                          31 --		-o
+                          32 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_01\icum_s_01_hmac.o
+                          33 --Source File:   ..\..\icum\generic\src\service\s_01\icum_s_01_hmac.c
+                          34 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          35 --Compile Date:  Wed Nov 11 14:08:36 2026
+                          36 --Host OS:       Win64
+                          37 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          38 --Release:       Compiler v2023.5.4
+                          39 --Revision Date: Wed Sep 06 02:44:56 2023
+                          40 --Release Date:  Wed Sep 06 02:00:00 2023
+                          41 -- ecom  -g -w
+                          42 	.section ".icum_service.text","ax"
+                          43 
+                          44 --1: /******************************************************************************/
+                          45 --2: /* Component Name   ICU-M Service                                             */
+                          46 --3: /******************************************************************************/
+                          47 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          48 --5: /******************************************************************************/
+                          49 --6: /***********************************************************************************************************************
+                          50 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                          51 --8: * 
+                          52 --9: * DISCLAIMER
+                          53 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          54 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          55 --12: * applicable laws, including copyright laws.
+                          56 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          57 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          58 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          59 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          60 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          61 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          62 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          63 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          64 --21: * following link:
+                          65 --22: * www.renesas.com/disclaimer
+                          66 --23: *
+                          67 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          68 --25: ***********************************************************************************************************************/
+                          69 --27: /**********************************************************************************
+                          70 --28: * Header files
+                          71 --29: ***********************************************************************************/
+                          72 --30: #include "icum_l_cry_pk_pub.h"
+                          73 --31: #include "icum_common_pub.h"
+                          74 --32: #include "renesas_types.h"
+                          75 --33: #include "icum_s_pub.h"
+                          76 --34: #include "icum_ml_ctx_pub.h"
+                          77 --35: #include MM_FLASH_PUBLIC_H
+                          78 --36: #include "icum_k_issd_pub.h"
+                          79 --37: #include "icum_d_comm_pub.h"
+                          80 --38: /* For call functions of remap driver. */
+                          81 --39: #include "icum_d_remap_pub.h"
+                          82 --41: #include "icum_s_01_common.h"
+                          83 --42: #include "icum_l_toolbox_pub.h"
+                          84 --43: #include "icum_service_common.h"
+                          85 --45: /**********************************************************************************
+                          86 --46: * Local variables
+                          87 --47: **********************************************************************************/
+                          88 --49: /**********************************************************************************
+                          89 --50: * Functions
+                          90 --51: ***********************************************************************************/
+                          91 --54: /*===========================================================================
+                          92 --55:   Initialize the hmac process
+                          93 --56:   [PRIVATE]
+                          94 --57:   ===========================================================================*/
+                          95 --59: /****************************************************************************************
+                          96 --60: * Function ID  : [ICUMFW_CD_S_01_HMAC_0002]:[ICUMFW_UD_S_01_HMAC_0002]
+                          97 --61: * Function name: s_01_InitHmac()
+                          98 --62: * Description  : # HASH type is determined and HMAC initialization processing is performed.
+                          99 --63: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                         100 --64: * Return Value : ER_PARAM
+                         101 --65: *                SERV_SRC_MEM_ERROR
+                         102 --66: *                SERV_DEST_MEM_ERROR
+                         103 --67: *                SERV_CRYPT_ERROR
+                         104 --68: *                SERV_IN_PROCESS
+                         105 --69: *                SERV_PRM_ERROR
+                         106 --70: *                SERV_INVALID_KEY_INDEX
+                         107 --71: *                SERV_KEY_NOT_USABLE
+                         108 --72: *                SERV_KEY_SLOT_EMPTY
+                         109 --73: ****************************************************************************************/
+                         110 --74: static uint32_t s_01_InitHmac(icum_job_t *p_job)
+                         111 	.align	2
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         112 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40665..0::
+                         113 	.align	2
+                         114 	.align	2
+                         115 ..gh.f.a.2.e.0:
+                         116 	.type	..gh.f.a.2.e.0,@object
+                         117 	.size	..gh.f.a.2.e.0,0
+                         118 	.global	_s_01_InitHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.
+                         119 _s_01_InitHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.:
+                         120 _s_01_InitHmac:
+00000000 031ed0ff        121 	addi	-48,sp,sp
+00000004 63ff2d00        122 	st.w	lp,44[sp]
+00000008 63d72500        123 	st.w	r26,36[sp]
+0000000c 63cf2900        124 	st.w	r25,40[sp]
+00000010 63df2100        125 	st.w	r27,32[sp]
+00000014 63e71d00        126 	st.w	r28,28[sp]
+00000018 63ef1900        127 	st.w	r29,24[sp]
+0000001c 06d0            128 	mov	r6,r26
+                         129 --	    .bf
+                         130 .LDW01:
+                         131 --75: {
+                         132 --76:     r_icumif_isd_t      *p_ISD;
+                         133 --77:     hash_ctx_t          *p_hash_ctx;
+                         134 --78:     hash_type_t          hash_type;
+                         135 --79:     void                *p_key;
+                         136 --80:     uint16_t             hash_size;
+                         137 --81:     uint32_t             err;
+                         138 --82:     uint8_t              result;
+                         139 --83:     uint32_t            skip_flg = FLG_OFF;
+0000001e 00e2            140 	mov	0,r28
+                         141 --84:     remap_ptr_manip_t       msg_logical;
+                         142 --86:     err = ER_OK;
+00000020 00ea            143 	mov	0,r29
+                         144 --88:     /* retrieve the service handler */
+                         145 --89:     p_ISD = p_job->p_ISD;
+00000022 3adf0100        146 	ld.w	0[r26],r27
+                         147 --91:     /* retrieve the hmac context */
+                         148 --92:     p_hash_ctx = (hash_ctx_t *)p_job->prm.job_hmac.p_hash_ctx;
+00000026 3acf1900        149 	ld.w	24[r26],r25
+                         150 --94:     (void)L_HASH_GetInternalHashType(p_ISD->prm.HMAC.hash_primitive, &hash_type, &hash_size);
+0000002a 3b372900        151 	ld.w	40[r27],r6
+0000002e 233e0800        152 	movea	8,sp,r7
+00000032 23461200        153 	movea	18,sp,r8
+                         154 .L468:
+                         155 	jarl	_L_HASH_GetInternalHashType,lp
+                         155 <EXPANSION BEGIN>
+                         155 jarl22 _L_HASH_GetInternalHashType , lp 
+00000036 80ff0000*       155 <EXPANSION END>
+                         156 --96:     if (hash_size == (uint16_t)0)
+                         157 --line96
+                         158 ..lin.92e7e9b1..4c67e6c3.0_1::
+                         159 .LDWlin1:
+0000003a e30f1300        160 	ld.hu	18[sp],r1
+0000003e e009            161 	cmp	zero,r1
+00000040 ba05*           162 	bne	.L6
+                         163 --97:     {
+                         164 --98:         /* error on hash type */
+                         165 --99:         err = ER_PARAM;
+                         166 --line99
+                         167 ..lin.92e7e9b1..4c67e6c3.0_2::
+                         168 .LDWlin2:
+00000042 01ea            169 	mov	1,r29
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         170 --100:         skip_flg = FLG_ON;
+00000044 01e2            171 	mov	1,r28
+                         172 .L6:
+                         173 --101:     }
+                         174 --102:     else
+                         175 --103:     {
+                         176 --104:         /* do nothing */
+                         177 --105:     }
+                         178 --107:     if (skip_flg == FLG_OFF)
+00000046 e0e1            179 	cmp	zero,r28
+00000048 ba0d*           180 	bne	.L12
+                         181 --108:     {
+                         182 --109:         p_hash_ctx->hmac_state.hash_type = hash_type;
+                         183 --line109
+                         184 ..lin.92e7e9b1..4c67e6c3.0_3::
+                         185 .LDWlin3:
+0000004a 230f0900        186 	ld.w	8[sp],r1
+0000004e 790f8101        187 	st.w	r1,384[r25]
+                         188 --110:     
+                         189 --111:         if (p_ISD->prm.HMAC.hmac_size_in_bytes == (uint8_t)0)
+00000052 9b0f4900        190 	ld.bu	72[r27],r1
+00000056 e009            191 	cmp	zero,r1
+00000058 ba05*           192 	bne	.L12
+                         193 --112:         {
+                         194 --113:             err = ER_PARAM;
+                         195 --line113
+                         196 ..lin.92e7e9b1..4c67e6c3.0_4::
+                         197 .LDWlin4:
+0000005a 01ea            198 	mov	1,r29
+                         199 --114:             skip_flg = FLG_ON;
+0000005c 01e2            200 	mov	1,r28
+                         201 .L12:
+                         202 --115:         }
+                         203 --116:         else
+                         204 --117:         {
+                         205 --118:             /* do nothing */
+                         206 --119:         }
+                         207 --120:     }
+                         208 --121:     else
+                         209 --122:     {
+                         210 --123:         /* do nothing */
+                         211 --124:     }
+                         212 --126:     if (skip_flg == FLG_OFF)
+0000005e e0e1            213 	cmp	zero,r28
+00000060 aa1d*           214 	bne	.L21
+                         215 --127:     {
+                         216 --128:         /* note: in case of internal service: do not check the destination range */
+                         217 --129:         /* make sure the source address range is valid */
+                         218 --130:         err = MM_FLS_CheckMemory((uint32_t)p_ISD->prm.HMAC.p_msg,
+                         219 --line130
+                         220 ..lin.92e7e9b1..4c67e6c3.0_5::
+                         221 .LDWlin5:
+00000062 3b373100        222 	ld.w	48[r27],r6
+00000066 3b3f3900        223 	ld.w	56[r27],r7
+0000006a 9a4f0d00        224 	ld.bu	12[r26],r9
+0000006e 230e0700        225 	movea	7,sp,r1
+00000072 630f0100        226 	st.w	r1,0[sp]
+00000076 0042            227 	mov	0,r8
+                         228 .L470:
+                         229 	jarl	_MM_FLS_CheckMemory,lp
+                         229 <EXPANSION BEGIN>
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         229 jarl22 _MM_FLS_CheckMemory , lp 
+00000078 80ff0000*       229 <EXPANSION END>
+0000007c 0ae8            230 	mov	r10,r29
+                         231 --131:                                  p_ISD->prm.HMAC.msg_size_in_bytes,
+                         232 --132:                                  FLS_CHK_MEM_SOURCE,
+                         233 --133:                                  p_job->expansion_service,
+                         234 --134:                                  &result);
+                         235 --136:         if (err != ER_OK)
+                         236 --line136
+                         237 ..lin.92e7e9b1..4c67e6c3.0_6::
+                         238 .LDWlin6:
+0000007e e0e9            239 	cmp	zero,r29
+00000080 c205*           240 	be	.L15
+                         241 --137:         {
+                         242 --138:             err = ER_PARAM;
+                         243 --line138
+                         244 ..lin.92e7e9b1..4c67e6c3.0_7::
+                         245 .LDWlin7:
+00000082 01ea            246 	mov	1,r29
+                         247 --139:             skip_flg = FLG_ON;
+00000084 01e2            248 	mov	1,r28
+00000086 f505*           249 	br	.L21
+                         250 .L15:
+                         251 --140:         }
+                         252 --141:         else if (result != FLS_CHK_OK)
+                         253 --line141
+                         254 ..lin.92e7e9b1..4c67e6c3.0_8::
+                         255 .LDWlin8:
+00000088 a30f0700        256 	ld.bu	7[sp],r1
+0000008c 610a            257 	cmp	1,r1
+0000008e b205*           258 	be	.L21
+                         259 --142:         {
+                         260 --143:             err = (uint32_t)SERV_SRC_MEM_ERROR;
+                         261 --line143
+                         262 ..lin.92e7e9b1..4c67e6c3.0_9::
+                         263 .LDWlin9:
+00000090 0cea            264 	mov	12,r29
+                         265 --144:             skip_flg = FLG_ON;
+00000092 01e2            266 	mov	1,r28
+                         267 .L21:
+                         268 --145:         }
+                         269 --146:         else
+                         270 --147:         {
+                         271 --148:             /* do nothing */
+                         272 --149:         }
+                         273 --150:     }
+                         274 --151:     else
+                         275 --152:     {
+                         276 --153:         /* do nothing */
+                         277 --154:     }
+                         278 --156:     if (skip_flg == FLG_OFF)
+00000094 e0e1            279 	cmp	zero,r28
+00000096 da4d*           280 	bne	.L42
+                         281 --157:     {
+                         282 --158:         /* Get Remap(Convert Physical address -> Logical Address) */
+                         283 --159:         (void)D_REMAP_GetLogicalAddrs((uint32_t)p_ISD->prm.HMAC.p_msg, &msg_logical.val);
+                         284 --line159
+                         285 ..lin.92e7e9b1..4c67e6c3.0_10::
+                         286 .LDWlin10:
+00000098 3b373100        287 	ld.w	48[r27],r6
+0000009c 233e1400        288 	movea	20,sp,r7
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         289 .L472:
+                         290 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                         290 <EXPANSION BEGIN>
+                         290 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+000000a0 80ff0000*       290 <EXPANSION END>
+                         291 --161:         /* copy the source address within the job description */
+                         292 --162:         p_job->prm.job_hmac.p_source = msg_logical.p_ptr;
+                         293 --line162
+                         294 ..lin.92e7e9b1..4c67e6c3.0_11::
+                         295 .LDWlin11:
+000000a4 230f1500        296 	ld.w	20[sp],r1
+000000a8 7a0f1500        297 	st.w	r1,20[r26]
+                         298 --164:         /* indicates how many bytes to process in the job */
+                         299 --165:         p_job->prm.job_hmac.nb_bytes = p_ISD->prm.HMAC.msg_size_in_bytes;
+000000ac 3b0f3900        300 	ld.w	56[r27],r1
+000000b0 7a0f1100        301 	st.w	r1,16[r26]
+                         302 --167:         if (p_ISD->prm.HMAC.hmac_operation == HMAC_VERIFICATION)
+000000b4 3b0f2500        303 	ld.w	36[r27],r1
+000000b8 610a            304 	cmp	1,r1
+000000ba ba1d*           305 	bne	.L24
+                         306 --168:         {
+                         307 --169:             err = MM_FLS_CheckMemory((uint32_t)p_ISD->prm.HMAC.p_hmac,
+                         308 --line169
+                         309 ..lin.92e7e9b1..4c67e6c3.0_12::
+                         310 .LDWlin12:
+000000bc 3b374100        311 	ld.w	64[r27],r6
+000000c0 9b3f4900        312 	ld.bu	72[r27],r7
+000000c4 9a4f0d00        313 	ld.bu	12[r26],r9
+000000c8 230e0700        314 	movea	7,sp,r1
+000000cc 630f0100        315 	st.w	r1,0[sp]
+000000d0 0042            316 	mov	0,r8
+                         317 .L474:
+                         318 	jarl	_MM_FLS_CheckMemory,lp
+                         318 <EXPANSION BEGIN>
+                         318 jarl22 _MM_FLS_CheckMemory , lp 
+000000d2 80ff0000*       318 <EXPANSION END>
+000000d6 0ae8            319 	mov	r10,r29
+                         320 --170:                                      p_ISD->prm.HMAC.hmac_size_in_bytes,
+                         321 --171:                                      FLS_CHK_MEM_SOURCE,
+                         322 --172:                                      p_job->expansion_service,
+                         323 --173:                                      &result);
+                         324 --175:             if (err != ER_OK)
+                         325 --line175
+                         326 ..lin.92e7e9b1..4c67e6c3.0_13::
+                         327 .LDWlin13:
+000000d8 e0e9            328 	cmp	zero,r29
+000000da c205*           329 	be	.L26
+                         330 --176:             {
+                         331 --177:                 err = ER_PARAM;
+                         332 --line177
+                         333 ..lin.92e7e9b1..4c67e6c3.0_14::
+                         334 .LDWlin14:
+000000dc 01ea            335 	mov	1,r29
+                         336 --178:                 skip_flg = FLG_ON;
+000000de 01e2            337 	mov	1,r28
+000000e0 852d*           338 	br	.L42
+                         339 .L26:
+                         340 --179:             }
+                         341 --180:             else if (result != FLS_CHK_OK)
+                         342 --line180
+                         343 ..lin.92e7e9b1..4c67e6c3.0_15::
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         344 .LDWlin15:
+000000e2 a30f0700        345 	ld.bu	7[sp],r1
+000000e6 610a            346 	cmp	1,r1
+000000e8 c225*           347 	be	.L42
+                         348 --181:             {
+                         349 --182:                 err = (uint32_t)SERV_SRC_MEM_ERROR;
+                         350 --line182
+                         351 ..lin.92e7e9b1..4c67e6c3.0_16::
+                         352 .LDWlin16:
+000000ea 0cea            353 	mov	12,r29
+                         354 --183:                 skip_flg = FLG_ON;
+000000ec 01e2            355 	mov	1,r28
+000000ee 9525*           356 	br	.L42
+                         357 .L24:
+                         358 --184:             }
+                         359 --185:             else
+                         360 --186:             {
+                         361 --187:                 /* do nothing */
+                         362 --188:             }
+                         363 --189:         }
+                         364 --190:         else if (p_ISD->prm.HMAC.hmac_operation == HMAC_GENERATION)
+                         365 --line190
+                         366 ..lin.92e7e9b1..4c67e6c3.0_17::
+                         367 .LDWlin17:
+000000f0 3b0f2500        368 	ld.w	36[r27],r1
+000000f4 e009            369 	cmp	zero,r1
+000000f6 ba1d*           370 	bne	.L33
+                         371 --191:         {
+                         372 --192:             err = MM_FLS_CheckMemory((uint32_t)p_ISD->prm.HMAC.p_hmac,
+                         373 --line192
+                         374 ..lin.92e7e9b1..4c67e6c3.0_18::
+                         375 .LDWlin18:
+000000f8 3b374100        376 	ld.w	64[r27],r6
+000000fc e33f1300        377 	ld.hu	18[sp],r7
+00000100 9a4f0d00        378 	ld.bu	12[r26],r9
+00000104 230e0700        379 	movea	7,sp,r1
+00000108 630f0100        380 	st.w	r1,0[sp]
+0000010c 0142            381 	mov	1,r8
+                         382 .L476:
+                         383 	jarl	_MM_FLS_CheckMemory,lp
+                         383 <EXPANSION BEGIN>
+                         383 jarl22 _MM_FLS_CheckMemory , lp 
+0000010e 80ff0000*       383 <EXPANSION END>
+00000112 0ae8            384 	mov	r10,r29
+                         385 --193:                                      (uint32_t)hash_size,
+                         386 --194:                                      FLS_CHK_MEM_DESTINATION,
+                         387 --195:                                      p_job->expansion_service,
+                         388 --196:                                      &result);
+                         389 --198:             if (err != ER_OK)
+                         390 --line198
+                         391 ..lin.92e7e9b1..4c67e6c3.0_19::
+                         392 .LDWlin19:
+00000114 e0e9            393 	cmp	zero,r29
+00000116 c205*           394 	be	.L35
+                         395 --199:             {
+                         396 --200:                 err = ER_PARAM;
+                         397 --line200
+                         398 ..lin.92e7e9b1..4c67e6c3.0_20::
+                         399 .LDWlin20:
+00000118 01ea            400 	mov	1,r29
+                         401 --201:                 skip_flg = FLG_ON;
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+0000011a 01e2            402 	mov	1,r28
+0000011c a50d*           403 	br	.L42
+                         404 .L35:
+                         405 --202:             }
+                         406 --203:             else if (result != FLS_CHK_OK)
+                         407 --line203
+                         408 ..lin.92e7e9b1..4c67e6c3.0_21::
+                         409 .LDWlin21:
+0000011e a30f0700        410 	ld.bu	7[sp],r1
+00000122 610a            411 	cmp	1,r1
+00000124 e205*           412 	be	.L42
+                         413 --204:             {
+                         414 --205:                 err = (uint32_t)SERV_DEST_MEM_ERROR;
+                         415 --line205
+                         416 ..lin.92e7e9b1..4c67e6c3.0_22::
+                         417 .LDWlin22:
+00000126 0dea            418 	mov	13,r29
+                         419 --206:                 skip_flg = FLG_ON;
+00000128 01e2            420 	mov	1,r28
+0000012a b505*           421 	br	.L42
+                         422 .L33:
+                         423 --207:             }
+                         424 --208:             else
+                         425 --209:             {
+                         426 --210:                 /* do nothing */
+                         427 --211:             }
+                         428 --212:         }
+                         429 --213:         else
+                         430 --214:         {
+                         431 --215:             err = ER_PARAM;
+                         432 --line215
+                         433 ..lin.92e7e9b1..4c67e6c3.0_23::
+                         434 .LDWlin23:
+0000012c 01ea            435 	mov	1,r29
+                         436 --216:             skip_flg = FLG_ON;
+0000012e 01e2            437 	mov	1,r28
+                         438 .L42:
+                         439 --217:         }
+                         440 --218:     }
+                         441 --219:     else
+                         442 --220:     {
+                         443 --221:         /* do nothing */
+                         444 --222:     }
+                         445 --224:     if (skip_flg == FLG_OFF)
+00000130 e0e1            446 	cmp	zero,r28
+00000132 ca0d*           447 	bne	.L48
+                         448 --225:     {
+                         449 --226:         err = MH_KEY_GetHmacKey(p_job, p_ISD->prm.HMAC.key_id, (hmac_key_t **)&p_key);
+                         450 --line226
+                         451 ..lin.92e7e9b1..4c67e6c3.0_24::
+                         452 .LDWlin24:
+00000134 9b3f2100        453 	ld.bu	32[r27],r7
+00000138 1a30            454 	mov	r26,r6
+0000013a 23460c00        455 	movea	12,sp,r8
+                         456 .L478:
+                         457 	jarl	_MH_KEY_GetHmacKey,lp
+                         457 <EXPANSION BEGIN>
+                         457 jarl22 _MH_KEY_GetHmacKey , lp 
+0000013e 80ff0000*       457 <EXPANSION END>
+00000142 0ae8            458 	mov	r10,r29
+                         459 --227:         if (err != ER_OK)
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         460 --line227
+                         461 ..lin.92e7e9b1..4c67e6c3.0_25::
+                         462 .LDWlin25:
+00000144 e0e9            463 	cmp	zero,r29
+00000146 a205*           464 	be	.L48
+                         465 --228:         {
+                         466 --229:             skip_flg = FLG_ON;
+                         467 --line229
+                         468 ..lin.92e7e9b1..4c67e6c3.0_26::
+                         469 .LDWlin26:
+00000148 01e2            470 	mov	1,r28
+                         471 .L48:
+                         472 --230:         }
+                         473 --231:         else
+                         474 --232:         {
+                         475 --233:             /* do nothing */
+                         476 --234:         }
+                         477 --235:     }
+                         478 --236:     else
+                         479 --237:     {
+                         480 --238:         /* do nothing */
+                         481 --239:     }
+                         482 --241:     if (skip_flg == FLG_OFF)
+0000014a e0e1            483 	cmp	zero,r28
+0000014c ea15*           484 	bne	.L54
+                         485 --242:     {
+                         486 --243:         /* initialize the hmac */
+                         487 --244:         err = L_HMAC_Init(p_hash_ctx, (uint8_t*)((hmac_key_t *)p_key)->p_key, ((hmac_key_t *)p_key)->key_size_in_byte);
+                         488 --line244
+                         489 ..lin.92e7e9b1..4c67e6c3.0_27::
+                         490 .LDWlin27:
+0000014e 23f70d00        491 	ld.w	12[sp],ep
+00000152 1930            492 	mov	r25,r6
+00000154 043d            493 	sld.w	8[ep],r7
+00000156 7340            494 	sld.hu	6[ep],r8
+                         495 .L480:
+                         496 	jarl	_L_HMAC_Init,lp
+                         496 <EXPANSION BEGIN>
+                         496 jarl22 _L_HMAC_Init , lp 
+00000158 80ff0000*       496 <EXPANSION END>
+0000015c 0ae8            497 	mov	r10,r29
+                         498 --245:         if (ER_OK!= err)
+                         499 --line245
+                         500 ..lin.92e7e9b1..4c67e6c3.0_28::
+                         501 .LDWlin28:
+0000015e e0e9            502 	cmp	zero,r29
+00000160 b20d*           503 	be	.L51
+                         504 --246:         {
+                         505 --247:             (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
+                         506 --line247
+                         507 ..lin.92e7e9b1..4c67e6c3.0_29::
+                         508 .LDWlin29:
+00000162 9b472100        509 	ld.bu	32[r27],r8
+00000166 1a30            510 	mov	r26,r6
+00000168 0c3a            511 	mov	12,r7
+                         512 .L482:
+                         513 	jarl	_MH_KEY_FreeKeyCache,lp
+                         513 <EXPANSION BEGIN>
+                         513 jarl22 _MH_KEY_FreeKeyCache , lp 
+0000016a 80ff0000*       513 <EXPANSION END>
+                         514 --248:             err = (uint32_t)SERV_CRYPT_ERROR;
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         515 --line248
+                         516 ..lin.92e7e9b1..4c67e6c3.0_30::
+                         517 .LDWlin30:
+0000016e 20ee1a00        518 	movea	26,zero,r29
+                         519 --249:             skip_flg = FLG_ON;
+00000172 01e2            520 	mov	1,r28
+00000174 a505*           521 	br	.L54
+                         522 .L51:
+                         523 --250:         }
+                         524 --251:         else
+                         525 --252:         {
+                         526 --253:             err = ER_OK;
+                         527 --line253
+                         528 ..lin.92e7e9b1..4c67e6c3.0_31::
+                         529 .LDWlin31:
+00000176 00ea            530 	mov	0,r29
+                         531 .L54:
+                         532 --254:         }
+                         533 --255:     }
+                         534 --256:     else
+                         535 --257:     {
+                         536 --258:         /* do nothing */
+                         537 --259:     }
+                         538 --261:     return (err);
+00000178 1d50            539 	mov	r29,r10
+                         540 --	    .ef
+                         541 .LDW11:
+0000017a 23ff2d00        542 	ld.w	44[sp],lp
+0000017e 23ef1900        543 	ld.w	24[sp],r29
+00000182 23e71d00        544 	ld.w	28[sp],r28
+00000186 23df2100        545 	ld.w	32[sp],r27
+0000018a 23d72500        546 	ld.w	36[sp],r26
+0000018e 23cf2900        547 	ld.w	40[sp],r25
+00000192 031e3000        548 	addi	48,sp,sp
+                         549 .L484:
+                         550 	.jumptype return
+00000196 7f00            551 	jmp	[lp]
+                         552 --line253
+                         553 ..lin.92e7e9b1..4c67e6c3.0_32::
+                         554 	.type	_s_01_InitHmac,@function
+                         555 	.size	_s_01_InitHmac,.-_s_01_InitHmac
+                         556 	.type	_s_01_InitHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.,@function
+                         557 	.size	_s_01_InitHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.,.-_s_01_InitHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.
+                         558 	.align	2
+                         559 --_p_ISD	r27	local
+                         560 --_p_hash_ctx	r25	local
+                         561 --_hash_type	8[sp]	local
+                         562 --_p_key	12[sp]	local
+                         563 --_hash_size	18[sp]	local
+                         564 --_err	r29	local
+                         565 --_result	7[sp]	local
+                         566 --_skip_flg	r28	local
+                         567 --_msg_logical	20[sp]	local
+                         568 
+                         569 --_p_job	r26	param
+                         570 
+                         571 	.section ".bss","awb"
+                         572 .L294:
+                         573 	.type	.L294,@object
+                         574 	.size	.L294,0
+                         575 	.section ".ghcalltbl",""
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         576 	.align	4
+00000000 00000000*       577 .L469:	.word	.L468
+                         578 	.type	.L469,@object
+                         579 	.size	.L469,4
+00000004 00000000*       580 .L471:	.word	.L470
+                         581 	.type	.L471,@object
+                         582 	.size	.L471,4
+00000008 00000000*       583 .L473:	.word	.L472
+                         584 	.type	.L473,@object
+                         585 	.size	.L473,4
+0000000c 00000000*       586 .L475:	.word	.L474
+                         587 	.type	.L475,@object
+                         588 	.size	.L475,4
+00000010 00000000*       589 .L477:	.word	.L476
+                         590 	.type	.L477,@object
+                         591 	.size	.L477,4
+00000014 00000000*       592 .L479:	.word	.L478
+                         593 	.type	.L479,@object
+                         594 	.size	.L479,4
+00000018 00000000*       595 .L481:	.word	.L480
+                         596 	.type	.L481,@object
+                         597 	.size	.L481,4
+0000001c 00000000*       598 .L483:	.word	.L482
+                         599 	.type	.L483,@object
+                         600 	.size	.L483,4
+                         601 	.section ".ghrettbl",""
+                         602 	.align	4
+00000000 00000000*       603 .L485:	.word	.L484
+                         604 	.type	.L485,@object
+                         605 	.size	.L485,4
+                         606 	.data
+                         607 	.section ".icum_service.text","ax"
+                         608 
+                         609 --262: }
+                         610 
+                         611 --264: /*===========================================================================
+                         612 --265:   Finalize the hmac process
+                         613 --266:   [PRIVATE]
+                         614 --267:   ===========================================================================*/
+                         615 --269: /****************************************************************************************
+                         616 --270: * Function ID  : [ICUMFW_CD_S_01_HMAC_0003]:[ICUMFW_UD_S_01_HMAC_0003]
+                         617 --271: * Function name: s_01_FinalizeHmac()
+                         618 --272: * Description  : # Performs HMAC termination processing, stores or collates HMAC values,
+                         619 --273: *                  and releases the context.
+                         620 --274: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                         621 --275: * Return Value : ER_OK
+                         622 --276: *                SERV_CRYPT_ERROR
+                         623 --277: ****************************************************************************************/
+                         624 --278: static uint32_t s_01_FinalizeHmac(icum_job_t *p_job)
+                         625 	.align	2
+                         626 	.align	2
+                         627 	.align	2
+                         628 ..gh.f.a.2.e.1:
+                         629 	.type	..gh.f.a.2.e.1,@object
+                         630 	.size	..gh.f.a.2.e.1,0
+                         631 	.global	_s_01_FinalizeHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.
+                         632 _s_01_FinalizeHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.:
+                         633 _s_01_FinalizeHmac:
+00000198 031e9cff        634 	addi	-100,sp,sp
+0000019c 63ff6100        635 	st.w	lp,96[sp]
+000001a0 63df5100        636 	st.w	r27,80[sp]
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+000001a4 63c75d00        637 	st.w	r24,92[sp]
+000001a8 63cf5900        638 	st.w	r25,88[sp]
+000001ac 63d75500        639 	st.w	r26,84[sp]
+000001b0 63e74d00        640 	st.w	r28,76[sp]
+000001b4 63ef4900        641 	st.w	r29,72[sp]
+000001b8 06d8            642 	mov	r6,r27
+                         643 --	    .bf
+                         644 .LDW21:
+                         645 --279: {
+                         646 --280:     r_icumif_isd_t     *p_ISD;
+                         647 --281:     uint8_t             p_hmac[64];    /* HMAC MAX Size 64 */
+                         648 --282:     hash_ctx_t         *p_hash_ctx;
+                         649 --283:     uint8_t             *hmac_gen;
+                         650 --284:     uint32_t            hmac_size;
+                         651 --285:     uint32_t            err;
+                         652 --286:     uint8_t             cmp_result;
+                         653 --287:     remap_ptr_manip_t       hmac_logical;
+                         654 --290:     /* retrieve the service handler */
+                         655 --291:     p_ISD = p_job->p_ISD;
+000001ba 3be70100        656 	ld.w	0[r27],r28
+                         657 --293:     /* indicate service completion */
+                         658 --294:     err = ER_OK;
+000001be 00ea            659 	mov	0,r29
+                         660 --296:     /* no more data to process! */
+                         661 --297:     p_job->prm.job_hmac.nb_bytes = 0;
+000001c0 7b071100        662 	st.w	zero,16[r27]
+                         663 --299:     hmac_size = p_ISD->prm.HMAC.hmac_size_in_bytes;
+000001c4 9c0f4900        664 	ld.bu	72[r28],r1
+000001c8 630f0100        665 	st.w	r1,0[sp]
+                         666 --301:     p_hash_ctx = (hash_ctx_t *)p_job->prm.job_hmac.p_hash_ctx;
+000001cc 3bd71900        667 	ld.w	24[r27],r26
+                         668 --303:     /* Get Remap(Convert Physical address -> Logical Address) */
+                         669 --304:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_ISD->prm.HMAC.p_hmac, &hmac_logical.val);
+000001d0 3c374100        670 	ld.w	64[r28],r6
+000001d4 233e0400        671 	movea	4,sp,r7
+                         672 .L685:
+                         673 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                         673 <EXPANSION BEGIN>
+                         673 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+000001d8 80ff0000*       673 <EXPANSION END>
+                         674 --306:     if (p_ISD->prm.HMAC.hmac_operation == HMAC_VERIFICATION)
+                         675 --line306
+                         676 ..lin.92e7e9b1..f8f9dda1.0_33::
+                         677 .LDWlin33:
+000001dc 3c0f2500        678 	ld.w	36[r28],r1
+000001e0 610a            679 	cmp	1,r1
+000001e2 9a2d*           680 	bne	.L488
+                         681 --307:     {
+                         682 --308:         /* terminate: get the hmac value */
+                         683 --309:         err = L_HMAC_Finish(p_hash_ctx, p_hmac, &(hmac_size));
+                         684 --line309
+                         685 ..lin.92e7e9b1..f8f9dda1.0_34::
+                         686 .LDWlin34:
+000001e4 1a30            687 	mov	r26,r6
+000001e6 233e0800        688 	movea	8,sp,r7
+000001ea 23460000        689 	movea	0,sp,r8
+                         690 .L687:
+                         691 	jarl	_L_HMAC_Finish,lp
+                         691 <EXPANSION BEGIN>
+                         691 jarl22 _L_HMAC_Finish , lp 
+000001ee 80ff0000*       691 <EXPANSION END>
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+000001f2 0ae8            692 	mov	r10,r29
+                         693 --311:         if (ER_OK != err)
+                         694 --line311
+                         695 ..lin.92e7e9b1..f8f9dda1.0_35::
+                         696 .LDWlin35:
+000001f4 e0e9            697 	cmp	zero,r29
+000001f6 c205*           698 	be	.L490
+                         699 --312:         {
+                         700 --313:             err = (uint32_t)SERV_CRYPT_ERROR;
+                         701 --line313
+                         702 ..lin.92e7e9b1..f8f9dda1.0_36::
+                         703 .LDWlin36:
+000001f8 20ee1a00        704 	movea	26,zero,r29
+000001fc d52d*           705 	br	.L499
+                         706 .L490:
+                         707 --314:         }
+                         708 --315:         else if (p_ISD->prm.HMAC.hmac_size_in_bytes != hmac_size)
+                         709 --line315
+                         710 ..lin.92e7e9b1..f8f9dda1.0_37::
+                         711 .LDWlin37:
+000001fe 230f0100        712 	ld.w	0[sp],r1
+00000202 9c174900        713 	ld.bu	72[r28],r2
+00000206 e111            714 	cmp	r1,r2
+00000208 b205*           715 	be	.L493
+                         716 --316:         {
+                         717 --317:             err = ER_PARAM;
+                         718 --line317
+                         719 ..lin.92e7e9b1..f8f9dda1.0_38::
+                         720 .LDWlin38:
+0000020a 01ea            721 	mov	1,r29
+0000020c d525*           722 	br	.L499
+                         723 .L493:
+                         724 --318:         }
+                         725 --319:         else
+                         726 --320:         {
+                         727 --321:             hmac_gen = hmac_logical.p_ptr;
+                         728 --line321
+                         729 ..lin.92e7e9b1..f8f9dda1.0_39::
+                         730 .LDWlin39:
+0000020e 23cf0500        731 	ld.w	4[sp],r25
+                         732 --323:             cmp_result = L_Toolbox_MemCmp(hmac_gen, p_hmac, (int16_t)p_ISD->prm.HMAC.hmac_size_in_bytes);
+00000212 9c474900        733 	ld.bu	72[r28],r8
+00000216 1930            734 	mov	r25,r6
+00000218 233e0800        735 	movea	8,sp,r7
+                         736 .L689:
+                         737 	jarl	_L_Toolbox_MemCmp,lp
+                         737 <EXPANSION BEGIN>
+                         737 jarl22 _L_Toolbox_MemCmp , lp 
+0000021c 80ff0000*       737 <EXPANSION END>
+00000220 0ac0            738 	mov	r10,r24
+                         739 --324:             /* Results are only 0 or 1 */
+                         740 --325:             if (cmp_result == (uint8_t)1)
+                         741 --line325
+                         742 ..lin.92e7e9b1..f8f9dda1.0_40::
+                         743 .LDWlin40:
+00000222 61c2            744 	cmp	1,r24
+00000224 da05*           745 	bne	.L496
+                         746 --326:             {
+                         747 --327:                 p_ISD->prm.HMAC.verification_result = VERIFICATION_FAIL;
+                         748 --line327
+                         749 ..lin.92e7e9b1..f8f9dda1.0_41::
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         750 .LDWlin41:
+00000226 010a            751 	mov	1,r1
+00000228 7c0f4d00        752 	st.w	r1,76[r28]
+0000022c d515*           753 	br	.L499
+                         754 .L496:
+                         755 --328:             }
+                         756 --329:             else
+                         757 --330:             {
+                         758 --331:                 p_ISD->prm.HMAC.verification_result = VERIFICATION_PASS;
+                         759 --line331
+                         760 ..lin.92e7e9b1..f8f9dda1.0_42::
+                         761 .LDWlin42:
+0000022e 7c074d00        762 	st.w	zero,76[r28]
+00000232 a515*           763 	br	.L499
+                         764 .L488:
+                         765 --332:             }
+                         766 --333:         }
+                         767 --334:     }
+                         768 --335:     else
+                         769 --336:     {
+                         770 --337:         /* terminate: get the hmac value */
+                         771 --338:         err = L_HMAC_Finish(p_hash_ctx, hmac_logical.p_ptr, &(hmac_size));
+                         772 --line338
+                         773 ..lin.92e7e9b1..f8f9dda1.0_43::
+                         774 .LDWlin43:
+00000234 233f0500        775 	ld.w	4[sp],r7
+00000238 1a30            776 	mov	r26,r6
+0000023a 23460000        777 	movea	0,sp,r8
+                         778 .L691:
+                         779 	jarl	_L_HMAC_Finish,lp
+                         779 <EXPANSION BEGIN>
+                         779 jarl22 _L_HMAC_Finish , lp 
+0000023e 80ff0000*       779 <EXPANSION END>
+00000242 0ae8            780 	mov	r10,r29
+                         781 --340:         if (ER_OK != err)
+                         782 --line340
+                         783 ..lin.92e7e9b1..f8f9dda1.0_44::
+                         784 .LDWlin44:
+00000244 e0e9            785 	cmp	zero,r29
+00000246 c205*           786 	be	.L500
+                         787 --341:         {
+                         788 --342:             err = (uint32_t)SERV_CRYPT_ERROR;
+                         789 --line342
+                         790 ..lin.92e7e9b1..f8f9dda1.0_45::
+                         791 .LDWlin45:
+00000248 20ee1a00        792 	movea	26,zero,r29
+0000024c d505*           793 	br	.L499
+                         794 .L500:
+                         795 --343:         }
+                         796 --344:         else
+                         797 --345:         {
+                         798 --346:             p_ISD->prm.HMAC.hmac_size_in_bytes = (uint8_t)hmac_size;
+                         799 --line346
+                         800 ..lin.92e7e9b1..f8f9dda1.0_46::
+                         801 .LDWlin46:
+0000024e 230f0100        802 	ld.w	0[sp],r1
+00000252 5c0f4800        803 	st.b	r1,72[r28]
+                         804 .L499:
+                         805 --347:         }
+                         806 --348:     }
+                         807 --350:     return (err);
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+00000256 1d50            808 	mov	r29,r10
+                         809 --	    .ef
+                         810 .LDW31:
+00000258 23ff6100        811 	ld.w	96[sp],lp
+0000025c 23ef4900        812 	ld.w	72[sp],r29
+00000260 23e74d00        813 	ld.w	76[sp],r28
+00000264 23df5100        814 	ld.w	80[sp],r27
+00000268 23d75500        815 	ld.w	84[sp],r26
+0000026c 23cf5900        816 	ld.w	88[sp],r25
+00000270 23c75d00        817 	ld.w	92[sp],r24
+00000274 031e6400        818 	addi	100,sp,sp
+                         819 .L693:
+                         820 	.jumptype return
+00000278 7f00            821 	jmp	[lp]
+                         822 --line346
+                         823 ..lin.92e7e9b1..f8f9dda1.0_47::
+                         824 	.type	_s_01_FinalizeHmac,@function
+                         825 	.size	_s_01_FinalizeHmac,.-_s_01_FinalizeHmac
+                         826 	.type	_s_01_FinalizeHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.,@function
+                         827 	.size	_s_01_FinalizeHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.,.-_s_01_FinalizeHmac..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac.
+                         828 	.align	2
+                         829 --_p_ISD	r28	local
+                         830 --_p_hmac	8[sp]	local
+                         831 --_p_hash_ctx	r26	local
+                         832 --_hmac_gen	r25	local
+                         833 --_hmac_size	0[sp]	local
+                         834 --_err	r29	local
+                         835 --_cmp_result	r24	local
+                         836 --_hmac_logical	4[sp]	local
+                         837 
+                         838 --_p_job	r27	param
+                         839 
+                         840 	.section ".bss","awb"
+                         841 .L610:
+                         842 	.type	.L610,@object
+                         843 	.size	.L610,0
+                         844 	.section ".ghcalltbl",""
+00000020 00000000*       845 .L686:	.word	.L685
+                         846 	.type	.L686,@object
+                         847 	.size	.L686,4
+00000024 00000000*       848 .L688:	.word	.L687
+                         849 	.type	.L688,@object
+                         850 	.size	.L688,4
+00000028 00000000*       851 .L690:	.word	.L689
+                         852 	.type	.L690,@object
+                         853 	.size	.L690,4
+0000002c 00000000*       854 .L692:	.word	.L691
+                         855 	.type	.L692,@object
+                         856 	.size	.L692,4
+                         857 	.section ".ghrettbl",""
+00000004 00000000*       858 .L694:	.word	.L693
+                         859 	.type	.L694,@object
+                         860 	.size	.L694,4
+                         861 	.data
+                         862 	.section ".icum_service.text","ax"
+                         863 
+                         864 --351: }
+                         865 
+                         866 --354: /****************************************************************************************
+                         867 --355: * Function ID  : [ICUMFW_CD_S_01_HMAC_0001]:[ICUMFW_UD_S_01_HMAC_0001]
+                         868 --356: * Function name: S_01_ProcessHmac()
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         869 --357: * Description  : # A service that generates or collates HMAC values.
+                         870 --358: * Arguments    : (IN-OUT)  p_job : Pointer to Job_parameter
+                         871 --359: * Return Value : None
+                         872 --360: ****************************************************************************************/
+                         873 --361: void S_01_ProcessHmac(icum_job_t *p_job)
+                         874 	.align	2
+                         875 	.align	2
+                         876 	.align	2
+                         877 ..gh.f.a.2.e.2:
+                         878 	.type	..gh.f.a.2.e.2,@object
+                         879 	.size	..gh.f.a.2.e.2,0
+                         880 	.global	_S_01_ProcessHmac
+                         881 _S_01_ProcessHmac:
+0000027a 031ee0ff        882 	addi	-32,sp,sp
+0000027e 63ff1d00        883 	st.w	lp,28[sp]
+00000282 63ef0500        884 	st.w	r29,4[sp]
+00000286 63c71900        885 	st.w	r24,24[sp]
+0000028a 63cf1500        886 	st.w	r25,20[sp]
+0000028e 63d71100        887 	st.w	r26,16[sp]
+00000292 63df0d00        888 	st.w	r27,12[sp]
+00000296 63e70900        889 	st.w	r28,8[sp]
+0000029a 06e8            890 	mov	r6,r29
+                         891 --	    .bf
+                         892 .LDW41:
+                         893 --362: {
+                         894 --363:     r_icumif_isd_t  *p_ISD;
+                         895 --364:     hash_ctx_t      *p_hash_ctx;
+                         896 --366:     uint32_t err;
+                         897 --367:     uint32_t remaining_byte_size;
+                         898 --368:     uint32_t job_slice_size;
+                         899 --369:     uint32_t skip_flg = FLG_OFF;
+0000029c 00d2            900 	mov	0,r26
+                         901 --371:     /* retrieve the service handler */
+                         902 --372:     p_ISD = p_job->p_ISD;
+0000029e 3de70100        903 	ld.w	0[r29],r28
+                         904 --374:     /* service just triggered? */
+                         905 --375:     if ((p_ISD->service_result == SERV_REQUEST) || (p_ISD->service_result == SERV_PENDING))
+000002a2 3c0f0d00        906 	ld.w	12[r28],r1
+000002a6 a106f0ff        907 	xori	65520,r1,zero
+000002aa e205*           908 	be	.L698
+000002ac 3c0f0d00        909 	ld.w	12[r28],r1
+000002b0 a106f2ff        910 	xori	65522,r1,zero
+000002b4 fa2d*           911 	bne	.L709
+                         912 .L698:
+                         913 --376:     {
+                         914 --377:         /* get a Hash execution context */
+                         915 --378:         err = ML_CTX_Get(CTX_TYPE_HASH, (uint32_t **)&p_hash_ctx);
+                         916 --line378
+                         917 ..lin.92e7e9b1..c6bbb12e.0_48::
+                         918 .LDWlin48:
+000002b6 233e0000        919 	movea	0,sp,r7
+000002ba 0332            920 	mov	3,r6
+                         921 .L1056:
+                         922 	jarl	_ML_CTX_Get,lp
+                         922 <EXPANSION BEGIN>
+                         922 jarl22 _ML_CTX_Get , lp 
+000002bc 80ff0000*       922 <EXPANSION END>
+000002c0 0ad8            923 	mov	r10,r27
+                         924 --379:         if (err == ER_OK)
+                         925 --line379
+                         926 ..lin.92e7e9b1..c6bbb12e.0_49::
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                         927 .LDWlin49:
+000002c2 e0d9            928 	cmp	zero,r27
+000002c4 9a25*           929 	bne	.L700
+                         930 --380:         {
+                         931 --381:             p_job->prm.job_hmac.p_hash_ctx = (uint32_t *)p_hash_ctx;
+                         932 --line381
+                         933 ..lin.92e7e9b1..c6bbb12e.0_50::
+                         934 .LDWlin50:
+000002c6 230f0100        935 	ld.w	0[sp],r1
+000002ca 7d0f1900        936 	st.w	r1,24[r29]
+                         937 --383:             err = s_01_InitHmac(p_job);
+000002ce 1d30            938 	mov	r29,r6
+                         939 .L1058:
+                         940 	jarl	_s_01_InitHmac,lp
+                         940 <EXPANSION BEGIN>
+                         940 jarl22 _s_01_InitHmac , lp 
+000002d0 bfff30fd*       940 <EXPANSION END>
+000002d4 0ad8            941 	mov	r10,r27
+                         942 --384:             /* test for errors after the initialization phase */
+                         943 --385:             if (err != ER_OK)
+                         944 --line385
+                         945 ..lin.92e7e9b1..c6bbb12e.0_51::
+                         946 .LDWlin51:
+000002d6 e0d9            947 	cmp	zero,r27
+000002d8 c20d*           948 	be	.L704
+                         949 --386:             {
+                         950 --387:                 (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
+                         951 --line387
+                         952 ..lin.92e7e9b1..c6bbb12e.0_52::
+                         953 .LDWlin52:
+000002da 233f0100        954 	ld.w	0[sp],r7
+000002de 0332            955 	mov	3,r6
+                         956 .L1060:
+                         957 	jarl	_ML_CTX_Free,lp
+                         957 <EXPANSION BEGIN>
+                         957 jarl22 _ML_CTX_Free , lp 
+000002e0 80ff0000*       957 <EXPANSION END>
+                         958 --388:                 (void)s_01_ConvertErr(err, (r_icumif_service_result_t *)&p_ISD->service_result);
+                         959 --line388
+                         960 ..lin.92e7e9b1..c6bbb12e.0_53::
+                         961 .LDWlin53:
+000002e4 1b30            962 	mov	r27,r6
+000002e6 1c3e0c00        963 	addi	12,r28,r7
+                         964 .L1062:
+                         965 	jarl	_s_01_ConvertErr,lp
+                         965 <EXPANSION BEGIN>
+                         965 jarl22 _s_01_ConvertErr , lp 
+000002ea 80ff0000*       965 <EXPANSION END>
+                         966 --389:                 skip_flg = FLG_ON;
+                         967 --line389
+                         968 ..lin.92e7e9b1..c6bbb12e.0_54::
+                         969 .LDWlin54:
+000002ee 01d2            970 	mov	1,r26
+                         971 .L704:
+                         972 --390:             }
+                         973 --391:             else
+                         974 --392:             {
+                         975 --393:                 /* do nothing */
+                         976 --394:             }
+                         977 --395:             if (skip_flg == FLG_OFF)
+000002f0 e0d1            978 	cmp	zero,r26
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+000002f2 8a15*           979 	bne	.L709
+                         980 --396:             {
+                         981 --397:                 p_ISD->service_result = SERV_IN_PROCESS;
+                         982 --line397
+                         983 ..lin.92e7e9b1..c6bbb12e.0_55::
+                         984 .LDWlin55:
+000002f4 800effff        985 	ori	65535,zero,r1
+000002f8 7c0f0d00        986 	st.w	r1,12[r28]
+                         987 --398:                 /* get the job slice configured */
+                         988 --399:                 p_job->prm.job_hmac.nb_bytes_per_round = p_ISD->prm.HMAC.job_slice;
+000002fc fc0f4b00        989 	ld.hu	74[r28],r1
+00000300 7d0f1c00        990 	st.h	r1,28[r29]
+00000304 f505*           991 	br	.L709
+                         992 .L700:
+                         993 --400:             }
+                         994 --401:             else
+                         995 --402:             {
+                         996 --403:                 /* do nothing */
+                         997 --404:             }
+                         998 --405:         }
+                         999 --406:         else 
+                        1000 --407:         {
+                        1001 --408:             (void)s_01_ConvertErr(err, (r_icumif_service_result_t *)&p_ISD->service_result);
+                        1002 --line408
+                        1003 ..lin.92e7e9b1..c6bbb12e.0_56::
+                        1004 .LDWlin56:
+00000306 1b30           1005 	mov	r27,r6
+00000308 1c3e0c00       1006 	addi	12,r28,r7
+                        1007 .L1064:
+                        1008 	jarl	_s_01_ConvertErr,lp
+                        1008 <EXPANSION BEGIN>
+                        1008 jarl22 _s_01_ConvertErr , lp 
+0000030c 80ff0000*      1008 <EXPANSION END>
+                        1009 --409:             skip_flg = FLG_ON;
+                        1010 --line409
+                        1011 ..lin.92e7e9b1..c6bbb12e.0_57::
+                        1012 .LDWlin57:
+00000310 01d2           1013 	mov	1,r26
+                        1014 .L709:
+                        1015 --410:         }
+                        1016 --411:     }
+                        1017 --412:     else
+                        1018 --413:     {
+                        1019 --414:         /* do nothing */
+                        1020 --415:     }
+                        1021 --417:     if (skip_flg == FLG_OFF)
+00000312 e0d1           1022 	cmp	zero,r26
+00000314 8a6d*          1023 	bne	.L695
+                        1024 --418:     {
+                        1025 --419:         p_hash_ctx = (hash_ctx_t *)p_job->prm.job_hmac.p_hash_ctx;
+                        1026 --line419
+                        1027 ..lin.92e7e9b1..c6bbb12e.0_58::
+                        1028 .LDWlin58:
+00000316 3d0f1900       1029 	ld.w	24[r29],r1
+0000031a 630f0100       1030 	st.w	r1,0[sp]
+                        1031 --421:         /* retrieves the (remaining) number of remaining bytes to process */
+                        1032 --422:         /* and the number of bytes to process per job round */
+                        1033 --423:         remaining_byte_size = p_job->prm.job_hmac.nb_bytes;
+0000031e 3dc71100       1034 	ld.w	16[r29],r24
+                        1035 --424:         job_slice_size = p_job->prm.job_hmac.nb_bytes_per_round;
+00000322 fdcf1d00       1036 	ld.hu	28[r29],r25
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                        1037 --426:         if ((job_slice_size == 0uL) || (remaining_byte_size <= job_slice_size))
+00000326 e0c9           1038 	cmp	zero,r25
+00000328 b205*          1039 	be	.L713
+0000032a f9c1           1040 	cmp	r25,r24
+0000032c cb35*          1041 	bh	.L712
+                        1042 .L713:
+                        1043 --427:         {
+                        1044 --428:             if (remaining_byte_size > 0uL)
+                        1045 --line428
+                        1046 ..lin.92e7e9b1..c6bbb12e.0_59::
+                        1047 .LDWlin59:
+0000032e e0c1           1048 	cmp	zero,r24
+00000330 b31d*          1049 	bnh	.L720
+                        1050 --429:             {
+                        1051 --430:                 /* process  all at once */
+                        1052 --431:                 err = L_HMAC_Update(p_hash_ctx, (uint8_t*)p_job->prm.job_hmac.p_source, remaining_byte_size);
+                        1053 --line431
+                        1054 ..lin.92e7e9b1..c6bbb12e.0_60::
+                        1055 .LDWlin60:
+00000332 23370100       1056 	ld.w	0[sp],r6
+00000336 3d3f1500       1057 	ld.w	20[r29],r7
+0000033a 1840           1058 	mov	r24,r8
+                        1059 .L1066:
+                        1060 	jarl	_L_HMAC_Update,lp
+                        1060 <EXPANSION BEGIN>
+                        1060 jarl22 _L_HMAC_Update , lp 
+0000033c 80ff0000*      1060 <EXPANSION END>
+00000340 0ad8           1061 	mov	r10,r27
+                        1062 --432:                 if (ER_OK != err)
+                        1063 --line432
+                        1064 ..lin.92e7e9b1..c6bbb12e.0_61::
+                        1065 .LDWlin61:
+00000342 e0d9           1066 	cmp	zero,r27
+00000344 9215*          1067 	be	.L720
+                        1068 --433:                 {
+                        1069 --434:                     /* error on hash processing */
+                        1070 --435:                     p_ISD->service_result = SERV_CRYPT_ERROR;
+                        1071 --line435
+                        1072 ..lin.92e7e9b1..c6bbb12e.0_62::
+                        1073 .LDWlin62:
+00000346 200e1a00       1074 	movea	26,zero,r1
+0000034a 7c0f0d00       1075 	st.w	r1,12[r28]
+                        1076 --436:                     (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
+0000034e 9c472100       1077 	ld.bu	32[r28],r8
+00000352 1d30           1078 	mov	r29,r6
+00000354 0c3a           1079 	mov	12,r7
+                        1080 .L1068:
+                        1081 	jarl	_MH_KEY_FreeKeyCache,lp
+                        1081 <EXPANSION BEGIN>
+                        1081 jarl22 _MH_KEY_FreeKeyCache , lp 
+00000356 80ff0000*      1081 <EXPANSION END>
+                        1082 --437:                     (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
+                        1083 --line437
+                        1084 ..lin.92e7e9b1..c6bbb12e.0_63::
+                        1085 .LDWlin63:
+0000035a 233f0100       1086 	ld.w	0[sp],r7
+0000035e 0332           1087 	mov	3,r6
+                        1088 .L1070:
+                        1089 	jarl	_ML_CTX_Free,lp
+                        1089 <EXPANSION BEGIN>
+                        1089 jarl22 _ML_CTX_Free , lp 
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+00000360 80ff0000*      1089 <EXPANSION END>
+                        1090 --438:                     skip_flg = FLG_ON;
+                        1091 --line438
+                        1092 ..lin.92e7e9b1..c6bbb12e.0_64::
+                        1093 .LDWlin64:
+00000364 01d2           1094 	mov	1,r26
+                        1095 .L720:
+                        1096 --439:                 }
+                        1097 --440:                 else
+                        1098 --441:                 {
+                        1099 --442:                     /* do nothing */
+                        1100 --443:                 }
+                        1101 --444:             }
+                        1102 --445:             else
+                        1103 --446:             {
+                        1104 --447:                 /* do nothing */
+                        1105 --448:             }
+                        1106 --450:             if (skip_flg == FLG_OFF)
+00000366 e0d1           1107 	cmp	zero,r26
+00000368 ea3d*          1108 	bne	.L695
+                        1109 --451:             {
+                        1110 --452:                 /* final step */
+                        1111 --453:                 err = s_01_FinalizeHmac(p_job);
+                        1112 --line453
+                        1113 ..lin.92e7e9b1..c6bbb12e.0_65::
+                        1114 .LDWlin65:
+0000036a 1d30           1115 	mov	r29,r6
+                        1116 .L1072:
+                        1117 	jarl	_s_01_FinalizeHmac,lp
+                        1117 <EXPANSION BEGIN>
+                        1117 jarl22 _s_01_FinalizeHmac , lp 
+0000036c bfff2cfe*      1117 <EXPANSION END>
+00000370 0ad8           1118 	mov	r10,r27
+                        1119 --455:                 (void)s_01_ConvertErr(err, (r_icumif_service_result_t *)&p_ISD->service_result);
+                        1120 --line455
+                        1121 ..lin.92e7e9b1..c6bbb12e.0_66::
+                        1122 .LDWlin66:
+00000372 1b30           1123 	mov	r27,r6
+00000374 1c3e0c00       1124 	addi	12,r28,r7
+                        1125 .L1074:
+                        1126 	jarl	_s_01_ConvertErr,lp
+                        1126 <EXPANSION BEGIN>
+                        1126 jarl22 _s_01_ConvertErr , lp 
+00000378 80ff0000*      1126 <EXPANSION END>
+                        1127 --457:                 (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
+                        1128 --line457
+                        1129 ..lin.92e7e9b1..c6bbb12e.0_67::
+                        1130 .LDWlin67:
+0000037c 9c472100       1131 	ld.bu	32[r28],r8
+00000380 1d30           1132 	mov	r29,r6
+00000382 0c3a           1133 	mov	12,r7
+                        1134 .L1076:
+                        1135 	jarl	_MH_KEY_FreeKeyCache,lp
+                        1135 <EXPANSION BEGIN>
+                        1135 jarl22 _MH_KEY_FreeKeyCache , lp 
+00000384 80ff0000*      1135 <EXPANSION END>
+                        1136 --459:                 /* free the hash context */
+                        1137 --460:                 (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
+                        1138 --line460
+                        1139 ..lin.92e7e9b1..c6bbb12e.0_68::
+                        1140 .LDWlin68:
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+00000388 233f0100       1141 	ld.w	0[sp],r7
+0000038c 0332           1142 	mov	3,r6
+                        1143 .L1078:
+                        1144 	jarl	_ML_CTX_Free,lp
+                        1144 <EXPANSION BEGIN>
+                        1144 jarl22 _ML_CTX_Free , lp 
+0000038e 80ff0000*      1144 <EXPANSION END>
+00000392 952d*          1145 	br	.L695
+                        1146 .L712:
+                        1147 --461:             }
+                        1148 --462:             else
+                        1149 --463:             {
+                        1150 --464:                 /* do nothing */
+                        1151 --465:             }
+                        1152 --466:         }
+                        1153 --467:         else
+                        1154 --468:         {
+                        1155 --469:             /* next job round */
+                        1156 --470:             err = L_HMAC_Update(p_hash_ctx, (uint8_t*)p_job->prm.job_hmac.p_source, job_slice_size);
+                        1157 --line470
+                        1158 ..lin.92e7e9b1..c6bbb12e.0_69::
+                        1159 .LDWlin69:
+00000394 23370100       1160 	ld.w	0[sp],r6
+00000398 3d3f1500       1161 	ld.w	20[r29],r7
+0000039c 1940           1162 	mov	r25,r8
+                        1163 .L1080:
+                        1164 	jarl	_L_HMAC_Update,lp
+                        1164 <EXPANSION BEGIN>
+                        1164 jarl22 _L_HMAC_Update , lp 
+0000039e 80ff0000*      1164 <EXPANSION END>
+000003a2 0ad8           1165 	mov	r10,r27
+                        1166 --471:             if (ER_OK != err)
+                        1167 --line471
+                        1168 ..lin.92e7e9b1..c6bbb12e.0_70::
+                        1169 .LDWlin70:
+000003a4 e0d9           1170 	cmp	zero,r27
+000003a6 9215*          1171 	be	.L725
+                        1172 --472:             {
+                        1173 --473:                 /* error on hash processing */
+                        1174 --474:                 p_ISD->service_result = SERV_CRYPT_ERROR;
+                        1175 --line474
+                        1176 ..lin.92e7e9b1..c6bbb12e.0_71::
+                        1177 .LDWlin71:
+000003a8 200e1a00       1178 	movea	26,zero,r1
+000003ac 7c0f0d00       1179 	st.w	r1,12[r28]
+                        1180 --475:                 (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
+000003b0 9c472100       1181 	ld.bu	32[r28],r8
+000003b4 1d30           1182 	mov	r29,r6
+000003b6 0c3a           1183 	mov	12,r7
+                        1184 .L1082:
+                        1185 	jarl	_MH_KEY_FreeKeyCache,lp
+                        1185 <EXPANSION BEGIN>
+                        1185 jarl22 _MH_KEY_FreeKeyCache , lp 
+000003b8 80ff0000*      1185 <EXPANSION END>
+                        1186 --476:                 (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
+                        1187 --line476
+                        1188 ..lin.92e7e9b1..c6bbb12e.0_72::
+                        1189 .LDWlin72:
+000003bc 233f0100       1190 	ld.w	0[sp],r7
+000003c0 0332           1191 	mov	3,r6
+                        1192 .L1084:
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                        1193 	jarl	_ML_CTX_Free,lp
+                        1193 <EXPANSION BEGIN>
+                        1193 jarl22 _ML_CTX_Free , lp 
+000003c2 80ff0000*      1193 <EXPANSION END>
+000003c6 f50d*          1194 	br	.L695
+                        1195 .L725:
+                        1196 --477:             }
+                        1197 --478:             else
+                        1198 --479:             {
+                        1199 --480:                 /* update pointers and number of bytes remaining */
+                        1200 --481:                 p_job->prm.job_hmac.nb_bytes -= job_slice_size;
+                        1201 --line481
+                        1202 ..lin.92e7e9b1..c6bbb12e.0_73::
+                        1203 .LDWlin73:
+000003c8 3d0f1100       1204 	ld.w	16[r29],r1
+000003cc b909           1205 	sub	r25,r1
+000003ce 7d0f1100       1206 	st.w	r1,16[r29]
+                        1207 --482:                 p_job->prm.job_hmac.p_source += job_slice_size;
+000003d2 3d0f1500       1208 	ld.w	20[r29],r1
+000003d6 d909           1209 	add	r25,r1
+000003d8 7d0f1500       1210 	st.w	r1,20[r29]
+                        1211 --483:                 p_ISD->service_result = SERV_IN_PROCESS;
+000003dc 800effff       1212 	ori	65535,zero,r1
+000003e0 7c0f0d00       1213 	st.w	r1,12[r28]
+                        1214 .L695:
+                        1215 --484:             }
+                        1216 --485:         }
+                        1217 --486:     }
+                        1218 --487:     else
+                        1219 --488:     {
+                        1220 --489:         /* do nothing */
+                        1221 --490:     }
+                        1222 --491: }
+                        1223 --	    .ef
+                        1224 .LDW51:
+000003e4 23ff1d00       1225 	ld.w	28[sp],lp
+000003e8 23ef0500       1226 	ld.w	4[sp],r29
+000003ec 23e70900       1227 	ld.w	8[sp],r28
+000003f0 23df0d00       1228 	ld.w	12[sp],r27
+000003f4 23d71100       1229 	ld.w	16[sp],r26
+000003f8 23cf1500       1230 	ld.w	20[sp],r25
+000003fc 23c71900       1231 	ld.w	24[sp],r24
+00000400 031e2000       1232 	addi	32,sp,sp
+                        1233 .L1086:
+                        1234 	.jumptype return
+00000404 7f00           1235 	jmp	[lp]
+                        1236 --line481
+                        1237 ..lin.92e7e9b1..c6bbb12e.0_74::
+                        1238 	.type	_S_01_ProcessHmac,@function
+                        1239 	.size	_S_01_ProcessHmac,.-_S_01_ProcessHmac
+                        1240 	.align	2
+                        1241 --_p_ISD	r28	local
+                        1242 --_p_hash_ctx	0[sp]	local
+                        1243 --_err	r27	local
+                        1244 --_remaining_byte_size	r24	local
+                        1245 --_job_slice_size	r25	local
+                        1246 --_skip_flg	r26	local
+                        1247 
+                        1248 --_p_job	r29	param
+                        1249 
+                        1250 	.section ".bss","awb"
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                        1251 .L918:
+                        1252 	.type	.L918,@object
+                        1253 	.size	.L918,0
+                        1254 	.section ".ghcalltbl",""
+00000030 00000000*      1255 .L1057:	.word	.L1056
+                        1256 	.type	.L1057,@object
+                        1257 	.size	.L1057,4
+00000034 00000000*      1258 .L1059:	.word	.L1058
+                        1259 	.type	.L1059,@object
+                        1260 	.size	.L1059,4
+00000038 00000000*      1261 .L1061:	.word	.L1060
+                        1262 	.type	.L1061,@object
+                        1263 	.size	.L1061,4
+0000003c 00000000*      1264 .L1063:	.word	.L1062
+                        1265 	.type	.L1063,@object
+                        1266 	.size	.L1063,4
+00000040 00000000*      1267 .L1065:	.word	.L1064
+                        1268 	.type	.L1065,@object
+                        1269 	.size	.L1065,4
+00000044 00000000*      1270 .L1067:	.word	.L1066
+                        1271 	.type	.L1067,@object
+                        1272 	.size	.L1067,4
+00000048 00000000*      1273 .L1069:	.word	.L1068
+                        1274 	.type	.L1069,@object
+                        1275 	.size	.L1069,4
+0000004c 00000000*      1276 .L1071:	.word	.L1070
+                        1277 	.type	.L1071,@object
+                        1278 	.size	.L1071,4
+00000050 00000000*      1279 .L1073:	.word	.L1072
+                        1280 	.type	.L1073,@object
+                        1281 	.size	.L1073,4
+00000054 00000000*      1282 .L1075:	.word	.L1074
+                        1283 	.type	.L1075,@object
+                        1284 	.size	.L1075,4
+00000058 00000000*      1285 .L1077:	.word	.L1076
+                        1286 	.type	.L1077,@object
+                        1287 	.size	.L1077,4
+0000005c 00000000*      1288 .L1079:	.word	.L1078
+                        1289 	.type	.L1079,@object
+                        1290 	.size	.L1079,4
+00000060 00000000*      1291 .L1081:	.word	.L1080
+                        1292 	.type	.L1081,@object
+                        1293 	.size	.L1081,4
+00000064 00000000*      1294 .L1083:	.word	.L1082
+                        1295 	.type	.L1083,@object
+                        1296 	.size	.L1083,4
+00000068 00000000*      1297 .L1085:	.word	.L1084
+                        1298 	.type	.L1085,@object
+                        1299 	.size	.L1085,4
+                        1300 	.section ".ghrettbl",""
+00000008 00000000*      1301 .L1087:	.word	.L1086
+                        1302 	.type	.L1087,@object
+                        1303 	.size	.L1087,4
+                        1304 	.data
+                        1305 	.section ".icum_service.text","ax"
+                        1306 
+                        1307 	.align	2
+                        1308 
+                        1309 	.data
+                        1310 	.ghsnote version,30
+                        1311 	.ghsnote tools,3
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ruo1.si
+                        1312 	.ghsnote options,656
+                        1313 	.section ".icum_service.text","ax"
+                        1314 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_01.5Cicum_s_01_hmac...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40665..0::
+                        1315 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

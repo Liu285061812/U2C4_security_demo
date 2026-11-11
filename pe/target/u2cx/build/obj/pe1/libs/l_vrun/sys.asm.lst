@@ -1,0 +1,70 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vsc1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\common -I..\..\pe\target\u2cx\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\l_vrun\sys.asm.dbo -source=..\..\pe\target\u2cx\src\l_vrun\sys.asm.850 --gh_oname=..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun\sys.asm.o --gh_md_append=..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun\sys.asm.dtmp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun\gh_0000vsc1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\l_vrun\sys.asm.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000vsc1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000vsc1.si
+Source File: ..\..\pe\target\u2cx\src\l_vrun\sys.asm.850
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           0 #line 1 "..\\..\\pe\\target\\u2cx\\src\\l_vrun\\sys.asm.850"
+                           1 -- 
+                           2 -- 
+                           3 -- 
+                           4 -- 
+                           5 -- 
+                           6 --
+                           7 
+                           8 
+                           9 
+                          10 
+                          11 
+                          12 
+                          13 
+                          14 
+                          15 
+                          16 
+                          17 
+                          18 
+                          19 
+                          20 
+                          21 
+                          22 
+                          23 
+                          24 
+                          25  
+                          26 
+                          27 -- process a big NOP loop to measure the CPU speed
+                          28 
+                          29     .text
+                          30     .align  4
+                          31     .globl  _BENCH_CPU_SPEED
+                          32     .type   _BENCH_CPU_SPEED,@function
+                          33     
+                          34 _BENCH_CPU_SPEED:
+                          35 -- R6:Number of states 
+00000000 0000             36     nop                             -- 1
+00000002 0000             37     nop                             -- 1
+00000004 0000             38     nop                             -- 1
+00000006 0000             39     nop                             -- 1
+00000008 5632             40     add     -10,r6                  -- 1
+0000000a 0000             41     nop                             -- 1
+0000000c 0000             42     nop                             -- 1
+0000000e c205*            43     bz      .BENCH_CPU_SPEED_END    -- 1
+00000010 0000             44     nop                             -- 1
+00000012 f5f5*            45     br      _BENCH_CPU_SPEED        -- 1 
+00000014 0000             46     nop
+                          47 .BENCH_CPU_SPEED_END:
+00000016 7f00             48     jmp     [lp]
+00000018 0000             49    NOP
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vsc1.si
+                          50 
+                          51  

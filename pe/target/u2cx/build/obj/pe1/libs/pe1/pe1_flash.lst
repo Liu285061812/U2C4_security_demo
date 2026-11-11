@@ -1,0 +1,507 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash.dbo -source=pe1_flash.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000pm81.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+Source File: pe1_flash.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\src\l_vrun\l_vrun_cmd
+                           4 --		-I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\target\u2cx\src\driver\comm_drv
+                           6 --		-I..\..\pe\target\u2cx\src\shared\src
+                           7 --		-I..\..\pe\target\u2cx\src\l_vrun
+                           8 --		-I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include
+                           9 --		-I..\..\pe\generic
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          12 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          13 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          14 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          15 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          16 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          17 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
+                          21 --		-D_TARG_=U2C4 -filetype.c
+                          22 --		..\..\pe\generic\src\pe1\src\pe1_flash.c -o
+                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_flash.o
+                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_flash.c
+                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          26 --Compile Date:  Wed Nov 11 11:21:42 2026
+                          27 --Host OS:       Win64
+                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          29 --Release:       Compiler v2023.5.4
+                          30 --Revision Date: Wed Sep 06 02:44:56 2023
+                          31 --Release Date:  Wed Sep 06 02:00:00 2023
+                          32 -- ecom  -g -w
+                          33 
+                          34 --1: /******************************************************************************/
+                          35 --2: /* Component Name   Testing the ICU-M                                         */
+                          36 --3: /******************************************************************************/
+                          37 --4: /* Product      : ICU-M Firmware                                              */
+                          38 --5: /******************************************************************************/
+                          39 --6: /*******************************************************************************
+                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          41 --8: *                                                                               
+                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          43 --10: *                                                                               
+                          44 --11: * These instructions, statements, and programs are the confidential information 
+                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
+                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          49 --16: *******************************************************************************/
+                          50 --18: // ********************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                          51 --19: // Headers
+                          52 --20: // ********************************************************************************
+                          53 --22: #include <stdio.h>
+                          54 --23: #include <string.h>
+                          55 --25: #undef NULL
+                          56 --26: #include "r_icumif_api.h"
+                          57 --27: #include "r_icumif_pub.h"
+                          58 --29: #include "pe1.h"
+                          59 --30: #include "pe1.int.h"
+                          60 --31: #include "shared.h"
+                          61 --32: #include "pe_reg.h"
+                          62 --33: #include "vrun.api.h"
+                          63 --35: #include "renesas_types.h"
+                          64 --37: // ********************************************************************************
+                          65 --38: // Link to external references
+                          66 --39: // ********************************************************************************
+                          67 --40: #define BIT_PE_FLMDFPLOCK_FACI0             (0x00000001UL)
+                          68 --41: #define BIT_PE_FLMDFPLOCK_MASK              (0x00000003UL)
+                          69 --43: #define TEST_FPLOCK_KEEP_LOCK               (1UL)
+                          70 --45: // ********************************************************************************
+                          71 --46: // Local constants
+                          72 --47: // ********************************************************************************
+                          73 --48: uint32_t g_fplock_next_action;
+                          74 --49: uint32_t g_fplock_pre_status;
+                          75 --51: // ********************************************************************************
+                          76 --52: // Test functions
+                          77 --53: // ********************************************************************************
+                          78 --55: /*===========================================================================
+                          79 --56:   Initializing the FCU
+                          80 --57:   [PUBLIC]
+                          81 --58:   ===========================================================================*/
+                          82 --59: #define SET_FLMDFPLOCK(value)    { \
+                          83 --60:     int i; \
+                          84 --61:     REG_PE_FLMDFPLOCK = (value & BIT_PE_FLMDFPLOCK_MASK); \
+                          85 --62:     for(i = 10000; (i > 0) && (REG_PE_FLMDFPLOCK != (value & BIT_PE_FLMDFPLOCK_MASK)); i--); \
+                          86 --63: }
+                          87 --65: void flash_callback(void)
+                          88 	.text
+                          89 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_flash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF48..0::
+                          90 	.align	2
+                          91 	.align	2
+                          92 ..gh.f.a.2.e.0:
+                          93 	.type	..gh.f.a.2.e.0,@object
+                          94 	.size	..gh.f.a.2.e.0,0
+                          95 	.global	_flash_callback
+                          96 _flash_callback:
+                          97 --	    .bf
+                          98 .LDW01:
+                          99 --66: {
+                         100 --	    .bs
+                         101 .LDW11:
+                         102 --67:     if(g_fplock_next_action == TEST_FPLOCK_KEEP_LOCK)
+00000000 2b0600000000*   103 	mov	_g_fplock_next_action,r11
+00000006 2b0f0100        104 	ld.w	0[r11],r1
+0000000a 610a            105 	cmp	1,r1
+0000000c a25d*           106 	be	.L6
+                         107 --68:     {
+                         108 --69:         /* IT error case */
+                         109 --70:         /* do nothing */
+                         110 --71:     }
+                         111 --72:     else
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                         112 --73:     {
+                         113 --	    .bs
+                         114 .LDW21:
+                         115 --	    .bs
+                         116 .LDW31:
+                         117 --74:         if(0 != (REG_PE_FLMDFPLOCK & BIT_PE_FLMDFPLOCK_FACI0))
+                         118 --line74
+                         119 ..lin.72c1184e..27b7d1be.0_1::
+                         120 .LDWlin1:
+0000000e 2b060c00a0ff    121 	mov	-6291444,r11
+00000014 2b0f0100        122 	ld.w	0[r11],r1
+00000018 c10e0100        123 	andi	1,r1,r1
+0000001c e009            124 	cmp	zero,r1
+0000001e 8235*           125 	be	.L7
+                         126 --75:         {
+                         127 --	    .bs
+                         128 .LDW41:
+                         129 --76:             g_fplock_pre_status = REG_PE_FLMDFPLOCK;
+                         130 --line76
+                         131 ..lin.72c1184e..27b7d1be.0_2::
+                         132 .LDWlin2:
+00000020 2b060c00a0ff    133 	mov	-6291444,r11
+00000026 2b0f0100        134 	ld.w	0[r11],r1
+0000002a 2c0600000000*   135 	mov	_g_fplock_pre_status,r12
+00000030 6c0f0100        136 	st.w	r1,0[r12]
+                         137 --77:             SET_FLMDFPLOCK(g_fplock_pre_status & ~BIT_PE_FLMDFPLOCK_FACI0);
+                         138 --	    .bs
+                         139 .LDW51:
+                         140 --line77
+                         141 ..lin.72c1184e..27b7d1be.0_3::
+                         142 .LDWlin3:
+00000034 2b0600000000*   143 	mov	_g_fplock_pre_status,r11
+0000003a 2b0f0100        144 	ld.w	0[r11],r1
+0000003e 1e12            145 	mov	-2,r2
+00000040 4209            146 	and	r2,r1
+00000042 c10e0300        147 	andi	3,r1,r1
+00000046 2c060c00a0ff    148 	mov	-6291444,r12
+0000004c 6c0f0100        149 	st.w	r1,0[r12]
+                         150 --line77
+                         151 ..lin.72c1184e..27b7d1be.0_4::
+                         152 .LDWlin4:
+00000050 200e1027        153 	movea	10000,zero,r1
+00000054 a505*           154 	br	.L12
+                         155 .L10:
+                         156 --line77
+                         157 ..lin.72c1184e..27b7d1be.0_5::
+                         158 .LDWlin5:
+00000056 5f0a            159 	add	-1,r1
+                         160 .L12:
+00000058 e009            161 	cmp	zero,r1
+0000005a 9715*           162 	ble	.L9
+0000005c 2b0600000000*   163 	mov	_g_fplock_pre_status,r11
+00000062 2b170100        164 	ld.w	0[r11],r2
+00000066 1e9a            165 	mov	-2,r19
+00000068 5311            166 	and	r19,r2
+0000006a c2160300        167 	andi	3,r2,r2
+0000006e 2c060c00a0ff    168 	mov	-6291444,r12
+00000074 2c9f0100        169 	ld.w	0[r12],r19
+00000078 e299            170 	cmp	r2,r19
+0000007a eaed*           171 	bne	.L10
+                         172 .L9:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                         173 --	    .es
+                         174 .LDW61:
+                         175 --	    .es
+                         176 .LDW71:
+                         177 --line77
+                         178 ..lin.72c1184e..27b7d1be.0_6::
+                         179 .LDWlin6:
+0000007c a525*           180 	br	.L6
+                         181 .L7:
+                         182 --78:         }
+                         183 --79:         else
+                         184 --80:         {
+                         185 --	    .bs
+                         186 .LDW81:
+                         187 --81:             SET_FLMDFPLOCK(g_fplock_pre_status);
+                         188 --	    .bs
+                         189 .LDW91:
+                         190 --line81
+                         191 ..lin.72c1184e..27b7d1be.0_7::
+                         192 .LDWlin7:
+0000007e 2b0600000000*   193 	mov	_g_fplock_pre_status,r11
+00000084 2b0f0100        194 	ld.w	0[r11],r1
+00000088 c10e0300        195 	andi	3,r1,r1
+0000008c 2c060c00a0ff    196 	mov	-6291444,r12
+00000092 6c0f0100        197 	st.w	r1,0[r12]
+                         198 --line81
+                         199 ..lin.72c1184e..27b7d1be.0_8::
+                         200 .LDWlin8:
+00000096 200e1027        201 	movea	10000,zero,r1
+0000009a a505*           202 	br	.L18
+                         203 .L16:
+                         204 --line81
+                         205 ..lin.72c1184e..27b7d1be.0_9::
+                         206 .LDWlin9:
+0000009c 5f0a            207 	add	-1,r1
+                         208 .L18:
+0000009e e009            209 	cmp	zero,r1
+000000a0 f70d*           210 	ble	.L15
+000000a2 2b0600000000*   211 	mov	_g_fplock_pre_status,r11
+000000a8 2b170100        212 	ld.w	0[r11],r2
+000000ac c2160300        213 	andi	3,r2,r2
+000000b0 2c060c00a0ff    214 	mov	-6291444,r12
+000000b6 2c9f0100        215 	ld.w	0[r12],r19
+000000ba e299            216 	cmp	r2,r19
+000000bc 8af5*           217 	bne	.L16
+                         218 .L15:
+                         219 --	    .es
+                         220 .LDW02:
+                         221 --	    .es
+                         222 .LDW12:
+                         223 --line81
+                         224 ..lin.72c1184e..27b7d1be.0_10::
+                         225 .LDWlin10:
+000000be 0000            226 	nop
+                         227 --	    .es
+                         228 .LDW22:
+                         229 --	    .es
+                         230 .LDW32:
+                         231 .L6:
+                         232 --	    .es
+                         233 .LDW42:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                         234 --82:         }
+                         235 --83:     }
+                         236 --84:     return;
+000000c0 0000            237 	nop
+                         238 --	    .ef
+                         239 .LDW52:
+                         240 .L141:
+                         241 	.jumptype return
+000000c2 7f00            242 	jmp	[lp]
+                         243 --line81
+                         244 ..lin.72c1184e..27b7d1be.0_11::
+                         245 	.type	_flash_callback,@function
+                         246 	.size	_flash_callback,.-_flash_callback
+                         247 	.align	2
+                         248 --_i	r1	local
+                         249 --_i	r1	local
+                         250 
+                         251 	.section ".ghrettbl",""
+                         252 	.align	4
+00000000 00000000*       253 .L142:	.word	.L141
+                         254 	.type	.L142,@object
+                         255 	.size	.L142,4
+                         256 	.data
+                         257 	.text
+                         258 
+                         259 --85: }
+                         260 
+                         261 --87: void pe_flash_set_flash_callbackfunc(void)
+                         262 	.align	2
+                         263 	.align	2
+                         264 	.align	2
+                         265 ..gh.f.a.2.e.1:
+                         266 	.type	..gh.f.a.2.e.1,@object
+                         267 	.size	..gh.f.a.2.e.1,0
+                         268 	.global	_pe_flash_set_flash_callbackfunc
+                         269 _pe_flash_set_flash_callbackfunc:
+000000c4 541a            270 	add	-12,sp
+000000c6 63ff0900        271 	st.w	lp,8[sp]
+000000ca 63ef0500        272 	st.w	r29,4[sp]
+                         273 --	    .bf
+                         274 .LDW62:
+                         275 --88: {
+                         276 --89:     int32_t errno;
+                         277 --90:     R_ICUMIF_CB_REGIST_t cb_regist;
+                         278 --92:     cb_regist.p_func_addr = &flash_callback;
+000000ce 210600000000*   279 	mov	_flash_callback,r1
+000000d4 630f0100        280 	st.w	r1,0[sp]
+                         281 --93:     errno = R_ICUMIF_SetFlashCallBackFunc(&cb_regist);
+                         282 --line93
+                         283 ..lin.72c1184e..bcf26556.0_12::
+                         284 .LDWlin12:
+000000d8 23360000        285 	movea	0,sp,r6
+                         286 .L220:
+                         287 	jarl	_R_ICUMIF_SetFlashCallBackFunc,lp
+                         287 <EXPANSION BEGIN>
+                         287 jarl22 _R_ICUMIF_SetFlashCallBackFunc , lp 
+000000dc 80ff0000*       287 <EXPANSION END>
+000000e0 0ae8            288 	mov	r10,r29
+                         289 --94:     if (errno != 0)
+                         290 --line94
+                         291 ..lin.72c1184e..bcf26556.0_13::
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                         292 .LDWlin13:
+000000e2 e0e9            293 	cmp	zero,r29
+000000e4 a215*           294 	be	.L145
+                         295 --95:     {
+                         296 --96:         printf( "CallbackFunc Setting Failed. errno=%d.\n" ,errno);
+                         297 --line96
+                         298 ..lin.72c1184e..bcf26556.0_14::
+                         299 .LDWlin14:
+000000e6 1d40            300 	mov	r29,r8
+000000e8 260600000000*   301 	mov	_vrun_printf_buff,r6
+000000ee 270600000000*   302 	mov	.L206,r7
+                         303 .L222:
+                         304 	jarl	_sprintf,lp
+                         304 <EXPANSION BEGIN>
+                         304 jarl22 _sprintf , lp 
+000000f4 80ff0000*       304 <EXPANSION END>
+                         305 --line96
+                         306 ..lin.72c1184e..bcf26556.0_15::
+                         307 .LDWlin15:
+000000f8 260600000000*   308 	mov	_vrun_printf_buff,r6
+                         309 .L224:
+                         310 	jarl	_vrun_iobuff_print_txt,lp
+                         310 <EXPANSION BEGIN>
+                         310 jarl22 _vrun_iobuff_print_txt , lp 
+000000fe 80ff0000*       310 <EXPANSION END>
+                         311 .L226:
+                         312 --line96
+                         313 ..lin.72c1184e..bcf26556.0_16::
+                         314 .LDWlin16:
+                         315 	jarl	_vrun_console_put,lp
+                         315 <EXPANSION BEGIN>
+                         315 jarl22 _vrun_console_put , lp 
+00000102 80ff0000*       315 <EXPANSION END>
+                         316 --line96
+                         317 ..lin.72c1184e..bcf26556.0_17::
+                         318 .LDWlin17:
+00000106 0000            319 	nop
+                         320 .L145:
+                         321 --97:     }
+                         322 --98:     g_fplock_next_action = 0UL;
+00000108 2b0600000000*   323 	mov	_g_fplock_next_action,r11
+0000010e 6b070100        324 	st.w	zero,0[r11]
+                         325 --99: }
+                         326 --	    .ef
+                         327 .LDW72:
+                         328 --line99
+                         329 ..lin.72c1184e..bcf26556.0_18::
+                         330 .LDWlin18:
+00000112 23ff0900        331 	ld.w	8[sp],lp
+00000116 23ef0500        332 	ld.w	4[sp],r29
+0000011a 4c1a            333 	add	12,sp
+                         334 .L228:
+                         335 	.jumptype return
+0000011c 7f00            336 	jmp	[lp]
+                         337 --line99
+                         338 ..lin.72c1184e..bcf26556.0_19::
+                         339 	.type	_pe_flash_set_flash_callbackfunc,@function
+                         340 	.size	_pe_flash_set_flash_callbackfunc,.-_pe_flash_set_flash_callbackfunc
+                         341 	.align	2
+                         342 --_errno	r29	local
+                         343 --_cb_regist	0[sp]	local
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+                         344 
+                         345 	.section ".rodata","a"
+                         346 .L206:--	"CallbackFunc Setting Failed. errno=%d.\n"
+00000000 43616c6c        347 	.byte	67,97,108,108
+00000004 6261636b        348 	.byte	98,97,99,107
+00000008 46756e63        349 	.byte	70,117,110,99
+0000000c 20536574        350 	.byte	32,83,101,116
+00000010 74696e67        351 	.byte	116,105,110,103
+00000014 20466169        352 	.byte	32,70,97,105
+00000018 6c65642e        353 	.byte	108,101,100,46
+0000001c 20657272        354 	.byte	32,101,114,114
+00000020 6e6f3d25        355 	.byte	110,111,61,37
+00000024 642e0a00        356 	.byte	100,46,10,0
+                         357 	.type	.L206,@object
+                         358 	.size	.L206,40
+                         359 	.section ".ghcalltbl",""
+                         360 	.align	4
+00000000 00000000*       361 .L221:	.word	.L220
+                         362 	.type	.L221,@object
+                         363 	.size	.L221,4
+00000004 00000000*       364 .L223:	.word	.L222
+                         365 	.type	.L223,@object
+                         366 	.size	.L223,4
+00000008 00000000*       367 .L225:	.word	.L224
+                         368 	.type	.L225,@object
+                         369 	.size	.L225,4
+0000000c 00000000*       370 .L227:	.word	.L226
+                         371 	.type	.L227,@object
+                         372 	.size	.L227,4
+                         373 	.section ".ghrettbl",""
+00000004 00000000*       374 .L229:	.word	.L228
+                         375 	.type	.L229,@object
+                         376 	.size	.L229,4
+                         377 	.data
+                         378 	.text
+                         379 
+                         380 
+                         381 --100: void pe_flash_initialize(void)
+                         382 	.align	2
+                         383 	.align	2
+                         384 	.align	2
+                         385 ..gh.f.a.2.e.2:
+                         386 	.type	..gh.f.a.2.e.2,@object
+                         387 	.size	..gh.f.a.2.e.2,0
+                         388 	.global	_pe_flash_initialize
+                         389 _pe_flash_initialize:
+0000011e 5c1a            390 	add	-4,sp
+00000120 63ff0100        391 	st.w	lp,0[sp]
+                         392 --	    .bf
+                         393 .LDW82:
+                         394 --101: {
+                         395 --102:     pe_flash_set_flash_callbackfunc();
+                         396 .L269:
+                         397 	jarl	_pe_flash_set_flash_callbackfunc,lp
+                         397 <EXPANSION BEGIN>
+                         397 jarl22 _pe_flash_set_flash_callbackfunc , lp 
+00000124 bfffa0ff*       397 <EXPANSION END>
+                         398 --103:     g_fplock_pre_status = REG_PE_FLMDFPLOCK;
+                         399 --line103
+                         400 ..lin.72c1184e..ea4e5b37.0_20::
+                         401 .LDWlin20:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pm81.si
+00000128 2b060c00a0ff    402 	mov	-6291444,r11
+0000012e 2b0f0100        403 	ld.w	0[r11],r1
+00000132 2c0600000000*   404 	mov	_g_fplock_pre_status,r12
+00000138 6c0f0100        405 	st.w	r1,0[r12]
+                         406 --104: }
+                         407 --	    .ef
+                         408 .LDW92:
+                         409 --line104
+                         410 ..lin.72c1184e..ea4e5b37.0_21::
+                         411 .LDWlin21:
+0000013c 23ff0100        412 	ld.w	0[sp],lp
+00000140 441a            413 	add	4,sp
+                         414 .L271:
+                         415 	.jumptype return
+00000142 7f00            416 	jmp	[lp]
+                         417 --line104
+                         418 ..lin.72c1184e..ea4e5b37.0_22::
+                         419 	.type	_pe_flash_initialize,@function
+                         420 	.size	_pe_flash_initialize,.-_pe_flash_initialize
+                         421 	.align	2
+                         422 
+                         423 	.section ".ghcalltbl",""
+00000010 00000000*       424 .L270:	.word	.L269
+                         425 	.type	.L270,@object
+                         426 	.size	.L270,4
+                         427 	.section ".ghrettbl",""
+00000008 00000000*       428 .L272:	.word	.L271
+                         429 	.type	.L272,@object
+                         430 	.size	.L272,4
+                         431 	.data
+                         432 	.text
+                         433 
+                         434 	.align	2
+                         435 --_vrun_printf_buff	_vrun_printf_buff	import
+                         436 
+                         437 	.data
+                         438 	.section ".bss","awb"
+                         439 	.align	4
+                         440 	.align	4
+                         441 	.global	_g_fplock_next_action
+00000000 00000000        442 _g_fplock_next_action:	.space	4
+                         443 	.type	_g_fplock_next_action,@object
+                         444 	.size	_g_fplock_next_action,4
+                         445 	.align	4
+                         446 	.global	_g_fplock_pre_status
+00000004 00000000        447 _g_fplock_pre_status:	.space	4
+                         448 	.type	_g_fplock_pre_status,@object
+                         449 	.size	_g_fplock_pre_status,4
+                         450 	.data
+                         451 	.ghsnote version,30
+                         452 	.ghsnote tools,3
+                         453 	.ghsnote options,656
+                         454 	.text
+                         455 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_flash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF48..0::
+                         456 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

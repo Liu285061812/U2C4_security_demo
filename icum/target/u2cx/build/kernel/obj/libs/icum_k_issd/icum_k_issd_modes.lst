@@ -1,0 +1,1889 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\generic\include\device\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_modes.dbo -source=icum_k_issd_modes.c -comp -o ..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\gh_0000t1c1.o -list=..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_modes.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+Source File: icum_k_issd_modes.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\generic\include\device\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\kernel\
+                           5 --		-I..\..\icum\sal\include\library\
+                           6 --		-I..\..\icum\generic\include\middle\
+                           7 --		-I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\
+                           8 --		-I..\..\icum\generic\include\
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\device\
+                          11 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          13 --		-I..\..\icum\target\u2cx\include\driver
+                          14 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          17 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          18 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          19 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          20 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          21 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          22 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          23 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          24 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          25 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          26 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          27 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          28 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          29 --		.text=.icum_kernel.text -section .rodata=.icum_kernel.rodata
+                          30 --		-section .bss=.icum_kernel.bss -section .data=.icum_kernel.data
+                          31 --		-filetype.c
+                          32 --		..\..\icum\generic\src\kernel\k_issd\icum_k_issd_modes.c -o
+                          33 --		..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_modes.o
+                          34 --Source File:   ..\..\icum\generic\src\kernel\k_issd\icum_k_issd_modes.c
+                          35 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          36 --Compile Date:  Wed Nov 11 14:08:27 2026
+                          37 --Host OS:       Win64
+                          38 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          39 --Release:       Compiler v2023.5.4
+                          40 --Revision Date: Wed Sep 06 02:44:56 2023
+                          41 --Release Date:  Wed Sep 06 02:00:00 2023
+                          42 -- ecom  -g -w
+                          43 	.section ".icum_kernel.text","ax"
+                          44 
+                          45 --1: /******************************************************************************/
+                          46 --2: /* Component Name   ISSD (ICU-M Start-up & Service Dispatcher)                */
+                          47 --3: /******************************************************************************/
+                          48 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          49 --5: /******************************************************************************/
+                          50 --6: /***********************************************************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                          51 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          52 --8: * 
+                          53 --9: * DISCLAIMER
+                          54 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          55 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          56 --12: * applicable laws, including copyright laws.
+                          57 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          58 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          59 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          60 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          61 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          62 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          63 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          64 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          65 --21: * following link:
+                          66 --22: * www.renesas.com/disclaimer
+                          67 --23: *
+                          68 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          69 --25: ***********************************************************************************************************************/
+                          70 --27: /* Header files                     */
+                          71 --28: #include "renesas_types.h"
+                          72 --29: #include "r_icumif_api.h"
+                          73 --30: #include "icum_common_pub.h"
+                          74 --31: #include "icum_d_misc_pub.h"
+                          75 --32: #include "icum_d_comm_pub.h"
+                          76 --33: #include "icum_d_int_pub.h"
+                          77 --34: #include "icum_mh_init_pub.h"
+                          78 --35: #include "icum_mh_sysinfo_pub.h"
+                          79 --36: #include "icum_mh_key_pub.h"
+                          80 --37: #include MM_FLASH_PUBLIC_H
+                          81 --38: #include "icum_k_issd_pub.h"
+                          82 --39: #include "icum_d_info_pub.h"
+                          83 --40: #include "icum_ml_cfg_pub.h"
+                          84 --41: #include "icum_k_issd.h"
+                          85 --43: /***************************************************************************************
+                          86 --44:  Macro definitions
+                          87 --45: ***************************************************************************************/
+                          88 --47: /***************************************************************************************
+                          89 --48: * Global Variable                                                                      *
+                          90 --49: ***************************************************************************************/
+                          91 --51: static uint32_t g_current_icum_mode;
+                          92 --52: static uint32_t g_next_icum_mode;
+                          93 --53: static uint32_t g_background_verify_state;
+                          94 --55: /**********************************************************************************
+                          95 --56: * Function
+                          96 --57: ***********************************************************************************/
+                          97 --58: static void k_ISSD_Init(void);
+                          98 --60: /***************************************************************************************
+                          99 --61: * Function ID  : [ICUMFW_CD_K_ISSD_0035]:[ICUMFW_UD_K_ISSD_0035]
+                         100 --62: * Function name: k_ISSD_InitRunMode
+                         101 --63: * Description  : Initialize execution mode
+                         102 --64: * Arguments    : none
+                         103 --65: * Return Value : none
+                         104 --66: ***************************************************************************************/
+                         105 --67: void k_ISSD_InitRunMode(void)
+                         106 	.align	2
+                         107 	.align	2
+                         108 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065C..0::
+                         109 	.align	2
+                         110 	.align	2
+                         111 ..gh.f.a.2.e.0:
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         112 	.type	..gh.f.a.2.e.0,@object
+                         113 	.size	..gh.f.a.2.e.0,0
+                         114 	.global	_k_ISSD_InitRunMode
+                         115 _k_ISSD_InitRunMode:
+00000000 541a            116 	add	-12,sp
+00000002 63ff0900        117 	st.w	lp,8[sp]
+00000006 63e70500        118 	st.w	r28,4[sp]
+0000000a 63ef0100        119 	st.w	r29,0[sp]
+0000000e 3d0600000000*   120 	mov	.L46,r29
+00000014 3c0600000000*   121 	mov	_g_current_icum_mode,r28
+                         122 --	    .bf
+                         123 .LDW01:
+                         124 --68: {
+                         125 --69:     /* initial execution mode */
+                         126 --70:     g_current_icum_mode = ISSD_MODE_START;
+                         127 --line70
+                         128 ..lin.e59a6454..1148b8ee.0_1::
+                         129 .LDWlin1:
+0000001a 010a            130 	mov	1,r1
+0000001c 7c0f0100        131 	st.w	r1,0[r28]
+                         132 --71:     /* initial next execution mode*/
+                         133 --72:     g_next_icum_mode    = g_current_icum_mode;
+00000020 3c0f0100        134 	ld.w	0[r28],r1
+00000024 2b0600000000*   135 	mov	_g_next_icum_mode,r11
+0000002a 6b0f0100        136 	st.w	r1,0[r11]
+                         137 --73:     /* initial background verify status */
+                         138 --74:     g_background_verify_state = BACKGROUND_VERIFY_OFF;
+                         139 --line74
+                         140 ..lin.e59a6454..1148b8ee.0_2::
+                         141 .LDWlin2:
+0000002e 2b0600000000*   142 	mov	_g_background_verify_state,r11
+00000034 6b070100        143 	st.w	zero,0[r11]
+                         144 --75:     /* Initialization of the job queue */
+                         145 --76:     k_ISSD_InitJobQueue();
+                         146 .L70:
+                         147 --line76
+                         148 ..lin.e59a6454..1148b8ee.0_3::
+                         149 .LDWlin3:
+                         150 	jarl	_k_ISSD_InitJobQueue,lp
+                         150 <EXPANSION BEGIN>
+                         150 jarl22 _k_ISSD_InitJobQueue , lp 
+00000038 80ff0000*       150 <EXPANSION END>
+                         151 --77: }
+                         152 --	    .ef
+                         153 .LDW11:
+                         154 --line77
+                         155 ..lin.e59a6454..1148b8ee.0_4::
+                         156 .LDWlin4:
+0000003c 23ff0900        157 	ld.w	8[sp],lp
+00000040 23ef0100        158 	ld.w	0[sp],r29
+00000044 23e70500        159 	ld.w	4[sp],r28
+00000048 4c1a            160 	add	12,sp
+                         161 .L72:
+                         162 	.jumptype return
+0000004a 7f00            163 	jmp	[lp]
+                         164 --line77
+                         165 ..lin.e59a6454..1148b8ee.0_5::
+                         166 	.type	_k_ISSD_InitRunMode,@function
+                         167 	.size	_k_ISSD_InitRunMode,.-_k_ISSD_InitRunMode
+                         168 	.align	2
+                         169 
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         170 	.section ".icum_kernel.data","aw"
+                         171 .L46:
+                         172 	.type	.L46,@object
+                         173 	.size	.L46,0
+                         174 	.section ".icum_kernel.bss","awb"
+                         175 	.align	4
+                         176 	.global	_g_current_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.
+                         177 _g_current_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.:
+00000000 00000000        178 _g_current_icum_mode:	.space	4
+                         179 	.type	_g_current_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,@object
+                         180 	.size	_g_current_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,4
+                         181 	.type	_g_current_icum_mode,@object
+                         182 	.size	_g_current_icum_mode,4
+                         183 	.global	_g_next_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.
+                         184 _g_next_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.:
+00000004 00000000        185 _g_next_icum_mode:	.space	4
+                         186 	.type	_g_next_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,@object
+                         187 	.size	_g_next_icum_mode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,4
+                         188 	.type	_g_next_icum_mode,@object
+                         189 	.size	_g_next_icum_mode,4
+                         190 	.global	_g_background_verify_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.
+                         191 _g_background_verify_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.:
+00000008 00000000        192 _g_background_verify_state:	.space	4
+                         193 	.type	_g_background_verify_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,@object
+                         194 	.size	_g_background_verify_state..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,4
+                         195 	.type	_g_background_verify_state,@object
+                         196 	.size	_g_background_verify_state,4
+                         197 	.section ".ghcalltbl",""
+                         198 	.align	4
+00000000 00000000*       199 .L71:	.word	.L70
+                         200 	.type	.L71,@object
+                         201 	.size	.L71,4
+                         202 	.section ".ghrettbl",""
+                         203 	.align	4
+00000000 00000000*       204 .L73:	.word	.L72
+                         205 	.type	.L73,@object
+                         206 	.size	.L73,4
+                         207 	.data
+                         208 	.section ".icum_kernel.text","ax"
+                         209 
+                         210 
+                         211 --79: /***************************************************************************************
+                         212 --80: * Function ID  : [ICUMFW_CD_K_ISSD_0033]:[ICUMFW_UD_K_ISSD_0033]
+                         213 --81: * Function name: k_ISSD_Init
+                         214 --82: * Description  : Initialize ISSD
+                         215 --83: * Arguments    : none
+                         216 --84: * Return Value : none
+                         217 --85: ***************************************************************************************/
+                         218 --86: static void k_ISSD_Init(void)
+                         219 	.align	2
+                         220 	.align	2
+                         221 	.align	2
+                         222 ..gh.f.a.2.e.1:
+                         223 	.type	..gh.f.a.2.e.1,@object
+                         224 	.size	..gh.f.a.2.e.1,0
+                         225 	.global	_k_ISSD_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.
+                         226 _k_ISSD_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.:
+                         227 _k_ISSD_Init:
+0000004c 5c1a            228 	add	-4,sp
+0000004e 63ff0100        229 	st.w	lp,0[sp]
+                         230 --	    .bf
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         231 .LDW21:
+                         232 --87: {
+                         233 --88:     /* Initialize of generate service request */
+                         234 --89:     (void)k_ISSD_InitGenService();
+                         235 .L113:
+                         236 	jarl	_k_ISSD_InitGenService,lp
+                         236 <EXPANSION BEGIN>
+                         236 jarl22 _k_ISSD_InitGenService , lp 
+00000052 80ff0000*       236 <EXPANSION END>
+                         237 --90: }
+                         238 --	    .ef
+                         239 .LDW31:
+                         240 --line90
+                         241 ..lin.e59a6454..2c13c5f4.0_6::
+                         242 .LDWlin6:
+00000056 23ff0100        243 	ld.w	0[sp],lp
+0000005a 441a            244 	add	4,sp
+                         245 .L115:
+                         246 	.jumptype return
+0000005c 7f00            247 	jmp	[lp]
+                         248 --line90
+                         249 ..lin.e59a6454..2c13c5f4.0_7::
+                         250 	.type	_k_ISSD_Init,@function
+                         251 	.size	_k_ISSD_Init,.-_k_ISSD_Init
+                         252 	.type	_k_ISSD_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,@function
+                         253 	.size	_k_ISSD_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.,.-_k_ISSD_Init..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes.
+                         254 	.align	2
+                         255 
+                         256 	.section ".bss","awb"
+                         257 .L98:
+                         258 	.type	.L98,@object
+                         259 	.size	.L98,0
+                         260 	.section ".ghcalltbl",""
+00000004 00000000*       261 .L114:	.word	.L113
+                         262 	.type	.L114,@object
+                         263 	.size	.L114,4
+                         264 	.section ".ghrettbl",""
+00000004 00000000*       265 .L116:	.word	.L115
+                         266 	.type	.L116,@object
+                         267 	.size	.L116,4
+                         268 	.data
+                         269 	.section ".icum_kernel.text","ax"
+                         270 
+                         271 
+                         272 --92: /***************************************************************************************
+                         273 --93: * Function ID  : [ICUMFW_CD_K_ISSD_0039]:[ICUMFW_UD_K_ISSD_0039]
+                         274 --94: * Function name: k_ISSD_IsBootMode
+                         275 --95: * Description  : Test for secure boot mode
+                         276 --96: * Arguments    : (OUT) *p_boot_mode :
+                         277 --97: *                      1 : secure boot mode
+                         278 --98: *                      0 : not secure boot mode
+                         279 --99: * Return Value : none
+                         280 --100: ***************************************************************************************/
+                         281 --101: void k_ISSD_IsBootMode(bool *p_boot_mode)
+                         282 	.assert 0x0 + (_g_background_verify_state - _g_current_icum_mode) +0 == 8
+                         283 	.assert 0x0 + (_g_current_icum_mode - _g_current_icum_mode) +0 == 0
+                         284 	.align	2
+                         285 	.align	2
+                         286 	.align	2
+                         287 ..gh.f.a.2.e.2:
+                         288 	.type	..gh.f.a.2.e.2,@object
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         289 	.size	..gh.f.a.2.e.2,0
+                         290 	.global	_k_ISSD_IsBootMode
+                         291 _k_ISSD_IsBootMode:
+0000005e 210600000000*   292 	mov	_g_current_icum_mode,r1
+00000064 06f0            293 	mov	r6,ep
+00000066 0198            294 	mov	r1,r19
+                         295 --	    .bf
+                         296 .LDW41:
+                         297 --102: {
+                         298 --103:     /* 1. set boot mode */
+                         299 --104:     *p_boot_mode = (bool)((ISSD_MODE_VERIFY_BOOT_1ST == g_current_icum_mode) ||
+                         300 --line104
+                         301 ..lin.e59a6454..7064dad5.0_8::
+                         302 .LDWlin8:
+00000068 21970100        303 	ld.w	0[r1],r18
+0000006c 0112            304 	mov	1,r2
+0000006e 6292            305 	cmp	2,r18
+00000070 a20d*           306 	be	.L120
+                         307 --line105
+                         308 ..lin.e59a6454..7064dad5.0_9::
+                         309 .LDWlin9:
+00000072 21970100        310 	ld.w	0[r1],r18
+00000076 6392            311 	cmp	3,r18
+00000078 e205*           312 	be	.L120
+                         313 --line106
+                         314 ..lin.e59a6454..7064dad5.0_10::
+                         315 .LDWlin10:
+0000007a 21970900        316 	ld.w	8[r1],r18
+0000007e 6192            317 	cmp	1,r18
+00000080 e0171413        318 	cmovne	0,r2,r2
+                         319 .L120:
+00000084 8013            320 	sst.b	r2,0[ep]
+                         321 --105:                           (ISSD_MODE_VERIFY_BOOT_2ND == g_current_icum_mode) ||
+                         322 --106:                           (BACKGROUND_VERIFY_ON == g_background_verify_state));
+                         323 --107:     
+                         324 --108:     return;
+00000086 0000            325 	nop
+                         326 --	    .ef
+                         327 .LDW51:
+                         328 .L187:
+                         329 	.jumptype return
+00000088 7f00            330 	jmp	[lp]
+                         331 --line106
+                         332 ..lin.e59a6454..7064dad5.0_11::
+                         333 	.type	_k_ISSD_IsBootMode,@function
+                         334 	.size	_k_ISSD_IsBootMode,.-_k_ISSD_IsBootMode
+                         335 	.align	2
+                         336 
+                         337 --_p_boot_mode	ep	param
+                         338 
+                         339 	.section ".ghrettbl",""
+00000008 00000000*       340 .L188:	.word	.L187
+                         341 	.type	.L188,@object
+                         342 	.size	.L188,4
+                         343 	.data
+                         344 	.section ".icum_kernel.text","ax"
+                         345 
+                         346 --109: }
+                         347 	.section ".icum_kernel_ram","ax"
+                         348 
+                         349 --111: /***************************************************************************************
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         350 --112: * Function ID  : [ICUMFW_CD_K_ISSD_0036]:[ICUMFW_UD_K_ISSD_0036]
+                         351 --113: * Function name: k_ISSD_GetRunMode
+                         352 --114: * Description  : Return the current mode in integer
+                         353 --115: * Arguments    : (OUT) *p_run_mode : the current mode in integer
+                         354 --116: * Return Value : none
+                         355 --117: ***************************************************************************************/
+                         356 --118: #pragma ghs section text   = ".icum_kernel_ram"
+                         357 --119: #pragma ghs section rodata = ".icum_kernel_const_ram"
+                         358 --120: void k_ISSD_GetRunMode(uint32_t *p_run_mode)
+                         359 	.align	2
+                         360 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065C..1::
+                         361 	.align	2
+                         362 	.align	2
+                         363 ..gh.f.a.2.e.3:
+                         364 	.type	..gh.f.a.2.e.3,@object
+                         365 	.size	..gh.f.a.2.e.3,0
+                         366 	.global	_k_ISSD_GetRunMode
+                         367 _k_ISSD_GetRunMode:
+00000000 06f0            368 	mov	r6,ep
+                         369 --	    .bf
+                         370 .LDW61:
+                         371 --121: {
+                         372 --122:     /* 1. Get current mode */
+                         373 --123:     *p_run_mode = g_current_icum_mode;
+00000002 210600000000*   374 	mov	_g_current_icum_mode,r1
+00000008 210f0100        375 	ld.w	0[r1],r1
+0000000c 010d            376 	sst.w	r1,0[ep]
+                         377 --124:     return;
+                         378 --line124
+                         379 ..lin.e59a6454..83969d5a.1_12::
+                         380 .LDWlin12:
+0000000e 0000            381 	nop
+                         382 --	    .ef
+                         383 .LDW71:
+                         384 .L224:
+                         385 	.jumptype return
+00000010 7f00            386 	jmp	[lp]
+                         387 --line124
+                         388 ..lin.e59a6454..83969d5a.1_13::
+                         389 	.type	_k_ISSD_GetRunMode,@function
+                         390 	.size	_k_ISSD_GetRunMode,.-_k_ISSD_GetRunMode
+                         391 	.align	2
+                         392 
+                         393 --_p_run_mode	ep	param
+                         394 
+                         395 	.section ".ghrettbl",""
+0000000c 00000000*       396 .L225:	.word	.L224
+                         397 	.type	.L225,@object
+                         398 	.size	.L225,4
+                         399 	.data
+                         400 	.section ".icum_kernel_ram","ax"
+                         401 
+                         402 --125: }
+                         403 
+                         404 --127: /***************************************************************************************
+                         405 --128: * Function ID  : [ICUMFW_CD_K_ISSD_0037]:[ICUMFW_UD_K_ISSD_0037]
+                         406 --129: * Function name: k_ISSD_ModeChangeRequested
+                         407 --130: * Description  : Test for mode change request
+                         408 --131: * Arguments    : (OUT) *p_change_request :
+                         409 --132: *                      1 : if execution mode must be changed
+                         410 --133: *                      0 : otherwise
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         411 --134: * Return Value : none
+                         412 --135: ***************************************************************************************/
+                         413 --136: void k_ISSD_ModeChangeRequested(bool *p_change_request)
+                         414 	.assert 0x0 + (_g_next_icum_mode - _g_current_icum_mode) +0 == 4
+                         415 	.align	2
+                         416 	.align	2
+                         417 	.align	2
+                         418 ..gh.f.a.2.e.4:
+                         419 	.type	..gh.f.a.2.e.4,@object
+                         420 	.size	..gh.f.a.2.e.4,0
+                         421 	.global	_k_ISSD_ModeChangeRequested
+                         422 _k_ISSD_ModeChangeRequested:
+00000012 06f0            423 	mov	r6,ep
+00000014 210600000000*   424 	mov	_g_current_icum_mode,r1
+                         425 --	    .bf
+                         426 .LDW81:
+                         427 --137: {
+                         428 --138:     /* 1. Get mode change requested */
+                         429 --139:     *p_change_request = (bool)(g_next_icum_mode != g_current_icum_mode);
+                         430 --line139
+                         431 ..lin.e59a6454..e312ab3d.1_14::
+                         432 .LDWlin14:
+0000001a 220600000000*   433 	mov	_g_current_icum_mode,r2
+00000020 22170100        434 	ld.w	0[r2],r2
+00000024 210f0500        435 	ld.w	4[r1],r1
+00000028 e209            436 	cmp	r2,r1
+0000002a ea0f0000        437 	setfne	r1
+0000002e 800b            438 	sst.b	r1,0[ep]
+                         439 --141:     return;
+                         440 --line141
+                         441 ..lin.e59a6454..e312ab3d.1_15::
+                         442 .LDWlin15:
+00000030 0000            443 	nop
+                         444 --	    .ef
+                         445 .LDW91:
+                         446 .L272:
+                         447 	.jumptype return
+00000032 7f00            448 	jmp	[lp]
+                         449 --line141
+                         450 ..lin.e59a6454..e312ab3d.1_16::
+                         451 	.type	_k_ISSD_ModeChangeRequested,@function
+                         452 	.size	_k_ISSD_ModeChangeRequested,.-_k_ISSD_ModeChangeRequested
+                         453 	.align	2
+                         454 
+                         455 --_p_change_request	ep	param
+                         456 
+                         457 	.section ".ghrettbl",""
+00000010 00000000*       458 .L273:	.word	.L272
+                         459 	.type	.L273,@object
+                         460 	.size	.L273,4
+                         461 	.data
+                         462 	.section ".icum_kernel_ram","ax"
+                         463 
+                         464 --142: }
+                         465 
+                         466 --144: /***************************************************************************************
+                         467 --145: * Function ID  : [ICUMFW_CD_K_ISSD_0041]:[ICUMFW_UD_K_ISSD_0041]
+                         468 --146: * Function name: K_ISSD_GetECCTestState
+                         469 --147: * Description  : return of ECC test state
+                         470 --148: * Arguments    : none
+                         471 --149: * Return Value : ISSD_ECC_TEST_OFF/ISSD_ECC_TEST_ON
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         472 --150: ***************************************************************************************/
+                         473 --151: uint32_t K_ISSD_GetECCTestState(uint8_t *p_state)
+                         474 	.align	2
+                         475 	.align	2
+                         476 	.align	2
+                         477 ..gh.f.a.2.e.5:
+                         478 	.type	..gh.f.a.2.e.5,@object
+                         479 	.size	..gh.f.a.2.e.5,0
+                         480 	.global	_K_ISSD_GetECCTestState
+                         481 _K_ISSD_GetECCTestState:
+00000034 06f0            482 	mov	r6,ep
+                         483 --	    .bf
+                         484 .LDW02:
+                         485 --152: {
+                         486 --153:     if(ISSD_MODE_ECC_TEST == g_current_icum_mode)
+00000036 210600000000*   487 	mov	_g_current_icum_mode,r1
+0000003c 210f0100        488 	ld.w	0[r1],r1
+00000040 660a            489 	cmp	6,r1
+00000042 ca05*           490 	bne	.L276
+                         491 --154:     {
+                         492 --155:         *p_state = ISSD_ECC_TEST_ON;
+                         493 --line155
+                         494 ..lin.e59a6454..52051d0c.1_17::
+                         495 .LDWlin17:
+00000044 010a            496 	mov	1,r1
+00000046 800b            497 	sst.b	r1,0[ep]
+00000048 a505*           498 	br	.L278
+                         499 .L276:
+                         500 --156:     }
+                         501 --157:     else
+                         502 --158:     {
+                         503 --159:         *p_state = ISSD_ECC_TEST_OFF;
+                         504 --line159
+                         505 ..lin.e59a6454..52051d0c.1_18::
+                         506 .LDWlin18:
+0000004a 8003            507 	sst.b	zero,0[ep]
+                         508 .L278:
+                         509 --160:     }
+                         510 --161:     return(ER_OK);
+0000004c 0052            511 	mov	0,r10
+                         512 --	    .ef
+                         513 .LDW12:
+                         514 .L334:
+                         515 	.jumptype return
+0000004e 7f00            516 	jmp	[lp]
+                         517 --line159
+                         518 ..lin.e59a6454..52051d0c.1_19::
+                         519 	.type	_K_ISSD_GetECCTestState,@function
+                         520 	.size	_K_ISSD_GetECCTestState,.-_K_ISSD_GetECCTestState
+                         521 	.align	2
+                         522 
+                         523 --_p_state	ep	param
+                         524 
+                         525 	.section ".ghrettbl",""
+00000014 00000000*       526 .L335:	.word	.L334
+                         527 	.type	.L335,@object
+                         528 	.size	.L335,4
+                         529 	.data
+                         530 	.section ".icum_kernel_ram","ax"
+                         531 
+                         532 --162: }
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         533 
+                         534 --164: /***************************************************************************************
+                         535 --165: * Function ID  : [ICUMFW_CD_K_ISSD_0040]:[ICUMFW_UD_K_ISSD_0040]
+                         536 --166: * Function name: k_ISSD_SetBackgroundVerifyState
+                         537 --167: * Description  : set background verify state
+                         538 --168: * Arguments    : (IN) state:
+                         539 --169: * Return Value : none
+                         540 --170: ***************************************************************************************/
+                         541 --171: void k_ISSD_SetBackgroundVerifyState(uint32_t state)
+                         542 	.align	2
+                         543 	.align	2
+                         544 	.align	2
+                         545 ..gh.f.a.2.e.6:
+                         546 	.type	..gh.f.a.2.e.6,@object
+                         547 	.size	..gh.f.a.2.e.6,0
+                         548 	.global	_k_ISSD_SetBackgroundVerifyState
+                         549 _k_ISSD_SetBackgroundVerifyState:
+00000050 541a            550 	add	-12,sp
+00000052 63ff0900        551 	st.w	lp,8[sp]
+00000056 63e70500        552 	st.w	r28,4[sp]
+0000005a 63ef0100        553 	st.w	r29,0[sp]
+0000005e 06e0            554 	mov	r6,r28
+                         555 --	    .bf
+                         556 .LDW22:
+                         557 --172: {
+                         558 --173:     uint32_t saved_psw;
+                         559 --175:     /* disable interrupts (if not already disabled) */
+                         560 --176:     DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         561 ..gh.beginasm.7:
+                         562 	.type	..gh.beginasm.7,@object
+                         563 	.size	..gh.beginasm.7,0
+                         564 --ASM MACRO: Start
+00000060 e5574000        565     stsr    5, r10, 0
+                         566 --ASM MACRO: End
+                         567 ..gh.endasm.8:
+                         568 	.type	..gh.endasm.8,@object
+                         569 	.size	..gh.endasm.8,0
+00000064 0ae8            570 	mov	r10,r29
+                         571 --line176
+                         572 ..lin.e59a6454..febc75e2.1_20::
+                         573 .LDWlin20:
+00000066 1d08            574 	mov	r29,r1
+00000068 860a            575 	shr	6,r1
+0000006a b105*           576 	bl	.L343
+                         577 --line176
+                         578 ..lin.e59a6454..febc75e2.1_21::
+                         579 .LDWlin21:
+                         580 ..gh.beginasm.9:
+                         581 	.type	..gh.beginasm.9,@object
+                         582 	.size	..gh.beginasm.9,0
+                         583 --ASM MACRO: Start
+                         584 
+0000006c e0076001        585     di
+                         586 --ASM MACRO: End
+                         587 ..gh.endasm.10:
+                         588 	.type	..gh.endasm.10,@object
+                         589 	.size	..gh.endasm.10,0
+                         590 .L343:
+                         591 --line176
+                         592 ..lin.e59a6454..febc75e2.1_22::
+                         593 .LDWlin22:
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+00000070 0000            594 	nop
+                         595 --178:     g_background_verify_state = state;
+00000072 2b0600000000*   596 	mov	_g_background_verify_state,r11
+00000078 6be70100        597 	st.w	r28,0[r11]
+                         598 --180:     /* re-enable interrupts (if necessary) */
+                         599 --181:     ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         600 --line181
+                         601 ..lin.e59a6454..febc75e2.1_23::
+                         602 .LDWlin23:
+0000007c 1d08            603 	mov	r29,r1
+0000007e 860a            604 	shr	6,r1
+00000080 b105*           605 	bl	.L349
+                         606 --line181
+                         607 ..lin.e59a6454..febc75e2.1_24::
+                         608 .LDWlin24:
+                         609 ..gh.beginasm.11:
+                         610 	.type	..gh.beginasm.11,@object
+                         611 	.size	..gh.beginasm.11,0
+                         612 --ASM MACRO: Start
+                         613 
+00000082 e0876001        614     ei
+                         615 --ASM MACRO: End
+                         616 ..gh.endasm.12:
+                         617 	.type	..gh.endasm.12,@object
+                         618 	.size	..gh.endasm.12,0
+                         619 .L349:
+                         620 --line181
+                         621 ..lin.e59a6454..febc75e2.1_25::
+                         622 .LDWlin25:
+00000086 0000            623 	nop
+                         624 --182:     return;
+00000088 0000            625 	nop
+                         626 --	    .ef
+                         627 .LDW32:
+0000008a 23ff0900        628 	ld.w	8[sp],lp
+0000008e 23ef0100        629 	ld.w	0[sp],r29
+00000092 23e70500        630 	ld.w	4[sp],r28
+00000096 4c1a            631 	add	12,sp
+                         632 .L447:
+                         633 	.jumptype return
+00000098 7f00            634 	jmp	[lp]
+                         635 --line181
+                         636 ..lin.e59a6454..febc75e2.1_26::
+                         637 	.type	_k_ISSD_SetBackgroundVerifyState,@function
+                         638 	.size	_k_ISSD_SetBackgroundVerifyState,.-_k_ISSD_SetBackgroundVerifyState
+                         639 	.align	2
+                         640 --_saved_psw	r29	local
+                         641 
+                         642 --_state	r28	param
+                         643 
+                         644 	.section ".ghrettbl",""
+00000018 00000000*       645 .L448:	.word	.L447
+                         646 	.type	.L448,@object
+                         647 	.size	.L448,4
+                         648 	.data
+                         649 	.section ".icum_kernel_ram","ax"
+                         650 
+                         651 --183: }
+                         652 
+                         653 --186: /***************************************************************************************
+                         654 --187: * Function ID  : [ICUMFW_CD_K_ISSD_0034]:[ICUMFW_UD_K_ISSD_0034]
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         655 --188: * Function name: K_ISSD_SendModeEvent
+                         656 --189: * Description  : Execution event triggered. Check what is the next execution mode
+                         657 --190: * Arguments    : (IN) : event
+                         658 --191: *                ER_PARAM
+                         659 --192: * Return Value : ER_OK
+                         660 --193: *                ER_K_ISSD_MODE_REJECT
+                         661 --194: ***************************************************************************************/
+                         662 --195: uint32_t K_ISSD_SendModeEvent(uint32_t event)
+                         663 	.assert 0x0 + (_g_next_icum_mode - _g_current_icum_mode) +0 == 4
+                         664 	.assert 0x0 + (_g_current_icum_mode - _g_current_icum_mode) +0 == 0
+                         665 	.assert 0x0 + (_g_background_verify_state - _g_current_icum_mode) +0 == 8
+                         666 	.align	2
+                         667 	.align	2
+                         668 	.align	2
+                         669 ..gh.f.a.2.e.13:
+                         670 	.type	..gh.f.a.2.e.13,@object
+                         671 	.size	..gh.f.a.2.e.13,0
+                         672 	.global	_K_ISSD_SendModeEvent
+                         673 _K_ISSD_SendModeEvent:
+0000009a 031ee4ff        674 	addi	-28,sp,sp
+0000009e 63ff1900        675 	st.w	lp,24[sp]
+000000a2 63ef0100        676 	st.w	r29,0[sp]
+000000a6 63c71500        677 	st.w	r24,20[sp]
+000000aa 63cf1100        678 	st.w	r25,16[sp]
+000000ae 3d0600000000*   679 	mov	_g_current_icum_mode,r29
+000000b4 63d70d00        680 	st.w	r26,12[sp]
+000000b8 63df0900        681 	st.w	r27,8[sp]
+000000bc 63e70500        682 	st.w	r28,4[sp]
+000000c0 06c8            683 	mov	r6,r25
+000000c2 1dc0            684 	mov	r29,r24
+                         685 --	    .bf
+                         686 .LDW42:
+                         687 --196: {
+                         688 --197:     uint32_t new_mode;
+                         689 --198:     uint32_t rtn = ER_OK;
+                         690 --line198
+                         691 ..lin.e59a6454..201194b1.1_27::
+                         692 .LDWlin27:
+000000c4 00e2            693 	mov	0,r28
+                         694 --199:     uint32_t saved_psw;
+                         695 --201:     /* disable interrupts (if not already disabled) */
+                         696 --202:     DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         697 ..gh.beginasm.14:
+                         698 	.type	..gh.beginasm.14,@object
+                         699 	.size	..gh.beginasm.14,0
+                         700 --ASM MACRO: Start
+000000c6 e5574000        701     stsr    5, r10, 0
+                         702 --ASM MACRO: End
+                         703 ..gh.endasm.15:
+                         704 	.type	..gh.endasm.15,@object
+                         705 	.size	..gh.endasm.15,0
+000000ca 0ad0            706 	mov	r10,r26
+                         707 --line202
+                         708 ..lin.e59a6454..201194b1.1_28::
+                         709 .LDWlin28:
+000000cc 1a08            710 	mov	r26,r1
+000000ce 860a            711 	shr	6,r1
+000000d0 b105*           712 	bl	.L456
+                         713 --line202
+                         714 ..lin.e59a6454..201194b1.1_29::
+                         715 .LDWlin29:
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         716 ..gh.beginasm.16:
+                         717 	.type	..gh.beginasm.16,@object
+                         718 	.size	..gh.beginasm.16,0
+                         719 --ASM MACRO: Start
+                         720 
+000000d2 e0076001        721     di
+                         722 --ASM MACRO: End
+                         723 ..gh.endasm.17:
+                         724 	.type	..gh.endasm.17,@object
+                         725 	.size	..gh.endasm.17,0
+                         726 .L456:
+                         727 --line202
+                         728 ..lin.e59a6454..201194b1.1_30::
+                         729 .LDWlin30:
+000000d6 0000            730 	nop
+                         731 --203:     new_mode = g_current_icum_mode;
+000000d8 3ddf0100        732 	ld.w	0[r29],r27
+                         733 --205:     switch(event)
+000000dc 1908            734 	mov	r25,r1
+000000de 650a            735 	cmp	5,r1
+000000e0 f905*           736 	bnl	.L783
+000000e2 5f0a            737 	add	-1,r1
+000000e4 610a            738 	cmp	1,r1
+000000e6 b30d*           739 	bnh	.L458
+000000e8 630a            740 	cmp	3,r1
+000000ea f315*           741 	bnh	.L459
+000000ec 954d*           742 	br	.L463
+                         743 .L783:
+000000ee 650a            744 	cmp	5,r1
+000000f0 f21d*           745 	be	.L460
+000000f2 6a0a            746 	cmp	10,r1
+000000f4 822d*           747 	be	.L461
+000000f6 6b0a            748 	cmp	11,r1
+000000f8 823d*           749 	be	.L462
+000000fa a545*           750 	br	.L463
+                         751 .L458:
+                         752 --206:     {
+                         753 --207:         case ISSD_EVT_SYS_INIT_COMPLETED:
+                         754 --208:         case ISSD_EVT_SYS_INIT_FAILED:
+                         755 --209:             switch(g_current_icum_mode)
+                         756 --line209
+                         757 ..lin.e59a6454..201194b1.1_31::
+                         758 .LDWlin31:
+000000fc 3d0f0100        759 	ld.w	0[r29],r1
+00000100 610a            760 	cmp	1,r1
+00000102 ea05*           761 	bne	.L467
+                         762 --210:             {
+                         763 --211:                 case ISSD_MODE_START:
+                         764 --212:                     new_mode = ISSD_MODE_VERIFY_BOOT_1ST;
+                         765 --line212
+                         766 ..lin.e59a6454..201194b1.1_32::
+                         767 .LDWlin32:
+00000104 02da            768 	mov	2,r27
+                         769 --213:                     (void)MH_SYSINFO_SaveTickCount(SYSINFO_TICK_COUNT_ID_00);
+00000106 0032            770 	mov	0,r6
+                         771 .L989:
+                         772 	jarl	_MH_SYSINFO_SaveTickCount,lp
+                         772 <EXPANSION BEGIN>
+                         772 jarl22 _MH_SYSINFO_SaveTickCount , lp 
+00000108 80ff0000*       772 <EXPANSION END>
+                         773 --214:                     break;
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         774 --215:                 default:
+                         775 --line214
+                         776 ..lin.e59a6454..201194b1.1_33::
+                         777 .LDWlin33:
+0000010c d505*           778 	br	.L469
+                         779 .L467:
+                         780 --216:                     rtn = ER_K_ISSD_MODE_REJECT;
+                         781 --line216
+                         782 ..lin.e59a6454..201194b1.1_34::
+                         783 .LDWlin34:
+0000010e 3c0603000010    784 	mov	268435459,r28
+                         785 --217:                     break;
+                         786 --line217
+                         787 ..lin.e59a6454..201194b1.1_35::
+                         788 .LDWlin35:
+00000114 0000            789 	nop
+                         790 .L469:
+                         791 --218:             }
+                         792 --219:             break;
+                         793 --221:         case ISSD_EVT_START_PE_COMPLETED:
+00000116 e535*           794 	br	.L470
+                         795 .L459:
+                         796 --222:         case ISSD_EVT_START_PE_FAILED:
+                         797 --223:             switch(g_current_icum_mode)
+                         798 --line223
+                         799 ..lin.e59a6454..201194b1.1_36::
+                         800 .LDWlin36:
+00000118 3d0f0100        801 	ld.w	0[r29],r1
+0000011c 620a            802 	cmp	2,r1
+0000011e ba05*           803 	bne	.L473
+                         804 --224:             {
+                         805 --225:                 case ISSD_MODE_VERIFY_BOOT_1ST:
+                         806 --226:                     new_mode = ISSD_MODE_VERIFY_BOOT_2ND;
+                         807 --line226
+                         808 ..lin.e59a6454..201194b1.1_37::
+                         809 .LDWlin37:
+00000120 03da            810 	mov	3,r27
+                         811 --227:                     break;
+                         812 --228:                 default:
+00000122 d505*           813 	br	.L475
+                         814 .L473:
+                         815 --229:                     rtn = ER_K_ISSD_MODE_REJECT;
+                         816 --line229
+                         817 ..lin.e59a6454..201194b1.1_38::
+                         818 .LDWlin38:
+00000124 3c0603000010    819 	mov	268435459,r28
+                         820 --230:                     break;
+                         821 --line230
+                         822 ..lin.e59a6454..201194b1.1_39::
+                         823 .LDWlin39:
+0000012a 0000            824 	nop
+                         825 .L475:
+                         826 --231:             }
+                         827 --232:             break;
+                         828 --234:         case ISSD_EVT_TRANSITION_TO_ROM:
+0000012c b52d*           829 	br	.L470
+                         830 .L460:
+                         831 --235:             switch(g_current_icum_mode)
+                         832 --line235
+                         833 ..lin.e59a6454..201194b1.1_40::
+                         834 .LDWlin40:
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+0000012e 3d0f0100        835 	ld.w	0[r29],r1
+00000132 630a            836 	cmp	3,r1
+00000134 ba05*           837 	bne	.L478
+                         838 --236:             {
+                         839 --237:                 case ISSD_MODE_VERIFY_BOOT_2ND:
+                         840 --238:                     new_mode = ISSD_MODE_ROM_EXEC;
+                         841 --line238
+                         842 ..lin.e59a6454..201194b1.1_41::
+                         843 .LDWlin41:
+00000136 04da            844 	mov	4,r27
+                         845 --239:                     break;
+                         846 --240:                 default:
+00000138 d505*           847 	br	.L480
+                         848 .L478:
+                         849 --241:                     rtn = ER_K_ISSD_MODE_REJECT;
+                         850 --line241
+                         851 ..lin.e59a6454..201194b1.1_42::
+                         852 .LDWlin42:
+0000013a 3c0603000010    853 	mov	268435459,r28
+                         854 --242:                     break;
+                         855 --line242
+                         856 ..lin.e59a6454..201194b1.1_43::
+                         857 .LDWlin43:
+00000140 0000            858 	nop
+                         859 .L480:
+                         860 --243:             }
+                         861 --244:             break;
+                         862 --246:         case ISSD_EVT_ECC_TEST_START:
+00000142 8525*           863 	br	.L470
+                         864 .L461:
+                         865 --247:             switch(g_current_icum_mode)
+                         866 --line247
+                         867 ..lin.e59a6454..201194b1.1_44::
+                         868 .LDWlin44:
+00000144 3d0f0100        869 	ld.w	0[r29],r1
+00000148 640a            870 	cmp	4,r1
+0000014a aa0d*           871 	bne	.L483
+                         872 --248:             {
+                         873 --249:                 case ISSD_MODE_ROM_EXEC:
+                         874 --250:                     new_mode = ISSD_MODE_ECC_TEST;
+                         875 --line250
+                         876 ..lin.e59a6454..201194b1.1_45::
+                         877 .LDWlin45:
+0000014c 06da            878 	mov	6,r27
+                         879 --251:                     /* Stop background verify */
+                         880 --252:                     if(BACKGROUND_VERIFY_ON == g_background_verify_state)
+0000014e 3d0f0900        881 	ld.w	8[r29],r1
+00000152 610a            882 	cmp	1,r1
+00000154 ca05*           883 	bne	.L487
+                         884 --253:                     {
+                         885 --254:                         k_ISSD_SetBackgroundVerifyState(BACKGROUND_VERIFY_OFF);
+                         886 --line254
+                         887 ..lin.e59a6454..201194b1.1_46::
+                         888 .LDWlin46:
+00000156 0032            889 	mov	0,r6
+                         890 .L991:
+                         891 	jarl	_k_ISSD_SetBackgroundVerifyState,lp
+                         891 <EXPANSION BEGIN>
+                         891 jarl22 _k_ISSD_SetBackgroundVerifyState , lp 
+00000158 bffff8fe*       891 <EXPANSION END>
+                         892 .L487:
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         893 --255:                     }
+                         894 --256:                     else
+                         895 --257:                     {
+                         896 --258:                         /* do nothing */
+                         897 --259:                     }
+                         898 --260:                     break;
+                         899 --261:                 default:
+                         900 --line260
+                         901 ..lin.e59a6454..201194b1.1_47::
+                         902 .LDWlin47:
+0000015c d505*           903 	br	.L488
+                         904 .L483:
+                         905 --262:                     rtn = ER_K_ISSD_MODE_REJECT;
+                         906 --line262
+                         907 ..lin.e59a6454..201194b1.1_48::
+                         908 .LDWlin48:
+0000015e 3c0603000010    909 	mov	268435459,r28
+                         910 --263:                     break;
+                         911 --line263
+                         912 ..lin.e59a6454..201194b1.1_49::
+                         913 .LDWlin49:
+00000164 0000            914 	nop
+                         915 .L488:
+                         916 --264:             }
+                         917 --265:             break;
+                         918 --267:         case ISSD_EVT_ECC_TEST_END:
+00000166 e50d*           919 	br	.L470
+                         920 .L462:
+                         921 --268:             switch(g_current_icum_mode)
+                         922 --line268
+                         923 ..lin.e59a6454..201194b1.1_50::
+                         924 .LDWlin50:
+00000168 3d0f0100        925 	ld.w	0[r29],r1
+0000016c 660a            926 	cmp	6,r1
+0000016e ba05*           927 	bne	.L491
+                         928 --269:             {
+                         929 --270:                 case ISSD_MODE_ECC_TEST:
+                         930 --271:                     new_mode = ISSD_MODE_ROM_EXEC;
+                         931 --line271
+                         932 ..lin.e59a6454..201194b1.1_51::
+                         933 .LDWlin51:
+00000170 04da            934 	mov	4,r27
+                         935 --272:                     break;
+                         936 --273:                 default:
+00000172 d505*           937 	br	.L493
+                         938 .L491:
+                         939 --274:                     rtn = ER_K_ISSD_MODE_REJECT;
+                         940 --line274
+                         941 ..lin.e59a6454..201194b1.1_52::
+                         942 .LDWlin52:
+00000174 3c0603000010    943 	mov	268435459,r28
+                         944 --275:                     break;
+                         945 --line275
+                         946 ..lin.e59a6454..201194b1.1_53::
+                         947 .LDWlin53:
+0000017a 0000            948 	nop
+                         949 .L493:
+                         950 --276:             }
+                         951 --277:             break;
+                         952 --279:         default:
+0000017c b505*           953 	br	.L470
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                         954 .L463:
+                         955 --280:             rtn = ER_PARAM;
+                         956 --line280
+                         957 ..lin.e59a6454..201194b1.1_54::
+                         958 .LDWlin54:
+0000017e 01e2            959 	mov	1,r28
+                         960 --281:             /* should never occur */
+                         961 --282:             ASSERT(0);
+                         962 .L500:
+00000180 8505*           963 	br	.L500
+                         964 .L470:
+                         965 --283:             break;
+                         966 --284:     }
+                         967 --286:     /* trigger a change mode request here */
+                         968 --287:     if (ER_OK == rtn)
+                         969 --line287
+                         970 ..lin.e59a6454..201194b1.1_55::
+                         971 .LDWlin55:
+00000182 e0e1            972 	cmp	zero,r28
+00000184 ba05*           973 	bne	.L508
+                         974 --288:     {
+                         975 --289:         g_next_icum_mode = new_mode;
+                         976 --line289
+                         977 ..lin.e59a6454..201194b1.1_56::
+                         978 .LDWlin56:
+00000186 7ddf0500        979 	st.w	r27,4[r29]
+                         980 .L508:
+                         981 --290:     }
+                         982 --291:     else
+                         983 --292:     {
+                         984 --293:         /* Do nothing  */
+                         985 --294:     }
+                         986 --296:     /* re-enable interrupts (if necessary) */
+                         987 --297:     ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+0000018a 1a08            988 	mov	r26,r1
+0000018c 860a            989 	shr	6,r1
+0000018e b105*           990 	bl	.L511
+                         991 --line297
+                         992 ..lin.e59a6454..201194b1.1_57::
+                         993 .LDWlin57:
+                         994 ..gh.beginasm.18:
+                         995 	.type	..gh.beginasm.18,@object
+                         996 	.size	..gh.beginasm.18,0
+                         997 --ASM MACRO: Start
+                         998 
+00000190 e0876001        999     ei
+                        1000 --ASM MACRO: End
+                        1001 ..gh.endasm.19:
+                        1002 	.type	..gh.endasm.19,@object
+                        1003 	.size	..gh.endasm.19,0
+                        1004 .L511:
+                        1005 --line297
+                        1006 ..lin.e59a6454..201194b1.1_58::
+                        1007 .LDWlin58:
+00000194 0000           1008 	nop
+                        1009 --299:     return(rtn);
+00000196 1c50           1010 	mov	r28,r10
+                        1011 --	    .ef
+                        1012 .LDW52:
+00000198 23ff1900       1013 	ld.w	24[sp],lp
+0000019c 23ef0100       1014 	ld.w	0[sp],r29
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+000001a0 23e70500       1015 	ld.w	4[sp],r28
+000001a4 23df0900       1016 	ld.w	8[sp],r27
+000001a8 23d70d00       1017 	ld.w	12[sp],r26
+000001ac 23cf1100       1018 	ld.w	16[sp],r25
+000001b0 23c71500       1019 	ld.w	20[sp],r24
+000001b4 031e1c00       1020 	addi	28,sp,sp
+                        1021 .L993:
+                        1022 	.jumptype return
+000001b8 7f00           1023 	jmp	[lp]
+                        1024 --line297
+                        1025 ..lin.e59a6454..201194b1.1_59::
+                        1026 	.type	_K_ISSD_SendModeEvent,@function
+                        1027 	.size	_K_ISSD_SendModeEvent,.-_K_ISSD_SendModeEvent
+                        1028 	.align	2
+                        1029 --_new_mode	r27	local
+                        1030 --_rtn	r28	local
+                        1031 --_saved_psw	r26	local
+                        1032 
+                        1033 --_event	r25	param
+                        1034 
+                        1035 	.section ".ghcalltbl",""
+00000008 00000000*      1036 .L990:	.word	.L989
+                        1037 	.type	.L990,@object
+                        1038 	.size	.L990,4
+0000000c 00000000*      1039 .L992:	.word	.L991
+                        1040 	.type	.L992,@object
+                        1041 	.size	.L992,4
+                        1042 	.section ".ghrettbl",""
+0000001c 00000000*      1043 .L994:	.word	.L993
+                        1044 	.type	.L994,@object
+                        1045 	.size	.L994,4
+                        1046 	.data
+                        1047 	.section ".icum_kernel_ram","ax"
+                        1048 
+                        1049 --300: }
+                        1050 
+                        1051 --301: /***************************************************************************************
+                        1052 --302: * Function ID  : [ICUMFW_CD_K_ISSD_0032]:[ICUMFW_UD_K_ISSD_0032]
+                        1053 --303: * Function name: k_ISSD_Run
+                        1054 --304: * Description  : Branch to dispatch loop depending on execution mode
+                        1055 --305: * Arguments    : none
+                        1056 --306: * Return Value : none
+                        1057 --307: ***************************************************************************************/
+                        1058 --308: void k_ISSD_Run(void)
+                        1059 	.assert 0x0 + (_g_background_verify_state - _g_current_icum_mode) +0 == 8
+                        1060 	.assert 0x0 + (_g_current_icum_mode - _g_current_icum_mode) +0 == 0
+                        1061 	.assert 0x0 + (_g_next_icum_mode - _g_current_icum_mode) +0 == 4
+                        1062 	.align	2
+                        1063 	.align	2
+                        1064 	.align	2
+                        1065 ..gh.f.a.2.e.20:
+                        1066 	.type	..gh.f.a.2.e.20,@object
+                        1067 	.size	..gh.f.a.2.e.20,0
+                        1068 	.global	_k_ISSD_Run
+                        1069 _k_ISSD_Run:
+000001ba 031ee4ff       1070 	addi	-28,sp,sp
+000001be 63ff1900       1071 	st.w	lp,24[sp]
+000001c2 63ef0500       1072 	st.w	r29,4[sp]
+000001c6 63cf1500       1073 	st.w	r25,20[sp]
+000001ca 63df0d00       1074 	st.w	r27,12[sp]
+000001ce 3d0600000000*  1075 	mov	_g_current_icum_mode,r29
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+000001d4 63d71100       1076 	st.w	r26,16[sp]
+000001d8 63e70900       1077 	st.w	r28,8[sp]
+000001dc 3b061300e000   1078 	mov	14680083,r27
+000001e2 1dc8           1079 	mov	r29,r25
+                        1080 --	    .bf
+                        1081 .LDW62:
+                        1082 --309: {
+                        1083 --310:     uint32_t result;
+                        1084 --311:     uint8_t ram_state;
+                        1085 --312:     uint8_t fls_err;
+                        1086 --313:     bool gen_request;
+                        1087 --314:     uint32_t saved_psw;
+                        1088 --316:     /* change mode here */
+                        1089 --317:     DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                        1090 --line317
+                        1091 ..lin.e59a6454..6df13cb5.1_60::
+                        1092 .LDWlin60:
+                        1093 ..gh.beginasm.21:
+                        1094 	.type	..gh.beginasm.21,@object
+                        1095 	.size	..gh.beginasm.21,0
+                        1096 --ASM MACRO: Start
+000001e4 e5574000       1097     stsr    5, r10, 0
+                        1098 --ASM MACRO: End
+                        1099 ..gh.endasm.22:
+                        1100 	.type	..gh.endasm.22,@object
+                        1101 	.size	..gh.endasm.22,0
+000001e8 0ad0           1102 	mov	r10,r26
+                        1103 --line317
+                        1104 ..lin.e59a6454..6df13cb5.1_61::
+                        1105 .LDWlin61:
+000001ea 1a08           1106 	mov	r26,r1
+000001ec 860a           1107 	shr	6,r1
+000001ee b105*          1108 	bl	.L1002
+                        1109 --line317
+                        1110 ..lin.e59a6454..6df13cb5.1_62::
+                        1111 .LDWlin62:
+                        1112 ..gh.beginasm.23:
+                        1113 	.type	..gh.beginasm.23,@object
+                        1114 	.size	..gh.beginasm.23,0
+                        1115 --ASM MACRO: Start
+                        1116 
+000001f0 e0076001       1117     di
+                        1118 --ASM MACRO: End
+                        1119 ..gh.endasm.24:
+                        1120 	.type	..gh.endasm.24,@object
+                        1121 	.size	..gh.endasm.24,0
+                        1122 .L1002:
+                        1123 --line317
+                        1124 ..lin.e59a6454..6df13cb5.1_63::
+                        1125 .LDWlin63:
+000001f4 0000           1126 	nop
+                        1127 --318:     g_current_icum_mode = g_next_icum_mode;
+000001f6 3d0f0500       1128 	ld.w	4[r29],r1
+000001fa 7d0f0100       1129 	st.w	r1,0[r29]
+                        1130 --319:     ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+000001fe 1a08           1131 	mov	r26,r1
+00000200 860a           1132 	shr	6,r1
+00000202 b105*          1133 	bl	.L1008
+                        1134 --line319
+                        1135 ..lin.e59a6454..6df13cb5.1_64::
+                        1136 .LDWlin64:
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1137 ..gh.beginasm.25:
+                        1138 	.type	..gh.beginasm.25,@object
+                        1139 	.size	..gh.beginasm.25,0
+                        1140 --ASM MACRO: Start
+                        1141 
+00000204 e0876001       1142     ei
+                        1143 --ASM MACRO: End
+                        1144 ..gh.endasm.26:
+                        1145 	.type	..gh.endasm.26,@object
+                        1146 	.size	..gh.endasm.26,0
+                        1147 .L1008:
+                        1148 --line319
+                        1149 ..lin.e59a6454..6df13cb5.1_65::
+                        1150 .LDWlin65:
+00000208 0000           1151 	nop
+                        1152 --321:     /* run the dispatch loop */
+                        1153 --322:     switch(g_current_icum_mode)
+0000020a 3d0f0100       1154 	ld.w	0[r29],r1
+0000020e 630a           1155 	cmp	3,r1
+00000210 f905*          1156 	bnl	.L1291
+00000212 610a           1157 	cmp	1,r1
+00000214 c20d*          1158 	be	.L1010
+00000216 620a           1159 	cmp	2,r1
+00000218 823d*          1160 	be	.L1011
+0000021a 80071401*      1161 	br	.L1015
+                        1162 .L1291:
+0000021e 640a           1163 	cmp	4,r1
+00000220 c145*          1164 	bl	.L1012
+00000222 f245*          1165 	be	.L1013
+00000224 660a           1166 	cmp	6,r1
+00000226 8275*          1167 	be	.L1014
+00000228 80070601*      1168 	br	.L1015
+                        1169 .L1010:
+                        1170 --323:     {
+                        1171 --324:         case ISSD_MODE_START:
+                        1172 --325:             /* first system initialization */
+                        1173 --326:             result = MH_INIT_Init();
+                        1174 .L1491:
+                        1175 --line326
+                        1176 ..lin.e59a6454..6df13cb5.1_66::
+                        1177 .LDWlin66:
+                        1178 	jarl	_MH_INIT_Init,lp
+                        1178 <EXPANSION BEGIN>
+                        1178 jarl22 _MH_INIT_Init , lp 
+0000022c 80ff0000*      1178 <EXPANSION END>
+00000230 0ae0           1179 	mov	r10,r28
+                        1180 --327:             /* check return code */
+                        1181 --328:             if(ER_OK == result)
+                        1182 --line328
+                        1183 ..lin.e59a6454..6df13cb5.1_67::
+                        1184 .LDWlin67:
+00000232 e0e1           1185 	cmp	zero,r28
+00000234 da05*          1186 	bne	.L1017
+                        1187 --329:             {
+                        1188 --330:                 (void)K_ISSD_SendModeEvent(ISSD_EVT_SYS_INIT_COMPLETED);
+                        1189 --line330
+                        1190 ..lin.e59a6454..6df13cb5.1_68::
+                        1191 .LDWlin68:
+00000236 0132           1192 	mov	1,r6
+                        1193 .L1493:
+                        1194 	jarl	_K_ISSD_SendModeEvent,lp
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1194 <EXPANSION BEGIN>
+                        1194 jarl22 _K_ISSD_SendModeEvent , lp 
+00000238 bfff62fe*      1194 <EXPANSION END>
+0000023c b505*          1195 	br	.L1019
+                        1196 .L1017:
+                        1197 --331:             }
+                        1198 --332:             else
+                        1199 --333:             {
+                        1200 --334:                 /* transition to HALT */
+                        1201 --335:                 MH_SYSINFO_Stop();
+                        1202 .L1495:
+                        1203 --line335
+                        1204 ..lin.e59a6454..6df13cb5.1_69::
+                        1205 .LDWlin69:
+                        1206 	jarl	_MH_SYSINFO_Stop,lp
+                        1206 <EXPANSION BEGIN>
+                        1206 jarl22 _MH_SYSINFO_Stop , lp 
+0000023e 80ff0000*      1206 <EXPANSION END>
+                        1207 .L1019:
+                        1208 --336:             }
+                        1209 --337:             /* ISSD Initialize */
+                        1210 --338:             k_ISSD_Init();
+                        1211 .L1497:
+                        1212 --line338
+                        1213 ..lin.e59a6454..6df13cb5.1_70::
+                        1214 .LDWlin70:
+                        1215 	jarl	_k_ISSD_Init,lp
+                        1215 <EXPANSION BEGIN>
+                        1215 jarl22 _k_ISSD_Init , lp 
+00000242 80ff0000*      1215 <EXPANSION END>
+                        1216 --340:             /* Check data set size */
+                        1217 --341:             result = MM_FLS_CheckDataSetSize(&fls_err);
+                        1218 --line341
+                        1219 ..lin.e59a6454..6df13cb5.1_71::
+                        1220 .LDWlin71:
+00000246 23360200       1221 	movea	2,sp,r6
+                        1222 .L1499:
+                        1223 	jarl	_MM_FLS_CheckDataSetSize,lp
+                        1223 <EXPANSION BEGIN>
+                        1223 jarl22 _MM_FLS_CheckDataSetSize , lp 
+0000024a 80ff0000*      1223 <EXPANSION END>
+0000024e 0ae0           1224 	mov	r10,r28
+                        1225 --342:             if(fls_err == FLS_CHK_OK)
+                        1226 --line342
+                        1227 ..lin.e59a6454..6df13cb5.1_72::
+                        1228 .LDWlin72:
+00000250 830f0300       1229 	ld.bu	2[sp],r1
+00000254 610a           1230 	cmp	1,r1
+00000256 9a0d*          1231 	bne	.L1020
+                        1232 --343:             {
+                        1233 --344:                 /* Check and set vm mapping */
+                        1234 --345:                 result = ML_CFG_SetIndexMappingVM();
+                        1235 .L1501:
+                        1236 --line345
+                        1237 ..lin.e59a6454..6df13cb5.1_73::
+                        1238 .LDWlin73:
+                        1239 	jarl	_ML_CFG_SetIndexMappingVM,lp
+                        1239 <EXPANSION BEGIN>
+                        1239 jarl22 _ML_CFG_SetIndexMappingVM , lp 
+00000258 80ff0000*      1239 <EXPANSION END>
+0000025c 0ae0           1240 	mov	r10,r28
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1241 --346:                 if (ER_OK != result)
+                        1242 --line346
+                        1243 ..lin.e59a6454..6df13cb5.1_74::
+                        1244 .LDWlin74:
+0000025e e0e1           1245 	cmp	zero,r28
+00000260 f205*          1246 	be	.L1024
+                        1247 --347:                 {
+                        1248 --348:                     result = ER_MH_INIT_M_CFG_INITFAIL;
+                        1249 --line348
+                        1250 ..lin.e59a6454..6df13cb5.1_75::
+                        1251 .LDWlin75:
+00000262 1be64000       1252 	addi	64,r27,r28
+00000266 c505*          1253 	br	.L1024
+                        1254 .L1020:
+                        1255 --349:                 }
+                        1256 --350:             }
+                        1257 --351:             else
+                        1258 --352:             {
+                        1259 --353:                 result = ER_MH_INIT_D_FLS_INITFAIL;
+                        1260 --line353
+                        1261 ..lin.e59a6454..6df13cb5.1_76::
+                        1262 .LDWlin76:
+00000268 3c061300e000   1263 	mov	14680083,r28
+                        1264 .L1024:
+                        1265 --354:             }
+                        1266 --356:             /* Install RSA ROM PUBLIC Key. Don't care if error occurred */
+                        1267 --357:             (void)MH_KEY_InstallRsaRomPub();
+                        1268 .L1503:
+                        1269 --line357
+                        1270 ..lin.e59a6454..6df13cb5.1_77::
+                        1271 .LDWlin77:
+                        1272 	jarl	_MH_KEY_InstallRsaRomPub,lp
+                        1272 <EXPANSION BEGIN>
+                        1272 jarl22 _MH_KEY_InstallRsaRomPub , lp 
+0000026e 80ff0000*      1272 <EXPANSION END>
+                        1273 --359:             result = MH_SYSINFO_UpdateSystemConfig(12);
+                        1274 --line359
+                        1275 ..lin.e59a6454..6df13cb5.1_78::
+                        1276 .LDWlin78:
+00000272 0c32           1277 	mov	12,r6
+                        1278 .L1505:
+                        1279 	jarl	_MH_SYSINFO_UpdateSystemConfig,lp
+                        1279 <EXPANSION BEGIN>
+                        1279 jarl22 _MH_SYSINFO_UpdateSystemConfig , lp 
+00000274 80ff0000*      1279 <EXPANSION END>
+00000278 0ae0           1280 	mov	r10,r28
+                        1281 --360:             if(result == ER_OK)
+                        1282 --line360
+                        1283 ..lin.e59a6454..6df13cb5.1_79::
+                        1284 .LDWlin79:
+0000027a e0e1           1285 	cmp	zero,r28
+0000027c da05*          1286 	bne	.L1025
+                        1287 --361:             {
+                        1288 --362:                 /* Notify secure data flash is initialized */
+                        1289 --363:                 result = MH_SYSINFO_SetInitState(SYSINFO_DF_INITIALIZED);
+                        1290 --line363
+                        1291 ..lin.e59a6454..6df13cb5.1_80::
+                        1292 .LDWlin80:
+0000027e 0132           1293 	mov	1,r6
+                        1294 .L1507:
+                        1295 	jarl	_MH_SYSINFO_SetInitState,lp
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1295 <EXPANSION BEGIN>
+                        1295 jarl22 _MH_SYSINFO_SetInitState , lp 
+00000280 80ff0000*      1295 <EXPANSION END>
+00000284 0ae0           1296 	mov	r10,r28
+                        1297 .L1025:
+                        1298 --364:             }
+                        1299 --366:             break;
+                        1300 --368:         case ISSD_MODE_VERIFY_BOOT_1ST:
+                        1301 --line366
+                        1302 ..lin.e59a6454..6df13cb5.1_81::
+                        1303 .LDWlin81:
+00000286 d555*          1304 	br	.L995
+                        1305 .L1011:
+                        1306 --369:             /* secure boot exec. */
+                        1307 --370:             (void)MH_SYSINFO_SaveTickCount(SYSINFO_TICK_COUNT_ID_01);
+                        1308 --line370
+                        1309 ..lin.e59a6454..6df13cb5.1_82::
+                        1310 .LDWlin82:
+00000288 0132           1311 	mov	1,r6
+                        1312 .L1509:
+                        1313 	jarl	_MH_SYSINFO_SaveTickCount,lp
+                        1313 <EXPANSION BEGIN>
+                        1313 jarl22 _MH_SYSINFO_SaveTickCount , lp 
+0000028a 80ff0000*      1313 <EXPANSION END>
+                        1314 --371:                 /* start PE request */
+                        1315 --372:                 result = MH_INIT_StartPE();
+                        1316 .L1511:
+                        1317 --line372
+                        1318 ..lin.e59a6454..6df13cb5.1_83::
+                        1319 .LDWlin83:
+                        1320 	jarl	_MH_INIT_StartPE,lp
+                        1320 <EXPANSION BEGIN>
+                        1320 jarl22 _MH_INIT_StartPE , lp 
+0000028e 80ff0000*      1320 <EXPANSION END>
+00000292 0ae0           1321 	mov	r10,r28
+                        1322 --373:                 /* check return code */
+                        1323 --374:                 if(ER_OK == result)
+                        1324 --line374
+                        1325 ..lin.e59a6454..6df13cb5.1_84::
+                        1326 .LDWlin84:
+00000294 e0e1           1327 	cmp	zero,r28
+00000296 da05*          1328 	bne	.L1028
+                        1329 --375:                 {
+                        1330 --376:                     (void)K_ISSD_SendModeEvent(ISSD_EVT_START_PE_COMPLETED);
+                        1331 --line376
+                        1332 ..lin.e59a6454..6df13cb5.1_85::
+                        1333 .LDWlin85:
+00000298 0332           1334 	mov	3,r6
+                        1335 .L1513:
+                        1336 	jarl	_K_ISSD_SendModeEvent,lp
+                        1336 <EXPANSION BEGIN>
+                        1336 jarl22 _K_ISSD_SendModeEvent , lp 
+0000029a bfff00fe*      1336 <EXPANSION END>
+0000029e c505*          1337 	br	.L1030
+                        1338 .L1028:
+                        1339 --377:                 }
+                        1340 --378:                 else
+                        1341 --379:                 {
+                        1342 --380:                     (void)K_ISSD_SendModeEvent(ISSD_EVT_START_PE_FAILED);
+                        1343 --line380
+                        1344 ..lin.e59a6454..6df13cb5.1_86::
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1345 .LDWlin86:
+000002a0 0432           1346 	mov	4,r6
+                        1347 .L1515:
+                        1348 	jarl	_K_ISSD_SendModeEvent,lp
+                        1348 <EXPANSION BEGIN>
+                        1348 jarl22 _K_ISSD_SendModeEvent , lp 
+000002a2 bffff8fd*      1348 <EXPANSION END>
+                        1349 .L1030:
+                        1350 --381:                 }
+                        1351 --382:             break;
+                        1352 --384:         case ISSD_MODE_VERIFY_BOOT_2ND:
+                        1353 --line382
+                        1354 ..lin.e59a6454..6df13cb5.1_87::
+                        1355 .LDWlin87:
+000002a6 d545*          1356 	br	.L995
+                        1357 .L1012:
+                        1358 --385:             /* secure boot exec. */
+                        1359 --386:                 (void)K_ISSD_SendModeEvent(ISSD_EVT_TRANSITION_TO_ROM);
+                        1360 --line386
+                        1361 ..lin.e59a6454..6df13cb5.1_88::
+                        1362 .LDWlin88:
+000002a8 0532           1363 	mov	5,r6
+                        1364 .L1517:
+                        1365 	jarl	_K_ISSD_SendModeEvent,lp
+                        1365 <EXPANSION BEGIN>
+                        1365 jarl22 _K_ISSD_SendModeEvent , lp 
+000002aa bffff0fd*      1365 <EXPANSION END>
+                        1366 --387:             break;
+                        1367 --389:         case ISSD_MODE_ROM_EXEC:
+                        1368 --line387
+                        1369 ..lin.e59a6454..6df13cb5.1_89::
+                        1370 .LDWlin89:
+000002ae 9545*          1371 	br	.L995
+                        1372 .L1013:
+                        1373 --390:             /* get from SYSINFO MNG*/
+                        1374 --391:             result = MH_SYSINFO_GetRamExeState(&ram_state);
+                        1375 --line391
+                        1376 ..lin.e59a6454..6df13cb5.1_90::
+                        1377 .LDWlin90:
+000002b0 23360100       1378 	movea	1,sp,r6
+                        1379 .L1519:
+                        1380 	jarl	_MH_SYSINFO_GetRamExeState,lp
+                        1380 <EXPANSION BEGIN>
+                        1380 jarl22 _MH_SYSINFO_GetRamExeState , lp 
+000002b4 80ff0000*      1380 <EXPANSION END>
+000002b8 0ae0           1381 	mov	r10,r28
+                        1382 --392:             if(ER_OK == result)
+                        1383 --line392
+                        1384 ..lin.e59a6454..6df13cb5.1_91::
+                        1385 .LDWlin91:
+000002ba e0e1           1386 	cmp	zero,r28
+000002bc ba0d*          1387 	bne	.L1036
+                        1388 --393:             {
+                        1389 --394:                 if((uint32_t)(SYSINFO_STATE_ON) == (uint32_t)ram_state)
+                        1390 --line394
+                        1391 ..lin.e59a6454..6df13cb5.1_92::
+                        1392 .LDWlin92:
+000002be a30f0100       1393 	ld.bu	1[sp],r1
+000002c2 610a           1394 	cmp	1,r1
+000002c4 fa05*          1395 	bne	.L1036
+                        1396 --395:                 {
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1397 --396:                     /* change to RAM mode of interrupt handler*/
+                        1398 --397:                     (void)D_INT_ChgExecMode(ICUM_INT_ROMMODE);
+                        1399 --line397
+                        1400 ..lin.e59a6454..6df13cb5.1_93::
+                        1401 .LDWlin93:
+000002c6 0132           1402 	mov	1,r6
+                        1403 .L1521:
+                        1404 	jarl	_D_INT_ChgExecMode,lp
+                        1404 <EXPANSION BEGIN>
+                        1404 jarl22 _D_INT_ChgExecMode , lp 
+000002c8 80ff0000*      1404 <EXPANSION END>
+                        1405 --399:                     /* notify to SYSINFO MNG*/
+                        1406 --400:                     (void)MH_SYSINFO_SetRamExeState(SYSINFO_STATE_OFF);
+                        1407 --line400
+                        1408 ..lin.e59a6454..6df13cb5.1_94::
+                        1409 .LDWlin94:
+000002cc 0032           1410 	mov	0,r6
+                        1411 .L1523:
+                        1412 	jarl	_MH_SYSINFO_SetRamExeState,lp
+                        1412 <EXPANSION BEGIN>
+                        1412 jarl22 _MH_SYSINFO_SetRamExeState , lp 
+000002ce 80ff0000*      1412 <EXPANSION END>
+                        1413 .L1036:
+                        1414 --401:                 }
+                        1415 --402:                 else
+                        1416 --403:                 {
+                        1417 --404:                     /* do nothing */
+                        1418 --405:                 }
+                        1419 --406:             }
+                        1420 --407:             else
+                        1421 --408:             {
+                        1422 --409:                 /* do nothing */
+                        1423 --410:             }
+                        1424 --412:             /* get request of service generate */
+                        1425 --413:             (void)k_ISSD_IsRegistGenService(&gen_request);
+                        1426 --line413
+                        1427 ..lin.e59a6454..6df13cb5.1_95::
+                        1428 .LDWlin95:
+000002d2 23360300       1429 	movea	3,sp,r6
+                        1430 .L1525:
+                        1431 	jarl	_k_ISSD_IsRegistGenService,lp
+                        1431 <EXPANSION BEGIN>
+                        1431 jarl22 _k_ISSD_IsRegistGenService , lp 
+000002d6 80ff0000*      1431 <EXPANSION END>
+                        1432 --414:             if((uint32_t)true == (uint32_t)gen_request)
+                        1433 --line414
+                        1434 ..lin.e59a6454..6df13cb5.1_96::
+                        1435 .LDWlin96:
+000002da a30f0300       1436 	ld.bu	3[sp],r1
+000002de e009           1437 	cmp	zero,r1
+000002e0 b205*          1438 	be	.L1039
+                        1439 --415:             {
+                        1440 --416:                 /* generate service execute */
+                        1441 --417:                 (void)k_ISSD_GenerateServiceExec();
+                        1442 .L1527:
+                        1443 --line417
+                        1444 ..lin.e59a6454..6df13cb5.1_97::
+                        1445 .LDWlin97:
+                        1446 	jarl	_k_ISSD_GenerateServiceExec,lp
+                        1446 <EXPANSION BEGIN>
+                        1446 jarl22 _k_ISSD_GenerateServiceExec , lp 
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+000002e2 80ff0000*      1446 <EXPANSION END>
+                        1447 .L1039:
+                        1448 --418:             }
+                        1449 --419:             else
+                        1450 --420:             {
+                        1451 --421:                 /* do nothing */
+                        1452 --422:             }
+                        1453 --424:             /* set icu status */
+                        1454 --425:             (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_SERVAVAIL, ICU_STATUS_ON);
+                        1455 --line425
+                        1456 ..lin.e59a6454..6df13cb5.1_98::
+                        1457 .LDWlin98:
+000002e6 40360010       1458 	movhi	hi(268435456),zero,r6
+000002ea 013a           1459 	mov	1,r7
+                        1460 .L1529:
+                        1461 	jarl	_D_COMM_SetICUStatusInfo,lp
+                        1461 <EXPANSION BEGIN>
+                        1461 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000002ec 80ff0000*      1461 <EXPANSION END>
+                        1462 --427:             /* check background verify state */
+                        1463 --428:             if(BACKGROUND_VERIFY_ON == g_background_verify_state)
+                        1464 --line428
+                        1465 ..lin.e59a6454..6df13cb5.1_99::
+                        1466 .LDWlin99:
+000002f0 3d0f0900       1467 	ld.w	8[r29],r1
+000002f4 610a           1468 	cmp	1,r1
+000002f6 da05*          1469 	bne	.L1040
+                        1470 --429:             {
+                        1471 --430:                 /* background verify exec. */
+                        1472 --431:                     k_ISSD_SetBackgroundVerifyState(BACKGROUND_VERIFY_OFF);
+                        1473 --line431
+                        1474 ..lin.e59a6454..6df13cb5.1_100::
+                        1475 .LDWlin100:
+000002f8 0032           1476 	mov	0,r6
+                        1477 .L1531:
+                        1478 	jarl	_k_ISSD_SetBackgroundVerifyState,lp
+                        1478 <EXPANSION BEGIN>
+                        1478 jarl22 _k_ISSD_SetBackgroundVerifyState , lp 
+000002fa bfff56fd*      1478 <EXPANSION END>
+000002fe b505*          1479 	br	.L1042
+                        1480 .L1040:
+                        1481 --432:                 }
+                        1482 --433:             else
+                        1483 --434:             {
+                        1484 --435:                 /* jump to dispatch loop in ROM */
+                        1485 --436:                 k_ISSD_MainDispatch();
+                        1486 .L1533:
+                        1487 --line436
+                        1488 ..lin.e59a6454..6df13cb5.1_101::
+                        1489 .LDWlin101:
+                        1490 	jarl	_k_ISSD_MainDispatch,lp
+                        1490 <EXPANSION BEGIN>
+                        1490 jarl22 _k_ISSD_MainDispatch , lp 
+00000300 80ff0000*      1490 <EXPANSION END>
+                        1491 .L1042:
+                        1492 --437:             }
+                        1493 --438:             break;
+                        1494 --440:         case ISSD_MODE_ECC_TEST:
+                        1495 --line438
+                        1496 ..lin.e59a6454..6df13cb5.1_102::
+                        1497 .LDWlin102:
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+00000304 e515*          1498 	br	.L995
+                        1499 .L1014:
+                        1500 --441:             /* get from SYSINFO MNG*/
+                        1501 --442:             result = MH_SYSINFO_GetRamExeState(&ram_state);
+                        1502 --line442
+                        1503 ..lin.e59a6454..6df13cb5.1_103::
+                        1504 .LDWlin103:
+00000306 23360100       1505 	movea	1,sp,r6
+                        1506 .L1535:
+                        1507 	jarl	_MH_SYSINFO_GetRamExeState,lp
+                        1507 <EXPANSION BEGIN>
+                        1507 jarl22 _MH_SYSINFO_GetRamExeState , lp 
+0000030a 80ff0000*      1507 <EXPANSION END>
+0000030e 0ae0           1508 	mov	r10,r28
+                        1509 --443:             if(ER_OK == result)
+                        1510 --line443
+                        1511 ..lin.e59a6454..6df13cb5.1_104::
+                        1512 .LDWlin104:
+00000310 e0e1           1513 	cmp	zero,r28
+00000312 ba0d*          1514 	bne	.L1048
+                        1515 --444:             {
+                        1516 --445:                 if((uint32_t)(SYSINFO_STATE_OFF) == (uint32_t)ram_state)
+                        1517 --line445
+                        1518 ..lin.e59a6454..6df13cb5.1_105::
+                        1519 .LDWlin105:
+00000314 a30f0100       1520 	ld.bu	1[sp],r1
+00000318 e009           1521 	cmp	zero,r1
+0000031a fa05*          1522 	bne	.L1048
+                        1523 --446:                 {
+                        1524 --447:                     /* change to RAM mode of interrupt handler*/
+                        1525 --448:                     (void)D_INT_ChgExecMode(ICUM_INT_RAMMODE);
+                        1526 --line448
+                        1527 ..lin.e59a6454..6df13cb5.1_106::
+                        1528 .LDWlin106:
+0000031c 0232           1529 	mov	2,r6
+                        1530 .L1537:
+                        1531 	jarl	_D_INT_ChgExecMode,lp
+                        1531 <EXPANSION BEGIN>
+                        1531 jarl22 _D_INT_ChgExecMode , lp 
+0000031e 80ff0000*      1531 <EXPANSION END>
+                        1532 --450:                     /* notify to SYSINFO MNG*/
+                        1533 --451:                     (void)MH_SYSINFO_SetRamExeState(SYSINFO_STATE_ON);
+                        1534 --line451
+                        1535 ..lin.e59a6454..6df13cb5.1_107::
+                        1536 .LDWlin107:
+00000322 0132           1537 	mov	1,r6
+                        1538 .L1539:
+                        1539 	jarl	_MH_SYSINFO_SetRamExeState,lp
+                        1539 <EXPANSION BEGIN>
+                        1539 jarl22 _MH_SYSINFO_SetRamExeState , lp 
+00000324 80ff0000*      1539 <EXPANSION END>
+                        1540 .L1048:
+                        1541 --452:                 }
+                        1542 --453:                 else
+                        1543 --454:                 {
+                        1544 --455:                     /* do nothing */
+                        1545 --456:                 }
+                        1546 --457:             }
+                        1547 --458:             else
+                        1548 --459:             {
+                        1549 --460:                 /* do nothing */
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1550 --461:             }
+                        1551 --462:             /* move the dispatch loop to RAM */
+                        1552 --463:             k_ISSD_RamDispatch();
+                        1553 .L1541:
+                        1554 --line463
+                        1555 ..lin.e59a6454..6df13cb5.1_108::
+                        1556 .LDWlin108:
+                        1557 	jarl	_k_ISSD_RamDispatch,lp
+                        1557 <EXPANSION BEGIN>
+                        1557 jarl22 _k_ISSD_RamDispatch , lp 
+00000328 80ff0000*      1557 <EXPANSION END>
+                        1558 --464:             break;
+                        1559 --466:         default:
+                        1560 --line464
+                        1561 ..lin.e59a6454..6df13cb5.1_109::
+                        1562 .LDWlin109:
+0000032c a505*          1563 	br	.L995
+                        1564 .L1015:
+                        1565 --467:             /* should never occur */
+                        1566 --468:             break;
+                        1567 --line468
+                        1568 ..lin.e59a6454..6df13cb5.1_110::
+                        1569 .LDWlin110:
+0000032e 0000           1570 	nop
+                        1571 .L995:
+                        1572 --469:     }
+                        1573 --470: }
+                        1574 --	    .ef
+                        1575 .LDW72:
+00000330 23ff1900       1576 	ld.w	24[sp],lp
+00000334 23ef0500       1577 	ld.w	4[sp],r29
+00000338 23e70900       1578 	ld.w	8[sp],r28
+0000033c 23df0d00       1579 	ld.w	12[sp],r27
+00000340 23d71100       1580 	ld.w	16[sp],r26
+00000344 23cf1500       1581 	ld.w	20[sp],r25
+00000348 031e1c00       1582 	addi	28,sp,sp
+                        1583 .L1543:
+                        1584 	.jumptype return
+0000034c 7f00           1585 	jmp	[lp]
+                        1586 --line468
+                        1587 ..lin.e59a6454..6df13cb5.1_111::
+                        1588 	.type	_k_ISSD_Run,@function
+                        1589 	.size	_k_ISSD_Run,.-_k_ISSD_Run
+                        1590 	.align	2
+                        1591 --_result	r28	local
+                        1592 --_ram_state	1[sp]	local
+                        1593 --_fls_err	2[sp]	local
+                        1594 --_gen_request	3[sp]	local
+                        1595 --_saved_psw	r26	local
+                        1596 
+                        1597 	.section ".ghcalltbl",""
+00000010 00000000*      1598 .L1492:	.word	.L1491
+                        1599 	.type	.L1492,@object
+                        1600 	.size	.L1492,4
+00000014 00000000*      1601 .L1494:	.word	.L1493
+                        1602 	.type	.L1494,@object
+                        1603 	.size	.L1494,4
+00000018 00000000*      1604 .L1496:	.word	.L1495
+                        1605 	.type	.L1496,@object
+                        1606 	.size	.L1496,4
+0000001c 00000000*      1607 .L1498:	.word	.L1497
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1608 	.type	.L1498,@object
+                        1609 	.size	.L1498,4
+00000020 00000000*      1610 .L1500:	.word	.L1499
+                        1611 	.type	.L1500,@object
+                        1612 	.size	.L1500,4
+00000024 00000000*      1613 .L1502:	.word	.L1501
+                        1614 	.type	.L1502,@object
+                        1615 	.size	.L1502,4
+00000028 00000000*      1616 .L1504:	.word	.L1503
+                        1617 	.type	.L1504,@object
+                        1618 	.size	.L1504,4
+0000002c 00000000*      1619 .L1506:	.word	.L1505
+                        1620 	.type	.L1506,@object
+                        1621 	.size	.L1506,4
+00000030 00000000*      1622 .L1508:	.word	.L1507
+                        1623 	.type	.L1508,@object
+                        1624 	.size	.L1508,4
+00000034 00000000*      1625 .L1510:	.word	.L1509
+                        1626 	.type	.L1510,@object
+                        1627 	.size	.L1510,4
+00000038 00000000*      1628 .L1512:	.word	.L1511
+                        1629 	.type	.L1512,@object
+                        1630 	.size	.L1512,4
+0000003c 00000000*      1631 .L1514:	.word	.L1513
+                        1632 	.type	.L1514,@object
+                        1633 	.size	.L1514,4
+00000040 00000000*      1634 .L1516:	.word	.L1515
+                        1635 	.type	.L1516,@object
+                        1636 	.size	.L1516,4
+00000044 00000000*      1637 .L1518:	.word	.L1517
+                        1638 	.type	.L1518,@object
+                        1639 	.size	.L1518,4
+00000048 00000000*      1640 .L1520:	.word	.L1519
+                        1641 	.type	.L1520,@object
+                        1642 	.size	.L1520,4
+0000004c 00000000*      1643 .L1522:	.word	.L1521
+                        1644 	.type	.L1522,@object
+                        1645 	.size	.L1522,4
+00000050 00000000*      1646 .L1524:	.word	.L1523
+                        1647 	.type	.L1524,@object
+                        1648 	.size	.L1524,4
+00000054 00000000*      1649 .L1526:	.word	.L1525
+                        1650 	.type	.L1526,@object
+                        1651 	.size	.L1526,4
+00000058 00000000*      1652 .L1528:	.word	.L1527
+                        1653 	.type	.L1528,@object
+                        1654 	.size	.L1528,4
+0000005c 00000000*      1655 .L1530:	.word	.L1529
+                        1656 	.type	.L1530,@object
+                        1657 	.size	.L1530,4
+00000060 00000000*      1658 .L1532:	.word	.L1531
+                        1659 	.type	.L1532,@object
+                        1660 	.size	.L1532,4
+00000064 00000000*      1661 .L1534:	.word	.L1533
+                        1662 	.type	.L1534,@object
+                        1663 	.size	.L1534,4
+00000068 00000000*      1664 .L1536:	.word	.L1535
+                        1665 	.type	.L1536,@object
+                        1666 	.size	.L1536,4
+0000006c 00000000*      1667 .L1538:	.word	.L1537
+                        1668 	.type	.L1538,@object
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t1c1.si
+                        1669 	.size	.L1538,4
+00000070 00000000*      1670 .L1540:	.word	.L1539
+                        1671 	.type	.L1540,@object
+                        1672 	.size	.L1540,4
+00000074 00000000*      1673 .L1542:	.word	.L1541
+                        1674 	.type	.L1542,@object
+                        1675 	.size	.L1542,4
+                        1676 	.section ".ghrettbl",""
+00000020 00000000*      1677 .L1544:	.word	.L1543
+                        1678 	.type	.L1544,@object
+                        1679 	.size	.L1544,4
+                        1680 	.data
+                        1681 	.section ".icum_kernel_ram","ax"
+                        1682 
+                        1683 	.align	2
+                        1684 --_g_current_icum_mode	_g_current_icum_mode	static
+                        1685 --_g_next_icum_mode	_g_next_icum_mode	static
+                        1686 --_g_background_verify_state	_g_background_verify_state	static
+                        1687 
+                        1688 	.data
+                        1689 	.ghsnote version,30
+                        1690 	.ghsnote tools,8195
+                        1691 	.ghsnote options,656
+                        1692 	.section ".icum_kernel_ram","ax"
+                        1693 	.section ".icum_kernel.text","ax"
+                        1694 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065C..0::
+                        1695 	.section ".icum_kernel_ram","ax"
+                        1696 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_modes...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF4065C..1::
+                        1697 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

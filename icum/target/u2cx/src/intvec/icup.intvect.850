@@ -1,0 +1,148 @@
+--/******************************************************************************/
+--/* Component Name   ICUP exception handler description                        */
+--/******************************************************************************/
+--/* Product      : ICU-M Low Level Driver (Demo Part)                          */
+--/******************************************************************************/
+--/***********************************************************************************************************************
+--* RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+--* 
+--* DISCLAIMER
+--* This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+--* other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+--* applicable laws, including copyright laws.
+--* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+--* THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+--* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+--* EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+--* SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+--* SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+--* Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+--* this software. By using this software, you agree to the additional terms and conditions found by accessing the
+--* following link:
+--* www.renesas.com/disclaimer
+--*
+--* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+--***********************************************************************************************************************/
+
+-------------------------------------------------------------------------------
+-- the symbol _PEID_ is defined at gpj level
+
+#if   (_PEID_ == 0x07)
+#include <icum_irq_define_pub.h>
+
+#define RESET_ENABLE                    0x00000001u
+
+#else
+    #error  Wrong _PEID_ definition
+#endif
+
+-------------------------------------------------------------------------------
+--
+-- MANUALLY CREATED
+--
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+-------------  ICUP interrupt vector table
+-------------------------------------------------------------------------------
+
+  .extern RESET_ICUP
+  .global __irqTbl2
+  .extern __startup_unused_isr
+  .global __ICUP_ENTRY
+
+  .section ".intvect", .text
+  .offset 0x0000
+__ICUP_ENTRY:
+    jr RESET_ICUP
+
+-- ****************************************************************************
+-- HW EXCEPTIONS
+-- As found in RH850 G3K HW Manual
+-- ****************************************************************************
+
+  .offset 0x0010
+  #if (SYSERR_ENABLE_ROM > INT_HNDL_NOT_REGIST)
+    .extern __STARTUP_SYSERR
+    jr __STARTUP_SYSERR
+  #else
+    jr __startup_unused_isr
+  #endif
+
+  .offset 0x0020
+    jr __startup_unused_isr
+
+  .offset 0x0030
+    jr __startup_unused_isr
+
+  .offset 0x0040
+    jr __startup_unused_isr
+
+  .offset 0x0050
+    jr __startup_unused_isr
+
+  .offset 0x0060
+    jr __startup_unused_isr
+
+  .offset 0x0070
+    jr __startup_unused_isr
+
+  .offset 0x0080
+    jr __startup_unused_isr
+
+  .offset 0x0090
+    jr __startup_unused_isr
+
+  .offset 0x00a0
+    jr __startup_unused_isr
+
+  .offset 0x00b0
+    jr __startup_unused_isr
+
+  .offset 0x00c0
+    jr __startup_unused_isr
+
+--
+-- (R.F.U.)
+--
+  .offset 0x00d0
+    jr __startup_unused_isr
+
+  .offset 0x00e0
+    .extern __STARTUP_FENMI
+    jr __STARTUP_FENMI
+
+  .offset 0x00f0
+    jr __startup_unused_isr
+
+  .offset 0x0100
+    jr __startup_unused_isr
+
+  .offset 0x0110
+    jr __startup_unused_isr
+
+  .offset 0x0120
+    jr __startup_unused_isr
+
+  .offset 0x0130
+    jr __startup_unused_isr
+
+  .offset 0x0140
+    jr __startup_unused_isr
+
+  .offset 0x0150
+    jr __startup_unused_isr
+
+  .offset 0x0160
+    jr __startup_unused_isr
+
+  .offset 0x0170
+    jr __startup_unused_isr
+
+
+-- ****************************************************************************
+-- INTER-PROCESSOR INTERRUPT
+-- ****************************************************************************
+#define IRQ_TABLE_START 0x200
+  .offset (IRQ_TABLE_START+0x0000)
+__irqTbl2:

@@ -1,0 +1,221 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\pe.startup.dbo -source=..\..\pe\target\u2cx\src\startup\pe.startup.850 --gh_oname=..\..\pe\target\u2cx\build\obj\pe2\pe.startup.o --gh_md_append=..\..\pe\target\u2cx\build\obj\pe2\pe.startup.dtmp -o ..\..\pe\target\u2cx\build\obj\pe2\gh_0000gn41.o -list=..\..\pe\target\u2cx\build\obj\pe2\pe.startup.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si
+Source File: ..\..\pe\target\u2cx\src\startup\pe.startup.850
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           0 #line 1 "..\\..\\pe\\target\\u2cx\\src\\startup\\pe.startup.850"
+                           1 -- 
+                           2 -- 
+                           3 -- 
+                           4 -- 
+                           5 -- 
+                           6 --
+                           7 
+                           8 
+                           9 
+                          10 
+                          11 
+                          12 
+                          13 
+                          14 
+                          15 
+                          16 
+                          17 
+                          18 
+                          19 
+                          20 
+                          21 
+                          22 
+                          23 
+                          24 
+                          25  
+                          26 
+                          27 
+                          28 
+                          29 
+                          30 
+                          31 
+                          32 
+                          33 
+                          34 
+                          35 
+                          36 
+                          37 
+                          38     .weak     ___lowinit
+                          39     
+                          40     .global   _RESET_PE2
+                          41     
+                          42     .section .text
+                          43 _RESET_PE2:
+                          44     
+                          45     -- ***************
+                          46     -- RAM CLEAR
+                          47     -- ***************
+                          48 
+                          49     -- clear self RAM
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si
+00000000 260600000000*    50     mov ___ghsbegin_start_iRAM_Self, r6
+00000006 270600000000*    51     mov ___ghsbegin_end_iRAM_Self, r7
+0000000c 0008             52     mov r0, r1
+                          53 loop_clear:
+0000000e a6070f000000     54     st.dw   r0, 0[r6]
+00000014 06360800         55     addi    8, r6, r6
+00000018 e731             56     cmp r7, r6
+0000001a a1fd*            57     bl  loop_clear
+                          58 
+                          59     -- ***************
+                          60     -- COPROCESSOR
+                          61     -- ***************
+                          62 
+                          63     stsr    PSW,    r6
+                          63 <EXPANSION BEGIN>
+                          63 stsr PSW , r6 , 0
+0000001c e5374000         63 <EXPANSION END>
+                          64     or      0x00010000, r6
+                          64 <EXPANSION BEGIN>
+                          64 movhi hi(0x00010000 ), r0, r1 
+                          64 or r1, r6 
+00000020 400e0100         64 <EXPANSION END>
+00000024 0131 
+                          65     ldsr    r6,     PSW         -- PSW.CU0 = 1
+                          65 <EXPANSION BEGIN>
+                          65 ldsr r6 , PSW , 0
+00000026 e62f2000         65 <EXPANSION END>
+0000002a 1c00             66     synci
+                          67     mov     0x00020000, r6  
+                          67 <EXPANSION BEGIN>
+                          67 movhi hi(0x00020000 ), r0, r6 
+0000002c 40360200         67 <EXPANSION END>
+                          68     ldsr    r6,     FPSR        -- FPSR.FS = 1
+                          68 <EXPANSION BEGIN>
+                          68 ldsr r6 , FPSR , 0
+00000030 e6372000         68 <EXPANSION END>
+00000034 1f00             69     syncp
+                          70     stsr    PSW,    r6
+                          70 <EXPANSION BEGIN>
+                          70 stsr PSW , r6 , 0
+00000036 e5374000         70 <EXPANSION END>
+                          71 
+                          72     -- ***************
+                          73     -- GHS POINTERS
+                          74     -- ***************
+                          75 
+                          76     -- set global pointer
+0000003a 240600000000*    77     mov     ___ghsbegin_sdabase, gp
+                          78 
+                          79     -- set text pointer
+00000040 250600000000*    80     mov     ___ghsbegin_robase, tp
+                          81 
+                          82     -- set stack pointer and align on 32-bit word
+00000046 230600000000*    83     mov     (___ghsend_stack-4), sp
+0000004c 1c0a             84     mov     -4,r1
+0000004e 4119             85     and     r1,sp
+                          86 
+                          87     -- ***************
+                          88     -- INTERRUPTS
+                          89     -- ***************
+                          90     
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si
+                          91     -- set EBASE
+00000050 260600000000*    92     mov     ___ghsbegin_intvect, r6
+                          93     ldsr    r6, EBASE
+                          93 <EXPANSION BEGIN>
+                          93 ldsr r6 , EBASE , 1
+00000056 e61f2008         93 <EXPANSION END>
+                          94     
+                          95     -- PSW.EBV = 1
+                          96     stsr    PSW,    r6
+                          96 <EXPANSION BEGIN>
+                          96 stsr PSW , r6 , 0
+0000005a e5374000         96 <EXPANSION END>
+                          97     or      0x00008000, r6
+                          97 <EXPANSION BEGIN>
+                          97 ori 0x00008000 , r6 , r6 
+0000005e 86360080         97 <EXPANSION END>
+                          98     ldsr    r6,     PSW         -- PSW.EBV = 1
+                          98 <EXPANSION BEGIN>
+                          98 ldsr r6 , PSW , 0
+00000062 e62f2000         98 <EXPANSION END>
+                          99 
+                         100     -- set interrupt base pointer
+00000066 210600000000*   101     mov     __irqTbl, r1
+0000006c e1272008        102     ldsr    r1, INTBP, 1
+                         103     
+                         104     -- disable interrupt on mis-aligned accesses
+00000070 800e0200        105     ori     0x02, r0, r1
+00000074 e12f2008        106     ldsr    r1, 5, 1                    -- MCTL is 5, 1
+                         107     
+                         108     -- ***************
+                         109     -- LOW INIT
+                         110     -- ***************
+                         111 
+                         112     -- clear some control registers to 0
+                         113     ldsr    r0, EIPC
+                         113 <EXPANSION BEGIN>
+                         113 ldsr r0 , EIPC , 0
+00000078 e0072000        113 <EXPANSION END>
+                         114     ldsr    r0, FEPC
+                         114 <EXPANSION BEGIN>
+                         114 ldsr r0 , FEPC , 0
+0000007c e0172000        114 <EXPANSION END>
+                         115     ldsr    r0, FEIC
+                         115 <EXPANSION BEGIN>
+                         115 ldsr r0 , FEIC , 0
+00000080 e0772000        115 <EXPANSION END>
+                         116     ldsr    r0, CTBP
+                         116 <EXPANSION BEGIN>
+                         116 ldsr r0 , CTBP , 0
+00000084 e0a72000        116 <EXPANSION END>
+                         117     ldsr    r0, CTPC
+                         117 <EXPANSION BEGIN>
+                         117 ldsr r0 , CTPC , 0
+00000088 e0872000        117 <EXPANSION END>
+                         118     ldsr    r0, EIWR
+                         118 <EXPANSION BEGIN>
+                         118 ldsr r0 , EIWR , 0
+0000008c e0e72000        118 <EXPANSION END>
+                         119     ldsr    r0, FEWR
+                         119 <EXPANSION BEGIN>
+                         119 ldsr r0 , FEWR , 0
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000gn41.si
+00000090 e0ef2000        119 <EXPANSION END>
+                         120     ldsr    r0, MEA
+                         120 <EXPANSION BEGIN>
+                         120 ldsr r0 , MEA , 2
+00000094 e0372010        120 <EXPANSION END>
+                         121 
+                         122     -- jump to the HW initialisation function
+                         123     jarl    ___lowinit, lp
+                         123 <EXPANSION BEGIN>
+                         123 jarl22 ___lowinit , lp 
+00000098 80ff0000*       123 <EXPANSION END>
+                         124 
+                         125     -- ***************
+                         126     -- START
+                         127     -- ***************
+                         128 
+                         129     -- jump to the initialisation functions of the library
+                         130     -- and from there to main()
+0000009c 80070000*       131     jr    __start
+                         132 
+                         133     -- Measures against the occurrence of ECC errors due to undefined memory
+                         134     -- Necessary to output the specified section to the execution image
+                         135     .section ".dummy_area"
+00000000 0000            136     nop
+                         137 

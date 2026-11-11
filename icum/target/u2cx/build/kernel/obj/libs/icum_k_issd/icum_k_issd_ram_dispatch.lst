@@ -1,0 +1,633 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\generic\include\device\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\include\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_ram_dispatch.dbo -source=icum_k_issd_ram_dispatch.c -comp -o ..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\gh_0000t441.o -list=..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_ram_dispatch.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+Source File: icum_k_issd_ram_dispatch.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\generic\include\device\
+                           3 --		-I..\..\icum\target\u2cx\include\driver\
+                           4 --		-I..\..\icum\generic\include\kernel\
+                           5 --		-I..\..\icum\sal\include\library\
+                           6 --		-I..\..\icum\generic\include\middle\
+                           7 --		-I..\..\icum\generic\include\service\ -I..\..\pe\generic\icumif\
+                           8 --		-I..\..\icum\generic\include\
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\device\
+                          11 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          13 --		-I..\..\icum\target\u2cx\include\driver
+                          14 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          17 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          18 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          19 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          20 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          21 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          22 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          23 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          24 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          25 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          26 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          27 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          28 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          29 --		.text=.icum_kernel.text -section .rodata=.icum_kernel.rodata
+                          30 --		-section .bss=.icum_kernel.bss -section .data=.icum_kernel.data
+                          31 --		-filetype.c
+                          32 --		..\..\icum\generic\src\kernel\k_issd\icum_k_issd_ram_dispatch.c
+                          33 --		-o
+                          34 --		..\..\icum\target\u2cx\build\kernel\obj\libs\icum_k_issd\icum_k_issd_ram_dispatch.o
+                          35 --Source File:   ..\..\icum\generic\src\kernel\k_issd\icum_k_issd_ram_dispatch.c
+                          36 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          37 --Compile Date:  Wed Nov 11 14:08:01 2026
+                          38 --Host OS:       Win64
+                          39 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          40 --Release:       Compiler v2023.5.4
+                          41 --Revision Date: Wed Sep 06 02:44:56 2023
+                          42 --Release Date:  Wed Sep 06 02:00:00 2023
+                          43 -- ecom  -g -w
+                          44 	.section ".icum_kernel_ram","ax"
+                          45 
+                          46 --1: /******************************************************************************/
+                          47 --2: /* Component Name   ISSD (ICU-M Start-up & Service Dispatcher)                */
+                          48 --3: /******************************************************************************/
+                          49 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          50 --5: /******************************************************************************/
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                          51 --6: /***********************************************************************************************************************
+                          52 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          53 --8: * 
+                          54 --9: * DISCLAIMER
+                          55 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          56 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          57 --12: * applicable laws, including copyright laws.
+                          58 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          59 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          60 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          61 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          62 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          63 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          64 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          65 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          66 --21: * following link:
+                          67 --22: * www.renesas.com/disclaimer
+                          68 --23: *
+                          69 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          70 --25: ***********************************************************************************************************************/
+                          71 --27: /* Header files                     */
+                          72 --28: #include "renesas_types.h"
+                          73 --29: #include "r_icumif_api.h"
+                          74 --30: #include "icum_d_comm_pub.h"
+                          75 --31: #include "icum_d_misc_pub.h"
+                          76 --32: #include "icum_d_int_pub.h"
+                          77 --33: #include "icum_d_wdt_pub.h"
+                          78 --34: #include "icum_k_issd_pub.h"
+                          79 --35: #include "icum_k_issd.h"
+                          80 --37: #pragma ghs section text   = ".icum_kernel_ram"
+                          81 --38: #pragma ghs section rodata = ".icum_kernel_const_ram"
+                          82 --39: /***************************************************************************************
+                          83 --40: * Function ID  : [ICUMFW_CD_K_ISSD_0052]:[ICUMFW_UD_K_ISSD_0052]
+                          84 --41: * Function name: k_ISSD_RamDispatch
+                          85 --42: * Description  : Dispatch loop in RAM
+                          86 --43: * Arguments    : none
+                          87 --44: * Return Value : none
+                          88 --45: ***************************************************************************************/
+                          89 --46: void k_ISSD_RamDispatch(void)
+                          90 	.align	2
+                          91 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_ram_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..0::
+                          92 	.align	2
+                          93 	.align	2
+                          94 ..gh.f.a.2.e.0:
+                          95 	.type	..gh.f.a.2.e.0,@object
+                          96 	.size	..gh.f.a.2.e.0,0
+                          97 	.global	_k_ISSD_RamDispatch
+                          98 _k_ISSD_RamDispatch:
+00000000 031eecff         99 	addi	-20,sp,sp
+00000004 63ff1100        100 	st.w	lp,16[sp]
+00000008 63ef0d00        101 	st.w	r29,12[sp]
+                         102 --	    .bf
+                         103 .LDW01:
+                         104 --47: {
+                         105 --48:     icum_job_t *p_job;
+                         106 --49:     bool wdt_flag;
+                         107 --50:     bool mode_change;
+                         108 --51:     uint32_t job_count;
+                         109 --52:     uint32_t saved_psw = 0UL;
+0000000c 00ea            110 	mov	0,r29
+                         111 --54:     /* loop until a execution mode change is requested */
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                         112 --55:     k_ISSD_ModeChangeRequested(&mode_change);
+0000000e 23360300        113 	movea	3,sp,r6
+                         114 .L391:
+                         115 	jarl	_k_ISSD_ModeChangeRequested,lp
+                         115 <EXPANSION BEGIN>
+                         115 jarl22 _k_ISSD_ModeChangeRequested , lp 
+00000012 80ff0000*       115 <EXPANSION END>
+                         116 --56:     while((uint32_t)false == (uint32_t)mode_change)
+                         117 --line56
+                         118 ..lin.7369b16b..f89bf530.0_1::
+                         119 .LDWlin1:
+00000016 f575*           120 	br	.L4
+                         121 .L6:
+                         122 --57:     {
+                         123 --58:         do
+                         124 --line58
+                         125 ..lin.7369b16b..f89bf530.0_2::
+                         126 .LDWlin2:
+00000018 0000            127 	nop
+                         128 .L12:
+                         129 --59:         {
+                         130 --60:             /* re-enable interrupts (if necessary) */
+                         131 --61:             ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+0000001a 1d08            132 	mov	r29,r1
+0000001c 860a            133 	shr	6,r1
+0000001e b105*           134 	bl	.L15
+                         135 --line61
+                         136 ..lin.7369b16b..f89bf530.0_3::
+                         137 .LDWlin3:
+                         138 ..gh.beginasm.1:
+                         139 	.type	..gh.beginasm.1,@object
+                         140 	.size	..gh.beginasm.1,0
+                         141 --ASM MACRO: Start
+                         142 
+00000020 e0876001        143     ei
+                         144 --ASM MACRO: End
+                         145 ..gh.endasm.2:
+                         146 	.type	..gh.endasm.2,@object
+                         147 	.size	..gh.endasm.2,0
+                         148 .L15:
+                         149 --line61
+                         150 ..lin.7369b16b..f89bf530.0_4::
+                         151 .LDWlin4:
+00000024 0000            152 	nop
+                         153 --63:             /* get next job in queue */
+                         154 --64:             k_ISSD_GetNextJob(&p_job);
+00000026 23360400        155 	movea	4,sp,r6
+                         156 .L393:
+                         157 	jarl	_k_ISSD_GetNextJob,lp
+                         157 <EXPANSION BEGIN>
+                         157 jarl22 _k_ISSD_GetNextJob , lp 
+0000002a 80ff0000*       157 <EXPANSION END>
+                         158 --66:             /* next job to process? */
+                         159 --67:             if(NULL != p_job)
+                         160 --line67
+                         161 ..lin.7369b16b..f89bf530.0_5::
+                         162 .LDWlin5:
+0000002e 230f0500        163 	ld.w	4[sp],r1
+00000032 e009            164 	cmp	zero,r1
+00000034 c22d*           165 	be	.L25
+                         166 --68:             {
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                         167 --69:                 /* check debugger connection and set EXT_DEBUGGER */
+                         168 --70:                 k_ISSD_CheckDebuggerConnection();
+                         169 .L395:
+                         170 --line70
+                         171 ..lin.7369b16b..f89bf530.0_6::
+                         172 .LDWlin6:
+                         173 	jarl	_k_ISSD_CheckDebuggerConnection,lp
+                         173 <EXPANSION BEGIN>
+                         173 jarl22 _k_ISSD_CheckDebuggerConnection , lp 
+00000036 80ff0000*       173 <EXPANSION END>
+                         174 --72:                 /* run the job */
+                         175 --73:                 /* note: using a function call in order to enjoy */
+                         176 --74:                 k_ISSD_ProcessJob(p_job);
+                         177 --line74
+                         178 ..lin.7369b16b..f89bf530.0_7::
+                         179 .LDWlin7:
+0000003a 23370500        180 	ld.w	4[sp],r6
+                         181 .L397:
+                         182 	jarl	_k_ISSD_ProcessJob,lp
+                         182 <EXPANSION BEGIN>
+                         182 jarl22 _k_ISSD_ProcessJob , lp 
+0000003e 80ff0000*       182 <EXPANSION END>
+                         183 --76:                 /* are we done yet? */
+                         184 --77:                 if((SERV_REQUEST > p_job->p_ISD->service_result) ||
+                         185 --line77
+                         186 ..lin.7369b16b..f89bf530.0_8::
+                         187 .LDWlin8:
+00000042 23f70500        188 	ld.w	4[sp],ep
+00000046 800ef0ff        189 	ori	65520,zero,r1
+0000004a 00f5            190 	sld.w	0[ep],ep
+0000004c 0615            191 	sld.w	12[ep],r2
+0000004e e111            192 	cmp	r1,r2
+00000050 960d*           193 	blt	.L19
+                         194 --line78
+                         195 ..lin.7369b16b..f89bf530.0_9::
+                         196 .LDWlin9:
+00000052 23f70500        197 	ld.w	4[sp],ep
+00000056 800effff        198 	ori	65535,zero,r1
+0000005a 00f5            199 	sld.w	0[ep],ep
+0000005c 0615            200 	sld.w	12[ep],r2
+0000005e e111            201 	cmp	r1,r2
+00000060 e715*           202 	ble	.L25
+                         203 .L19:
+                         204 --78:                    (SERV_IN_PROCESS < p_job->p_ISD->service_result))
+                         205 --79:                 {
+                         206 --80:                     /* convert undefined result code to SYSTEM ERROR */
+                         207 --81:                     if(SERV_IN_PROCESS < p_job->p_ISD->service_result)
+                         208 --line81
+                         209 ..lin.7369b16b..f89bf530.0_10::
+                         210 .LDWlin10:
+00000062 23f70500        211 	ld.w	4[sp],ep
+00000066 800effff        212 	ori	65535,zero,r1
+0000006a 00f5            213 	sld.w	0[ep],ep
+0000006c 0615            214 	sld.w	12[ep],r2
+0000006e e111            215 	cmp	r1,r2
+00000070 f705*           216 	ble	.L23
+                         217 --82:                     {
+                         218 --83:                         p_job->p_ISD->service_result = SERV_SYS_ERROR;
+                         219 --line83
+                         220 ..lin.7369b16b..f89bf530.0_11::
+                         221 .LDWlin11:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+00000072 23f70500        222 	ld.w	4[sp],ep
+00000076 200e1100        223 	movea	17,zero,r1
+0000007a 00f5            224 	sld.w	0[ep],ep
+0000007c 070d            225 	sst.w	r1,12[ep]
+                         226 .L23:
+                         227 --84:                     }
+                         228 --85:                     else
+                         229 --86:                     {
+                         230 --87:                         /* Do nothing */
+                         231 --88:                     }
+                         232 --89:                     /* provide the service result to the caller */
+                         233 --90:                     (void)k_ISSD_HandleResponse(p_job->p_ISD);
+0000007e 23f70500        234 	ld.w	4[sp],ep
+00000082 0035            235 	sld.w	0[ep],r6
+                         236 .L399:
+                         237 	jarl	_k_ISSD_HandleResponse,lp
+                         237 <EXPANSION BEGIN>
+                         237 jarl22 _k_ISSD_HandleResponse , lp 
+00000084 80ff0000*       237 <EXPANSION END>
+                         238 --91:                     /* remove the current job from the queue */
+                         239 --92:                     k_ISSD_RemoveCurrentJob();
+                         240 .L401:
+                         241 --line92
+                         242 ..lin.7369b16b..f89bf530.0_12::
+                         243 .LDWlin12:
+                         244 	jarl	_k_ISSD_RemoveCurrentJob,lp
+                         244 <EXPANSION BEGIN>
+                         244 jarl22 _k_ISSD_RemoveCurrentJob , lp 
+00000088 80ff0000*       244 <EXPANSION END>
+                         245 .L25:
+                         246 --93:                 }
+                         247 --94:                 else
+                         248 --95:                 {
+                         249 --96:                     /* Do nothing */
+                         250 --97:                 }
+                         251 --98:             }
+                         252 --99:             else
+                         253 --100:             {
+                         254 --101:                /* Do nothing */
+                         255 --102:             }
+                         256 --103:             /* check need restart watchdog timer */
+                         257 --104:             D_WDT_GetIntRequest(&wdt_flag);
+                         258 --line104
+                         259 ..lin.7369b16b..f89bf530.0_13::
+                         260 .LDWlin13:
+0000008c 23360200        261 	movea	2,sp,r6
+                         262 .L403:
+                         263 	jarl	_D_WDT_GetIntRequest,lp
+                         263 <EXPANSION BEGIN>
+                         263 jarl22 _D_WDT_GetIntRequest , lp 
+00000090 80ff0000*       263 <EXPANSION END>
+                         264 --105:             /* restart watchdog timer */
+                         265 --106:             D_WDT_Start();
+                         266 .L405:
+                         267 --line106
+                         268 ..lin.7369b16b..f89bf530.0_14::
+                         269 .LDWlin14:
+                         270 	jarl	_D_WDT_Start,lp
+                         270 <EXPANSION BEGIN>
+                         270 jarl22 _D_WDT_Start , lp 
+00000094 80ff0000*       270 <EXPANSION END>
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                         271 --108:             /* disable interrupts (if not already disabled) */
+                         272 --109:             DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         273 --line109
+                         274 ..lin.7369b16b..f89bf530.0_15::
+                         275 .LDWlin15:
+                         276 ..gh.beginasm.3:
+                         277 	.type	..gh.beginasm.3,@object
+                         278 	.size	..gh.beginasm.3,0
+                         279 --ASM MACRO: Start
+00000098 e5574000        280     stsr    5, r10, 0
+                         281 --ASM MACRO: End
+                         282 ..gh.endasm.4:
+                         283 	.type	..gh.endasm.4,@object
+                         284 	.size	..gh.endasm.4,0
+0000009c 0ae8            285 	mov	r10,r29
+                         286 --line109
+                         287 ..lin.7369b16b..f89bf530.0_16::
+                         288 .LDWlin16:
+0000009e 1d08            289 	mov	r29,r1
+000000a0 860a            290 	shr	6,r1
+000000a2 b105*           291 	bl	.L31
+                         292 --line109
+                         293 ..lin.7369b16b..f89bf530.0_17::
+                         294 .LDWlin17:
+                         295 ..gh.beginasm.5:
+                         296 	.type	..gh.beginasm.5,@object
+                         297 	.size	..gh.beginasm.5,0
+                         298 --ASM MACRO: Start
+                         299 
+000000a4 e0076001        300     di
+                         301 --ASM MACRO: End
+                         302 ..gh.endasm.6:
+                         303 	.type	..gh.endasm.6,@object
+                         304 	.size	..gh.endasm.6,0
+                         305 .L31:
+                         306 --line109
+                         307 ..lin.7369b16b..f89bf530.0_18::
+                         308 .LDWlin18:
+000000a8 0000            309 	nop
+                         310 --111:             (void)k_ISSD_GetAllJobCount(&job_count);
+000000aa 23360800        311 	movea	8,sp,r6
+                         312 .L407:
+                         313 	jarl	_k_ISSD_GetAllJobCount,lp
+                         313 <EXPANSION BEGIN>
+                         313 jarl22 _k_ISSD_GetAllJobCount , lp 
+000000ae 80ff0000*       313 <EXPANSION END>
+                         314 --112:             k_ISSD_ModeChangeRequested(&mode_change);
+                         315 --line112
+                         316 ..lin.7369b16b..f89bf530.0_19::
+                         317 .LDWlin19:
+000000b2 23360300        318 	movea	3,sp,r6
+                         319 .L409:
+                         320 	jarl	_k_ISSD_ModeChangeRequested,lp
+                         320 <EXPANSION BEGIN>
+                         320 jarl22 _k_ISSD_ModeChangeRequested , lp 
+000000b6 80ff0000*       320 <EXPANSION END>
+                         321 --line114
+                         322 ..lin.7369b16b..f89bf530.0_20::
+                         323 .LDWlin20:
+000000ba a30f0300        324 	ld.bu	3[sp],r1
+000000be e009            325 	cmp	zero,r1
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+000000c0 da05*           326 	bne	.L7
+000000c2 230f0900        327 	ld.w	8[sp],r1
+000000c6 e009            328 	cmp	zero,r1
+000000c8 9aad*           329 	bne	.L12
+                         330 .L7:
+                         331 --113:         }
+                         332 --114:         while(((uint32_t)false == (uint32_t)mode_change) && (0uL != job_count));
+                         333 --116:         /* do not go in HALT mode if a mode change has been requested */
+                         334 --117:         if((uint32_t)false != (uint32_t)mode_change)
+                         335 --line117
+                         336 ..lin.7369b16b..f89bf530.0_21::
+                         337 .LDWlin21:
+000000ca a30f0300        338 	ld.bu	3[sp],r1
+000000ce e009            339 	cmp	zero,r1
+000000d0 a205*           340 	be	.L37
+                         341 --118:         {
+                         342 --119:             break;
+                         343 --line119
+                         344 ..lin.7369b16b..f89bf530.0_22::
+                         345 .LDWlin22:
+000000d2 d51d*           346 	br	.L46
+                         347 .L37:
+                         348 --120:         }
+                         349 --121:         else
+                         350 --122:         {
+                         351 --123:             /* Do nothing */
+                         352 --124:         }
+                         353 --126:         /* update firmware status */
+                         354 --127:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BUSY, ICU_STATUS_OFF);
+                         355 --line127
+                         356 ..lin.7369b16b..f89bf530.0_23::
+                         357 .LDWlin23:
+000000d4 0132            358 	mov	1,r6
+000000d6 003a            359 	mov	0,r7
+                         360 .L411:
+                         361 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         361 <EXPANSION BEGIN>
+                         361 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000000d8 80ff0000*       361 <EXPANSION END>
+                         362 --129:         /* go in stand-by, wait for next service request */
+                         363 --130:         SET_HALT();
+                         364 --line130
+                         365 ..lin.7369b16b..f89bf530.0_24::
+                         366 .LDWlin24:
+                         367 ..gh.beginasm.7:
+                         368 	.type	..gh.beginasm.7,@object
+                         369 	.size	..gh.beginasm.7,0
+                         370 --ASM MACRO: Start
+                         371 
+000000dc 0000            372     nop
+                         373 --ASM MACRO: End
+                         374 ..gh.endasm.8:
+                         375 	.type	..gh.endasm.8,@object
+                         376 	.size	..gh.endasm.8,0
+                         377 --131:         NOPS(5U);
+                         378 --line131
+                         379 ..lin.7369b16b..f89bf530.0_25::
+                         380 .LDWlin25:
+                         381 ..gh.beginasm.9:
+                         382 	.type	..gh.beginasm.9,@object
+                         383 	.size	..gh.beginasm.9,0
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                         384 --ASM MACRO: Start
+                         385 .rept 5
+                         386     nop
+000000de 0000            387 .endr
+000000e0 0000 
+000000e2 0000 
+000000e4 0000 
+000000e6 0000 
+                         388 --ASM MACRO: End
+                         389 ..gh.endasm.10:
+                         390 	.type	..gh.endasm.10,@object
+                         391 	.size	..gh.endasm.10,0
+                         392 --133:         /* re-enable interrupts (if necessary) */
+                         393 --134:         ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         394 --line134
+                         395 ..lin.7369b16b..f89bf530.0_26::
+                         396 .LDWlin26:
+000000e8 1d08            397 	mov	r29,r1
+000000ea 860a            398 	shr	6,r1
+000000ec b105*           399 	bl	.L43
+                         400 --line134
+                         401 ..lin.7369b16b..f89bf530.0_27::
+                         402 .LDWlin27:
+                         403 ..gh.beginasm.11:
+                         404 	.type	..gh.beginasm.11,@object
+                         405 	.size	..gh.beginasm.11,0
+                         406 --ASM MACRO: Start
+                         407 
+000000ee e0876001        408     ei
+                         409 --ASM MACRO: End
+                         410 ..gh.endasm.12:
+                         411 	.type	..gh.endasm.12,@object
+                         412 	.size	..gh.endasm.12,0
+                         413 .L43:
+                         414 --line134
+                         415 ..lin.7369b16b..f89bf530.0_28::
+                         416 .LDWlin28:
+000000f2 0000            417 	nop
+                         418 --136:         /* update firmware status */
+                         419 --137:         (void)D_COMM_SetICUStatusInfo(ICUM_COMM_INF_ICU_ST_BUSY, ICU_STATUS_ON);
+000000f4 0132            420 	mov	1,r6
+000000f6 013a            421 	mov	1,r7
+                         422 .L413:
+                         423 	jarl	_D_COMM_SetICUStatusInfo,lp
+                         423 <EXPANSION BEGIN>
+                         423 jarl22 _D_COMM_SetICUStatusInfo , lp 
+000000f8 80ff0000*       423 <EXPANSION END>
+                         424 --139:         /* loop until a execution mode change is requested */
+                         425 --140:         k_ISSD_ModeChangeRequested(&mode_change);
+                         426 --line140
+                         427 ..lin.7369b16b..f89bf530.0_29::
+                         428 .LDWlin29:
+000000fc 23360300        429 	movea	3,sp,r6
+                         430 .L415:
+                         431 	jarl	_k_ISSD_ModeChangeRequested,lp
+                         431 <EXPANSION BEGIN>
+                         431 jarl22 _k_ISSD_ModeChangeRequested , lp 
+00000100 80ff0000*       431 <EXPANSION END>
+                         432 .L4:
+                         433 --line56
+                         434 ..lin.7369b16b..f89bf530.0_30::
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+                         435 .LDWlin30:
+00000104 a30f0300        436 	ld.bu	3[sp],r1
+00000108 e009            437 	cmp	zero,r1
+0000010a f285*           438 	be	.L6
+                         439 .L46:
+                         440 --141:     }
+                         441 --142:     /* re-enable interrupts (if necessary) */
+                         442 --143:     ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+                         443 --line143
+                         444 ..lin.7369b16b..f89bf530.0_31::
+                         445 .LDWlin31:
+0000010c 1d08            446 	mov	r29,r1
+0000010e 860a            447 	shr	6,r1
+00000110 b105*           448 	bl	.L49
+                         449 --line143
+                         450 ..lin.7369b16b..f89bf530.0_32::
+                         451 .LDWlin32:
+                         452 ..gh.beginasm.13:
+                         453 	.type	..gh.beginasm.13,@object
+                         454 	.size	..gh.beginasm.13,0
+                         455 --ASM MACRO: Start
+                         456 
+00000112 e0876001        457     ei
+                         458 --ASM MACRO: End
+                         459 ..gh.endasm.14:
+                         460 	.type	..gh.endasm.14,@object
+                         461 	.size	..gh.endasm.14,0
+                         462 .L49:
+                         463 --line143
+                         464 ..lin.7369b16b..f89bf530.0_33::
+                         465 .LDWlin33:
+00000116 0000            466 	nop
+                         467 --144: }
+                         468 --	    .ef
+                         469 .LDW11:
+00000118 23ff1100        470 	ld.w	16[sp],lp
+0000011c 23ef0d00        471 	ld.w	12[sp],r29
+00000120 031e1400        472 	addi	20,sp,sp
+                         473 .L417:
+                         474 	.jumptype return
+00000124 7f00            475 	jmp	[lp]
+                         476 --line143
+                         477 ..lin.7369b16b..f89bf530.0_34::
+                         478 	.type	_k_ISSD_RamDispatch,@function
+                         479 	.size	_k_ISSD_RamDispatch,.-_k_ISSD_RamDispatch
+                         480 	.align	2
+                         481 --_p_job	4[sp]	local
+                         482 --_wdt_flag	2[sp]	local
+                         483 --_mode_change	3[sp]	local
+                         484 --_job_count	8[sp]	local
+                         485 --_saved_psw	r29	local
+                         486 
+                         487 	.section ".bss","awb"
+                         488 .L250:
+                         489 	.type	.L250,@object
+                         490 	.size	.L250,0
+                         491 	.section ".ghcalltbl",""
+                         492 	.align	4
+00000000 00000000*       493 .L392:	.word	.L391
+                         494 	.type	.L392,@object
+                         495 	.size	.L392,4
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000t441.si
+00000004 00000000*       496 .L394:	.word	.L393
+                         497 	.type	.L394,@object
+                         498 	.size	.L394,4
+00000008 00000000*       499 .L396:	.word	.L395
+                         500 	.type	.L396,@object
+                         501 	.size	.L396,4
+0000000c 00000000*       502 .L398:	.word	.L397
+                         503 	.type	.L398,@object
+                         504 	.size	.L398,4
+00000010 00000000*       505 .L400:	.word	.L399
+                         506 	.type	.L400,@object
+                         507 	.size	.L400,4
+00000014 00000000*       508 .L402:	.word	.L401
+                         509 	.type	.L402,@object
+                         510 	.size	.L402,4
+00000018 00000000*       511 .L404:	.word	.L403
+                         512 	.type	.L404,@object
+                         513 	.size	.L404,4
+0000001c 00000000*       514 .L406:	.word	.L405
+                         515 	.type	.L406,@object
+                         516 	.size	.L406,4
+00000020 00000000*       517 .L408:	.word	.L407
+                         518 	.type	.L408,@object
+                         519 	.size	.L408,4
+00000024 00000000*       520 .L410:	.word	.L409
+                         521 	.type	.L410,@object
+                         522 	.size	.L410,4
+00000028 00000000*       523 .L412:	.word	.L411
+                         524 	.type	.L412,@object
+                         525 	.size	.L412,4
+0000002c 00000000*       526 .L414:	.word	.L413
+                         527 	.type	.L414,@object
+                         528 	.size	.L414,4
+00000030 00000000*       529 .L416:	.word	.L415
+                         530 	.type	.L416,@object
+                         531 	.size	.L416,4
+                         532 	.section ".ghrettbl",""
+                         533 	.align	4
+00000000 00000000*       534 .L418:	.word	.L417
+                         535 	.type	.L418,@object
+                         536 	.size	.L418,4
+                         537 	.data
+                         538 	.section ".icum_kernel_ram","ax"
+                         539 
+                         540 	.align	2
+                         541 
+                         542 	.data
+                         543 	.ghsnote version,30
+                         544 	.ghsnote tools,8195
+                         545 	.ghsnote options,656
+                         546 	.section ".icum_kernel_ram","ax"
+                         547 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Ckernel.5Cobj.5Clibs.5Cicum_k_issd.5Cicum_k_issd_ram_dispatch...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40642..0::
+                         548 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

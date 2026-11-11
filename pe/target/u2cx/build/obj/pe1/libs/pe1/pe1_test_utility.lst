@@ -1,0 +1,2767 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_test_utility.dbo -source=pe1_test_utility.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000mis1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_test_utility.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+Source File: pe1_test_utility.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\pe\generic\include\device
+                           2 --		-I..\..\pe\generic\include\common -I..\..\pe\generic\icumif
+                           3 --		-I..\..\pe\generic\src\l_vrun\l_vrun_cmd
+                           4 --		-I..\..\pe\target\u2cx\include
+                           5 --		-I..\..\pe\target\u2cx\src\driver\comm_drv
+                           6 --		-I..\..\pe\target\u2cx\src\shared\src
+                           7 --		-I..\..\pe\target\u2cx\src\l_vrun
+                           8 --		-I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include
+                           9 --		-I..\..\pe\generic
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          12 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          13 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          14 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          15 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          16 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          17 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
+                          21 --		-D_TARG_=U2C4 -filetype.c
+                          22 --		..\..\pe\generic\src\pe1\src\pe1_test_utility.c -o
+                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_test_utility.o
+                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_test_utility.c
+                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          26 --Compile Date:  Wed Nov 11 11:21:44 2026
+                          27 --Host OS:       Win64
+                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          29 --Release:       Compiler v2023.5.4
+                          30 --Revision Date: Wed Sep 06 02:44:56 2023
+                          31 --Release Date:  Wed Sep 06 02:00:00 2023
+                          32 -- ecom  -g -w
+                          33 
+                          34 --1: /******************************************************************************/
+                          35 --2: /* Component Name   Testing the ICU-M                                         */
+                          36 --3: /******************************************************************************/
+                          37 --4: /* Product      : ICU-M Firmware                                              */
+                          38 --5: /******************************************************************************/
+                          39 --6: /*******************************************************************************
+                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          41 --8: *                                                                               
+                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          43 --10: *                                                                               
+                          44 --11: * These instructions, statements, and programs are the confidential information 
+                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
+                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          49 --16: *******************************************************************************/
+                          50 --18: // ********************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                          51 --19: // Headers
+                          52 --20: // ********************************************************************************
+                          53 --22: #include <stdio.h>
+                          54 --23: #include <string.h>
+                          55 --25: #undef NULL
+                          56 --26: #include "r_icumif_api.h"
+                          57 --27: #include "r_icumif_pub.h"
+                          58 --29: #include "pe1.h"
+                          59 --30: #include "pe1.int.h"
+                          60 --31: #include "shared.h"
+                          61 --33: #include "vrun.api.h"
+                          62 --35: #include "renesas_types.h"
+                          63 --37: #define NB_ROM_AES_KEYS             2
+                          64 --38: #define NB_RAM_AES_KEYS             6
+                          65 --39: #define NB_CR_KEYS                  4
+                          66 --40: #define NB_RSA_ROM_PUB_KEYS         2
+                          67 --41: #define NB_ECC_ROM_PUB_KEYS         2
+                          68 --42: #define NB_RAM_ECC_KEYS             2
+                          69 --43: #define NB_RAM_HMAC_KEYS            4
+                          70 --44: #define NB_MASTER_SECRET            1
+                          71 --46: #define STRINGIFY(s) { #s, s }
+                          72 --48: typedef struct {
+                          73 --49:     char  *name;
+                          74 --50:     int   value;
+                          75 --51: } constant_tuple;
+                          76 --54: static const constant_tuple key_group_tuples[] = {
+                          77 --55:     STRINGIFY(KEY_GRP_AES_ROM),
+                          78 --56:     STRINGIFY(KEY_GRP_AES),
+                          79 --57:     STRINGIFY(KEY_GRP_AES_RAM),
+                          80 --58:     STRINGIFY(KEY_GRP_SHE),
+                          81 --59:     STRINGIFY(KEY_GRP_RSA),
+                          82 --60:     STRINGIFY(KEY_GRP_RSA_PUB),
+                          83 --61:     STRINGIFY(KEY_GRP_RSA_ROM_PUB),
+                          84 --62:     STRINGIFY(KEY_GRP_ECC),
+                          85 --63:     STRINGIFY(KEY_GRP_ECC_RAM),
+                          86 --64:     STRINGIFY(KEY_GRP_ECC_PUB),
+                          87 --65:     STRINGIFY(KEY_GRP_ECC_ROM_PUB),
+                          88 --66:     STRINGIFY(KEY_GRP_AES_CR),
+                          89 --67:     STRINGIFY(KEY_GRP_HMAC),
+                          90 --68:     STRINGIFY(KEY_GRP_TLS_MASTER),
+                          91 --69:     STRINGIFY(KEY_GRP_RSA_PUB_EXT),
+                          92 --70:     STRINGIFY(KEY_GRP_ECC_PUB_EXT),
+                          93 --71: };
+                          94 --73: static const constant_tuple verif_result_tuples[] = {
+                          95 --74:     STRINGIFY(VERIFICATION_FAIL),
+                          96 --75:     STRINGIFY(VERIFICATION_PASS),
+                          97 --76: };
+                          98 --77: static const constant_tuple number_format_tuples[] = {
+                          99 --78:     STRINGIFY(FORMAT_STRING_DECIMAL),
+                         100 --79:     STRINGIFY(FORMAT_STRING_HEXA),
+                         101 --80:     STRINGIFY(FORMAT_BINARY_PLAIN),
+                         102 --81: };
+                         103 --82: static const constant_tuple hash_encoding_format_tuples[] = {
+                         104 --83:     STRINGIFY(ENCODING_FORMAT_EMSA_PSS),
+                         105 --84:     STRINGIFY(ENCODING_FORMAT_EMSA_PKCS1_V15),
+                         106 --85: };
+                         107 --86: static const constant_tuple message_encoding_format_tuples[] = {
+                         108 --87:     STRINGIFY(ENCODING_FORMAT_EME_OAEP),
+                         109 --88:     STRINGIFY(ENCODING_FORMAT_EME_PKCS1_V15),
+                         110 --89: };
+                         111 --90: static const constant_tuple hash_primitive_tuples[] = {
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         112 --91:     STRINGIFY(HASH_PRIMITIVE_MD5),
+                         113 --92:     STRINGIFY(HASH_PRIMITIVE_RIPEMD_128),
+                         114 --93:     STRINGIFY(HASH_PRIMITIVE_RIPEMD_160),
+                         115 --94:     STRINGIFY(HASH_PRIMITIVE_RIPEMD_256),
+                         116 --95:     STRINGIFY(HASH_PRIMITIVE_RIPEMD_320),
+                         117 --96:     STRINGIFY(HASH_PRIMITIVE_SHA1),
+                         118 --97:     STRINGIFY(HASH_PRIMITIVE_SHA2_224),
+                         119 --98:     STRINGIFY(HASH_PRIMITIVE_SHA2_256),
+                         120 --99:     STRINGIFY(HASH_PRIMITIVE_SHA2_384),
+                         121 --100:     STRINGIFY(HASH_PRIMITIVE_SHA2_512),
+                         122 --101: };
+                         123 --102: static const constant_tuple sig_algo_tuples[] = {
+                         124 --103:     STRINGIFY(SIGALGO_NONE),
+                         125 --104:     STRINGIFY(SIGALGO_RSA_PSS),
+                         126 --105:     STRINGIFY(SIGALGO_RSA_PKCS1_V15),
+                         127 --106: };
+                         128 --107: static const constant_tuple ecc_curve_tuples[] = {
+                         129 --108:     STRINGIFY(ECC_CURVE_NIST_P192),
+                         130 --109:     STRINGIFY(ECC_CURVE_NIST_P224),
+                         131 --110:     STRINGIFY(ECC_CURVE_NIST_P256),
+                         132 --111:     STRINGIFY(ECC_CURVE_BRAINPOOL_P192),
+                         133 --112:     STRINGIFY(ECC_CURVE_BRAINPOOL_P224),
+                         134 --113:     STRINGIFY(ECC_CURVE_BRAINPOOL_P256),
+                         135 --114:     STRINGIFY(ECC_CURVE_BRAINPOOL_P320),
+                         136 --115:     STRINGIFY(ECC_CURVE_CURVE25519),
+                         137 --116: };
+                         138 --117: static const constant_tuple kdf_algo_tuples[] = {
+                         139 --118:     STRINGIFY(KDF_ALGO_KDF1),
+                         140 --119:     STRINGIFY(KDF_ALGO_KDF2),
+                         141 --120:     STRINGIFY(KDF_ALGO_KDF3),
+                         142 --121:     STRINGIFY(KDF_ALGO_PKDF1),
+                         143 --122:     STRINGIFY(KDF_ALGO_PKDF2),
+                         144 --123: };
+                         145 --125: /* convert from type 'r_key_group_t' to 'string' */
+                         146 --126: char* getKeyGroupName(r_key_group_t value_in)
+                         147 	.text
+                         148 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF48..0::
+                         149 	.align	2
+                         150 	.align	2
+                         151 ..gh.f.a.2.e.0:
+                         152 	.type	..gh.f.a.2.e.0,@object
+                         153 	.size	..gh.f.a.2.e.0,0
+                         154 	.global	_getKeyGroupName
+                         155 _getKeyGroupName:
+00000000 0698            156 	mov	r6,r19
+                         157 --	    .bf
+                         158 .LDW01:
+                         159 --127: {
+                         160 --128:     int i;
+                         161 --129:     int table_len = sizeof(key_group_tuples) / sizeof(key_group_tuples[0]);
+00000002 20161000        162 	movea	16,zero,r2
+                         163 --130:     
+                         164 --131:     for (i=0; i<table_len; i++)
+00000006 000a            165 	mov	0,r1
+00000008 d515*           166 	br	.L7
+                         167 .L6:
+                         168 --132:     {
+                         169 --133:         if (key_group_tuples[i].value == value_in)
+                         170 --line133
+                         171 ..lin.92f28593..29de6d9b.0_1::
+                         172 .LDWlin1:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+0000000a 0190            173 	mov	r1,r18
+0000000c c392            174 	shl	3,r18
+0000000e 310600000000*   175 	mov	_key_group_tuples,r17
+00000014 12f0            176 	mov	r18,ep
+00000016 d1f1            177 	add	r17,ep
+00000018 0295            178 	sld.w	4[ep],r18
+0000001a f391            179 	cmp	r19,r18
+0000001c aa0d*           180 	bne	.L5
+                         181 --134:         {
+                         182 --135:             return key_group_tuples[i].name;
+                         183 --line135
+                         184 ..lin.92f28593..29de6d9b.0_2::
+                         185 .LDWlin2:
+0000001e 0190            186 	mov	r1,r18
+00000020 c392            187 	shl	3,r18
+00000022 310600000000*   188 	mov	_key_group_tuples,r17
+00000028 12f0            189 	mov	r18,ep
+0000002a d1f1            190 	add	r17,ep
+0000002c 0055            191 	sld.w	0[ep],r10
+0000002e f505*           192 	br	.L2
+                         193 .L5:
+                         194 --line131
+                         195 ..lin.92f28593..29de6d9b.0_3::
+                         196 .LDWlin3:
+00000030 410a            197 	add	1,r1
+                         198 .L7:
+00000032 e209            199 	cmp	r2,r1
+00000034 b6ed*           200 	blt	.L6
+                         201 --136:         }
+                         202 --137:     }
+                         203 --138:     return "";
+                         204 --line138
+                         205 ..lin.92f28593..29de6d9b.0_4::
+                         206 .LDWlin4:
+00000036 2a0600000000*   207 	mov	.L58,r10
+                         208 .L2:
+                         209 --	    .ef
+                         210 .LDW11:
+                         211 .L122:
+                         212 --line139
+                         213 ..lin.92f28593..29de6d9b.0_5::
+                         214 .LDWlin5:
+                         215 	.jumptype return
+0000003c 7f00            216 	jmp	[lp]
+                         217 --line139
+                         218 ..lin.92f28593..29de6d9b.0_6::
+                         219 	.type	_getKeyGroupName,@function
+                         220 	.size	_getKeyGroupName,.-_getKeyGroupName
+                         221 	.align	2
+                         222 --_i	r1	local
+                         223 --_table_len	r2	local
+                         224 
+                         225 --_value_in	r19	param
+                         226 
+                         227 	.section ".rodata","a"
+                         228 	.align	4
+                         229 .L58:--	""
+00000000 00              230 	.byte	0
+                         231 	.type	.L58,@object
+                         232 	.size	.L58,1
+                         233 .L59:--	"KEY_GRP_AES_ROM"
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000001 4b45595f        234 	.byte	75,69,89,95
+00000005 4752505f        235 	.byte	71,82,80,95
+00000009 4145535f        236 	.byte	65,69,83,95
+0000000d 524f4d00        237 	.byte	82,79,77,0
+                         238 	.type	.L59,@object
+                         239 	.size	.L59,16
+                         240 .L60:--	"KEY_GRP_AES_RAM"
+00000011 4b45595f        241 	.byte	75,69,89,95
+00000015 4752505f        242 	.byte	71,82,80,95
+00000019 4145535f        243 	.byte	65,69,83,95
+0000001d 52414d00        244 	.byte	82,65,77,0
+                         245 	.type	.L60,@object
+                         246 	.size	.L60,16
+                         247 .L61:--	"KEY_GRP_RSA_PUB"
+00000021 4b45595f        248 	.byte	75,69,89,95
+00000025 4752505f        249 	.byte	71,82,80,95
+00000029 5253415f        250 	.byte	82,83,65,95
+0000002d 50554200        251 	.byte	80,85,66,0
+                         252 	.type	.L61,@object
+                         253 	.size	.L61,16
+                         254 .L62:--	"KEY_GRP_ECC_RAM"
+00000031 4b45595f        255 	.byte	75,69,89,95
+00000035 4752505f        256 	.byte	71,82,80,95
+00000039 4543435f        257 	.byte	69,67,67,95
+0000003d 52414d00        258 	.byte	82,65,77,0
+                         259 	.type	.L62,@object
+                         260 	.size	.L62,16
+                         261 .L63:--	"KEY_GRP_ECC_PUB"
+00000041 4b45595f        262 	.byte	75,69,89,95
+00000045 4752505f        263 	.byte	71,82,80,95
+00000049 4543435f        264 	.byte	69,67,67,95
+0000004d 50554200        265 	.byte	80,85,66,0
+                         266 	.type	.L63,@object
+                         267 	.size	.L63,16
+                         268 .L64:--	"HASH_PRIMITIVE_SHA2_224"
+00000051 48415348        269 	.byte	72,65,83,72
+00000055 5f505249        270 	.byte	95,80,82,73
+00000059 4d495449        271 	.byte	77,73,84,73
+0000005d 56455f53        272 	.byte	86,69,95,83
+00000061 4841325f        273 	.byte	72,65,50,95
+00000065 32323400        274 	.byte	50,50,52,0
+                         275 	.type	.L64,@object
+                         276 	.size	.L64,24
+                         277 .L65:--	"HASH_PRIMITIVE_SHA2_256"
+00000069 48415348        278 	.byte	72,65,83,72
+0000006d 5f505249        279 	.byte	95,80,82,73
+00000071 4d495449        280 	.byte	77,73,84,73
+00000075 56455f53        281 	.byte	86,69,95,83
+00000079 4841325f        282 	.byte	72,65,50,95
+0000007d 32353600        283 	.byte	50,53,54,0
+                         284 	.type	.L65,@object
+                         285 	.size	.L65,24
+                         286 .L66:--	"HASH_PRIMITIVE_SHA2_384"
+00000081 48415348        287 	.byte	72,65,83,72
+00000085 5f505249        288 	.byte	95,80,82,73
+00000089 4d495449        289 	.byte	77,73,84,73
+0000008d 56455f53        290 	.byte	86,69,95,83
+00000091 4841325f        291 	.byte	72,65,50,95
+00000095 33383400        292 	.byte	51,56,52,0
+                         293 	.type	.L66,@object
+                         294 	.size	.L66,24
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         295 .L67:--	"HASH_PRIMITIVE_SHA2_512"
+00000099 48415348        296 	.byte	72,65,83,72
+0000009d 5f505249        297 	.byte	95,80,82,73
+000000a1 4d495449        298 	.byte	77,73,84,73
+000000a5 56455f53        299 	.byte	86,69,95,83
+000000a9 4841325f        300 	.byte	72,65,50,95
+000000ad 35313200        301 	.byte	53,49,50,0
+                         302 	.type	.L67,@object
+                         303 	.size	.L67,24
+                         304 .L68:--	"SIGALGO_RSA_PSS"
+000000b1 53494741        305 	.byte	83,73,71,65
+000000b5 4c474f5f        306 	.byte	76,71,79,95
+000000b9 5253415f        307 	.byte	82,83,65,95
+000000bd 50535300        308 	.byte	80,83,83,0
+                         309 	.type	.L68,@object
+                         310 	.size	.L68,16
+                         311 .L69:--	"KEY_GRP_AES"
+000000c1 4b45595f        312 	.byte	75,69,89,95
+000000c5 4752505f        313 	.byte	71,82,80,95
+000000c9 41455300        314 	.byte	65,69,83,0
+                         315 	.type	.L69,@object
+                         316 	.size	.L69,12
+                         317 .L70:--	"KEY_GRP_SHE"
+000000cd 4b45595f        318 	.byte	75,69,89,95
+000000d1 4752505f        319 	.byte	71,82,80,95
+000000d5 53484500        320 	.byte	83,72,69,0
+                         321 	.type	.L70,@object
+                         322 	.size	.L70,12
+                         323 .L71:--	"KEY_GRP_RSA"
+000000d9 4b45595f        324 	.byte	75,69,89,95
+000000dd 4752505f        325 	.byte	71,82,80,95
+000000e1 52534100        326 	.byte	82,83,65,0
+                         327 	.type	.L71,@object
+                         328 	.size	.L71,12
+                         329 .L72:--	"KEY_GRP_RSA_ROM_PUB"
+000000e5 4b45595f        330 	.byte	75,69,89,95
+000000e9 4752505f        331 	.byte	71,82,80,95
+000000ed 5253415f        332 	.byte	82,83,65,95
+000000f1 524f4d5f        333 	.byte	82,79,77,95
+000000f5 50554200        334 	.byte	80,85,66,0
+                         335 	.type	.L72,@object
+                         336 	.size	.L72,20
+                         337 .L73:--	"KEY_GRP_ECC"
+000000f9 4b45595f        338 	.byte	75,69,89,95
+000000fd 4752505f        339 	.byte	71,82,80,95
+00000101 45434300        340 	.byte	69,67,67,0
+                         341 	.type	.L73,@object
+                         342 	.size	.L73,12
+                         343 .L74:--	"KEY_GRP_ECC_ROM_PUB"
+00000105 4b45595f        344 	.byte	75,69,89,95
+00000109 4752505f        345 	.byte	71,82,80,95
+0000010d 4543435f        346 	.byte	69,67,67,95
+00000111 524f4d5f        347 	.byte	82,79,77,95
+00000115 50554200        348 	.byte	80,85,66,0
+                         349 	.type	.L74,@object
+                         350 	.size	.L74,20
+                         351 .L75:--	"KEY_GRP_RSA_PUB_EXT"
+00000119 4b45595f        352 	.byte	75,69,89,95
+0000011d 4752505f        353 	.byte	71,82,80,95
+00000121 5253415f        354 	.byte	82,83,65,95
+00000125 5055425f        355 	.byte	80,85,66,95
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000129 45585400        356 	.byte	69,88,84,0
+                         357 	.type	.L75,@object
+                         358 	.size	.L75,20
+                         359 .L76:--	"KEY_GRP_ECC_PUB_EXT"
+0000012d 4b45595f        360 	.byte	75,69,89,95
+00000131 4752505f        361 	.byte	71,82,80,95
+00000135 4543435f        362 	.byte	69,67,67,95
+00000139 5055425f        363 	.byte	80,85,66,95
+0000013d 45585400        364 	.byte	69,88,84,0
+                         365 	.type	.L76,@object
+                         366 	.size	.L76,20
+                         367 .L77:--	"FORMAT_BINARY_PLAIN"
+00000141 464f524d        368 	.byte	70,79,82,77
+00000145 41545f42        369 	.byte	65,84,95,66
+00000149 494e4152        370 	.byte	73,78,65,82
+0000014d 595f504c        371 	.byte	89,95,80,76
+00000151 41494e00        372 	.byte	65,73,78,0
+                         373 	.type	.L77,@object
+                         374 	.size	.L77,20
+                         375 .L78:--	"HASH_PRIMITIVE_SHA1"
+00000155 48415348        376 	.byte	72,65,83,72
+00000159 5f505249        377 	.byte	95,80,82,73
+0000015d 4d495449        378 	.byte	77,73,84,73
+00000161 56455f53        379 	.byte	86,69,95,83
+00000165 48413100        380 	.byte	72,65,49,0
+                         381 	.type	.L78,@object
+                         382 	.size	.L78,20
+                         383 .L79:--	"ECC_CURVE_NIST_P192"
+00000169 4543435f        384 	.byte	69,67,67,95
+0000016d 43555256        385 	.byte	67,85,82,86
+00000171 455f4e49        386 	.byte	69,95,78,73
+00000175 53545f50        387 	.byte	83,84,95,80
+00000179 31393200        388 	.byte	49,57,50,0
+                         389 	.type	.L79,@object
+                         390 	.size	.L79,20
+                         391 .L80:--	"ECC_CURVE_NIST_P224"
+0000017d 4543435f        392 	.byte	69,67,67,95
+00000181 43555256        393 	.byte	67,85,82,86
+00000185 455f4e49        394 	.byte	69,95,78,73
+00000189 53545f50        395 	.byte	83,84,95,80
+0000018d 32323400        396 	.byte	50,50,52,0
+                         397 	.type	.L80,@object
+                         398 	.size	.L80,20
+                         399 .L81:--	"ECC_CURVE_NIST_P256"
+00000191 4543435f        400 	.byte	69,67,67,95
+00000195 43555256        401 	.byte	67,85,82,86
+00000199 455f4e49        402 	.byte	69,95,78,73
+0000019d 53545f50        403 	.byte	83,84,95,80
+000001a1 32353600        404 	.byte	50,53,54,0
+                         405 	.type	.L81,@object
+                         406 	.size	.L81,20
+                         407 .L82:--	"VERIFICATION_FAIL"
+000001a5 56455249        408 	.byte	86,69,82,73
+000001a9 46494341        409 	.byte	70,73,67,65
+000001ad 54494f4e        410 	.byte	84,73,79,78
+000001b1 5f464149        411 	.byte	95,70,65,73
+000001b5 4c00            412 	.byte	76,0
+                         413 	.type	.L82,@object
+                         414 	.size	.L82,18
+                         415 .L83:--	"VERIFICATION_PASS"
+000001b7 56455249        416 	.byte	86,69,82,73
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+000001bb 46494341        417 	.byte	70,73,67,65
+000001bf 54494f4e        418 	.byte	84,73,79,78
+000001c3 5f504153        419 	.byte	95,80,65,83
+000001c7 5300            420 	.byte	83,0
+                         421 	.type	.L83,@object
+                         422 	.size	.L83,18
+                         423 .L84:--	"FORMAT_STRING_DECIMAL"
+000001c9 464f524d        424 	.byte	70,79,82,77
+000001cd 41545f53        425 	.byte	65,84,95,83
+000001d1 5452494e        426 	.byte	84,82,73,78
+000001d5 475f4445        427 	.byte	71,95,68,69
+000001d9 43494d41        428 	.byte	67,73,77,65
+000001dd 4c00            429 	.byte	76,0
+                         430 	.type	.L84,@object
+                         431 	.size	.L84,22
+                         432 .L85:--	"ENCODING_FORMAT_EME_PKCS1_V15"
+000001df 454e434f        433 	.byte	69,78,67,79
+000001e3 44494e47        434 	.byte	68,73,78,71
+000001e7 5f464f52        435 	.byte	95,70,79,82
+000001eb 4d41545f        436 	.byte	77,65,84,95
+000001ef 454d455f        437 	.byte	69,77,69,95
+000001f3 504b4353        438 	.byte	80,75,67,83
+000001f7 315f5631        439 	.byte	49,95,86,49
+000001fb 3500            440 	.byte	53,0
+                         441 	.type	.L85,@object
+                         442 	.size	.L85,30
+                         443 .L86:--	"HASH_PRIMITIVE_RIPEMD_128"
+000001fd 48415348        444 	.byte	72,65,83,72
+00000201 5f505249        445 	.byte	95,80,82,73
+00000205 4d495449        446 	.byte	77,73,84,73
+00000209 56455f52        447 	.byte	86,69,95,82
+0000020d 4950454d        448 	.byte	73,80,69,77
+00000211 445f3132        449 	.byte	68,95,49,50
+00000215 3800            450 	.byte	56,0
+                         451 	.type	.L86,@object
+                         452 	.size	.L86,26
+                         453 .L87:--	"HASH_PRIMITIVE_RIPEMD_160"
+00000217 48415348        454 	.byte	72,65,83,72
+0000021b 5f505249        455 	.byte	95,80,82,73
+0000021f 4d495449        456 	.byte	77,73,84,73
+00000223 56455f52        457 	.byte	86,69,95,82
+00000227 4950454d        458 	.byte	73,80,69,77
+0000022b 445f3136        459 	.byte	68,95,49,54
+0000022f 3000            460 	.byte	48,0
+                         461 	.type	.L87,@object
+                         462 	.size	.L87,26
+                         463 .L88:--	"HASH_PRIMITIVE_RIPEMD_256"
+00000231 48415348        464 	.byte	72,65,83,72
+00000235 5f505249        465 	.byte	95,80,82,73
+00000239 4d495449        466 	.byte	77,73,84,73
+0000023d 56455f52        467 	.byte	86,69,95,82
+00000241 4950454d        468 	.byte	73,80,69,77
+00000245 445f3235        469 	.byte	68,95,50,53
+00000249 3600            470 	.byte	54,0
+                         471 	.type	.L88,@object
+                         472 	.size	.L88,26
+                         473 .L89:--	"HASH_PRIMITIVE_RIPEMD_320"
+0000024b 48415348        474 	.byte	72,65,83,72
+0000024f 5f505249        475 	.byte	95,80,82,73
+00000253 4d495449        476 	.byte	77,73,84,73
+00000257 56455f52        477 	.byte	86,69,95,82
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+0000025b 4950454d        478 	.byte	73,80,69,77
+0000025f 445f3332        479 	.byte	68,95,51,50
+00000263 3000            480 	.byte	48,0
+                         481 	.type	.L89,@object
+                         482 	.size	.L89,26
+                         483 .L90:--	"SIGALGO_RSA_PKCS1_V15"
+00000265 53494741        484 	.byte	83,73,71,65
+00000269 4c474f5f        485 	.byte	76,71,79,95
+0000026d 5253415f        486 	.byte	82,83,65,95
+00000271 504b4353        487 	.byte	80,75,67,83
+00000275 315f5631        488 	.byte	49,95,86,49
+00000279 3500            489 	.byte	53,0
+                         490 	.type	.L90,@object
+                         491 	.size	.L90,22
+                         492 .L91:--	"KDF_ALGO_KDF1"
+0000027b 4b44465f        493 	.byte	75,68,70,95
+0000027f 414c474f        494 	.byte	65,76,71,79
+00000283 5f4b4446        495 	.byte	95,75,68,70
+00000287 3100            496 	.byte	49,0
+                         497 	.type	.L91,@object
+                         498 	.size	.L91,14
+                         499 .L92:--	"KDF_ALGO_KDF2"
+00000289 4b44465f        500 	.byte	75,68,70,95
+0000028d 414c474f        501 	.byte	65,76,71,79
+00000291 5f4b4446        502 	.byte	95,75,68,70
+00000295 3200            503 	.byte	50,0
+                         504 	.type	.L92,@object
+                         505 	.size	.L92,14
+                         506 .L93:--	"KDF_ALGO_KDF3"
+00000297 4b44465f        507 	.byte	75,68,70,95
+0000029b 414c474f        508 	.byte	65,76,71,79
+0000029f 5f4b4446        509 	.byte	95,75,68,70
+000002a3 3300            510 	.byte	51,0
+                         511 	.type	.L93,@object
+                         512 	.size	.L93,14
+                         513 .L94:--	"KEY_GRP_AES_CR"
+000002a5 4b45595f        514 	.byte	75,69,89,95
+000002a9 4752505f        515 	.byte	71,82,80,95
+000002ad 4145535f        516 	.byte	65,69,83,95
+000002b1 4352            517 	.byte	67,82
+000002b3 00              518 	.byte	0
+                         519 	.type	.L94,@object
+                         520 	.size	.L94,15
+                         521 .L95:--	"KEY_GRP_HMAC"
+000002b4 4b45595f        522 	.byte	75,69,89,95
+000002b8 4752505f        523 	.byte	71,82,80,95
+000002bc 484d4143        524 	.byte	72,77,65,67
+000002c0 00              525 	.byte	0
+                         526 	.type	.L95,@object
+                         527 	.size	.L95,13
+                         528 .L96:--	"KEY_GRP_TLS_MASTER"
+000002c1 4b45595f        529 	.byte	75,69,89,95
+000002c5 4752505f        530 	.byte	71,82,80,95
+000002c9 544c535f        531 	.byte	84,76,83,95
+000002cd 4d415354        532 	.byte	77,65,83,84
+000002d1 4552            533 	.byte	69,82
+000002d3 00              534 	.byte	0
+                         535 	.type	.L96,@object
+                         536 	.size	.L96,19
+                         537 .L97:--	"FORMAT_STRING_HEXA"
+000002d4 464f524d        538 	.byte	70,79,82,77
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+000002d8 41545f53        539 	.byte	65,84,95,83
+000002dc 5452494e        540 	.byte	84,82,73,78
+000002e0 475f4845        541 	.byte	71,95,72,69
+000002e4 5841            542 	.byte	88,65
+000002e6 00              543 	.byte	0
+                         544 	.type	.L97,@object
+                         545 	.size	.L97,19
+                         546 .L98:--	"ENCODING_FORMAT_EMSA_PSS"
+000002e7 454e434f        547 	.byte	69,78,67,79
+000002eb 44494e47        548 	.byte	68,73,78,71
+000002ef 5f464f52        549 	.byte	95,70,79,82
+000002f3 4d41545f        550 	.byte	77,65,84,95
+000002f7 454d5341        551 	.byte	69,77,83,65
+000002fb 5f505353        552 	.byte	95,80,83,83
+000002ff 00              553 	.byte	0
+                         554 	.type	.L98,@object
+                         555 	.size	.L98,25
+                         556 .L99:--	"ENCODING_FORMAT_EMSA_PKCS1_V15"
+00000300 454e434f        557 	.byte	69,78,67,79
+00000304 44494e47        558 	.byte	68,73,78,71
+00000308 5f464f52        559 	.byte	95,70,79,82
+0000030c 4d41545f        560 	.byte	77,65,84,95
+00000310 454d5341        561 	.byte	69,77,83,65
+00000314 5f504b43        562 	.byte	95,80,75,67
+00000318 53315f56        563 	.byte	83,49,95,86
+0000031c 3135            564 	.byte	49,53
+0000031e 00              565 	.byte	0
+                         566 	.type	.L99,@object
+                         567 	.size	.L99,31
+                         568 .L100:--	"ENCODING_FORMAT_EME_OAEP"
+0000031f 454e434f        569 	.byte	69,78,67,79
+00000323 44494e47        570 	.byte	68,73,78,71
+00000327 5f464f52        571 	.byte	95,70,79,82
+0000032b 4d41545f        572 	.byte	77,65,84,95
+0000032f 454d455f        573 	.byte	69,77,69,95
+00000333 4f414550        574 	.byte	79,65,69,80
+00000337 00              575 	.byte	0
+                         576 	.type	.L100,@object
+                         577 	.size	.L100,25
+                         578 .L101:--	"HASH_PRIMITIVE_MD5"
+00000338 48415348        579 	.byte	72,65,83,72
+0000033c 5f505249        580 	.byte	95,80,82,73
+00000340 4d495449        581 	.byte	77,73,84,73
+00000344 56455f4d        582 	.byte	86,69,95,77
+00000348 4435            583 	.byte	68,53
+0000034a 00              584 	.byte	0
+                         585 	.type	.L101,@object
+                         586 	.size	.L101,19
+                         587 .L102:--	"SIGALGO_NONE"
+0000034b 53494741        588 	.byte	83,73,71,65
+0000034f 4c474f5f        589 	.byte	76,71,79,95
+00000353 4e4f4e45        590 	.byte	78,79,78,69
+00000357 00              591 	.byte	0
+                         592 	.type	.L102,@object
+                         593 	.size	.L102,13
+                         594 .L103:--	"ECC_CURVE_BRAINPOOL_P192"
+00000358 4543435f        595 	.byte	69,67,67,95
+0000035c 43555256        596 	.byte	67,85,82,86
+00000360 455f4252        597 	.byte	69,95,66,82
+00000364 41494e50        598 	.byte	65,73,78,80
+00000368 4f4f4c5f        599 	.byte	79,79,76,95
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+0000036c 50313932        600 	.byte	80,49,57,50
+00000370 00              601 	.byte	0
+                         602 	.type	.L103,@object
+                         603 	.size	.L103,25
+                         604 .L104:--	"ECC_CURVE_BRAINPOOL_P224"
+00000371 4543435f        605 	.byte	69,67,67,95
+00000375 43555256        606 	.byte	67,85,82,86
+00000379 455f4252        607 	.byte	69,95,66,82
+0000037d 41494e50        608 	.byte	65,73,78,80
+00000381 4f4f4c5f        609 	.byte	79,79,76,95
+00000385 50323234        610 	.byte	80,50,50,52
+00000389 00              611 	.byte	0
+                         612 	.type	.L104,@object
+                         613 	.size	.L104,25
+                         614 .L105:--	"ECC_CURVE_BRAINPOOL_P256"
+0000038a 4543435f        615 	.byte	69,67,67,95
+0000038e 43555256        616 	.byte	67,85,82,86
+00000392 455f4252        617 	.byte	69,95,66,82
+00000396 41494e50        618 	.byte	65,73,78,80
+0000039a 4f4f4c5f        619 	.byte	79,79,76,95
+0000039e 50323536        620 	.byte	80,50,53,54
+000003a2 00              621 	.byte	0
+                         622 	.type	.L105,@object
+                         623 	.size	.L105,25
+                         624 .L106:--	"ECC_CURVE_BRAINPOOL_P320"
+000003a3 4543435f        625 	.byte	69,67,67,95
+000003a7 43555256        626 	.byte	67,85,82,86
+000003ab 455f4252        627 	.byte	69,95,66,82
+000003af 41494e50        628 	.byte	65,73,78,80
+000003b3 4f4f4c5f        629 	.byte	79,79,76,95
+000003b7 50333230        630 	.byte	80,51,50,48
+000003bb 00              631 	.byte	0
+                         632 	.type	.L106,@object
+                         633 	.size	.L106,25
+                         634 .L107:--	"ECC_CURVE_CURVE25519"
+000003bc 4543435f        635 	.byte	69,67,67,95
+000003c0 43555256        636 	.byte	67,85,82,86
+000003c4 455f4355        637 	.byte	69,95,67,85
+000003c8 52564532        638 	.byte	82,86,69,50
+000003cc 35353139        639 	.byte	53,53,49,57
+000003d0 00              640 	.byte	0
+                         641 	.type	.L107,@object
+                         642 	.size	.L107,21
+                         643 .L108:--	"KDF_ALGO_PKDF1"
+000003d1 4b44465f        644 	.byte	75,68,70,95
+000003d5 414c474f        645 	.byte	65,76,71,79
+000003d9 5f504b44        646 	.byte	95,80,75,68
+000003dd 4631            647 	.byte	70,49
+000003df 00              648 	.byte	0
+                         649 	.type	.L108,@object
+                         650 	.size	.L108,15
+                         651 .L109:--	"KDF_ALGO_PKDF2"
+000003e0 4b44465f        652 	.byte	75,68,70,95
+000003e4 414c474f        653 	.byte	65,76,71,79
+000003e8 5f504b44        654 	.byte	95,80,75,68
+000003ec 4632            655 	.byte	70,50
+000003ee 00              656 	.byte	0
+                         657 	.type	.L109,@object
+                         658 	.size	.L109,15
+000003ef 00              659 	.space	1
+                         660 	.global	_key_group_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         661 _key_group_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+000003f0 00000000*       662 _key_group_tuples:	.word	.L59
+000003f4 00000000        663 	.space	4
+000003f8 00000000*       664 	.word	.L69
+000003fc 01000000        665 	.byte	1,0,0,0
+00000400 00000000*       666 	.word	.L60
+00000404 02000000        667 	.byte	2,0,0,0
+00000408 00000000*       668 	.word	.L70
+0000040c 03000000        669 	.byte	3,0,0,0
+00000410 00000000*       670 	.word	.L71
+00000414 04000000        671 	.byte	4,0,0,0
+00000418 00000000*       672 	.word	.L61
+0000041c 05000000        673 	.byte	5,0,0,0
+00000420 00000000*       674 	.word	.L72
+00000424 06000000        675 	.byte	6,0,0,0
+00000428 00000000*       676 	.word	.L73
+0000042c 07000000        677 	.byte	7,0,0,0
+00000430 00000000*       678 	.word	.L62
+00000434 08000000        679 	.byte	8,0,0,0
+00000438 00000000*       680 	.word	.L63
+0000043c 09000000        681 	.byte	9,0,0,0
+00000440 00000000*       682 	.word	.L74
+00000444 0a000000        683 	.byte	10,0,0,0
+00000448 00000000*       684 	.word	.L94
+0000044c 0b000000        685 	.byte	11,0,0,0
+00000450 00000000*       686 	.word	.L95
+00000454 0c000000        687 	.byte	12,0,0,0
+00000458 00000000*       688 	.word	.L96
+0000045c 0d000000        689 	.byte	13,0,0,0
+00000460 00000000*       690 	.word	.L75
+00000464 0e000000        691 	.byte	14,0,0,0
+00000468 00000000*       692 	.word	.L76
+0000046c 0f000000        693 	.byte	15,0,0,0
+                         694 	.type	_key_group_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                         695 	.size	_key_group_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,128
+                         696 	.type	_key_group_tuples,@object
+                         697 	.size	_key_group_tuples,128
+                         698 	.section ".ghrettbl",""
+                         699 	.align	4
+00000000 00000000*       700 .L123:	.word	.L122
+                         701 	.type	.L123,@object
+                         702 	.size	.L123,4
+                         703 	.data
+                         704 	.text
+                         705 
+                         706 --139: }
+                         707 
+                         708 --141: /* convert from type 'r_verif_result_t' to 'string' */
+                         709 --142: char* getVerifResultName(r_verif_result_t value_in)
+                         710 	.align	2
+                         711 	.align	2
+                         712 	.align	2
+                         713 ..gh.f.a.2.e.1:
+                         714 	.type	..gh.f.a.2.e.1,@object
+                         715 	.size	..gh.f.a.2.e.1,0
+                         716 	.global	_getVerifResultName
+                         717 _getVerifResultName:
+0000003e 0698            718 	mov	r6,r19
+                         719 --	    .bf
+                         720 .LDW21:
+                         721 --143: {
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         722 --144:     int i;
+                         723 --145:     int table_len = sizeof(verif_result_tuples) / sizeof(verif_result_tuples[0]);
+00000040 0212            724 	mov	2,r2
+                         725 --146:     
+                         726 --147:     for (i=0; i<table_len; i++)
+00000042 000a            727 	mov	0,r1
+00000044 d515*           728 	br	.L129
+                         729 .L128:
+                         730 --148:     {
+                         731 --149:         if (verif_result_tuples[i].value == value_in)
+                         732 --line149
+                         733 ..lin.92f28593..75b26060.0_7::
+                         734 .LDWlin7:
+00000046 0190            735 	mov	r1,r18
+00000048 c392            736 	shl	3,r18
+0000004a 310600000000*   737 	mov	_verif_result_tuples,r17
+00000050 12f0            738 	mov	r18,ep
+00000052 d1f1            739 	add	r17,ep
+00000054 0295            740 	sld.w	4[ep],r18
+00000056 f391            741 	cmp	r19,r18
+00000058 aa0d*           742 	bne	.L127
+                         743 --150:         {
+                         744 --151:             return verif_result_tuples[i].name;
+                         745 --line151
+                         746 ..lin.92f28593..75b26060.0_8::
+                         747 .LDWlin8:
+0000005a 0190            748 	mov	r1,r18
+0000005c c392            749 	shl	3,r18
+0000005e 310600000000*   750 	mov	_verif_result_tuples,r17
+00000064 12f0            751 	mov	r18,ep
+00000066 d1f1            752 	add	r17,ep
+00000068 0055            753 	sld.w	0[ep],r10
+0000006a f505*           754 	br	.L124
+                         755 .L127:
+                         756 --line147
+                         757 ..lin.92f28593..75b26060.0_9::
+                         758 .LDWlin9:
+0000006c 410a            759 	add	1,r1
+                         760 .L129:
+0000006e e209            761 	cmp	r2,r1
+00000070 b6ed*           762 	blt	.L128
+                         763 --152:         }
+                         764 --153:     }
+                         765 --154:     return "";
+                         766 --line154
+                         767 ..lin.92f28593..75b26060.0_10::
+                         768 .LDWlin10:
+00000072 2a0600000000*   769 	mov	.L58,r10
+                         770 .L124:
+                         771 --	    .ef
+                         772 .LDW31:
+                         773 .L198:
+                         774 --line155
+                         775 ..lin.92f28593..75b26060.0_11::
+                         776 .LDWlin11:
+                         777 	.jumptype return
+00000078 7f00            778 	jmp	[lp]
+                         779 --line155
+                         780 ..lin.92f28593..75b26060.0_12::
+                         781 	.type	_getVerifResultName,@function
+                         782 	.size	_getVerifResultName,.-_getVerifResultName
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         783 	.align	2
+                         784 --_i	r1	local
+                         785 --_table_len	r2	local
+                         786 
+                         787 --_value_in	r19	param
+                         788 
+                         789 	.section ".rodata","a"
+                         790 	.global	_verif_result_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                         791 _verif_result_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000470 00000000*       792 _verif_result_tuples:	.word	.L82
+00000474 01000000        793 	.byte	1,0,0,0
+00000478 00000000*       794 	.word	.L83
+0000047c 00000000        795 	.space	4
+                         796 	.type	_verif_result_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                         797 	.size	_verif_result_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,16
+                         798 	.type	_verif_result_tuples,@object
+                         799 	.size	_verif_result_tuples,16
+                         800 	.section ".ghrettbl",""
+00000004 00000000*       801 .L199:	.word	.L198
+                         802 	.type	.L199,@object
+                         803 	.size	.L199,4
+                         804 	.data
+                         805 	.text
+                         806 
+                         807 --155: }
+                         808 
+                         809 --157: /* convert from type 'r_number_format_t' to 'string' */
+                         810 --158: char* getNumberFormatName(r_number_format_t value_in)
+                         811 	.align	2
+                         812 	.align	2
+                         813 	.align	2
+                         814 ..gh.f.a.2.e.2:
+                         815 	.type	..gh.f.a.2.e.2,@object
+                         816 	.size	..gh.f.a.2.e.2,0
+                         817 	.global	_getNumberFormatName
+                         818 _getNumberFormatName:
+0000007a 0698            819 	mov	r6,r19
+                         820 --	    .bf
+                         821 .LDW41:
+                         822 --159: {
+                         823 --160:     int i;
+                         824 --161:     int table_len = sizeof(number_format_tuples) / sizeof(number_format_tuples[0]);
+0000007c 0312            825 	mov	3,r2
+                         826 --162:     
+                         827 --163:     for (i=0; i<table_len; i++)
+0000007e 000a            828 	mov	0,r1
+00000080 d515*           829 	br	.L205
+                         830 .L204:
+                         831 --164:     {
+                         832 --165:         if (number_format_tuples[i].value == value_in)
+                         833 --line165
+                         834 ..lin.92f28593..34e36af7.0_13::
+                         835 .LDWlin13:
+00000082 0190            836 	mov	r1,r18
+00000084 c392            837 	shl	3,r18
+00000086 310600000000*   838 	mov	_number_format_tuples,r17
+0000008c 12f0            839 	mov	r18,ep
+0000008e d1f1            840 	add	r17,ep
+00000090 0295            841 	sld.w	4[ep],r18
+00000092 f391            842 	cmp	r19,r18
+00000094 aa0d*           843 	bne	.L203
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         844 --166:         {
+                         845 --167:             return number_format_tuples[i].name;
+                         846 --line167
+                         847 ..lin.92f28593..34e36af7.0_14::
+                         848 .LDWlin14:
+00000096 0190            849 	mov	r1,r18
+00000098 c392            850 	shl	3,r18
+0000009a 310600000000*   851 	mov	_number_format_tuples,r17
+000000a0 12f0            852 	mov	r18,ep
+000000a2 d1f1            853 	add	r17,ep
+000000a4 0055            854 	sld.w	0[ep],r10
+000000a6 f505*           855 	br	.L200
+                         856 .L203:
+                         857 --line163
+                         858 ..lin.92f28593..34e36af7.0_15::
+                         859 .LDWlin15:
+000000a8 410a            860 	add	1,r1
+                         861 .L205:
+000000aa e209            862 	cmp	r2,r1
+000000ac b6ed*           863 	blt	.L204
+                         864 --168:         }
+                         865 --169:     }
+                         866 --170:     return "";
+                         867 --line170
+                         868 ..lin.92f28593..34e36af7.0_16::
+                         869 .LDWlin16:
+000000ae 2a0600000000*   870 	mov	.L58,r10
+                         871 .L200:
+                         872 --	    .ef
+                         873 .LDW51:
+                         874 .L262:
+                         875 --line171
+                         876 ..lin.92f28593..34e36af7.0_17::
+                         877 .LDWlin17:
+                         878 	.jumptype return
+000000b4 7f00            879 	jmp	[lp]
+                         880 --line171
+                         881 ..lin.92f28593..34e36af7.0_18::
+                         882 	.type	_getNumberFormatName,@function
+                         883 	.size	_getNumberFormatName,.-_getNumberFormatName
+                         884 	.align	2
+                         885 --_i	r1	local
+                         886 --_table_len	r2	local
+                         887 
+                         888 --_value_in	r19	param
+                         889 
+                         890 	.section ".rodata","a"
+                         891 	.global	_number_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                         892 _number_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000480 00000000*       893 _number_format_tuples:	.word	.L84
+00000484 00000000        894 	.space	4
+00000488 00000000*       895 	.word	.L97
+0000048c 01000000        896 	.byte	1,0,0,0
+00000490 00000000*       897 	.word	.L77
+00000494 02000000        898 	.byte	2,0,0,0
+                         899 	.type	_number_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                         900 	.size	_number_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,24
+                         901 	.type	_number_format_tuples,@object
+                         902 	.size	_number_format_tuples,24
+                         903 	.section ".ghrettbl",""
+00000008 00000000*       904 .L263:	.word	.L262
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                         905 	.type	.L263,@object
+                         906 	.size	.L263,4
+                         907 	.data
+                         908 	.text
+                         909 
+                         910 --171: }
+                         911 
+                         912 --173: /* convert from type 'r_hash_encoding_format_t' to 'string' */
+                         913 --174: char* getHashEncodingFormatName(r_hash_encoding_format_t value_in)
+                         914 	.align	2
+                         915 	.align	2
+                         916 	.align	2
+                         917 ..gh.f.a.2.e.3:
+                         918 	.type	..gh.f.a.2.e.3,@object
+                         919 	.size	..gh.f.a.2.e.3,0
+                         920 	.global	_getHashEncodingFormatName
+                         921 _getHashEncodingFormatName:
+000000b6 0698            922 	mov	r6,r19
+                         923 --	    .bf
+                         924 .LDW61:
+                         925 --175: {
+                         926 --176:     int i;
+                         927 --177:     int table_len = sizeof(hash_encoding_format_tuples) / sizeof(hash_encoding_format_tuples[0]);
+000000b8 0212            928 	mov	2,r2
+                         929 --178:     
+                         930 --179:     for (i=0; i<table_len; i++)
+000000ba 000a            931 	mov	0,r1
+000000bc d515*           932 	br	.L269
+                         933 .L268:
+                         934 --180:     {
+                         935 --181:         if (hash_encoding_format_tuples[i].value == value_in)
+                         936 --line181
+                         937 ..lin.92f28593..9c7110d9.0_19::
+                         938 .LDWlin19:
+000000be 0190            939 	mov	r1,r18
+000000c0 c392            940 	shl	3,r18
+000000c2 310600000000*   941 	mov	_hash_encoding_format_tuples,r17
+000000c8 12f0            942 	mov	r18,ep
+000000ca d1f1            943 	add	r17,ep
+000000cc 0295            944 	sld.w	4[ep],r18
+000000ce f391            945 	cmp	r19,r18
+000000d0 aa0d*           946 	bne	.L267
+                         947 --182:         {
+                         948 --183:             return hash_encoding_format_tuples[i].name;
+                         949 --line183
+                         950 ..lin.92f28593..9c7110d9.0_20::
+                         951 .LDWlin20:
+000000d2 0190            952 	mov	r1,r18
+000000d4 c392            953 	shl	3,r18
+000000d6 310600000000*   954 	mov	_hash_encoding_format_tuples,r17
+000000dc 12f0            955 	mov	r18,ep
+000000de d1f1            956 	add	r17,ep
+000000e0 0055            957 	sld.w	0[ep],r10
+000000e2 f505*           958 	br	.L264
+                         959 .L267:
+                         960 --line179
+                         961 ..lin.92f28593..9c7110d9.0_21::
+                         962 .LDWlin21:
+000000e4 410a            963 	add	1,r1
+                         964 .L269:
+000000e6 e209            965 	cmp	r2,r1
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+000000e8 b6ed*           966 	blt	.L268
+                         967 --184:         }
+                         968 --185:     }
+                         969 --186:     return "";
+                         970 --line186
+                         971 ..lin.92f28593..9c7110d9.0_22::
+                         972 .LDWlin22:
+000000ea 2a0600000000*   973 	mov	.L58,r10
+                         974 .L264:
+                         975 --	    .ef
+                         976 .LDW71:
+                         977 .L326:
+                         978 --line187
+                         979 ..lin.92f28593..9c7110d9.0_23::
+                         980 .LDWlin23:
+                         981 	.jumptype return
+000000f0 7f00            982 	jmp	[lp]
+                         983 --line187
+                         984 ..lin.92f28593..9c7110d9.0_24::
+                         985 	.type	_getHashEncodingFormatName,@function
+                         986 	.size	_getHashEncodingFormatName,.-_getHashEncodingFormatName
+                         987 	.align	2
+                         988 --_i	r1	local
+                         989 --_table_len	r2	local
+                         990 
+                         991 --_value_in	r19	param
+                         992 
+                         993 	.section ".rodata","a"
+                         994 	.global	_hash_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                         995 _hash_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000498 00000000*       996 _hash_encoding_format_tuples:	.word	.L98
+0000049c 00000000        997 	.space	4
+000004a0 00000000*       998 	.word	.L99
+000004a4 01000000        999 	.byte	1,0,0,0
+                        1000 	.type	_hash_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1001 	.size	_hash_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,16
+                        1002 	.type	_hash_encoding_format_tuples,@object
+                        1003 	.size	_hash_encoding_format_tuples,16
+                        1004 	.section ".ghrettbl",""
+0000000c 00000000*      1005 .L327:	.word	.L326
+                        1006 	.type	.L327,@object
+                        1007 	.size	.L327,4
+                        1008 	.data
+                        1009 	.text
+                        1010 
+                        1011 --187: }
+                        1012 
+                        1013 --189: /* convert from type 'r_message_encoding_format_t' to 'string' */
+                        1014 --190: char* getMessageEncodingFormatName(r_message_encoding_format_t value_in)
+                        1015 	.align	2
+                        1016 	.align	2
+                        1017 	.align	2
+                        1018 ..gh.f.a.2.e.4:
+                        1019 	.type	..gh.f.a.2.e.4,@object
+                        1020 	.size	..gh.f.a.2.e.4,0
+                        1021 	.global	_getMessageEncodingFormatName
+                        1022 _getMessageEncodingFormatName:
+000000f2 0698           1023 	mov	r6,r19
+                        1024 --	    .bf
+                        1025 .LDW81:
+                        1026 --191: {
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1027 --192:     int i;
+                        1028 --193:     int table_len = sizeof(message_encoding_format_tuples) / sizeof(message_encoding_format_tuples[0]);
+000000f4 0212           1029 	mov	2,r2
+                        1030 --194:     
+                        1031 --195:     for (i=0; i<table_len; i++)
+000000f6 000a           1032 	mov	0,r1
+000000f8 d515*          1033 	br	.L333
+                        1034 .L332:
+                        1035 --196:     {
+                        1036 --197:         if (message_encoding_format_tuples[i].value == value_in)
+                        1037 --line197
+                        1038 ..lin.92f28593..ca4a66da.0_25::
+                        1039 .LDWlin25:
+000000fa 0190           1040 	mov	r1,r18
+000000fc c392           1041 	shl	3,r18
+000000fe 310600000000*  1042 	mov	_message_encoding_format_tuples,r17
+00000104 12f0           1043 	mov	r18,ep
+00000106 d1f1           1044 	add	r17,ep
+00000108 0295           1045 	sld.w	4[ep],r18
+0000010a f391           1046 	cmp	r19,r18
+0000010c aa0d*          1047 	bne	.L331
+                        1048 --198:         {
+                        1049 --199:             return message_encoding_format_tuples[i].name;
+                        1050 --line199
+                        1051 ..lin.92f28593..ca4a66da.0_26::
+                        1052 .LDWlin26:
+0000010e 0190           1053 	mov	r1,r18
+00000110 c392           1054 	shl	3,r18
+00000112 310600000000*  1055 	mov	_message_encoding_format_tuples,r17
+00000118 12f0           1056 	mov	r18,ep
+0000011a d1f1           1057 	add	r17,ep
+0000011c 0055           1058 	sld.w	0[ep],r10
+0000011e f505*          1059 	br	.L328
+                        1060 .L331:
+                        1061 --line195
+                        1062 ..lin.92f28593..ca4a66da.0_27::
+                        1063 .LDWlin27:
+00000120 410a           1064 	add	1,r1
+                        1065 .L333:
+00000122 e209           1066 	cmp	r2,r1
+00000124 b6ed*          1067 	blt	.L332
+                        1068 --200:         }
+                        1069 --201:     }
+                        1070 --202:     return "";
+                        1071 --line202
+                        1072 ..lin.92f28593..ca4a66da.0_28::
+                        1073 .LDWlin28:
+00000126 2a0600000000*  1074 	mov	.L58,r10
+                        1075 .L328:
+                        1076 --	    .ef
+                        1077 .LDW91:
+                        1078 .L390:
+                        1079 --line203
+                        1080 ..lin.92f28593..ca4a66da.0_29::
+                        1081 .LDWlin29:
+                        1082 	.jumptype return
+0000012c 7f00           1083 	jmp	[lp]
+                        1084 --line203
+                        1085 ..lin.92f28593..ca4a66da.0_30::
+                        1086 	.type	_getMessageEncodingFormatName,@function
+                        1087 	.size	_getMessageEncodingFormatName,.-_getMessageEncodingFormatName
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1088 	.align	2
+                        1089 --_i	r1	local
+                        1090 --_table_len	r2	local
+                        1091 
+                        1092 --_value_in	r19	param
+                        1093 
+                        1094 	.section ".rodata","a"
+                        1095 	.global	_message_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                        1096 _message_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+000004a8 00000000*      1097 _message_encoding_format_tuples:	.word	.L100
+000004ac 00000000       1098 	.space	4
+000004b0 00000000*      1099 	.word	.L85
+000004b4 01000000       1100 	.byte	1,0,0,0
+                        1101 	.type	_message_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1102 	.size	_message_encoding_format_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,16
+                        1103 	.type	_message_encoding_format_tuples,@object
+                        1104 	.size	_message_encoding_format_tuples,16
+                        1105 	.section ".ghrettbl",""
+00000010 00000000*      1106 .L391:	.word	.L390
+                        1107 	.type	.L391,@object
+                        1108 	.size	.L391,4
+                        1109 	.data
+                        1110 	.text
+                        1111 
+                        1112 --203: }
+                        1113 
+                        1114 --205: /* convert from type 'r_hash_primitive_t' to 'string' */
+                        1115 --206: char* getHashPrimitiveName(r_hash_primitive_t value_in)
+                        1116 	.align	2
+                        1117 	.align	2
+                        1118 	.align	2
+                        1119 ..gh.f.a.2.e.5:
+                        1120 	.type	..gh.f.a.2.e.5,@object
+                        1121 	.size	..gh.f.a.2.e.5,0
+                        1122 	.global	_getHashPrimitiveName
+                        1123 _getHashPrimitiveName:
+0000012e 0698           1124 	mov	r6,r19
+                        1125 --	    .bf
+                        1126 .LDW02:
+                        1127 --207: {
+                        1128 --208:     int i;
+                        1129 --209:     int table_len = sizeof(hash_primitive_tuples) / sizeof(hash_primitive_tuples[0]);
+00000130 0a12           1130 	mov	10,r2
+                        1131 --210:     
+                        1132 --211:     for (i=0; i<table_len; i++)
+00000132 000a           1133 	mov	0,r1
+00000134 d515*          1134 	br	.L397
+                        1135 .L396:
+                        1136 --212:     {
+                        1137 --213:         if (hash_primitive_tuples[i].value == value_in)
+                        1138 --line213
+                        1139 ..lin.92f28593..1f86f9c2.0_31::
+                        1140 .LDWlin31:
+00000136 0190           1141 	mov	r1,r18
+00000138 c392           1142 	shl	3,r18
+0000013a 310600000000*  1143 	mov	_hash_primitive_tuples,r17
+00000140 12f0           1144 	mov	r18,ep
+00000142 d1f1           1145 	add	r17,ep
+00000144 0295           1146 	sld.w	4[ep],r18
+00000146 f391           1147 	cmp	r19,r18
+00000148 aa0d*          1148 	bne	.L395
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1149 --214:         {
+                        1150 --215:             return hash_primitive_tuples[i].name;
+                        1151 --line215
+                        1152 ..lin.92f28593..1f86f9c2.0_32::
+                        1153 .LDWlin32:
+0000014a 0190           1154 	mov	r1,r18
+0000014c c392           1155 	shl	3,r18
+0000014e 310600000000*  1156 	mov	_hash_primitive_tuples,r17
+00000154 12f0           1157 	mov	r18,ep
+00000156 d1f1           1158 	add	r17,ep
+00000158 0055           1159 	sld.w	0[ep],r10
+0000015a f505*          1160 	br	.L392
+                        1161 .L395:
+                        1162 --line211
+                        1163 ..lin.92f28593..1f86f9c2.0_33::
+                        1164 .LDWlin33:
+0000015c 410a           1165 	add	1,r1
+                        1166 .L397:
+0000015e e209           1167 	cmp	r2,r1
+00000160 b6ed*          1168 	blt	.L396
+                        1169 --216:         }
+                        1170 --217:     }
+                        1171 --218:     return "";
+                        1172 --line218
+                        1173 ..lin.92f28593..1f86f9c2.0_34::
+                        1174 .LDWlin34:
+00000162 2a0600000000*  1175 	mov	.L58,r10
+                        1176 .L392:
+                        1177 --	    .ef
+                        1178 .LDW12:
+                        1179 .L454:
+                        1180 --line219
+                        1181 ..lin.92f28593..1f86f9c2.0_35::
+                        1182 .LDWlin35:
+                        1183 	.jumptype return
+00000168 7f00           1184 	jmp	[lp]
+                        1185 --line219
+                        1186 ..lin.92f28593..1f86f9c2.0_36::
+                        1187 	.type	_getHashPrimitiveName,@function
+                        1188 	.size	_getHashPrimitiveName,.-_getHashPrimitiveName
+                        1189 	.align	2
+                        1190 --_i	r1	local
+                        1191 --_table_len	r2	local
+                        1192 
+                        1193 --_value_in	r19	param
+                        1194 
+                        1195 	.section ".rodata","a"
+                        1196 	.global	_hash_primitive_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                        1197 _hash_primitive_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+000004b8 00000000*      1198 _hash_primitive_tuples:	.word	.L101
+000004bc 00000000       1199 	.space	4
+000004c0 00000000*      1200 	.word	.L86
+000004c4 01000000       1201 	.byte	1,0,0,0
+000004c8 00000000*      1202 	.word	.L87
+000004cc 02000000       1203 	.byte	2,0,0,0
+000004d0 00000000*      1204 	.word	.L88
+000004d4 03000000       1205 	.byte	3,0,0,0
+000004d8 00000000*      1206 	.word	.L89
+000004dc 04000000       1207 	.byte	4,0,0,0
+000004e0 00000000*      1208 	.word	.L78
+000004e4 05000000       1209 	.byte	5,0,0,0
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+000004e8 00000000*      1210 	.word	.L64
+000004ec 06000000       1211 	.byte	6,0,0,0
+000004f0 00000000*      1212 	.word	.L65
+000004f4 07000000       1213 	.byte	7,0,0,0
+000004f8 00000000*      1214 	.word	.L66
+000004fc 08000000       1215 	.byte	8,0,0,0
+00000500 00000000*      1216 	.word	.L67
+00000504 09000000       1217 	.byte	9,0,0,0
+                        1218 	.type	_hash_primitive_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1219 	.size	_hash_primitive_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,80
+                        1220 	.type	_hash_primitive_tuples,@object
+                        1221 	.size	_hash_primitive_tuples,80
+                        1222 	.section ".ghrettbl",""
+00000014 00000000*      1223 .L455:	.word	.L454
+                        1224 	.type	.L455,@object
+                        1225 	.size	.L455,4
+                        1226 	.data
+                        1227 	.text
+                        1228 
+                        1229 --219: }
+                        1230 
+                        1231 --221: /* convert from type 'r_signature_algo_t' to 'string' */
+                        1232 --222: char* getSigAlgoName(r_signature_algo_t value_in)
+                        1233 	.align	2
+                        1234 	.align	2
+                        1235 	.align	2
+                        1236 ..gh.f.a.2.e.6:
+                        1237 	.type	..gh.f.a.2.e.6,@object
+                        1238 	.size	..gh.f.a.2.e.6,0
+                        1239 	.global	_getSigAlgoName
+                        1240 _getSigAlgoName:
+0000016a 0698           1241 	mov	r6,r19
+                        1242 --	    .bf
+                        1243 .LDW22:
+                        1244 --223: {
+                        1245 --224:     int i;
+                        1246 --225:     int table_len = sizeof(sig_algo_tuples) / sizeof(sig_algo_tuples[0]);
+0000016c 0312           1247 	mov	3,r2
+                        1248 --226:     
+                        1249 --227:     for (i=0; i<table_len; i++)
+0000016e 000a           1250 	mov	0,r1
+00000170 d515*          1251 	br	.L461
+                        1252 .L460:
+                        1253 --228:     {
+                        1254 --229:         if (sig_algo_tuples[i].value == value_in)
+                        1255 --line229
+                        1256 ..lin.92f28593..b84a068b.0_37::
+                        1257 .LDWlin37:
+00000172 0190           1258 	mov	r1,r18
+00000174 c392           1259 	shl	3,r18
+00000176 310600000000*  1260 	mov	_sig_algo_tuples,r17
+0000017c 12f0           1261 	mov	r18,ep
+0000017e d1f1           1262 	add	r17,ep
+00000180 0295           1263 	sld.w	4[ep],r18
+00000182 f391           1264 	cmp	r19,r18
+00000184 aa0d*          1265 	bne	.L459
+                        1266 --230:         {
+                        1267 --231:             return sig_algo_tuples[i].name;
+                        1268 --line231
+                        1269 ..lin.92f28593..b84a068b.0_38::
+                        1270 .LDWlin38:
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000186 0190           1271 	mov	r1,r18
+00000188 c392           1272 	shl	3,r18
+0000018a 310600000000*  1273 	mov	_sig_algo_tuples,r17
+00000190 12f0           1274 	mov	r18,ep
+00000192 d1f1           1275 	add	r17,ep
+00000194 0055           1276 	sld.w	0[ep],r10
+00000196 f505*          1277 	br	.L456
+                        1278 .L459:
+                        1279 --line227
+                        1280 ..lin.92f28593..b84a068b.0_39::
+                        1281 .LDWlin39:
+00000198 410a           1282 	add	1,r1
+                        1283 .L461:
+0000019a e209           1284 	cmp	r2,r1
+0000019c b6ed*          1285 	blt	.L460
+                        1286 --232:         }
+                        1287 --233:     }
+                        1288 --234:     return "";
+                        1289 --line234
+                        1290 ..lin.92f28593..b84a068b.0_40::
+                        1291 .LDWlin40:
+0000019e 2a0600000000*  1292 	mov	.L58,r10
+                        1293 .L456:
+                        1294 --	    .ef
+                        1295 .LDW32:
+                        1296 .L518:
+                        1297 --line235
+                        1298 ..lin.92f28593..b84a068b.0_41::
+                        1299 .LDWlin41:
+                        1300 	.jumptype return
+000001a4 7f00           1301 	jmp	[lp]
+                        1302 --line235
+                        1303 ..lin.92f28593..b84a068b.0_42::
+                        1304 	.type	_getSigAlgoName,@function
+                        1305 	.size	_getSigAlgoName,.-_getSigAlgoName
+                        1306 	.align	2
+                        1307 --_i	r1	local
+                        1308 --_table_len	r2	local
+                        1309 
+                        1310 --_value_in	r19	param
+                        1311 
+                        1312 	.section ".rodata","a"
+                        1313 	.global	_sig_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                        1314 _sig_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000508 00000000*      1315 _sig_algo_tuples:	.word	.L102
+0000050c 00000000       1316 	.space	4
+00000510 00000000*      1317 	.word	.L68
+00000514 01000000       1318 	.byte	1,0,0,0
+00000518 00000000*      1319 	.word	.L90
+0000051c 02000000       1320 	.byte	2,0,0,0
+                        1321 	.type	_sig_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1322 	.size	_sig_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,24
+                        1323 	.type	_sig_algo_tuples,@object
+                        1324 	.size	_sig_algo_tuples,24
+                        1325 	.section ".ghrettbl",""
+00000018 00000000*      1326 .L519:	.word	.L518
+                        1327 	.type	.L519,@object
+                        1328 	.size	.L519,4
+                        1329 	.data
+                        1330 	.text
+                        1331 
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1332 --235: }
+                        1333 
+                        1334 --237: /* convert from type 'r_ecc_curve_t' to 'string' */
+                        1335 --238: char* getEccCurveName(r_ecc_curve_t value_in)
+                        1336 	.align	2
+                        1337 	.align	2
+                        1338 	.align	2
+                        1339 ..gh.f.a.2.e.7:
+                        1340 	.type	..gh.f.a.2.e.7,@object
+                        1341 	.size	..gh.f.a.2.e.7,0
+                        1342 	.global	_getEccCurveName
+                        1343 _getEccCurveName:
+000001a6 0698           1344 	mov	r6,r19
+                        1345 --	    .bf
+                        1346 .LDW42:
+                        1347 --239: {
+                        1348 --240:     int i;
+                        1349 --241:     int table_len = sizeof(ecc_curve_tuples) / sizeof(ecc_curve_tuples[0]);
+000001a8 0812           1350 	mov	8,r2
+                        1351 --242:     
+                        1352 --243:     for (i=0; i<table_len; i++)
+000001aa 000a           1353 	mov	0,r1
+000001ac d515*          1354 	br	.L525
+                        1355 .L524:
+                        1356 --244:     {
+                        1357 --245:         if (ecc_curve_tuples[i].value == value_in)
+                        1358 --line245
+                        1359 ..lin.92f28593..7bd8e5f5.0_43::
+                        1360 .LDWlin43:
+000001ae 0190           1361 	mov	r1,r18
+000001b0 c392           1362 	shl	3,r18
+000001b2 310600000000*  1363 	mov	_ecc_curve_tuples,r17
+000001b8 12f0           1364 	mov	r18,ep
+000001ba d1f1           1365 	add	r17,ep
+000001bc 0295           1366 	sld.w	4[ep],r18
+000001be f391           1367 	cmp	r19,r18
+000001c0 aa0d*          1368 	bne	.L523
+                        1369 --246:         {
+                        1370 --247:             return ecc_curve_tuples[i].name;
+                        1371 --line247
+                        1372 ..lin.92f28593..7bd8e5f5.0_44::
+                        1373 .LDWlin44:
+000001c2 0190           1374 	mov	r1,r18
+000001c4 c392           1375 	shl	3,r18
+000001c6 310600000000*  1376 	mov	_ecc_curve_tuples,r17
+000001cc 12f0           1377 	mov	r18,ep
+000001ce d1f1           1378 	add	r17,ep
+000001d0 0055           1379 	sld.w	0[ep],r10
+000001d2 f505*          1380 	br	.L520
+                        1381 .L523:
+                        1382 --line243
+                        1383 ..lin.92f28593..7bd8e5f5.0_45::
+                        1384 .LDWlin45:
+000001d4 410a           1385 	add	1,r1
+                        1386 .L525:
+000001d6 e209           1387 	cmp	r2,r1
+000001d8 b6ed*          1388 	blt	.L524
+                        1389 --248:         }
+                        1390 --249:     }
+                        1391 --250:     return "";
+                        1392 --line250
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1393 ..lin.92f28593..7bd8e5f5.0_46::
+                        1394 .LDWlin46:
+000001da 2a0600000000*  1395 	mov	.L58,r10
+                        1396 .L520:
+                        1397 --	    .ef
+                        1398 .LDW52:
+                        1399 .L582:
+                        1400 --line251
+                        1401 ..lin.92f28593..7bd8e5f5.0_47::
+                        1402 .LDWlin47:
+                        1403 	.jumptype return
+000001e0 7f00           1404 	jmp	[lp]
+                        1405 --line251
+                        1406 ..lin.92f28593..7bd8e5f5.0_48::
+                        1407 	.type	_getEccCurveName,@function
+                        1408 	.size	_getEccCurveName,.-_getEccCurveName
+                        1409 	.align	2
+                        1410 --_i	r1	local
+                        1411 --_table_len	r2	local
+                        1412 
+                        1413 --_value_in	r19	param
+                        1414 
+                        1415 	.section ".rodata","a"
+                        1416 	.global	_ecc_curve_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                        1417 _ecc_curve_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000520 00000000*      1418 _ecc_curve_tuples:	.word	.L79
+00000524 00000000       1419 	.space	4
+00000528 00000000*      1420 	.word	.L80
+0000052c 01000000       1421 	.byte	1,0,0,0
+00000530 00000000*      1422 	.word	.L81
+00000534 02000000       1423 	.byte	2,0,0,0
+00000538 00000000*      1424 	.word	.L103
+0000053c 05000000       1425 	.byte	5,0,0,0
+00000540 00000000*      1426 	.word	.L104
+00000544 06000000       1427 	.byte	6,0,0,0
+00000548 00000000*      1428 	.word	.L105
+0000054c 07000000       1429 	.byte	7,0,0,0
+00000550 00000000*      1430 	.word	.L106
+00000554 08000000       1431 	.byte	8,0,0,0
+00000558 00000000*      1432 	.word	.L107
+0000055c 0f000000       1433 	.byte	15,0,0,0
+                        1434 	.type	_ecc_curve_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1435 	.size	_ecc_curve_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,64
+                        1436 	.type	_ecc_curve_tuples,@object
+                        1437 	.size	_ecc_curve_tuples,64
+                        1438 	.section ".ghrettbl",""
+0000001c 00000000*      1439 .L583:	.word	.L582
+                        1440 	.type	.L583,@object
+                        1441 	.size	.L583,4
+                        1442 	.data
+                        1443 	.text
+                        1444 
+                        1445 --251: }
+                        1446 
+                        1447 --253: /* convert from type 'r_kdf_algo_t' to 'string' */
+                        1448 --254: char* getKdfAlgoName(r_kdf_algo_t value_in)
+                        1449 	.align	2
+                        1450 	.align	2
+                        1451 	.align	2
+                        1452 ..gh.f.a.2.e.8:
+                        1453 	.type	..gh.f.a.2.e.8,@object
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1454 	.size	..gh.f.a.2.e.8,0
+                        1455 	.global	_getKdfAlgoName
+                        1456 _getKdfAlgoName:
+000001e2 0698           1457 	mov	r6,r19
+                        1458 --	    .bf
+                        1459 .LDW62:
+                        1460 --255: {
+                        1461 --256:     int i;
+                        1462 --257:     int table_len = sizeof(kdf_algo_tuples) / sizeof(kdf_algo_tuples[0]);
+000001e4 0512           1463 	mov	5,r2
+                        1464 --258:     
+                        1465 --259:     for (i=0; i<table_len; i++)
+000001e6 000a           1466 	mov	0,r1
+000001e8 d515*          1467 	br	.L589
+                        1468 .L588:
+                        1469 --260:     {
+                        1470 --261:         if (kdf_algo_tuples[i].value == value_in)
+                        1471 --line261
+                        1472 ..lin.92f28593..4b315dd.0_49::
+                        1473 .LDWlin49:
+000001ea 0190           1474 	mov	r1,r18
+000001ec c392           1475 	shl	3,r18
+000001ee 310600000000*  1476 	mov	_kdf_algo_tuples,r17
+000001f4 12f0           1477 	mov	r18,ep
+000001f6 d1f1           1478 	add	r17,ep
+000001f8 0295           1479 	sld.w	4[ep],r18
+000001fa f391           1480 	cmp	r19,r18
+000001fc aa0d*          1481 	bne	.L587
+                        1482 --262:         {
+                        1483 --263:             return kdf_algo_tuples[i].name;
+                        1484 --line263
+                        1485 ..lin.92f28593..4b315dd.0_50::
+                        1486 .LDWlin50:
+000001fe 0190           1487 	mov	r1,r18
+00000200 c392           1488 	shl	3,r18
+00000202 310600000000*  1489 	mov	_kdf_algo_tuples,r17
+00000208 12f0           1490 	mov	r18,ep
+0000020a d1f1           1491 	add	r17,ep
+0000020c 0055           1492 	sld.w	0[ep],r10
+0000020e f505*          1493 	br	.L584
+                        1494 .L587:
+                        1495 --line259
+                        1496 ..lin.92f28593..4b315dd.0_51::
+                        1497 .LDWlin51:
+00000210 410a           1498 	add	1,r1
+                        1499 .L589:
+00000212 e209           1500 	cmp	r2,r1
+00000214 b6ed*          1501 	blt	.L588
+                        1502 --264:         }
+                        1503 --265:     }
+                        1504 --266:     return "";
+                        1505 --line266
+                        1506 ..lin.92f28593..4b315dd.0_52::
+                        1507 .LDWlin52:
+00000216 2a0600000000*  1508 	mov	.L58,r10
+                        1509 .L584:
+                        1510 --	    .ef
+                        1511 .LDW72:
+                        1512 .L646:
+                        1513 --line267
+                        1514 ..lin.92f28593..4b315dd.0_53::
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1515 .LDWlin53:
+                        1516 	.jumptype return
+0000021c 7f00           1517 	jmp	[lp]
+                        1518 --line267
+                        1519 ..lin.92f28593..4b315dd.0_54::
+                        1520 	.type	_getKdfAlgoName,@function
+                        1521 	.size	_getKdfAlgoName,.-_getKdfAlgoName
+                        1522 	.align	2
+                        1523 --_i	r1	local
+                        1524 --_table_len	r2	local
+                        1525 
+                        1526 --_value_in	r19	param
+                        1527 
+                        1528 	.section ".rodata","a"
+                        1529 	.global	_kdf_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.
+                        1530 _kdf_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.:
+00000560 00000000*      1531 _kdf_algo_tuples:	.word	.L91
+00000564 00000000       1532 	.space	4
+00000568 00000000*      1533 	.word	.L92
+0000056c 01000000       1534 	.byte	1,0,0,0
+00000570 00000000*      1535 	.word	.L93
+00000574 02000000       1536 	.byte	2,0,0,0
+00000578 00000000*      1537 	.word	.L108
+0000057c 03000000       1538 	.byte	3,0,0,0
+00000580 00000000*      1539 	.word	.L109
+00000584 04000000       1540 	.byte	4,0,0,0
+                        1541 	.type	_kdf_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,@object
+                        1542 	.size	_kdf_algo_tuples..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility.,40
+                        1543 	.type	_kdf_algo_tuples,@object
+                        1544 	.size	_kdf_algo_tuples,40
+                        1545 	.section ".ghrettbl",""
+00000020 00000000*      1546 .L647:	.word	.L646
+                        1547 	.type	.L647,@object
+                        1548 	.size	.L647,4
+                        1549 	.data
+                        1550 	.text
+                        1551 
+                        1552 --267: }
+                        1553 
+                        1554 --269: /*===========================================================================
+                        1555 --270:   Trigger an ICU-M service and wait for the response
+                        1556 --271:   [PUBLIC]
+                        1557 --272:   ===========================================================================*/
+                        1558 --273: void trigger_2service_and_wait(r_icumif_isd_t *p_ISD, r_icumif_isd_t *p_ISD2)
+                        1559 	.align	2
+                        1560 	.align	2
+                        1561 	.align	2
+                        1562 ..gh.f.a.2.e.9:
+                        1563 	.type	..gh.f.a.2.e.9,@object
+                        1564 	.size	..gh.f.a.2.e.9,0
+                        1565 	.global	_trigger_2service_and_wait
+                        1566 _trigger_2service_and_wait:
+0000021e 541a           1567 	add	-12,sp
+00000220 63ff0900       1568 	st.w	lp,8[sp]
+00000224 63e70500       1569 	st.w	r28,4[sp]
+00000228 63ef0100       1570 	st.w	r29,0[sp]
+0000022c 06e8           1571 	mov	r6,r29
+0000022e 07e0           1572 	mov	r7,r28
+                        1573 --	    .bf
+                        1574 .LDW82:
+                        1575 --274: {
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1576 --275:     // trigger the service request
+                        1577 --276:     R_ICUMIF_ServiceRequest(p_ISD);
+00000230 1d30           1578 	mov	r29,r6
+                        1579 .L859:
+                        1580 	jarl	_R_ICUMIF_ServiceRequest,lp
+                        1580 <EXPANSION BEGIN>
+                        1580 jarl22 _R_ICUMIF_ServiceRequest , lp 
+00000232 80ff0000*      1580 <EXPANSION END>
+                        1581 --277:     R_ICUMIF_ServiceRequest(p_ISD2);
+                        1582 --line277
+                        1583 ..lin.92f28593..157fa00.0_55::
+                        1584 .LDWlin55:
+00000236 1c30           1585 	mov	r28,r6
+                        1586 .L861:
+                        1587 	jarl	_R_ICUMIF_ServiceRequest,lp
+                        1587 <EXPANSION BEGIN>
+                        1587 jarl22 _R_ICUMIF_ServiceRequest , lp 
+00000238 80ff0000*      1587 <EXPANSION END>
+                        1588 --279:     // go in HALT mode
+                        1589 --280:     // wait for interrupt
+                        1590 --281:     while((!R_ICUMIF_IsServiceCompleted(p_ISD)) || (!R_ICUMIF_IsServiceCompleted(p_ISD2)))
+                        1591 --line281
+                        1592 ..lin.92f28593..157fa00.0_56::
+                        1593 .LDWlin56:
+0000023c c50d*          1594 	br	.L650
+                        1595 .L652:
+                        1596 --282:     {
+                        1597 --283:         HALT();
+                        1598 --line283
+                        1599 ..lin.92f28593..157fa00.0_57::
+                        1600 .LDWlin57:
+                        1601 ..gh.beginasm.10:
+                        1602 	.type	..gh.beginasm.10,@object
+                        1603 	.size	..gh.beginasm.10,0
+                        1604 --ASM MACRO: Start
+                        1605 
+0000023e 0000           1606     nop
+                        1607 --ASM MACRO: End
+                        1608 ..gh.endasm.11:
+                        1609 	.type	..gh.endasm.11,@object
+                        1610 	.size	..gh.endasm.11,0
+                        1611 --284:         NOPS(10);
+                        1612 --line284
+                        1613 ..lin.92f28593..157fa00.0_58::
+                        1614 .LDWlin58:
+                        1615 ..gh.beginasm.12:
+                        1616 	.type	..gh.beginasm.12,@object
+                        1617 	.size	..gh.beginasm.12,0
+                        1618 --ASM MACRO: Start
+                        1619 .rept 10
+                        1620     nop
+00000240 0000           1621 .endr
+00000242 0000 
+00000244 0000 
+00000246 0000 
+00000248 0000 
+0000024a 0000 
+0000024c 0000 
+0000024e 0000 
+00000250 0000 
+00000252 0000 
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1622 --ASM MACRO: End
+                        1623 ..gh.endasm.13:
+                        1624 	.type	..gh.endasm.13,@object
+                        1625 	.size	..gh.endasm.13,0
+                        1626 .L650:
+                        1627 --line281
+                        1628 ..lin.92f28593..157fa00.0_59::
+                        1629 .LDWlin59:
+00000254 1d30           1630 	mov	r29,r6
+                        1631 .L863:
+                        1632 	jarl	_R_ICUMIF_IsServiceCompleted,lp
+                        1632 <EXPANSION BEGIN>
+                        1632 jarl22 _R_ICUMIF_IsServiceCompleted , lp 
+00000256 80ff0000*      1632 <EXPANSION END>
+0000025a e051           1633 	cmp	zero,r10
+0000025c 92f5*          1634 	be	.L652
+0000025e 1c30           1635 	mov	r28,r6
+                        1636 .L865:
+                        1637 	jarl	_R_ICUMIF_IsServiceCompleted,lp
+                        1637 <EXPANSION BEGIN>
+                        1637 jarl22 _R_ICUMIF_IsServiceCompleted , lp 
+00000260 80ff0000*      1637 <EXPANSION END>
+00000264 e051           1638 	cmp	zero,r10
+00000266 c2ed*          1639 	be	.L652
+                        1640 --285:     }
+                        1641 --287:     // test for possible error
+                        1642 --288:     if(p_ISD->service_result != SERV_OK)
+                        1643 --line288
+                        1644 ..lin.92f28593..157fa00.0_60::
+                        1645 .LDWlin60:
+00000268 3d0f0d00       1646 	ld.w	12[r29],r1
+0000026c e009           1647 	cmp	zero,r1
+0000026e 823d*          1648 	be	.L654
+                        1649 --289:     {
+                        1650 --290:         printf("Service error: %d (", p_ISD->service_result);
+                        1651 --line290
+                        1652 ..lin.92f28593..157fa00.0_61::
+                        1653 .LDWlin61:
+00000270 3d470d00       1654 	ld.w	12[r29],r8
+00000274 260600000000*  1655 	mov	_vrun_printf_buff,r6
+0000027a 270600000000*  1656 	mov	.L818,r7
+                        1657 .L867:
+                        1658 	jarl	_sprintf,lp
+                        1658 <EXPANSION BEGIN>
+                        1658 jarl22 _sprintf , lp 
+00000280 80ff0000*      1658 <EXPANSION END>
+                        1659 --line290
+                        1660 ..lin.92f28593..157fa00.0_62::
+                        1661 .LDWlin62:
+00000284 260600000000*  1662 	mov	_vrun_printf_buff,r6
+                        1663 .L869:
+                        1664 	jarl	_vrun_iobuff_print_txt,lp
+                        1664 <EXPANSION BEGIN>
+                        1664 jarl22 _vrun_iobuff_print_txt , lp 
+0000028a 80ff0000*      1664 <EXPANSION END>
+                        1665 .L871:
+                        1666 --line290
+                        1667 ..lin.92f28593..157fa00.0_63::
+                        1668 .LDWlin63:
+                        1669 	jarl	_vrun_console_put,lp
+                        1669 <EXPANSION BEGIN>
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1669 jarl22 _vrun_console_put , lp 
+0000028e 80ff0000*      1669 <EXPANSION END>
+                        1670 --line290
+                        1671 ..lin.92f28593..157fa00.0_64::
+                        1672 .LDWlin64:
+00000292 0000           1673 	nop
+                        1674 --291:         printf(R_ICUMIF_GetErrorCodeName(p_ISD->service_result));
+00000294 3d0f0d00       1675 	ld.w	12[r29],r1
+00000298 8100           1676 	zxb	r1
+0000029a 0130           1677 	mov	r1,r6
+                        1678 .L873:
+                        1679 	jarl	_R_ICUMIF_GetErrorCodeName,lp
+                        1679 <EXPANSION BEGIN>
+                        1679 jarl22 _R_ICUMIF_GetErrorCodeName , lp 
+0000029c 80ff0000*      1679 <EXPANSION END>
+000002a0 0a08           1680 	mov	r10,r1
+000002a2 0138           1681 	mov	r1,r7
+000002a4 260600000000*  1682 	mov	_vrun_printf_buff,r6
+                        1683 .L875:
+                        1684 	jarl	_sprintf,lp
+                        1684 <EXPANSION BEGIN>
+                        1684 jarl22 _sprintf , lp 
+000002aa 80ff0000*      1684 <EXPANSION END>
+                        1685 --line291
+                        1686 ..lin.92f28593..157fa00.0_65::
+                        1687 .LDWlin65:
+000002ae 260600000000*  1688 	mov	_vrun_printf_buff,r6
+                        1689 .L877:
+                        1690 	jarl	_vrun_iobuff_print_txt,lp
+                        1690 <EXPANSION BEGIN>
+                        1690 jarl22 _vrun_iobuff_print_txt , lp 
+000002b4 80ff0000*      1690 <EXPANSION END>
+                        1691 .L879:
+                        1692 --line291
+                        1693 ..lin.92f28593..157fa00.0_66::
+                        1694 .LDWlin66:
+                        1695 	jarl	_vrun_console_put,lp
+                        1695 <EXPANSION BEGIN>
+                        1695 jarl22 _vrun_console_put , lp 
+000002b8 80ff0000*      1695 <EXPANSION END>
+                        1696 --line291
+                        1697 ..lin.92f28593..157fa00.0_67::
+                        1698 .LDWlin67:
+000002bc 0000           1699 	nop
+                        1700 --292:         printf(") *****\a\n");
+000002be 260600000000*  1701 	mov	_vrun_printf_buff,r6
+000002c4 270600000000*  1702 	mov	.L819,r7
+                        1703 .L881:
+                        1704 	jarl	_sprintf,lp
+                        1704 <EXPANSION BEGIN>
+                        1704 jarl22 _sprintf , lp 
+000002ca 80ff0000*      1704 <EXPANSION END>
+                        1705 --line292
+                        1706 ..lin.92f28593..157fa00.0_68::
+                        1707 .LDWlin68:
+000002ce 260600000000*  1708 	mov	_vrun_printf_buff,r6
+                        1709 .L883:
+                        1710 	jarl	_vrun_iobuff_print_txt,lp
+                        1710 <EXPANSION BEGIN>
+                        1710 jarl22 _vrun_iobuff_print_txt , lp 
+000002d4 80ff0000*      1710 <EXPANSION END>
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1711 .L885:
+                        1712 --line292
+                        1713 ..lin.92f28593..157fa00.0_69::
+                        1714 .LDWlin69:
+                        1715 	jarl	_vrun_console_put,lp
+                        1715 <EXPANSION BEGIN>
+                        1715 jarl22 _vrun_console_put , lp 
+000002d8 80ff0000*      1715 <EXPANSION END>
+                        1716 --line292
+                        1717 ..lin.92f28593..157fa00.0_70::
+                        1718 .LDWlin70:
+000002dc 0000           1719 	nop
+                        1720 .L654:
+                        1721 --293:     }
+                        1722 --295:     if(p_ISD2->service_result != SERV_OK)
+000002de 3c0f0d00       1723 	ld.w	12[r28],r1
+000002e2 e009           1724 	cmp	zero,r1
+000002e4 823d*          1725 	be	.L648
+                        1726 --296:     {
+                        1727 --297:         printf("Service2 error: %d (", p_ISD2->service_result);
+                        1728 --line297
+                        1729 ..lin.92f28593..157fa00.0_71::
+                        1730 .LDWlin71:
+000002e6 3c470d00       1731 	ld.w	12[r28],r8
+000002ea 260600000000*  1732 	mov	_vrun_printf_buff,r6
+000002f0 270600000000*  1733 	mov	.L820,r7
+                        1734 .L887:
+                        1735 	jarl	_sprintf,lp
+                        1735 <EXPANSION BEGIN>
+                        1735 jarl22 _sprintf , lp 
+000002f6 80ff0000*      1735 <EXPANSION END>
+                        1736 --line297
+                        1737 ..lin.92f28593..157fa00.0_72::
+                        1738 .LDWlin72:
+000002fa 260600000000*  1739 	mov	_vrun_printf_buff,r6
+                        1740 .L889:
+                        1741 	jarl	_vrun_iobuff_print_txt,lp
+                        1741 <EXPANSION BEGIN>
+                        1741 jarl22 _vrun_iobuff_print_txt , lp 
+00000300 80ff0000*      1741 <EXPANSION END>
+                        1742 .L891:
+                        1743 --line297
+                        1744 ..lin.92f28593..157fa00.0_73::
+                        1745 .LDWlin73:
+                        1746 	jarl	_vrun_console_put,lp
+                        1746 <EXPANSION BEGIN>
+                        1746 jarl22 _vrun_console_put , lp 
+00000304 80ff0000*      1746 <EXPANSION END>
+                        1747 --line297
+                        1748 ..lin.92f28593..157fa00.0_74::
+                        1749 .LDWlin74:
+00000308 0000           1750 	nop
+                        1751 --298:         printf(R_ICUMIF_GetErrorCodeName(p_ISD2->service_result));
+0000030a 3c0f0d00       1752 	ld.w	12[r28],r1
+0000030e 8100           1753 	zxb	r1
+00000310 0130           1754 	mov	r1,r6
+                        1755 .L893:
+                        1756 	jarl	_R_ICUMIF_GetErrorCodeName,lp
+                        1756 <EXPANSION BEGIN>
+                        1756 jarl22 _R_ICUMIF_GetErrorCodeName , lp 
+00000312 80ff0000*      1756 <EXPANSION END>
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000316 0a08           1757 	mov	r10,r1
+00000318 0138           1758 	mov	r1,r7
+0000031a 260600000000*  1759 	mov	_vrun_printf_buff,r6
+                        1760 .L895:
+                        1761 	jarl	_sprintf,lp
+                        1761 <EXPANSION BEGIN>
+                        1761 jarl22 _sprintf , lp 
+00000320 80ff0000*      1761 <EXPANSION END>
+                        1762 --line298
+                        1763 ..lin.92f28593..157fa00.0_75::
+                        1764 .LDWlin75:
+00000324 260600000000*  1765 	mov	_vrun_printf_buff,r6
+                        1766 .L897:
+                        1767 	jarl	_vrun_iobuff_print_txt,lp
+                        1767 <EXPANSION BEGIN>
+                        1767 jarl22 _vrun_iobuff_print_txt , lp 
+0000032a 80ff0000*      1767 <EXPANSION END>
+                        1768 .L899:
+                        1769 --line298
+                        1770 ..lin.92f28593..157fa00.0_76::
+                        1771 .LDWlin76:
+                        1772 	jarl	_vrun_console_put,lp
+                        1772 <EXPANSION BEGIN>
+                        1772 jarl22 _vrun_console_put , lp 
+0000032e 80ff0000*      1772 <EXPANSION END>
+                        1773 --line298
+                        1774 ..lin.92f28593..157fa00.0_77::
+                        1775 .LDWlin77:
+00000332 0000           1776 	nop
+                        1777 --299:         printf(") *****\a\n");
+00000334 260600000000*  1778 	mov	_vrun_printf_buff,r6
+0000033a 270600000000*  1779 	mov	.L819,r7
+                        1780 .L901:
+                        1781 	jarl	_sprintf,lp
+                        1781 <EXPANSION BEGIN>
+                        1781 jarl22 _sprintf , lp 
+00000340 80ff0000*      1781 <EXPANSION END>
+                        1782 --line299
+                        1783 ..lin.92f28593..157fa00.0_78::
+                        1784 .LDWlin78:
+00000344 260600000000*  1785 	mov	_vrun_printf_buff,r6
+                        1786 .L903:
+                        1787 	jarl	_vrun_iobuff_print_txt,lp
+                        1787 <EXPANSION BEGIN>
+                        1787 jarl22 _vrun_iobuff_print_txt , lp 
+0000034a 80ff0000*      1787 <EXPANSION END>
+                        1788 .L905:
+                        1789 --line299
+                        1790 ..lin.92f28593..157fa00.0_79::
+                        1791 .LDWlin79:
+                        1792 	jarl	_vrun_console_put,lp
+                        1792 <EXPANSION BEGIN>
+                        1792 jarl22 _vrun_console_put , lp 
+0000034e 80ff0000*      1792 <EXPANSION END>
+                        1793 --line299
+                        1794 ..lin.92f28593..157fa00.0_80::
+                        1795 .LDWlin80:
+00000352 0000           1796 	nop
+                        1797 .L648:
+                        1798 --300:     }
+                        1799 --301: }
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1800 --	    .ef
+                        1801 .LDW92:
+00000354 23ff0900       1802 	ld.w	8[sp],lp
+00000358 23ef0100       1803 	ld.w	0[sp],r29
+0000035c 23e70500       1804 	ld.w	4[sp],r28
+00000360 4c1a           1805 	add	12,sp
+                        1806 .L907:
+                        1807 	.jumptype return
+00000362 7f00           1808 	jmp	[lp]
+                        1809 --line299
+                        1810 ..lin.92f28593..157fa00.0_81::
+                        1811 	.type	_trigger_2service_and_wait,@function
+                        1812 	.size	_trigger_2service_and_wait,.-_trigger_2service_and_wait
+                        1813 	.align	2
+                        1814 
+                        1815 --_p_ISD	r29	param
+                        1816 --_p_ISD2	r28	param
+                        1817 
+                        1818 	.section ".rodata","a"
+                        1819 .L818:--	"Service error: %d ("
+00000588 53657276       1820 	.byte	83,101,114,118
+0000058c 69636520       1821 	.byte	105,99,101,32
+00000590 6572726f       1822 	.byte	101,114,114,111
+00000594 723a2025       1823 	.byte	114,58,32,37
+00000598 64202800       1824 	.byte	100,32,40,0
+                        1825 	.type	.L818,@object
+                        1826 	.size	.L818,20
+                        1827 .L819:--	") *****\007\n"
+0000059c 29202a2a       1828 	.byte	41,32,42,42
+000005a0 2a2a2a07       1829 	.byte	42,42,42,7
+000005a4 0a00           1830 	.byte	10,0
+                        1831 	.type	.L819,@object
+                        1832 	.size	.L819,10
+                        1833 .L820:--	"Service2 error: %d ("
+000005a6 53657276       1834 	.byte	83,101,114,118
+000005aa 69636532       1835 	.byte	105,99,101,50
+000005ae 20657272       1836 	.byte	32,101,114,114
+000005b2 6f723a20       1837 	.byte	111,114,58,32
+000005b6 25642028       1838 	.byte	37,100,32,40
+000005ba 00             1839 	.byte	0
+                        1840 	.type	.L820,@object
+                        1841 	.size	.L820,21
+                        1842 	.section ".ghcalltbl",""
+                        1843 	.align	4
+00000000 00000000*      1844 .L860:	.word	.L859
+                        1845 	.type	.L860,@object
+                        1846 	.size	.L860,4
+00000004 00000000*      1847 .L862:	.word	.L861
+                        1848 	.type	.L862,@object
+                        1849 	.size	.L862,4
+00000008 00000000*      1850 .L864:	.word	.L863
+                        1851 	.type	.L864,@object
+                        1852 	.size	.L864,4
+0000000c 00000000*      1853 .L866:	.word	.L865
+                        1854 	.type	.L866,@object
+                        1855 	.size	.L866,4
+00000010 00000000*      1856 .L868:	.word	.L867
+                        1857 	.type	.L868,@object
+                        1858 	.size	.L868,4
+00000014 00000000*      1859 .L870:	.word	.L869
+                        1860 	.type	.L870,@object
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1861 	.size	.L870,4
+00000018 00000000*      1862 .L872:	.word	.L871
+                        1863 	.type	.L872,@object
+                        1864 	.size	.L872,4
+0000001c 00000000*      1865 .L874:	.word	.L873
+                        1866 	.type	.L874,@object
+                        1867 	.size	.L874,4
+00000020 00000000*      1868 .L876:	.word	.L875
+                        1869 	.type	.L876,@object
+                        1870 	.size	.L876,4
+00000024 00000000*      1871 .L878:	.word	.L877
+                        1872 	.type	.L878,@object
+                        1873 	.size	.L878,4
+00000028 00000000*      1874 .L880:	.word	.L879
+                        1875 	.type	.L880,@object
+                        1876 	.size	.L880,4
+0000002c 00000000*      1877 .L882:	.word	.L881
+                        1878 	.type	.L882,@object
+                        1879 	.size	.L882,4
+00000030 00000000*      1880 .L884:	.word	.L883
+                        1881 	.type	.L884,@object
+                        1882 	.size	.L884,4
+00000034 00000000*      1883 .L886:	.word	.L885
+                        1884 	.type	.L886,@object
+                        1885 	.size	.L886,4
+00000038 00000000*      1886 .L888:	.word	.L887
+                        1887 	.type	.L888,@object
+                        1888 	.size	.L888,4
+0000003c 00000000*      1889 .L890:	.word	.L889
+                        1890 	.type	.L890,@object
+                        1891 	.size	.L890,4
+00000040 00000000*      1892 .L892:	.word	.L891
+                        1893 	.type	.L892,@object
+                        1894 	.size	.L892,4
+00000044 00000000*      1895 .L894:	.word	.L893
+                        1896 	.type	.L894,@object
+                        1897 	.size	.L894,4
+00000048 00000000*      1898 .L896:	.word	.L895
+                        1899 	.type	.L896,@object
+                        1900 	.size	.L896,4
+0000004c 00000000*      1901 .L898:	.word	.L897
+                        1902 	.type	.L898,@object
+                        1903 	.size	.L898,4
+00000050 00000000*      1904 .L900:	.word	.L899
+                        1905 	.type	.L900,@object
+                        1906 	.size	.L900,4
+00000054 00000000*      1907 .L902:	.word	.L901
+                        1908 	.type	.L902,@object
+                        1909 	.size	.L902,4
+00000058 00000000*      1910 .L904:	.word	.L903
+                        1911 	.type	.L904,@object
+                        1912 	.size	.L904,4
+0000005c 00000000*      1913 .L906:	.word	.L905
+                        1914 	.type	.L906,@object
+                        1915 	.size	.L906,4
+                        1916 	.section ".ghrettbl",""
+00000024 00000000*      1917 .L908:	.word	.L907
+                        1918 	.type	.L908,@object
+                        1919 	.size	.L908,4
+                        1920 	.data
+                        1921 	.text
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1922 
+                        1923 
+                        1924 --303: /*===========================================================================
+                        1925 --304:   Trigger an ICU-M service and wait for the response
+                        1926 --305:   [PUBLIC]
+                        1927 --306:   ===========================================================================*/
+                        1928 --307: void trigger_3service_and_wait(r_icumif_isd_t *p_ISD, r_icumif_isd_t *p_ISD2, r_icumif_isd_t *p_ISD3)
+                        1929 	.align	2
+                        1930 	.align	2
+                        1931 	.align	2
+                        1932 ..gh.f.a.2.e.14:
+                        1933 	.type	..gh.f.a.2.e.14,@object
+                        1934 	.size	..gh.f.a.2.e.14,0
+                        1935 	.global	_trigger_3service_and_wait
+                        1936 _trigger_3service_and_wait:
+00000364 501a           1937 	add	-16,sp
+00000366 63ff0d00       1938 	st.w	lp,12[sp]
+0000036a 63df0900       1939 	st.w	r27,8[sp]
+0000036e 63e70500       1940 	st.w	r28,4[sp]
+00000372 63ef0100       1941 	st.w	r29,0[sp]
+00000376 06e8           1942 	mov	r6,r29
+00000378 07e0           1943 	mov	r7,r28
+0000037a 08d8           1944 	mov	r8,r27
+                        1945 --	    .bf
+                        1946 .LDW03:
+                        1947 --308: {
+                        1948 --309:     // trigger the service request
+                        1949 --310:     R_ICUMIF_ServiceRequest(p_ISD);
+0000037c 1d30           1950 	mov	r29,r6
+                        1951 .L1188:
+                        1952 	jarl	_R_ICUMIF_ServiceRequest,lp
+                        1952 <EXPANSION BEGIN>
+                        1952 jarl22 _R_ICUMIF_ServiceRequest , lp 
+0000037e 80ff0000*      1952 <EXPANSION END>
+                        1953 --311:     R_ICUMIF_ServiceRequest(p_ISD2);
+                        1954 --line311
+                        1955 ..lin.92f28593..9431dc01.0_82::
+                        1956 .LDWlin82:
+00000382 1c30           1957 	mov	r28,r6
+                        1958 .L1190:
+                        1959 	jarl	_R_ICUMIF_ServiceRequest,lp
+                        1959 <EXPANSION BEGIN>
+                        1959 jarl22 _R_ICUMIF_ServiceRequest , lp 
+00000384 80ff0000*      1959 <EXPANSION END>
+                        1960 --312:     R_ICUMIF_ServiceRequest(p_ISD3);
+                        1961 --line312
+                        1962 ..lin.92f28593..9431dc01.0_83::
+                        1963 .LDWlin83:
+00000388 1b30           1964 	mov	r27,r6
+                        1965 .L1192:
+                        1966 	jarl	_R_ICUMIF_ServiceRequest,lp
+                        1966 <EXPANSION BEGIN>
+                        1966 jarl22 _R_ICUMIF_ServiceRequest , lp 
+0000038a 80ff0000*      1966 <EXPANSION END>
+                        1967 --314:     // go in HALT mode
+                        1968 --315:     // wait for interrupt
+                        1969 --316:     while((!R_ICUMIF_IsServiceCompleted(p_ISD)) || (!R_ICUMIF_IsServiceCompleted(p_ISD2)) || (!R_ICUMIF_IsServiceCompleted(p_ISD3)))
+                        1970 --line316
+                        1971 ..lin.92f28593..9431dc01.0_84::
+                        1972 .LDWlin84:
+0000038e c50d*          1973 	br	.L911
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        1974 .L913:
+                        1975 --317:     {
+                        1976 --318:         HALT();
+                        1977 --line318
+                        1978 ..lin.92f28593..9431dc01.0_85::
+                        1979 .LDWlin85:
+                        1980 ..gh.beginasm.15:
+                        1981 	.type	..gh.beginasm.15,@object
+                        1982 	.size	..gh.beginasm.15,0
+                        1983 --ASM MACRO: Start
+                        1984 
+00000390 0000           1985     nop
+                        1986 --ASM MACRO: End
+                        1987 ..gh.endasm.16:
+                        1988 	.type	..gh.endasm.16,@object
+                        1989 	.size	..gh.endasm.16,0
+                        1990 --319:         NOPS(10);
+                        1991 --line319
+                        1992 ..lin.92f28593..9431dc01.0_86::
+                        1993 .LDWlin86:
+                        1994 ..gh.beginasm.17:
+                        1995 	.type	..gh.beginasm.17,@object
+                        1996 	.size	..gh.beginasm.17,0
+                        1997 --ASM MACRO: Start
+                        1998 .rept 10
+                        1999     nop
+00000392 0000           2000 .endr
+00000394 0000 
+00000396 0000 
+00000398 0000 
+0000039a 0000 
+0000039c 0000 
+0000039e 0000 
+000003a0 0000 
+000003a2 0000 
+000003a4 0000 
+                        2001 --ASM MACRO: End
+                        2002 ..gh.endasm.18:
+                        2003 	.type	..gh.endasm.18,@object
+                        2004 	.size	..gh.endasm.18,0
+                        2005 .L911:
+                        2006 --line316
+                        2007 ..lin.92f28593..9431dc01.0_87::
+                        2008 .LDWlin87:
+000003a6 1d30           2009 	mov	r29,r6
+                        2010 .L1194:
+                        2011 	jarl	_R_ICUMIF_IsServiceCompleted,lp
+                        2011 <EXPANSION BEGIN>
+                        2011 jarl22 _R_ICUMIF_IsServiceCompleted , lp 
+000003a8 80ff0000*      2011 <EXPANSION END>
+000003ac e051           2012 	cmp	zero,r10
+000003ae 92f5*          2013 	be	.L913
+000003b0 1c30           2014 	mov	r28,r6
+                        2015 .L1196:
+                        2016 	jarl	_R_ICUMIF_IsServiceCompleted,lp
+                        2016 <EXPANSION BEGIN>
+                        2016 jarl22 _R_ICUMIF_IsServiceCompleted , lp 
+000003b2 80ff0000*      2016 <EXPANSION END>
+000003b6 e051           2017 	cmp	zero,r10
+000003b8 c2ed*          2018 	be	.L913
+000003ba 1b30           2019 	mov	r27,r6
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2020 .L1198:
+                        2021 	jarl	_R_ICUMIF_IsServiceCompleted,lp
+                        2021 <EXPANSION BEGIN>
+                        2021 jarl22 _R_ICUMIF_IsServiceCompleted , lp 
+000003bc 80ff0000*      2021 <EXPANSION END>
+000003c0 e051           2022 	cmp	zero,r10
+000003c2 f2e5*          2023 	be	.L913
+                        2024 --320:     }
+                        2025 --322:     // test for possible error
+                        2026 --323:     if(p_ISD->service_result != SERV_OK)
+                        2027 --line323
+                        2028 ..lin.92f28593..9431dc01.0_88::
+                        2029 .LDWlin88:
+000003c4 3d0f0d00       2030 	ld.w	12[r29],r1
+000003c8 e009           2031 	cmp	zero,r1
+000003ca 823d*          2032 	be	.L916
+                        2033 --324:     {
+                        2034 --325:         printf("Service error: %d (", p_ISD->service_result);
+                        2035 --line325
+                        2036 ..lin.92f28593..9431dc01.0_89::
+                        2037 .LDWlin89:
+000003cc 3d470d00       2038 	ld.w	12[r29],r8
+000003d0 260600000000*  2039 	mov	_vrun_printf_buff,r6
+000003d6 270600000000*  2040 	mov	.L818,r7
+                        2041 .L1200:
+                        2042 	jarl	_sprintf,lp
+                        2042 <EXPANSION BEGIN>
+                        2042 jarl22 _sprintf , lp 
+000003dc 80ff0000*      2042 <EXPANSION END>
+                        2043 --line325
+                        2044 ..lin.92f28593..9431dc01.0_90::
+                        2045 .LDWlin90:
+000003e0 260600000000*  2046 	mov	_vrun_printf_buff,r6
+                        2047 .L1202:
+                        2048 	jarl	_vrun_iobuff_print_txt,lp
+                        2048 <EXPANSION BEGIN>
+                        2048 jarl22 _vrun_iobuff_print_txt , lp 
+000003e6 80ff0000*      2048 <EXPANSION END>
+                        2049 .L1204:
+                        2050 --line325
+                        2051 ..lin.92f28593..9431dc01.0_91::
+                        2052 .LDWlin91:
+                        2053 	jarl	_vrun_console_put,lp
+                        2053 <EXPANSION BEGIN>
+                        2053 jarl22 _vrun_console_put , lp 
+000003ea 80ff0000*      2053 <EXPANSION END>
+                        2054 --line325
+                        2055 ..lin.92f28593..9431dc01.0_92::
+                        2056 .LDWlin92:
+000003ee 0000           2057 	nop
+                        2058 --326:         printf(R_ICUMIF_GetErrorCodeName(p_ISD->service_result));
+000003f0 3d0f0d00       2059 	ld.w	12[r29],r1
+000003f4 8100           2060 	zxb	r1
+000003f6 0130           2061 	mov	r1,r6
+                        2062 .L1206:
+                        2063 	jarl	_R_ICUMIF_GetErrorCodeName,lp
+                        2063 <EXPANSION BEGIN>
+                        2063 jarl22 _R_ICUMIF_GetErrorCodeName , lp 
+000003f8 80ff0000*      2063 <EXPANSION END>
+000003fc 0a08           2064 	mov	r10,r1
+000003fe 0138           2065 	mov	r1,r7
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000400 260600000000*  2066 	mov	_vrun_printf_buff,r6
+                        2067 .L1208:
+                        2068 	jarl	_sprintf,lp
+                        2068 <EXPANSION BEGIN>
+                        2068 jarl22 _sprintf , lp 
+00000406 80ff0000*      2068 <EXPANSION END>
+                        2069 --line326
+                        2070 ..lin.92f28593..9431dc01.0_93::
+                        2071 .LDWlin93:
+0000040a 260600000000*  2072 	mov	_vrun_printf_buff,r6
+                        2073 .L1210:
+                        2074 	jarl	_vrun_iobuff_print_txt,lp
+                        2074 <EXPANSION BEGIN>
+                        2074 jarl22 _vrun_iobuff_print_txt , lp 
+00000410 80ff0000*      2074 <EXPANSION END>
+                        2075 .L1212:
+                        2076 --line326
+                        2077 ..lin.92f28593..9431dc01.0_94::
+                        2078 .LDWlin94:
+                        2079 	jarl	_vrun_console_put,lp
+                        2079 <EXPANSION BEGIN>
+                        2079 jarl22 _vrun_console_put , lp 
+00000414 80ff0000*      2079 <EXPANSION END>
+                        2080 --line326
+                        2081 ..lin.92f28593..9431dc01.0_95::
+                        2082 .LDWlin95:
+00000418 0000           2083 	nop
+                        2084 --327:         printf(") *****\a\n");
+0000041a 260600000000*  2085 	mov	_vrun_printf_buff,r6
+00000420 270600000000*  2086 	mov	.L819,r7
+                        2087 .L1214:
+                        2088 	jarl	_sprintf,lp
+                        2088 <EXPANSION BEGIN>
+                        2088 jarl22 _sprintf , lp 
+00000426 80ff0000*      2088 <EXPANSION END>
+                        2089 --line327
+                        2090 ..lin.92f28593..9431dc01.0_96::
+                        2091 .LDWlin96:
+0000042a 260600000000*  2092 	mov	_vrun_printf_buff,r6
+                        2093 .L1216:
+                        2094 	jarl	_vrun_iobuff_print_txt,lp
+                        2094 <EXPANSION BEGIN>
+                        2094 jarl22 _vrun_iobuff_print_txt , lp 
+00000430 80ff0000*      2094 <EXPANSION END>
+                        2095 .L1218:
+                        2096 --line327
+                        2097 ..lin.92f28593..9431dc01.0_97::
+                        2098 .LDWlin97:
+                        2099 	jarl	_vrun_console_put,lp
+                        2099 <EXPANSION BEGIN>
+                        2099 jarl22 _vrun_console_put , lp 
+00000434 80ff0000*      2099 <EXPANSION END>
+                        2100 --line327
+                        2101 ..lin.92f28593..9431dc01.0_98::
+                        2102 .LDWlin98:
+00000438 0000           2103 	nop
+                        2104 .L916:
+                        2105 --328:     }
+                        2106 --330:     if(p_ISD2->service_result != SERV_OK)
+0000043a 3c0f0d00       2107 	ld.w	12[r28],r1
+0000043e e009           2108 	cmp	zero,r1
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+00000440 823d*          2109 	be	.L918
+                        2110 --331:     {
+                        2111 --332:         printf("Service2 error: %d (", p_ISD2->service_result);
+                        2112 --line332
+                        2113 ..lin.92f28593..9431dc01.0_99::
+                        2114 .LDWlin99:
+00000442 3c470d00       2115 	ld.w	12[r28],r8
+00000446 260600000000*  2116 	mov	_vrun_printf_buff,r6
+0000044c 270600000000*  2117 	mov	.L820,r7
+                        2118 .L1220:
+                        2119 	jarl	_sprintf,lp
+                        2119 <EXPANSION BEGIN>
+                        2119 jarl22 _sprintf , lp 
+00000452 80ff0000*      2119 <EXPANSION END>
+                        2120 --line332
+                        2121 ..lin.92f28593..9431dc01.0_100::
+                        2122 .LDWlin100:
+00000456 260600000000*  2123 	mov	_vrun_printf_buff,r6
+                        2124 .L1222:
+                        2125 	jarl	_vrun_iobuff_print_txt,lp
+                        2125 <EXPANSION BEGIN>
+                        2125 jarl22 _vrun_iobuff_print_txt , lp 
+0000045c 80ff0000*      2125 <EXPANSION END>
+                        2126 .L1224:
+                        2127 --line332
+                        2128 ..lin.92f28593..9431dc01.0_101::
+                        2129 .LDWlin101:
+                        2130 	jarl	_vrun_console_put,lp
+                        2130 <EXPANSION BEGIN>
+                        2130 jarl22 _vrun_console_put , lp 
+00000460 80ff0000*      2130 <EXPANSION END>
+                        2131 --line332
+                        2132 ..lin.92f28593..9431dc01.0_102::
+                        2133 .LDWlin102:
+00000464 0000           2134 	nop
+                        2135 --333:         printf(R_ICUMIF_GetErrorCodeName(p_ISD2->service_result));
+00000466 3c0f0d00       2136 	ld.w	12[r28],r1
+0000046a 8100           2137 	zxb	r1
+0000046c 0130           2138 	mov	r1,r6
+                        2139 .L1226:
+                        2140 	jarl	_R_ICUMIF_GetErrorCodeName,lp
+                        2140 <EXPANSION BEGIN>
+                        2140 jarl22 _R_ICUMIF_GetErrorCodeName , lp 
+0000046e 80ff0000*      2140 <EXPANSION END>
+00000472 0a08           2141 	mov	r10,r1
+00000474 0138           2142 	mov	r1,r7
+00000476 260600000000*  2143 	mov	_vrun_printf_buff,r6
+                        2144 .L1228:
+                        2145 	jarl	_sprintf,lp
+                        2145 <EXPANSION BEGIN>
+                        2145 jarl22 _sprintf , lp 
+0000047c 80ff0000*      2145 <EXPANSION END>
+                        2146 --line333
+                        2147 ..lin.92f28593..9431dc01.0_103::
+                        2148 .LDWlin103:
+00000480 260600000000*  2149 	mov	_vrun_printf_buff,r6
+                        2150 .L1230:
+                        2151 	jarl	_vrun_iobuff_print_txt,lp
+                        2151 <EXPANSION BEGIN>
+                        2151 jarl22 _vrun_iobuff_print_txt , lp 
+00000486 80ff0000*      2151 <EXPANSION END>
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2152 .L1232:
+                        2153 --line333
+                        2154 ..lin.92f28593..9431dc01.0_104::
+                        2155 .LDWlin104:
+                        2156 	jarl	_vrun_console_put,lp
+                        2156 <EXPANSION BEGIN>
+                        2156 jarl22 _vrun_console_put , lp 
+0000048a 80ff0000*      2156 <EXPANSION END>
+                        2157 --line333
+                        2158 ..lin.92f28593..9431dc01.0_105::
+                        2159 .LDWlin105:
+0000048e 0000           2160 	nop
+                        2161 --334:         printf(") *****\a\n");
+00000490 260600000000*  2162 	mov	_vrun_printf_buff,r6
+00000496 270600000000*  2163 	mov	.L819,r7
+                        2164 .L1234:
+                        2165 	jarl	_sprintf,lp
+                        2165 <EXPANSION BEGIN>
+                        2165 jarl22 _sprintf , lp 
+0000049c 80ff0000*      2165 <EXPANSION END>
+                        2166 --line334
+                        2167 ..lin.92f28593..9431dc01.0_106::
+                        2168 .LDWlin106:
+000004a0 260600000000*  2169 	mov	_vrun_printf_buff,r6
+                        2170 .L1236:
+                        2171 	jarl	_vrun_iobuff_print_txt,lp
+                        2171 <EXPANSION BEGIN>
+                        2171 jarl22 _vrun_iobuff_print_txt , lp 
+000004a6 80ff0000*      2171 <EXPANSION END>
+                        2172 .L1238:
+                        2173 --line334
+                        2174 ..lin.92f28593..9431dc01.0_107::
+                        2175 .LDWlin107:
+                        2176 	jarl	_vrun_console_put,lp
+                        2176 <EXPANSION BEGIN>
+                        2176 jarl22 _vrun_console_put , lp 
+000004aa 80ff0000*      2176 <EXPANSION END>
+                        2177 --line334
+                        2178 ..lin.92f28593..9431dc01.0_108::
+                        2179 .LDWlin108:
+000004ae 0000           2180 	nop
+                        2181 .L918:
+                        2182 --335:     }
+                        2183 --337:     if(p_ISD3->service_result != SERV_OK)
+000004b0 3b0f0d00       2184 	ld.w	12[r27],r1
+000004b4 e009           2185 	cmp	zero,r1
+000004b6 823d*          2186 	be	.L909
+                        2187 --338:     {
+                        2188 --339:         printf("Service3 error: %d (", p_ISD3->service_result);
+                        2189 --line339
+                        2190 ..lin.92f28593..9431dc01.0_109::
+                        2191 .LDWlin109:
+000004b8 3b470d00       2192 	ld.w	12[r27],r8
+000004bc 260600000000*  2193 	mov	_vrun_printf_buff,r6
+000004c2 270600000000*  2194 	mov	.L1134,r7
+                        2195 .L1240:
+                        2196 	jarl	_sprintf,lp
+                        2196 <EXPANSION BEGIN>
+                        2196 jarl22 _sprintf , lp 
+000004c8 80ff0000*      2196 <EXPANSION END>
+                        2197 --line339
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2198 ..lin.92f28593..9431dc01.0_110::
+                        2199 .LDWlin110:
+000004cc 260600000000*  2200 	mov	_vrun_printf_buff,r6
+                        2201 .L1242:
+                        2202 	jarl	_vrun_iobuff_print_txt,lp
+                        2202 <EXPANSION BEGIN>
+                        2202 jarl22 _vrun_iobuff_print_txt , lp 
+000004d2 80ff0000*      2202 <EXPANSION END>
+                        2203 .L1244:
+                        2204 --line339
+                        2205 ..lin.92f28593..9431dc01.0_111::
+                        2206 .LDWlin111:
+                        2207 	jarl	_vrun_console_put,lp
+                        2207 <EXPANSION BEGIN>
+                        2207 jarl22 _vrun_console_put , lp 
+000004d6 80ff0000*      2207 <EXPANSION END>
+                        2208 --line339
+                        2209 ..lin.92f28593..9431dc01.0_112::
+                        2210 .LDWlin112:
+000004da 0000           2211 	nop
+                        2212 --340:         printf(R_ICUMIF_GetErrorCodeName(p_ISD3->service_result));
+000004dc 3b0f0d00       2213 	ld.w	12[r27],r1
+000004e0 8100           2214 	zxb	r1
+000004e2 0130           2215 	mov	r1,r6
+                        2216 .L1246:
+                        2217 	jarl	_R_ICUMIF_GetErrorCodeName,lp
+                        2217 <EXPANSION BEGIN>
+                        2217 jarl22 _R_ICUMIF_GetErrorCodeName , lp 
+000004e4 80ff0000*      2217 <EXPANSION END>
+000004e8 0a08           2218 	mov	r10,r1
+000004ea 0138           2219 	mov	r1,r7
+000004ec 260600000000*  2220 	mov	_vrun_printf_buff,r6
+                        2221 .L1248:
+                        2222 	jarl	_sprintf,lp
+                        2222 <EXPANSION BEGIN>
+                        2222 jarl22 _sprintf , lp 
+000004f2 80ff0000*      2222 <EXPANSION END>
+                        2223 --line340
+                        2224 ..lin.92f28593..9431dc01.0_113::
+                        2225 .LDWlin113:
+000004f6 260600000000*  2226 	mov	_vrun_printf_buff,r6
+                        2227 .L1250:
+                        2228 	jarl	_vrun_iobuff_print_txt,lp
+                        2228 <EXPANSION BEGIN>
+                        2228 jarl22 _vrun_iobuff_print_txt , lp 
+000004fc 80ff0000*      2228 <EXPANSION END>
+                        2229 .L1252:
+                        2230 --line340
+                        2231 ..lin.92f28593..9431dc01.0_114::
+                        2232 .LDWlin114:
+                        2233 	jarl	_vrun_console_put,lp
+                        2233 <EXPANSION BEGIN>
+                        2233 jarl22 _vrun_console_put , lp 
+00000500 80ff0000*      2233 <EXPANSION END>
+                        2234 --line340
+                        2235 ..lin.92f28593..9431dc01.0_115::
+                        2236 .LDWlin115:
+00000504 0000           2237 	nop
+                        2238 --341:         printf(") *****\a\n");
+00000506 260600000000*  2239 	mov	_vrun_printf_buff,r6
+0000050c 270600000000*  2240 	mov	.L819,r7
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2241 .L1254:
+                        2242 	jarl	_sprintf,lp
+                        2242 <EXPANSION BEGIN>
+                        2242 jarl22 _sprintf , lp 
+00000512 80ff0000*      2242 <EXPANSION END>
+                        2243 --line341
+                        2244 ..lin.92f28593..9431dc01.0_116::
+                        2245 .LDWlin116:
+00000516 260600000000*  2246 	mov	_vrun_printf_buff,r6
+                        2247 .L1256:
+                        2248 	jarl	_vrun_iobuff_print_txt,lp
+                        2248 <EXPANSION BEGIN>
+                        2248 jarl22 _vrun_iobuff_print_txt , lp 
+0000051c 80ff0000*      2248 <EXPANSION END>
+                        2249 .L1258:
+                        2250 --line341
+                        2251 ..lin.92f28593..9431dc01.0_117::
+                        2252 .LDWlin117:
+                        2253 	jarl	_vrun_console_put,lp
+                        2253 <EXPANSION BEGIN>
+                        2253 jarl22 _vrun_console_put , lp 
+00000520 80ff0000*      2253 <EXPANSION END>
+                        2254 --line341
+                        2255 ..lin.92f28593..9431dc01.0_118::
+                        2256 .LDWlin118:
+00000524 0000           2257 	nop
+                        2258 .L909:
+                        2259 --342:     }
+                        2260 --343: }
+                        2261 --	    .ef
+                        2262 .LDW13:
+00000526 23ff0d00       2263 	ld.w	12[sp],lp
+0000052a 23ef0100       2264 	ld.w	0[sp],r29
+0000052e 23e70500       2265 	ld.w	4[sp],r28
+00000532 23df0900       2266 	ld.w	8[sp],r27
+00000536 031e1000       2267 	addi	16,sp,sp
+                        2268 .L1260:
+                        2269 	.jumptype return
+0000053a 7f00           2270 	jmp	[lp]
+                        2271 --line341
+                        2272 ..lin.92f28593..9431dc01.0_119::
+                        2273 	.type	_trigger_3service_and_wait,@function
+                        2274 	.size	_trigger_3service_and_wait,.-_trigger_3service_and_wait
+                        2275 	.align	2
+                        2276 
+                        2277 --_p_ISD	r29	param
+                        2278 --_p_ISD2	r28	param
+                        2279 --_p_ISD3	r27	param
+                        2280 
+                        2281 	.section ".rodata","a"
+                        2282 .L1134:--	"Service3 error: %d ("
+000005bb 53657276       2283 	.byte	83,101,114,118
+000005bf 69636533       2284 	.byte	105,99,101,51
+000005c3 20657272       2285 	.byte	32,101,114,114
+000005c7 6f723a20       2286 	.byte	111,114,58,32
+000005cb 25642028       2287 	.byte	37,100,32,40
+000005cf 00             2288 	.byte	0
+                        2289 	.type	.L1134,@object
+                        2290 	.size	.L1134,21
+                        2291 	.section ".ghcalltbl",""
+00000060 00000000*      2292 .L1189:	.word	.L1188
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2293 	.type	.L1189,@object
+                        2294 	.size	.L1189,4
+00000064 00000000*      2295 .L1191:	.word	.L1190
+                        2296 	.type	.L1191,@object
+                        2297 	.size	.L1191,4
+00000068 00000000*      2298 .L1193:	.word	.L1192
+                        2299 	.type	.L1193,@object
+                        2300 	.size	.L1193,4
+0000006c 00000000*      2301 .L1195:	.word	.L1194
+                        2302 	.type	.L1195,@object
+                        2303 	.size	.L1195,4
+00000070 00000000*      2304 .L1197:	.word	.L1196
+                        2305 	.type	.L1197,@object
+                        2306 	.size	.L1197,4
+00000074 00000000*      2307 .L1199:	.word	.L1198
+                        2308 	.type	.L1199,@object
+                        2309 	.size	.L1199,4
+00000078 00000000*      2310 .L1201:	.word	.L1200
+                        2311 	.type	.L1201,@object
+                        2312 	.size	.L1201,4
+0000007c 00000000*      2313 .L1203:	.word	.L1202
+                        2314 	.type	.L1203,@object
+                        2315 	.size	.L1203,4
+00000080 00000000*      2316 .L1205:	.word	.L1204
+                        2317 	.type	.L1205,@object
+                        2318 	.size	.L1205,4
+00000084 00000000*      2319 .L1207:	.word	.L1206
+                        2320 	.type	.L1207,@object
+                        2321 	.size	.L1207,4
+00000088 00000000*      2322 .L1209:	.word	.L1208
+                        2323 	.type	.L1209,@object
+                        2324 	.size	.L1209,4
+0000008c 00000000*      2325 .L1211:	.word	.L1210
+                        2326 	.type	.L1211,@object
+                        2327 	.size	.L1211,4
+00000090 00000000*      2328 .L1213:	.word	.L1212
+                        2329 	.type	.L1213,@object
+                        2330 	.size	.L1213,4
+00000094 00000000*      2331 .L1215:	.word	.L1214
+                        2332 	.type	.L1215,@object
+                        2333 	.size	.L1215,4
+00000098 00000000*      2334 .L1217:	.word	.L1216
+                        2335 	.type	.L1217,@object
+                        2336 	.size	.L1217,4
+0000009c 00000000*      2337 .L1219:	.word	.L1218
+                        2338 	.type	.L1219,@object
+                        2339 	.size	.L1219,4
+000000a0 00000000*      2340 .L1221:	.word	.L1220
+                        2341 	.type	.L1221,@object
+                        2342 	.size	.L1221,4
+000000a4 00000000*      2343 .L1223:	.word	.L1222
+                        2344 	.type	.L1223,@object
+                        2345 	.size	.L1223,4
+000000a8 00000000*      2346 .L1225:	.word	.L1224
+                        2347 	.type	.L1225,@object
+                        2348 	.size	.L1225,4
+000000ac 00000000*      2349 .L1227:	.word	.L1226
+                        2350 	.type	.L1227,@object
+                        2351 	.size	.L1227,4
+000000b0 00000000*      2352 .L1229:	.word	.L1228
+                        2353 	.type	.L1229,@object
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2354 	.size	.L1229,4
+000000b4 00000000*      2355 .L1231:	.word	.L1230
+                        2356 	.type	.L1231,@object
+                        2357 	.size	.L1231,4
+000000b8 00000000*      2358 .L1233:	.word	.L1232
+                        2359 	.type	.L1233,@object
+                        2360 	.size	.L1233,4
+000000bc 00000000*      2361 .L1235:	.word	.L1234
+                        2362 	.type	.L1235,@object
+                        2363 	.size	.L1235,4
+000000c0 00000000*      2364 .L1237:	.word	.L1236
+                        2365 	.type	.L1237,@object
+                        2366 	.size	.L1237,4
+000000c4 00000000*      2367 .L1239:	.word	.L1238
+                        2368 	.type	.L1239,@object
+                        2369 	.size	.L1239,4
+000000c8 00000000*      2370 .L1241:	.word	.L1240
+                        2371 	.type	.L1241,@object
+                        2372 	.size	.L1241,4
+000000cc 00000000*      2373 .L1243:	.word	.L1242
+                        2374 	.type	.L1243,@object
+                        2375 	.size	.L1243,4
+000000d0 00000000*      2376 .L1245:	.word	.L1244
+                        2377 	.type	.L1245,@object
+                        2378 	.size	.L1245,4
+000000d4 00000000*      2379 .L1247:	.word	.L1246
+                        2380 	.type	.L1247,@object
+                        2381 	.size	.L1247,4
+000000d8 00000000*      2382 .L1249:	.word	.L1248
+                        2383 	.type	.L1249,@object
+                        2384 	.size	.L1249,4
+000000dc 00000000*      2385 .L1251:	.word	.L1250
+                        2386 	.type	.L1251,@object
+                        2387 	.size	.L1251,4
+000000e0 00000000*      2388 .L1253:	.word	.L1252
+                        2389 	.type	.L1253,@object
+                        2390 	.size	.L1253,4
+000000e4 00000000*      2391 .L1255:	.word	.L1254
+                        2392 	.type	.L1255,@object
+                        2393 	.size	.L1255,4
+000000e8 00000000*      2394 .L1257:	.word	.L1256
+                        2395 	.type	.L1257,@object
+                        2396 	.size	.L1257,4
+000000ec 00000000*      2397 .L1259:	.word	.L1258
+                        2398 	.type	.L1259,@object
+                        2399 	.size	.L1259,4
+                        2400 	.section ".ghrettbl",""
+00000028 00000000*      2401 .L1261:	.word	.L1260
+                        2402 	.type	.L1261,@object
+                        2403 	.size	.L1261,4
+                        2404 	.data
+                        2405 	.text
+                        2406 
+                        2407 	.align	2
+                        2408 --_vrun_printf_buff	_vrun_printf_buff	import
+                        2409 --_key_group_tuples	_key_group_tuples	static
+                        2410 --_verif_result_tuples	_verif_result_tuples	static
+                        2411 --_number_format_tuples	_number_format_tuples	static
+                        2412 --_hash_encoding_format_tuples	_hash_encoding_format_tuples	static
+                        2413 --_message_encoding_format_tuples	_message_encoding_format_tuples	static
+                        2414 --_hash_primitive_tuples	_hash_primitive_tuples	static
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000mis1.si
+                        2415 --_sig_algo_tuples	_sig_algo_tuples	static
+                        2416 --_ecc_curve_tuples	_ecc_curve_tuples	static
+                        2417 --_kdf_algo_tuples	_kdf_algo_tuples	static
+                        2418 
+                        2419 	.data
+                        2420 	.ghsnote version,30
+                        2421 	.ghsnote tools,8195
+                        2422 	.ghsnote options,656
+                        2423 	.text
+                        2424 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_test_utility...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF3DF48..0::
+                        2425 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
