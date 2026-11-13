@@ -253,6 +253,7 @@ VRUN_USR_CMD(4, "icum")
             printf("| 305  : icum ecdh\n");
             printf("| 306  : icum ecc_key_pair import\n");
             printf("| 307  : icum test hash\n");
+            printf("| 308  : AES/RSA service timing test\n");
             printf("| q    : Quit\n\n");
             printf("  ?> ");
             vrun_console_get();
@@ -300,6 +301,9 @@ VRUN_USR_CMD(4, "icum")
                 break;
             case 307:
                 icum_test_hash();
+                break;
+            case 308:
+                icum_crypto_service_test();
                 break;
             default:
                 break;

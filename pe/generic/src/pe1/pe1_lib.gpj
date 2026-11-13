@@ -13,6 +13,13 @@
     -I../shared/src
     -I../../include
     -D_TARG_=${cfg_target}
+    -DPE1_TEST_AES_KEY_SETUP=${cfg_pe_test_aes_key_setup}
+    -DPE1_TEST_AES_CIPHER=${cfg_pe_test_aes_cipher}
+    -DPE1_TEST_AES_AUTH=${cfg_pe_test_aes_auth}
+    -DPE1_TEST_AES_CMAC=${cfg_pe_test_aes_cmac}
+    -DPE1_TEST_RSA_KEY_GENERATE=${cfg_pe_test_rsa_key_generate}
+    -DPE1_TEST_RSA_CRYPT=${cfg_pe_test_rsa_crypt}
+    -DPE1_TEST_RSA_SIGNATURE=${cfg_pe_test_rsa_signature}
 
     -o pe1.a
 
@@ -64,6 +71,7 @@ src/pe1_test_utility.c
 #src/test_mem_cluster.c
 src/pe1_hash_time_test.c
 src/pe1_key_exclusion_controll.c
+src/pe1_crypto_service_test.c
 #src/pe1_tls_ecdh_exchange.c
 #src/pe1_tls_rsa_exchange.c
 #src/pe1_tls_verify_data.c

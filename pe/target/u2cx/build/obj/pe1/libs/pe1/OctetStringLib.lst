@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.dbo -source=OctetStringLib.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_00008rs1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.lst C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.dbo -source=OctetStringLib.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000hok1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
 Source File: OctetStringLib.c
 Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
 Host OS: Windows
@@ -33,835 +33,838 @@ Release Date: Wed Sep 06 02:00:00 2023
                           18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
                           19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
                           20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
-                          21 --		-D_TARG_=U2C4 -filetype.c
-                          22 --		..\..\pe\generic\src\pe1\src\OctetStringLib.c -o
-                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.o
-                          24 --Source File:   ..\..\pe\generic\src\pe1\src\OctetStringLib.c
-                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
-                          26 --Compile Date:  Wed Nov 11 14:39:28 2026
-                          27 --Host OS:       Win64
-                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
-                          29 --Release:       Compiler v2023.5.4
-                          30 --Revision Date: Wed Sep 06 02:44:56 2023
-                          31 --Release Date:  Wed Sep 06 02:00:00 2023
-                          32 -- ecom  -g -w
-                          33 
-                          34 --1: /******************************************************************************/
-                          35 --2: /* Component Name   OctetStringLib                                            */
-                          36 --3: /******************************************************************************/
-                          37 --4: /* Product      : ICU-M Firmware                                              */
-                          38 --5: /******************************************************************************/
-                          39 --6: /*******************************************************************************
-                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
-                          41 --8: *                                                                               
-                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
-                          43 --10: *                                                                               
-                          44 --11: * These instructions, statements, and programs are the confidential information 
-                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
-                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
-                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
-                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
-                          49 --16: *******************************************************************************/
-                          50 --18: #include "OctetStringLib.h"
+                          21 --		-D_TARG_=U2C4 -DPE1_TEST_AES_KEY_SETUP=1 -DPE1_TEST_AES_CIPHER=1
+                          22 --		-DPE1_TEST_AES_AUTH=1 -DPE1_TEST_AES_CMAC=1
+                          23 --		-DPE1_TEST_RSA_KEY_GENERATE=1 -DPE1_TEST_RSA_CRYPT=1
+                          24 --		-DPE1_TEST_RSA_SIGNATURE=1 -filetype.c
+                          25 --		..\..\pe\generic\src\pe1\src\OctetStringLib.c -o
+                          26 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\OctetStringLib.o
+                          27 --Source File:   ..\..\pe\generic\src\pe1\src\OctetStringLib.c
+                          28 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          29 --Compile Date:  Wed Nov 11 16:27:20 2026
+                          30 --Host OS:       Win64
+                          31 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          32 --Release:       Compiler v2023.5.4
+                          33 --Revision Date: Wed Sep 06 02:44:56 2023
+                          34 --Release Date:  Wed Sep 06 02:00:00 2023
+                          35 -- ecom  -g -w
+                          36 
+                          37 --1: /******************************************************************************/
+                          38 --2: /* Component Name   OctetStringLib                                            */
+                          39 --3: /******************************************************************************/
+                          40 --4: /* Product      : ICU-M Firmware                                              */
+                          41 --5: /******************************************************************************/
+                          42 --6: /*******************************************************************************
+                          43 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          44 --8: *                                                                               
+                          45 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          46 --10: *                                                                               
+                          47 --11: * These instructions, statements, and programs are the confidential information 
+                          48 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          49 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          50 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                          51 --20: /* Data handled by OCTET_STRING_xxx () is a byte array of BIG_ENDIAN */
-                          52 --21: void OCTET_STRING_setbit(unsigned char *data, int bitPosition, int datalen)
-                          53 	.text
-                          54 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5COctetStringLib...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40DA0..0::
-                          55 	.align	2
-                          56 	.align	2
-                          57 ..gh.f.a.2.e.0:
-                          58 	.type	..gh.f.a.2.e.0,@object
-                          59 	.size	..gh.f.a.2.e.0,0
-                          60 	.global	_OCTET_STRING_setbit
-                          61 _OCTET_STRING_setbit:
-00000000 0690             62 	mov	r6,r18
-00000002 0708             63 	mov	r7,r1
-00000004 0888             64 	mov	r8,r17
-                          65 --	    .bf
-                          66 .LDW01:
-                          67 --22: {
-                          68 --23:     int bytes = bitPosition / 8;
-00000006 0198             69 	mov	r1,r19
-00000008 bf9a             70 	sar	31,r19
-0000000a 9d9a             71 	shr	29,r19
-0000000c c199             72 	add	r1,r19
-0000000e 1310             73 	mov	r19,r2
-00000010 a312             74 	sar	3,r2
-                          75 --24:     int bits = bitPosition % 8;
-00000012 0180             76 	mov	r1,r16
-00000014 bf82             77 	sar	31,r16
-00000016 d0860700         78 	andi	7,r16,r16
-0000001a c181             79 	add	r1,r16
-0000001c 187a             80 	mov	-8,r15
-0000001e 4f81             81 	and	r15,r16
-00000020 0198             82 	mov	r1,r19
-00000022 b099             83 	sub	r16,r19
-                          84 --26:     data[datalen - bytes - 1] |= (1 << bits);
-00000024 0182             85 	mov	1,r16
-00000026 f387c278         86 	shl	r19,r16,r15
-0000002a 1180             87 	mov	r17,r16
-0000002c a281             88 	sub	r2,r16
-0000002e 5f82             89 	add	-1,r16
-00000030 10f0             90 	mov	r16,ep
-00000032 d2f1             91 	add	r18,ep
-00000034 6080             92 	sld.bu	0[ep],r16
-00000036 0f81             93 	or	r15,r16
-00000038 8083             94 	sst.b	r16,0[ep]
-                          95 --27: }
-                          96 --	    .ef
-                          97 .LDW11:
-                          98 .L50:
-                          99 	.jumptype return
-0000003a 7f00            100 	jmp	[lp]
-                         101 --line22
-                         102 ..lin.d1a59b28..a8ae5483.0_1::
-                         103 	.type	_OCTET_STRING_setbit,@function
-                         104 	.size	_OCTET_STRING_setbit,.-_OCTET_STRING_setbit
-                         105 	.align	2
-                         106 --_bytes	r2	local
-                         107 --_bits	r19	local
-                         108 
-                         109 --_data	r18	param
-                         110 --_bitPosition	r1	param
-                         111 --_datalen	r17	param
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                          51 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          52 --16: *******************************************************************************/
+                          53 --18: #include "OctetStringLib.h"
+                          54 --20: /* Data handled by OCTET_STRING_xxx () is a byte array of BIG_ENDIAN */
+                          55 --21: void OCTET_STRING_setbit(unsigned char *data, int bitPosition, int datalen)
+                          56 	.text
+                          57 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5COctetStringLib...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                          58 	.align	2
+                          59 	.align	2
+                          60 ..gh.f.a.2.e.0:
+                          61 	.type	..gh.f.a.2.e.0,@object
+                          62 	.size	..gh.f.a.2.e.0,0
+                          63 	.global	_OCTET_STRING_setbit
+                          64 _OCTET_STRING_setbit:
+00000000 0690             65 	mov	r6,r18
+00000002 0708             66 	mov	r7,r1
+00000004 0888             67 	mov	r8,r17
+                          68 --	    .bf
+                          69 .LDW01:
+                          70 --22: {
+                          71 --23:     int bytes = bitPosition / 8;
+00000006 0198             72 	mov	r1,r19
+00000008 bf9a             73 	sar	31,r19
+0000000a 9d9a             74 	shr	29,r19
+0000000c c199             75 	add	r1,r19
+0000000e 1310             76 	mov	r19,r2
+00000010 a312             77 	sar	3,r2
+                          78 --24:     int bits = bitPosition % 8;
+00000012 0180             79 	mov	r1,r16
+00000014 bf82             80 	sar	31,r16
+00000016 d0860700         81 	andi	7,r16,r16
+0000001a c181             82 	add	r1,r16
+0000001c 187a             83 	mov	-8,r15
+0000001e 4f81             84 	and	r15,r16
+00000020 0198             85 	mov	r1,r19
+00000022 b099             86 	sub	r16,r19
+                          87 --26:     data[datalen - bytes - 1] |= (1 << bits);
+00000024 0182             88 	mov	1,r16
+00000026 f387c278         89 	shl	r19,r16,r15
+0000002a 1180             90 	mov	r17,r16
+0000002c a281             91 	sub	r2,r16
+0000002e 5f82             92 	add	-1,r16
+00000030 10f0             93 	mov	r16,ep
+00000032 d2f1             94 	add	r18,ep
+00000034 6080             95 	sld.bu	0[ep],r16
+00000036 0f81             96 	or	r15,r16
+00000038 8083             97 	sst.b	r16,0[ep]
+                          98 --27: }
+                          99 --	    .ef
+                         100 .LDW11:
+                         101 .L50:
+                         102 	.jumptype return
+0000003a 7f00            103 	jmp	[lp]
+                         104 --line22
+                         105 ..lin.d1a59b28..a8ae5483.0_1::
+                         106 	.type	_OCTET_STRING_setbit,@function
+                         107 	.size	_OCTET_STRING_setbit,.-_OCTET_STRING_setbit
+                         108 	.align	2
+                         109 --_bytes	r2	local
+                         110 --_bits	r19	local
+                         111 
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         112 
-                         113 	.section ".ghrettbl",""
-                         114 	.align	4
-00000000 00000000*       115 .L51:	.word	.L50
-                         116 	.type	.L51,@object
-                         117 	.size	.L51,4
-                         118 	.data
-                         119 	.text
-                         120 
-                         121 
-                         122 --28: void OCTET_STRING_sub(unsigned char *data, unsigned char *sub, int datalen)
-                         123 	.align	2
-                         124 	.align	2
-                         125 	.align	2
-                         126 ..gh.f.a.2.e.1:
-                         127 	.type	..gh.f.a.2.e.1,@object
-                         128 	.size	..gh.f.a.2.e.1,0
-                         129 	.global	_OCTET_STRING_sub
-                         130 _OCTET_STRING_sub:
-0000003c 0698            131 	mov	r6,r19
-0000003e 0790            132 	mov	r7,r18
-00000040 0888            133 	mov	r8,r17
-                         134 --	    .bf
-                         135 .LDW21:
-                         136 --29: {
-                         137 --30:     int i;
-                         138 --31:     int cy = 0;
-00000042 0012            139 	mov	0,r2
-                         140 --32:     for(i=datalen-1; i>=0; i-- )
-00000044 110effff        141 	addi	-1,r17,r1
-00000048 f535*           142 	br	.L57
-                         143 .L56:
-                         144 --33:     {
-                         145 --34:         if(cy == 0){
-                         146 --line34
-                         147 ..lin.d1a59b28..bd01ea22.0_2::
-                         148 .LDWlin2:
-0000004a e011            149 	cmp	zero,r2
-0000004c fa15*           150 	bne	.L58
-                         151 --35:             if(data[i] < sub[i])
-                         152 --line35
-                         153 ..lin.d1a59b28..bd01ea22.0_3::
-                         154 .LDWlin3:
-0000004e 01f0            155 	mov	r1,ep
-00000050 d3f1            156 	add	r19,ep
-00000052 0180            157 	mov	r1,r16
-00000054 d281            158 	add	r18,r16
-00000056 90870100        159 	ld.bu	0[r16],r16
-0000005a 6078            160 	sld.bu	0[ep],r15
-0000005c f079            161 	cmp	r16,r15
-0000005e b905*           162 	bnl	.L60
-                         163 --36:             {
-                         164 --37:                 cy = 1;
-                         165 --line37
-                         166 ..lin.d1a59b28..bd01ea22.0_4::
-                         167 .LDWlin4:
-00000060 0112            168 	mov	1,r2
-00000062 a505*           169 	br	.L62
-                         170 .L60:
-                         171 --38:             }else{
-                         172 --39:                 cy = 0;
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         112 --_data	r18	param
+                         113 --_bitPosition	r1	param
+                         114 --_datalen	r17	param
+                         115 
+                         116 	.section ".ghrettbl",""
+                         117 	.align	4
+00000000 00000000*       118 .L51:	.word	.L50
+                         119 	.type	.L51,@object
+                         120 	.size	.L51,4
+                         121 	.data
+                         122 	.text
+                         123 
+                         124 
+                         125 --28: void OCTET_STRING_sub(unsigned char *data, unsigned char *sub, int datalen)
+                         126 	.align	2
+                         127 	.align	2
+                         128 	.align	2
+                         129 ..gh.f.a.2.e.1:
+                         130 	.type	..gh.f.a.2.e.1,@object
+                         131 	.size	..gh.f.a.2.e.1,0
+                         132 	.global	_OCTET_STRING_sub
+                         133 _OCTET_STRING_sub:
+0000003c 0698            134 	mov	r6,r19
+0000003e 0790            135 	mov	r7,r18
+00000040 0888            136 	mov	r8,r17
+                         137 --	    .bf
+                         138 .LDW21:
+                         139 --29: {
+                         140 --30:     int i;
+                         141 --31:     int cy = 0;
+00000042 0012            142 	mov	0,r2
+                         143 --32:     for(i=datalen-1; i>=0; i-- )
+00000044 110effff        144 	addi	-1,r17,r1
+00000048 f535*           145 	br	.L57
+                         146 .L56:
+                         147 --33:     {
+                         148 --34:         if(cy == 0){
+                         149 --line34
+                         150 ..lin.d1a59b28..bd01ea22.0_2::
+                         151 .LDWlin2:
+0000004a e011            152 	cmp	zero,r2
+0000004c fa15*           153 	bne	.L58
+                         154 --35:             if(data[i] < sub[i])
+                         155 --line35
+                         156 ..lin.d1a59b28..bd01ea22.0_3::
+                         157 .LDWlin3:
+0000004e 01f0            158 	mov	r1,ep
+00000050 d3f1            159 	add	r19,ep
+00000052 0180            160 	mov	r1,r16
+00000054 d281            161 	add	r18,r16
+00000056 90870100        162 	ld.bu	0[r16],r16
+0000005a 6078            163 	sld.bu	0[ep],r15
+0000005c f079            164 	cmp	r16,r15
+0000005e b905*           165 	bnl	.L60
+                         166 --36:             {
+                         167 --37:                 cy = 1;
+                         168 --line37
+                         169 ..lin.d1a59b28..bd01ea22.0_4::
+                         170 .LDWlin4:
+00000060 0112            171 	mov	1,r2
+00000062 a505*           172 	br	.L62
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         173 --line39
-                         174 ..lin.d1a59b28..bd01ea22.0_5::
-                         175 .LDWlin5:
-00000064 0012            176 	mov	0,r2
-                         177 .L62:
-                         178 --40:             }
-                         179 --41:             data[i] -= sub[i];
-00000066 0178            180 	mov	r1,r15
-00000068 d279            181 	add	r18,r15
-0000006a 01f0            182 	mov	r1,ep
-0000006c d3f1            183 	add	r19,ep
-0000006e 6080            184 	sld.bu	0[ep],r16
-00000070 8f7f0100        185 	ld.bu	0[r15],r15
-00000074 af81            186 	sub	r15,r16
-00000076 8083            187 	sst.b	r16,0[ep]
-00000078 e51d*           188 	br	.L55
-                         189 .L58:
-                         190 --42:         }else{
-                         191 --43:             switch(data[i]){
-                         192 --line43
-                         193 ..lin.d1a59b28..bd01ea22.0_6::
-                         194 .LDWlin6:
-0000007a 01f0            195 	mov	r1,ep
-0000007c d3f1            196 	add	r19,ep
-0000007e 6080            197 	sld.bu	0[ep],r16
-00000080 e081            198 	cmp	zero,r16
-00000082 aa05*           199 	bne	.L66
-                         200 .L65:
-                         201 --44:             case 0:
-                         202 --45:                 /* cy = 1; */      /* not change */
-                         203 --46:                 break;
-                         204 --48:             default:
-                         205 --line46
-                         206 ..lin.d1a59b28..bd01ea22.0_7::
-                         207 .LDWlin7:
-00000084 e50d*           208 	br	.L68
-                         209 .L66:
-                         210 --49:                 if((data[i] -1) < sub[i])
-                         211 --line49
-                         212 ..lin.d1a59b28..bd01ea22.0_8::
-                         213 .LDWlin8:
-00000086 01f0            214 	mov	r1,ep
-00000088 d3f1            215 	add	r19,ep
-0000008a 6080            216 	sld.bu	0[ep],r16
-0000008c 5f82            217 	add	-1,r16
-0000008e 01f0            218 	mov	r1,ep
-00000090 d2f1            219 	add	r18,ep
-00000092 6078            220 	sld.bu	0[ep],r15
-00000094 ef81            221 	cmp	r15,r16
-00000096 be05*           222 	bge	.L69
-                         223 --50:                 {
-                         224 --51:                     cy = 1;
-                         225 --line51
-                         226 ..lin.d1a59b28..bd01ea22.0_9::
-                         227 .LDWlin9:
-00000098 0112            228 	mov	1,r2
-0000009a a505*           229 	br	.L71
-                         230 .L69:
-                         231 --52:                 }else{
-                         232 --53:                     cy = 0;
-                         233 --line53
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         173 .L60:
+                         174 --38:             }else{
+                         175 --39:                 cy = 0;
+                         176 --line39
+                         177 ..lin.d1a59b28..bd01ea22.0_5::
+                         178 .LDWlin5:
+00000064 0012            179 	mov	0,r2
+                         180 .L62:
+                         181 --40:             }
+                         182 --41:             data[i] -= sub[i];
+00000066 0178            183 	mov	r1,r15
+00000068 d279            184 	add	r18,r15
+0000006a 01f0            185 	mov	r1,ep
+0000006c d3f1            186 	add	r19,ep
+0000006e 6080            187 	sld.bu	0[ep],r16
+00000070 8f7f0100        188 	ld.bu	0[r15],r15
+00000074 af81            189 	sub	r15,r16
+00000076 8083            190 	sst.b	r16,0[ep]
+00000078 e51d*           191 	br	.L55
+                         192 .L58:
+                         193 --42:         }else{
+                         194 --43:             switch(data[i]){
+                         195 --line43
+                         196 ..lin.d1a59b28..bd01ea22.0_6::
+                         197 .LDWlin6:
+0000007a 01f0            198 	mov	r1,ep
+0000007c d3f1            199 	add	r19,ep
+0000007e 6080            200 	sld.bu	0[ep],r16
+00000080 e081            201 	cmp	zero,r16
+00000082 aa05*           202 	bne	.L66
+                         203 .L65:
+                         204 --44:             case 0:
+                         205 --45:                 /* cy = 1; */      /* not change */
+                         206 --46:                 break;
+                         207 --48:             default:
+                         208 --line46
+                         209 ..lin.d1a59b28..bd01ea22.0_7::
+                         210 .LDWlin7:
+00000084 e50d*           211 	br	.L68
+                         212 .L66:
+                         213 --49:                 if((data[i] -1) < sub[i])
+                         214 --line49
+                         215 ..lin.d1a59b28..bd01ea22.0_8::
+                         216 .LDWlin8:
+00000086 01f0            217 	mov	r1,ep
+00000088 d3f1            218 	add	r19,ep
+0000008a 6080            219 	sld.bu	0[ep],r16
+0000008c 5f82            220 	add	-1,r16
+0000008e 01f0            221 	mov	r1,ep
+00000090 d2f1            222 	add	r18,ep
+00000092 6078            223 	sld.bu	0[ep],r15
+00000094 ef81            224 	cmp	r15,r16
+00000096 be05*           225 	bge	.L69
+                         226 --50:                 {
+                         227 --51:                     cy = 1;
+                         228 --line51
+                         229 ..lin.d1a59b28..bd01ea22.0_9::
+                         230 .LDWlin9:
+00000098 0112            231 	mov	1,r2
+0000009a a505*           232 	br	.L71
+                         233 .L69:
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         234 ..lin.d1a59b28..bd01ea22.0_10::
-                         235 .LDWlin10:
-0000009c 0012            236 	mov	0,r2
-                         237 .L71:
-                         238 --54:                 }
-                         239 --55:                 break;
-0000009e 0000            240 	nop
-                         241 .L68:
-                         242 --56:             }
-                         243 --57:             data[i] -= (sub[i]+1);
-000000a0 01f0            244 	mov	r1,ep
-000000a2 d2f1            245 	add	r18,ep
-000000a4 6080            246 	sld.bu	0[ep],r16
-000000a6 107e0100        247 	addi	1,r16,r15
-000000aa 01f0            248 	mov	r1,ep
-000000ac d3f1            249 	add	r19,ep
-000000ae 6080            250 	sld.bu	0[ep],r16
-000000b0 af81            251 	sub	r15,r16
-000000b2 8083            252 	sst.b	r16,0[ep]
-                         253 .L55:
-000000b4 5f0a            254 	add	-1,r1
-                         255 .L57:
-000000b6 e009            256 	cmp	zero,r1
-000000b8 9ecd*           257 	bge	.L56
-                         258 --58:         }
-                         259 --59:     }
-                         260 --60: }
-                         261 --	    .ef
-                         262 .LDW31:
-                         263 .L181:
-                         264 --line60
-                         265 ..lin.d1a59b28..bd01ea22.0_11::
-                         266 .LDWlin11:
-                         267 	.jumptype return
-000000ba 7f00            268 	jmp	[lp]
-                         269 --line60
-                         270 ..lin.d1a59b28..bd01ea22.0_12::
-                         271 	.type	_OCTET_STRING_sub,@function
-                         272 	.size	_OCTET_STRING_sub,.-_OCTET_STRING_sub
-                         273 	.align	2
-                         274 --_i	r1	local
-                         275 --_cy	r2	local
-                         276 
-                         277 --_data	r19	param
-                         278 --_sub	r18	param
-                         279 --_datalen	r17	param
-                         280 
-                         281 	.section ".ghrettbl",""
-00000004 00000000*       282 .L182:	.word	.L181
-                         283 	.type	.L182,@object
-                         284 	.size	.L182,4
-                         285 	.data
-                         286 	.text
-                         287 
-                         288 
-                         289 --61: void OCTET_STRING_inc(unsigned char *data, int datalen)
-                         290 	.align	2
-                         291 	.align	2
-                         292 	.align	2
-                         293 ..gh.f.a.2.e.2:
-                         294 	.type	..gh.f.a.2.e.2,@object
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         234 --52:                 }else{
+                         235 --53:                     cy = 0;
+                         236 --line53
+                         237 ..lin.d1a59b28..bd01ea22.0_10::
+                         238 .LDWlin10:
+0000009c 0012            239 	mov	0,r2
+                         240 .L71:
+                         241 --54:                 }
+                         242 --55:                 break;
+0000009e 0000            243 	nop
+                         244 .L68:
+                         245 --56:             }
+                         246 --57:             data[i] -= (sub[i]+1);
+000000a0 01f0            247 	mov	r1,ep
+000000a2 d2f1            248 	add	r18,ep
+000000a4 6080            249 	sld.bu	0[ep],r16
+000000a6 107e0100        250 	addi	1,r16,r15
+000000aa 01f0            251 	mov	r1,ep
+000000ac d3f1            252 	add	r19,ep
+000000ae 6080            253 	sld.bu	0[ep],r16
+000000b0 af81            254 	sub	r15,r16
+000000b2 8083            255 	sst.b	r16,0[ep]
+                         256 .L55:
+000000b4 5f0a            257 	add	-1,r1
+                         258 .L57:
+000000b6 e009            259 	cmp	zero,r1
+000000b8 9ecd*           260 	bge	.L56
+                         261 --58:         }
+                         262 --59:     }
+                         263 --60: }
+                         264 --	    .ef
+                         265 .LDW31:
+                         266 .L181:
+                         267 --line60
+                         268 ..lin.d1a59b28..bd01ea22.0_11::
+                         269 .LDWlin11:
+                         270 	.jumptype return
+000000ba 7f00            271 	jmp	[lp]
+                         272 --line60
+                         273 ..lin.d1a59b28..bd01ea22.0_12::
+                         274 	.type	_OCTET_STRING_sub,@function
+                         275 	.size	_OCTET_STRING_sub,.-_OCTET_STRING_sub
+                         276 	.align	2
+                         277 --_i	r1	local
+                         278 --_cy	r2	local
+                         279 
+                         280 --_data	r19	param
+                         281 --_sub	r18	param
+                         282 --_datalen	r17	param
+                         283 
+                         284 	.section ".ghrettbl",""
+00000004 00000000*       285 .L182:	.word	.L181
+                         286 	.type	.L182,@object
+                         287 	.size	.L182,4
+                         288 	.data
+                         289 	.text
+                         290 
+                         291 
+                         292 --61: void OCTET_STRING_inc(unsigned char *data, int datalen)
+                         293 	.align	2
+                         294 	.align	2
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         295 	.size	..gh.f.a.2.e.2,0
-                         296 	.global	_OCTET_STRING_inc
-                         297 _OCTET_STRING_inc:
-000000bc 0690            298 	mov	r6,r18
-000000be 0710            299 	mov	r7,r2
-                         300 --	    .bf
-                         301 .LDW41:
-                         302 --62: {
-                         303 --63:     int i;
-                         304 --64:     for(i=datalen-1; i>=0; i-- )
-000000c0 020effff        305 	addi	-1,r2,r1
-000000c4 c50d*           306 	br	.L188
-                         307 .L187:
-                         308 --65:     {
-                         309 --66:         if( ++data[i] != 0 )
-                         310 --line66
-                         311 ..lin.d1a59b28..bd01beb2.0_13::
-                         312 .LDWlin13:
-000000c6 01f0            313 	mov	r1,ep
-000000c8 d2f1            314 	add	r18,ep
-000000ca 6098            315 	sld.bu	0[ep],r19
-000000cc 419a            316 	add	1,r19
-000000ce 9300            317 	zxb	r19
-000000d0 809b            318 	sst.b	r19,0[ep]
-000000d2 6098            319 	sld.bu	0[ep],r19
-000000d4 e099            320 	cmp	zero,r19
-000000d6 a205*           321 	be	.L186
-                         322 --67:             break;
-                         323 --line67
-                         324 ..lin.d1a59b28..bd01beb2.0_14::
-                         325 .LDWlin14:
-000000d8 c505*           326 	br	.L183
-                         327 .L186:
-                         328 --line64
-                         329 ..lin.d1a59b28..bd01beb2.0_15::
-                         330 .LDWlin15:
-000000da 5f0a            331 	add	-1,r1
-                         332 .L188:
-000000dc e009            333 	cmp	zero,r1
-000000de cef5*           334 	bge	.L187
-                         335 .L183:
-                         336 --68:     }
-                         337 --69: }
-                         338 --	    .ef
-                         339 .LDW51:
-                         340 .L236:
-                         341 --line69
-                         342 ..lin.d1a59b28..bd01beb2.0_16::
-                         343 .LDWlin16:
-                         344 	.jumptype return
-000000e0 7f00            345 	jmp	[lp]
-                         346 --line69
-                         347 ..lin.d1a59b28..bd01beb2.0_17::
-                         348 	.type	_OCTET_STRING_inc,@function
-                         349 	.size	_OCTET_STRING_inc,.-_OCTET_STRING_inc
-                         350 	.align	2
-                         351 --_i	r1	local
-                         352 
-                         353 --_data	r18	param
-                         354 --_datalen	r2	param
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         295 	.align	2
+                         296 ..gh.f.a.2.e.2:
+                         297 	.type	..gh.f.a.2.e.2,@object
+                         298 	.size	..gh.f.a.2.e.2,0
+                         299 	.global	_OCTET_STRING_inc
+                         300 _OCTET_STRING_inc:
+000000bc 0690            301 	mov	r6,r18
+000000be 0710            302 	mov	r7,r2
+                         303 --	    .bf
+                         304 .LDW41:
+                         305 --62: {
+                         306 --63:     int i;
+                         307 --64:     for(i=datalen-1; i>=0; i-- )
+000000c0 020effff        308 	addi	-1,r2,r1
+000000c4 c50d*           309 	br	.L188
+                         310 .L187:
+                         311 --65:     {
+                         312 --66:         if( ++data[i] != 0 )
+                         313 --line66
+                         314 ..lin.d1a59b28..bd01beb2.0_13::
+                         315 .LDWlin13:
+000000c6 01f0            316 	mov	r1,ep
+000000c8 d2f1            317 	add	r18,ep
+000000ca 6098            318 	sld.bu	0[ep],r19
+000000cc 419a            319 	add	1,r19
+000000ce 9300            320 	zxb	r19
+000000d0 809b            321 	sst.b	r19,0[ep]
+000000d2 6098            322 	sld.bu	0[ep],r19
+000000d4 e099            323 	cmp	zero,r19
+000000d6 a205*           324 	be	.L186
+                         325 --67:             break;
+                         326 --line67
+                         327 ..lin.d1a59b28..bd01beb2.0_14::
+                         328 .LDWlin14:
+000000d8 c505*           329 	br	.L183
+                         330 .L186:
+                         331 --line64
+                         332 ..lin.d1a59b28..bd01beb2.0_15::
+                         333 .LDWlin15:
+000000da 5f0a            334 	add	-1,r1
+                         335 .L188:
+000000dc e009            336 	cmp	zero,r1
+000000de cef5*           337 	bge	.L187
+                         338 .L183:
+                         339 --68:     }
+                         340 --69: }
+                         341 --	    .ef
+                         342 .LDW51:
+                         343 .L236:
+                         344 --line69
+                         345 ..lin.d1a59b28..bd01beb2.0_16::
+                         346 .LDWlin16:
+                         347 	.jumptype return
+000000e0 7f00            348 	jmp	[lp]
+                         349 --line69
+                         350 ..lin.d1a59b28..bd01beb2.0_17::
+                         351 	.type	_OCTET_STRING_inc,@function
+                         352 	.size	_OCTET_STRING_inc,.-_OCTET_STRING_inc
+                         353 	.align	2
+                         354 --_i	r1	local
                          355 
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         356 	.section ".ghrettbl",""
-00000008 00000000*       357 .L237:	.word	.L236
-                         358 	.type	.L237,@object
-                         359 	.size	.L237,4
-                         360 	.data
-                         361 	.text
-                         362 
-                         363 
-                         364 --70: int OCTET_STRING_modByDigit(unsigned char *dividend, int divisor, int datalen)
-                         365 	.align	2
-                         366 	.align	2
-                         367 	.align	2
-                         368 ..gh.f.a.2.e.3:
-                         369 	.type	..gh.f.a.2.e.3,@object
-                         370 	.size	..gh.f.a.2.e.3,0
-                         371 	.global	_OCTET_STRING_modByDigit
-                         372 _OCTET_STRING_modByDigit:
-000000e2 0698            373 	mov	r6,r19
-000000e4 0790            374 	mov	r7,r18
-000000e6 0888            375 	mov	r8,r17
-                         376 --	    .bf
-                         377 .LDW61:
-                         378 --71: {
-                         379 --72:     int i;
-                         380 --73:     unsigned short c = 0;
-000000e8 000a            381 	mov	0,r1
-                         382 --74:     for(i=0; i<datalen; i++ )
-000000ea 0012            383 	mov	0,r2
-000000ec e50d*           384 	br	.L243
-                         385 .L242:
-                         386 --75:     {
-                         387 --76:         c <<= 8;
-                         388 --line76
-                         389 ..lin.d1a59b28..7c5c44e4.0_18::
-                         390 .LDWlin18:
-000000ee c80a            391 	shl	8,r1
-000000f0 c100            392 	zxh	r1
-                         393 --77:         c += dividend[i];
-000000f2 02f0            394 	mov	r2,ep
-000000f4 d3f1            395 	add	r19,ep
-000000f6 6080            396 	sld.bu	0[ep],r16
-000000f8 d009            397 	add	r16,r1
-000000fa c100            398 	zxh	r1
-                         399 --78:         c %= divisor;
-000000fc 0180            400 	mov	r1,r16
-000000fe f287fc82        401 	divq	r18,r16,r16
-00000102 d000            402 	zxh	r16
-00000104 1008            403 	mov	r16,r1
-00000106 4112            404 	add	1,r2
-                         405 .L243:
-00000108 f111            406 	cmp	r17,r2
-0000010a a6f5*           407 	blt	.L242
-                         408 --79:     }
-                         409 --80:     return(c);
-                         410 --line80
-                         411 ..lin.d1a59b28..7c5c44e4.0_19::
-                         412 .LDWlin19:
-0000010c 0150            413 	mov	r1,r10
-                         414 --	    .ef
-                         415 .LDW71:
-                         416 .L315:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         356 --_data	r18	param
+                         357 --_datalen	r2	param
+                         358 
+                         359 	.section ".ghrettbl",""
+00000008 00000000*       360 .L237:	.word	.L236
+                         361 	.type	.L237,@object
+                         362 	.size	.L237,4
+                         363 	.data
+                         364 	.text
+                         365 
+                         366 
+                         367 --70: int OCTET_STRING_modByDigit(unsigned char *dividend, int divisor, int datalen)
+                         368 	.align	2
+                         369 	.align	2
+                         370 	.align	2
+                         371 ..gh.f.a.2.e.3:
+                         372 	.type	..gh.f.a.2.e.3,@object
+                         373 	.size	..gh.f.a.2.e.3,0
+                         374 	.global	_OCTET_STRING_modByDigit
+                         375 _OCTET_STRING_modByDigit:
+000000e2 0698            376 	mov	r6,r19
+000000e4 0790            377 	mov	r7,r18
+000000e6 0888            378 	mov	r8,r17
+                         379 --	    .bf
+                         380 .LDW61:
+                         381 --71: {
+                         382 --72:     int i;
+                         383 --73:     unsigned short c = 0;
+000000e8 000a            384 	mov	0,r1
+                         385 --74:     for(i=0; i<datalen; i++ )
+000000ea 0012            386 	mov	0,r2
+000000ec e50d*           387 	br	.L243
+                         388 .L242:
+                         389 --75:     {
+                         390 --76:         c <<= 8;
+                         391 --line76
+                         392 ..lin.d1a59b28..7c5c44e4.0_18::
+                         393 .LDWlin18:
+000000ee c80a            394 	shl	8,r1
+000000f0 c100            395 	zxh	r1
+                         396 --77:         c += dividend[i];
+000000f2 02f0            397 	mov	r2,ep
+000000f4 d3f1            398 	add	r19,ep
+000000f6 6080            399 	sld.bu	0[ep],r16
+000000f8 d009            400 	add	r16,r1
+000000fa c100            401 	zxh	r1
+                         402 --78:         c %= divisor;
+000000fc 0180            403 	mov	r1,r16
+000000fe f287fc82        404 	divq	r18,r16,r16
+00000102 d000            405 	zxh	r16
+00000104 1008            406 	mov	r16,r1
+00000106 4112            407 	add	1,r2
+                         408 .L243:
+00000108 f111            409 	cmp	r17,r2
+0000010a a6f5*           410 	blt	.L242
+                         411 --79:     }
+                         412 --80:     return(c);
+                         413 --line80
+                         414 ..lin.d1a59b28..7c5c44e4.0_19::
+                         415 .LDWlin19:
+0000010c 0150            416 	mov	r1,r10
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         417 	.jumptype return
-0000010e 7f00            418 	jmp	[lp]
-                         419 --line80
-                         420 ..lin.d1a59b28..7c5c44e4.0_20::
-                         421 	.type	_OCTET_STRING_modByDigit,@function
-                         422 	.size	_OCTET_STRING_modByDigit,.-_OCTET_STRING_modByDigit
-                         423 	.align	2
-                         424 --_i	r2	local
-                         425 --_c	r1	local
-                         426 
-                         427 --_dividend	r19	param
-                         428 --_divisor	r18	param
-                         429 --_datalen	r17	param
-                         430 
-                         431 	.section ".ghrettbl",""
-0000000c 00000000*       432 .L316:	.word	.L315
-                         433 	.type	.L316,@object
-                         434 	.size	.L316,4
-                         435 	.data
-                         436 	.text
-                         437 
-                         438 --81: }
-                         439 
-                         440 --82: void OCTET_STRING_divByDigit(unsigned char *dividend, int divisor, int datalen)
-                         441 	.align	2
-                         442 	.align	2
-                         443 	.align	2
-                         444 ..gh.f.a.2.e.4:
-                         445 	.type	..gh.f.a.2.e.4,@object
-                         446 	.size	..gh.f.a.2.e.4,0
-                         447 	.global	_OCTET_STRING_divByDigit
-                         448 _OCTET_STRING_divByDigit:
-00000110 0698            449 	mov	r6,r19
-00000112 0790            450 	mov	r7,r18
-00000114 0888            451 	mov	r8,r17
-                         452 --	    .bf
-                         453 .LDW81:
-                         454 --83: {
-                         455 --84:     int i;
-                         456 --85:     unsigned short c = 0;
-00000116 000a            457 	mov	0,r1
-                         458 --86:     for(i=0; i<datalen; i++ )
-00000118 0012            459 	mov	0,r2
-0000011a d515*           460 	br	.L322
-                         461 .L321:
-                         462 --87:     {
-                         463 --88:         c <<= 8;
-                         464 --line88
-                         465 ..lin.d1a59b28..39b37c87.0_21::
-                         466 .LDWlin21:
-0000011c c80a            467 	shl	8,r1
-0000011e c100            468 	zxh	r1
-                         469 --89:         c += dividend[i];
-00000120 02f0            470 	mov	r2,ep
-00000122 d3f1            471 	add	r19,ep
-00000124 6080            472 	sld.bu	0[ep],r16
-00000126 d009            473 	add	r16,r1
-00000128 c100            474 	zxh	r1
-                         475 --90:         dividend[i] = (c / divisor);
-0000012a 02f0            476 	mov	r2,ep
-0000012c d3f1            477 	add	r19,ep
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         417 --	    .ef
+                         418 .LDW71:
+                         419 .L315:
+                         420 	.jumptype return
+0000010e 7f00            421 	jmp	[lp]
+                         422 --line80
+                         423 ..lin.d1a59b28..7c5c44e4.0_20::
+                         424 	.type	_OCTET_STRING_modByDigit,@function
+                         425 	.size	_OCTET_STRING_modByDigit,.-_OCTET_STRING_modByDigit
+                         426 	.align	2
+                         427 --_i	r2	local
+                         428 --_c	r1	local
+                         429 
+                         430 --_dividend	r19	param
+                         431 --_divisor	r18	param
+                         432 --_datalen	r17	param
+                         433 
+                         434 	.section ".ghrettbl",""
+0000000c 00000000*       435 .L316:	.word	.L315
+                         436 	.type	.L316,@object
+                         437 	.size	.L316,4
+                         438 	.data
+                         439 	.text
+                         440 
+                         441 --81: }
+                         442 
+                         443 --82: void OCTET_STRING_divByDigit(unsigned char *dividend, int divisor, int datalen)
+                         444 	.align	2
+                         445 	.align	2
+                         446 	.align	2
+                         447 ..gh.f.a.2.e.4:
+                         448 	.type	..gh.f.a.2.e.4,@object
+                         449 	.size	..gh.f.a.2.e.4,0
+                         450 	.global	_OCTET_STRING_divByDigit
+                         451 _OCTET_STRING_divByDigit:
+00000110 0698            452 	mov	r6,r19
+00000112 0790            453 	mov	r7,r18
+00000114 0888            454 	mov	r8,r17
+                         455 --	    .bf
+                         456 .LDW81:
+                         457 --83: {
+                         458 --84:     int i;
+                         459 --85:     unsigned short c = 0;
+00000116 000a            460 	mov	0,r1
+                         461 --86:     for(i=0; i<datalen; i++ )
+00000118 0012            462 	mov	0,r2
+0000011a d515*           463 	br	.L322
+                         464 .L321:
+                         465 --87:     {
+                         466 --88:         c <<= 8;
+                         467 --line88
+                         468 ..lin.d1a59b28..39b37c87.0_21::
+                         469 .LDWlin21:
+0000011c c80a            470 	shl	8,r1
+0000011e c100            471 	zxh	r1
+                         472 --89:         c += dividend[i];
+00000120 02f0            473 	mov	r2,ep
+00000122 d3f1            474 	add	r19,ep
+00000124 6080            475 	sld.bu	0[ep],r16
+00000126 d009            476 	add	r16,r1
+00000128 c100            477 	zxh	r1
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-0000012e 0180            478 	mov	r1,r16
-00000130 f287fc02        479 	divq	r18,r16,zero
-00000134 9000            480 	zxb	r16
-00000136 8083            481 	sst.b	r16,0[ep]
-                         482 --91:         c %= divisor;
-00000138 0180            483 	mov	r1,r16
-0000013a f287fc82        484 	divq	r18,r16,r16
-0000013e d000            485 	zxh	r16
-00000140 1008            486 	mov	r16,r1
-00000142 4112            487 	add	1,r2
-                         488 .L322:
-00000144 f111            489 	cmp	r17,r2
-00000146 b6ed*           490 	blt	.L321
-                         491 --92:     }
-                         492 --93: }
-                         493 --	    .ef
-                         494 .LDW91:
-                         495 .L395:
-                         496 --line93
-                         497 ..lin.d1a59b28..39b37c87.0_22::
-                         498 .LDWlin22:
-                         499 	.jumptype return
-00000148 7f00            500 	jmp	[lp]
-                         501 --line93
-                         502 ..lin.d1a59b28..39b37c87.0_23::
-                         503 	.type	_OCTET_STRING_divByDigit,@function
-                         504 	.size	_OCTET_STRING_divByDigit,.-_OCTET_STRING_divByDigit
-                         505 	.align	2
-                         506 --_i	r2	local
-                         507 --_c	r1	local
-                         508 
-                         509 --_dividend	r19	param
-                         510 --_divisor	r18	param
-                         511 --_datalen	r17	param
-                         512 
-                         513 	.section ".ghrettbl",""
-00000010 00000000*       514 .L396:	.word	.L395
-                         515 	.type	.L396,@object
-                         516 	.size	.L396,4
-                         517 	.data
-                         518 	.text
-                         519 
-                         520 
-                         521 --95: void OCTET_STRING_L_shift(unsigned char *data, int shiftbits, int datalen)
-                         522 	.align	2
-                         523 	.align	2
-                         524 	.align	2
-                         525 ..gh.f.a.2.e.5:
-                         526 	.type	..gh.f.a.2.e.5,@object
-                         527 	.size	..gh.f.a.2.e.5,0
-                         528 	.global	_OCTET_STRING_L_shift
-                         529 _OCTET_STRING_L_shift:
-0000014a 0698            530 	mov	r6,r19
-0000014c 0790            531 	mov	r7,r18
-0000014e 0878            532 	mov	r8,r15
-                         533 --	    .bf
-                         534 .LDW02:
-                         535 --96: {
-                         536 --97:     int i;
-                         537 --98:     int bytes = shiftbits / 8;
-00000150 1208            538 	mov	r18,r1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         478 --90:         dividend[i] = (c / divisor);
+0000012a 02f0            479 	mov	r2,ep
+0000012c d3f1            480 	add	r19,ep
+0000012e 0180            481 	mov	r1,r16
+00000130 f287fc02        482 	divq	r18,r16,zero
+00000134 9000            483 	zxb	r16
+00000136 8083            484 	sst.b	r16,0[ep]
+                         485 --91:         c %= divisor;
+00000138 0180            486 	mov	r1,r16
+0000013a f287fc82        487 	divq	r18,r16,r16
+0000013e d000            488 	zxh	r16
+00000140 1008            489 	mov	r16,r1
+00000142 4112            490 	add	1,r2
+                         491 .L322:
+00000144 f111            492 	cmp	r17,r2
+00000146 b6ed*           493 	blt	.L321
+                         494 --92:     }
+                         495 --93: }
+                         496 --	    .ef
+                         497 .LDW91:
+                         498 .L395:
+                         499 --line93
+                         500 ..lin.d1a59b28..39b37c87.0_22::
+                         501 .LDWlin22:
+                         502 	.jumptype return
+00000148 7f00            503 	jmp	[lp]
+                         504 --line93
+                         505 ..lin.d1a59b28..39b37c87.0_23::
+                         506 	.type	_OCTET_STRING_divByDigit,@function
+                         507 	.size	_OCTET_STRING_divByDigit,.-_OCTET_STRING_divByDigit
+                         508 	.align	2
+                         509 --_i	r2	local
+                         510 --_c	r1	local
+                         511 
+                         512 --_dividend	r19	param
+                         513 --_divisor	r18	param
+                         514 --_datalen	r17	param
+                         515 
+                         516 	.section ".ghrettbl",""
+00000010 00000000*       517 .L396:	.word	.L395
+                         518 	.type	.L396,@object
+                         519 	.size	.L396,4
+                         520 	.data
+                         521 	.text
+                         522 
+                         523 
+                         524 --95: void OCTET_STRING_L_shift(unsigned char *data, int shiftbits, int datalen)
+                         525 	.align	2
+                         526 	.align	2
+                         527 	.align	2
+                         528 ..gh.f.a.2.e.5:
+                         529 	.type	..gh.f.a.2.e.5,@object
+                         530 	.size	..gh.f.a.2.e.5,0
+                         531 	.global	_OCTET_STRING_L_shift
+                         532 _OCTET_STRING_L_shift:
+0000014a 0698            533 	mov	r6,r19
+0000014c 0790            534 	mov	r7,r18
+0000014e 0878            535 	mov	r8,r15
+                         536 --	    .bf
+                         537 .LDW02:
+                         538 --96: {
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-00000152 bf0a            539 	sar	31,r1
-00000154 9d0a            540 	shr	29,r1
-00000156 d209            541 	add	r18,r1
-00000158 0188            542 	mov	r1,r17
-0000015a a38a            543 	sar	3,r17
-                         544 --99:     int bits = shiftbits % 8;
-0000015c 1208            545 	mov	r18,r1
-0000015e bf0a            546 	sar	31,r1
-00000160 c10e0700        547 	andi	7,r1,r1
-00000164 d209            548 	add	r18,r1
-00000166 1812            549 	mov	-8,r2
-00000168 4209            550 	and	r2,r1
-0000016a 1280            551 	mov	r18,r16
-0000016c a181            552 	sub	r1,r16
-                         553 --100:     unsigned short int c = 0;
-0000016e 0012            554 	mov	0,r2
-                         555 --101:     
-                         556 --102:     if(bytes != 0)
-00000170 e089            557 	cmp	zero,r17
-00000172 f215*           558 	be	.L399
-                         559 --103:     {
-                         560 --104:         for(i=0; i<(datalen - bytes); i++ )
-                         561 --line104
-                         562 ..lin.d1a59b28..f64be021.0_24::
-                         563 .LDWlin24:
-00000174 000a            564 	mov	0,r1
-00000176 a50d*           565 	br	.L404
-                         566 .L403:
-                         567 --105:         {
-                         568 --106:             data[i] = data[i + bytes];
-                         569 --line106
-                         570 ..lin.d1a59b28..f64be021.0_25::
-                         571 .LDWlin25:
-00000178 01f0            572 	mov	r1,ep
-0000017a d3f1            573 	add	r19,ep
-0000017c 1170            574 	mov	r17,r14
-0000017e c171            575 	add	r1,r14
-00000180 d371            576 	add	r19,r14
-00000182 8e770100        577 	ld.bu	0[r14],r14
-00000186 8073            578 	sst.b	r14,0[ep]
-00000188 410a            579 	add	1,r1
-                         580 .L404:
-0000018a 0f70            581 	mov	r15,r14
-0000018c b171            582 	sub	r17,r14
-0000018e ee09            583 	cmp	r14,r1
-00000190 c6f5*           584 	blt	.L403
-                         585 --107:         }
-                         586 --108:         for(; i<datalen; i++ )
-                         587 --line108
-                         588 ..lin.d1a59b28..f64be021.0_26::
-                         589 .LDWlin26:
-00000192 d505*           590 	br	.L408
-                         591 .L407:
-                         592 --109:         {
-                         593 --110:             data[i] = 0;
-                         594 --line110
-                         595 ..lin.d1a59b28..f64be021.0_27::
-                         596 .LDWlin27:
-00000194 01f0            597 	mov	r1,ep
-00000196 d3f1            598 	add	r19,ep
-00000198 8003            599 	sst.b	zero,0[ep]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         539 --97:     int i;
+                         540 --98:     int bytes = shiftbits / 8;
+00000150 1208            541 	mov	r18,r1
+00000152 bf0a            542 	sar	31,r1
+00000154 9d0a            543 	shr	29,r1
+00000156 d209            544 	add	r18,r1
+00000158 0188            545 	mov	r1,r17
+0000015a a38a            546 	sar	3,r17
+                         547 --99:     int bits = shiftbits % 8;
+0000015c 1208            548 	mov	r18,r1
+0000015e bf0a            549 	sar	31,r1
+00000160 c10e0700        550 	andi	7,r1,r1
+00000164 d209            551 	add	r18,r1
+00000166 1812            552 	mov	-8,r2
+00000168 4209            553 	and	r2,r1
+0000016a 1280            554 	mov	r18,r16
+0000016c a181            555 	sub	r1,r16
+                         556 --100:     unsigned short int c = 0;
+0000016e 0012            557 	mov	0,r2
+                         558 --101:     
+                         559 --102:     if(bytes != 0)
+00000170 e089            560 	cmp	zero,r17
+00000172 f215*           561 	be	.L399
+                         562 --103:     {
+                         563 --104:         for(i=0; i<(datalen - bytes); i++ )
+                         564 --line104
+                         565 ..lin.d1a59b28..f64be021.0_24::
+                         566 .LDWlin24:
+00000174 000a            567 	mov	0,r1
+00000176 a50d*           568 	br	.L404
+                         569 .L403:
+                         570 --105:         {
+                         571 --106:             data[i] = data[i + bytes];
+                         572 --line106
+                         573 ..lin.d1a59b28..f64be021.0_25::
+                         574 .LDWlin25:
+00000178 01f0            575 	mov	r1,ep
+0000017a d3f1            576 	add	r19,ep
+0000017c 1170            577 	mov	r17,r14
+0000017e c171            578 	add	r1,r14
+00000180 d371            579 	add	r19,r14
+00000182 8e770100        580 	ld.bu	0[r14],r14
+00000186 8073            581 	sst.b	r14,0[ep]
+00000188 410a            582 	add	1,r1
+                         583 .L404:
+0000018a 0f70            584 	mov	r15,r14
+0000018c b171            585 	sub	r17,r14
+0000018e ee09            586 	cmp	r14,r1
+00000190 c6f5*           587 	blt	.L403
+                         588 --107:         }
+                         589 --108:         for(; i<datalen; i++ )
+                         590 --line108
+                         591 ..lin.d1a59b28..f64be021.0_26::
+                         592 .LDWlin26:
+00000192 d505*           593 	br	.L408
+                         594 .L407:
+                         595 --109:         {
+                         596 --110:             data[i] = 0;
+                         597 --line110
+                         598 ..lin.d1a59b28..f64be021.0_27::
+                         599 .LDWlin27:
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-0000019a 410a            600 	add	1,r1
-                         601 .L408:
-0000019c ef09            602 	cmp	r15,r1
-0000019e b6fd*           603 	blt	.L407
-                         604 .L399:
-                         605 --111:         }
-                         606 --112:     }
-                         607 --113:     if(bits != 0)
-                         608 --line113
-                         609 ..lin.d1a59b28..f64be021.0_28::
-                         610 .LDWlin28:
-000001a0 e081            611 	cmp	zero,r16
-000001a2 f21d*           612 	be	.L397
-                         613 --114:     {
-                         614 --115:         c = data[0];
-                         615 --line115
-                         616 ..lin.d1a59b28..f64be021.0_29::
-                         617 .LDWlin29:
-000001a4 93170100        618 	ld.bu	0[r19],r2
-                         619 --116:         for(i=1; i<datalen; i++ )
-000001a8 010a            620 	mov	1,r1
-000001aa b515*           621 	br	.L414
-                         622 .L413:
-                         623 --117:         {
-                         624 --118:             c <<= 8;
-                         625 --line118
-                         626 ..lin.d1a59b28..f64be021.0_30::
-                         627 .LDWlin30:
-000001ac c812            628 	shl	8,r2
-000001ae c200            629 	zxh	r2
-                         630 --119:             c |= data[i];
-000001b0 01f0            631 	mov	r1,ep
-000001b2 d3f1            632 	add	r19,ep
-000001b4 6070            633 	sld.bu	0[ep],r14
-000001b6 0e11            634 	or	r14,r2
-000001b8 c200            635 	zxh	r2
-                         636 --120:             data[i-1] = (c >> (8-bits));
-000001ba 0176ffff        637 	addi	-1,r1,r14
-000001be 0ef0            638 	mov	r14,ep
-000001c0 d3f1            639 	add	r19,ep
-000001c2 0872            640 	mov	8,r14
-000001c4 b071            641 	sub	r16,r14
-000001c6 ee17a270        642 	sar	r14,r2,r14
-000001ca 8e00            643 	zxb	r14
-000001cc 8073            644 	sst.b	r14,0[ep]
-000001ce 410a            645 	add	1,r1
-                         646 .L414:
-000001d0 ef09            647 	cmp	r15,r1
-000001d2 d6ed*           648 	blt	.L413
-                         649 --121:         }
-                         650 --122:         data[i] = (c << bits);
-                         651 --line122
-                         652 ..lin.d1a59b28..f64be021.0_31::
-                         653 .LDWlin31:
-000001d4 01f0            654 	mov	r1,ep
-000001d6 d3f1            655 	add	r19,ep
-000001d8 f017c270        656 	shl	r16,r2,r14
-000001dc 8e00            657 	zxb	r14
-000001de 8073            658 	sst.b	r14,0[ep]
-                         659 .L397:
-                         660 --123:     }
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+00000194 01f0            600 	mov	r1,ep
+00000196 d3f1            601 	add	r19,ep
+00000198 8003            602 	sst.b	zero,0[ep]
+0000019a 410a            603 	add	1,r1
+                         604 .L408:
+0000019c ef09            605 	cmp	r15,r1
+0000019e b6fd*           606 	blt	.L407
+                         607 .L399:
+                         608 --111:         }
+                         609 --112:     }
+                         610 --113:     if(bits != 0)
+                         611 --line113
+                         612 ..lin.d1a59b28..f64be021.0_28::
+                         613 .LDWlin28:
+000001a0 e081            614 	cmp	zero,r16
+000001a2 f21d*           615 	be	.L397
+                         616 --114:     {
+                         617 --115:         c = data[0];
+                         618 --line115
+                         619 ..lin.d1a59b28..f64be021.0_29::
+                         620 .LDWlin29:
+000001a4 93170100        621 	ld.bu	0[r19],r2
+                         622 --116:         for(i=1; i<datalen; i++ )
+000001a8 010a            623 	mov	1,r1
+000001aa b515*           624 	br	.L414
+                         625 .L413:
+                         626 --117:         {
+                         627 --118:             c <<= 8;
+                         628 --line118
+                         629 ..lin.d1a59b28..f64be021.0_30::
+                         630 .LDWlin30:
+000001ac c812            631 	shl	8,r2
+000001ae c200            632 	zxh	r2
+                         633 --119:             c |= data[i];
+000001b0 01f0            634 	mov	r1,ep
+000001b2 d3f1            635 	add	r19,ep
+000001b4 6070            636 	sld.bu	0[ep],r14
+000001b6 0e11            637 	or	r14,r2
+000001b8 c200            638 	zxh	r2
+                         639 --120:             data[i-1] = (c >> (8-bits));
+000001ba 0176ffff        640 	addi	-1,r1,r14
+000001be 0ef0            641 	mov	r14,ep
+000001c0 d3f1            642 	add	r19,ep
+000001c2 0872            643 	mov	8,r14
+000001c4 b071            644 	sub	r16,r14
+000001c6 ee17a270        645 	sar	r14,r2,r14
+000001ca 8e00            646 	zxb	r14
+000001cc 8073            647 	sst.b	r14,0[ep]
+000001ce 410a            648 	add	1,r1
+                         649 .L414:
+000001d0 ef09            650 	cmp	r15,r1
+000001d2 d6ed*           651 	blt	.L413
+                         652 --121:         }
+                         653 --122:         data[i] = (c << bits);
+                         654 --line122
+                         655 ..lin.d1a59b28..f64be021.0_31::
+                         656 .LDWlin31:
+000001d4 01f0            657 	mov	r1,ep
+000001d6 d3f1            658 	add	r19,ep
+000001d8 f017c270        659 	shl	r16,r2,r14
+000001dc 8e00            660 	zxb	r14
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         661 --124: }
-                         662 --	    .ef
-                         663 .LDW12:
-                         664 .L545:
-                         665 	.jumptype return
-000001e0 7f00            666 	jmp	[lp]
-                         667 --line122
-                         668 ..lin.d1a59b28..f64be021.0_32::
-                         669 	.type	_OCTET_STRING_L_shift,@function
-                         670 	.size	_OCTET_STRING_L_shift,.-_OCTET_STRING_L_shift
-                         671 	.align	2
-                         672 --_i	r1	local
-                         673 --_bytes	r17	local
-                         674 --_bits	r16	local
-                         675 --_c	r2	local
-                         676 
-                         677 --_data	r19	param
-                         678 --_shiftbits	r18	param
-                         679 --_datalen	r15	param
-                         680 
-                         681 	.section ".ghrettbl",""
-00000014 00000000*       682 .L546:	.word	.L545
-                         683 	.type	.L546,@object
-                         684 	.size	.L546,4
-                         685 	.data
-                         686 	.text
-                         687 
-                         688 
-                         689 --126: void OCTET_STRING_R_shift(unsigned char *data, int shiftbits, int datalen)
-                         690 	.align	2
-                         691 	.align	2
-                         692 	.align	2
-                         693 ..gh.f.a.2.e.6:
-                         694 	.type	..gh.f.a.2.e.6,@object
-                         695 	.size	..gh.f.a.2.e.6,0
-                         696 	.global	_OCTET_STRING_R_shift
-                         697 _OCTET_STRING_R_shift:
-000001e2 0690            698 	mov	r6,r18
-000001e4 0710            699 	mov	r7,r2
-000001e6 0888            700 	mov	r8,r17
-                         701 --	    .bf
-                         702 .LDW22:
-                         703 --127: {
-                         704 --128:     int i;
-                         705 --129:     int bytes = shiftbits / 8;
-000001e8 0208            706 	mov	r2,r1
-000001ea bf0a            707 	sar	31,r1
-000001ec 9d0a            708 	shr	29,r1
-000001ee c209            709 	add	r2,r1
-000001f0 0198            710 	mov	r1,r19
-000001f2 a39a            711 	sar	3,r19
-                         712 --130:     int bits = shiftbits % 8;
-000001f4 0208            713 	mov	r2,r1
-000001f6 bf0a            714 	sar	31,r1
-000001f8 c10e0700        715 	andi	7,r1,r1
-000001fc c209            716 	add	r2,r1
-000001fe 187a            717 	mov	-8,r15
-00000200 4f09            718 	and	r15,r1
-00000202 0280            719 	mov	r2,r16
-00000204 a181            720 	sub	r1,r16
-                         721 --132:     if(bytes != 0)
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+000001de 8073            661 	sst.b	r14,0[ep]
+                         662 .L397:
+                         663 --123:     }
+                         664 --124: }
+                         665 --	    .ef
+                         666 .LDW12:
+                         667 .L545:
+                         668 	.jumptype return
+000001e0 7f00            669 	jmp	[lp]
+                         670 --line122
+                         671 ..lin.d1a59b28..f64be021.0_32::
+                         672 	.type	_OCTET_STRING_L_shift,@function
+                         673 	.size	_OCTET_STRING_L_shift,.-_OCTET_STRING_L_shift
+                         674 	.align	2
+                         675 --_i	r1	local
+                         676 --_bytes	r17	local
+                         677 --_bits	r16	local
+                         678 --_c	r2	local
+                         679 
+                         680 --_data	r19	param
+                         681 --_shiftbits	r18	param
+                         682 --_datalen	r15	param
+                         683 
+                         684 	.section ".ghrettbl",""
+00000014 00000000*       685 .L546:	.word	.L545
+                         686 	.type	.L546,@object
+                         687 	.size	.L546,4
+                         688 	.data
+                         689 	.text
+                         690 
+                         691 
+                         692 --126: void OCTET_STRING_R_shift(unsigned char *data, int shiftbits, int datalen)
+                         693 	.align	2
+                         694 	.align	2
+                         695 	.align	2
+                         696 ..gh.f.a.2.e.6:
+                         697 	.type	..gh.f.a.2.e.6,@object
+                         698 	.size	..gh.f.a.2.e.6,0
+                         699 	.global	_OCTET_STRING_R_shift
+                         700 _OCTET_STRING_R_shift:
+000001e2 0690            701 	mov	r6,r18
+000001e4 0710            702 	mov	r7,r2
+000001e6 0888            703 	mov	r8,r17
+                         704 --	    .bf
+                         705 .LDW22:
+                         706 --127: {
+                         707 --128:     int i;
+                         708 --129:     int bytes = shiftbits / 8;
+000001e8 0208            709 	mov	r2,r1
+000001ea bf0a            710 	sar	31,r1
+000001ec 9d0a            711 	shr	29,r1
+000001ee c209            712 	add	r2,r1
+000001f0 0198            713 	mov	r1,r19
+000001f2 a39a            714 	sar	3,r19
+                         715 --130:     int bits = shiftbits % 8;
+000001f4 0208            716 	mov	r2,r1
+000001f6 bf0a            717 	sar	31,r1
+000001f8 c10e0700        718 	andi	7,r1,r1
+000001fc c209            719 	add	r2,r1
+000001fe 187a            720 	mov	-8,r15
+00000200 4f09            721 	and	r15,r1
 
                                                                       Page 13
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-00000206 e099            722 	cmp	zero,r19
-00000208 e215*           723 	be	.L549
-                         724 --133:     {
-                         725 --134:         for(i=datalen-1; i>=bytes; i-- )
-                         726 --line134
-                         727 ..lin.d1a59b28..c4294ca7.0_33::
-                         728 .LDWlin33:
-0000020a 110effff        729 	addi	-1,r17,r1
-0000020e a50d*           730 	br	.L554
-                         731 .L553:
-                         732 --135:         {
-                         733 --136:             data[i] = data[i - bytes];
-                         734 --line136
-                         735 ..lin.d1a59b28..c4294ca7.0_34::
-                         736 .LDWlin34:
-00000210 01f0            737 	mov	r1,ep
-00000212 d2f1            738 	add	r18,ep
-00000214 0178            739 	mov	r1,r15
-00000216 b379            740 	sub	r19,r15
-00000218 d279            741 	add	r18,r15
-0000021a 8f7f0100        742 	ld.bu	0[r15],r15
-0000021e 807b            743 	sst.b	r15,0[ep]
-00000220 5f0a            744 	add	-1,r1
-                         745 .L554:
-00000222 f309            746 	cmp	r19,r1
-00000224 eef5*           747 	bge	.L553
-                         748 --137:         }
-                         749 --138:         for( ; i>=0; i-- )
-                         750 --line138
-                         751 ..lin.d1a59b28..c4294ca7.0_35::
-                         752 .LDWlin35:
-00000226 d505*           753 	br	.L558
-                         754 .L557:
-                         755 --139:         {
-                         756 --140:             data[i] = 0;
-                         757 --line140
-                         758 ..lin.d1a59b28..c4294ca7.0_36::
-                         759 .LDWlin36:
-00000228 01f0            760 	mov	r1,ep
-0000022a d2f1            761 	add	r18,ep
-0000022c 8003            762 	sst.b	zero,0[ep]
-0000022e 5f0a            763 	add	-1,r1
-                         764 .L558:
-00000230 e009            765 	cmp	zero,r1
-00000232 befd*           766 	bge	.L557
-                         767 .L549:
-                         768 --141:         }
-                         769 --142:     }
-                         770 --143:     if(bits != 0)
-                         771 --line143
-                         772 ..lin.d1a59b28..c4294ca7.0_37::
-                         773 .LDWlin37:
-00000234 e081            774 	cmp	zero,r16
-                         775 .L547:
-                         776 --144:     {
-                         777 --145:         /* T.B.D. */
-                         778 --146:     }
-                         779 --147: }
-                         780 --	    .ef
-                         781 .LDW32:
-                         782 .L639:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+00000202 0280            722 	mov	r2,r16
+00000204 a181            723 	sub	r1,r16
+                         724 --132:     if(bytes != 0)
+00000206 e099            725 	cmp	zero,r19
+00000208 e215*           726 	be	.L549
+                         727 --133:     {
+                         728 --134:         for(i=datalen-1; i>=bytes; i-- )
+                         729 --line134
+                         730 ..lin.d1a59b28..c4294ca7.0_33::
+                         731 .LDWlin33:
+0000020a 110effff        732 	addi	-1,r17,r1
+0000020e a50d*           733 	br	.L554
+                         734 .L553:
+                         735 --135:         {
+                         736 --136:             data[i] = data[i - bytes];
+                         737 --line136
+                         738 ..lin.d1a59b28..c4294ca7.0_34::
+                         739 .LDWlin34:
+00000210 01f0            740 	mov	r1,ep
+00000212 d2f1            741 	add	r18,ep
+00000214 0178            742 	mov	r1,r15
+00000216 b379            743 	sub	r19,r15
+00000218 d279            744 	add	r18,r15
+0000021a 8f7f0100        745 	ld.bu	0[r15],r15
+0000021e 807b            746 	sst.b	r15,0[ep]
+00000220 5f0a            747 	add	-1,r1
+                         748 .L554:
+00000222 f309            749 	cmp	r19,r1
+00000224 eef5*           750 	bge	.L553
+                         751 --137:         }
+                         752 --138:         for( ; i>=0; i-- )
+                         753 --line138
+                         754 ..lin.d1a59b28..c4294ca7.0_35::
+                         755 .LDWlin35:
+00000226 d505*           756 	br	.L558
+                         757 .L557:
+                         758 --139:         {
+                         759 --140:             data[i] = 0;
+                         760 --line140
+                         761 ..lin.d1a59b28..c4294ca7.0_36::
+                         762 .LDWlin36:
+00000228 01f0            763 	mov	r1,ep
+0000022a d2f1            764 	add	r18,ep
+0000022c 8003            765 	sst.b	zero,0[ep]
+0000022e 5f0a            766 	add	-1,r1
+                         767 .L558:
+00000230 e009            768 	cmp	zero,r1
+00000232 befd*           769 	bge	.L557
+                         770 .L549:
+                         771 --141:         }
+                         772 --142:     }
+                         773 --143:     if(bits != 0)
+                         774 --line143
+                         775 ..lin.d1a59b28..c4294ca7.0_37::
+                         776 .LDWlin37:
+00000234 e081            777 	cmp	zero,r16
+                         778 .L547:
+                         779 --144:     {
+                         780 --145:         /* T.B.D. */
+                         781 --146:     }
+                         782 --147: }
 
                                                                       Page 14
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00008rs1.si
-                         783 	.jumptype return
-00000236 7f00            784 	jmp	[lp]
-                         785 --line143
-                         786 ..lin.d1a59b28..c4294ca7.0_38::
-                         787 	.type	_OCTET_STRING_R_shift,@function
-                         788 	.size	_OCTET_STRING_R_shift,.-_OCTET_STRING_R_shift
-                         789 	.align	2
-                         790 --_i	r1	local
-                         791 --_bytes	r19	local
-                         792 --_bits	r16	local
-                         793 
-                         794 --_data	r18	param
-                         795 --_shiftbits	r2	param
-                         796 --_datalen	r17	param
-                         797 
-                         798 	.section ".ghrettbl",""
-00000018 00000000*       799 .L640:	.word	.L639
-                         800 	.type	.L640,@object
-                         801 	.size	.L640,4
-                         802 	.data
-                         803 	.text
-                         804 
-                         805 	.align	2
-                         806 
-                         807 	.data
-                         808 	.ghsnote version,30
-                         809 	.ghsnote tools,3
-                         810 	.ghsnote options,656
-                         811 	.text
-                         812 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5COctetStringLib...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40DA0..0::
-                         813 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hok1.si
+                         783 --	    .ef
+                         784 .LDW32:
+                         785 .L639:
+                         786 	.jumptype return
+00000236 7f00            787 	jmp	[lp]
+                         788 --line143
+                         789 ..lin.d1a59b28..c4294ca7.0_38::
+                         790 	.type	_OCTET_STRING_R_shift,@function
+                         791 	.size	_OCTET_STRING_R_shift,.-_OCTET_STRING_R_shift
+                         792 	.align	2
+                         793 --_i	r1	local
+                         794 --_bytes	r19	local
+                         795 --_bits	r16	local
+                         796 
+                         797 --_data	r18	param
+                         798 --_shiftbits	r2	param
+                         799 --_datalen	r17	param
+                         800 
+                         801 	.section ".ghrettbl",""
+00000018 00000000*       802 .L640:	.word	.L639
+                         803 	.type	.L640,@object
+                         804 	.size	.L640,4
+                         805 	.data
+                         806 	.text
+                         807 
+                         808 	.align	2
+                         809 
+                         810 	.data
+                         811 	.ghsnote version,30
+                         812 	.ghsnote tools,3
+                         813 	.ghsnote options,656
+                         814 	.text
+                         815 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5COctetStringLib...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                         816 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

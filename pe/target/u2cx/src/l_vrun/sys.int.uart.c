@@ -62,10 +62,10 @@
 /*    the port groups in the port unit (PG)        */
 /*    the port number in the group (Pn)            */
 
-/* Tx:P12_6 */
+/* RLIN31 TX: P17_2 */
 #define PG_VUART0_TX    17
 #define Pn_VUART0_TX    2
-/* Rx:P12_5 */
+/* RLIN31 RX: P17_3 */
 #define PG_VUART0_RX    17
 #define Pn_VUART0_RX    3
 
@@ -81,41 +81,9 @@
 
 /**
      LIN/UART Interface (RLIN3)\n
-     List of registers for RLIN30 port
+    List of registers for RLIN31 port
 */
 /** Base address */
-#undef RLN35LWBR
-#undef RLN35LBRP01
-#undef RLN35LSTC
-#undef RLN35LMD
-#undef RLN35LBFC
-#undef RLN35LSC
-#undef RLN35LIE
-#undef RLN35LEDE
-#undef RLN35LCUC
-#undef RLN35LTRC
-#undef RLN35LMST
-#undef RLN35LST
-#undef RLN35LEST
-#undef RLN35LUOER
-#undef RLN35LUTDR
-#undef RLN35LURDR
-#define RLN35LWBR RLN31LWBR
-#define RLN35LBRP01 RLN31LBRP01
-#define RLN35LSTC RLN31LSTC
-#define RLN35LMD RLN31LMD
-#define RLN35LBFC RLN31LBFC
-#define RLN35LSC RLN31LSC
-#define RLN35LIE RLN31LIE
-#define RLN35LEDE RLN31LEDE
-#define RLN35LCUC RLN31LCUC
-#define RLN35LTRC RLN31LTRC
-#define RLN35LMST RLN31LMST
-#define RLN35LST RLN31LST
-#define RLN35LEST RLN31LEST
-#define RLN35LUOER RLN31LUOER
-#define RLN35LUTDR RLN31LUTDR
-#define RLN35LURDR RLN31LURDR
 
 #define INTC2_base    (0xFFF80000UL)
 //#define INTC2EIC621   (*(volatile unsigned short *)(INTC2_base + 0x4DAU))
@@ -236,11 +204,11 @@ __interrupt void INT_VUART0_ERR(void)
  Other values   - Extracted 1-byte data
 
  [Used registers]\n
- SCI31SSR, SCI31RDRL
+ RLN31LURDR
 */
 unsigned char sys_vuart_getbyte(void)
 {
-    return (RLN35LURDR);
+    return (RLN31LURDR);
 }
 
 /**
@@ -259,7 +227,7 @@ unsigned char sys_vuart_getbyte(void)
  None
 
  [Used registers]\n
- SCI31SSR, SCI31TDRL
+ RLN31LUTDR
 
  [Remarks]\n
  In this implementation, the loop that monitors the transmittable status may
@@ -267,7 +235,7 @@ unsigned char sys_vuart_getbyte(void)
 */
 void sys_vuart_sendbyte(unsigned char byte_to_send)
 {
-    RLN35LUTDR = byte_to_send;
+    RLN31LUTDR = byte_to_send;
 }
 
 /**
@@ -276,7 +244,7 @@ void sys_vuart_sendbyte(unsigned char byte_to_send)
 
  [Description]\n
  Configure the logical UART(VUART) used in the VRUN module.
- In this implementation, SCI3(Serial Communication Interface 3) is used as VUART.
+ In this implementation, RLIN31 UART is used as VUART.
 
  [Parameters]\n
  None
@@ -285,8 +253,8 @@ void sys_vuart_sendbyte(unsigned char byte_to_send)
  None
 
  [Used registers]\n
- MSRKCPROT, MSR_SCI, PKCPROT, PWE,
- SCI31SCR, SCI31SMR, SCI31SCMR, SCI31SEMR, SCI31BRR, SCI31MDDR
+ MSRKCPROT, MSR_RLIN3, PORT0PKCPROT, PORT_PWE,
+ RLIN31 UART registers, and port function control registers
 
  [Remarks]\n
  VUART is mainly used for console input/output. Make various settings according
@@ -294,21 +262,21 @@ void sys_vuart_sendbyte(unsigned char byte_to_send)
 */
 void sys_vuart_config(void)
 {
-    /* RLN35 module Active */
+    /* RLIN31 module Active */
     MSRKCPROT = 0xA5A5A501;
     MSR_RLIN3 |= 0x80000000;
-    MSR_RLIN3 &= 0xFFFFFFDF;	// RLN35
+    MSR_RLIN3 &= 0xFFFFFFFD;	// RLIN31
     MSRKCPROT = 0xA5A5A500;
 
-    /* RLN35 is configured in UART mode */
+    /* RLIN31 is configured in UART mode */
     // UART reset & disable
-    RLN35LUOER  = 0x00;
-    RLN35LCUC   = 0x00;
+    RLN31LUOER  = 0x00;
+    RLN31LCUC   = 0x00;
     
-    while (RLN35LMST != 0 );
+    while (RLN31LMST != 0 );
     
     // select UART mode
-    RLN35LMD    = 0x01;
+    RLN31LMD    = 0x01;
 
     // UART config
     // 8-bit communication
@@ -317,27 +285,27 @@ void sys_vuart_config(void)
     // Parity Disabled
     // Without RX inversion
     // Without RX inversion
-    RLN35LBFC   = 0x00;
+    RLN31LBFC   = 0x00;
 
     // disable error detection
-    RLN35LEDE   = 0x00;
+    RLN31LEDE   = 0x00;
 
     // UART Bps setup
 #define SAMPLING    6
-    /* RLN35LWB[7..4] Bit Sampling Count Select : 6 sampling */
-    /* RLN35LWB[3..1] Prescaler Clock Select    : 1/1        */ 
-    RLN35LWBR   = (SAMPLING - 1) << 4;
+    /* RLIN31LWB[7..4] Bit Sampling Count Select : 6 sampling */
+    /* RLIN31LWB[3..1] Prescaler Clock Select    : 1/1        */ 
+    RLN31LWBR   = (SAMPLING - 1) << 4;
 
-    /* RLN35LBRP01 = (PCLK /  (SYS_COM_SPEED * SAMPLING)) - 1 */
-    RLN35LBRP01 = ((VUART0_CLK * 1000 * 1000) / (SYS_COM_SPEED * SAMPLING)) - 1;
+    /* RLIN31LBRP01 = (PCLK /  (SYS_COM_SPEED * SAMPLING)) - 1 */
+    RLN31LBRP01 = ((VUART0_CLK * 1000 * 1000) / (SYS_COM_SPEED * SAMPLING)) - 1;
 
     // release UART from reset
-    RLN35LCUC   = 0x01;
+    RLN31LCUC   = 0x01;
 
-    while (RLN35LMST != 1 );
+    while (RLN31LMST != 1 );
 
     // enable UART (TR + RX)
-    RLN35LUOER  = 0x03;
+    RLN31LUOER  = 0x03;
 
     /* Configure Pin Function */
 
@@ -352,11 +320,11 @@ void sys_vuart_config(void)
     EVALUATOR(0 , PIPC , PG_VUART0_TX) &=  ~(1 << Pn_VUART0_TX);
 
     /* Configure VUART0 TX port */
-    /* ALT_OUT5    */
+    /* ALT_OUT3    */
     /*  PFC    = 0 */
-    /*  PFCE   = 0 */
-    /*  PFCAE  = 1 */
-    /*  PFCEAE = 0 ( not supported by HW ) */
+    /*  PFCE   = 1 */
+    /*  PFCAE  = 0 */
+    /*  PFCEAE = 0 */
     /*  PMC    = 1 */
     /*  PM     = 0 */
     EVALUATOR(0 , PFC   , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
@@ -367,18 +335,19 @@ void sys_vuart_config(void)
     EVALUATOR(0 , PM    , PG_VUART0_TX) &= ~(1 << Pn_VUART0_TX);
 
     /* Configure VUART0 RX port */
-    /* ALT_IN6     */
-    /*  PFC    = 1 */
+    /* ALT_IN5     */
+    /*  PFC    = 0 */
     /*  PFCE   = 0 */
     /*  PFCAE  = 1 */
-    /*  PFCEAE = 0 ( not supported by HW ) */
+    /*  PFCEAE = 0 */
     /*  PMC    = 1 */
     /*  PM     = 1 */
     EVALUATOR(0 , PFC   , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
     EVALUATOR(0 , PFCE  , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
     EVALUATOR(0 , PFCAE , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
     EVALUATOR(0 , PFCEAE , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
-    EVALUATOR(0 , PIBC , PG_VUART0_RX) |= (1 << Pn_VUART0_RX);
+    /* Hardware manual section 2.5.5 requires PIBC=0 for alternative input mode. */
+    EVALUATOR(0 , PIBC , PG_VUART0_RX) &= ~(1 << Pn_VUART0_RX);
     EVALUATOR(0 , PMC   , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
     EVALUATOR(0 , PM    , PG_VUART0_RX) |=  (1 << Pn_VUART0_RX);
 

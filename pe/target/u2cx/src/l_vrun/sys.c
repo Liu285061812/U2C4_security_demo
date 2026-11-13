@@ -34,18 +34,18 @@
 // ************************************************************************************************************************
 /*
 
-    - RH850/U2B resource mapping:
-        - VUART0    -> RLIN30
-                       RLIN30TX -> P22.11 -> connecting to UART0TX on main board
-                       RLIN30RX -> P22.12 -> connecting to UART0RX on main board
+    - RH850/U2C PE1 UART mapping:
+        - VUART0    -> RLIN31
+                       RLIN31TX -> P17_2 -> connecting to UART0TX on main board
+                       RLIN31RX -> P17_3 -> connecting to UART0RX on main board
 
         - VPORT0    -> P21.5  -> connecting to LED7  on main board (CN1 DIGIO_3)
         - VPORT1    -> P21.4  -> connecting to LED8  on main board (CN1 DIGIO_2)
         - VPORT2    -> P21.3  -> connecting to LED9  on main board (CN1 DIGIO_1)
         - VPORT3    -> P21.2  -> connecting to LED10 on main board (CN1 DIGIO_0)
 
-        - VTIMER0   -> OSTIM 0 
-        - VTIMER1   -> OSTIM 1
+        - VTIMER0   -> OSTM0
+        - VTIMER1   -> OSTM1
 
 */
 
@@ -647,7 +647,7 @@ void sys_clock_maxfreq(void)
 }
 // ************************************************************************************************************************
 // VTIMER0 timer management
-//      - VTIMER0   -> TAUJ0.0
+//      - VTIMER0   -> OSTM0
 // 
 // ************************************************************************************************************************
 

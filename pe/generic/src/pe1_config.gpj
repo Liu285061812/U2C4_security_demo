@@ -26,14 +26,15 @@
 
 [Merged Library]
 
-    :binDirRelative=../${pe_relative}${target_folder}/build/out/pe1/
+	:binDirRelative=../${pe_relative}${target_folder}/build/out/pe1/
 
-    -o libpe1.a
+	-o libpe1.a
 
-{ !cfg_build_hello } pe1/pe1_lib.gpj                [Merged Library]
-icumif_lib/icumif_lib.gpj                           [Merged Library]
-{ cfg_build_hello  } l_vrun/l_vrun_hello.gpj        [Merged Library]
-{ !cfg_build_hello } l_vrun/l_vrun.gpj              [Merged Library]
-{ cfg_build_hello  } comm_drv/d_comm_pe.gpj         [Merged Library]
-{ !cfg_build_hello } ../${pe_relative}${target_folder}/src/driver/comm_drv/d_comm_pe.gpj    [Merged Library]
+pe1\set_csa.c
+{ !cfg_build_hello } pe1/pe1_lib.gpj		[Merged Library]
+icumif_lib/icumif_lib.gpj		[Merged Library]
+{ cfg_build_hello  } l_vrun/l_vrun_hello.gpj		[Merged Library]
+{ !cfg_build_hello } l_vrun/l_vrun.gpj		[Merged Library]
+{ cfg_build_hello  } comm_drv/d_comm_pe.gpj		[Merged Library]
+{ !cfg_build_hello } ../${pe_relative}${target_folder}/src/driver/comm_drv/d_comm_pe.gpj		[Merged Library]
 

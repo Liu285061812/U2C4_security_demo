@@ -24,34 +24,34 @@
 #* Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
 #***********************************************************************************************************************
 
+
 macro cfg_peid=1
-
 [Core]
-    :binDirRelative=${pe_relative}${target_folder}/build/out/pe1/
-    :outputDirRelative=${pe_relative}${target_folder}/build/obj/pe1/
+	:binDirRelative=${pe_relative}${target_folder}/build/out/pe1/
+	:outputDirRelative=${pe_relative}${target_folder}/build/obj/pe1/
 
-    { isdefined(cfg_peid) }             -D_PEID_=${cfg_peid}
+	{ isdefined(cfg_peid) } -D_PEID_=${cfg_peid}
 #    { cfg_build_icumifram } -DFW_UPDATE_USED 
 
-    -Omaxdebug
-    -G
-    -I.
-    -list
-    -map
-    -cpu=rh850g4kh
+	-Omaxdebug
+	-G
+	-I.
+	-list
+	-map
+	-cpu=rh850g4kh
 
-    -u _main
-    -u __unused_isr
+	-u _main
+	-u __unused_isr
 
-    -L${pe_relative}${target_folder}/build/out/pe1/
-    -lpe1
+	-L${pe_relative}${target_folder}/build/out/pe1/
+	-lpe1
 
-    -fsingle
-    -no_delete
-    -Ma
-    -nochecksum
+	-fsingle
+	-no_delete
+	-Ma
+	-nochecksum
 
-src/pe1_config.gpj      [Merged Library]
+src/pe1_config.gpj		[Merged Library]
 
 { cfg_build_hello  } ${pe_relative}${target_folder}/config/pe1.ld
 { !cfg_build_hello } ${pe_relative}${target_folder}/config/${target_device}/pe1.ld

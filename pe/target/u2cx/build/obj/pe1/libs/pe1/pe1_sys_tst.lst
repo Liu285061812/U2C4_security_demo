@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.dbo -source=pe1_sys_tst.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000r2o1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.dbo -source=pe1_sys_tst.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000b7k1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
 Source File: pe1_sys_tst.c
 Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
 Host OS: Windows
@@ -33,650 +33,653 @@ Release Date: Wed Sep 06 02:00:00 2023
                           18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
                           19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
                           20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
-                          21 --		-D_TARG_=U2C4 -filetype.c
-                          22 --		..\..\pe\generic\src\pe1\src\pe1_sys_tst.c -o
-                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.o
-                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_sys_tst.c
-                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
-                          26 --Compile Date:  Wed Nov 11 14:39:25 2026
-                          27 --Host OS:       Win64
-                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
-                          29 --Release:       Compiler v2023.5.4
-                          30 --Revision Date: Wed Sep 06 02:44:56 2023
-                          31 --Release Date:  Wed Sep 06 02:00:00 2023
-                          32 -- ecom  -g -w
-                          33 
-                          34 --1: /******************************************************************************/
-                          35 --2: /* Component Name   Testing the ICU-M                                         */
-                          36 --3: /******************************************************************************/
-                          37 --4: /* Product      : ICU-M Firmware                                              */
-                          38 --5: /******************************************************************************/
-                          39 --6: /*******************************************************************************
-                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
-                          41 --8: *                                                                               
-                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
-                          43 --10: *                                                                               
-                          44 --11: * These instructions, statements, and programs are the confidential information 
-                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
-                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
-                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
-                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
-                          49 --16: *******************************************************************************/
-                          50 --18: // ********************************************************************************
+                          21 --		-D_TARG_=U2C4 -DPE1_TEST_AES_KEY_SETUP=1 -DPE1_TEST_AES_CIPHER=1
+                          22 --		-DPE1_TEST_AES_AUTH=1 -DPE1_TEST_AES_CMAC=1
+                          23 --		-DPE1_TEST_RSA_KEY_GENERATE=1 -DPE1_TEST_RSA_CRYPT=1
+                          24 --		-DPE1_TEST_RSA_SIGNATURE=1 -filetype.c
+                          25 --		..\..\pe\generic\src\pe1\src\pe1_sys_tst.c -o
+                          26 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_sys_tst.o
+                          27 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_sys_tst.c
+                          28 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          29 --Compile Date:  Wed Nov 11 16:27:17 2026
+                          30 --Host OS:       Win64
+                          31 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          32 --Release:       Compiler v2023.5.4
+                          33 --Revision Date: Wed Sep 06 02:44:56 2023
+                          34 --Release Date:  Wed Sep 06 02:00:00 2023
+                          35 -- ecom  -g -w
+                          36 
+                          37 --1: /******************************************************************************/
+                          38 --2: /* Component Name   Testing the ICU-M                                         */
+                          39 --3: /******************************************************************************/
+                          40 --4: /* Product      : ICU-M Firmware                                              */
+                          41 --5: /******************************************************************************/
+                          42 --6: /*******************************************************************************
+                          43 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          44 --8: *                                                                               
+                          45 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          46 --10: *                                                                               
+                          47 --11: * These instructions, statements, and programs are the confidential information 
+                          48 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          49 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          50 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                          51 --19: // Headers
-                          52 --20: // ********************************************************************************
-                          53 --22: #include <stdio.h>
-                          54 --23: #include <string.h>
-                          55 --25: #undef NULL
-                          56 --26: #include "r_icumif_api.h"
-                          57 --27: #include "r_icumif_pub.h"
-                          58 --29: #include "icum_d_comm_pe_pub.h"
-                          59 --31: #include "pe1.h"
-                          60 --32: #include "pe1.int.h"
-                          61 --33: #include "shared.h"
-                          62 --35: #include "vrun.api.h"
-                          63 --36: #include "pe_reg.h"
-                          64 --38: #include "renesas_types.h"
-                          65 --40: void icum_garbage_collection_all(void)
-                          66 	.text
-                          67 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_sys_tst...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40DA1..0::
-                          68 	.align	2
-                          69 	.align	2
-                          70 ..gh.f.a.2.e.0:
-                          71 	.type	..gh.f.a.2.e.0,@object
-                          72 	.size	..gh.f.a.2.e.0,0
-                          73 	.global	_icum_garbage_collection_all
-                          74 _icum_garbage_collection_all:
-00000000 581a             75 	add	-8,sp
-00000002 63ff0500         76 	st.w	lp,4[sp]
-00000006 63ef0100         77 	st.w	r29,0[sp]
-                          78 --	    .bf
-                          79 .LDW01:
-                          80 --41: {
-                          81 --42:     r_icumif_isd_t *p_ISD;
-                          82 --44:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
-0000000a 3d0600000000*    83 	mov	_ISD_BUFFER,r29
-                          84 --46:     printf("\nTesting garbage collection all block...\n\n");
-                          85 --line46
-                          86 ..lin.2fab8d99..ec92041d.0_1::
-                          87 .LDWlin1:
-00000010 260600000000*    88 	mov	_vrun_printf_buff,r6
-00000016 270600000000*    89 	mov	.L141,r7
-                          90 .L174:
-                          91 	jarl	_sprintf,lp
-                          91 <EXPANSION BEGIN>
-                          91 jarl22 _sprintf , lp 
-0000001c 80ff0000*        91 <EXPANSION END>
-                          92 --line46
-                          93 ..lin.2fab8d99..ec92041d.0_2::
-                          94 .LDWlin2:
-00000020 260600000000*    95 	mov	_vrun_printf_buff,r6
-                          96 .L176:
-                          97 	jarl	_vrun_iobuff_print_txt,lp
-                          97 <EXPANSION BEGIN>
-                          97 jarl22 _vrun_iobuff_print_txt , lp 
-00000026 80ff0000*        97 <EXPANSION END>
-                          98 .L178:
-                          99 --line46
-                         100 ..lin.2fab8d99..ec92041d.0_3::
-                         101 .LDWlin3:
-                         102 	jarl	_vrun_console_put,lp
-                         102 <EXPANSION BEGIN>
-                         102 jarl22 _vrun_console_put , lp 
-0000002a 80ff0000*       102 <EXPANSION END>
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                          51 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          52 --16: *******************************************************************************/
+                          53 --18: // ********************************************************************************
+                          54 --19: // Headers
+                          55 --20: // ********************************************************************************
+                          56 --22: #include <stdio.h>
+                          57 --23: #include <string.h>
+                          58 --25: #undef NULL
+                          59 --26: #include "r_icumif_api.h"
+                          60 --27: #include "r_icumif_pub.h"
+                          61 --29: #include "icum_d_comm_pe_pub.h"
+                          62 --31: #include "pe1.h"
+                          63 --32: #include "pe1.int.h"
+                          64 --33: #include "shared.h"
+                          65 --35: #include "vrun.api.h"
+                          66 --36: #include "pe_reg.h"
+                          67 --38: #include "renesas_types.h"
+                          68 --40: void icum_garbage_collection_all(void)
+                          69 	.text
+                          70 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_sys_tst...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                          71 	.align	2
+                          72 	.align	2
+                          73 ..gh.f.a.2.e.0:
+                          74 	.type	..gh.f.a.2.e.0,@object
+                          75 	.size	..gh.f.a.2.e.0,0
+                          76 	.global	_icum_garbage_collection_all
+                          77 _icum_garbage_collection_all:
+00000000 581a             78 	add	-8,sp
+00000002 63ff0500         79 	st.w	lp,4[sp]
+00000006 63ef0100         80 	st.w	r29,0[sp]
+                          81 --	    .bf
+                          82 .LDW01:
+                          83 --41: {
+                          84 --42:     r_icumif_isd_t *p_ISD;
+                          85 --44:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+0000000a 3d0600000000*    86 	mov	_ISD_BUFFER,r29
+                          87 --46:     printf("\nTesting garbage collection all block...\n\n");
+                          88 --line46
+                          89 ..lin.2fab8d99..ec92041d.0_1::
+                          90 .LDWlin1:
+00000010 260600000000*    91 	mov	_vrun_printf_buff,r6
+00000016 270600000000*    92 	mov	.L141,r7
+                          93 .L174:
+                          94 	jarl	_sprintf,lp
+                          94 <EXPANSION BEGIN>
+                          94 jarl22 _sprintf , lp 
+0000001c 80ff0000*        94 <EXPANSION END>
+                          95 --line46
+                          96 ..lin.2fab8d99..ec92041d.0_2::
+                          97 .LDWlin2:
+00000020 260600000000*    98 	mov	_vrun_printf_buff,r6
+                          99 .L176:
+                         100 	jarl	_vrun_iobuff_print_txt,lp
+                         100 <EXPANSION BEGIN>
+                         100 jarl22 _vrun_iobuff_print_txt , lp 
+00000026 80ff0000*       100 <EXPANSION END>
+                         101 .L178:
+                         102 --line46
+                         103 ..lin.2fab8d99..ec92041d.0_3::
+                         104 .LDWlin3:
+                         105 	jarl	_vrun_console_put,lp
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         103 --line46
-                         104 ..lin.2fab8d99..ec92041d.0_4::
-                         105 .LDWlin4:
-0000002e 0000            106 	nop
-                         107 --48:     p_ISD->service_id               = SERVICE_04_ICUMDF_GC;
-00000030 200e4000        108 	movea	64,zero,r1
-00000034 7d0f0100        109 	st.w	r1,0[r29]
-                         110 --49:     p_ISD->p_callbackfunc           = 0;
-00000038 7d071900        111 	st.w	zero,24[r29]
-                         112 --50:     p_ISD->job_id                   = 0;
-0000003c 7d071200        113 	st.h	zero,18[r29]
-                         114 --51:     p_ISD->prm.SECURE_FLASH_MGMT.gc_operation   = GC_ALL_BLOCK;
-00000040 010a            115 	mov	1,r1
-00000042 7d0f2100        116 	st.w	r1,32[r29]
-                         117 --53:     vrun_chrono_start();
-                         118 .L180:
-                         119 	jarl	_vrun_chrono_start,lp
-                         119 <EXPANSION BEGIN>
-                         119 jarl22 _vrun_chrono_start , lp 
-00000046 80ff0000*       119 <EXPANSION END>
-                         120 --54:     trigger_service_and_wait(p_ISD);
-                         121 --line54
-                         122 ..lin.2fab8d99..ec92041d.0_5::
-                         123 .LDWlin5:
-0000004a 1d30            124 	mov	r29,r6
-                         125 .L182:
-                         126 	jarl	_trigger_service_and_wait,lp
-                         126 <EXPANSION BEGIN>
-                         126 jarl22 _trigger_service_and_wait , lp 
-0000004c 80ff0000*       126 <EXPANSION END>
-                         127 --55:     vrun_chrono_stop();
-                         128 .L184:
-                         129 --line55
-                         130 ..lin.2fab8d99..ec92041d.0_6::
-                         131 .LDWlin6:
-                         132 	jarl	_vrun_chrono_stop,lp
-                         132 <EXPANSION BEGIN>
-                         132 jarl22 _vrun_chrono_stop , lp 
-00000050 80ff0000*       132 <EXPANSION END>
-                         133 --57:     vrun_chrono_gettimestamp();
-                         134 .L186:
-                         135 --line57
-                         136 ..lin.2fab8d99..ec92041d.0_7::
-                         137 .LDWlin7:
-                         138 	jarl	_vrun_chrono_gettimestamp,lp
-                         138 <EXPANSION BEGIN>
-                         138 jarl22 _vrun_chrono_gettimestamp , lp 
-00000054 80ff0000*       138 <EXPANSION END>
-                         139 --58:     printf("Processed in : "); PCHRONO(); NL(); NL(); FLUSH();
-                         140 --line58
-                         141 ..lin.2fab8d99..ec92041d.0_8::
-                         142 .LDWlin8:
-00000058 260600000000*   143 	mov	_vrun_printf_buff,r6
-0000005e 270600000000*   144 	mov	.L140,r7
-                         145 .L188:
-                         146 	jarl	_sprintf,lp
-                         146 <EXPANSION BEGIN>
-                         146 jarl22 _sprintf , lp 
-00000064 80ff0000*       146 <EXPANSION END>
-                         147 --line58
-                         148 ..lin.2fab8d99..ec92041d.0_9::
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                         105 <EXPANSION BEGIN>
+                         105 jarl22 _vrun_console_put , lp 
+0000002a 80ff0000*       105 <EXPANSION END>
+                         106 --line46
+                         107 ..lin.2fab8d99..ec92041d.0_4::
+                         108 .LDWlin4:
+0000002e 0000            109 	nop
+                         110 --48:     p_ISD->service_id               = SERVICE_04_ICUMDF_GC;
+00000030 200e4000        111 	movea	64,zero,r1
+00000034 7d0f0100        112 	st.w	r1,0[r29]
+                         113 --49:     p_ISD->p_callbackfunc           = 0;
+00000038 7d071900        114 	st.w	zero,24[r29]
+                         115 --50:     p_ISD->job_id                   = 0;
+0000003c 7d071200        116 	st.h	zero,18[r29]
+                         117 --51:     p_ISD->prm.SECURE_FLASH_MGMT.gc_operation   = GC_ALL_BLOCK;
+00000040 010a            118 	mov	1,r1
+00000042 7d0f2100        119 	st.w	r1,32[r29]
+                         120 --53:     vrun_chrono_start();
+                         121 .L180:
+                         122 	jarl	_vrun_chrono_start,lp
+                         122 <EXPANSION BEGIN>
+                         122 jarl22 _vrun_chrono_start , lp 
+00000046 80ff0000*       122 <EXPANSION END>
+                         123 --54:     trigger_service_and_wait(p_ISD);
+                         124 --line54
+                         125 ..lin.2fab8d99..ec92041d.0_5::
+                         126 .LDWlin5:
+0000004a 1d30            127 	mov	r29,r6
+                         128 .L182:
+                         129 	jarl	_trigger_service_and_wait,lp
+                         129 <EXPANSION BEGIN>
+                         129 jarl22 _trigger_service_and_wait , lp 
+0000004c 80ff0000*       129 <EXPANSION END>
+                         130 --55:     vrun_chrono_stop();
+                         131 .L184:
+                         132 --line55
+                         133 ..lin.2fab8d99..ec92041d.0_6::
+                         134 .LDWlin6:
+                         135 	jarl	_vrun_chrono_stop,lp
+                         135 <EXPANSION BEGIN>
+                         135 jarl22 _vrun_chrono_stop , lp 
+00000050 80ff0000*       135 <EXPANSION END>
+                         136 --57:     vrun_chrono_gettimestamp();
+                         137 .L186:
+                         138 --line57
+                         139 ..lin.2fab8d99..ec92041d.0_7::
+                         140 .LDWlin7:
+                         141 	jarl	_vrun_chrono_gettimestamp,lp
+                         141 <EXPANSION BEGIN>
+                         141 jarl22 _vrun_chrono_gettimestamp , lp 
+00000054 80ff0000*       141 <EXPANSION END>
+                         142 --58:     printf("Processed in : "); PCHRONO(); NL(); NL(); FLUSH();
+                         143 --line58
+                         144 ..lin.2fab8d99..ec92041d.0_8::
+                         145 .LDWlin8:
+00000058 260600000000*   146 	mov	_vrun_printf_buff,r6
+0000005e 270600000000*   147 	mov	.L140,r7
+                         148 .L188:
+                         149 	jarl	_sprintf,lp
+                         149 <EXPANSION BEGIN>
+                         149 jarl22 _sprintf , lp 
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         149 .LDWlin9:
-00000068 260600000000*   150 	mov	_vrun_printf_buff,r6
-                         151 .L190:
-                         152 	jarl	_vrun_iobuff_print_txt,lp
-                         152 <EXPANSION BEGIN>
-                         152 jarl22 _vrun_iobuff_print_txt , lp 
-0000006e 80ff0000*       152 <EXPANSION END>
-                         153 .L192:
-                         154 --line58
-                         155 ..lin.2fab8d99..ec92041d.0_10::
-                         156 .LDWlin10:
-                         157 	jarl	_vrun_console_put,lp
-                         157 <EXPANSION BEGIN>
-                         157 jarl22 _vrun_console_put , lp 
-00000072 80ff0000*       157 <EXPANSION END>
-                         158 .L194:
-                         159 --line58
-                         160 ..lin.2fab8d99..ec92041d.0_11::
-                         161 .LDWlin11:
-                         162 	jarl	_vrun_iobuff_print_chrono,lp
-                         162 <EXPANSION BEGIN>
-                         162 jarl22 _vrun_iobuff_print_chrono , lp 
-00000076 80ff0000*       162 <EXPANSION END>
-                         163 --line58
-                         164 ..lin.2fab8d99..ec92041d.0_12::
-                         165 .LDWlin12:
-0000007a 260600000000*   166 	mov	.L139,r6
-                         167 .L196:
-                         168 	jarl	_vrun_iobuff_print_txt,lp
-                         168 <EXPANSION BEGIN>
-                         168 jarl22 _vrun_iobuff_print_txt , lp 
-00000080 80ff0000*       168 <EXPANSION END>
-                         169 --line58
-                         170 ..lin.2fab8d99..ec92041d.0_13::
-                         171 .LDWlin13:
-00000084 260600000000*   172 	mov	.L139,r6
-                         173 .L198:
-                         174 	jarl	_vrun_iobuff_print_txt,lp
-                         174 <EXPANSION BEGIN>
-                         174 jarl22 _vrun_iobuff_print_txt , lp 
-0000008a 80ff0000*       174 <EXPANSION END>
-                         175 .L200:
-                         176 --line58
-                         177 ..lin.2fab8d99..ec92041d.0_14::
-                         178 .LDWlin14:
-                         179 	jarl	_vrun_console_put,lp
-                         179 <EXPANSION BEGIN>
-                         179 jarl22 _vrun_console_put , lp 
-0000008e 80ff0000*       179 <EXPANSION END>
-                         180 --60:     printf("\nDone!\n");
-                         181 --line60
-                         182 ..lin.2fab8d99..ec92041d.0_15::
-                         183 .LDWlin15:
-00000092 260600000000*   184 	mov	_vrun_printf_buff,r6
-00000098 270600000000*   185 	mov	.L138,r7
-                         186 .L202:
-                         187 	jarl	_sprintf,lp
-                         187 <EXPANSION BEGIN>
-                         187 jarl22 _sprintf , lp 
-0000009e 80ff0000*       187 <EXPANSION END>
-                         188 --line60
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+00000064 80ff0000*       149 <EXPANSION END>
+                         150 --line58
+                         151 ..lin.2fab8d99..ec92041d.0_9::
+                         152 .LDWlin9:
+00000068 260600000000*   153 	mov	_vrun_printf_buff,r6
+                         154 .L190:
+                         155 	jarl	_vrun_iobuff_print_txt,lp
+                         155 <EXPANSION BEGIN>
+                         155 jarl22 _vrun_iobuff_print_txt , lp 
+0000006e 80ff0000*       155 <EXPANSION END>
+                         156 .L192:
+                         157 --line58
+                         158 ..lin.2fab8d99..ec92041d.0_10::
+                         159 .LDWlin10:
+                         160 	jarl	_vrun_console_put,lp
+                         160 <EXPANSION BEGIN>
+                         160 jarl22 _vrun_console_put , lp 
+00000072 80ff0000*       160 <EXPANSION END>
+                         161 .L194:
+                         162 --line58
+                         163 ..lin.2fab8d99..ec92041d.0_11::
+                         164 .LDWlin11:
+                         165 	jarl	_vrun_iobuff_print_chrono,lp
+                         165 <EXPANSION BEGIN>
+                         165 jarl22 _vrun_iobuff_print_chrono , lp 
+00000076 80ff0000*       165 <EXPANSION END>
+                         166 --line58
+                         167 ..lin.2fab8d99..ec92041d.0_12::
+                         168 .LDWlin12:
+0000007a 260600000000*   169 	mov	.L139,r6
+                         170 .L196:
+                         171 	jarl	_vrun_iobuff_print_txt,lp
+                         171 <EXPANSION BEGIN>
+                         171 jarl22 _vrun_iobuff_print_txt , lp 
+00000080 80ff0000*       171 <EXPANSION END>
+                         172 --line58
+                         173 ..lin.2fab8d99..ec92041d.0_13::
+                         174 .LDWlin13:
+00000084 260600000000*   175 	mov	.L139,r6
+                         176 .L198:
+                         177 	jarl	_vrun_iobuff_print_txt,lp
+                         177 <EXPANSION BEGIN>
+                         177 jarl22 _vrun_iobuff_print_txt , lp 
+0000008a 80ff0000*       177 <EXPANSION END>
+                         178 .L200:
+                         179 --line58
+                         180 ..lin.2fab8d99..ec92041d.0_14::
+                         181 .LDWlin14:
+                         182 	jarl	_vrun_console_put,lp
+                         182 <EXPANSION BEGIN>
+                         182 jarl22 _vrun_console_put , lp 
+0000008e 80ff0000*       182 <EXPANSION END>
+                         183 --60:     printf("\nDone!\n");
+                         184 --line60
+                         185 ..lin.2fab8d99..ec92041d.0_15::
+                         186 .LDWlin15:
+00000092 260600000000*   187 	mov	_vrun_printf_buff,r6
+00000098 270600000000*   188 	mov	.L138,r7
+                         189 .L202:
+                         190 	jarl	_sprintf,lp
+                         190 <EXPANSION BEGIN>
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         189 ..lin.2fab8d99..ec92041d.0_16::
-                         190 .LDWlin16:
-000000a2 260600000000*   191 	mov	_vrun_printf_buff,r6
-                         192 .L204:
-                         193 	jarl	_vrun_iobuff_print_txt,lp
-                         193 <EXPANSION BEGIN>
-                         193 jarl22 _vrun_iobuff_print_txt , lp 
-000000a8 80ff0000*       193 <EXPANSION END>
-                         194 .L206:
-                         195 --line60
-                         196 ..lin.2fab8d99..ec92041d.0_17::
-                         197 .LDWlin17:
-                         198 	jarl	_vrun_console_put,lp
-                         198 <EXPANSION BEGIN>
-                         198 jarl22 _vrun_console_put , lp 
-000000ac 80ff0000*       198 <EXPANSION END>
-                         199 --line60
-                         200 ..lin.2fab8d99..ec92041d.0_18::
-                         201 .LDWlin18:
-000000b0 0000            202 	nop
-                         203 --61: }
-                         204 --	    .ef
-                         205 .LDW11:
-000000b2 23ff0500        206 	ld.w	4[sp],lp
-000000b6 23ef0100        207 	ld.w	0[sp],r29
-000000ba 481a            208 	add	8,sp
-                         209 .L208:
-                         210 	.jumptype return
-000000bc 7f00            211 	jmp	[lp]
-                         212 --line60
-                         213 ..lin.2fab8d99..ec92041d.0_19::
-                         214 	.type	_icum_garbage_collection_all,@function
-                         215 	.size	_icum_garbage_collection_all,.-_icum_garbage_collection_all
-                         216 	.align	2
-                         217 --_p_ISD	r29	local
-                         218 
-                         219 	.section ".rodata","a"
-                         220 .L138:--	"\nDone!\n"
-00000000 0a446f6e        221 	.byte	10,68,111,110
-00000004 65210a00        222 	.byte	101,33,10,0
-                         223 	.type	.L138,@object
-                         224 	.size	.L138,8
-                         225 .L139:--	"\r\n"
-00000008 0d0a            226 	.byte	13,10
-0000000a 00              227 	.byte	0
-                         228 	.type	.L139,@object
-                         229 	.size	.L139,3
-                         230 .L140:--	"Processed in : "
-0000000b 50726f63        231 	.byte	80,114,111,99
-0000000f 65737365        232 	.byte	101,115,115,101
-00000013 6420696e        233 	.byte	100,32,105,110
-00000017 203a2000        234 	.byte	32,58,32,0
-                         235 	.type	.L140,@object
-                         236 	.size	.L140,16
-                         237 .L141:--	"\nTesting garbage collection all block...\n\n"
-0000001b 0a546573        238 	.byte	10,84,101,115
-0000001f 74696e67        239 	.byte	116,105,110,103
-00000023 20676172        240 	.byte	32,103,97,114
-00000027 62616765        241 	.byte	98,97,103,101
-0000002b 20636f6c        242 	.byte	32,99,111,108
-0000002f 6c656374        243 	.byte	108,101,99,116
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                         190 jarl22 _sprintf , lp 
+0000009e 80ff0000*       190 <EXPANSION END>
+                         191 --line60
+                         192 ..lin.2fab8d99..ec92041d.0_16::
+                         193 .LDWlin16:
+000000a2 260600000000*   194 	mov	_vrun_printf_buff,r6
+                         195 .L204:
+                         196 	jarl	_vrun_iobuff_print_txt,lp
+                         196 <EXPANSION BEGIN>
+                         196 jarl22 _vrun_iobuff_print_txt , lp 
+000000a8 80ff0000*       196 <EXPANSION END>
+                         197 .L206:
+                         198 --line60
+                         199 ..lin.2fab8d99..ec92041d.0_17::
+                         200 .LDWlin17:
+                         201 	jarl	_vrun_console_put,lp
+                         201 <EXPANSION BEGIN>
+                         201 jarl22 _vrun_console_put , lp 
+000000ac 80ff0000*       201 <EXPANSION END>
+                         202 --line60
+                         203 ..lin.2fab8d99..ec92041d.0_18::
+                         204 .LDWlin18:
+000000b0 0000            205 	nop
+                         206 --61: }
+                         207 --	    .ef
+                         208 .LDW11:
+000000b2 23ff0500        209 	ld.w	4[sp],lp
+000000b6 23ef0100        210 	ld.w	0[sp],r29
+000000ba 481a            211 	add	8,sp
+                         212 .L208:
+                         213 	.jumptype return
+000000bc 7f00            214 	jmp	[lp]
+                         215 --line60
+                         216 ..lin.2fab8d99..ec92041d.0_19::
+                         217 	.type	_icum_garbage_collection_all,@function
+                         218 	.size	_icum_garbage_collection_all,.-_icum_garbage_collection_all
+                         219 	.align	2
+                         220 --_p_ISD	r29	local
+                         221 
+                         222 	.section ".rodata","a"
+                         223 .L138:--	"\nDone!\n"
+00000000 0a446f6e        224 	.byte	10,68,111,110
+00000004 65210a00        225 	.byte	101,33,10,0
+                         226 	.type	.L138,@object
+                         227 	.size	.L138,8
+                         228 .L139:--	"\r\n"
+00000008 0d0a            229 	.byte	13,10
+0000000a 00              230 	.byte	0
+                         231 	.type	.L139,@object
+                         232 	.size	.L139,3
+                         233 .L140:--	"Processed in : "
+0000000b 50726f63        234 	.byte	80,114,111,99
+0000000f 65737365        235 	.byte	101,115,115,101
+00000013 6420696e        236 	.byte	100,32,105,110
+00000017 203a2000        237 	.byte	32,58,32,0
+                         238 	.type	.L140,@object
+                         239 	.size	.L140,16
+                         240 .L141:--	"\nTesting garbage collection all block...\n\n"
+0000001b 0a546573        241 	.byte	10,84,101,115
+0000001f 74696e67        242 	.byte	116,105,110,103
+00000023 20676172        243 	.byte	32,103,97,114
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-00000033 696f6e20        244 	.byte	105,111,110,32
-00000037 616c6c20        245 	.byte	97,108,108,32
-0000003b 626c6f63        246 	.byte	98,108,111,99
-0000003f 6b2e2e2e        247 	.byte	107,46,46,46
-00000043 0a0a            248 	.byte	10,10
-00000045 00              249 	.byte	0
-                         250 	.type	.L141,@object
-                         251 	.size	.L141,43
-                         252 	.section ".ghcalltbl",""
-                         253 	.align	4
-00000000 00000000*       254 .L175:	.word	.L174
-                         255 	.type	.L175,@object
-                         256 	.size	.L175,4
-00000004 00000000*       257 .L177:	.word	.L176
-                         258 	.type	.L177,@object
-                         259 	.size	.L177,4
-00000008 00000000*       260 .L179:	.word	.L178
-                         261 	.type	.L179,@object
-                         262 	.size	.L179,4
-0000000c 00000000*       263 .L181:	.word	.L180
-                         264 	.type	.L181,@object
-                         265 	.size	.L181,4
-00000010 00000000*       266 .L183:	.word	.L182
-                         267 	.type	.L183,@object
-                         268 	.size	.L183,4
-00000014 00000000*       269 .L185:	.word	.L184
-                         270 	.type	.L185,@object
-                         271 	.size	.L185,4
-00000018 00000000*       272 .L187:	.word	.L186
-                         273 	.type	.L187,@object
-                         274 	.size	.L187,4
-0000001c 00000000*       275 .L189:	.word	.L188
-                         276 	.type	.L189,@object
-                         277 	.size	.L189,4
-00000020 00000000*       278 .L191:	.word	.L190
-                         279 	.type	.L191,@object
-                         280 	.size	.L191,4
-00000024 00000000*       281 .L193:	.word	.L192
-                         282 	.type	.L193,@object
-                         283 	.size	.L193,4
-00000028 00000000*       284 .L195:	.word	.L194
-                         285 	.type	.L195,@object
-                         286 	.size	.L195,4
-0000002c 00000000*       287 .L197:	.word	.L196
-                         288 	.type	.L197,@object
-                         289 	.size	.L197,4
-00000030 00000000*       290 .L199:	.word	.L198
-                         291 	.type	.L199,@object
-                         292 	.size	.L199,4
-00000034 00000000*       293 .L201:	.word	.L200
-                         294 	.type	.L201,@object
-                         295 	.size	.L201,4
-00000038 00000000*       296 .L203:	.word	.L202
-                         297 	.type	.L203,@object
-                         298 	.size	.L203,4
-0000003c 00000000*       299 .L205:	.word	.L204
-                         300 	.type	.L205,@object
-                         301 	.size	.L205,4
-00000040 00000000*       302 .L207:	.word	.L206
-                         303 	.type	.L207,@object
-                         304 	.size	.L207,4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+00000027 62616765        244 	.byte	98,97,103,101
+0000002b 20636f6c        245 	.byte	32,99,111,108
+0000002f 6c656374        246 	.byte	108,101,99,116
+00000033 696f6e20        247 	.byte	105,111,110,32
+00000037 616c6c20        248 	.byte	97,108,108,32
+0000003b 626c6f63        249 	.byte	98,108,111,99
+0000003f 6b2e2e2e        250 	.byte	107,46,46,46
+00000043 0a0a            251 	.byte	10,10
+00000045 00              252 	.byte	0
+                         253 	.type	.L141,@object
+                         254 	.size	.L141,43
+                         255 	.section ".ghcalltbl",""
+                         256 	.align	4
+00000000 00000000*       257 .L175:	.word	.L174
+                         258 	.type	.L175,@object
+                         259 	.size	.L175,4
+00000004 00000000*       260 .L177:	.word	.L176
+                         261 	.type	.L177,@object
+                         262 	.size	.L177,4
+00000008 00000000*       263 .L179:	.word	.L178
+                         264 	.type	.L179,@object
+                         265 	.size	.L179,4
+0000000c 00000000*       266 .L181:	.word	.L180
+                         267 	.type	.L181,@object
+                         268 	.size	.L181,4
+00000010 00000000*       269 .L183:	.word	.L182
+                         270 	.type	.L183,@object
+                         271 	.size	.L183,4
+00000014 00000000*       272 .L185:	.word	.L184
+                         273 	.type	.L185,@object
+                         274 	.size	.L185,4
+00000018 00000000*       275 .L187:	.word	.L186
+                         276 	.type	.L187,@object
+                         277 	.size	.L187,4
+0000001c 00000000*       278 .L189:	.word	.L188
+                         279 	.type	.L189,@object
+                         280 	.size	.L189,4
+00000020 00000000*       281 .L191:	.word	.L190
+                         282 	.type	.L191,@object
+                         283 	.size	.L191,4
+00000024 00000000*       284 .L193:	.word	.L192
+                         285 	.type	.L193,@object
+                         286 	.size	.L193,4
+00000028 00000000*       287 .L195:	.word	.L194
+                         288 	.type	.L195,@object
+                         289 	.size	.L195,4
+0000002c 00000000*       290 .L197:	.word	.L196
+                         291 	.type	.L197,@object
+                         292 	.size	.L197,4
+00000030 00000000*       293 .L199:	.word	.L198
+                         294 	.type	.L199,@object
+                         295 	.size	.L199,4
+00000034 00000000*       296 .L201:	.word	.L200
+                         297 	.type	.L201,@object
+                         298 	.size	.L201,4
+00000038 00000000*       299 .L203:	.word	.L202
+                         300 	.type	.L203,@object
+                         301 	.size	.L203,4
+0000003c 00000000*       302 .L205:	.word	.L204
+                         303 	.type	.L205,@object
+                         304 	.size	.L205,4
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         305 	.section ".ghrettbl",""
-                         306 	.align	4
-00000000 00000000*       307 .L209:	.word	.L208
-                         308 	.type	.L209,@object
-                         309 	.size	.L209,4
-                         310 	.data
-                         311 	.text
-                         312 
-                         313 
-                         314 --63: void icum_garbage_collection_1block(void)
-                         315 	.align	2
-                         316 	.align	2
-                         317 	.align	2
-                         318 ..gh.f.a.2.e.1:
-                         319 	.type	..gh.f.a.2.e.1,@object
-                         320 	.size	..gh.f.a.2.e.1,0
-                         321 	.global	_icum_garbage_collection_1block
-                         322 _icum_garbage_collection_1block:
-000000be 581a            323 	add	-8,sp
-000000c0 63ff0500        324 	st.w	lp,4[sp]
-000000c4 63ef0100        325 	st.w	r29,0[sp]
-                         326 --	    .bf
-                         327 .LDW21:
-                         328 --64: {
-                         329 --65:     r_icumif_isd_t *p_ISD;
-                         330 --67:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
-000000c8 3d0600000000*   331 	mov	_ISD_BUFFER,r29
-                         332 --69:     printf("\nTesting garbage collection all block...\n\n");
-                         333 --line69
-                         334 ..lin.2fab8d99..ce8bd20.0_20::
-                         335 .LDWlin20:
-000000ce 260600000000*   336 	mov	_vrun_printf_buff,r6
-000000d4 270600000000*   337 	mov	.L141,r7
-                         338 .L378:
-                         339 	jarl	_sprintf,lp
-                         339 <EXPANSION BEGIN>
-                         339 jarl22 _sprintf , lp 
-000000da 80ff0000*       339 <EXPANSION END>
-                         340 --line69
-                         341 ..lin.2fab8d99..ce8bd20.0_21::
-                         342 .LDWlin21:
-000000de 260600000000*   343 	mov	_vrun_printf_buff,r6
-                         344 .L380:
-                         345 	jarl	_vrun_iobuff_print_txt,lp
-                         345 <EXPANSION BEGIN>
-                         345 jarl22 _vrun_iobuff_print_txt , lp 
-000000e4 80ff0000*       345 <EXPANSION END>
-                         346 .L382:
-                         347 --line69
-                         348 ..lin.2fab8d99..ce8bd20.0_22::
-                         349 .LDWlin22:
-                         350 	jarl	_vrun_console_put,lp
-                         350 <EXPANSION BEGIN>
-                         350 jarl22 _vrun_console_put , lp 
-000000e8 80ff0000*       350 <EXPANSION END>
-                         351 --line69
-                         352 ..lin.2fab8d99..ce8bd20.0_23::
-                         353 .LDWlin23:
-000000ec 0000            354 	nop
-                         355 --71:     p_ISD->service_id               = SERVICE_04_ICUMDF_GC;
-000000ee 200e4000        356 	movea	64,zero,r1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+00000040 00000000*       305 .L207:	.word	.L206
+                         306 	.type	.L207,@object
+                         307 	.size	.L207,4
+                         308 	.section ".ghrettbl",""
+                         309 	.align	4
+00000000 00000000*       310 .L209:	.word	.L208
+                         311 	.type	.L209,@object
+                         312 	.size	.L209,4
+                         313 	.data
+                         314 	.text
+                         315 
+                         316 
+                         317 --63: void icum_garbage_collection_1block(void)
+                         318 	.align	2
+                         319 	.align	2
+                         320 	.align	2
+                         321 ..gh.f.a.2.e.1:
+                         322 	.type	..gh.f.a.2.e.1,@object
+                         323 	.size	..gh.f.a.2.e.1,0
+                         324 	.global	_icum_garbage_collection_1block
+                         325 _icum_garbage_collection_1block:
+000000be 581a            326 	add	-8,sp
+000000c0 63ff0500        327 	st.w	lp,4[sp]
+000000c4 63ef0100        328 	st.w	r29,0[sp]
+                         329 --	    .bf
+                         330 .LDW21:
+                         331 --64: {
+                         332 --65:     r_icumif_isd_t *p_ISD;
+                         333 --67:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+000000c8 3d0600000000*   334 	mov	_ISD_BUFFER,r29
+                         335 --69:     printf("\nTesting garbage collection all block...\n\n");
+                         336 --line69
+                         337 ..lin.2fab8d99..ce8bd20.0_20::
+                         338 .LDWlin20:
+000000ce 260600000000*   339 	mov	_vrun_printf_buff,r6
+000000d4 270600000000*   340 	mov	.L141,r7
+                         341 .L378:
+                         342 	jarl	_sprintf,lp
+                         342 <EXPANSION BEGIN>
+                         342 jarl22 _sprintf , lp 
+000000da 80ff0000*       342 <EXPANSION END>
+                         343 --line69
+                         344 ..lin.2fab8d99..ce8bd20.0_21::
+                         345 .LDWlin21:
+000000de 260600000000*   346 	mov	_vrun_printf_buff,r6
+                         347 .L380:
+                         348 	jarl	_vrun_iobuff_print_txt,lp
+                         348 <EXPANSION BEGIN>
+                         348 jarl22 _vrun_iobuff_print_txt , lp 
+000000e4 80ff0000*       348 <EXPANSION END>
+                         349 .L382:
+                         350 --line69
+                         351 ..lin.2fab8d99..ce8bd20.0_22::
+                         352 .LDWlin22:
+                         353 	jarl	_vrun_console_put,lp
+                         353 <EXPANSION BEGIN>
+                         353 jarl22 _vrun_console_put , lp 
+000000e8 80ff0000*       353 <EXPANSION END>
+                         354 --line69
+                         355 ..lin.2fab8d99..ce8bd20.0_23::
+                         356 .LDWlin23:
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-000000f2 7d0f0100        357 	st.w	r1,0[r29]
-                         358 --72:     p_ISD->p_callbackfunc           = 0;
-000000f6 7d071900        359 	st.w	zero,24[r29]
-                         360 --73:     p_ISD->job_id                   = 0;
-000000fa 7d071200        361 	st.h	zero,18[r29]
-                         362 --74:     p_ISD->prm.SECURE_FLASH_MGMT.gc_operation   = GC_1_BLOCK;
-000000fe 7d072100        363 	st.w	zero,32[r29]
-                         364 --75:     vrun_chrono_start();
-                         365 .L384:
-                         366 	jarl	_vrun_chrono_start,lp
-                         366 <EXPANSION BEGIN>
-                         366 jarl22 _vrun_chrono_start , lp 
-00000102 80ff0000*       366 <EXPANSION END>
-                         367 --76:     trigger_service_and_wait(p_ISD);
-                         368 --line76
-                         369 ..lin.2fab8d99..ce8bd20.0_24::
-                         370 .LDWlin24:
-00000106 1d30            371 	mov	r29,r6
-                         372 .L386:
-                         373 	jarl	_trigger_service_and_wait,lp
-                         373 <EXPANSION BEGIN>
-                         373 jarl22 _trigger_service_and_wait , lp 
-00000108 80ff0000*       373 <EXPANSION END>
-                         374 --77:     vrun_chrono_stop();
-                         375 .L388:
-                         376 --line77
-                         377 ..lin.2fab8d99..ce8bd20.0_25::
-                         378 .LDWlin25:
-                         379 	jarl	_vrun_chrono_stop,lp
-                         379 <EXPANSION BEGIN>
-                         379 jarl22 _vrun_chrono_stop , lp 
-0000010c 80ff0000*       379 <EXPANSION END>
-                         380 --79:     vrun_chrono_gettimestamp();
-                         381 .L390:
-                         382 --line79
-                         383 ..lin.2fab8d99..ce8bd20.0_26::
-                         384 .LDWlin26:
-                         385 	jarl	_vrun_chrono_gettimestamp,lp
-                         385 <EXPANSION BEGIN>
-                         385 jarl22 _vrun_chrono_gettimestamp , lp 
-00000110 80ff0000*       385 <EXPANSION END>
-                         386 --80:     printf("Processed in : "); PCHRONO(); NL(); NL(); FLUSH();
-                         387 --line80
-                         388 ..lin.2fab8d99..ce8bd20.0_27::
-                         389 .LDWlin27:
-00000114 260600000000*   390 	mov	_vrun_printf_buff,r6
-0000011a 270600000000*   391 	mov	.L140,r7
-                         392 .L392:
-                         393 	jarl	_sprintf,lp
-                         393 <EXPANSION BEGIN>
-                         393 jarl22 _sprintf , lp 
-00000120 80ff0000*       393 <EXPANSION END>
-                         394 --line80
-                         395 ..lin.2fab8d99..ce8bd20.0_28::
-                         396 .LDWlin28:
-00000124 260600000000*   397 	mov	_vrun_printf_buff,r6
-                         398 .L394:
-                         399 	jarl	_vrun_iobuff_print_txt,lp
-                         399 <EXPANSION BEGIN>
-                         399 jarl22 _vrun_iobuff_print_txt , lp 
-0000012a 80ff0000*       399 <EXPANSION END>
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+000000ec 0000            357 	nop
+                         358 --71:     p_ISD->service_id               = SERVICE_04_ICUMDF_GC;
+000000ee 200e4000        359 	movea	64,zero,r1
+000000f2 7d0f0100        360 	st.w	r1,0[r29]
+                         361 --72:     p_ISD->p_callbackfunc           = 0;
+000000f6 7d071900        362 	st.w	zero,24[r29]
+                         363 --73:     p_ISD->job_id                   = 0;
+000000fa 7d071200        364 	st.h	zero,18[r29]
+                         365 --74:     p_ISD->prm.SECURE_FLASH_MGMT.gc_operation   = GC_1_BLOCK;
+000000fe 7d072100        366 	st.w	zero,32[r29]
+                         367 --75:     vrun_chrono_start();
+                         368 .L384:
+                         369 	jarl	_vrun_chrono_start,lp
+                         369 <EXPANSION BEGIN>
+                         369 jarl22 _vrun_chrono_start , lp 
+00000102 80ff0000*       369 <EXPANSION END>
+                         370 --76:     trigger_service_and_wait(p_ISD);
+                         371 --line76
+                         372 ..lin.2fab8d99..ce8bd20.0_24::
+                         373 .LDWlin24:
+00000106 1d30            374 	mov	r29,r6
+                         375 .L386:
+                         376 	jarl	_trigger_service_and_wait,lp
+                         376 <EXPANSION BEGIN>
+                         376 jarl22 _trigger_service_and_wait , lp 
+00000108 80ff0000*       376 <EXPANSION END>
+                         377 --77:     vrun_chrono_stop();
+                         378 .L388:
+                         379 --line77
+                         380 ..lin.2fab8d99..ce8bd20.0_25::
+                         381 .LDWlin25:
+                         382 	jarl	_vrun_chrono_stop,lp
+                         382 <EXPANSION BEGIN>
+                         382 jarl22 _vrun_chrono_stop , lp 
+0000010c 80ff0000*       382 <EXPANSION END>
+                         383 --79:     vrun_chrono_gettimestamp();
+                         384 .L390:
+                         385 --line79
+                         386 ..lin.2fab8d99..ce8bd20.0_26::
+                         387 .LDWlin26:
+                         388 	jarl	_vrun_chrono_gettimestamp,lp
+                         388 <EXPANSION BEGIN>
+                         388 jarl22 _vrun_chrono_gettimestamp , lp 
+00000110 80ff0000*       388 <EXPANSION END>
+                         389 --80:     printf("Processed in : "); PCHRONO(); NL(); NL(); FLUSH();
+                         390 --line80
+                         391 ..lin.2fab8d99..ce8bd20.0_27::
+                         392 .LDWlin27:
+00000114 260600000000*   393 	mov	_vrun_printf_buff,r6
+0000011a 270600000000*   394 	mov	.L140,r7
+                         395 .L392:
+                         396 	jarl	_sprintf,lp
+                         396 <EXPANSION BEGIN>
+                         396 jarl22 _sprintf , lp 
+00000120 80ff0000*       396 <EXPANSION END>
+                         397 --line80
+                         398 ..lin.2fab8d99..ce8bd20.0_28::
+                         399 .LDWlin28:
+00000124 260600000000*   400 	mov	_vrun_printf_buff,r6
+                         401 .L394:
+                         402 	jarl	_vrun_iobuff_print_txt,lp
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         400 .L396:
-                         401 --line80
-                         402 ..lin.2fab8d99..ce8bd20.0_29::
-                         403 .LDWlin29:
-                         404 	jarl	_vrun_console_put,lp
-                         404 <EXPANSION BEGIN>
-                         404 jarl22 _vrun_console_put , lp 
-0000012e 80ff0000*       404 <EXPANSION END>
-                         405 .L398:
-                         406 --line80
-                         407 ..lin.2fab8d99..ce8bd20.0_30::
-                         408 .LDWlin30:
-                         409 	jarl	_vrun_iobuff_print_chrono,lp
-                         409 <EXPANSION BEGIN>
-                         409 jarl22 _vrun_iobuff_print_chrono , lp 
-00000132 80ff0000*       409 <EXPANSION END>
-                         410 --line80
-                         411 ..lin.2fab8d99..ce8bd20.0_31::
-                         412 .LDWlin31:
-00000136 260600000000*   413 	mov	.L139,r6
-                         414 .L400:
-                         415 	jarl	_vrun_iobuff_print_txt,lp
-                         415 <EXPANSION BEGIN>
-                         415 jarl22 _vrun_iobuff_print_txt , lp 
-0000013c 80ff0000*       415 <EXPANSION END>
-                         416 --line80
-                         417 ..lin.2fab8d99..ce8bd20.0_32::
-                         418 .LDWlin32:
-00000140 260600000000*   419 	mov	.L139,r6
-                         420 .L402:
-                         421 	jarl	_vrun_iobuff_print_txt,lp
-                         421 <EXPANSION BEGIN>
-                         421 jarl22 _vrun_iobuff_print_txt , lp 
-00000146 80ff0000*       421 <EXPANSION END>
-                         422 .L404:
-                         423 --line80
-                         424 ..lin.2fab8d99..ce8bd20.0_33::
-                         425 .LDWlin33:
-                         426 	jarl	_vrun_console_put,lp
-                         426 <EXPANSION BEGIN>
-                         426 jarl22 _vrun_console_put , lp 
-0000014a 80ff0000*       426 <EXPANSION END>
-                         427 --82:     printf("\nDone!\n");
-                         428 --line82
-                         429 ..lin.2fab8d99..ce8bd20.0_34::
-                         430 .LDWlin34:
-0000014e 260600000000*   431 	mov	_vrun_printf_buff,r6
-00000154 270600000000*   432 	mov	.L138,r7
-                         433 .L406:
-                         434 	jarl	_sprintf,lp
-                         434 <EXPANSION BEGIN>
-                         434 jarl22 _sprintf , lp 
-0000015a 80ff0000*       434 <EXPANSION END>
-                         435 --line82
-                         436 ..lin.2fab8d99..ce8bd20.0_35::
-                         437 .LDWlin35:
-0000015e 260600000000*   438 	mov	_vrun_printf_buff,r6
-                         439 .L408:
-                         440 	jarl	_vrun_iobuff_print_txt,lp
-                         440 <EXPANSION BEGIN>
-                         440 jarl22 _vrun_iobuff_print_txt , lp 
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                         402 <EXPANSION BEGIN>
+                         402 jarl22 _vrun_iobuff_print_txt , lp 
+0000012a 80ff0000*       402 <EXPANSION END>
+                         403 .L396:
+                         404 --line80
+                         405 ..lin.2fab8d99..ce8bd20.0_29::
+                         406 .LDWlin29:
+                         407 	jarl	_vrun_console_put,lp
+                         407 <EXPANSION BEGIN>
+                         407 jarl22 _vrun_console_put , lp 
+0000012e 80ff0000*       407 <EXPANSION END>
+                         408 .L398:
+                         409 --line80
+                         410 ..lin.2fab8d99..ce8bd20.0_30::
+                         411 .LDWlin30:
+                         412 	jarl	_vrun_iobuff_print_chrono,lp
+                         412 <EXPANSION BEGIN>
+                         412 jarl22 _vrun_iobuff_print_chrono , lp 
+00000132 80ff0000*       412 <EXPANSION END>
+                         413 --line80
+                         414 ..lin.2fab8d99..ce8bd20.0_31::
+                         415 .LDWlin31:
+00000136 260600000000*   416 	mov	.L139,r6
+                         417 .L400:
+                         418 	jarl	_vrun_iobuff_print_txt,lp
+                         418 <EXPANSION BEGIN>
+                         418 jarl22 _vrun_iobuff_print_txt , lp 
+0000013c 80ff0000*       418 <EXPANSION END>
+                         419 --line80
+                         420 ..lin.2fab8d99..ce8bd20.0_32::
+                         421 .LDWlin32:
+00000140 260600000000*   422 	mov	.L139,r6
+                         423 .L402:
+                         424 	jarl	_vrun_iobuff_print_txt,lp
+                         424 <EXPANSION BEGIN>
+                         424 jarl22 _vrun_iobuff_print_txt , lp 
+00000146 80ff0000*       424 <EXPANSION END>
+                         425 .L404:
+                         426 --line80
+                         427 ..lin.2fab8d99..ce8bd20.0_33::
+                         428 .LDWlin33:
+                         429 	jarl	_vrun_console_put,lp
+                         429 <EXPANSION BEGIN>
+                         429 jarl22 _vrun_console_put , lp 
+0000014a 80ff0000*       429 <EXPANSION END>
+                         430 --82:     printf("\nDone!\n");
+                         431 --line82
+                         432 ..lin.2fab8d99..ce8bd20.0_34::
+                         433 .LDWlin34:
+0000014e 260600000000*   434 	mov	_vrun_printf_buff,r6
+00000154 270600000000*   435 	mov	.L138,r7
+                         436 .L406:
+                         437 	jarl	_sprintf,lp
+                         437 <EXPANSION BEGIN>
+                         437 jarl22 _sprintf , lp 
+0000015a 80ff0000*       437 <EXPANSION END>
+                         438 --line82
+                         439 ..lin.2fab8d99..ce8bd20.0_35::
+                         440 .LDWlin35:
+0000015e 260600000000*   441 	mov	_vrun_printf_buff,r6
+                         442 .L408:
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-00000164 80ff0000*       440 <EXPANSION END>
-                         441 .L410:
-                         442 --line82
-                         443 ..lin.2fab8d99..ce8bd20.0_36::
-                         444 .LDWlin36:
-                         445 	jarl	_vrun_console_put,lp
-                         445 <EXPANSION BEGIN>
-                         445 jarl22 _vrun_console_put , lp 
-00000168 80ff0000*       445 <EXPANSION END>
-                         446 --line82
-                         447 ..lin.2fab8d99..ce8bd20.0_37::
-                         448 .LDWlin37:
-0000016c 0000            449 	nop
-                         450 --83: }
-                         451 --	    .ef
-                         452 .LDW31:
-0000016e 23ff0500        453 	ld.w	4[sp],lp
-00000172 23ef0100        454 	ld.w	0[sp],r29
-00000176 481a            455 	add	8,sp
-                         456 .L412:
-                         457 	.jumptype return
-00000178 7f00            458 	jmp	[lp]
-                         459 --line82
-                         460 ..lin.2fab8d99..ce8bd20.0_38::
-                         461 	.type	_icum_garbage_collection_1block,@function
-                         462 	.size	_icum_garbage_collection_1block,.-_icum_garbage_collection_1block
-                         463 	.align	2
-                         464 --_p_ISD	r29	local
-                         465 
-                         466 	.section ".ghcalltbl",""
-00000044 00000000*       467 .L379:	.word	.L378
-                         468 	.type	.L379,@object
-                         469 	.size	.L379,4
-00000048 00000000*       470 .L381:	.word	.L380
-                         471 	.type	.L381,@object
-                         472 	.size	.L381,4
-0000004c 00000000*       473 .L383:	.word	.L382
-                         474 	.type	.L383,@object
-                         475 	.size	.L383,4
-00000050 00000000*       476 .L385:	.word	.L384
-                         477 	.type	.L385,@object
-                         478 	.size	.L385,4
-00000054 00000000*       479 .L387:	.word	.L386
-                         480 	.type	.L387,@object
-                         481 	.size	.L387,4
-00000058 00000000*       482 .L389:	.word	.L388
-                         483 	.type	.L389,@object
-                         484 	.size	.L389,4
-0000005c 00000000*       485 .L391:	.word	.L390
-                         486 	.type	.L391,@object
-                         487 	.size	.L391,4
-00000060 00000000*       488 .L393:	.word	.L392
-                         489 	.type	.L393,@object
-                         490 	.size	.L393,4
-00000064 00000000*       491 .L395:	.word	.L394
-                         492 	.type	.L395,@object
-                         493 	.size	.L395,4
-00000068 00000000*       494 .L397:	.word	.L396
-                         495 	.type	.L397,@object
-                         496 	.size	.L397,4
-0000006c 00000000*       497 .L399:	.word	.L398
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                         443 	jarl	_vrun_iobuff_print_txt,lp
+                         443 <EXPANSION BEGIN>
+                         443 jarl22 _vrun_iobuff_print_txt , lp 
+00000164 80ff0000*       443 <EXPANSION END>
+                         444 .L410:
+                         445 --line82
+                         446 ..lin.2fab8d99..ce8bd20.0_36::
+                         447 .LDWlin36:
+                         448 	jarl	_vrun_console_put,lp
+                         448 <EXPANSION BEGIN>
+                         448 jarl22 _vrun_console_put , lp 
+00000168 80ff0000*       448 <EXPANSION END>
+                         449 --line82
+                         450 ..lin.2fab8d99..ce8bd20.0_37::
+                         451 .LDWlin37:
+0000016c 0000            452 	nop
+                         453 --83: }
+                         454 --	    .ef
+                         455 .LDW31:
+0000016e 23ff0500        456 	ld.w	4[sp],lp
+00000172 23ef0100        457 	ld.w	0[sp],r29
+00000176 481a            458 	add	8,sp
+                         459 .L412:
+                         460 	.jumptype return
+00000178 7f00            461 	jmp	[lp]
+                         462 --line82
+                         463 ..lin.2fab8d99..ce8bd20.0_38::
+                         464 	.type	_icum_garbage_collection_1block,@function
+                         465 	.size	_icum_garbage_collection_1block,.-_icum_garbage_collection_1block
+                         466 	.align	2
+                         467 --_p_ISD	r29	local
+                         468 
+                         469 	.section ".ghcalltbl",""
+00000044 00000000*       470 .L379:	.word	.L378
+                         471 	.type	.L379,@object
+                         472 	.size	.L379,4
+00000048 00000000*       473 .L381:	.word	.L380
+                         474 	.type	.L381,@object
+                         475 	.size	.L381,4
+0000004c 00000000*       476 .L383:	.word	.L382
+                         477 	.type	.L383,@object
+                         478 	.size	.L383,4
+00000050 00000000*       479 .L385:	.word	.L384
+                         480 	.type	.L385,@object
+                         481 	.size	.L385,4
+00000054 00000000*       482 .L387:	.word	.L386
+                         483 	.type	.L387,@object
+                         484 	.size	.L387,4
+00000058 00000000*       485 .L389:	.word	.L388
+                         486 	.type	.L389,@object
+                         487 	.size	.L389,4
+0000005c 00000000*       488 .L391:	.word	.L390
+                         489 	.type	.L391,@object
+                         490 	.size	.L391,4
+00000060 00000000*       491 .L393:	.word	.L392
+                         492 	.type	.L393,@object
+                         493 	.size	.L393,4
+00000064 00000000*       494 .L395:	.word	.L394
+                         495 	.type	.L395,@object
+                         496 	.size	.L395,4
+00000068 00000000*       497 .L397:	.word	.L396
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000r2o1.si
-                         498 	.type	.L399,@object
-                         499 	.size	.L399,4
-00000070 00000000*       500 .L401:	.word	.L400
-                         501 	.type	.L401,@object
-                         502 	.size	.L401,4
-00000074 00000000*       503 .L403:	.word	.L402
-                         504 	.type	.L403,@object
-                         505 	.size	.L403,4
-00000078 00000000*       506 .L405:	.word	.L404
-                         507 	.type	.L405,@object
-                         508 	.size	.L405,4
-0000007c 00000000*       509 .L407:	.word	.L406
-                         510 	.type	.L407,@object
-                         511 	.size	.L407,4
-00000080 00000000*       512 .L409:	.word	.L408
-                         513 	.type	.L409,@object
-                         514 	.size	.L409,4
-00000084 00000000*       515 .L411:	.word	.L410
-                         516 	.type	.L411,@object
-                         517 	.size	.L411,4
-                         518 	.section ".ghrettbl",""
-00000004 00000000*       519 .L413:	.word	.L412
-                         520 	.type	.L413,@object
-                         521 	.size	.L413,4
-                         522 	.data
-                         523 	.text
-                         524 
-                         525 	.align	2
-                         526 --_ISD_BUFFER	_ISD_BUFFER	import
-                         527 --_vrun_printf_buff	_vrun_printf_buff	import
-                         528 
-                         529 	.data
-                         530 	.ghsnote version,30
-                         531 	.ghsnote tools,3
-                         532 	.ghsnote options,656
-                         533 	.text
-                         534 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_sys_tst...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40DA1..0::
-                         535 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b7k1.si
+                         498 	.type	.L397,@object
+                         499 	.size	.L397,4
+0000006c 00000000*       500 .L399:	.word	.L398
+                         501 	.type	.L399,@object
+                         502 	.size	.L399,4
+00000070 00000000*       503 .L401:	.word	.L400
+                         504 	.type	.L401,@object
+                         505 	.size	.L401,4
+00000074 00000000*       506 .L403:	.word	.L402
+                         507 	.type	.L403,@object
+                         508 	.size	.L403,4
+00000078 00000000*       509 .L405:	.word	.L404
+                         510 	.type	.L405,@object
+                         511 	.size	.L405,4
+0000007c 00000000*       512 .L407:	.word	.L406
+                         513 	.type	.L407,@object
+                         514 	.size	.L407,4
+00000080 00000000*       515 .L409:	.word	.L408
+                         516 	.type	.L409,@object
+                         517 	.size	.L409,4
+00000084 00000000*       518 .L411:	.word	.L410
+                         519 	.type	.L411,@object
+                         520 	.size	.L411,4
+                         521 	.section ".ghrettbl",""
+00000004 00000000*       522 .L413:	.word	.L412
+                         523 	.type	.L413,@object
+                         524 	.size	.L413,4
+                         525 	.data
+                         526 	.text
+                         527 
+                         528 	.align	2
+                         529 --_ISD_BUFFER	_ISD_BUFFER	import
+                         530 --_vrun_printf_buff	_vrun_printf_buff	import
+                         531 
+                         532 	.data
+                         533 	.ghsnote version,30
+                         534 	.ghsnote tools,3
+                         535 	.ghsnote options,656
+                         536 	.text
+                         537 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_sys_tst...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                         538 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

@@ -224,6 +224,7 @@ void icum_test_dbg_act_prepare(void);
 void icum_test_aes_cipher(int direction);
 void icum_test_aes_cipher_in_cycle(void);
 void icum_test_aes_cmac(void);
+void icum_crypto_service_test(void);
 
 void fw_timings(void);
 

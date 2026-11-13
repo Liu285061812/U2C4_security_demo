@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.dbo -source=pe1_ecc_test.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_0000bms1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\target\u2cx\src\l_vrun -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.dbo -source=pe1_ecc_test.c -comp -o ..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\gh_00012qg1.o -list=..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
 Source File: pe1_ecc_test.c
 Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
 Host OS: Windows
@@ -33,632 +33,635 @@ Release Date: Wed Sep 06 02:00:00 2023
                           18 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
                           19 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
                           20 --		-D_PEID_=1 -Omaxdebug -G -list -cpu=rh850g4kh -fsingle
-                          21 --		-D_TARG_=U2C4 -filetype.c
-                          22 --		..\..\pe\generic\src\pe1\src\pe1_ecc_test.c -o
-                          23 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.o
-                          24 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_ecc_test.c
-                          25 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
-                          26 --Compile Date:  Wed Nov 11 14:39:27 2026
-                          27 --Host OS:       Win64
-                          28 --Version:       C-RH850 2023.5.4 RELEASE VERSION
-                          29 --Release:       Compiler v2023.5.4
-                          30 --Revision Date: Wed Sep 06 02:44:56 2023
-                          31 --Release Date:  Wed Sep 06 02:00:00 2023
-                          32 -- ecom  -g -w
-                          33 
-                          34 --1: /******************************************************************************/
-                          35 --2: /* Component Name   Testing the ICU-M                                         */
-                          36 --3: /******************************************************************************/
-                          37 --4: /* Product      : ICU-M Firmware                                              */
-                          38 --5: /******************************************************************************/
-                          39 --6: /*******************************************************************************
-                          40 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
-                          41 --8: *                                                                               
-                          42 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
-                          43 --10: *                                                                               
-                          44 --11: * These instructions, statements, and programs are the confidential information 
-                          45 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
-                          46 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
-                          47 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
-                          48 --15: * without the prior written permission of Renesas Electronics Corporation.      
-                          49 --16: *******************************************************************************/
-                          50 --18: /**********************************************************************************
+                          21 --		-D_TARG_=U2C4 -DPE1_TEST_AES_KEY_SETUP=1 -DPE1_TEST_AES_CIPHER=1
+                          22 --		-DPE1_TEST_AES_AUTH=1 -DPE1_TEST_AES_CMAC=1
+                          23 --		-DPE1_TEST_RSA_KEY_GENERATE=1 -DPE1_TEST_RSA_CRYPT=1
+                          24 --		-DPE1_TEST_RSA_SIGNATURE=1 -filetype.c
+                          25 --		..\..\pe\generic\src\pe1\src\pe1_ecc_test.c -o
+                          26 --		..\..\pe\target\u2cx\build\obj\pe1\libs\pe1\pe1_ecc_test.o
+                          27 --Source File:   ..\..\pe\generic\src\pe1\src\pe1_ecc_test.c
+                          28 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          29 --Compile Date:  Wed Nov 11 16:27:20 2026
+                          30 --Host OS:       Win64
+                          31 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          32 --Release:       Compiler v2023.5.4
+                          33 --Revision Date: Wed Sep 06 02:44:56 2023
+                          34 --Release Date:  Wed Sep 06 02:00:00 2023
+                          35 -- ecom  -g -w
+                          36 
+                          37 --1: /******************************************************************************/
+                          38 --2: /* Component Name   Testing the ICU-M                                         */
+                          39 --3: /******************************************************************************/
+                          40 --4: /* Product      : ICU-M Firmware                                              */
+                          41 --5: /******************************************************************************/
+                          42 --6: /*******************************************************************************
+                          43 --7: * Copyright(C) 2021-2022 Renesas Electronics Corporation.                       
+                          44 --8: *                                                                               
+                          45 --9: *          RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY                     
+                          46 --10: *                                                                               
+                          47 --11: * These instructions, statements, and programs are the confidential information 
+                          48 --12: * of Renesas Electronics Corporation. They must be used and modified solely for 
+                          49 --13: * the purpose for which it was furnished by Renesas Electronics Corporation.    
+                          50 --14: * All part of them must not be reproduced nor disclosed to others in any form,  
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-                          51 --19: Headers
-                          52 --20: ***********************************************************************************/
-                          53 --21: #include <stdio.h>
-                          54 --23: #undef NULL
-                          55 --24: #include "r_icumif_api.h"
-                          56 --25: #include "r_icumif_pub.h"
-                          57 --26: #include "pe1.h"
-                          58 --27: #include "shared.h"
-                          59 --28: #include "vrun.api.h"
-                          60 --30: /**********************************************************************************
-                          61 --31: Test functions
-                          62 --32: ***********************************************************************************/
-                          63 --33: void icum_start_ecc_test(void)
-                          64 	.text
-                          65 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_ecc_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40D9F..0::
-                          66 	.align	2
-                          67 	.align	2
-                          68 ..gh.f.a.2.e.0:
-                          69 	.type	..gh.f.a.2.e.0,@object
-                          70 	.size	..gh.f.a.2.e.0,0
-                          71 	.global	_icum_start_ecc_test
-                          72 _icum_start_ecc_test:
-00000000 581a             73 	add	-8,sp
-00000002 63ff0500         74 	st.w	lp,4[sp]
-00000006 63ef0100         75 	st.w	r29,0[sp]
-                          76 --	    .bf
-                          77 .LDW01:
-                          78 --34: {
-                          79 --35:     r_icumif_isd_t *p_ISD;
-                          80 --36:     // initialize the global icum service header
-                          81 --37:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
-0000000a 3d0600000000*    82 	mov	_ISD_BUFFER,r29
-                          83 --38:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
-                          84 --line38
-                          85 ..lin.76af9e8a..68389808.0_1::
-                          86 .LDWlin1:
-00000010 7d070100         87 	st.w	zero,0[r29]
-                          88 --39:     p_ISD->p_callbackfunc                    = 0;
-00000014 7d071900         89 	st.w	zero,24[r29]
-                          90 --40:     p_ISD->job_id                            = 0;
-00000018 7d071200         91 	st.h	zero,18[r29]
-                          92 --41:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_START;
-0000001c 7d072100         93 	st.w	zero,32[r29]
-                          94 --42:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
-00000020 400e0001         95 	movhi	hi(16777216),zero,r1
-00000024 7d0f2500         96 	st.w	r1,36[r29]
-                          97 --43:     /* service trigger */
-                          98 --44:     trigger_service_and_wait(p_ISD);
-                          99 --line44
-                         100 ..lin.76af9e8a..68389808.0_2::
-                         101 .LDWlin2:
-00000028 1d30            102 	mov	r29,r6
-                         103 .L91:
-                         104 	jarl	_trigger_service_and_wait,lp
-                         104 <EXPANSION BEGIN>
-                         104 jarl22 _trigger_service_and_wait , lp 
-0000002a 80ff0000*       104 <EXPANSION END>
-                         105 --45:     if(p_ISD->service_result == SERV_OK)
-                         106 --line45
-                         107 ..lin.76af9e8a..68389808.0_3::
-                         108 .LDWlin3:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                          51 --15: * without the prior written permission of Renesas Electronics Corporation.      
+                          52 --16: *******************************************************************************/
+                          53 --18: /**********************************************************************************
+                          54 --19: Headers
+                          55 --20: ***********************************************************************************/
+                          56 --21: #include <stdio.h>
+                          57 --23: #undef NULL
+                          58 --24: #include "r_icumif_api.h"
+                          59 --25: #include "r_icumif_pub.h"
+                          60 --26: #include "pe1.h"
+                          61 --27: #include "shared.h"
+                          62 --28: #include "vrun.api.h"
+                          63 --30: /**********************************************************************************
+                          64 --31: Test functions
+                          65 --32: ***********************************************************************************/
+                          66 --33: void icum_start_ecc_test(void)
+                          67 	.text
+                          68 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_ecc_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                          69 	.align	2
+                          70 	.align	2
+                          71 ..gh.f.a.2.e.0:
+                          72 	.type	..gh.f.a.2.e.0,@object
+                          73 	.size	..gh.f.a.2.e.0,0
+                          74 	.global	_icum_start_ecc_test
+                          75 _icum_start_ecc_test:
+00000000 581a             76 	add	-8,sp
+00000002 63ff0500         77 	st.w	lp,4[sp]
+00000006 63ef0100         78 	st.w	r29,0[sp]
+                          79 --	    .bf
+                          80 .LDW01:
+                          81 --34: {
+                          82 --35:     r_icumif_isd_t *p_ISD;
+                          83 --36:     // initialize the global icum service header
+                          84 --37:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+0000000a 3d0600000000*    85 	mov	_ISD_BUFFER,r29
+                          86 --38:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
+                          87 --line38
+                          88 ..lin.76af9e8a..68389808.0_1::
+                          89 .LDWlin1:
+00000010 7d070100         90 	st.w	zero,0[r29]
+                          91 --39:     p_ISD->p_callbackfunc                    = 0;
+00000014 7d071900         92 	st.w	zero,24[r29]
+                          93 --40:     p_ISD->job_id                            = 0;
+00000018 7d071200         94 	st.h	zero,18[r29]
+                          95 --41:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_START;
+0000001c 7d072100         96 	st.w	zero,32[r29]
+                          97 --42:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
+00000020 400e0001         98 	movhi	hi(16777216),zero,r1
+00000024 7d0f2500         99 	st.w	r1,36[r29]
+                         100 --43:     /* service trigger */
+                         101 --44:     trigger_service_and_wait(p_ISD);
+                         102 --line44
+                         103 ..lin.76af9e8a..68389808.0_2::
+                         104 .LDWlin2:
+00000028 1d30            105 	mov	r29,r6
+                         106 .L91:
+                         107 	jarl	_trigger_service_and_wait,lp
+                         107 <EXPANSION BEGIN>
+                         107 jarl22 _trigger_service_and_wait , lp 
+0000002a 80ff0000*       107 <EXPANSION END>
+                         108 --45:     if(p_ISD->service_result == SERV_OK)
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-0000002e 3d0f0d00        109 	ld.w	12[r29],r1
-00000032 e009            110 	cmp	zero,r1
-00000034 9a15*           111 	bne	.L2
-                         112 --46:     {
-                         113 --47:         printf("SUCCEEDED : Started ECC test.\n");
-                         114 --line47
-                         115 ..lin.76af9e8a..68389808.0_4::
-                         116 .LDWlin4:
-00000036 260600000000*   117 	mov	_vrun_printf_buff,r6
-0000003c 270600000000*   118 	mov	.L74,r7
-                         119 .L93:
-                         120 	jarl	_sprintf,lp
-                         120 <EXPANSION BEGIN>
-                         120 jarl22 _sprintf , lp 
-00000042 80ff0000*       120 <EXPANSION END>
-                         121 --line47
-                         122 ..lin.76af9e8a..68389808.0_5::
-                         123 .LDWlin5:
-00000046 260600000000*   124 	mov	_vrun_printf_buff,r6
-                         125 .L95:
-                         126 	jarl	_vrun_iobuff_print_txt,lp
-                         126 <EXPANSION BEGIN>
-                         126 jarl22 _vrun_iobuff_print_txt , lp 
-0000004c 80ff0000*       126 <EXPANSION END>
-                         127 .L97:
-                         128 --line47
-                         129 ..lin.76af9e8a..68389808.0_6::
-                         130 .LDWlin6:
-                         131 	jarl	_vrun_console_put,lp
-                         131 <EXPANSION BEGIN>
-                         131 jarl22 _vrun_console_put , lp 
-00000050 80ff0000*       131 <EXPANSION END>
-                         132 --line47
-                         133 ..lin.76af9e8a..68389808.0_7::
-                         134 .LDWlin7:
-00000054 0000            135 	nop
-                         136 .L2:
-                         137 --48:     }
-                         138 --49: }
-                         139 --	    .ef
-                         140 .LDW11:
-00000056 23ff0500        141 	ld.w	4[sp],lp
-0000005a 23ef0100        142 	ld.w	0[sp],r29
-0000005e 481a            143 	add	8,sp
-                         144 .L99:
-                         145 	.jumptype return
-00000060 7f00            146 	jmp	[lp]
-                         147 --line47
-                         148 ..lin.76af9e8a..68389808.0_8::
-                         149 	.type	_icum_start_ecc_test,@function
-                         150 	.size	_icum_start_ecc_test,.-_icum_start_ecc_test
-                         151 	.align	2
-                         152 --_p_ISD	r29	local
-                         153 
-                         154 	.section ".rodata","a"
-                         155 .L74:--	"SUCCEEDED : Started ECC test.\n"
-00000000 53554343        156 	.byte	83,85,67,67
-00000004 45454445        157 	.byte	69,69,68,69
-00000008 44203a20        158 	.byte	68,32,58,32
-0000000c 53746172        159 	.byte	83,116,97,114
-00000010 74656420        160 	.byte	116,101,100,32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                         109 --line45
+                         110 ..lin.76af9e8a..68389808.0_3::
+                         111 .LDWlin3:
+0000002e 3d0f0d00        112 	ld.w	12[r29],r1
+00000032 e009            113 	cmp	zero,r1
+00000034 9a15*           114 	bne	.L2
+                         115 --46:     {
+                         116 --47:         printf("SUCCEEDED : Started ECC test.\n");
+                         117 --line47
+                         118 ..lin.76af9e8a..68389808.0_4::
+                         119 .LDWlin4:
+00000036 260600000000*   120 	mov	_vrun_printf_buff,r6
+0000003c 270600000000*   121 	mov	.L74,r7
+                         122 .L93:
+                         123 	jarl	_sprintf,lp
+                         123 <EXPANSION BEGIN>
+                         123 jarl22 _sprintf , lp 
+00000042 80ff0000*       123 <EXPANSION END>
+                         124 --line47
+                         125 ..lin.76af9e8a..68389808.0_5::
+                         126 .LDWlin5:
+00000046 260600000000*   127 	mov	_vrun_printf_buff,r6
+                         128 .L95:
+                         129 	jarl	_vrun_iobuff_print_txt,lp
+                         129 <EXPANSION BEGIN>
+                         129 jarl22 _vrun_iobuff_print_txt , lp 
+0000004c 80ff0000*       129 <EXPANSION END>
+                         130 .L97:
+                         131 --line47
+                         132 ..lin.76af9e8a..68389808.0_6::
+                         133 .LDWlin6:
+                         134 	jarl	_vrun_console_put,lp
+                         134 <EXPANSION BEGIN>
+                         134 jarl22 _vrun_console_put , lp 
+00000050 80ff0000*       134 <EXPANSION END>
+                         135 --line47
+                         136 ..lin.76af9e8a..68389808.0_7::
+                         137 .LDWlin7:
+00000054 0000            138 	nop
+                         139 .L2:
+                         140 --48:     }
+                         141 --49: }
+                         142 --	    .ef
+                         143 .LDW11:
+00000056 23ff0500        144 	ld.w	4[sp],lp
+0000005a 23ef0100        145 	ld.w	0[sp],r29
+0000005e 481a            146 	add	8,sp
+                         147 .L99:
+                         148 	.jumptype return
+00000060 7f00            149 	jmp	[lp]
+                         150 --line47
+                         151 ..lin.76af9e8a..68389808.0_8::
+                         152 	.type	_icum_start_ecc_test,@function
+                         153 	.size	_icum_start_ecc_test,.-_icum_start_ecc_test
+                         154 	.align	2
+                         155 --_p_ISD	r29	local
+                         156 
+                         157 	.section ".rodata","a"
+                         158 .L74:--	"SUCCEEDED : Started ECC test.\n"
+00000000 53554343        159 	.byte	83,85,67,67
+00000004 45454445        160 	.byte	69,69,68,69
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-00000014 45434320        161 	.byte	69,67,67,32
-00000018 74657374        162 	.byte	116,101,115,116
-0000001c 2e0a            163 	.byte	46,10
-0000001e 00              164 	.byte	0
-                         165 	.type	.L74,@object
-                         166 	.size	.L74,31
-                         167 	.section ".ghcalltbl",""
-                         168 	.align	4
-00000000 00000000*       169 .L92:	.word	.L91
-                         170 	.type	.L92,@object
-                         171 	.size	.L92,4
-00000004 00000000*       172 .L94:	.word	.L93
-                         173 	.type	.L94,@object
-                         174 	.size	.L94,4
-00000008 00000000*       175 .L96:	.word	.L95
-                         176 	.type	.L96,@object
-                         177 	.size	.L96,4
-0000000c 00000000*       178 .L98:	.word	.L97
-                         179 	.type	.L98,@object
-                         180 	.size	.L98,4
-                         181 	.section ".ghrettbl",""
-                         182 	.align	4
-00000000 00000000*       183 .L100:	.word	.L99
-                         184 	.type	.L100,@object
-                         185 	.size	.L100,4
-                         186 	.data
-                         187 	.text
-                         188 
-                         189 
-                         190 --51: void icum_end_ecc_test(void)
-                         191 	.align	2
-                         192 	.align	2
-                         193 	.align	2
-                         194 ..gh.f.a.2.e.1:
-                         195 	.type	..gh.f.a.2.e.1,@object
-                         196 	.size	..gh.f.a.2.e.1,0
-                         197 	.global	_icum_end_ecc_test
-                         198 _icum_end_ecc_test:
-00000062 581a            199 	add	-8,sp
-00000064 63ff0500        200 	st.w	lp,4[sp]
-00000068 63ef0100        201 	st.w	r29,0[sp]
-                         202 --	    .bf
-                         203 .LDW21:
-                         204 --52: {
-                         205 --53:     r_icumif_isd_t *p_ISD;
-                         206 --54:     // initialize the global icum service header
-                         207 --55:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
-0000006c 3d0600000000*   208 	mov	_ISD_BUFFER,r29
-                         209 --56:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
-                         210 --line56
-                         211 ..lin.76af9e8a..4fd98c71.0_9::
-                         212 .LDWlin9:
-00000072 7d070100        213 	st.w	zero,0[r29]
-                         214 --57:     p_ISD->p_callbackfunc                    = 0;
-00000076 7d071900        215 	st.w	zero,24[r29]
-                         216 --58:     p_ISD->job_id                            = 0;
-0000007a 7d071200        217 	st.h	zero,18[r29]
-                         218 --59:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_END;
-0000007e 010a            219 	mov	1,r1
-00000080 7d0f2100        220 	st.w	r1,32[r29]
-                         221 --60:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+00000008 44203a20        161 	.byte	68,32,58,32
+0000000c 53746172        162 	.byte	83,116,97,114
+00000010 74656420        163 	.byte	116,101,100,32
+00000014 45434320        164 	.byte	69,67,67,32
+00000018 74657374        165 	.byte	116,101,115,116
+0000001c 2e0a            166 	.byte	46,10
+0000001e 00              167 	.byte	0
+                         168 	.type	.L74,@object
+                         169 	.size	.L74,31
+                         170 	.section ".ghcalltbl",""
+                         171 	.align	4
+00000000 00000000*       172 .L92:	.word	.L91
+                         173 	.type	.L92,@object
+                         174 	.size	.L92,4
+00000004 00000000*       175 .L94:	.word	.L93
+                         176 	.type	.L94,@object
+                         177 	.size	.L94,4
+00000008 00000000*       178 .L96:	.word	.L95
+                         179 	.type	.L96,@object
+                         180 	.size	.L96,4
+0000000c 00000000*       181 .L98:	.word	.L97
+                         182 	.type	.L98,@object
+                         183 	.size	.L98,4
+                         184 	.section ".ghrettbl",""
+                         185 	.align	4
+00000000 00000000*       186 .L100:	.word	.L99
+                         187 	.type	.L100,@object
+                         188 	.size	.L100,4
+                         189 	.data
+                         190 	.text
+                         191 
+                         192 
+                         193 --51: void icum_end_ecc_test(void)
+                         194 	.align	2
+                         195 	.align	2
+                         196 	.align	2
+                         197 ..gh.f.a.2.e.1:
+                         198 	.type	..gh.f.a.2.e.1,@object
+                         199 	.size	..gh.f.a.2.e.1,0
+                         200 	.global	_icum_end_ecc_test
+                         201 _icum_end_ecc_test:
+00000062 581a            202 	add	-8,sp
+00000064 63ff0500        203 	st.w	lp,4[sp]
+00000068 63ef0100        204 	st.w	r29,0[sp]
+                         205 --	    .bf
+                         206 .LDW21:
+                         207 --52: {
+                         208 --53:     r_icumif_isd_t *p_ISD;
+                         209 --54:     // initialize the global icum service header
+                         210 --55:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+0000006c 3d0600000000*   211 	mov	_ISD_BUFFER,r29
+                         212 --56:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
+                         213 --line56
+                         214 ..lin.76af9e8a..4fd98c71.0_9::
+                         215 .LDWlin9:
+00000072 7d070100        216 	st.w	zero,0[r29]
+                         217 --57:     p_ISD->p_callbackfunc                    = 0;
+00000076 7d071900        218 	st.w	zero,24[r29]
+                         219 --58:     p_ISD->job_id                            = 0;
+0000007a 7d071200        220 	st.h	zero,18[r29]
+                         221 --59:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_END;
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-00000084 400e0001        222 	movhi	hi(16777216),zero,r1
-00000088 7d0f2500        223 	st.w	r1,36[r29]
-                         224 --61:     /* service trigger */
-                         225 --62:     trigger_service_and_wait(p_ISD);
-                         226 --line62
-                         227 ..lin.76af9e8a..4fd98c71.0_10::
-                         228 .LDWlin10:
-0000008c 1d30            229 	mov	r29,r6
-                         230 .L187:
-                         231 	jarl	_trigger_service_and_wait,lp
-                         231 <EXPANSION BEGIN>
-                         231 jarl22 _trigger_service_and_wait , lp 
-0000008e 80ff0000*       231 <EXPANSION END>
-                         232 --63:     if(p_ISD->service_result == SERV_OK)
-                         233 --line63
-                         234 ..lin.76af9e8a..4fd98c71.0_11::
-                         235 .LDWlin11:
-00000092 3d0f0d00        236 	ld.w	12[r29],r1
-00000096 e009            237 	cmp	zero,r1
-00000098 9a15*           238 	bne	.L101
-                         239 --64:     {
-                         240 --65:         printf("SUCCEEDED : Ended ECC test.\n");
-                         241 --line65
-                         242 ..lin.76af9e8a..4fd98c71.0_12::
-                         243 .LDWlin12:
-0000009a 260600000000*   244 	mov	_vrun_printf_buff,r6
-000000a0 270600000000*   245 	mov	.L170,r7
-                         246 .L189:
-                         247 	jarl	_sprintf,lp
-                         247 <EXPANSION BEGIN>
-                         247 jarl22 _sprintf , lp 
-000000a6 80ff0000*       247 <EXPANSION END>
-                         248 --line65
-                         249 ..lin.76af9e8a..4fd98c71.0_13::
-                         250 .LDWlin13:
-000000aa 260600000000*   251 	mov	_vrun_printf_buff,r6
-                         252 .L191:
-                         253 	jarl	_vrun_iobuff_print_txt,lp
-                         253 <EXPANSION BEGIN>
-                         253 jarl22 _vrun_iobuff_print_txt , lp 
-000000b0 80ff0000*       253 <EXPANSION END>
-                         254 .L193:
-                         255 --line65
-                         256 ..lin.76af9e8a..4fd98c71.0_14::
-                         257 .LDWlin14:
-                         258 	jarl	_vrun_console_put,lp
-                         258 <EXPANSION BEGIN>
-                         258 jarl22 _vrun_console_put , lp 
-000000b4 80ff0000*       258 <EXPANSION END>
-                         259 --line65
-                         260 ..lin.76af9e8a..4fd98c71.0_15::
-                         261 .LDWlin15:
-000000b8 0000            262 	nop
-                         263 .L101:
-                         264 --66:     }
-                         265 --67: }
-                         266 --	    .ef
-                         267 .LDW31:
-000000ba 23ff0500        268 	ld.w	4[sp],lp
-000000be 23ef0100        269 	ld.w	0[sp],r29
-000000c2 481a            270 	add	8,sp
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+0000007e 010a            222 	mov	1,r1
+00000080 7d0f2100        223 	st.w	r1,32[r29]
+                         224 --60:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
+00000084 400e0001        225 	movhi	hi(16777216),zero,r1
+00000088 7d0f2500        226 	st.w	r1,36[r29]
+                         227 --61:     /* service trigger */
+                         228 --62:     trigger_service_and_wait(p_ISD);
+                         229 --line62
+                         230 ..lin.76af9e8a..4fd98c71.0_10::
+                         231 .LDWlin10:
+0000008c 1d30            232 	mov	r29,r6
+                         233 .L187:
+                         234 	jarl	_trigger_service_and_wait,lp
+                         234 <EXPANSION BEGIN>
+                         234 jarl22 _trigger_service_and_wait , lp 
+0000008e 80ff0000*       234 <EXPANSION END>
+                         235 --63:     if(p_ISD->service_result == SERV_OK)
+                         236 --line63
+                         237 ..lin.76af9e8a..4fd98c71.0_11::
+                         238 .LDWlin11:
+00000092 3d0f0d00        239 	ld.w	12[r29],r1
+00000096 e009            240 	cmp	zero,r1
+00000098 9a15*           241 	bne	.L101
+                         242 --64:     {
+                         243 --65:         printf("SUCCEEDED : Ended ECC test.\n");
+                         244 --line65
+                         245 ..lin.76af9e8a..4fd98c71.0_12::
+                         246 .LDWlin12:
+0000009a 260600000000*   247 	mov	_vrun_printf_buff,r6
+000000a0 270600000000*   248 	mov	.L170,r7
+                         249 .L189:
+                         250 	jarl	_sprintf,lp
+                         250 <EXPANSION BEGIN>
+                         250 jarl22 _sprintf , lp 
+000000a6 80ff0000*       250 <EXPANSION END>
+                         251 --line65
+                         252 ..lin.76af9e8a..4fd98c71.0_13::
+                         253 .LDWlin13:
+000000aa 260600000000*   254 	mov	_vrun_printf_buff,r6
+                         255 .L191:
+                         256 	jarl	_vrun_iobuff_print_txt,lp
+                         256 <EXPANSION BEGIN>
+                         256 jarl22 _vrun_iobuff_print_txt , lp 
+000000b0 80ff0000*       256 <EXPANSION END>
+                         257 .L193:
+                         258 --line65
+                         259 ..lin.76af9e8a..4fd98c71.0_14::
+                         260 .LDWlin14:
+                         261 	jarl	_vrun_console_put,lp
+                         261 <EXPANSION BEGIN>
+                         261 jarl22 _vrun_console_put , lp 
+000000b4 80ff0000*       261 <EXPANSION END>
+                         262 --line65
+                         263 ..lin.76af9e8a..4fd98c71.0_15::
+                         264 .LDWlin15:
+000000b8 0000            265 	nop
+                         266 .L101:
+                         267 --66:     }
+                         268 --67: }
+                         269 --	    .ef
+                         270 .LDW31:
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-                         271 .L195:
-                         272 	.jumptype return
-000000c4 7f00            273 	jmp	[lp]
-                         274 --line65
-                         275 ..lin.76af9e8a..4fd98c71.0_16::
-                         276 	.type	_icum_end_ecc_test,@function
-                         277 	.size	_icum_end_ecc_test,.-_icum_end_ecc_test
-                         278 	.align	2
-                         279 --_p_ISD	r29	local
-                         280 
-                         281 	.section ".rodata","a"
-                         282 .L170:--	"SUCCEEDED : Ended ECC test.\n"
-0000001f 53554343        283 	.byte	83,85,67,67
-00000023 45454445        284 	.byte	69,69,68,69
-00000027 44203a20        285 	.byte	68,32,58,32
-0000002b 456e6465        286 	.byte	69,110,100,101
-0000002f 64204543        287 	.byte	100,32,69,67
-00000033 43207465        288 	.byte	67,32,116,101
-00000037 73742e0a        289 	.byte	115,116,46,10
-0000003b 00              290 	.byte	0
-                         291 	.type	.L170,@object
-                         292 	.size	.L170,29
-                         293 	.section ".ghcalltbl",""
-00000010 00000000*       294 .L188:	.word	.L187
-                         295 	.type	.L188,@object
-                         296 	.size	.L188,4
-00000014 00000000*       297 .L190:	.word	.L189
-                         298 	.type	.L190,@object
-                         299 	.size	.L190,4
-00000018 00000000*       300 .L192:	.word	.L191
-                         301 	.type	.L192,@object
-                         302 	.size	.L192,4
-0000001c 00000000*       303 .L194:	.word	.L193
-                         304 	.type	.L194,@object
-                         305 	.size	.L194,4
-                         306 	.section ".ghrettbl",""
-00000004 00000000*       307 .L196:	.word	.L195
-                         308 	.type	.L196,@object
-                         309 	.size	.L196,4
-                         310 	.data
-                         311 	.text
-                         312 
-                         313 
-                         314 --69: void icum_get_ecc_test_lock_status(void)
-                         315 	.align	2
-                         316 	.align	2
-                         317 	.align	2
-                         318 ..gh.f.a.2.e.2:
-                         319 	.type	..gh.f.a.2.e.2,@object
-                         320 	.size	..gh.f.a.2.e.2,0
-                         321 	.global	_icum_get_ecc_test_lock_status
-                         322 _icum_get_ecc_test_lock_status:
-000000c6 581a            323 	add	-8,sp
-000000c8 63ff0500        324 	st.w	lp,4[sp]
-000000cc 63ef0100        325 	st.w	r29,0[sp]
-                         326 --	    .bf
-                         327 .LDW41:
-                         328 --70: {
-                         329 --71:     r_icumif_isd_t *p_ISD;
-                         330 --72:     // initialize the global icum service header
-                         331 --73:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+000000ba 23ff0500        271 	ld.w	4[sp],lp
+000000be 23ef0100        272 	ld.w	0[sp],r29
+000000c2 481a            273 	add	8,sp
+                         274 .L195:
+                         275 	.jumptype return
+000000c4 7f00            276 	jmp	[lp]
+                         277 --line65
+                         278 ..lin.76af9e8a..4fd98c71.0_16::
+                         279 	.type	_icum_end_ecc_test,@function
+                         280 	.size	_icum_end_ecc_test,.-_icum_end_ecc_test
+                         281 	.align	2
+                         282 --_p_ISD	r29	local
+                         283 
+                         284 	.section ".rodata","a"
+                         285 .L170:--	"SUCCEEDED : Ended ECC test.\n"
+0000001f 53554343        286 	.byte	83,85,67,67
+00000023 45454445        287 	.byte	69,69,68,69
+00000027 44203a20        288 	.byte	68,32,58,32
+0000002b 456e6465        289 	.byte	69,110,100,101
+0000002f 64204543        290 	.byte	100,32,69,67
+00000033 43207465        291 	.byte	67,32,116,101
+00000037 73742e0a        292 	.byte	115,116,46,10
+0000003b 00              293 	.byte	0
+                         294 	.type	.L170,@object
+                         295 	.size	.L170,29
+                         296 	.section ".ghcalltbl",""
+00000010 00000000*       297 .L188:	.word	.L187
+                         298 	.type	.L188,@object
+                         299 	.size	.L188,4
+00000014 00000000*       300 .L190:	.word	.L189
+                         301 	.type	.L190,@object
+                         302 	.size	.L190,4
+00000018 00000000*       303 .L192:	.word	.L191
+                         304 	.type	.L192,@object
+                         305 	.size	.L192,4
+0000001c 00000000*       306 .L194:	.word	.L193
+                         307 	.type	.L194,@object
+                         308 	.size	.L194,4
+                         309 	.section ".ghrettbl",""
+00000004 00000000*       310 .L196:	.word	.L195
+                         311 	.type	.L196,@object
+                         312 	.size	.L196,4
+                         313 	.data
+                         314 	.text
+                         315 
+                         316 
+                         317 --69: void icum_get_ecc_test_lock_status(void)
+                         318 	.align	2
+                         319 	.align	2
+                         320 	.align	2
+                         321 ..gh.f.a.2.e.2:
+                         322 	.type	..gh.f.a.2.e.2,@object
+                         323 	.size	..gh.f.a.2.e.2,0
+                         324 	.global	_icum_get_ecc_test_lock_status
+                         325 _icum_get_ecc_test_lock_status:
+000000c6 581a            326 	add	-8,sp
+000000c8 63ff0500        327 	st.w	lp,4[sp]
+000000cc 63ef0100        328 	st.w	r29,0[sp]
+                         329 --	    .bf
+                         330 .LDW41:
+                         331 --70: {
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-000000d0 3d0600000000*   332 	mov	_ISD_BUFFER,r29
-                         333 --74:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
-                         334 --line74
-                         335 ..lin.76af9e8a..3d608e45.0_17::
-                         336 .LDWlin17:
-000000d6 7d070100        337 	st.w	zero,0[r29]
-                         338 --75:     p_ISD->p_callbackfunc                    = 0;
-000000da 7d071900        339 	st.w	zero,24[r29]
-                         340 --76:     p_ISD->job_id                            = 0;
-000000de 7d071200        341 	st.h	zero,18[r29]
-                         342 --77:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_STATUS;
-000000e2 020a            343 	mov	2,r1
-000000e4 7d0f2100        344 	st.w	r1,32[r29]
-                         345 --78:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
-000000e8 400e0001        346 	movhi	hi(16777216),zero,r1
-000000ec 7d0f2500        347 	st.w	r1,36[r29]
-                         348 --79:     /* service trigger */
-                         349 --80:     trigger_service_and_wait(p_ISD);
-                         350 --line80
-                         351 ..lin.76af9e8a..3d608e45.0_18::
-                         352 .LDWlin18:
-000000f0 1d30            353 	mov	r29,r6
-                         354 .L335:
-                         355 	jarl	_trigger_service_and_wait,lp
-                         355 <EXPANSION BEGIN>
-                         355 jarl22 _trigger_service_and_wait , lp 
-000000f2 80ff0000*       355 <EXPANSION END>
-                         356 --81:     if(p_ISD->service_result == SERV_OK)
-                         357 --line81
-                         358 ..lin.76af9e8a..3d608e45.0_19::
-                         359 .LDWlin19:
-000000f6 3d0f0d00        360 	ld.w	12[r29],r1
-000000fa e009            361 	cmp	zero,r1
-000000fc 9a3d*           362 	bne	.L197
-                         363 --82:     {
-                         364 --83:         if(p_ISD->prm.ECC_TEST.ecc_test_lock_status == 0)
-                         365 --line83
-                         366 ..lin.76af9e8a..3d608e45.0_20::
-                         367 .LDWlin20:
-000000fe 3d0f2500        368 	ld.w	36[r29],r1
-00000102 e009            369 	cmp	zero,r1
-00000104 9a15*           370 	bne	.L201
-                         371 --84:         {
-                         372 --85:             printf("SUCCEEDED : Lock status is ECC_TEST_UNLOCKED.\n");
-                         373 --line85
-                         374 ..lin.76af9e8a..3d608e45.0_21::
-                         375 .LDWlin21:
-00000106 260600000000*   376 	mov	_vrun_printf_buff,r6
-0000010c 270600000000*   377 	mov	.L306,r7
-                         378 .L337:
-                         379 	jarl	_sprintf,lp
-                         379 <EXPANSION BEGIN>
-                         379 jarl22 _sprintf , lp 
-00000112 80ff0000*       379 <EXPANSION END>
-                         380 --line85
-                         381 ..lin.76af9e8a..3d608e45.0_22::
-                         382 .LDWlin22:
-00000116 260600000000*   383 	mov	_vrun_printf_buff,r6
-                         384 .L339:
-                         385 	jarl	_vrun_iobuff_print_txt,lp
-                         385 <EXPANSION BEGIN>
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                         332 --71:     r_icumif_isd_t *p_ISD;
+                         333 --72:     // initialize the global icum service header
+                         334 --73:     p_ISD = (r_icumif_isd_t *)ISD_BUFFER;
+000000d0 3d0600000000*   335 	mov	_ISD_BUFFER,r29
+                         336 --74:     p_ISD->service_id                        = SERVICE_00_ECC_TEST;
+                         337 --line74
+                         338 ..lin.76af9e8a..3d608e45.0_17::
+                         339 .LDWlin17:
+000000d6 7d070100        340 	st.w	zero,0[r29]
+                         341 --75:     p_ISD->p_callbackfunc                    = 0;
+000000da 7d071900        342 	st.w	zero,24[r29]
+                         343 --76:     p_ISD->job_id                            = 0;
+000000de 7d071200        344 	st.h	zero,18[r29]
+                         345 --77:     p_ISD->prm.ECC_TEST.ecc_test_operation   = ECC_TEST_STATUS;
+000000e2 020a            346 	mov	2,r1
+000000e4 7d0f2100        347 	st.w	r1,32[r29]
+                         348 --78:     p_ISD->prm.ECC_TEST.ecc_test_lock_status = LAST_ITEM_STATUS;
+000000e8 400e0001        349 	movhi	hi(16777216),zero,r1
+000000ec 7d0f2500        350 	st.w	r1,36[r29]
+                         351 --79:     /* service trigger */
+                         352 --80:     trigger_service_and_wait(p_ISD);
+                         353 --line80
+                         354 ..lin.76af9e8a..3d608e45.0_18::
+                         355 .LDWlin18:
+000000f0 1d30            356 	mov	r29,r6
+                         357 .L335:
+                         358 	jarl	_trigger_service_and_wait,lp
+                         358 <EXPANSION BEGIN>
+                         358 jarl22 _trigger_service_and_wait , lp 
+000000f2 80ff0000*       358 <EXPANSION END>
+                         359 --81:     if(p_ISD->service_result == SERV_OK)
+                         360 --line81
+                         361 ..lin.76af9e8a..3d608e45.0_19::
+                         362 .LDWlin19:
+000000f6 3d0f0d00        363 	ld.w	12[r29],r1
+000000fa e009            364 	cmp	zero,r1
+000000fc 9a3d*           365 	bne	.L197
+                         366 --82:     {
+                         367 --83:         if(p_ISD->prm.ECC_TEST.ecc_test_lock_status == 0)
+                         368 --line83
+                         369 ..lin.76af9e8a..3d608e45.0_20::
+                         370 .LDWlin20:
+000000fe 3d0f2500        371 	ld.w	36[r29],r1
+00000102 e009            372 	cmp	zero,r1
+00000104 9a15*           373 	bne	.L201
+                         374 --84:         {
+                         375 --85:             printf("SUCCEEDED : Lock status is ECC_TEST_UNLOCKED.\n");
+                         376 --line85
+                         377 ..lin.76af9e8a..3d608e45.0_21::
+                         378 .LDWlin21:
+00000106 260600000000*   379 	mov	_vrun_printf_buff,r6
+0000010c 270600000000*   380 	mov	.L306,r7
+                         381 .L337:
+                         382 	jarl	_sprintf,lp
+                         382 <EXPANSION BEGIN>
+                         382 jarl22 _sprintf , lp 
+00000112 80ff0000*       382 <EXPANSION END>
+                         383 --line85
+                         384 ..lin.76af9e8a..3d608e45.0_22::
+                         385 .LDWlin22:
+00000116 260600000000*   386 	mov	_vrun_printf_buff,r6
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-                         385 jarl22 _vrun_iobuff_print_txt , lp 
-0000011c 80ff0000*       385 <EXPANSION END>
-                         386 .L341:
-                         387 --line85
-                         388 ..lin.76af9e8a..3d608e45.0_23::
-                         389 .LDWlin23:
-                         390 	jarl	_vrun_console_put,lp
-                         390 <EXPANSION BEGIN>
-                         390 jarl22 _vrun_console_put , lp 
-00000120 80ff0000*       390 <EXPANSION END>
-                         391 --line85
-                         392 ..lin.76af9e8a..3d608e45.0_24::
-                         393 .LDWlin24:
-00000124 d525*           394 	br	.L197
-                         395 .L201:
-                         396 --86:         }
-                         397 --87:         else if(p_ISD->prm.ECC_TEST.ecc_test_lock_status == 1)
-                         398 --line87
-                         399 ..lin.76af9e8a..3d608e45.0_25::
-                         400 .LDWlin25:
-00000126 3d0f2500        401 	ld.w	36[r29],r1
-0000012a 610a            402 	cmp	1,r1
-0000012c 9a15*           403 	bne	.L204
-                         404 --88:         {
-                         405 --89:             printf("SUCCEEDED : Lock status is ECC_TEST_LOCKED.\n");
-                         406 --line89
-                         407 ..lin.76af9e8a..3d608e45.0_26::
-                         408 .LDWlin26:
-0000012e 260600000000*   409 	mov	_vrun_printf_buff,r6
-00000134 270600000000*   410 	mov	.L307,r7
-                         411 .L343:
-                         412 	jarl	_sprintf,lp
-                         412 <EXPANSION BEGIN>
-                         412 jarl22 _sprintf , lp 
-0000013a 80ff0000*       412 <EXPANSION END>
-                         413 --line89
-                         414 ..lin.76af9e8a..3d608e45.0_27::
-                         415 .LDWlin27:
-0000013e 260600000000*   416 	mov	_vrun_printf_buff,r6
-                         417 .L345:
-                         418 	jarl	_vrun_iobuff_print_txt,lp
-                         418 <EXPANSION BEGIN>
-                         418 jarl22 _vrun_iobuff_print_txt , lp 
-00000144 80ff0000*       418 <EXPANSION END>
-                         419 .L347:
-                         420 --line89
-                         421 ..lin.76af9e8a..3d608e45.0_28::
-                         422 .LDWlin28:
-                         423 	jarl	_vrun_console_put,lp
-                         423 <EXPANSION BEGIN>
-                         423 jarl22 _vrun_console_put , lp 
-00000148 80ff0000*       423 <EXPANSION END>
-                         424 --line89
-                         425 ..lin.76af9e8a..3d608e45.0_29::
-                         426 .LDWlin29:
-0000014c 9515*           427 	br	.L197
-                         428 .L204:
-                         429 --90:         }
-                         430 --91:         else
-                         431 --92:         {
-                         432 --93:             printf("FAILED : Undefined status !!\n");
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                         387 .L339:
+                         388 	jarl	_vrun_iobuff_print_txt,lp
+                         388 <EXPANSION BEGIN>
+                         388 jarl22 _vrun_iobuff_print_txt , lp 
+0000011c 80ff0000*       388 <EXPANSION END>
+                         389 .L341:
+                         390 --line85
+                         391 ..lin.76af9e8a..3d608e45.0_23::
+                         392 .LDWlin23:
+                         393 	jarl	_vrun_console_put,lp
+                         393 <EXPANSION BEGIN>
+                         393 jarl22 _vrun_console_put , lp 
+00000120 80ff0000*       393 <EXPANSION END>
+                         394 --line85
+                         395 ..lin.76af9e8a..3d608e45.0_24::
+                         396 .LDWlin24:
+00000124 d525*           397 	br	.L197
+                         398 .L201:
+                         399 --86:         }
+                         400 --87:         else if(p_ISD->prm.ECC_TEST.ecc_test_lock_status == 1)
+                         401 --line87
+                         402 ..lin.76af9e8a..3d608e45.0_25::
+                         403 .LDWlin25:
+00000126 3d0f2500        404 	ld.w	36[r29],r1
+0000012a 610a            405 	cmp	1,r1
+0000012c 9a15*           406 	bne	.L204
+                         407 --88:         {
+                         408 --89:             printf("SUCCEEDED : Lock status is ECC_TEST_LOCKED.\n");
+                         409 --line89
+                         410 ..lin.76af9e8a..3d608e45.0_26::
+                         411 .LDWlin26:
+0000012e 260600000000*   412 	mov	_vrun_printf_buff,r6
+00000134 270600000000*   413 	mov	.L307,r7
+                         414 .L343:
+                         415 	jarl	_sprintf,lp
+                         415 <EXPANSION BEGIN>
+                         415 jarl22 _sprintf , lp 
+0000013a 80ff0000*       415 <EXPANSION END>
+                         416 --line89
+                         417 ..lin.76af9e8a..3d608e45.0_27::
+                         418 .LDWlin27:
+0000013e 260600000000*   419 	mov	_vrun_printf_buff,r6
+                         420 .L345:
+                         421 	jarl	_vrun_iobuff_print_txt,lp
+                         421 <EXPANSION BEGIN>
+                         421 jarl22 _vrun_iobuff_print_txt , lp 
+00000144 80ff0000*       421 <EXPANSION END>
+                         422 .L347:
+                         423 --line89
+                         424 ..lin.76af9e8a..3d608e45.0_28::
+                         425 .LDWlin28:
+                         426 	jarl	_vrun_console_put,lp
+                         426 <EXPANSION BEGIN>
+                         426 jarl22 _vrun_console_put , lp 
+00000148 80ff0000*       426 <EXPANSION END>
+                         427 --line89
+                         428 ..lin.76af9e8a..3d608e45.0_29::
+                         429 .LDWlin29:
+0000014c 9515*           430 	br	.L197
+                         431 .L204:
+                         432 --90:         }
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-                         433 --line93
-                         434 ..lin.76af9e8a..3d608e45.0_30::
-                         435 .LDWlin30:
-0000014e 260600000000*   436 	mov	_vrun_printf_buff,r6
-00000154 270600000000*   437 	mov	.L308,r7
-                         438 .L349:
-                         439 	jarl	_sprintf,lp
-                         439 <EXPANSION BEGIN>
-                         439 jarl22 _sprintf , lp 
-0000015a 80ff0000*       439 <EXPANSION END>
-                         440 --line93
-                         441 ..lin.76af9e8a..3d608e45.0_31::
-                         442 .LDWlin31:
-0000015e 260600000000*   443 	mov	_vrun_printf_buff,r6
-                         444 .L351:
-                         445 	jarl	_vrun_iobuff_print_txt,lp
-                         445 <EXPANSION BEGIN>
-                         445 jarl22 _vrun_iobuff_print_txt , lp 
-00000164 80ff0000*       445 <EXPANSION END>
-                         446 .L353:
-                         447 --line93
-                         448 ..lin.76af9e8a..3d608e45.0_32::
-                         449 .LDWlin32:
-                         450 	jarl	_vrun_console_put,lp
-                         450 <EXPANSION BEGIN>
-                         450 jarl22 _vrun_console_put , lp 
-00000168 80ff0000*       450 <EXPANSION END>
-                         451 --line93
-                         452 ..lin.76af9e8a..3d608e45.0_33::
-                         453 .LDWlin33:
-0000016c 0000            454 	nop
-                         455 .L197:
-                         456 --94:         }
-                         457 --95:     }
-                         458 --96: }
-                         459 --	    .ef
-                         460 .LDW51:
-0000016e 23ff0500        461 	ld.w	4[sp],lp
-00000172 23ef0100        462 	ld.w	0[sp],r29
-00000176 481a            463 	add	8,sp
-                         464 .L355:
-                         465 	.jumptype return
-00000178 7f00            466 	jmp	[lp]
-                         467 --line93
-                         468 ..lin.76af9e8a..3d608e45.0_34::
-                         469 	.type	_icum_get_ecc_test_lock_status,@function
-                         470 	.size	_icum_get_ecc_test_lock_status,.-_icum_get_ecc_test_lock_status
-                         471 	.align	2
-                         472 --_p_ISD	r29	local
-                         473 
-                         474 	.section ".rodata","a"
-                         475 .L306:--	"SUCCEEDED : Lock status is ECC_TEST_UNLOCKED.\n"
-0000003c 53554343        476 	.byte	83,85,67,67
-00000040 45454445        477 	.byte	69,69,68,69
-00000044 44203a20        478 	.byte	68,32,58,32
-00000048 4c6f636b        479 	.byte	76,111,99,107
-0000004c 20737461        480 	.byte	32,115,116,97
-00000050 74757320        481 	.byte	116,117,115,32
-00000054 69732045        482 	.byte	105,115,32,69
-00000058 43435f54        483 	.byte	67,67,95,84
-0000005c 4553545f        484 	.byte	69,83,84,95
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                         433 --91:         else
+                         434 --92:         {
+                         435 --93:             printf("FAILED : Undefined status !!\n");
+                         436 --line93
+                         437 ..lin.76af9e8a..3d608e45.0_30::
+                         438 .LDWlin30:
+0000014e 260600000000*   439 	mov	_vrun_printf_buff,r6
+00000154 270600000000*   440 	mov	.L308,r7
+                         441 .L349:
+                         442 	jarl	_sprintf,lp
+                         442 <EXPANSION BEGIN>
+                         442 jarl22 _sprintf , lp 
+0000015a 80ff0000*       442 <EXPANSION END>
+                         443 --line93
+                         444 ..lin.76af9e8a..3d608e45.0_31::
+                         445 .LDWlin31:
+0000015e 260600000000*   446 	mov	_vrun_printf_buff,r6
+                         447 .L351:
+                         448 	jarl	_vrun_iobuff_print_txt,lp
+                         448 <EXPANSION BEGIN>
+                         448 jarl22 _vrun_iobuff_print_txt , lp 
+00000164 80ff0000*       448 <EXPANSION END>
+                         449 .L353:
+                         450 --line93
+                         451 ..lin.76af9e8a..3d608e45.0_32::
+                         452 .LDWlin32:
+                         453 	jarl	_vrun_console_put,lp
+                         453 <EXPANSION BEGIN>
+                         453 jarl22 _vrun_console_put , lp 
+00000168 80ff0000*       453 <EXPANSION END>
+                         454 --line93
+                         455 ..lin.76af9e8a..3d608e45.0_33::
+                         456 .LDWlin33:
+0000016c 0000            457 	nop
+                         458 .L197:
+                         459 --94:         }
+                         460 --95:     }
+                         461 --96: }
+                         462 --	    .ef
+                         463 .LDW51:
+0000016e 23ff0500        464 	ld.w	4[sp],lp
+00000172 23ef0100        465 	ld.w	0[sp],r29
+00000176 481a            466 	add	8,sp
+                         467 .L355:
+                         468 	.jumptype return
+00000178 7f00            469 	jmp	[lp]
+                         470 --line93
+                         471 ..lin.76af9e8a..3d608e45.0_34::
+                         472 	.type	_icum_get_ecc_test_lock_status,@function
+                         473 	.size	_icum_get_ecc_test_lock_status,.-_icum_get_ecc_test_lock_status
+                         474 	.align	2
+                         475 --_p_ISD	r29	local
+                         476 
+                         477 	.section ".rodata","a"
+                         478 .L306:--	"SUCCEEDED : Lock status is ECC_TEST_UNLOCKED.\n"
+0000003c 53554343        479 	.byte	83,85,67,67
+00000040 45454445        480 	.byte	69,69,68,69
+00000044 44203a20        481 	.byte	68,32,58,32
+00000048 4c6f636b        482 	.byte	76,111,99,107
+0000004c 20737461        483 	.byte	32,115,116,97
+00000050 74757320        484 	.byte	116,117,115,32
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-00000060 554e4c4f        485 	.byte	85,78,76,79
-00000064 434b4544        486 	.byte	67,75,69,68
-00000068 2e0a            487 	.byte	46,10
-0000006a 00              488 	.byte	0
-                         489 	.type	.L306,@object
-                         490 	.size	.L306,47
-                         491 .L307:--	"SUCCEEDED : Lock status is ECC_TEST_LOCKED.\n"
-0000006b 53554343        492 	.byte	83,85,67,67
-0000006f 45454445        493 	.byte	69,69,68,69
-00000073 44203a20        494 	.byte	68,32,58,32
-00000077 4c6f636b        495 	.byte	76,111,99,107
-0000007b 20737461        496 	.byte	32,115,116,97
-0000007f 74757320        497 	.byte	116,117,115,32
-00000083 69732045        498 	.byte	105,115,32,69
-00000087 43435f54        499 	.byte	67,67,95,84
-0000008b 4553545f        500 	.byte	69,83,84,95
-0000008f 4c4f434b        501 	.byte	76,79,67,75
-00000093 45442e0a        502 	.byte	69,68,46,10
-00000097 00              503 	.byte	0
-                         504 	.type	.L307,@object
-                         505 	.size	.L307,45
-                         506 .L308:--	"FAILED : Undefined status !!\n"
-00000098 4641494c        507 	.byte	70,65,73,76
-0000009c 4544203a        508 	.byte	69,68,32,58
-000000a0 20556e64        509 	.byte	32,85,110,100
-000000a4 6566696e        510 	.byte	101,102,105,110
-000000a8 65642073        511 	.byte	101,100,32,115
-000000ac 74617475        512 	.byte	116,97,116,117
-000000b0 73202121        513 	.byte	115,32,33,33
-000000b4 0a00            514 	.byte	10,0
-                         515 	.type	.L308,@object
-                         516 	.size	.L308,30
-                         517 	.section ".ghcalltbl",""
-00000020 00000000*       518 .L336:	.word	.L335
-                         519 	.type	.L336,@object
-                         520 	.size	.L336,4
-00000024 00000000*       521 .L338:	.word	.L337
-                         522 	.type	.L338,@object
-                         523 	.size	.L338,4
-00000028 00000000*       524 .L340:	.word	.L339
-                         525 	.type	.L340,@object
-                         526 	.size	.L340,4
-0000002c 00000000*       527 .L342:	.word	.L341
-                         528 	.type	.L342,@object
-                         529 	.size	.L342,4
-00000030 00000000*       530 .L344:	.word	.L343
-                         531 	.type	.L344,@object
-                         532 	.size	.L344,4
-00000034 00000000*       533 .L346:	.word	.L345
-                         534 	.type	.L346,@object
-                         535 	.size	.L346,4
-00000038 00000000*       536 .L348:	.word	.L347
-                         537 	.type	.L348,@object
-                         538 	.size	.L348,4
-0000003c 00000000*       539 .L350:	.word	.L349
-                         540 	.type	.L350,@object
-                         541 	.size	.L350,4
-00000040 00000000*       542 .L352:	.word	.L351
-                         543 	.type	.L352,@object
-                         544 	.size	.L352,4
-00000044 00000000*       545 .L354:	.word	.L353
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+00000054 69732045        485 	.byte	105,115,32,69
+00000058 43435f54        486 	.byte	67,67,95,84
+0000005c 4553545f        487 	.byte	69,83,84,95
+00000060 554e4c4f        488 	.byte	85,78,76,79
+00000064 434b4544        489 	.byte	67,75,69,68
+00000068 2e0a            490 	.byte	46,10
+0000006a 00              491 	.byte	0
+                         492 	.type	.L306,@object
+                         493 	.size	.L306,47
+                         494 .L307:--	"SUCCEEDED : Lock status is ECC_TEST_LOCKED.\n"
+0000006b 53554343        495 	.byte	83,85,67,67
+0000006f 45454445        496 	.byte	69,69,68,69
+00000073 44203a20        497 	.byte	68,32,58,32
+00000077 4c6f636b        498 	.byte	76,111,99,107
+0000007b 20737461        499 	.byte	32,115,116,97
+0000007f 74757320        500 	.byte	116,117,115,32
+00000083 69732045        501 	.byte	105,115,32,69
+00000087 43435f54        502 	.byte	67,67,95,84
+0000008b 4553545f        503 	.byte	69,83,84,95
+0000008f 4c4f434b        504 	.byte	76,79,67,75
+00000093 45442e0a        505 	.byte	69,68,46,10
+00000097 00              506 	.byte	0
+                         507 	.type	.L307,@object
+                         508 	.size	.L307,45
+                         509 .L308:--	"FAILED : Undefined status !!\n"
+00000098 4641494c        510 	.byte	70,65,73,76
+0000009c 4544203a        511 	.byte	69,68,32,58
+000000a0 20556e64        512 	.byte	32,85,110,100
+000000a4 6566696e        513 	.byte	101,102,105,110
+000000a8 65642073        514 	.byte	101,100,32,115
+000000ac 74617475        515 	.byte	116,97,116,117
+000000b0 73202121        516 	.byte	115,32,33,33
+000000b4 0a00            517 	.byte	10,0
+                         518 	.type	.L308,@object
+                         519 	.size	.L308,30
+                         520 	.section ".ghcalltbl",""
+00000020 00000000*       521 .L336:	.word	.L335
+                         522 	.type	.L336,@object
+                         523 	.size	.L336,4
+00000024 00000000*       524 .L338:	.word	.L337
+                         525 	.type	.L338,@object
+                         526 	.size	.L338,4
+00000028 00000000*       527 .L340:	.word	.L339
+                         528 	.type	.L340,@object
+                         529 	.size	.L340,4
+0000002c 00000000*       530 .L342:	.word	.L341
+                         531 	.type	.L342,@object
+                         532 	.size	.L342,4
+00000030 00000000*       533 .L344:	.word	.L343
+                         534 	.type	.L344,@object
+                         535 	.size	.L344,4
+00000034 00000000*       536 .L346:	.word	.L345
+                         537 	.type	.L346,@object
+                         538 	.size	.L346,4
+00000038 00000000*       539 .L348:	.word	.L347
+                         540 	.type	.L348,@object
+                         541 	.size	.L348,4
+0000003c 00000000*       542 .L350:	.word	.L349
+                         543 	.type	.L350,@object
+                         544 	.size	.L350,4
+00000040 00000000*       545 .L352:	.word	.L351
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000bms1.si
-                         546 	.type	.L354,@object
-                         547 	.size	.L354,4
-                         548 	.section ".ghrettbl",""
-00000008 00000000*       549 .L356:	.word	.L355
-                         550 	.type	.L356,@object
-                         551 	.size	.L356,4
-                         552 	.data
-                         553 	.text
-                         554 
-                         555 	.align	2
-                         556 --_ISD_BUFFER	_ISD_BUFFER	import
-                         557 --_vrun_printf_buff	_vrun_printf_buff	import
-                         558 
-                         559 	.data
-                         560 	.ghsnote version,30
-                         561 	.ghsnote tools,3
-                         562 	.ghsnote options,656
-                         563 	.text
-                         564 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_ecc_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF40D9F..0::
-                         565 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012qg1.si
+                         546 	.type	.L352,@object
+                         547 	.size	.L352,4
+00000044 00000000*       548 .L354:	.word	.L353
+                         549 	.type	.L354,@object
+                         550 	.size	.L354,4
+                         551 	.section ".ghrettbl",""
+00000008 00000000*       552 .L356:	.word	.L355
+                         553 	.type	.L356,@object
+                         554 	.size	.L356,4
+                         555 	.data
+                         556 	.text
+                         557 
+                         558 	.align	2
+                         559 --_ISD_BUFFER	_ISD_BUFFER	import
+                         560 --_vrun_printf_buff	_vrun_printf_buff	import
+                         561 
+                         562 	.data
+                         563 	.ghsnote version,30
+                         564 	.ghsnote tools,3
+                         565 	.ghsnote options,656
+                         566 	.text
+                         567 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe1.5Clibs.5Cpe1.5Cpe1_ecc_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF426E8..0::
+                         568 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
