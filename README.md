@@ -1,6 +1,11 @@
 # U2C4_security_demo
 U2C4_security_demo
 
+## Project guides
+
+- [ICUM 工程说明](ICUM_PROJECT_GUIDE.md)
+- [PE 工程说明](PE_PROJECT_GUIDE.md)
+
 ## U2C4 clock configuration
 
 Target: external 20 MHz crystal, CPU 320 MHz, `CLK_SBUS` 160 MHz.
@@ -83,9 +88,10 @@ for the demo RAM keys and inputs; GCM and CCM also compare the authentication
 tag. They then perform the existing decryption and verification checks.
 On U2C4, service response interrupts use
 INTC2 channel 236 for PE0 and channel 540 for PE1.
-Automatic flash garbage collection is removed,
-so data flash capacity is finite and must be monitored through the existing
-capacity warnings.
+The current data-set backend uses RAM, not persistent data flash. It is reset
+during initialization; RAM compaction remains, while the old automatic flash
+GC path is not built. Capacity warnings are not reliably propagated by the
+current dispatcher. See the ICUM guide for details and known limitations.
 
 From the PE serial console, enter `icum` and select a service group (1-5), then
 select one of the listed service items. Enter `0` or `q` to return to the
