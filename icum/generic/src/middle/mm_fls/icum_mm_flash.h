@@ -94,12 +94,10 @@
 #define NVM_WARN_WRPT_INIT          ((uint8_t)0x0)
 
 /* Flash memory status */
-#define FLS_GC_INIT_VAL             (0uL)
-#define FLS_GC_NORMAL               (1uL)
-#define FLS_GC_DURING_1             (2uL)
-#define FLS_GC_DURING_2             (3uL)
-#define FLS_GC_FORMAT_ERR           (4uL)
-#define FLS_GC_ALL_BLANK            (5uL)
+#define FLS_FORMAT_INIT             (0uL)
+#define FLS_FORMAT_NORMAL           (1uL)
+#define FLS_FORMAT_ERR              (2uL)
+#define FLS_FORMAT_ALL_BLANK        (3uL)
 
 /* Block information flag */
 #define FLS_DF_BLOCK_TOP            (0uL)
@@ -186,8 +184,8 @@
 /* type of Data TAG */
 typedef uint32_t program_tag_t;
 
-/* type of garbage collection status */
-typedef uint32_t gc_state_t;
+/* Secure flash format status */
+typedef uint32_t fls_format_state_t;
 
 /* type of DF flags */
 typedef uint32_t df_flag_t;
@@ -261,7 +259,7 @@ typedef struct fls_block_info
     uint32_t    nbee;
     /* Erase start flag */
     uint32_t    nbes;
-    /* GC flag */
+    /* Block transfer flag */
     uint32_t    transfer;
     /* unused */
     uint32_t    use;

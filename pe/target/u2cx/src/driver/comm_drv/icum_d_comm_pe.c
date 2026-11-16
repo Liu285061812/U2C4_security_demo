@@ -778,7 +778,9 @@ void D_COMM_SetInterruptEnable(void)
 {
     uint32_t            bit_position;
     volatile uint32_t   *p_reg;
+#if !defined(__RH850_U2C4__)
     volatile uint16_t   *p_eic_reg;
+#endif
     uint32_t            pesel_mask;
     uint32_t            ie_position;
     uint32_t            ie_value;
@@ -796,15 +798,30 @@ void D_COMM_SetInterruptEnable(void)
     my_peid = GET_MY_PEID & PEID_MASK;
     p_pe_info = &pe_info[my_peid];
     bit_position = (uint32_t)p_pe_info->pe_intc_init;
-    p_eic_reg = (volatile uint16_t *)p_pe_info->intc1cpueic0;
     if (INIT_UNPROCESSED == (0x00000001UL & (icumif_initialized >> bit_position)))
     {
     /* ---- These lines should be left unchanged.   End   ---- */
+#if defined(__RH850_U2C4__)
+        if (my_peid == TARGET_PE0)
+        {
+            INTC2EIC236L = INTC_EIC_MK_INT_DISABLE | INTC_EIC_VM_TABLE | INTC_EIC_INT_PRI_5;
+            INTC2EIBD236 = (INTC2EIBD236 & ~0x80000007UL) | TARGET_PE0;
+            INTC2EIC236L = INTC_EIC_MK_INT_ENABLE | INTC_EIC_VM_TABLE | INTC_EIC_INT_PRI_5;
+        }
+        else
+        {
+            INTC2EIC540L = INTC_EIC_MK_INT_DISABLE | INTC_EIC_VM_TABLE | INTC_EIC_INT_PRI_5;
+            INTC2EIBD540 = (INTC2EIBD540 & ~0x80000007UL) | TARGET_PE1;
+            INTC2EIC540L = INTC_EIC_MK_INT_ENABLE | INTC_EIC_VM_TABLE | INTC_EIC_INT_PRI_5;
+        }
+#else
+        p_eic_reg = (volatile uint16_t *)p_pe_info->intc1cpueic0;
         /* 2-1. */
         /* Set EIC21 (for INTICU2PE) register of INTC of its self PE */
         p_eic_reg += INTC_EIC_CH_INTICU2PE;
         *p_eic_reg = INTC_EIC_CT_LEVEL | INTC_EIC_RF_NO_INT | INTC_EIC_MK_INT_ENABLE | 
                      INTC_EIC_VM_TABLE | INTC_EIC_INT_PRI_5;
+#endif
 
     /* ---- These lines should be left unchanged.   Start ---- */
         /* The "INTC initialization" state is set to "processed" */
@@ -994,9 +1011,7 @@ static void d_COMM_Flash_Interrupt(void)
 *                uint32_t priority : Priority identifier of the generated interrupt
 * Return Value : None
 ***************************************************************************************/
-#pragma ghs reference EIINT21
-#pragma ghs interrupt(nonreentrant)
-__interrupt void EIINT21(void)
+static void d_COMM_IRQ_Handler(void)
 {
     volatile uint32_t   *p_reg;
     uint32_t            work_icu2pef;
@@ -1079,6 +1094,29 @@ __interrupt void EIINT21(void)
         work_icu2pef >>= 1U;
     }
 }
+
+#pragma ghs reference EIINT21
+#pragma ghs interrupt(nonreentrant)
+__interrupt void EIINT21(void)
+{
+    d_COMM_IRQ_Handler();
+}
+
+#if defined(__RH850_U2C4__) && (_PEID_ == 1)
+#pragma ghs reference EIINT236
+#pragma ghs interrupt(nonreentrant)
+__interrupt void EIINT236(void)
+{
+    d_COMM_IRQ_Handler();
+}
+#elif defined(__RH850_U2C4__) && (_PEID_ == 2)
+#pragma ghs reference EIINT540
+#pragma ghs interrupt(nonreentrant)
+__interrupt void EIINT540(void)
+{
+    d_COMM_IRQ_Handler();
+}
+#endif
 
 #pragma ghs section text    = default
 #pragma ghs section rodata  = default

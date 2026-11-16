@@ -84,7 +84,7 @@ const unsigned long CSA_OFFSET_0x380_to_0x47F[] =
     0xF97FFFFF,      //0xF97FFFFF,                <CSAb_base> +0x03C0,   Option byte 8 (OPBT8)
     OPBT9_VAL ,      //0xFFFCFFFF,                <CSAb_base> +0x03C4,   Option byte 9 (OPBT9)
     0xFAFD288A,      //0xFAFD288A,                <CSAb_base> +0x03C8,   Option byte 10 (OPBT10)
-    0xEFFFFFFF,      //0xEFFFFFFF,                <CSAb_base> +0x03CC,   Option byte 11 (OPBT11)
+    0xEFFFFFFF,      //0xEFFFFFFF,                <CSAb_base> +0x03CC,   Option byte 11 (OPBT11), 640 MHz SSCG -> CPU 320 MHz / CLK_SBUS 160 MHz
     0xFFFFFFFD,      //0xFFFFFFFD,                <CSAb_base> +0x03D0,   Option byte 12 (OPBT12)
     0xFFFFFFFF,      //0xFFFFFFFF,                <CSAb_base> +0x03D4,   Option byte 13 (OPBT13)
     0xFFFFFFFF,      //0xFFFFFFFF,                <CSAb_base> +0x03D8,   Reserved (need to be programmed)

@@ -31,14 +31,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <time.h>
-
 #undef NULL
 #include "r_icumif_api.h"
 #include "r_icumif_pub.h"
 #include "pe_target_device.h"
 #include "pe2.h"
-#include "heat_run_parallel_pe.h"
 #include "pe2.int.h"
 #include "pe_reg.h"
 #include "shared.h"
@@ -290,16 +287,7 @@ int main(void)
     {
         HALT();
         NOPS(10);
-
-        switch(notification_from_pe1)
-        {
-            case START_ST_RAND_SERVICE_TO_PE2:
-                icum_test_pe2_heat_run_parallel_pe();
-                notification_from_pe1 = 0;
-                break;
-            default:
-                break;
-        }
+        notification_from_pe1 = 0;
     }
 }
 

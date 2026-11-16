@@ -31,9 +31,12 @@
 #include "shared.h"
 
 #include "vrun.api.h"
+#include "sys.api.h"
 #include "icum_d_comm_pe.h"
 #include "pe_target_device.h"
 #include "pe_reg.h"
+
+extern unsigned char VTIMER0_CLK;
 
 /* ********************************************************************************/
 /* Local constants                                                                */
@@ -234,6 +237,133 @@ __interrupt void EIINT3(void)
 /* ********************************************************************************/
 
 #pragma ghs section text=".pe_rom"
+static const char *pe1_crypto_hash_name(r_hash_primitive_t hash)
+{
+    switch (hash)
+    {
+        case HASH_PRIMITIVE_MD5:          return "MD5";
+        case HASH_PRIMITIVE_RIPEMD_128:   return "RIPEMD-128";
+        case HASH_PRIMITIVE_RIPEMD_160:   return "RIPEMD-160";
+        case HASH_PRIMITIVE_RIPEMD_256:   return "RIPEMD-256";
+        case HASH_PRIMITIVE_RIPEMD_320:   return "RIPEMD-320";
+        case HASH_PRIMITIVE_SHA1:         return "SHA-1";
+        case HASH_PRIMITIVE_SHA2_224:     return "SHA-224";
+        case HASH_PRIMITIVE_SHA2_256:     return "SHA-256";
+        case HASH_PRIMITIVE_SHA2_384:     return "SHA-384";
+        case HASH_PRIMITIVE_SHA2_512:     return "SHA-512";
+        case HASH_PRIMITIVE_SHA2_512_224: return "SHA-512/224";
+        case HASH_PRIMITIVE_SHA2_512_256: return "SHA-512/256";
+        case HASH_PRIMITIVE_SHA3_256:     return "SHA3-256";
+        case HASH_PRIMITIVE_SHA3_384:     return "SHA3-384";
+        case HASH_PRIMITIVE_SHA3_512:     return "SHA3-512";
+        default:                          return "unknown-hash";
+    }
+}
+
+static const char *pe1_crypto_direction_name(cipher_direction_t direction)
+{
+    switch (direction)
+    {
+        case CIPHER_DIR_ENCRYPTION: return "encrypt";
+        case CIPHER_DIR_DECRYPTION: return "decrypt";
+        default:                    return "unknown-direction";
+    }
+}
+
+static const char *pe1_crypto_rsa_signature_name(r_hash_encoding_format_t mode)
+{
+    switch (mode)
+    {
+        case ENCODING_FORMAT_EMSA_PSS:       return "RSA-PSS";
+        case ENCODING_FORMAT_EMSA_PKCS1_V15: return "RSA-PKCS1-v1.5";
+        default:                             return "RSA-unknown-signature-mode";
+    }
+}
+
+static const char *pe1_crypto_rsa_cipher_name(r_message_encoding_format_t mode)
+{
+    switch (mode)
+    {
+        case ENCODING_FORMAT_EME_OAEP:       return "RSA-OAEP";
+        case ENCODING_FORMAT_EME_PKCS1_V15: return "RSA-PKCS1-v1.5";
+        default:                            return "RSA-unknown-cipher-mode";
+    }
+}
+
+static const char *pe1_crypto_service_name(const r_icumif_isd_t *p_isd,
+                                           const char **p_prefix,
+                                           const char **p_operation)
+{
+    *p_prefix = "";
+    *p_operation = "";
+    switch (p_isd->service_id)
+    {
+        case SERVICE_01_AES_CIPHER:
+            *p_operation = pe1_crypto_direction_name(p_isd->prm.AES_CIPHER.direction);
+            switch (p_isd->prm.AES_CIPHER.cipher_mode)
+            {
+                case CIPHER_MOD_ECB: return "AES-ECB";
+                case CIPHER_MOD_CBC: return "AES-CBC";
+                case CIPHER_MOD_CFB: return "AES-CFB";
+                case CIPHER_MOD_OFB: return "AES-OFB";
+                case CIPHER_MOD_CTR: return "AES-CTR";
+                case CIPHER_MOD_XTS: return "AES-XTS";
+                default:             return "AES-unknown-mode";
+            }
+        case SERVICE_01_AES_AUTH_CIPHER:
+            *p_operation = pe1_crypto_direction_name(p_isd->prm.AES_AUTH_CIPHER.direction);
+            switch (p_isd->prm.AES_AUTH_CIPHER.cipher_mode)
+            {
+                case AUTH_CIPHER_MOD_GCM: return "AES-GCM";
+                case AUTH_CIPHER_MOD_CCM: return "AES-CCM";
+                default:                  return "AES-unknown-auth-mode";
+            }
+        case SERVICE_01_AES_CMAC:
+            switch (p_isd->prm.AES_CMAC.cmac_operation)
+            {
+                case CMAC_GENERATION:   *p_operation = "generate"; break;
+                case CMAC_VERIFICATION: *p_operation = "verify"; break;
+                default:                *p_operation = "unknown-operation"; break;
+            }
+            return "AES-CMAC";
+        case SERVICE_02_RSA_VERIFY:
+            *p_operation = "verify";
+            return pe1_crypto_rsa_signature_name(p_isd->prm.RSA_VERIFY.hash_encoding_format);
+        case SERVICE_02_RSA_SIGN:
+            *p_operation = "sign";
+            return pe1_crypto_rsa_signature_name(p_isd->prm.RSA_SIGN.hash_encoding_format);
+        case SERVICE_02_RSA_ENCRYPT:
+            *p_operation = "encrypt";
+            return pe1_crypto_rsa_cipher_name(p_isd->prm.RSA_ENCRYPT.message_encoding_format);
+        case SERVICE_02_RSA_DECRYPT:
+            *p_operation = "decrypt";
+            return pe1_crypto_rsa_cipher_name(p_isd->prm.RSA_DECRYPT.message_encoding_format);
+        case SERVICE_02_RSA_KEY_GENERATE: *p_operation = "keygen"; return "RSA";
+        case SERVICE_03_RAND_INIT_RNG:    *p_operation = "initialize"; return "RNG";
+        case SERVICE_03_RAND_EXTEND_SEED: *p_operation = "extend-seed"; return "RNG";
+        case SERVICE_03_RAND_RND:         *p_operation = "generate"; return "RNG";
+        case SERVICE_04_ECDSA_VERIFY:     *p_operation = "verify"; return "ECDSA";
+        case SERVICE_04_ECDSA_SIGN:       *p_operation = "sign"; return "ECDSA";
+        case SERVICE_04_ECDH:             return "ECDH";
+        case SERVICE_04_EDDSA_VERIFY:     *p_operation = "verify"; return "EdDSA";
+        case SERVICE_04_EDDSA_SIGN:       *p_operation = "sign"; return "EdDSA";
+        case SERVICE_04_ECC_KEY_GENERATE: *p_operation = "keygen"; return "ECC";
+        case SERVICE_05_HASH:
+            return pe1_crypto_hash_name(p_isd->prm.HASH.hash_primitive);
+        case SERVICE_05_HMAC:
+            *p_prefix = "HMAC-";
+            switch (p_isd->prm.HMAC.hmac_operation)
+            {
+                case HMAC_GENERATION:   *p_operation = "generate"; break;
+                case HMAC_VERIFICATION: *p_operation = "verify"; break;
+                default:                *p_operation = "unknown-operation"; break;
+            }
+            return pe1_crypto_hash_name(p_isd->prm.HMAC.hash_primitive);
+        default:
+            return NULL;
+    }
+}
+
 /*===========================================================================
   Trigger an ICU-M service and wait for the response
   [PUBLIC]
@@ -241,6 +371,16 @@ __interrupt void EIINT3(void)
 void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
 {
     int32_t errno;
+    uint32_t start_count;
+    uint32_t elapsed_ticks;
+    unsigned long elapsed_us;
+    time_t elapsed_time;
+    const char *service_name;
+    const char *service_prefix;
+    const char *service_operation;
+
+    service_name = pe1_crypto_service_name(p_ISD, &service_prefix, &service_operation);
+    start_count = (service_name != NULL) ? (uint32_t)sys_vtimer0_get_pclk_counter() : 0u;
 
     /* trigger the service request*/
     errno = R_ICUMIF_ServiceRequest(p_ISD);
@@ -266,6 +406,32 @@ void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
         }
         HALT();
         NOPS(10);
+    }
+
+    if (service_name != NULL)
+    {
+        elapsed_ticks = (uint32_t)sys_vtimer0_get_pclk_counter() - start_count;
+        printf("ICUM %s%s%s%s",
+               service_prefix,
+               service_name,
+               (*service_operation != '\0') ? " " : "",
+               service_operation);
+        printf(" (0x%02lX) result=%s OSTM0=%lu ticks",
+               (unsigned long)p_ISD->service_id,
+               R_ICUMIF_GetErrorCodeName(p_ISD->service_result),
+               (unsigned long)elapsed_ticks);
+        if (VTIMER0_CLK != 0u)
+        {
+            (void)sys_vtimer0_cnv_pclk2time(elapsed_ticks, &elapsed_time);
+            elapsed_us = elapsed_time.sec * 1000000ul +
+                         (unsigned long)elapsed_time.msec * 1000ul +
+                         (unsigned long)elapsed_time.usec;
+            printf(" elapsed=%lu.%03u us\n", elapsed_us, (unsigned int)elapsed_time.nsec);
+        }
+        else
+        {
+            printf(" elapsed=unavailable (OSTM0 clock not initialized)\n");
+        }
     }
 
     /* test for possible error */

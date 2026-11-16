@@ -1,0 +1,2682 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\src\service\ -I..\..\icum\generic\src\service\s_01\ -I..\..\icum\generic\src\service\s_03\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_01_rsa_encrypt.dbo -source=icum_s_01_rsa_encrypt.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\gh_0000rjs1.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_01_rsa_encrypt.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+Source File: icum_s_01_rsa_encrypt.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-I..\..\icum\generic\src\service\
+                           8 --		-I..\..\icum\generic\src\service\s_01\
+                           9 --		-I..\..\icum\generic\src\service\s_03\
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\device\
+                          12 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          14 --		-I..\..\icum\target\u2cx\include\driver
+                          15 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          17 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          18 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          19 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          20 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          21 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          22 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          23 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          24 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          25 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          26 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          27 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          28 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          29 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          30 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          31 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          32 --		-filetype.c
+                          33 --		..\..\icum\generic\src\service\s_01\icum_s_01_rsa_encrypt.c -o
+                          34 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_01_rsa_encrypt.o
+                          35 --Source File:   ..\..\icum\generic\src\service\s_01\icum_s_01_rsa_encrypt.c
+                          36 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          37 --Compile Date:  Fri Nov 13 15:27:25 2026
+                          38 --Host OS:       Win64
+                          39 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          40 --Release:       Compiler v2023.5.4
+                          41 --Revision Date: Wed Sep 06 02:44:56 2023
+                          42 --Release Date:  Wed Sep 06 02:00:00 2023
+                          43 -- ecom  -g -w
+                          44 	.section ".icum_service.text","ax"
+                          45 
+                          46 --1: /******************************************************************************/
+                          47 --2: /* Component Name   ICU-M Service                                             */
+                          48 --3: /******************************************************************************/
+                          49 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          50 --5: /******************************************************************************/
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                          51 --6: /***********************************************************************************************************************
+                          52 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          53 --8: * 
+                          54 --9: * DISCLAIMER
+                          55 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          56 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          57 --12: * applicable laws, including copyright laws.
+                          58 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          59 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          60 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          61 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          62 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          63 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          64 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          65 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          66 --21: * following link:
+                          67 --22: * www.renesas.com/disclaimer
+                          68 --23: *
+                          69 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          70 --25: ***********************************************************************************************************************/
+                          71 --27: /**********************************************************************************
+                          72 --28: * Header files
+                          73 --29: **********************************************************************************/
+                          74 --30: #include "renesas_types.h"
+                          75 --31: #include "r_icumif_api.h"
+                          76 --33: #include "icum_s_pub.h"
+                          77 --34: #include "icum_s_01_common.h"
+                          78 --35: #include "icum_s_01_rsa_common.h"
+                          79 --37: #include "icum_ml_ctx_pub.h"
+                          80 --38: #include "icum_ml_prng_pub.h"
+                          81 --39: #include MM_FLASH_PUBLIC_H
+                          82 --40: /* For call functions of remap driver. */
+                          83 --41: #include "icum_d_remap_pub.h"
+                          84 --43: #include "icum_l_toolbox_pub.h"
+                          85 --44: #include "icum_service_common.h"
+                          86 --46: /**********************************************************************************
+                          87 --47: * Local define
+                          88 --48: **********************************************************************************/
+                          89 --49: #define NUM2                           (2u)
+                          90 --50: #define NUM7                           (7u)
+                          91 --51: #define NUM8                           (8u)
+                          92 --52: #define NUM10                         (10u)
+                          93 --54: /**********************************************************************************
+                          94 --55: * Functions
+                          95 --56: **********************************************************************************/
+                          96 --57: static uint32_t s_01_InitializeJobRsaEncrypt(icum_job_t *p_job);
+                          97 --58: static uint32_t s_01_InitEncryptByRsa(icum_job_t *p_job, uint32_t *p_skip_flg);
+                          98 --59: static uint32_t s_01_CalcExpModEncryptByRsa(icum_job_t *p_job);
+                          99 --60: static uint32_t s_01_ConvertEncryptByRsa(icum_job_t *p_job);
+                         100 --61: static void s_01_FinishEncryptByRsa(icum_job_t *p_job, const uint32_t err);
+                         101 --63: /*===========================================================================
+                         102 --64:   Run a RSA message encryption
+                         103 --65:   Command parameters extracted from the ICU-M service descriptor (ISD)
+                         104 --66:   [PUBLIC]
+                         105 --67:   ===========================================================================*/
+                         106 --69: /***************************************************************************************
+                         107 --70: * Function ID  : [ICUMFW_CD_S_01_PK_0005]:[ICUMFW_UD_S_01_PK_0005]
+                         108 --71: * Function name: s_01_InitializeJobRsaEncrypt
+                         109 --72: * Description  : Initialization processing
+                         110 --73: * Arguments    : *p_job                         : Pointer of icum_job_t
+                         111 --74: *                                                 Range : 0x0 - 0xFFFFFFFF
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         112 --75: *                hash_primitive                 : HASH value generation algorithm
+                         113 --76: *                                                 Range : HASH_PRIMITIVE_SHA2_224
+                         114 --77: *                                                         HASH_PRIMITIVE_SHA2_256
+                         115 --78: *                                                         HASH_PRIMITIVE_SHA2_384
+                         116 --79: *                                                         HASH_PRIMITIVE_SHA2_512
+                         117 --80: *                                                         HASH_PRIMITIVE_SHA2_512_224
+                         118 --81: *                                                         HASH_PRIMITIVE_SHA2_512_256
+                         119 --82: *                message_encoding_format        : padding algorithm
+                         120 --83: *                                                 Range : ENCODING_FORMAT_EME_OAEP
+                         121 --84: *                                                         ENCODING_FORMAT_EME_PKCS1_V15
+                         122 --85: *                key_group                      : Key group of keys used for RSA encryption
+                         123 --86: *                                                 Range : KEY_GRP_RSA
+                         124 --87: *                                                         KEY_GRP_RSA_PUB
+                         125 --88: *                                                         KEY_GRP_RSA_ROM_PUB
+                         126 --89: *                                                         KEY_GRP_RSA_PUB_EXT
+                         127 --90: *                key_id                         : Index number in key group KEY_GRP_RSA
+                         128 --91: *                                                 Range : 0x0 - 0xFF
+                         129 --92: *                encrypted_message_format       : Format of encrypted data
+                         130 --93: *                                                 Range : FORMAT_STRING_DECIMAL
+                         131 --94: *                                                         FORMAT_STRING_HEXA
+                         132 --95: *                                                         FORMAT_BINARY_PLAIN
+                         133 --96: *                *p_encrypted_message           : Start address of encrypted data
+                         134 --97: *                                                 Range : 0x0 - 0xFFFFFFFF
+                         135 --98: *                *p_message                     : Start address of decrypted data storage location
+                         136 --99: *                                                 Range : 0x0 - 0xFFFFFFFF
+                         137 --100: *                message_size_in_bytes          : Decoded data size (in bytes)
+                         138 --101: *                                                 Range : 0x0 - 0xFFFFFFFF
+                         139 --102: *                job_slice_mod_exp              : A flag indicating whether to process by units of 1 bit or all bits
+                         140 --103: *                                                 when implementing modular exponentiation
+                         141 --104: *                                                 Range : Other than "0" or "0"
+                         142 --105: *                encrypted_message_size_in_bits : Encrypted data size (in bit units)
+                         143 --106: *                                                 Range : 512 - 3072
+                         144 --107: * Return Value : SERV_OK
+                         145 --108: *                SERV_PENDING
+                         146 --109: *                SERV_INVALID_ENCODING_FORMAT
+                         147 --110: *                SERV_KEY_SLOT_EMPTY
+                         148 --111: *                SERV_INVALID_KEY_GROUP
+                         149 --112: *                SERV_INVALID_KEY_INDEX
+                         150 --113: *                SERV_NVM_UNAVAILABLE
+                         151 --114: *                SERV_KEY_NOT_USABLE
+                         152 --115: *                SERV_PRM_ERROR
+                         153 --116: *                SERV_SRC_MEM_ERROR
+                         154 --117: *                SERV_DEST_MEM_ERROR
+                         155 --118: ***************************************************************************************/
+                         156 --119: static uint32_t s_01_InitializeJobRsaEncrypt(icum_job_t *p_job)
+                         157 	.align	2
+                         158 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDD..0::
+                         159 	.align	2
+                         160 	.align	2
+                         161 ..gh.f.a.2.e.0:
+                         162 	.type	..gh.f.a.2.e.0,@object
+                         163 	.size	..gh.f.a.2.e.0,0
+                         164 	.global	_s_01_InitializeJobRsaEncrypt..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                         165 _s_01_InitializeJobRsaEncrypt..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.:
+                         166 _s_01_InitializeJobRsaEncrypt:
+00000000 031eccff        167 	addi	-52,sp,sp
+00000004 63ff3100        168 	st.w	lp,48[sp]
+00000008 63d72500        169 	st.w	r26,36[sp]
+0000000c 63c72d00        170 	st.w	r24,44[sp]
+00000010 63cf2900        171 	st.w	r25,40[sp]
+00000014 63df2100        172 	st.w	r27,32[sp]
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+00000018 63e71d00        173 	st.w	r28,28[sp]
+0000001c 63ef1900        174 	st.w	r29,24[sp]
+00000020 06d0            175 	mov	r6,r26
+                         176 --	    .bf
+                         177 .LDW01:
+                         178 --120: {
+                         179 --121:     /* retrieve the service handler */
+                         180 --122:     r_icumif_isd_t     *p_ISD;
+                         181 --123:     job_rsa_t          *p_JOB_PARAM;
+                         182 --124:     ISD_RSA_ENCRYPT_t  *p_ISD_PARAM;
+                         183 --125:     rsa_key_t       *p_key;
+                         184 --126:     hash_type_t     hash_type;
+                         185 --127:     uint8_t         is_allowed;
+                         186 --128:     uint32_t        output_buf_size_in_bytes;
+                         187 --129:     uint8_t         mem_check_result;
+                         188 --130:     uint16_t        n;
+                         189 --131:     uint16_t        max;
+                         190 --132:     uint32_t        err;
+                         191 --133:     uint32_t        skip_flg;
+                         192 --135:     p_ISD       = p_job->p_ISD;
+00000022 3ac70100        193 	ld.w	0[r26],r24
+                         194 --136:     p_JOB_PARAM = &p_job->prm.job_rsa;
+00000026 1ace1000        195 	addi	16,r26,r25
+                         196 --137:     p_ISD_PARAM = &p_ISD->prm.RSA_ENCRYPT;
+0000002a 18e62000        197 	addi	32,r24,r28
+                         198 --139:     p_key = (rsa_key_t *)0;
+0000002e 63070900        199 	st.w	zero,8[sp]
+                         200 --140:     skip_flg = FLG_OFF;
+00000032 00ea            201 	mov	0,r29
+                         202 --142:     /* make sure message_encoding_format */
+                         203 --143:     switch (p_ISD_PARAM->message_encoding_format)
+00000034 3c0f3100        204 	ld.w	48[r28],r1
+00000038 610a            205 	cmp	1,r1
+0000003a b105*           206 	bl	.L5
+0000003c b215*           207 	be	.L6
+0000003e b515*           208 	br	.L7
+                         209 .L5:
+                         210 --144:     {
+                         211 --145:         case ENCODING_FORMAT_EME_OAEP:
+                         212 --146:             (void)L_HASH_GetInternalHashType(p_ISD_PARAM->hash_primitive, &hash_type, &n);
+                         213 --line146
+                         214 ..lin.5cccef63..a625a56e.0_1::
+                         215 .LDWlin1:
+00000040 3c372d00        216 	ld.w	44[r28],r6
+00000044 233e0c00        217 	movea	12,sp,r7
+00000048 23461000        218 	movea	16,sp,r8
+                         219 .L529:
+                         220 	jarl	_L_HASH_GetInternalHashType,lp
+                         220 <EXPANSION BEGIN>
+                         220 jarl22 _L_HASH_GetInternalHashType , lp 
+0000004c 80ff0000*       220 <EXPANSION END>
+                         221 --147:             if (0u == (uint32_t)n)
+                         222 --line147
+                         223 ..lin.5cccef63..a625a56e.0_2::
+                         224 .LDWlin2:
+00000050 e30f1100        225 	ld.hu	16[sp],r1
+00000054 e009            226 	cmp	zero,r1
+00000056 da05*           227 	bne	.L11
+                         228 --148:             {
+                         229 --149:                 err = (uint32_t)SERV_PRM_ERROR;
+                         230 --line149
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         231 ..lin.5cccef63..a625a56e.0_3::
+                         232 .LDWlin3:
+00000058 040a            233 	mov	4,r1
+0000005a 630f1500        234 	st.w	r1,20[sp]
+                         235 --150:                 skip_flg = FLG_ON;
+0000005e 01ea            236 	mov	1,r29
+                         237 .L11:
+                         238 --151:             }
+                         239 --152:             else
+                         240 --153:             {
+                         241 --154:                 /* do nothing */
+                         242 --155:             }
+                         243 --156:             break;
+                         244 --157:         case ENCODING_FORMAT_EME_PKCS1_V15:
+00000060 850d*           245 	br	.L12
+                         246 .L6:
+                         247 --158:             break;
+                         248 --159:         default:
+                         249 --line158
+                         250 ..lin.5cccef63..a625a56e.0_4::
+                         251 .LDWlin4:
+00000062 f505*           252 	br	.L12
+                         253 .L7:
+                         254 --160:             err = (uint32_t)SERV_INVALID_ENCODING_FORMAT;
+                         255 --line160
+                         256 ..lin.5cccef63..a625a56e.0_5::
+                         257 .LDWlin5:
+00000064 200e1e00        258 	movea	30,zero,r1
+00000068 630f1500        259 	st.w	r1,20[sp]
+                         260 --161:             skip_flg = FLG_ON;
+0000006c 01ea            261 	mov	1,r29
+                         262 --162:             break;
+0000006e 0000            263 	nop
+                         264 .L12:
+                         265 --163:     }
+                         266 --165:     if (FLG_OFF == skip_flg)
+00000070 e0e9            267 	cmp	zero,r29
+00000072 da15*           268 	bne	.L18
+                         269 --166:     {
+                         270 --167:         /* retrieve the key to be used */
+                         271 --168:         err = MH_KEY_GetRsaKey(p_job, p_ISD_PARAM->key_group, p_ISD_PARAM->key_id, &p_key);
+                         272 --line168
+                         273 ..lin.5cccef63..a625a56e.0_6::
+                         274 .LDWlin6:
+00000074 3c3f3500        275 	ld.w	52[r28],r7
+00000078 9c473900        276 	ld.bu	56[r28],r8
+0000007c 1a30            277 	mov	r26,r6
+0000007e 234e0800        278 	movea	8,sp,r9
+                         279 .L531:
+                         280 	jarl	_MH_KEY_GetRsaKey,lp
+                         280 <EXPANSION BEGIN>
+                         280 jarl22 _MH_KEY_GetRsaKey , lp 
+00000082 80ff0000*       280 <EXPANSION END>
+00000086 63571500        281 	st.w	r10,20[sp]
+                         282 --169:         (void)s_01_RsaKeyConvertErr(&err);
+                         283 --line169
+                         284 ..lin.5cccef63..a625a56e.0_7::
+                         285 .LDWlin7:
+0000008a 23361400        286 	movea	20,sp,r6
+                         287 .L533:
+                         288 	jarl	_s_01_RsaKeyConvertErr,lp
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         288 <EXPANSION BEGIN>
+                         288 jarl22 _s_01_RsaKeyConvertErr , lp 
+0000008e 80ff0000*       288 <EXPANSION END>
+                         289 --171:         if (ER_OK != err)
+                         290 --line171
+                         291 ..lin.5cccef63..a625a56e.0_8::
+                         292 .LDWlin8:
+00000092 230f1500        293 	ld.w	20[sp],r1
+00000096 e009            294 	cmp	zero,r1
+00000098 a205*           295 	be	.L18
+                         296 --172:         {
+                         297 --173:             skip_flg = FLG_ON;
+                         298 --line173
+                         299 ..lin.5cccef63..a625a56e.0_9::
+                         300 .LDWlin9:
+0000009a 01ea            301 	mov	1,r29
+                         302 .L18:
+                         303 --174:         }
+                         304 --175:         else
+                         305 --176:         {
+                         306 --177:             /* do nothing */
+                         307 --178:         }
+                         308 --179:     }
+                         309 --180:     else
+                         310 --181:     {
+                         311 --182:         /* do nothing */
+                         312 --183:     }
+                         313 --185:     if (FLG_OFF == skip_flg)
+0000009c e0e9            314 	cmp	zero,r29
+0000009e da15*           315 	bne	.L24
+                         316 --186:     {
+                         317 --187:         p_JOB_PARAM->resource_ctrl |= GET_KEY_RSA;
+                         318 --line187
+                         319 ..lin.5cccef63..a625a56e.0_10::
+                         320 .LDWlin10:
+000000a0 d9170c00        321 	set1	2,12[r25]
+                         322 --188:     
+                         323 --189:         (void)s_01_CanUseKeyIfDbgConnected((key_flags_t)p_key->p_properties->flags.disable_on_debug,
+000000a4 23f70900        324 	ld.w	8[sp],ep
+000000a8 233e0600        325 	movea	6,sp,r7
+000000ac 06f5            326 	sld.w	12[ep],ep
+000000ae 6c30            327 	sld.bu	12[ep],r6
+000000b0 de32            328 	shl	30,r6
+000000b2 9f32            329 	shr	31,r6
+                         330 .L535:
+                         331 	jarl	_s_01_CanUseKeyIfDbgConnected,lp
+                         331 <EXPANSION BEGIN>
+                         331 jarl22 _s_01_CanUseKeyIfDbgConnected , lp 
+000000b4 80ff0000*       331 <EXPANSION END>
+                         332 --190:                                            &is_allowed);
+                         333 --191:         if (FALSE == (uint32_t)is_allowed)
+                         334 --line191
+                         335 ..lin.5cccef63..a625a56e.0_11::
+                         336 .LDWlin11:
+000000b8 830f0700        337 	ld.bu	6[sp],r1
+000000bc e009            338 	cmp	zero,r1
+000000be da05*           339 	bne	.L24
+                         340 --192:         {
+                         341 --193:             /* key not usable: abort */
+                         342 --194:             err = (uint32_t)SERV_KEY_NOT_USABLE;
+                         343 --line194
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         344 ..lin.5cccef63..a625a56e.0_12::
+                         345 .LDWlin12:
+000000c0 060a            346 	mov	6,r1
+000000c2 630f1500        347 	st.w	r1,20[sp]
+                         348 --195:             skip_flg = FLG_ON;
+000000c6 01ea            349 	mov	1,r29
+                         350 .L24:
+                         351 --196:         }
+                         352 --197:         else
+                         353 --198:         {
+                         354 --199:                 /* do nothing */
+                         355 --200:         }
+                         356 --201:     }
+                         357 --202:     else
+                         358 --203:     {
+                         359 --204:         /* do nothing */
+                         360 --205:     }
+                         361 --207:     if (FLG_OFF == skip_flg)
+000000c8 e0e9            362 	cmp	zero,r29
+000000ca ca2d*           363 	bne	.L34
+                         364 --208:     {
+                         365 --209:         /* set the encrypted_message size with the modulus size */
+                         366 --210:         p_ISD_PARAM->encrypted_message_size_in_bits = (uint16_t)p_key->p_properties->modulus_size_in_bits;
+                         367 --line210
+                         368 ..lin.5cccef63..a625a56e.0_13::
+                         369 .LDWlin13:
+000000cc 23f70900        370 	ld.w	8[sp],ep
+000000d0 06f5            371 	sld.w	12[ep],ep
+000000d2 7208            372 	sld.hu	4[ep],r1
+000000d4 7c0f1800        373 	st.h	r1,24[r28]
+                         374 --211:     
+                         375 --212:         /* calculate size of input buffer (bytes) */
+                         376 --213:         switch (p_ISD_PARAM->encrypted_message_format)
+000000d8 3c0f3d00        377 	ld.w	60[r28],r1
+000000dc 610a            378 	cmp	1,r1
+000000de d105*           379 	bl	.L28
+000000e0 e20d*           380 	be	.L29
+000000e2 620a            381 	cmp	2,r1
+000000e4 c215*           382 	be	.L30
+000000e6 951d*           383 	br	.L31
+                         384 .L28:
+                         385 --214:         {
+                         386 --215:             case FORMAT_STRING_DECIMAL:
+                         387 --216:                 /* get decimal figure length from bit_length. */
+                         388 --217:                 (void)s_01_GetDecimalStrlenFromBitCnt(p_ISD_PARAM->encrypted_message_size_in_bits, &max);
+                         389 --line217
+                         390 ..lin.5cccef63..a625a56e.0_14::
+                         391 .LDWlin14:
+000000e8 fc371900        392 	ld.hu	24[r28],r6
+000000ec 233e1200        393 	movea	18,sp,r7
+                         394 .L537:
+                         395 	jarl	_s_01_GetDecimalStrlenFromBitCnt,lp
+                         395 <EXPANSION BEGIN>
+                         395 jarl22 _s_01_GetDecimalStrlenFromBitCnt , lp 
+000000f0 80ff0000*       395 <EXPANSION END>
+                         396 --218:                 output_buf_size_in_bytes = max;
+                         397 --line218
+                         398 ..lin.5cccef63..a625a56e.0_15::
+                         399 .LDWlin15:
+000000f4 e3df1300        400 	ld.hu	18[sp],r27
+                         401 --219:     
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         402 --220:                 /* increment for terminator(NULL) */
+                         403 --221:                 output_buf_size_in_bytes++;
+000000f8 41da            404 	add	1,r27
+                         405 --222:                 break;
+                         406 --223:             case FORMAT_STRING_HEXA:
+000000fa c515*           407 	br	.L34
+                         408 .L29:
+                         409 --224:                 output_buf_size_in_bytes = ((uint32_t)p_ISD_PARAM->encrypted_message_size_in_bits + NUM7) / NUM8;
+                         410 --line224
+                         411 ..lin.5cccef63..a625a56e.0_16::
+                         412 .LDWlin16:
+000000fc fc0f1900        413 	ld.hu	24[r28],r1
+00000100 470a            414 	add	7,r1
+00000102 01d8            415 	mov	r1,r27
+00000104 83da            416 	shr	3,r27
+                         417 --225:                 output_buf_size_in_bytes *= NUM2;
+00000106 c1da            418 	shl	1,r27
+                         419 --226:     
+                         420 --227:                 /* increment for terminator(NULL) */
+                         421 --228:                 output_buf_size_in_bytes++;
+00000108 41da            422 	add	1,r27
+                         423 --229:                 break;
+                         424 --230:             case FORMAT_BINARY_PLAIN:
+0000010a c50d*           425 	br	.L34
+                         426 .L30:
+                         427 --231:                 output_buf_size_in_bytes = ((uint32_t)p_ISD_PARAM->encrypted_message_size_in_bits + NUM7) / NUM8;
+                         428 --line231
+                         429 ..lin.5cccef63..a625a56e.0_17::
+                         430 .LDWlin17:
+0000010c fc0f1900        431 	ld.hu	24[r28],r1
+00000110 470a            432 	add	7,r1
+00000112 01d8            433 	mov	r1,r27
+00000114 83da            434 	shr	3,r27
+                         435 --232:                 break;
+                         436 --233:             default:
+00000116 e505*           437 	br	.L34
+                         438 .L31:
+                         439 --234:                 /* error on number format */
+                         440 --235:                 err = (uint32_t)SERV_PRM_ERROR;
+                         441 --line235
+                         442 ..lin.5cccef63..a625a56e.0_18::
+                         443 .LDWlin18:
+00000118 040a            444 	mov	4,r1
+0000011a 630f1500        445 	st.w	r1,20[sp]
+                         446 --236:                 skip_flg = FLG_ON;
+0000011e 01ea            447 	mov	1,r29
+                         448 --237:                 break;
+00000120 0000            449 	nop
+                         450 .L34:
+                         451 --238:         }
+                         452 --239:     }
+                         453 --240:     else
+                         454 --241:     {
+                         455 --242:         /* do nothing */
+                         456 --243:     }
+                         457 --245:     if (FLG_OFF == skip_flg)
+00000122 e0e9            458 	cmp	zero,r29
+00000124 ea15*           459 	bne	.L40
+                         460 --246:     {
+                         461 --247:         /* make sure the source address range is valid */
+                         462 --248:         (void)MM_FLS_CheckMemory((uint32_t)p_ISD_PARAM->p_message,
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         463 --line248
+                         464 ..lin.5cccef63..a625a56e.0_19::
+                         465 .LDWlin19:
+00000126 3c370100        466 	ld.w	0[r28],r6
+0000012a 3c3f0900        467 	ld.w	8[r28],r7
+0000012e 9a4f0d00        468 	ld.bu	12[r26],r9
+00000132 230e0700        469 	movea	7,sp,r1
+00000136 630f0100        470 	st.w	r1,0[sp]
+0000013a 0042            471 	mov	0,r8
+                         472 .L539:
+                         473 	jarl	_MM_FLS_CheckMemory,lp
+                         473 <EXPANSION BEGIN>
+                         473 jarl22 _MM_FLS_CheckMemory , lp 
+0000013c 80ff0000*       473 <EXPANSION END>
+                         474 --249:                 p_ISD_PARAM->message_size_in_bytes, FLS_CHK_MEM_SOURCE,
+                         475 --250:                 p_job->expansion_service, &mem_check_result);
+                         476 --251:         if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check_result)
+                         477 --line251
+                         478 ..lin.5cccef63..a625a56e.0_20::
+                         479 .LDWlin20:
+00000140 a30f0700        480 	ld.bu	7[sp],r1
+00000144 610a            481 	cmp	1,r1
+00000146 d205*           482 	be	.L40
+                         483 --252:         {
+                         484 --253:             err = (uint32_t)SERV_SRC_MEM_ERROR;
+                         485 --line253
+                         486 ..lin.5cccef63..a625a56e.0_21::
+                         487 .LDWlin21:
+00000148 0c0a            488 	mov	12,r1
+0000014a 630f1500        489 	st.w	r1,20[sp]
+                         490 --254:             skip_flg = FLG_ON;
+0000014e 01ea            491 	mov	1,r29
+                         492 .L40:
+                         493 --255:         }
+                         494 --256:         else
+                         495 --257:         {
+                         496 --258:             /* do nothing */
+                         497 --259:         }
+                         498 --260:     }
+                         499 --261:     else
+                         500 --262:     {
+                         501 --263:         /* do nothing */
+                         502 --264:     }
+                         503 --266:     if (FLG_OFF == skip_flg)
+00000150 e0e9            504 	cmp	zero,r29
+00000152 ca45*           505 	bne	.L53
+                         506 --267:     {
+                         507 --268:         /* make sure the destination address range is valid */
+                         508 --269:         (void)MM_FLS_CheckMemory((uint32_t)p_ISD_PARAM->p_encrypted_message,
+                         509 --line269
+                         510 ..lin.5cccef63..a625a56e.0_22::
+                         511 .LDWlin22:
+00000154 3c371100        512 	ld.w	16[r28],r6
+00000158 9a4f0d00        513 	ld.bu	12[r26],r9
+0000015c 230e0700        514 	movea	7,sp,r1
+00000160 1b38            515 	mov	r27,r7
+00000162 630f0100        516 	st.w	r1,0[sp]
+00000166 0142            517 	mov	1,r8
+                         518 .L541:
+                         519 	jarl	_MM_FLS_CheckMemory,lp
+                         519 <EXPANSION BEGIN>
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         519 jarl22 _MM_FLS_CheckMemory , lp 
+00000168 80ff0000*       519 <EXPANSION END>
+                         520 --270:                 output_buf_size_in_bytes, FLS_CHK_MEM_DESTINATION,
+                         521 --271:                 p_job->expansion_service, &mem_check_result);
+                         522 --272:         if ((uint32_t)FLS_CHK_OK == (uint32_t)mem_check_result)
+                         523 --line272
+                         524 ..lin.5cccef63..a625a56e.0_23::
+                         525 .LDWlin23:
+0000016c a30f0700        526 	ld.bu	7[sp],r1
+00000170 610a            527 	cmp	1,r1
+00000172 8a35*           528 	bne	.L43
+                         529 --273:         {
+                         530 --274:             if ((p_ISD_PARAM->message_encoding_format == ENCODING_FORMAT_EME_OAEP) &&
+                         531 --line274
+                         532 ..lin.5cccef63..a625a56e.0_24::
+                         533 .LDWlin24:
+00000174 3c0f3100        534 	ld.w	48[r28],r1
+00000178 e009            535 	cmp	zero,r1
+0000017a ba25*           536 	bne	.L45
+                         537 --line275
+                         538 ..lin.5cccef63..a625a56e.0_25::
+                         539 .LDWlin25:
+0000017c 3c0f2900        540 	ld.w	40[r28],r1
+00000180 e009            541 	cmp	zero,r1
+00000182 f31d*           542 	bnh	.L45
+                         543 --275:                 (0u < p_ISD_PARAM->label_size_in_bytes))
+                         544 --276:             {
+                         545 --277:                 /* Label : make sure the source address range is valid */
+                         546 --278:                 (void)MM_FLS_CheckMemory((uint32_t)p_ISD_PARAM->p_label,
+                         547 --line278
+                         548 ..lin.5cccef63..a625a56e.0_26::
+                         549 .LDWlin26:
+00000184 3c372100        550 	ld.w	32[r28],r6
+00000188 3c3f2900        551 	ld.w	40[r28],r7
+0000018c 9a4f0d00        552 	ld.bu	12[r26],r9
+00000190 230e0700        553 	movea	7,sp,r1
+00000194 630f0100        554 	st.w	r1,0[sp]
+00000198 0042            555 	mov	0,r8
+                         556 .L543:
+                         557 	jarl	_MM_FLS_CheckMemory,lp
+                         557 <EXPANSION BEGIN>
+                         557 jarl22 _MM_FLS_CheckMemory , lp 
+0000019a 80ff0000*       557 <EXPANSION END>
+                         558 --279:                         p_ISD_PARAM->label_size_in_bytes, FLS_CHK_MEM_SOURCE,
+                         559 --280:                         p_job->expansion_service, &mem_check_result);
+                         560 --281:                 if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check_result)
+                         561 --line281
+                         562 ..lin.5cccef63..a625a56e.0_27::
+                         563 .LDWlin27:
+0000019e a30f0700        564 	ld.bu	7[sp],r1
+000001a2 610a            565 	cmp	1,r1
+000001a4 d205*           566 	be	.L48
+                         567 --282:                 {
+                         568 --283:                     err = (uint32_t)SERV_SRC_MEM_ERROR;
+                         569 --line283
+                         570 ..lin.5cccef63..a625a56e.0_28::
+                         571 .LDWlin28:
+000001a6 0c0a            572 	mov	12,r1
+000001a8 630f1500        573 	st.w	r1,20[sp]
+000001ac f515*           574 	br	.L53
+                         575 .L48:
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         576 --284:                 }
+                         577 --285:                 else
+                         578 --286:                 {
+                         579 --287:                     /* init the job slice */
+                         580 --288:                     p_JOB_PARAM->job_slice = p_ISD_PARAM->job_slice_mod_exp;
+                         581 --line288
+                         582 ..lin.5cccef63..a625a56e.0_29::
+                         583 .LDWlin29:
+000001ae fc0f4100        584 	ld.hu	64[r28],r1
+000001b2 790f1200        585 	st.h	r1,18[r25]
+                         586 --289:                     p_JOB_PARAM->p_key = (uint8_t *)p_key;
+000001b6 230f0900        587 	ld.w	8[sp],r1
+000001ba 790f0100        588 	st.w	r1,0[r25]
+000001be e50d*           589 	br	.L53
+                         590 .L45:
+                         591 --290:                 }
+                         592 --291:             }
+                         593 --292:             else
+                         594 --293:             {
+                         595 --294:                 /* init the job slice */
+                         596 --295:                 p_JOB_PARAM->job_slice = p_ISD_PARAM->job_slice_mod_exp;
+                         597 --line295
+                         598 ..lin.5cccef63..a625a56e.0_30::
+                         599 .LDWlin30:
+000001c0 fc0f4100        600 	ld.hu	64[r28],r1
+000001c4 790f1200        601 	st.h	r1,18[r25]
+                         602 --296:                 p_JOB_PARAM->p_key = (uint8_t *)p_key;
+000001c8 230f0900        603 	ld.w	8[sp],r1
+000001cc 790f0100        604 	st.w	r1,0[r25]
+000001d0 d505*           605 	br	.L53
+                         606 .L43:
+                         607 --297:             }
+                         608 --298:         }
+                         609 --299:         else
+                         610 --300:         {
+                         611 --301:             err = (uint32_t)SERV_DEST_MEM_ERROR;
+                         612 --line301
+                         613 ..lin.5cccef63..a625a56e.0_31::
+                         614 .LDWlin31:
+000001d2 0d0a            615 	mov	13,r1
+000001d4 630f1500        616 	st.w	r1,20[sp]
+                         617 --302:             skip_flg = FLG_ON;
+000001d8 01ea            618 	mov	1,r29
+                         619 .L53:
+                         620 --303:         }
+                         621 --304:     }
+                         622 --305:     else
+                         623 --306:     {
+                         624 --307:         /* do nothing */
+                         625 --308:     }
+                         626 --310:     return(err);
+000001da 23571500        627 	ld.w	20[sp],r10
+                         628 --	    .ef
+                         629 .LDW11:
+000001de 23ff3100        630 	ld.w	48[sp],lp
+000001e2 23ef1900        631 	ld.w	24[sp],r29
+000001e6 23e71d00        632 	ld.w	28[sp],r28
+000001ea 23df2100        633 	ld.w	32[sp],r27
+000001ee 23d72500        634 	ld.w	36[sp],r26
+000001f2 23cf2900        635 	ld.w	40[sp],r25
+000001f6 23c72d00        636 	ld.w	44[sp],r24
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+000001fa 031e3400        637 	addi	52,sp,sp
+                         638 .L545:
+                         639 	.jumptype return
+000001fe 7f00            640 	jmp	[lp]
+                         641 --line301
+                         642 ..lin.5cccef63..a625a56e.0_32::
+                         643 	.type	_s_01_InitializeJobRsaEncrypt,@function
+                         644 	.size	_s_01_InitializeJobRsaEncrypt,.-_s_01_InitializeJobRsaEncrypt
+                         645 	.type	_s_01_InitializeJobRsaEncrypt..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,@function
+                         646 	.size	_s_01_InitializeJobRsaEncrypt..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,.-_s_01_InitializeJobRsaEncrypt..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                         647 	.align	2
+                         648 --_p_ISD	r24	local
+                         649 --_p_JOB_PARAM	r25	local
+                         650 --_p_ISD_PARAM	r28	local
+                         651 --_p_key	8[sp]	local
+                         652 --_hash_type	12[sp]	local
+                         653 --_is_allowed	6[sp]	local
+                         654 --_output_buf_size_in_bytes	r27	local
+                         655 --_mem_check_result	7[sp]	local
+                         656 --_n	16[sp]	local
+                         657 --_max	18[sp]	local
+                         658 --_err	20[sp]	local
+                         659 --_skip_flg	r29	local
+                         660 
+                         661 --_p_job	r26	param
+                         662 
+                         663 	.section ".bss","awb"
+                         664 .L322:
+                         665 	.type	.L322,@object
+                         666 	.size	.L322,0
+                         667 	.section ".ghcalltbl",""
+                         668 	.align	4
+00000000 00000000*       669 .L530:	.word	.L529
+                         670 	.type	.L530,@object
+                         671 	.size	.L530,4
+00000004 00000000*       672 .L532:	.word	.L531
+                         673 	.type	.L532,@object
+                         674 	.size	.L532,4
+00000008 00000000*       675 .L534:	.word	.L533
+                         676 	.type	.L534,@object
+                         677 	.size	.L534,4
+0000000c 00000000*       678 .L536:	.word	.L535
+                         679 	.type	.L536,@object
+                         680 	.size	.L536,4
+00000010 00000000*       681 .L538:	.word	.L537
+                         682 	.type	.L538,@object
+                         683 	.size	.L538,4
+00000014 00000000*       684 .L540:	.word	.L539
+                         685 	.type	.L540,@object
+                         686 	.size	.L540,4
+00000018 00000000*       687 .L542:	.word	.L541
+                         688 	.type	.L542,@object
+                         689 	.size	.L542,4
+0000001c 00000000*       690 .L544:	.word	.L543
+                         691 	.type	.L544,@object
+                         692 	.size	.L544,4
+                         693 	.section ".ghrettbl",""
+                         694 	.align	4
+00000000 00000000*       695 .L546:	.word	.L545
+                         696 	.type	.L546,@object
+                         697 	.size	.L546,4
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         698 	.data
+                         699 	.section ".icum_service.text","ax"
+                         700 
+                         701 --311: }
+                         702 
+                         703 --314: /**********************************************************************************
+                         704 --315: * ICU-M service
+                         705 --316: **********************************************************************************/
+                         706 --318: /****************************************************************************************
+                         707 --319: * Function ID  : [ICUMFW_CD_S_01_PK_0025]:[ICUMFW_UD_S_01_PK_0025]
+                         708 --320: * Function name: s_01_InitEncryptByRsa
+                         709 --321: * Description  : Initialization part of RSA encryption service
+                         710 --322: * Arguments    : (IN-OUT)  p_job
+                         711 --323:                : (OUT) p_skip_flg
+                         712 --324: * Return Value : SERV_OK
+                         713 --325: *                SERV_PENDING
+                         714 --326: *                SERV_INVALID_ENCODING_FORMAT
+                         715 --327: *                SERV_KEY_SLOT_EMPTY
+                         716 --328: *                SERV_INVALID_KEY_GROUP
+                         717 --329: *                SERV_INVALID_KEY_INDEX
+                         718 --330: *                SERV_NVM_UNAVAILABLE
+                         719 --331: *                SERV_KEY_NOT_USABLE
+                         720 --332: *                SERV_PRM_ERROR
+                         721 --333: *                SERV_SRC_MEM_ERROR
+                         722 --334: *                SERV_DEST_MEM_ERROR
+                         723 --335: *                SERV_SYS_ERROR
+                         724 --336: ****************************************************************************************/
+                         725 --337: static uint32_t s_01_InitEncryptByRsa(icum_job_t *p_job, uint32_t *p_skip_flg)
+                         726 	.align	2
+                         727 	.align	2
+                         728 	.align	2
+                         729 ..gh.f.a.2.e.1:
+                         730 	.type	..gh.f.a.2.e.1,@object
+                         731 	.size	..gh.f.a.2.e.1,0
+                         732 	.global	_s_01_InitEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                         733 _s_01_InitEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.:
+                         734 _s_01_InitEncryptByRsa:
+00000200 031ee4ff        735 	addi	-28,sp,sp
+00000204 63ff1900        736 	st.w	lp,24[sp]
+00000208 63cf1100        737 	st.w	r25,16[sp]
+0000020c 63df0900        738 	st.w	r27,8[sp]
+00000210 63c71500        739 	st.w	r24,20[sp]
+00000214 63d70d00        740 	st.w	r26,12[sp]
+00000218 63e70500        741 	st.w	r28,4[sp]
+0000021c 63ef0100        742 	st.w	r29,0[sp]
+00000220 06d8            743 	mov	r6,r27
+00000222 07c8            744 	mov	r7,r25
+                         745 --	    .bf
+                         746 .LDW21:
+                         747 --338: {
+                         748 --339:     r_icumif_isd_t     *p_ISD;
+                         749 --340:     job_rsa_t          *p_JOB_PARAM;
+                         750 --341:     ISD_RSA_ENCRYPT_t  *p_isd_param;
+                         751 --342:     uint32_t    err;
+                         752 --343:     
+                         753 --344:     err = ER_OK;
+00000224 00ea            754 	mov	0,r29
+                         755 --345:     /* retrieve the service handler */
+                         756 --346:     p_ISD         = p_job->p_ISD;
+00000226 3bd70100        757 	ld.w	0[r27],r26
+                         758 --347:     p_JOB_PARAM   = &p_job->prm.job_rsa;
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000022a 1be61000        759 	addi	16,r27,r28
+                         760 --348:     p_isd_param   = &p_ISD->prm.RSA_ENCRYPT;
+0000022e 1ac62000        761 	addi	32,r26,r24
+                         762 --349:     
+                         763 --350:     switch ((uint32_t)p_job->process_phase)
+00000232 9b0f0b00        764 	ld.bu	10[r27],r1
+00000236 e009            765 	cmp	zero,r1
+00000238 da55*           766 	bne	.L551
+                         767 --351:     {
+                         768 --352:         case ON_HOLD:
+                         769 --353:             if (GET_CTX_NONE == ((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_RSA))
+                         770 --line353
+                         771 ..lin.5cccef63..85b70b10.0_33::
+                         772 .LDWlin33:
+0000023a dcc70c00        773 	tst1	0,12[r28]
+0000023e fa1d*           774 	bne	.L563
+                         775 --354:             {
+                         776 --355:                 /* get rsa context */
+                         777 --356:                 err = ML_CTX_Get(CTX_TYPE_RSA, &p_JOB_PARAM->p_rsa_ctx);
+                         778 --line356
+                         779 ..lin.5cccef63..85b70b10.0_34::
+                         780 .LDWlin34:
+00000240 1c3e0400        781 	addi	4,r28,r7
+00000244 0132            782 	mov	1,r6
+                         783 .L860:
+                         784 	jarl	_ML_CTX_Get,lp
+                         784 <EXPANSION BEGIN>
+                         784 jarl22 _ML_CTX_Get , lp 
+00000246 80ff0000*       784 <EXPANSION END>
+0000024a 0ae8            785 	mov	r10,r29
+                         786 --357:                 if (ER_ML_CTX_ALL_USE == err)
+                         787 --line357
+                         788 ..lin.5cccef63..85b70b10.0_35::
+                         789 .LDWlin35:
+0000024c 210601001000    790 	mov	1048577,r1
+00000252 e1e9            791 	cmp	r1,r29
+00000254 9a0d*           792 	bne	.L555
+                         793 --358:                 {
+                         794 --359:                     p_ISD->service_result = SERV_PENDING;
+                         795 --line359
+                         796 ..lin.5cccef63..85b70b10.0_36::
+                         797 .LDWlin36:
+00000256 800ef2ff        798 	ori	65522,zero,r1
+0000025a 7a0f0d00        799 	st.w	r1,12[r26]
+                         800 --360:                     *p_skip_flg = FLG_ON;
+0000025e 010a            801 	mov	1,r1
+00000260 790f0100        802 	st.w	r1,0[r25]
+00000264 c50d*           803 	br	.L563
+                         804 .L555:
+                         805 --361:                 }
+                         806 --362:                 else if (ER_OK != err)
+                         807 --line362
+                         808 ..lin.5cccef63..85b70b10.0_37::
+                         809 .LDWlin37:
+00000266 e0e9            810 	cmp	zero,r29
+00000268 c205*           811 	be	.L558
+                         812 --363:                 {
+                         813 --364:                     /* should never occur */
+                         814 --365:                     err = (uint32_t)SERV_SYS_ERROR;
+                         815 --line365
+                         816 ..lin.5cccef63..85b70b10.0_38::
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         817 .LDWlin38:
+0000026a 20ee1100        818 	movea	17,zero,r29
+                         819 --366:                     break;
+0000026e d53d*           820 	br	.L560
+                         821 .L558:
+                         822 --367:                 }
+                         823 --368:                 else
+                         824 --369:                 {
+                         825 --370:                     p_JOB_PARAM->resource_ctrl |= GET_CTX_RSA;
+                         826 --line370
+                         827 ..lin.5cccef63..85b70b10.0_39::
+                         828 .LDWlin39:
+00000270 dc070c00        829 	set1	0,12[r28]
+                         830 --371:                     p_ISD->service_result = SERV_IN_PROCESS;
+00000274 800effff        831 	ori	65535,zero,r1
+00000278 7a0f0d00        832 	st.w	r1,12[r26]
+                         833 .L563:
+                         834 --372:                 }
+                         835 --373:             }
+                         836 --374:             else
+                         837 --375:             {
+                         838 --376:                 /* do nothing */
+                         839 --377:             }
+                         840 --379:             if (ENCODING_FORMAT_EME_OAEP == p_isd_param->message_encoding_format)
+0000027c 380f3100        841 	ld.w	48[r24],r1
+00000280 e009            842 	cmp	zero,r1
+00000282 8a25*           843 	bne	.L576
+                         844 --380:             {
+                         845 --381:                 if (GET_CTX_NONE == ((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_HASH))
+                         846 --line381
+                         847 ..lin.5cccef63..85b70b10.0_40::
+                         848 .LDWlin40:
+00000284 dccf0c00        849 	tst1	1,12[r28]
+00000288 da1d*           850 	bne	.L576
+                         851 --382:                 {
+                         852 --383:                     /* Get hash context */
+                         853 --384:                     err = ML_CTX_Get(CTX_TYPE_HASH, &p_JOB_PARAM->p_hash_ctx);
+                         854 --line384
+                         855 ..lin.5cccef63..85b70b10.0_41::
+                         856 .LDWlin41:
+0000028a 1c3e0800        857 	addi	8,r28,r7
+0000028e 0332            858 	mov	3,r6
+                         859 .L862:
+                         860 	jarl	_ML_CTX_Get,lp
+                         860 <EXPANSION BEGIN>
+                         860 jarl22 _ML_CTX_Get , lp 
+00000290 80ff0000*       860 <EXPANSION END>
+00000294 0ae8            861 	mov	r10,r29
+                         862 --385:                     if (ER_ML_CTX_ALL_USE == err)
+                         863 --line385
+                         864 ..lin.5cccef63..85b70b10.0_42::
+                         865 .LDWlin42:
+00000296 210601001000    866 	mov	1048577,r1
+0000029c e1e9            867 	cmp	r1,r29
+0000029e fa05*           868 	bne	.L568
+                         869 --386:                     {
+                         870 --387:                         err = (uint32_t)SERV_PENDING;
+                         871 --line387
+                         872 ..lin.5cccef63..85b70b10.0_43::
+                         873 .LDWlin43:
+000002a0 80eef2ff        874 	ori	65522,zero,r29
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         875 --388:                         *p_skip_flg = FLG_ON;
+000002a4 010a            876 	mov	1,r1
+000002a6 790f0100        877 	st.w	r1,0[r25]
+000002aa e505*           878 	br	.L570
+                         879 .L568:
+                         880 --389:                     }
+                         881 --390:                     else if (ER_OK != err)
+                         882 --line390
+                         883 ..lin.5cccef63..85b70b10.0_44::
+                         884 .LDWlin44:
+000002ac e0e9            885 	cmp	zero,r29
+000002ae c205*           886 	be	.L570
+                         887 --391:                     {
+                         888 --392:                         /* should never occur */
+                         889 --393:                         err = (uint32_t)SERV_SYS_ERROR;
+                         890 --line393
+                         891 ..lin.5cccef63..85b70b10.0_45::
+                         892 .LDWlin45:
+000002b0 20ee1100        893 	movea	17,zero,r29
+                         894 --394:                         break;
+000002b4 a51d*           895 	br	.L560
+                         896 .L570:
+                         897 --395:                     }
+                         898 --396:                     else
+                         899 --397:                     {
+                         900 --398:                         /* do nothing */
+                         901 --399:                     }
+                         902 --400:                     p_JOB_PARAM->resource_ctrl |= GET_CTX_HASH;
+                         903 --line400
+                         904 ..lin.5cccef63..85b70b10.0_46::
+                         905 .LDWlin46:
+000002b6 dc0f0c00        906 	set1	1,12[r28]
+                         907 --401:                     p_ISD->service_result = SERV_IN_PROCESS;
+000002ba 800effff        908 	ori	65535,zero,r1
+000002be 7a0f0d00        909 	st.w	r1,12[r26]
+                         910 .L576:
+                         911 --402:                 }
+                         912 --403:                 else
+                         913 --404:                 {
+                         914 --405:                     /* do nothing */
+                         915 --406:                 }
+                         916 --407:             }
+                         917 --408:             else
+                         918 --409:             {
+                         919 --410:                 /* do nothing */
+                         920 --411:             }
+                         921 --413:             if (FLG_OFF == *p_skip_flg)
+000002c2 390f0100        922 	ld.w	0[r25],r1
+000002c6 e009            923 	cmp	zero,r1
+000002c8 ca0d*           924 	bne	.L583
+                         925 --414:             {
+                         926 --415:                 /* ************************************************************************* */
+                         927 --416:                 /* Initialization */
+                         928 --417:                 /* ************************************************************************* */
+                         929 --418:                 err = s_01_InitializeJobRsaEncrypt(p_job);
+                         930 --line418
+                         931 ..lin.5cccef63..85b70b10.0_47::
+                         932 .LDWlin47:
+000002ca 1b30            933 	mov	r27,r6
+                         934 .L864:
+                         935 	jarl	_s_01_InitializeJobRsaEncrypt,lp
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         935 <EXPANSION BEGIN>
+                         935 jarl22 _s_01_InitializeJobRsaEncrypt , lp 
+000002cc bfff34fd*       935 <EXPANSION END>
+000002d0 0ae8            936 	mov	r10,r29
+                         937 --419:                 if ((uint32_t)SERV_OK != err)
+                         938 --line419
+                         939 ..lin.5cccef63..85b70b10.0_48::
+                         940 .LDWlin48:
+000002d2 e0e9            941 	cmp	zero,r29
+000002d4 a205*           942 	be	.L579
+                         943 --420:                 {
+                         944 --421:                     /* init error - break here */
+                         945 --422:                     break;
+                         946 --line422
+                         947 ..lin.5cccef63..85b70b10.0_49::
+                         948 .LDWlin49:
+000002d6 950d*           949 	br	.L560
+                         950 .L579:
+                         951 --423:                 }
+                         952 --424:                 else
+                         953 --425:                 {
+                         954 --426:                     p_job->process_phase = PHASE_1;
+                         955 --line426
+                         956 ..lin.5cccef63..85b70b10.0_50::
+                         957 .LDWlin50:
+000002d8 200ed200        958 	movea	210,zero,r1
+000002dc 5b0f0a00        959 	st.b	r1,10[r27]
+                         960 .L583:
+                         961 --427:                 }
+                         962 --428:             }
+                         963 --429:             else
+                         964 --430:             {
+                         965 --431:                 /* do nothing */
+                         966 --432:             }
+                         967 --433:             break;
+                         968 --434:         default:
+000002e0 c505*           969 	br	.L560
+                         970 .L551:
+                         971 --435:             /* should never occur */
+                         972 --436:             err = (uint32_t)SERV_SYS_ERROR;
+                         973 --line436
+                         974 ..lin.5cccef63..85b70b10.0_51::
+                         975 .LDWlin51:
+000002e2 20ee1100        976 	movea	17,zero,r29
+                         977 --437:             break;
+000002e6 0000            978 	nop
+                         979 .L560:
+                         980 --438:     }
+                         981 --439:     
+                         982 --440:     return (err);
+000002e8 1d50            983 	mov	r29,r10
+                         984 --	    .ef
+                         985 .LDW31:
+000002ea 23ff1900        986 	ld.w	24[sp],lp
+000002ee 23ef0100        987 	ld.w	0[sp],r29
+000002f2 23e70500        988 	ld.w	4[sp],r28
+000002f6 23df0900        989 	ld.w	8[sp],r27
+000002fa 23d70d00        990 	ld.w	12[sp],r26
+000002fe 23cf1100        991 	ld.w	16[sp],r25
+00000302 23c71500        992 	ld.w	20[sp],r24
+00000306 031e1c00        993 	addi	28,sp,sp
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                         994 .L866:
+                         995 	.jumptype return
+0000030a 7f00            996 	jmp	[lp]
+                         997 --line436
+                         998 ..lin.5cccef63..85b70b10.0_52::
+                         999 	.type	_s_01_InitEncryptByRsa,@function
+                        1000 	.size	_s_01_InitEncryptByRsa,.-_s_01_InitEncryptByRsa
+                        1001 	.type	_s_01_InitEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,@function
+                        1002 	.size	_s_01_InitEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,.-_s_01_InitEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1003 	.align	2
+                        1004 --_p_ISD	r26	local
+                        1005 --_p_JOB_PARAM	r28	local
+                        1006 --_p_isd_param	r24	local
+                        1007 --_err	r29	local
+                        1008 
+                        1009 --_p_job	r27	param
+                        1010 --_p_skip_flg	r25	param
+                        1011 
+                        1012 	.section ".bss","awb"
+                        1013 .L742:
+                        1014 	.type	.L742,@object
+                        1015 	.size	.L742,0
+                        1016 	.section ".ghcalltbl",""
+00000020 00000000*      1017 .L861:	.word	.L860
+                        1018 	.type	.L861,@object
+                        1019 	.size	.L861,4
+00000024 00000000*      1020 .L863:	.word	.L862
+                        1021 	.type	.L863,@object
+                        1022 	.size	.L863,4
+00000028 00000000*      1023 .L865:	.word	.L864
+                        1024 	.type	.L865,@object
+                        1025 	.size	.L865,4
+                        1026 	.section ".ghrettbl",""
+00000004 00000000*      1027 .L867:	.word	.L866
+                        1028 	.type	.L867,@object
+                        1029 	.size	.L867,4
+                        1030 	.data
+                        1031 	.section ".icum_service.text","ax"
+                        1032 
+                        1033 --441: }
+                        1034 
+                        1035 --443: /****************************************************************************************
+                        1036 --444: * Function ID  : [ICUMFW_CD_S_01_PK_0027]:[ICUMFW_UD_S_01_PK_0027]
+                        1037 --445: * Function name: s_01_CalcExpModEncryptByRsa
+                        1038 --446: * Description  : Calculation part of RSA encryption service
+                        1039 --447: * Arguments    : (IN-OUT)  p_job
+                        1040 --448: * Return Value : ER_OK
+                        1041 --449: *                SERV_CRYPT_ERROR
+                        1042 --450: *                SERV_NO_INIT_RNG
+                        1043 --451: *                SERV_SYS_ERROR
+                        1044 --452: ****************************************************************************************/
+                        1045 --453: static uint32_t s_01_CalcExpModEncryptByRsa(icum_job_t *p_job)
+                        1046 	.align	2
+                        1047 	.align	2
+                        1048 	.align	2
+                        1049 ..gh.f.a.2.e.2:
+                        1050 	.type	..gh.f.a.2.e.2,@object
+                        1051 	.size	..gh.f.a.2.e.2,0
+                        1052 	.global	_s_01_CalcExpModEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1053 _s_01_CalcExpModEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.:
+                        1054 _s_01_CalcExpModEncryptByRsa:
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000030c 031e98ff       1055 	addi	-104,sp,sp
+00000310 63ff6500       1056 	st.w	lp,100[sp]
+00000314 63df5100       1057 	st.w	r27,80[sp]
+00000318 63bf6100       1058 	st.w	r23,96[sp]
+0000031c 63c75d00       1059 	st.w	r24,92[sp]
+00000320 63cf5900       1060 	st.w	r25,88[sp]
+00000324 63d75500       1061 	st.w	r26,84[sp]
+00000328 63e74d00       1062 	st.w	r28,76[sp]
+0000032c 63ef4900       1063 	st.w	r29,72[sp]
+00000330 06d8           1064 	mov	r6,r27
+                        1065 --	    .bf
+                        1066 .LDW41:
+                        1067 --454: {
+                        1068 --455:     r_icumif_isd_t     *p_isd;
+                        1069 --456:     job_rsa_t          *p_job_param;
+                        1070 --457:     ISD_RSA_ENCRYPT_t  *p_isd_param;
+                        1071 --458:     rsa_key_t  *p_key;
+                        1072 --459:     rsa_ctx_t  *p_rsa_ctx;
+                        1073 --460:     uint32_t    err;
+                        1074 --461:     st_pkc_data_t       plain_data;
+                        1075 --462:     st_pkc_data_t       cipher;
+                        1076 --463:     st_pkcd_rsa_key_bin_t rsa_key;
+                        1077 --464:     st_pkc_operate_opt_t operate_opt;
+                        1078 --465:     remap_ptr_manip_t   message_logical;
+                        1079 --466:     remap_ptr_manip_t   label_logical;
+                        1080 --468:     /* retrieve the service handler */
+                        1081 --469:     p_isd         = p_job->p_ISD;
+00000332 3bbf0100       1082 	ld.w	0[r27],r23
+                        1083 --470:     p_job_param   = &p_job->prm.job_rsa;
+00000336 1bce1000       1084 	addi	16,r27,r25
+                        1085 --471:     p_isd_param   = &p_isd->prm.RSA_ENCRYPT;
+0000033a 17d62000       1086 	addi	32,r23,r26
+                        1087 --472:     
+                        1088 --473:     /* Initialize parameters for PKC API */
+                        1089 --474:     L_Toolbox_MemSet((uint8_t *)&rsa_key, NUM0, (int16_t)sizeof(st_pkcd_rsa_key_bin_t));
+0000033e 23361000       1090 	movea	16,sp,r6
+00000342 003a           1091 	mov	0,r7
+00000344 20462800       1092 	movea	40,zero,r8
+                        1093 .L1388:
+                        1094 	jarl	_L_Toolbox_MemSet,lp
+                        1094 <EXPANSION BEGIN>
+                        1094 jarl22 _L_Toolbox_MemSet , lp 
+00000348 80ff0000*      1094 <EXPANSION END>
+                        1095 --475:     
+                        1096 --476:     /* get the pointer the the RSA public key used */
+                        1097 --477:     p_key      = (rsa_key_t  *)p_job_param->p_key;
+                        1098 --line477
+                        1099 ..lin.5cccef63..1a05471c.0_53::
+                        1100 .LDWlin53:
+0000034c 39c70100       1101 	ld.w	0[r25],r24
+                        1102 --478:     p_rsa_ctx  = (rsa_ctx_t  *)p_job_param->p_rsa_ctx;
+00000350 39e70500       1103 	ld.w	4[r25],r28
+                        1104 --479:     
+                        1105 --480:     switch ((uint32_t)p_job->process_phase)
+00000354 9b0f0b00       1106 	ld.bu	10[r27],r1
+00000358 01062eff       1107 	addi	-210,r1,zero
+0000035c e20d*          1108 	be	.L871
+0000035e 010624ff       1109 	addi	-220,r1,zero
+00000362 e25d*          1110 	be	.L872
+00000364 010623ff       1111 	addi	-221,r1,zero
+00000368 e2071501*      1112 	be	.L873
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000036c 01061aff       1113 	addi	-230,r1,zero
+00000370 e2072f01*      1114 	be	.L874
+00000374 80078e01*      1115 	br	.L875
+                        1116 .L871:
+                        1117 --481:     {
+                        1118 --482:         case PHASE_1:
+                        1119 --483:             /* ************************************************************************* */
+                        1120 --484:             /* Initialize the modular exponentiation. */
+                        1121 --485:             /* ************************************************************************* */
+                        1122 --487:             (void)L_PKC_RsaCryptSetup(p_rsa_ctx, p_isd_param->message_encoding_format,
+                        1123 --line487
+                        1124 ..lin.5cccef63..1a05471c.0_54::
+                        1125 .LDWlin54:
+00000378 3a3f3100       1126 	ld.w	48[r26],r7
+0000037c 39470900       1127 	ld.w	8[r25],r8
+00000380 3a4f2d00       1128 	ld.w	44[r26],r9
+00000384 1c30           1129 	mov	r28,r6
+                        1130 .L1390:
+                        1131 	jarl	_L_PKC_RsaCryptSetup,lp
+                        1131 <EXPANSION BEGIN>
+                        1131 jarl22 _L_PKC_RsaCryptSetup , lp 
+00000386 80ff0000*      1131 <EXPANSION END>
+                        1132 --488:                                         (hash_ctx_t *)p_job_param->p_hash_ctx, p_isd_param->hash_primitive);
+                        1133 --490:             /* Get Remap(Convert Physical address -> Logical Address) */
+                        1134 --491:             (void)D_REMAP_GetLogicalAddrs((uint32_t)p_isd_param->p_label, &label_logical.val);
+                        1135 --line491
+                        1136 ..lin.5cccef63..1a05471c.0_55::
+                        1137 .LDWlin55:
+0000038a 3a372100       1138 	ld.w	32[r26],r6
+0000038e 233e0400       1139 	movea	4,sp,r7
+                        1140 .L1392:
+                        1141 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        1141 <EXPANSION BEGIN>
+                        1141 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+00000392 80ff0000*      1141 <EXPANSION END>
+                        1142 --492:             /* Get Remap(Convert Physical address -> Logical Address) */
+                        1143 --493:             (void)D_REMAP_GetLogicalAddrs((uint32_t)p_isd_param->p_message, &message_logical.val);
+                        1144 --line493
+                        1145 ..lin.5cccef63..1a05471c.0_56::
+                        1146 .LDWlin56:
+00000396 3a370100       1147 	ld.w	0[r26],r6
+0000039a 233e0000       1148 	movea	0,sp,r7
+                        1149 .L1394:
+                        1150 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        1150 <EXPANSION BEGIN>
+                        1150 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+0000039e 80ff0000*      1150 <EXPANSION END>
+                        1151 --494:             p_rsa_ctx->pkc_ctx.label.p_data = (uint8_t *)label_logical.p_ptr;
+                        1152 --line494
+                        1153 ..lin.5cccef63..1a05471c.0_57::
+                        1154 .LDWlin57:
+000003a2 230f0500       1155 	ld.w	4[sp],r1
+000003a6 7c0f6d04       1156 	st.w	r1,1132[r28]
+                        1157 --495:             p_rsa_ctx->pkc_ctx.label.len = p_isd_param->label_size_in_bytes;
+000003aa 3a0f2900       1158 	ld.w	40[r26],r1
+000003ae 7c0f6904       1159 	st.w	r1,1128[r28]
+                        1160 --497:             plain_data.p_data = (uint8_t *)message_logical.p_ptr;
+000003b2 230f0100       1161 	ld.w	0[sp],r1
+000003b6 630f4500       1162 	st.w	r1,68[sp]
+                        1163 --498:             plain_data.len = p_isd_param->message_size_in_bytes;
+000003ba 3a0f0900       1164 	ld.w	8[r26],r1
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+000003be 630f4100       1165 	st.w	r1,64[sp]
+                        1166 --500:             rsa_key.key_length = (uint32_t)p_key->p_properties->modulus_size_in_bytes;
+000003c2 38f70d00       1167 	ld.w	12[r24],ep
+000003c6 7308           1168 	sld.hu	6[ep],r1
+000003c8 630f1100       1169 	st.w	r1,16[sp]
+                        1170 --501:             rsa_key.p_n = p_key->p_modulus;
+000003cc 380f1900       1171 	ld.w	24[r24],r1
+000003d0 630f1500       1172 	st.w	r1,20[sp]
+                        1173 --502:             rsa_key.e_length = (uint32_t)p_key->p_properties->pub_exp_size_in_bytes;
+000003d4 38f70d00       1174 	ld.w	12[r24],ep
+000003d8 7508           1175 	sld.hu	10[ep],r1
+000003da 630f3100       1176 	st.w	r1,48[sp]
+                        1177 --503:             rsa_key.p_e = p_key->p_pub_exponent;
+000003de 380f1500       1178 	ld.w	20[r24],r1
+000003e2 630f3500       1179 	st.w	r1,52[sp]
+                        1180 --505:             err = L_PKC_RsaEncryptInit(&plain_data, &rsa_key, rsa_key.key_length, &p_rsa_ctx->pkc_ctx);
+000003e6 23471100       1181 	ld.w	16[sp],r8
+000003ea 233e1000       1182 	movea	16,sp,r7
+000003ee 1c4e5804       1183 	addi	1112,r28,r9
+000003f2 23364000       1184 	movea	64,sp,r6
+                        1185 .L1396:
+                        1186 	jarl	_L_PKC_RsaEncryptInit,lp
+                        1186 <EXPANSION BEGIN>
+                        1186 jarl22 _L_PKC_RsaEncryptInit , lp 
+000003f6 80ff0000*      1186 <EXPANSION END>
+000003fa 0ae8           1187 	mov	r10,r29
+                        1188 --506:             if (ER_OK == err)
+                        1189 --line506
+                        1190 ..lin.5cccef63..1a05471c.0_58::
+                        1191 .LDWlin58:
+000003fc e0e9           1192 	cmp	zero,r29
+000003fe ea05*          1193 	bne	.L877
+                        1194 --507:             {
+                        1195 --508:                 p_job->process_phase = PHASE_2;
+                        1196 --line508
+                        1197 ..lin.5cccef63..1a05471c.0_59::
+                        1198 .LDWlin59:
+00000400 200edc00       1199 	movea	220,zero,r1
+00000404 5b0f0a00       1200 	st.b	r1,10[r27]
+00000408 a50d*          1201 	br	.L879
+                        1202 .L877:
+                        1203 --509:             }
+                        1204 --510:             else if (ER_ML_PRNG_STATUS == err)
+                        1205 --line510
+                        1206 ..lin.5cccef63..1a05471c.0_60::
+                        1207 .LDWlin60:
+0000040a 400ef000       1208 	movhi	hi(15728640),zero,r1
+0000040e e1e9           1209 	cmp	r1,r29
+00000410 ca05*          1210 	bne	.L880
+                        1211 --511:             {
+                        1212 --512:                 err = (uint32_t)SERV_NO_INIT_RNG;
+                        1213 --line512
+                        1214 ..lin.5cccef63..1a05471c.0_61::
+                        1215 .LDWlin61:
+00000412 20ee3400       1216 	movea	52,zero,r29
+00000416 b505*          1217 	br	.L879
+                        1218 .L880:
+                        1219 --513:             }
+                        1220 --514:             else
+                        1221 --515:             {
+                        1222 --516:                 err = (uint32_t)SERV_CRYPT_ERROR;
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1223 --line516
+                        1224 ..lin.5cccef63..1a05471c.0_62::
+                        1225 .LDWlin62:
+00000418 20ee1a00       1226 	movea	26,zero,r29
+                        1227 .L879:
+                        1228 --517:             }
+                        1229 --518:             /* end of switch (err) */
+                        1230 --519:             break;
+                        1231 --521:         case PHASE_2:
+0000041c e575*          1232 	br	.L883
+                        1233 .L872:
+                        1234 --522:             /* ************************************************************************* */
+                        1235 --523:             /* Process the modular exponentiation. all at once */
+                        1236 --524:             /* ************************************************************************* */
+                        1237 --526:             if (RSA_PROC_SYNC == (uint32_t)p_job_param->proc_type)
+                        1238 --line526
+                        1239 ..lin.5cccef63..1a05471c.0_63::
+                        1240 .LDWlin63:
+0000041e 990f1100       1241 	ld.bu	16[r25],r1
+00000422 e009           1242 	cmp	zero,r1
+00000424 8a0d*          1243 	bne	.L884
+                        1244 --527:             {
+                        1245 --528:                 operate_opt.sync_opt = PKC_SYNC_OPT_SYNC;
+                        1246 --line528
+                        1247 ..lin.5cccef63..1a05471c.0_64::
+                        1248 .LDWlin64:
+00000426 63070900       1249 	st.w	zero,8[sp]
+                        1250 --529:                 operate_opt.processing_bits = L_PKC_PROCESSING_BITS_MAX;
+0000042a 800effff       1251 	ori	65535,zero,r1
+0000042e 630f0d00       1252 	st.w	r1,12[sp]
+00000432 f505*          1253 	br	.L886
+                        1254 .L884:
+                        1255 --530:             }
+                        1256 --531:             else
+                        1257 --532:             {
+                        1258 --533:                 operate_opt.sync_opt = PKC_SYNC_OPT_ASYNC;
+                        1259 --line533
+                        1260 ..lin.5cccef63..1a05471c.0_65::
+                        1261 .LDWlin65:
+00000434 010a           1262 	mov	1,r1
+00000436 630f0900       1263 	st.w	r1,8[sp]
+                        1264 --534:                 operate_opt.processing_bits = NUM1;
+0000043a 010a           1265 	mov	1,r1
+0000043c 630f0d00       1266 	st.w	r1,12[sp]
+                        1267 .L886:
+                        1268 --535:             }
+                        1269 --536:             err = L_PKC_RsaEncryptOperate(&p_rsa_ctx->pkc_ctx, &operate_opt);
+00000440 1c365804       1270 	addi	1112,r28,r6
+00000444 233e0800       1271 	movea	8,sp,r7
+                        1272 .L1398:
+                        1273 	jarl	_L_PKC_RsaEncryptOperate,lp
+                        1273 <EXPANSION BEGIN>
+                        1273 jarl22 _L_PKC_RsaEncryptOperate , lp 
+00000448 80ff0000*      1273 <EXPANSION END>
+0000044c 0ae8           1274 	mov	r10,r29
+                        1275 --537:             if (ER_OK == err)
+                        1276 --line537
+                        1277 ..lin.5cccef63..1a05471c.0_66::
+                        1278 .LDWlin66:
+0000044e e0e9           1279 	cmp	zero,r29
+00000450 fa0d*          1280 	bne	.L887
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1281 --538:             {
+                        1282 --539:                 if (RSA_PROC_SYNC == (uint32_t)p_job_param->proc_type)
+                        1283 --line539
+                        1284 ..lin.5cccef63..1a05471c.0_67::
+                        1285 .LDWlin67:
+00000452 990f1100       1286 	ld.bu	16[r25],r1
+00000456 e009           1287 	cmp	zero,r1
+00000458 ea05*          1288 	bne	.L889
+                        1289 --540:                 {
+                        1290 --541:                     p_job->process_phase = PHASE_3;
+                        1291 --line541
+                        1292 ..lin.5cccef63..1a05471c.0_68::
+                        1293 .LDWlin68:
+0000045a 200ee600       1294 	movea	230,zero,r1
+0000045e 5b0f0a00       1295 	st.b	r1,10[r27]
+00000462 c50d*          1296 	br	.L892
+                        1297 .L889:
+                        1298 --542:                 }
+                        1299 --543:                 else
+                        1300 --544:                 {
+                        1301 --545:                     p_job->process_phase = PHASE_2DIV;
+                        1302 --line545
+                        1303 ..lin.5cccef63..1a05471c.0_69::
+                        1304 .LDWlin69:
+00000464 200edd00       1305 	movea	221,zero,r1
+00000468 5b0f0a00       1306 	st.b	r1,10[r27]
+0000046c f505*          1307 	br	.L892
+                        1308 .L887:
+                        1309 --546:                 }
+                        1310 --547:             }
+                        1311 --548:             else if (ER_IN_PROCESS == err)
+                        1312 --line548
+                        1313 ..lin.5cccef63..1a05471c.0_70::
+                        1314 .LDWlin70:
+0000046e 64ea           1315 	cmp	4,r29
+00000470 ba05*          1316 	bne	.L893
+                        1317 --549:             {
+                        1318 --550:                 err = ER_OK;
+                        1319 --line550
+                        1320 ..lin.5cccef63..1a05471c.0_71::
+                        1321 .LDWlin71:
+00000472 00ea           1322 	mov	0,r29
+00000474 b505*          1323 	br	.L892
+                        1324 .L893:
+                        1325 --551:             }
+                        1326 --552:             else
+                        1327 --553:             {
+                        1328 --554:                 err = (uint32_t)SERV_CRYPT_ERROR;
+                        1329 --line554
+                        1330 ..lin.5cccef63..1a05471c.0_72::
+                        1331 .LDWlin72:
+00000476 20ee1a00       1332 	movea	26,zero,r29
+                        1333 .L892:
+                        1334 --555:             }
+                        1335 --556:             break;
+                        1336 --558:         case PHASE_2DIV:
+0000047a f545*          1337 	br	.L883
+                        1338 .L873:
+                        1339 --559:             /* ************************************************************************* */
+                        1340 --560:             /* Synchronization wait for modular exponentiation processing */
+                        1341 --561:             /* ************************************************************************* */
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1342 --563:             err = L_PKC_RsaChkPkccBusy();
+                        1343 .L1400:
+                        1344 --line563
+                        1345 ..lin.5cccef63..1a05471c.0_73::
+                        1346 .LDWlin73:
+                        1347 	jarl	_L_PKC_RsaChkPkccBusy,lp
+                        1347 <EXPANSION BEGIN>
+                        1347 jarl22 _L_PKC_RsaChkPkccBusy , lp 
+0000047c 80ff0000*      1347 <EXPANSION END>
+00000480 0ae8           1348 	mov	r10,r29
+                        1349 --564:             if (ER_IN_PROCESS == err)
+                        1350 --line564
+                        1351 ..lin.5cccef63..1a05471c.0_74::
+                        1352 .LDWlin74:
+00000482 64ea           1353 	cmp	4,r29
+00000484 ba05*          1354 	bne	.L896
+                        1355 --565:             {
+                        1356 --566:                 err = ER_OK;
+                        1357 --line566
+                        1358 ..lin.5cccef63..1a05471c.0_75::
+                        1359 .LDWlin75:
+00000486 00ea           1360 	mov	0,r29
+00000488 a50d*          1361 	br	.L898
+                        1362 .L896:
+                        1363 --567:             }
+                        1364 --568:             else if (ER_OK == err)
+                        1365 --line568
+                        1366 ..lin.5cccef63..1a05471c.0_76::
+                        1367 .LDWlin76:
+0000048a e0e9           1368 	cmp	zero,r29
+0000048c ea05*          1369 	bne	.L899
+                        1370 --569:             {
+                        1371 --570:                 p_job->process_phase = PHASE_3;
+                        1372 --line570
+                        1373 ..lin.5cccef63..1a05471c.0_77::
+                        1374 .LDWlin77:
+0000048e 200ee600       1375 	movea	230,zero,r1
+00000492 5b0f0a00       1376 	st.b	r1,10[r27]
+00000496 b505*          1377 	br	.L898
+                        1378 .L899:
+                        1379 --571:             }
+                        1380 --572:             else
+                        1381 --573:             {
+                        1382 --574:                 err = (uint32_t)SERV_CRYPT_ERROR;
+                        1383 --line574
+                        1384 ..lin.5cccef63..1a05471c.0_78::
+                        1385 .LDWlin78:
+00000498 20ee1a00       1386 	movea	26,zero,r29
+                        1387 .L898:
+                        1388 --575:             }
+                        1389 --576:             break;
+                        1390 --578:         case PHASE_3:
+0000049c e535*          1391 	br	.L883
+                        1392 .L874:
+                        1393 --579:             /* ************************************************************************* */
+                        1394 --580:             /* Get the result of the modular exponentiation */
+                        1395 --581:             /* i.e. the encoded hash */
+                        1396 --582:             /* ************************************************************************* */
+                        1397 --583:             /* result big_num is generated into W */
+                        1398 --585:             cipher.p_data = (uint8_t *)&p_rsa_ctx->W.value;
+                        1399 --line585
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1400 ..lin.5cccef63..1a05471c.0_79::
+                        1401 .LDWlin79:
+0000049e 1c0e0400       1402 	addi	4,r28,r1
+000004a2 630f3d00       1403 	st.w	r1,60[sp]
+                        1404 --586:             cipher.len = p_key->p_properties->modulus_size_in_bytes;
+000004a6 38f70d00       1405 	ld.w	12[r24],ep
+000004aa 7308           1406 	sld.hu	6[ep],r1
+000004ac 630f3900       1407 	st.w	r1,56[sp]
+                        1408 --587:             err = L_PKC_RsaEncryptFinal(&p_rsa_ctx->pkc_ctx, &cipher);
+000004b0 1c365804       1409 	addi	1112,r28,r6
+000004b4 233e3800       1410 	movea	56,sp,r7
+                        1411 .L1402:
+                        1412 	jarl	_L_PKC_RsaEncryptFinal,lp
+                        1412 <EXPANSION BEGIN>
+                        1412 jarl22 _L_PKC_RsaEncryptFinal , lp 
+000004b8 80ff0000*      1412 <EXPANSION END>
+000004bc 0ae8           1413 	mov	r10,r29
+                        1414 --588:             p_rsa_ctx->W.size = cipher.len;
+                        1415 --line588
+                        1416 ..lin.5cccef63..1a05471c.0_80::
+                        1417 .LDWlin80:
+000004be 230f3900       1418 	ld.w	56[sp],r1
+000004c2 7c0f0100       1419 	st.w	r1,0[r28]
+                        1420 --590:             /* --- Free RSA_Key -------- */
+                        1421 --591:             (void)MH_KEY_FreeKeyCache(p_job, p_isd_param->key_group, p_isd_param->key_id);
+000004c6 3a3f3500       1422 	ld.w	52[r26],r7
+000004ca 9a473900       1423 	ld.bu	56[r26],r8
+000004ce 1b30           1424 	mov	r27,r6
+                        1425 .L1404:
+                        1426 	jarl	_MH_KEY_FreeKeyCache,lp
+                        1426 <EXPANSION BEGIN>
+                        1426 jarl22 _MH_KEY_FreeKeyCache , lp 
+000004d0 80ff0000*      1426 <EXPANSION END>
+                        1427 --592:             p_job_param->resource_ctrl &= ~GET_KEY_RSA;
+                        1428 --line592
+                        1429 ..lin.5cccef63..1a05471c.0_81::
+                        1430 .LDWlin81:
+000004d4 d9970c00       1431 	clr1	2,12[r25]
+                        1432 --594:             if (ER_OK != err)
+000004d8 e0e9           1433 	cmp	zero,r29
+000004da c205*          1434 	be	.L905
+                        1435 --595:             {
+                        1436 --596:                 err = (uint32_t)SERV_CRYPT_ERROR;
+                        1437 --line596
+                        1438 ..lin.5cccef63..1a05471c.0_82::
+                        1439 .LDWlin82:
+000004dc 20ee1a00       1440 	movea	26,zero,r29
+                        1441 --597:                 break;
+000004e0 c515*          1442 	br	.L883
+                        1443 .L905:
+                        1444 --598:             }
+                        1445 --599:             else
+                        1446 --600:             {
+                        1447 --601:                 /* do nothing */
+                        1448 --602:             }
+                        1449 --604:                 /*****************************************/
+                        1450 --605:                 /* Not Free RSA_Context                  */
+                        1451 --606:                 /* Free RSA_Context is done in PHASE_4   */
+                        1452 --607:                 /*****************************************/
+                        1453 --609:             if (FORMAT_STRING_DECIMAL == p_isd_param->encrypted_message_format)
+                        1454 --line609
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1455 ..lin.5cccef63..1a05471c.0_83::
+                        1456 .LDWlin83:
+000004e2 3a0f3d00       1457 	ld.w	60[r26],r1
+000004e6 e009           1458 	cmp	zero,r1
+000004e8 8a0d*          1459 	bne	.L906
+                        1460 --610:             {
+                        1461 --611:                 /* initialize tmp_exp, to use as string index of L_BIGNUM_DecodeFromBigNumSlice() */
+                        1462 --612:                 p_rsa_ctx->tmp_exp = 0u;
+                        1463 --line612
+                        1464 ..lin.5cccef63..1a05471c.0_84::
+                        1465 .LDWlin84:
+000004ea 7c072504       1466 	st.w	zero,1060[r28]
+                        1467 --613:                 p_job->process_phase = PHASE_4DIV;
+000004ee 200ef100       1468 	movea	241,zero,r1
+000004f2 5b0f0a00       1469 	st.b	r1,10[r27]
+000004f6 d505*          1470 	br	.L908
+                        1471 .L906:
+                        1472 --614:             }
+                        1473 --615:             else
+                        1474 --616:             {
+                        1475 --617:                 p_job->process_phase = PHASE_4;
+                        1476 --line617
+                        1477 ..lin.5cccef63..1a05471c.0_85::
+                        1478 .LDWlin85:
+000004f8 200ef000       1479 	movea	240,zero,r1
+000004fc 5b0f0a00       1480 	st.b	r1,10[r27]
+                        1481 .L908:
+                        1482 --618:             }
+                        1483 --619:             /* I can break, because temp_big_num is saved in W */
+                        1484 --620:             break;
+                        1485 --621:         default:
+00000500 c505*          1486 	br	.L883
+                        1487 .L875:
+                        1488 --622:             /* should never occur */
+                        1489 --623:             err = (uint32_t)SERV_SYS_ERROR;
+                        1490 --line623
+                        1491 ..lin.5cccef63..1a05471c.0_86::
+                        1492 .LDWlin86:
+00000502 20ee1100       1493 	movea	17,zero,r29
+                        1494 --624:             break;
+00000506 0000           1495 	nop
+                        1496 .L883:
+                        1497 --625:     }
+                        1498 --626:     
+                        1499 --627:     return (err);
+00000508 1d50           1500 	mov	r29,r10
+                        1501 --	    .ef
+                        1502 .LDW51:
+0000050a 23ff6500       1503 	ld.w	100[sp],lp
+0000050e 23ef4900       1504 	ld.w	72[sp],r29
+00000512 23e74d00       1505 	ld.w	76[sp],r28
+00000516 23df5100       1506 	ld.w	80[sp],r27
+0000051a 23d75500       1507 	ld.w	84[sp],r26
+0000051e 23cf5900       1508 	ld.w	88[sp],r25
+00000522 23c75d00       1509 	ld.w	92[sp],r24
+00000526 23bf6100       1510 	ld.w	96[sp],r23
+0000052a 031e6800       1511 	addi	104,sp,sp
+                        1512 .L1406:
+                        1513 	.jumptype return
+0000052e 7f00           1514 	jmp	[lp]
+                        1515 --line623
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1516 ..lin.5cccef63..1a05471c.0_87::
+                        1517 	.type	_s_01_CalcExpModEncryptByRsa,@function
+                        1518 	.size	_s_01_CalcExpModEncryptByRsa,.-_s_01_CalcExpModEncryptByRsa
+                        1519 	.type	_s_01_CalcExpModEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,@function
+                        1520 	.size	_s_01_CalcExpModEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,.-_s_01_CalcExpModEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1521 	.align	2
+                        1522 --_p_isd	r23	local
+                        1523 --_p_job_param	r25	local
+                        1524 --_p_isd_param	r26	local
+                        1525 --_p_key	r24	local
+                        1526 --_p_rsa_ctx	r28	local
+                        1527 --_err	r29	local
+                        1528 --_plain_data	64[sp]	local
+                        1529 --_cipher	56[sp]	local
+                        1530 --_rsa_key	16[sp]	local
+                        1531 --_operate_opt	8[sp]	local
+                        1532 --_message_logical	0[sp]	local
+                        1533 --_label_logical	4[sp]	local
+                        1534 
+                        1535 --_p_job	r27	param
+                        1536 
+                        1537 	.section ".bss","awb"
+                        1538 .L1174:
+                        1539 	.type	.L1174,@object
+                        1540 	.size	.L1174,0
+                        1541 	.section ".ghcalltbl",""
+0000002c 00000000*      1542 .L1389:	.word	.L1388
+                        1543 	.type	.L1389,@object
+                        1544 	.size	.L1389,4
+00000030 00000000*      1545 .L1391:	.word	.L1390
+                        1546 	.type	.L1391,@object
+                        1547 	.size	.L1391,4
+00000034 00000000*      1548 .L1393:	.word	.L1392
+                        1549 	.type	.L1393,@object
+                        1550 	.size	.L1393,4
+00000038 00000000*      1551 .L1395:	.word	.L1394
+                        1552 	.type	.L1395,@object
+                        1553 	.size	.L1395,4
+0000003c 00000000*      1554 .L1397:	.word	.L1396
+                        1555 	.type	.L1397,@object
+                        1556 	.size	.L1397,4
+00000040 00000000*      1557 .L1399:	.word	.L1398
+                        1558 	.type	.L1399,@object
+                        1559 	.size	.L1399,4
+00000044 00000000*      1560 .L1401:	.word	.L1400
+                        1561 	.type	.L1401,@object
+                        1562 	.size	.L1401,4
+00000048 00000000*      1563 .L1403:	.word	.L1402
+                        1564 	.type	.L1403,@object
+                        1565 	.size	.L1403,4
+0000004c 00000000*      1566 .L1405:	.word	.L1404
+                        1567 	.type	.L1405,@object
+                        1568 	.size	.L1405,4
+                        1569 	.section ".ghrettbl",""
+00000008 00000000*      1570 .L1407:	.word	.L1406
+                        1571 	.type	.L1407,@object
+                        1572 	.size	.L1407,4
+                        1573 	.data
+                        1574 	.section ".icum_service.text","ax"
+                        1575 
+                        1576 --628: }
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1577 
+                        1578 --631: /****************************************************************************************
+                        1579 --632: * Function ID  : [ICUMFW_CD_S_01_PK_0028]:[ICUMFW_UD_S_01_PK_0028]
+                        1580 --633: * Function name: s_01_ConvertEncryptByRsa
+                        1581 --634: * Description  : Message Conversion part of RSA encryption service
+                        1582 --635: * Arguments    : (IN-OUT)  p_job
+                        1583 --636: * Return Value : ER_OK
+                        1584 --637: *                SERV_CRYPT_ERROR
+                        1585 --638: *                SERV_SYS_ERROR
+                        1586 --639: ****************************************************************************************/
+                        1587 --640: static uint32_t s_01_ConvertEncryptByRsa(icum_job_t *p_job)
+                        1588 	.align	2
+                        1589 	.align	2
+                        1590 	.align	2
+                        1591 ..gh.f.a.2.e.3:
+                        1592 	.type	..gh.f.a.2.e.3,@object
+                        1593 	.size	..gh.f.a.2.e.3,0
+                        1594 	.global	_s_01_ConvertEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1595 _s_01_ConvertEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.:
+                        1596 _s_01_ConvertEncryptByRsa:
+00000530 031ed4ff       1597 	addi	-44,sp,sp
+00000534 63ff2900       1598 	st.w	lp,40[sp]
+00000538 63df1100       1599 	st.w	r27,16[sp]
+0000053c 63b72500       1600 	st.w	r22,36[sp]
+00000540 63bf2100       1601 	st.w	r23,32[sp]
+00000544 63c71d00       1602 	st.w	r24,28[sp]
+00000548 63cf1900       1603 	st.w	r25,24[sp]
+0000054c 63d71500       1604 	st.w	r26,20[sp]
+00000550 63e70d00       1605 	st.w	r28,12[sp]
+00000554 63ef0900       1606 	st.w	r29,8[sp]
+00000558 06d8           1607 	mov	r6,r27
+                        1608 --	    .bf
+                        1609 .LDW61:
+                        1610 --641: {
+                        1611 --642:     r_icumif_isd_t     *p_ISD;
+                        1612 --643:     job_rsa_t          *p_JOB_PARAM;
+                        1613 --644:     ISD_RSA_ENCRYPT_t  *p_ISD_PARAM;
+                        1614 --645:     
+                        1615 --646:     rsa_ctx_t  *p_rsa_ctx;
+                        1616 --647:     
+                        1617 --648:     uint32_t    err;
+                        1618 --649:     
+                        1619 --650:     big_num_type_t      temp_type;
+                        1620 --651:     uint32_t            bn_area_len;
+                        1621 --652:     uint32_t in_process;
+                        1622 --653:     int32_t  i;
+                        1623 --654:     remap_ptr_manip_t   encrypted_message_logical;
+                        1624 --655:     
+                        1625 --656:     /* retrieve the service handler */
+                        1626 --657:     p_ISD         = p_job->p_ISD;
+0000055a 3bbf0100       1627 	ld.w	0[r27],r23
+                        1628 --658:     p_JOB_PARAM   = &p_job->prm.job_rsa;
+0000055e 1be61000       1629 	addi	16,r27,r28
+                        1630 --659:     p_ISD_PARAM   = &p_ISD->prm.RSA_ENCRYPT;
+00000562 17c62000       1631 	addi	32,r23,r24
+                        1632 --660:     
+                        1633 --661:     /* get the pointer the the RSA public key used */
+                        1634 --662:     p_rsa_ctx  = (rsa_ctx_t  *)p_JOB_PARAM->p_rsa_ctx;
+00000566 3cd70500       1635 	ld.w	4[r28],r26
+                        1636 --663:     
+                        1637 --664:     err = ER_OK;
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000056a 00ea           1638 	mov	0,r29
+                        1639 --665:     
+                        1640 --666:     /* Get Remap(Convert Physical address -> Logical Address) */
+                        1641 --667:     (void)D_REMAP_GetLogicalAddrs((uint32_t)p_ISD_PARAM->p_encrypted_message,
+0000056c 38371100       1642 	ld.w	16[r24],r6
+00000570 233e0400       1643 	movea	4,sp,r7
+                        1644 .L1790:
+                        1645 	jarl	_D_REMAP_GetLogicalAddrs,lp
+                        1645 <EXPANSION BEGIN>
+                        1645 jarl22 _D_REMAP_GetLogicalAddrs , lp 
+00000574 80ff0000*      1645 <EXPANSION END>
+                        1646 --668:             &encrypted_message_logical.val);
+                        1647 --670:     switch ((uint32_t)p_job->process_phase)
+                        1648 --line670
+                        1649 ..lin.5cccef63..544127d.0_88::
+                        1650 .LDWlin88:
+00000578 9b0f0b00       1651 	ld.bu	10[r27],r1
+0000057c 010610ff       1652 	addi	-240,r1,zero
+00000580 d205*          1653 	be	.L1411
+00000582 01060fff       1654 	addi	-241,r1,zero
+00000586 f235*          1655 	be	.L1412
+00000588 e55d*          1656 	br	.L1413
+                        1657 .L1411:
+                        1658 --671:     {
+                        1659 --672:         case PHASE_4:
+                        1660 --673:             /* ************************************************************************* */
+                        1661 --674:             /* Convert the ciphered message into the desired output format */
+                        1662 --675:             /* ************************************************************************* */
+                        1663 --676:             bn_area_len = 0u;
+                        1664 --line676
+                        1665 ..lin.5cccef63..544127d.0_89::
+                        1666 .LDWlin89:
+0000058a 63070100       1667 	st.w	zero,0[sp]
+                        1668 --677:             switch (p_ISD_PARAM->encrypted_message_format)
+0000058e 380f3d00       1669 	ld.w	60[r24],r1
+00000592 610a           1670 	cmp	1,r1
+00000594 c205*          1671 	be	.L1416
+00000596 620a           1672 	cmp	2,r1
+00000598 c205*          1673 	be	.L1417
+0000059a b50d*          1674 	br	.L1418
+                        1675 .L1416:
+                        1676 --678:             {
+                        1677 --679:                 case FORMAT_STRING_HEXA:
+                        1678 --680:                     temp_type = E_STRING_HEXA;
+                        1679 --line680
+                        1680 ..lin.5cccef63..544127d.0_90::
+                        1681 .LDWlin90:
+0000059c 01ca           1682 	mov	1,r25
+                        1683 --681:                     break;
+                        1684 --682:                 case FORMAT_BINARY_PLAIN:
+0000059e b50d*          1685 	br	.L1420
+                        1686 .L1417:
+                        1687 --683:                     temp_type = E_BINARY_PLAIN;
+                        1688 --line683
+                        1689 ..lin.5cccef63..544127d.0_91::
+                        1690 .LDWlin91:
+000005a0 02ca           1691 	mov	2,r25
+                        1692 --684:                     bn_area_len = (((uint32_t)p_ISD_PARAM->encrypted_message_size_in_bits + NUM7) / NUM8);
+000005a2 f80f1900       1693 	ld.hu	24[r24],r1
+000005a6 470a           1694 	add	7,r1
+000005a8 830a           1695 	shr	3,r1
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+000005aa 630f0100       1696 	st.w	r1,0[sp]
+                        1697 --685:                     break;
+                        1698 --686:                 case FORMAT_STRING_DECIMAL:
+000005ae b505*          1699 	br	.L1420
+                        1700 .L1418:
+                        1701 --687:                 default:
+                        1702 --688:                     /* should never occur */
+                        1703 --689:                     /* case of FORMAT_STRING_DECIMAL, branch to PHASE_4DIV */
+                        1704 --690:                     temp_type = E_STRING_DECIMAL;
+                        1705 --line690
+                        1706 ..lin.5cccef63..544127d.0_92::
+                        1707 .LDWlin92:
+000005b0 00ca           1708 	mov	0,r25
+                        1709 --691:                     break;
+000005b2 0000           1710 	nop
+                        1711 .L1420:
+                        1712 --692:             }
+                        1713 --694:             /* convert from big number into the required format */
+                        1714 --696:             /* result big_num is in W */
+                        1715 --697:             err = L_BIGNUM_DecodeFromBigNum(&p_rsa_ctx->W, temp_type,
+000005b4 23470500       1716 	ld.w	4[sp],r8
+000005b8 1a30           1717 	mov	r26,r6
+000005ba 1938           1718 	mov	r25,r7
+000005bc 234e0000       1719 	movea	0,sp,r9
+                        1720 .L1792:
+                        1721 	jarl	_L_BIGNUM_DecodeFromBigNum,lp
+                        1721 <EXPANSION BEGIN>
+                        1721 jarl22 _L_BIGNUM_DecodeFromBigNum , lp 
+000005c0 80ff0000*      1721 <EXPANSION END>
+000005c4 0ae8           1722 	mov	r10,r29
+                        1723 --698:                                             encrypted_message_logical.p_ptr, &bn_area_len);
+                        1724 --700:             if (ER_OK != err)
+                        1725 --line700
+                        1726 ..lin.5cccef63..544127d.0_93::
+                        1727 .LDWlin93:
+000005c6 e0e9           1728 	cmp	zero,r29
+000005c8 c205*          1729 	be	.L1425
+                        1730 --701:             {
+                        1731 --702:                 /* error on conversion: break here */
+                        1732 --703:                 err = (uint32_t)SERV_CRYPT_ERROR;
+                        1733 --line703
+                        1734 ..lin.5cccef63..544127d.0_94::
+                        1735 .LDWlin94:
+000005ca 20ee1a00       1736 	movea	26,zero,r29
+                        1737 --704:                 break;
+000005ce e53d*          1738 	br	.L1423
+                        1739 .L1425:
+                        1740 --705:             }
+                        1741 --706:             else
+                        1742 --707:             {
+                        1743 --708:                 /* do nothing */
+                        1744 --709:             }
+                        1745 --711:             /* --- Free RSA_Context ---- */
+                        1746 --712:             (void)ML_CTX_Free(CTX_TYPE_RSA, p_JOB_PARAM->p_rsa_ctx);
+                        1747 --line712
+                        1748 ..lin.5cccef63..544127d.0_95::
+                        1749 .LDWlin95:
+000005d0 3c3f0500       1750 	ld.w	4[r28],r7
+000005d4 0132           1751 	mov	1,r6
+                        1752 .L1794:
+                        1753 	jarl	_ML_CTX_Free,lp
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1753 <EXPANSION BEGIN>
+                        1753 jarl22 _ML_CTX_Free , lp 
+000005d6 80ff0000*      1753 <EXPANSION END>
+                        1754 --713:             p_JOB_PARAM->resource_ctrl &= ~GET_CTX_RSA;
+                        1755 --line713
+                        1756 ..lin.5cccef63..544127d.0_96::
+                        1757 .LDWlin96:
+000005da dc870c00       1758 	clr1	0,12[r28]
+                        1759 --715:             /* --- Free Hash_Context ---- */
+                        1760 --716:             (void)ML_CTX_Free(CTX_TYPE_HASH, p_JOB_PARAM->p_hash_ctx);
+000005de 3c3f0900       1761 	ld.w	8[r28],r7
+000005e2 0332           1762 	mov	3,r6
+                        1763 .L1796:
+                        1764 	jarl	_ML_CTX_Free,lp
+                        1764 <EXPANSION BEGIN>
+                        1764 jarl22 _ML_CTX_Free , lp 
+000005e4 80ff0000*      1764 <EXPANSION END>
+                        1765 --717:             p_JOB_PARAM->resource_ctrl &= ~GET_CTX_HASH;
+                        1766 --line717
+                        1767 ..lin.5cccef63..544127d.0_97::
+                        1768 .LDWlin97:
+000005e8 dc8f0c00       1769 	clr1	1,12[r28]
+                        1770 --719:             /* done! */
+                        1771 --720:             p_job->process_phase = ON_HOLD;
+000005ec 5b070a00       1772 	st.b	zero,10[r27]
+                        1773 --721:             err = ER_OK;
+000005f0 00ea           1774 	mov	0,r29
+                        1775 --722:             break;
+                        1776 --723:         case PHASE_4DIV:
+000005f2 c52d*          1777 	br	.L1423
+                        1778 .L1412:
+                        1779 --724:             /* case FORMAT_STRING_DECIMAL */
+                        1780 --725:             for (i = 0; i < (int32_t)NUM10; i++)
+                        1781 --line725
+                        1782 ..lin.5cccef63..544127d.0_98::
+                        1783 .LDWlin98:
+000005f4 00ca           1784 	mov	0,r25
+000005f6 c525*          1785 	br	.L1429
+                        1786 .L1428:
+                        1787 --726:             {
+                        1788 --727:                 in_process = L_BIGNUM_DecodeFromBigNumSlice(&p_rsa_ctx->W, E_STRING_DECIMAL,
+                        1789 --line727
+                        1790 ..lin.5cccef63..544127d.0_99::
+                        1791 .LDWlin99:
+000005f8 23470500       1792 	ld.w	4[sp],r8
+000005fc 3a4f2504       1793 	ld.w	1060[r26],r9
+00000600 1a30           1794 	mov	r26,r6
+00000602 003a           1795 	mov	0,r7
+                        1796 .L1798:
+                        1797 	jarl	_L_BIGNUM_DecodeFromBigNumSlice,lp
+                        1797 <EXPANSION BEGIN>
+                        1797 jarl22 _L_BIGNUM_DecodeFromBigNumSlice , lp 
+00000604 80ff0000*      1797 <EXPANSION END>
+00000608 0ab0           1798 	mov	r10,r22
+                        1799 --728:                                                             encrypted_message_logical.p_ptr,
+                        1800 --729:                                                             p_rsa_ctx->tmp_exp);
+                        1801 --730:                 p_rsa_ctx->tmp_exp++;
+                        1802 --line730
+                        1803 ..lin.5cccef63..544127d.0_100::
+                        1804 .LDWlin100:
+0000060a 3a0f2504       1805 	ld.w	1060[r26],r1
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000060e 410a           1806 	add	1,r1
+00000610 7a0f2504       1807 	st.w	r1,1060[r26]
+                        1808 --731:                 if (ER_OK == in_process)
+00000614 e0b1           1809 	cmp	zero,r22
+00000616 ba15*          1810 	bne	.L1427
+                        1811 --732:                 {
+                        1812 --733:                     /* --- Free RSA_Context ---- */
+                        1813 --734:                     (void)ML_CTX_Free(CTX_TYPE_RSA, p_JOB_PARAM->p_rsa_ctx);
+                        1814 --line734
+                        1815 ..lin.5cccef63..544127d.0_101::
+                        1816 .LDWlin101:
+00000618 3c3f0500       1817 	ld.w	4[r28],r7
+0000061c 0132           1818 	mov	1,r6
+                        1819 .L1800:
+                        1820 	jarl	_ML_CTX_Free,lp
+                        1820 <EXPANSION BEGIN>
+                        1820 jarl22 _ML_CTX_Free , lp 
+0000061e 80ff0000*      1820 <EXPANSION END>
+                        1821 --735:                     p_JOB_PARAM->resource_ctrl &= ~GET_CTX_RSA;
+                        1822 --line735
+                        1823 ..lin.5cccef63..544127d.0_102::
+                        1824 .LDWlin102:
+00000622 dc870c00       1825 	clr1	0,12[r28]
+                        1826 --737:                     /* --- Free Hash_Context ---- */
+                        1827 --738:                     (void)ML_CTX_Free(CTX_TYPE_HASH, p_JOB_PARAM->p_hash_ctx);
+00000626 3c3f0900       1828 	ld.w	8[r28],r7
+0000062a 0332           1829 	mov	3,r6
+                        1830 .L1802:
+                        1831 	jarl	_ML_CTX_Free,lp
+                        1831 <EXPANSION BEGIN>
+                        1831 jarl22 _ML_CTX_Free , lp 
+0000062c 80ff0000*      1831 <EXPANSION END>
+                        1832 --739:                     p_JOB_PARAM->resource_ctrl &= ~GET_CTX_HASH;
+                        1833 --line739
+                        1834 ..lin.5cccef63..544127d.0_103::
+                        1835 .LDWlin103:
+00000630 dc8f0c00       1836 	clr1	1,12[r28]
+                        1837 --741:                     /* done! */
+                        1838 --742:                     p_job->process_phase = ON_HOLD;
+00000634 5b070a00       1839 	st.b	zero,10[r27]
+                        1840 --743:                     err = ER_OK;
+00000638 00ea           1841 	mov	0,r29
+                        1842 --744:                     break;
+0000063a c505*          1843 	br	.L1432
+                        1844 .L1427:
+                        1845 --745:                 }
+                        1846 --746:                 else
+                        1847 --747:                 {
+                        1848 --line725
+                        1849 ..lin.5cccef63..544127d.0_104::
+                        1850 .LDWlin104:
+0000063c 41ca           1851 	add	1,r25
+                        1852 .L1429:
+0000063e 6aca           1853 	cmp	10,r25
+00000640 c6dd*          1854 	blt	.L1428
+                        1855 .L1432:
+                        1856 --748:                     /* do nothing */
+                        1857 --749:                 }
+                        1858 --750:             }
+                        1859 --751:             break;
+                        1860 --752:         default:
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1861 --line751
+                        1862 ..lin.5cccef63..544127d.0_105::
+                        1863 .LDWlin105:
+00000642 c505*          1864 	br	.L1423
+                        1865 .L1413:
+                        1866 --753:             /* should never occur */
+                        1867 --754:             err = (uint32_t)SERV_SYS_ERROR;
+                        1868 --line754
+                        1869 ..lin.5cccef63..544127d.0_106::
+                        1870 .LDWlin106:
+00000644 20ee1100       1871 	movea	17,zero,r29
+                        1872 --755:             break;
+00000648 0000           1873 	nop
+                        1874 .L1423:
+                        1875 --756:     }
+                        1876 --757:     
+                        1877 --758:     return (err);
+0000064a 1d50           1878 	mov	r29,r10
+                        1879 --	    .ef
+                        1880 .LDW71:
+0000064c 23ff2900       1881 	ld.w	40[sp],lp
+00000650 23ef0900       1882 	ld.w	8[sp],r29
+00000654 23e70d00       1883 	ld.w	12[sp],r28
+00000658 23df1100       1884 	ld.w	16[sp],r27
+0000065c 23d71500       1885 	ld.w	20[sp],r26
+00000660 23cf1900       1886 	ld.w	24[sp],r25
+00000664 23c71d00       1887 	ld.w	28[sp],r24
+00000668 23bf2100       1888 	ld.w	32[sp],r23
+0000066c 23b72500       1889 	ld.w	36[sp],r22
+00000670 031e2c00       1890 	addi	44,sp,sp
+                        1891 .L1804:
+                        1892 	.jumptype return
+00000674 7f00           1893 	jmp	[lp]
+                        1894 --line754
+                        1895 ..lin.5cccef63..544127d.0_107::
+                        1896 	.type	_s_01_ConvertEncryptByRsa,@function
+                        1897 	.size	_s_01_ConvertEncryptByRsa,.-_s_01_ConvertEncryptByRsa
+                        1898 	.type	_s_01_ConvertEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,@function
+                        1899 	.size	_s_01_ConvertEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,.-_s_01_ConvertEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1900 	.align	2
+                        1901 --_p_ISD	r23	local
+                        1902 --_p_JOB_PARAM	r28	local
+                        1903 --_p_ISD_PARAM	r24	local
+                        1904 --_p_rsa_ctx	r26	local
+                        1905 --_err	r29	local
+                        1906 --_temp_type	r25	local
+                        1907 --_bn_area_len	0[sp]	local
+                        1908 --_in_process	r22	local
+                        1909 --_i	r25	local
+                        1910 --_encrypted_message_logical	4[sp]	local
+                        1911 
+                        1912 --_p_job	r27	param
+                        1913 
+                        1914 	.section ".bss","awb"
+                        1915 .L1630:
+                        1916 	.type	.L1630,@object
+                        1917 	.size	.L1630,0
+                        1918 	.section ".ghcalltbl",""
+00000050 00000000*      1919 .L1791:	.word	.L1790
+                        1920 	.type	.L1791,@object
+                        1921 	.size	.L1791,4
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+00000054 00000000*      1922 .L1793:	.word	.L1792
+                        1923 	.type	.L1793,@object
+                        1924 	.size	.L1793,4
+00000058 00000000*      1925 .L1795:	.word	.L1794
+                        1926 	.type	.L1795,@object
+                        1927 	.size	.L1795,4
+0000005c 00000000*      1928 .L1797:	.word	.L1796
+                        1929 	.type	.L1797,@object
+                        1930 	.size	.L1797,4
+00000060 00000000*      1931 .L1799:	.word	.L1798
+                        1932 	.type	.L1799,@object
+                        1933 	.size	.L1799,4
+00000064 00000000*      1934 .L1801:	.word	.L1800
+                        1935 	.type	.L1801,@object
+                        1936 	.size	.L1801,4
+00000068 00000000*      1937 .L1803:	.word	.L1802
+                        1938 	.type	.L1803,@object
+                        1939 	.size	.L1803,4
+                        1940 	.section ".ghrettbl",""
+0000000c 00000000*      1941 .L1805:	.word	.L1804
+                        1942 	.type	.L1805,@object
+                        1943 	.size	.L1805,4
+                        1944 	.data
+                        1945 	.section ".icum_service.text","ax"
+                        1946 
+                        1947 --759: }
+                        1948 
+                        1949 --761: /****************************************************************************************
+                        1950 --762: * Function ID  : [ICUMFW_CD_S_01_PK_0029]:[ICUMFW_UD_S_01_PK_0029]
+                        1951 --763: * Function name: s_01_FinishEncryptByRsa
+                        1952 --764: * Description  : Finish part of RSA encryption service
+                        1953 --765: * Arguments    : (IN-OUT)  p_job
+                        1954 --766: *                (IN)  error
+                        1955 --767: * Return Value : none
+                        1956 --768: ****************************************************************************************/
+                        1957 --769: static void s_01_FinishEncryptByRsa(icum_job_t *p_job, const uint32_t err)
+                        1958 	.align	2
+                        1959 	.align	2
+                        1960 	.align	2
+                        1961 ..gh.f.a.2.e.4:
+                        1962 	.type	..gh.f.a.2.e.4,@object
+                        1963 	.size	..gh.f.a.2.e.4,0
+                        1964 	.global	_s_01_FinishEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        1965 _s_01_FinishEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.:
+                        1966 _s_01_FinishEncryptByRsa:
+00000676 031ee8ff       1967 	addi	-24,sp,sp
+0000067a 63ff1500       1968 	st.w	lp,20[sp]
+0000067e 63cf1100       1969 	st.w	r25,16[sp]
+00000682 63e70500       1970 	st.w	r28,4[sp]
+00000686 63d70d00       1971 	st.w	r26,12[sp]
+0000068a 63df0900       1972 	st.w	r27,8[sp]
+0000068e 63ef0100       1973 	st.w	r29,0[sp]
+00000692 06e0           1974 	mov	r6,r28
+00000694 07c8           1975 	mov	r7,r25
+                        1976 --	    .bf
+                        1977 .LDW81:
+                        1978 --770: {
+                        1979 --771:     /* retrieve the service handler */
+                        1980 --772:     r_icumif_isd_t     *p_ISD;
+                        1981 --773:     job_rsa_t          *p_JOB_PARAM;
+                        1982 --774:     ISD_RSA_ENCRYPT_t  *p_ISD_PARAM;
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        1983 --775:     
+                        1984 --776:     p_ISD         = p_job->p_ISD;
+00000696 3cdf0100       1985 	ld.w	0[r28],r27
+                        1986 --777:     p_JOB_PARAM   = &p_job->prm.job_rsa;
+0000069a 1cee1000       1987 	addi	16,r28,r29
+                        1988 --778:     p_ISD_PARAM   = &p_ISD->prm.RSA_ENCRYPT;
+0000069e 1bd62000       1989 	addi	32,r27,r26
+                        1990 --779:     
+                        1991 --780:     if (err != (uint32_t)SERV_OK)
+000006a2 e0c9           1992 	cmp	zero,r25
+000006a4 a225*          1993 	be	.L1808
+                        1994 --781:     {
+                        1995 --782:         /* error: terminate the service */
+                        1996 --783:         p_ISD->service_result = (r_icumif_service_result_t)err;
+                        1997 --line783
+                        1998 ..lin.5cccef63..4cfae2fd.0_108::
+                        1999 .LDWlin108:
+000006a6 7bcf0d00       2000 	st.w	r25,12[r27]
+                        2001 --784:         p_job->process_phase = ON_HOLD;
+000006aa 5c070a00       2002 	st.b	zero,10[r28]
+                        2003 --786:         /* free context when illegal end */
+                        2004 --787:         if (((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_RSA) == GET_CTX_RSA)
+000006ae ddc70c00       2005 	tst1	0,12[r29]
+000006b2 e205*          2006 	be	.L1812
+                        2007 --788:         {
+                        2008 --789:             (void)ML_CTX_Free(CTX_TYPE_RSA, p_JOB_PARAM->p_rsa_ctx);
+                        2009 --line789
+                        2010 ..lin.5cccef63..4cfae2fd.0_109::
+                        2011 .LDWlin109:
+000006b4 3d3f0500       2012 	ld.w	4[r29],r7
+000006b8 0132           2013 	mov	1,r6
+                        2014 .L1955:
+                        2015 	jarl	_ML_CTX_Free,lp
+                        2015 <EXPANSION BEGIN>
+                        2015 jarl22 _ML_CTX_Free , lp 
+000006ba 80ff0000*      2015 <EXPANSION END>
+                        2016 .L1812:
+                        2017 --790:         }
+                        2018 --791:         else
+                        2019 --792:         {
+                        2020 --793:             /* do nothing */
+                        2021 --794:         }
+                        2022 --796:         if (((uint32_t)p_JOB_PARAM->resource_ctrl & GET_CTX_HASH) == GET_CTX_HASH)
+                        2023 --line796
+                        2024 ..lin.5cccef63..4cfae2fd.0_110::
+                        2025 .LDWlin110:
+000006be ddcf0c00       2026 	tst1	1,12[r29]
+000006c2 e205*          2027 	be	.L1815
+                        2028 --797:         {
+                        2029 --798:             (void)ML_CTX_Free(CTX_TYPE_HASH, p_JOB_PARAM->p_hash_ctx);
+                        2030 --line798
+                        2031 ..lin.5cccef63..4cfae2fd.0_111::
+                        2032 .LDWlin111:
+000006c4 3d3f0900       2033 	ld.w	8[r29],r7
+000006c8 0332           2034 	mov	3,r6
+                        2035 .L1957:
+                        2036 	jarl	_ML_CTX_Free,lp
+                        2036 <EXPANSION BEGIN>
+                        2036 jarl22 _ML_CTX_Free , lp 
+000006ca 80ff0000*      2036 <EXPANSION END>
+                        2037 .L1815:
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        2038 --799:         }
+                        2039 --800:         else
+                        2040 --801:         {
+                        2041 --802:             /* do nothing */
+                        2042 --803:         }
+                        2043 --805:         if (((uint32_t)p_JOB_PARAM->resource_ctrl & GET_KEY_RSA) == GET_KEY_RSA)
+                        2044 --line805
+                        2045 ..lin.5cccef63..4cfae2fd.0_112::
+                        2046 .LDWlin112:
+000006ce ddd70c00       2047 	tst1	2,12[r29]
+000006d2 820d*          2048 	be	.L1818
+                        2049 --806:         {
+                        2050 --807:             (void)MH_KEY_FreeKeyCache(p_job, p_ISD_PARAM->key_group, p_ISD_PARAM->key_id);
+                        2051 --line807
+                        2052 ..lin.5cccef63..4cfae2fd.0_113::
+                        2053 .LDWlin113:
+000006d4 3a3f3500       2054 	ld.w	52[r26],r7
+000006d8 9a473900       2055 	ld.bu	56[r26],r8
+000006dc 1c30           2056 	mov	r28,r6
+                        2057 .L1959:
+                        2058 	jarl	_MH_KEY_FreeKeyCache,lp
+                        2058 <EXPANSION BEGIN>
+                        2058 jarl22 _MH_KEY_FreeKeyCache , lp 
+000006de 80ff0000*      2058 <EXPANSION END>
+                        2059 .L1818:
+                        2060 --808:         }
+                        2061 --809:         else
+                        2062 --810:         {
+                        2063 --811:             /* do nothing */
+                        2064 --812:         }
+                        2065 --813:         p_JOB_PARAM->resource_ctrl = GET_CTX_NONE;
+                        2066 --line813
+                        2067 ..lin.5cccef63..4cfae2fd.0_114::
+                        2068 .LDWlin114:
+000006e2 7d070d00       2069 	st.w	zero,12[r29]
+000006e6 f505*          2070 	br	.L1819
+                        2071 .L1808:
+                        2072 --814:     }
+                        2073 --815:     else
+                        2074 --816:     {
+                        2075 --817:         /* all good - terminate the service or keep it alive */
+                        2076 --818:         /* depending on the processing phase */
+                        2077 --819:         if ((uint32_t)p_job->process_phase == ON_HOLD)
+                        2078 --line819
+                        2079 ..lin.5cccef63..4cfae2fd.0_115::
+                        2080 .LDWlin115:
+000006e8 9c0f0b00       2081 	ld.bu	10[r28],r1
+000006ec e009           2082 	cmp	zero,r1
+000006ee ba05*          2083 	bne	.L1819
+                        2084 --820:         {
+                        2085 --821:             p_ISD->service_result = SERV_OK;
+                        2086 --line821
+                        2087 ..lin.5cccef63..4cfae2fd.0_116::
+                        2088 .LDWlin116:
+000006f0 7b070d00       2089 	st.w	zero,12[r27]
+                        2090 .L1819:
+                        2091 --822:         }
+                        2092 --823:         else
+                        2093 --824:         {
+                        2094 --825:             /* do nothing */
+                        2095 --826:         }
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        2096 --827:     }
+                        2097 --828:     
+                        2098 --829:     return;
+000006f4 0000           2099 	nop
+                        2100 --	    .ef
+                        2101 .LDW91:
+000006f6 23ff1500       2102 	ld.w	20[sp],lp
+000006fa 23ef0100       2103 	ld.w	0[sp],r29
+000006fe 23e70500       2104 	ld.w	4[sp],r28
+00000702 23df0900       2105 	ld.w	8[sp],r27
+00000706 23d70d00       2106 	ld.w	12[sp],r26
+0000070a 23cf1100       2107 	ld.w	16[sp],r25
+0000070e 031e1800       2108 	addi	24,sp,sp
+                        2109 .L1961:
+                        2110 	.jumptype return
+00000712 7f00           2111 	jmp	[lp]
+                        2112 --line821
+                        2113 ..lin.5cccef63..4cfae2fd.0_117::
+                        2114 	.type	_s_01_FinishEncryptByRsa,@function
+                        2115 	.size	_s_01_FinishEncryptByRsa,.-_s_01_FinishEncryptByRsa
+                        2116 	.type	_s_01_FinishEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,@function
+                        2117 	.size	_s_01_FinishEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.,.-_s_01_FinishEncryptByRsa..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt.
+                        2118 	.align	2
+                        2119 --_p_ISD	r27	local
+                        2120 --_p_JOB_PARAM	r29	local
+                        2121 --_p_ISD_PARAM	r26	local
+                        2122 
+                        2123 --_p_job	r28	param
+                        2124 --_err	r25	param
+                        2125 
+                        2126 	.section ".bss","awb"
+                        2127 .L1898:
+                        2128 	.type	.L1898,@object
+                        2129 	.size	.L1898,0
+                        2130 	.section ".ghcalltbl",""
+0000006c 00000000*      2131 .L1956:	.word	.L1955
+                        2132 	.type	.L1956,@object
+                        2133 	.size	.L1956,4
+00000070 00000000*      2134 .L1958:	.word	.L1957
+                        2135 	.type	.L1958,@object
+                        2136 	.size	.L1958,4
+00000074 00000000*      2137 .L1960:	.word	.L1959
+                        2138 	.type	.L1960,@object
+                        2139 	.size	.L1960,4
+                        2140 	.section ".ghrettbl",""
+00000010 00000000*      2141 .L1962:	.word	.L1961
+                        2142 	.type	.L1962,@object
+                        2143 	.size	.L1962,4
+                        2144 	.data
+                        2145 	.section ".icum_service.text","ax"
+                        2146 
+                        2147 --830: }
+                        2148 
+                        2149 --832: /***************************************************************************************
+                        2150 --833: * Function ID  : [ICUMFW_CD_S_01_PK_0004]:[ICUMFW_UD_S_01_PK_0004]
+                        2151 --834: * Function name: S_01_EncryptByRsa
+                        2152 --835: * Description  : Service that implements encryption by RSA.
+                        2153 --836: * Arguments    : *p_job                         : Pointer of icum_job_t
+                        2154 --837: *                                                 Range : 0x0 - 0xFFFFFFFF
+                        2155 --838: *                *p_message                     : Start address of decrypted data storage location
+                        2156 --839: *                                                 Range : 0x0 - 0xFFFFFFFF
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+                        2157 --840: *                message_size_in_bytes          : Decoded data size (in bytes)
+                        2158 --841: *                                                 Range : 0x0 - 0xFFFFFFFF
+                        2159 --842: *                *p_encrypted_message           : Start address of encrypted data
+                        2160 --843: *                                                 Range : 0x0 - 0xFFFFFFFF
+                        2161 --844: *                encrypted_message_size_in_bits : Encrypted data size (in bit units)
+                        2162 --845: *                                                 Range : 512 - 3072
+                        2163 --846: *                *p_label                       : Start address of label storage location
+                        2164 --847: *                                                 Range : 0x0 - 0xFFFFFFFF
+                        2165 --848: *                label_size_in_bytes            : Start Label size (in bytes)
+                        2166 --849: *                                                 Range : 0x0 - 0xFFFFFFFF
+                        2167 --850: *                hash_primitive                 : HASH value generation algorithm
+                        2168 --851: *                                                 Range : HASH_PRIMITIVE_SHA2_224
+                        2169 --852: *                                                         HASH_PRIMITIVE_SHA2_256
+                        2170 --853: *                                                         HASH_PRIMITIVE_SHA2_384
+                        2171 --854: *                                                         HASH_PRIMITIVE_SHA2_512
+                        2172 --855: *                                                         HASH_PRIMITIVE_SHA2_512_224
+                        2173 --856: *                                                         HASH_PRIMITIVE_SHA2_512_256
+                        2174 --857: *                message_encoding_format        : padding algorithm
+                        2175 --858: *                                                 Range : ENCODING_FORMAT_EME_OAEP
+                        2176 --859: *                                                         ENCODING_FORMAT_EME_PKCS1_V15
+                        2177 --860: *                key_group                      : Key group of keys used for RSA encryption
+                        2178 --861: *                                                 Range : KEY_GRP_RSA
+                        2179 --862: *                                                         KEY_GRP_RSA_PUB
+                        2180 --863: *                                                         KEY_GRP_RSA_ROM_PUB
+                        2181 --864: *                                                         KEY_GRP_RSA_PUB_EXT
+                        2182 --865: *                key_id                         : Index number in key group KEY_GRP_RSA
+                        2183 --866: *                                                 Range : 0x0 - 0xFF
+                        2184 --867: *                encrypted_message_format       : Format of encrypted data
+                        2185 --868: *                                                 Range : FORMAT_STRING_DECIMAL
+                        2186 --869: *                                                         FORMAT_STRING_HEXA
+                        2187 --870: *                                                         FORMAT_BINARY_PLAIN
+                        2188 --871: *                job_slice_mod_exp              : A flag indicating whether to process by units of 1 bit or all bits
+                        2189 --872: *                                                 when implementing modular exponentiation
+                        2190 --873: *                service_result                 : Error code
+                        2191 --874: *                                                 Range : SERV_OK
+                        2192 --875: *                                                         SERV_IN_PROCESS
+                        2193 --876: *                                                         SERV_PENDING
+                        2194 --877: *                                                         SERV_INVALID_ENCODING_FORMAT
+                        2195 --878: *                                                         SERV_KEY_SLOT_EMPTY
+                        2196 --879: *                                                         SERV_INVALID_KEY_GROUP
+                        2197 --880: *                                                         SERV_INVALID_KEY_INDEX
+                        2198 --881: *                                                         SERV_NVM_UNAVAILABLE
+                        2199 --882: *                                                         SERV_KEY_NOT_USABLE
+                        2200 --883: *                                                         SERV_PRM_ERROR
+                        2201 --884: *                                                         SERV_SRC_MEM_ERROR
+                        2202 --885: *                                                         SERV_DEST_MEM_ERROR
+                        2203 --886: *                                                         SERV_CRYPT_ERROR
+                        2204 --887: *                                                         SERV_SYS_ERROR
+                        2205 --888: *                                                         SERV_NO_INIT_RNG
+                        2206 --889: * Return Value : none
+                        2207 --890: ***************************************************************************************/
+                        2208 --891: void S_01_EncryptByRsa(icum_job_t *p_job)
+                        2209 	.align	2
+                        2210 	.align	2
+                        2211 	.align	2
+                        2212 ..gh.f.a.2.e.5:
+                        2213 	.type	..gh.f.a.2.e.5,@object
+                        2214 	.size	..gh.f.a.2.e.5,0
+                        2215 	.global	_S_01_EncryptByRsa
+                        2216 _S_01_EncryptByRsa:
+00000714 031ee8ff       2217 	addi	-24,sp,sp
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+00000718 63ff1500       2218 	st.w	lp,20[sp]
+0000071c 63e70900       2219 	st.w	r28,8[sp]
+00000720 63d71100       2220 	st.w	r26,16[sp]
+00000724 63df0d00       2221 	st.w	r27,12[sp]
+00000728 63ef0500       2222 	st.w	r29,4[sp]
+0000072c 06e0           2223 	mov	r6,r28
+                        2224 --	    .bf
+                        2225 .LDW02:
+                        2226 --892: {
+                        2227 --893:     /* retrieve the service handler */
+                        2228 --894:     r_icumif_isd_t     *p_ISD;
+                        2229 --895:     job_rsa_t          *p_JOB_PARAM;
+                        2230 --896:     
+                        2231 --897:     uint32_t    err;
+                        2232 --898:     uint32_t    skip_flg;
+                        2233 --899:     
+                        2234 --900:     p_ISD         = p_job->p_ISD;
+0000072e 3cdf0100       2235 	ld.w	0[r28],r27
+                        2236 --901:     p_JOB_PARAM   = &p_job->prm.job_rsa;
+00000732 1cd61000       2237 	addi	16,r28,r26
+                        2238 --902:     
+                        2239 --903:     err = ER_OK;
+00000736 00ea           2240 	mov	0,r29
+                        2241 --904:     skip_flg = FLG_OFF;
+00000738 63070100       2242 	st.w	zero,0[sp]
+                        2243 --905:     
+                        2244 --906:     /**********************************************************************************
+                        2245 --907:     * Initialization phase
+                        2246 --908:     **********************************************************************************/
+                        2247 --910:     /* already initialized? */
+                        2248 --911:     if (SERV_REQUEST == p_ISD->service_result)
+0000073c 3b0f0d00       2249 	ld.w	12[r27],r1
+00000740 a106f0ff       2250 	xori	65520,r1,zero
+00000744 ba05*          2251 	bne	.L1967
+                        2252 --912:     {
+                        2253 --913:         p_JOB_PARAM->resource_ctrl = GET_CTX_NONE;
+                        2254 --line913
+                        2255 ..lin.5cccef63..a13aa85c.0_118::
+                        2256 .LDWlin118:
+00000746 7a070d00       2257 	st.w	zero,12[r26]
+                        2258 .L1967:
+                        2259 --914:     }
+                        2260 --915:     else
+                        2261 --916:     {
+                        2262 --917:         /* do nothing */
+                        2263 --918:     }
+                        2264 --920:     /* indicate service is in process */
+                        2265 --921:     p_ISD->service_result = SERV_IN_PROCESS;
+0000074a 800effff       2266 	ori	65535,zero,r1
+0000074e 7b0f0d00       2267 	st.w	r1,12[r27]
+                        2268 --923:     switch ((uint32_t)p_job->process_phase)
+00000752 9c0f0b00       2269 	ld.bu	10[r28],r1
+00000756 010624ff       2270 	addi	-220,r1,zero
+0000075a f105*          2271 	bl	.L2076
+0000075c e009           2272 	cmp	zero,r1
+0000075e 8215*          2273 	be	.L1969
+00000760 01062eff       2274 	addi	-210,r1,zero
+00000764 c215*          2275 	be	.L1970
+00000766 d51d*          2276 	br	.L1972
+                        2277 .L2076:
+00000768 010622ff       2278 	addi	-222,r1,zero
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000076c 8915*          2279 	bnl	.L1970
+0000076e 01061aff       2280 	addi	-230,r1,zero
+00000772 d20d*          2281 	be	.L1970
+00000774 010e10ff       2282 	addi	-240,r1,r1
+00000778 610a           2283 	cmp	1,r1
+0000077a e30d*          2284 	bnh	.L1971
+0000077c a515*          2285 	br	.L1972
+                        2286 .L1969:
+                        2287 --924:     {
+                        2288 --925:         case ON_HOLD:
+                        2289 --926:             err = s_01_InitEncryptByRsa(p_job, &skip_flg);
+                        2290 --line926
+                        2291 ..lin.5cccef63..a13aa85c.0_119::
+                        2292 .LDWlin119:
+0000077e 1c30           2293 	mov	r28,r6
+00000780 233e0000       2294 	movea	0,sp,r7
+                        2295 .L2172:
+                        2296 	jarl	_s_01_InitEncryptByRsa,lp
+                        2296 <EXPANSION BEGIN>
+                        2296 jarl22 _s_01_InitEncryptByRsa , lp 
+00000784 bfff7cfa*      2296 <EXPANSION END>
+00000788 0ae8           2297 	mov	r10,r29
+                        2298 --927:             break;
+                        2299 --928:         case PHASE_1:
+                        2300 --line927
+                        2301 ..lin.5cccef63..a13aa85c.0_120::
+                        2302 .LDWlin120:
+0000078a e50d*          2303 	br	.L1974
+                        2304 .L1970:
+                        2305 --929:         case PHASE_2:
+                        2306 --930:         case PHASE_2DIV:
+                        2307 --931:         case PHASE_3:
+                        2308 --932:             err = s_01_CalcExpModEncryptByRsa(p_job);
+                        2309 --line932
+                        2310 ..lin.5cccef63..a13aa85c.0_121::
+                        2311 .LDWlin121:
+0000078c 1c30           2312 	mov	r28,r6
+                        2313 .L2174:
+                        2314 	jarl	_s_01_CalcExpModEncryptByRsa,lp
+                        2314 <EXPANSION BEGIN>
+                        2314 jarl22 _s_01_CalcExpModEncryptByRsa , lp 
+0000078e bfff7efb*      2314 <EXPANSION END>
+00000792 0ae8           2315 	mov	r10,r29
+                        2316 --933:             break;
+                        2317 --934:         case PHASE_4:
+                        2318 --line933
+                        2319 ..lin.5cccef63..a13aa85c.0_122::
+                        2320 .LDWlin122:
+00000794 950d*          2321 	br	.L1974
+                        2322 .L1971:
+                        2323 --935:         case PHASE_4DIV:
+                        2324 --936:             err = s_01_ConvertEncryptByRsa(p_job);
+                        2325 --line936
+                        2326 ..lin.5cccef63..a13aa85c.0_123::
+                        2327 .LDWlin123:
+00000796 1c30           2328 	mov	r28,r6
+                        2329 .L2176:
+                        2330 	jarl	_s_01_ConvertEncryptByRsa,lp
+                        2330 <EXPANSION BEGIN>
+                        2330 jarl22 _s_01_ConvertEncryptByRsa , lp 
+00000798 bfff98fd*      2330 <EXPANSION END>
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+0000079c 0ae8           2331 	mov	r10,r29
+                        2332 --937:             break;
+                        2333 --938:         default:
+                        2334 --line937
+                        2335 ..lin.5cccef63..a13aa85c.0_124::
+                        2336 .LDWlin124:
+0000079e c505*          2337 	br	.L1974
+                        2338 .L1972:
+                        2339 --939:             /* should never occur */
+                        2340 --940:             err = (uint32_t)SERV_SYS_ERROR;
+                        2341 --line940
+                        2342 ..lin.5cccef63..a13aa85c.0_125::
+                        2343 .LDWlin125:
+000007a0 20ee1100       2344 	movea	17,zero,r29
+                        2345 --941:             break;
+000007a4 0000           2346 	nop
+                        2347 .L1974:
+                        2348 --942:     }
+                        2349 --944:     if (FLG_OFF == skip_flg)
+000007a6 230f0100       2350 	ld.w	0[sp],r1
+000007aa e009           2351 	cmp	zero,r1
+000007ac 8a0d*          2352 	bne	.L1963
+                        2353 --945:     {
+                        2354 --946:         if (err == ER_OK)
+                        2355 --line946
+                        2356 ..lin.5cccef63..a13aa85c.0_126::
+                        2357 .LDWlin126:
+000007ae e0e9           2358 	cmp	zero,r29
+000007b0 aa05*          2359 	bne	.L1979
+                        2360 --947:         {
+                        2361 --948:             err = (uint32_t)SERV_OK;
+                        2362 --line948
+                        2363 ..lin.5cccef63..a13aa85c.0_127::
+                        2364 .LDWlin127:
+000007b2 00ea           2365 	mov	0,r29
+                        2366 .L1979:
+                        2367 --949:         }
+                        2368 --950:         else
+                        2369 --951:         {
+                        2370 --952:             /* do nothing */
+                        2371 --953:         }
+                        2372 --954:         s_01_FinishEncryptByRsa(p_job, err);
+000007b4 1c30           2373 	mov	r28,r6
+000007b6 1d38           2374 	mov	r29,r7
+                        2375 .L2178:
+                        2376 	jarl	_s_01_FinishEncryptByRsa,lp
+                        2376 <EXPANSION BEGIN>
+                        2376 jarl22 _s_01_FinishEncryptByRsa , lp 
+000007b8 bfffbefe*      2376 <EXPANSION END>
+                        2377 .L1963:
+                        2378 --955:     }
+                        2379 --956:     else
+                        2380 --957:     {
+                        2381 --958:         /* do nothing */
+                        2382 --959:     }
+                        2383 --960: }
+                        2384 --	    .ef
+                        2385 .LDW12:
+                        2386 --line960
+                        2387 ..lin.5cccef63..a13aa85c.0_128::
+                        2388 .LDWlin128:
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjs1.si
+000007bc 23ff1500       2389 	ld.w	20[sp],lp
+000007c0 23ef0500       2390 	ld.w	4[sp],r29
+000007c4 23e70900       2391 	ld.w	8[sp],r28
+000007c8 23df0d00       2392 	ld.w	12[sp],r27
+000007cc 23d71100       2393 	ld.w	16[sp],r26
+000007d0 031e1800       2394 	addi	24,sp,sp
+                        2395 .L2180:
+                        2396 	.jumptype return
+000007d4 7f00           2397 	jmp	[lp]
+                        2398 --line960
+                        2399 ..lin.5cccef63..a13aa85c.0_129::
+                        2400 	.type	_S_01_EncryptByRsa,@function
+                        2401 	.size	_S_01_EncryptByRsa,.-_S_01_EncryptByRsa
+                        2402 	.align	2
+                        2403 --_p_ISD	r27	local
+                        2404 --_p_JOB_PARAM	r26	local
+                        2405 --_err	r29	local
+                        2406 --_skip_flg	0[sp]	local
+                        2407 
+                        2408 --_p_job	r28	param
+                        2409 
+                        2410 	.section ".bss","awb"
+                        2411 .L2074:
+                        2412 	.type	.L2074,@object
+                        2413 	.size	.L2074,0
+                        2414 	.section ".ghcalltbl",""
+00000078 00000000*      2415 .L2173:	.word	.L2172
+                        2416 	.type	.L2173,@object
+                        2417 	.size	.L2173,4
+0000007c 00000000*      2418 .L2175:	.word	.L2174
+                        2419 	.type	.L2175,@object
+                        2420 	.size	.L2175,4
+00000080 00000000*      2421 .L2177:	.word	.L2176
+                        2422 	.type	.L2177,@object
+                        2423 	.size	.L2177,4
+00000084 00000000*      2424 .L2179:	.word	.L2178
+                        2425 	.type	.L2179,@object
+                        2426 	.size	.L2179,4
+                        2427 	.section ".ghrettbl",""
+00000014 00000000*      2428 .L2181:	.word	.L2180
+                        2429 	.type	.L2181,@object
+                        2430 	.size	.L2181,4
+                        2431 	.data
+                        2432 	.section ".icum_service.text","ax"
+                        2433 
+                        2434 	.align	2
+                        2435 
+                        2436 	.data
+                        2437 	.ghsnote version,30
+                        2438 	.ghsnote tools,3
+                        2439 	.ghsnote options,656
+                        2440 	.section ".icum_service.text","ax"
+                        2441 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_01_rsa_encrypt...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDD..0::
+                        2442 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

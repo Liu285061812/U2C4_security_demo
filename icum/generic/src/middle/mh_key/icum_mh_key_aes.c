@@ -129,6 +129,29 @@ static aes_in_use_mng_table_t g_aes_in_use_mng_table[NB_AES_IN_USE_MNG_TABLE];
   ===========================================================================*/
 static uint8_t g_nb_aes_ram[ML_CFG_TOTAL_NB_VMS_MAX];
 
+static uint8_t g_demo_aes_keys[4][MH_KEY_AES_KEY_SIZE_IN_BYTES_COMMON] =
+{
+    {
+        0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+        0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu
+    },
+    {
+        0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+        0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu,
+        0x10u, 0x11u, 0x12u, 0x13u, 0x14u, 0x15u, 0x16u, 0x17u
+    },
+    {
+        0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+        0x08u, 0x09u, 0x0Au, 0x0Bu, 0x0Cu, 0x0Du, 0x0Eu, 0x0Fu,
+        0x10u, 0x11u, 0x12u, 0x13u, 0x14u, 0x15u, 0x16u, 0x17u,
+        0x18u, 0x19u, 0x1Au, 0x1Bu, 0x1Cu, 0x1Du, 0x1Eu, 0x1Fu
+    },
+    {
+        0x20u, 0x21u, 0x22u, 0x23u, 0x24u, 0x25u, 0x26u, 0x27u,
+        0x28u, 0x29u, 0x2Au, 0x2Bu, 0x2Cu, 0x2Du, 0x2Eu, 0x2Fu
+    }
+};
+
 /**************************************************************************************/
 /* Prototypes                                                                         */
 /**************************************************************************************/
@@ -194,13 +217,18 @@ uint32_t mh_KEY_InitAes(void)
 {
     uint32_t i;
     uint8_t key_number;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
     key_number = 0x00u;
+    err = mh_KEY_InitAesRamCfg();
 
     /* init Config RAM item */
-    (void)mh_KEY_InitAesRamCfg();
+    if (ER_OK != err)
+    {
+        return err;
+    }
 
     /* init copy of AES keys(change) - init availability */
     for (i = NUM0; i < NB_RAM_COPIES_AES_KEYS_CHANGE; i++)
@@ -239,12 +267,15 @@ uint32_t mh_KEY_InitAesRamCfg(void)
     uint8_t key_number;
     aes_key_t *p_ram_aes_keys;
     sys_cfg_vm_t vm_cfg;
+    static const uint16_t demo_key_sizes[4] = {16u, 24u, 32u, 16u};
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
     vm_id = NUM0;
     key_number = 0x00u;
     p_ram_aes_keys = NULL;
+    err = ER_OK;
     L_Toolbox_MemSet((uint8_t *)&vm_cfg, 0x00u, (int16_t)sizeof(sys_cfg_vm_t));
 
     (void)ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
@@ -259,6 +290,33 @@ uint32_t mh_KEY_InitAesRamCfg(void)
             p_ram_aes_keys->availability = E_NOT_AVAILABLE;
         }
 
+        if (key_number < 5u)
+        {
+            return ER_MH_KEY_INVALID_KEY_INDEX;
+        }
+
+        for (i = NUM0; i < 4u; i++)
+        {
+            p_ram_aes_keys = RAM_AES_KEYS(vm_id, i);
+            L_Toolbox_MemSet((uint8_t *)p_ram_aes_keys, 0x00u, (int16_t)sizeof(aes_key_t));
+            p_ram_aes_keys->key_group = KEY_GRP_AES_RAM;
+            p_ram_aes_keys->key_id = (r_key_index_t)i;
+            p_ram_aes_keys->vm_id = (uint8_t)vm_id;
+            p_ram_aes_keys->properties.size_in_bytes = demo_key_sizes[i];
+            p_ram_aes_keys->properties.flags.encryption = 1u;
+            p_ram_aes_keys->properties.flags.decryption = 1u;
+            p_ram_aes_keys->properties.flags.cmac_generation = 1u;
+            p_ram_aes_keys->properties.flags.cmac_verification = 1u;
+            p_ram_aes_keys->properties.flags.write_protected = 1u;
+            err = L_Toolbox_MemCpy_Sec(p_ram_aes_keys->value, g_demo_aes_keys[i],
+                                       (int16_t)demo_key_sizes[i]);
+            if (ER_OK != err)
+            {
+                return err;
+            }
+            p_ram_aes_keys->availability = E_AVAILABLE;
+        }
+
         /* Set number of AES RAM keys of Each VM for Fast Cmac*/
         g_nb_aes_ram[vm_id] = key_number;
 
@@ -271,7 +329,7 @@ uint32_t mh_KEY_InitAesRamCfg(void)
         }
     } /* end of for (vm_id = NUM0; vm_id < (uint32_t)vm_cfg.nb_vms; vm_id++) */
 
-    return(ER_OK);
+    return err;
 }
 
 /***************************************************************************************

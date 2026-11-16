@@ -257,7 +257,7 @@ static uint32_t s_03_GenerateRsaKeySub(icum_job_t *p_job, st_pkcd_rsa_key_bin_t 
         key_properties.flags.invalidate         = NUM0;
 
         /* update the key in memory */
-        err = MH_KEY_SetRsaKey(p_job, E_KEY_OPE_FIRST, &key);
+        err = MH_KEY_SetRsaRam(p_job, &key);
 
     #if defined(SAVE_STACK_SIZE)
         (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_RSA_ROM_PUB, NUM0);
@@ -309,13 +309,14 @@ void S_03_GenerateRsaKey(icum_job_t *p_job)
     job_rsa_t                  *p_job_param;
 
     rsa_key_t          *p_key;
-    rsa_key_t           key;
 
 /* to save stack space, use the static RAM allocated to the RSA key copy */
 #if !defined(SAVE_STACK_SIZE)
     pkc_data_t          d;
     pkc_data_t          n;
     pkc_data_t          p;
+#else
+    static pkc_data_t   p;
 #endif
     pkc_data_t          q;
     uint8_t             dp[NUM256];
@@ -338,30 +339,15 @@ void S_03_GenerateRsaKey(icum_job_t *p_job)
 
     p_rsa_ctx = NULL;
     skip_flg = FLG_OFF;
+#if defined(SAVE_STACK_SIZE)
+    L_Toolbox_MemSet((uint8_t *)&p, DATA_ZERO, (int16_t)sizeof(p));
+#endif
 
     /* second entry */
     if (PROCESS_DF_WRITE == (uint32_t)p_job->process_phase)
     {
-        key.key_group    = KEY_GRP_RSA;
-        key.key_id       = p_isd_param->key_id;
-        err = MH_KEY_SetRsaKey(p_job, E_KEY_OPE_CONTINUE, &key);
-        if (ER_OK == err)
-        {
-            p_job->process_phase = ON_HOLD;
-        }
-        else if (ER_IN_PROCESS == err)
-        {
-            err = ER_OK;
-        }
-        else if (ER_MM_FLS_IN_PROGRESS == err)
-        {
-            err = ER_OK;
-        }
-        else
-        {
-            /* error : Error code will be converted by _ConvertErr() function */
-            p_job->process_phase = ON_HOLD;
-        }
+        err = ER_MH_KEY_SYS_ERROR;
+        p_job->process_phase = ON_HOLD;
         skip_flg = FLG_ON;
     }
     /* end of if (PROCESS_DF_WRITE == p_job->process_phase) */
@@ -428,7 +414,7 @@ void S_03_GenerateRsaKey(icum_job_t *p_job)
             
             p_d = p_key->p_priv_exponent;
             p_n = p_key->p_modulus;
-            p_p = p_key->p_pub_exponent;
+            p_p = (uint8_t *)&p;
             p_q = (uint8_t *)q.value;
         }
         /* end of if (ER_OK == err) */
@@ -457,6 +443,9 @@ void S_03_GenerateRsaKey(icum_job_t *p_job)
         key_param.e_length = p_key->p_properties->pub_exp_size_in_bytes;
         key_param.p_e = p_key->p_pub_exponent;
         err = s_03_GenerateRsaKeySub(p_job, &key_param, p_rsa_ctx);
+#if defined(SAVE_STACK_SIZE)
+        L_Toolbox_MemSet((uint8_t *)&p, DATA_ZERO, (int16_t)sizeof(p));
+#endif
     }
     else
     {

@@ -225,6 +225,7 @@ void icum_test_aes_cipher(int direction);
 void icum_test_aes_cipher_in_cycle(void);
 void icum_test_aes_cmac(void);
 void icum_crypto_service_test(void);
+void icum_crypto_service_test_service(r_icumif_service_id_t service_id);
 
 void fw_timings(void);
 
@@ -298,7 +299,6 @@ int icum_vbtest_setparam(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_AES_CIPHER(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_AES_AUTH_CIPHER(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_AES_CMAC(char *p_str, r_icumif_isd_t *p_ISD);
-int icum_vbtest_setparam_SERVICE_03_AES_KEY_UPDATE_PLAIN(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_call_ORG_SERVICE_JOB_SLICE_AND_CYCLE(char *p_str);
 int icum_vbtest_setparam_SERVICE_01_RSA_VERIFY(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_RSA_SIGN(char *p_str, r_icumif_isd_t *p_ISD);
@@ -314,11 +314,8 @@ int icum_vbtest_setparam_SERVICE_02_RAND_GENERATE_1(char *p_str, r_icumif_isd_t 
 int icum_vbtest_setparam_SERVICE_02_RAND_EXTEND_SEED(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_02_RAND_INIT_RNG(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_02_RAND_RND(char *p_str, r_icumif_isd_t *p_ISD);
-int icum_vbtest_setparam_SERVICE_03_PK_IMPORT(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_03_RSA_KEY_GENERATE(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_03_ECC_KEY_GENERATE(char *p_str, r_icumif_isd_t *p_ISD);
-int icum_vbtest_setparam_SERVICE_03_HMAC_IMPORT(char *p_str, r_icumif_isd_t *p_ISD);
-int icum_vbtest_setparam_SERVICE_04_ICUMDF_GC(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_RSA_ENCRYPT(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_setparam_SERVICE_01_RSA_DECRYPT(char *p_str, r_icumif_isd_t *p_ISD);
 int icum_vbtest_call_ORG_SERVICE_SHEVS_T3_4_13_MCT_0_9999(char *p_str, r_icumif_isd_t *p_ISD);

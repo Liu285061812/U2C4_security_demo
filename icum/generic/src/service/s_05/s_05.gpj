@@ -1,0 +1,25 @@
+#!gbuild
+
+[Merged Library]
+    :binDirRelative=../../../../target/${cfg_family}/build/service/out
+    :outputDirRelative=../../../../target/${cfg_family}/build/service/obj
+
+    -I../../../include/common/
+    -I../../../../target/${cfg_family}/include/driver/
+    -I../../../include/middle/
+    -I../../../include/service/
+    -I../../../include/kernel/
+    -I../../../../sal/include/library/
+    -I../../../../../pe/generic/icumif/
+    -I../
+    -I../s_01/
+
+    -section .text=.icum_service.text
+    -section .rodata=.icum_service.rodata
+    -section .bss=.icum_service.bss
+    -section .data=.icum_service.data
+
+    -o icum_s_05.a
+
+../s_01/icum_s_01_hash.c
+../s_01/icum_s_01_hmac.c

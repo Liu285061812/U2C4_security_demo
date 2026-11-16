@@ -356,18 +356,6 @@ uint32_t MM_FLS_WriteCF(r_icumif_job_id_t job_id, r_icumif_service_priority_t se
     return ER_MM_FLS_UNAVAILABLE;
 }
 
-uint32_t MM_FLS_CollectGarbage(r_icumif_job_id_t job_id)
-{
-    (void)job_id;
-    return ER_MM_FLS_UNAVAILABLE;
-}
-
-uint32_t MM_FLS_CollectGarbageAll(r_icumif_job_id_t job_id)
-{
-    (void)job_id;
-    return ER_MM_FLS_UNAVAILABLE;
-}
-
 uint32_t MM_FLS_DeleteMapData(uint8_t ds_type, uint8_t slot_num)
 {
     int32_t slot_index;

@@ -56,53 +56,49 @@ static service_t g_ism_table_00[1] =
     { /* SERVICE_00_ECC_TEST */              S_00_EccTest,                  S_00_EccTest,                   NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_RAMEXE | ISSD_PERMIT_ADMIN) }
 };
 
-/* Service Group #01 */
-static service_t g_ism_table_01[12] =
+/* Service Group #01: AES */
+static service_t g_ism_table_01[3] =
 {
     { /* SERVICE_01_AES_CIPHER */            S_01_CipherAes,                NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
     { /* SERVICE_01_AES_AUTH_CIPHER */       S_01_AuthenticateAes,          NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
     { /* SERVICE_01_AES_CMAC */              S_01_ProcessAesCmac,           NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_01_RSA_VERIFY */            S_01_VerifyRsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_01_RSA_SIGN */              S_01_MakeRsaSignature,         NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_01_RSA_ENCRYPT */           S_01_EncryptByRsa,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_01_RSA_DECRYPT */           S_01_DecryptByRsa,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_01_ECDSA_VERIFY */          S_01_VerifyEcdsaSignature,     NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_01_ECDSA_SIGN */            S_01_MakeEcdsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_01_ECDH */                  S_01_MakeEcdhSecretKey,        NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_01_HASH */                  S_01_GenerateHash,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_01_HMAC */                  S_01_ProcessHmac,              NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) }
 };
 
-/* Service Group #02 */
-static service_t g_ism_table_02[4] =
+/* Service Group #02: RSA */
+static service_t g_ism_table_02[5] =
 {
-    { /* SERVICE_02_RAND_INIT_RNG */         S_02_RAND_InitRng,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_02_RAND_EXTEND_SEED */      S_02_RAND_ExtendSeed,          NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_02_RAND_RND */              S_02_RAND_GenerateRnd,         NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_02_RSA_VERIFY */            S_01_VerifyRsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_02_RSA_SIGN */              S_01_MakeRsaSignature,         NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_02_RSA_ENCRYPT */           S_01_EncryptByRsa,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_02_RSA_DECRYPT */           S_01_DecryptByRsa,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_02_RSA_KEY_GENERATE */      S_03_GenerateRsaKey,           NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) }
+};
+
+/* Service Group #03: random number */
+static service_t g_ism_table_03[3] =
+{
+    { /* SERVICE_03_RAND_INIT_RNG */         S_02_RAND_InitRng,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_03_RAND_EXTEND_SEED */      S_02_RAND_ExtendSeed,          NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_03_RAND_RND */              S_02_RAND_GenerateRnd,         NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) }
+};
+
+/* Service Group #04: ECC, ECDSA, ECDH and EdDSA */
+static service_t g_ism_table_04[6] =
+{
+    { /* SERVICE_04_ECDSA_VERIFY */          S_01_VerifyEcdsaSignature,     NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_04_ECDSA_SIGN */            S_01_MakeEcdsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_04_ECDH */                  S_01_MakeEcdhSecretKey,        NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_04_EDDSA_VERIFY */          S_01_VerifyEddsaSignature,     NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_04_EDDSA_SIGN */            S_01_MakeEddsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
+    { /* SERVICE_04_ECC_KEY_GENERATE */      S_03_GenerateEccKey,           NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) }
+};
+
+/* Service Group #05: hash and HMAC */
+static service_t g_ism_table_05[3] =
+{
+    { /* SERVICE_05_HASH */                  S_01_GenerateHash,             NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
+    { /* SERVICE_05_HMAC */                  S_01_ProcessHmac,              NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
     { /* SERVICE_20_CR */                    S_20_CR_ExecuteProcess,        NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) }
-};
-
-/* Service Group #03 */
-static service_t g_ism_table_03[5] =
-{
-    { /* SERVICE_03_AES_KEY_UPDATE_PLAIN */  S_03_UpdateAesKeyPlain,        NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_03_PK_IMPORT */             S_03_ImportPublicKey,          NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_03_RSA_KEY_GENERATE */      S_03_GenerateRsaKey,           NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_03_ECC_KEY_GENERATE */      S_03_GenerateEccKey,           NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
-    { /* SERVICE_03_HMAC_IMPORT */           S_03_ImportHmacKey,            NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) }
-};
-
-/* Service Group #04 */
-static service_t g_ism_table_04[1] =
-{
-    { /* SERVICE_04_ICUMDF_GC */             NULL,                          NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) }
-};
-
-/* Service Group #08 */
-static service_t g_ism_table_08[2] =
-{
-    { /* SERVICE_01_EDDSA_VERIFY */          S_01_VerifyEddsaSignature,     NULL,                           NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_ADMIN) },
-    { /* SERVICE_01_EDDSA_SIGN */            S_01_MakeEddsaSignature,       NULL,                           NULL,                   (ISSD_PERMIT_NORMAL) },
 };
 
 /* MAX ISM Table definition */
@@ -111,7 +107,7 @@ static service_t g_ism_table_08[2] =
 #define MAX_ISM_TABLE_02 (sizeof(g_ism_table_02)/sizeof(service_t))
 #define MAX_ISM_TABLE_03 (sizeof(g_ism_table_03)/sizeof(service_t))
 #define MAX_ISM_TABLE_04 (sizeof(g_ism_table_04)/sizeof(service_t))
-#define MAX_ISM_TABLE_08 (sizeof(g_ism_table_08)/sizeof(service_t))
+#define MAX_ISM_TABLE_05 (sizeof(g_ism_table_05)/sizeof(service_t))
 
 /* Beginning of each service group */
 static service_t *g_ism_table_begin[6] =
@@ -121,7 +117,7 @@ static service_t *g_ism_table_begin[6] =
     g_ism_table_02,
     g_ism_table_03,
     g_ism_table_04,
-    g_ism_table_08,
+    g_ism_table_05,
 };
 
 /* MAX Service Group definition */
@@ -134,7 +130,7 @@ static uint8_t g_max_ism_index[6] =
     MAX_ISM_TABLE_02,
     MAX_ISM_TABLE_03,
     MAX_ISM_TABLE_04,
-    MAX_ISM_TABLE_08,
+    MAX_ISM_TABLE_05,
 };
 #pragma ghs section rodata = default
 

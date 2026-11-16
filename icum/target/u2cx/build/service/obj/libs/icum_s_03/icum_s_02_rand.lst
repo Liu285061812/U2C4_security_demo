@@ -1,0 +1,2298 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\src\service\ -I..\..\icum\generic\src\service\s_01 -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_02_rand.dbo -source=icum_s_02_rand.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\gh_0000qis1.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_02_rand.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+Source File: icum_s_02_rand.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-I..\..\icum\generic\src\service\
+                           8 --		-I..\..\icum\generic\src\service\s_01
+                           9 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          10 --		-I..\..\icum\target\u2cx\include\device\
+                          11 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          12 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          13 --		-I..\..\icum\target\u2cx\include\driver
+                          14 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          15 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          17 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          18 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          19 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          20 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          21 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          22 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          23 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          24 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          25 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          26 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          27 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          28 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          29 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          30 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          31 --		-filetype.c ..\..\icum\generic\src\service\s_02\icum_s_02_rand.c
+                          32 --		-o
+                          33 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_03\icum_s_02_rand.o
+                          34 --Source File:   ..\..\icum\generic\src\service\s_02\icum_s_02_rand.c
+                          35 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          36 --Compile Date:  Fri Nov 13 15:27:27 2026
+                          37 --Host OS:       Win64
+                          38 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          39 --Release:       Compiler v2023.5.4
+                          40 --Revision Date: Wed Sep 06 02:44:56 2023
+                          41 --Release Date:  Wed Sep 06 02:00:00 2023
+                          42 -- ecom  -g -w
+                          43 	.section ".icum_service.text","ax"
+                          44 
+                          45 --1: /******************************************************************************/
+                          46 --2: /* Component Name   Random number generation service source file              */
+                          47 --3: /******************************************************************************/
+                          48 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+                          49 --5: /******************************************************************************/
+                          50 --6: /***********************************************************************************************************************
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                          51 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          52 --8: * 
+                          53 --9: * DISCLAIMER
+                          54 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          55 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          56 --12: * applicable laws, including copyright laws.
+                          57 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          58 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          59 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          60 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          61 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          62 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          63 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          64 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          65 --21: * following link:
+                          66 --22: * www.renesas.com/disclaimer
+                          67 --23: *
+                          68 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          69 --25: ***********************************************************************************************************************/
+                          70 --26: /**********************************************************************************
+                          71 --27: * Include
+                          72 --28: ***********************************************************************************/
+                          73 --29: #include "renesas_types.h"
+                          74 --30: #include "icum_common_pub.h"
+                          75 --31: #include "r_icumif_api.h"
+                          76 --32: #include "icum_d_comm_pub.h"
+                          77 --33: #include "icum_d_wdt_pub.h"
+                          78 --34: #include "icum_l_toolbox_pub.h"
+                          79 --35: #include "icum_ml_prng_pub.h"
+                          80 --36: #include "icum_ml_cfg_pub.h"
+                          81 --37: #include "icum_ml_abtr_api_pub.h"
+                          82 --38: #include MM_FLASH_PUBLIC_H
+                          83 --39: #include "icum_mm_cr_pub.h"
+                          84 --40: #include "icum_mh_key_pub.h"
+                          85 --41: #include "icum_mh_sysinfo_pub.h"
+                          86 --42: #include "icum_k_issd_pub.h"
+                          87 --43: #include "icum_s_pub.h"
+                          88 --44: #include "icum_s_02_rand_pub.h"
+                          89 --45: #include "icum_service_common.h"
+                          90 --46: /* For call functions of remap driver. */
+                          91 --47: #include "icum_d_remap_pub.h"
+                          92 --49: /**********************************************************************************
+                          93 --50: * Define
+                          94 --51: ***********************************************************************************/
+                          95 --52: #define NUM3            ((uint32_t)3)       /* value : 3 */
+                          96 --53: #define NUM4            ((uint32_t)4)       /* value : 4 */
+                          97 --54: #define NUM4096         ((uint32_t)4096)    /* value : 4096 */
+                          98 --56: #define ALIGN4          ((uint32_t)0x00000003)  /* 4byte alignment check */
+                          99 --57: #define OFF             ((uint32_t)0)           /* off(disable) */
+                         100 --58: #define ON              ((uint32_t)1)           /* on(enable) */
+                         101 --59: #define FLAG_ON         (1u)
+                         102 --61: /* Array */
+                         103 --62: #define ANUM_PER_BLK             (4u)   /* 32bit array number per block(128bit) */
+                         104 --63: /* Defines the job phase of RAND_TRNG service */
+                         105 --64: #define TRNG_PHASE_ON_HOLD       (0u)
+                         106 --65: #define TRNG_PHASE_GENERATE      (1u)
+                         107 --66: #define TRNG_PHASE_GET           (2u)
+                         108 --67: /* Defines the number of max block of RAND_TRNG service */
+                         109 --68: #define TRNG_GEN_MAX_BLOCK_NUM  (32u)
+                         110 --71: /**********************************************************************************
+                         111 --72: * Variable
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         112 --73: ***********************************************************************************/
+                         113 --74: static uint32_t g_trng_pre_init_start;
+                         114 --75: static uint32_t g_usage_status;
+                         115 --77: /**********************************************************************************
+                         116 --78: * Function
+                         117 --79: ***********************************************************************************/
+                         118 --80: static uint32_t s_02_RAND_InitCommon(uint32_t trng_size, const icum_job_t *p_rand_Job,
+                         119 --81:                                      const uint32_t online_test);
+                         120 --83: /***************************************************************************************
+                         121 --84: * Function ID  : [ICUMFW_CD_S_02_RNG_0003]:[ICUMFW_UD_S_02_RNG_0003]
+                         122 --85: * Function name: s_02_RAND_InitCommon
+                         123 --86: * Description  : Common processing of pseudo random number generator initialization 
+                         124 --87: *              : service
+                         125 --88: * Arguments    : trng_size (Pseudo random number size)
+                         126 --89: *              : p_rand_Job (Pointer to the job structure)
+                         127 --90: *              : online_test (Online test number)
+                         128 --91: * Return Value : ER_OK
+                         129 --92: ***************************************************************************************/
+                         130 --93: static uint32_t s_02_RAND_InitCommon(uint32_t trng_size, const icum_job_t *p_rand_Job,
+                         131 	.align	2
+                         132 	.align	2
+                         133 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDF..0::
+                         134 	.align	2
+                         135 	.align	2
+                         136 ..gh.f.a.2.e.0:
+                         137 	.type	..gh.f.a.2.e.0,@object
+                         138 	.size	..gh.f.a.2.e.0,0
+                         139 	.global	_s_02_RAND_InitCommon..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.
+                         140 _s_02_RAND_InitCommon..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.:
+                         141 _s_02_RAND_InitCommon:
+00000000 031ee0ff        142 	addi	-32,sp,sp
+00000004 63ff1d00        143 	st.w	lp,28[sp]
+00000008 63c71900        144 	st.w	r24,24[sp]
+0000000c 63cf1500        145 	st.w	r25,20[sp]
+00000010 63d71100        146 	st.w	r26,16[sp]
+00000014 63e70900        147 	st.w	r28,8[sp]
+00000018 63ef0500        148 	st.w	r29,4[sp]
+0000001c 63df0d00        149 	st.w	r27,12[sp]
+00000020 06c8            150 	mov	r6,r25
+00000022 07e0            151 	mov	r7,r28
+00000024 08c0            152 	mov	r8,r24
+00000026 3d0600000000*   153 	mov	.L162,r29
+0000002c 3a0600000000*   154 	mov	_g_usage_status,r26
+                         155 --	    .bf
+                         156 .LDW01:
+                         157 --94:                                      const uint32_t online_test)
+                         158 --95: {
+                         159 --96:     uint32_t ret_err;
+                         160 --97:     uint32_t trng_status;
+                         161 --99:     if (SERV_REQUEST == p_rand_Job->p_ISD->service_result)
+                         162 --line99
+                         163 ..lin.716ea100..4ad16ed8.0_1::
+                         164 .LDWlin1:
+00000032 3cf70100        165 	ld.w	0[r28],ep
+00000036 060d            166 	sld.w	12[ep],r1
+00000038 a106f0ff        167 	xori	65520,r1,zero
+0000003c ea05*           168 	bne	.L6
+                         169 --100:     {
+                         170 --101:         p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                         171 --line101
+                         172 ..lin.716ea100..4ad16ed8.0_2::
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         173 .LDWlin2:
+0000003e 3cf70100        174 	ld.w	0[r28],ep
+00000042 800ef2ff        175 	ori	65522,zero,r1
+00000046 070d            176 	sst.w	r1,12[ep]
+                         177 .L6:
+                         178 --102:     }
+                         179 --103:     else
+                         180 --104:     {
+                         181 --105:         /* Do nothing */
+                         182 --106:     }
+                         183 --108:     if (SERV_PENDING == p_rand_Job->p_ISD->service_result)
+00000048 3cf70100        184 	ld.w	0[r28],ep
+0000004c 060d            185 	sld.w	12[ep],r1
+0000004e a106f2ff        186 	xori	65522,r1,zero
+00000052 8a3d*           187 	bne	.L7
+                         188 --109:     {
+                         189 --110:         /* Not use RNG service : Start seed generation */
+                         190 --111:         if (OFF == g_usage_status)
+                         191 --line111
+                         192 ..lin.716ea100..4ad16ed8.0_3::
+                         193 .LDWlin3:
+00000054 3a0f0100        194 	ld.w	0[r26],r1
+00000058 e009            195 	cmp	zero,r1
+0000005a da5d*           196 	bne	.L24
+                         197 --112:         {
+                         198 --113:             /* Generate seed */
+                         199 --114:             ret_err = ML_PRNG_GenTrng(online_test, trng_size);
+                         200 --line114
+                         201 ..lin.716ea100..4ad16ed8.0_4::
+                         202 .LDWlin4:
+0000005c 1830            203 	mov	r24,r6
+0000005e 1938            204 	mov	r25,r7
+                         205 .L249:
+                         206 	jarl	_ML_PRNG_GenTrng,lp
+                         206 <EXPANSION BEGIN>
+                         206 jarl22 _ML_PRNG_GenTrng , lp 
+00000060 80ff0000*       206 <EXPANSION END>
+00000064 0ad8            207 	mov	r10,r27
+                         208 --115:             /* TRN error */
+                         209 --116:             if (ER_ML_PRNG_TRN == ret_err)
+                         210 --line116
+                         211 ..lin.716ea100..4ad16ed8.0_5::
+                         212 .LDWlin5:
+00000066 21061100f000    213 	mov	15728657,r1
+0000006c e1d9            214 	cmp	r1,r27
+0000006e fa05*           215 	bne	.L11
+                         216 --117:             {
+                         217 --118:                 p_rand_Job->p_ISD->service_result = SERV_TRN_ERROR;
+                         218 --line118
+                         219 ..lin.716ea100..4ad16ed8.0_6::
+                         220 .LDWlin6:
+00000070 3cf70100        221 	ld.w	0[r28],ep
+00000074 200e3500        222 	movea	53,zero,r1
+00000078 070d            223 	sst.w	r1,12[ep]
+0000007a d54d*           224 	br	.L24
+                         225 .L11:
+                         226 --119:             }
+                         227 --120:             /* During background TRNG */
+                         228 --121:             else if (ER_ML_PRNG_STATUS == ret_err)
+                         229 --line121
+                         230 ..lin.716ea100..4ad16ed8.0_7::
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         231 .LDWlin7:
+0000007c 400ef000        232 	movhi	hi(15728640),zero,r1
+00000080 e1d9            233 	cmp	r1,r27
+00000082 fa05*           234 	bne	.L14
+                         235 --122:             {
+                         236 --123:                 p_rand_Job->p_ISD->service_result = SERV_NO_COMP_TRNG;
+                         237 --line123
+                         238 ..lin.716ea100..4ad16ed8.0_8::
+                         239 .LDWlin8:
+00000084 3cf70100        240 	ld.w	0[r28],ep
+00000088 200e3300        241 	movea	51,zero,r1
+0000008c 070d            242 	sst.w	r1,12[ep]
+0000008e b545*           243 	br	.L24
+                         244 .L14:
+                         245 --124:             }
+                         246 --125:             else if (ER_ML_PRNG_PARAMETER == ret_err)
+                         247 --line125
+                         248 ..lin.716ea100..4ad16ed8.0_9::
+                         249 .LDWlin9:
+00000090 61da            250 	cmp	1,r27
+00000092 ea05*           251 	bne	.L17
+                         252 --126:             {
+                         253 --127:                 p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                         254 --line127
+                         255 ..lin.716ea100..4ad16ed8.0_10::
+                         256 .LDWlin10:
+00000094 3cf70100        257 	ld.w	0[r28],ep
+00000098 040a            258 	mov	4,r1
+0000009a 070d            259 	sst.w	r1,12[ep]
+0000009c c53d*           260 	br	.L24
+                         261 .L17:
+                         262 --128:             }
+                         263 --129:             else if (ER_IN_PROCESS == ret_err)
+                         264 --line129
+                         265 ..lin.716ea100..4ad16ed8.0_11::
+                         266 .LDWlin11:
+0000009e 64da            267 	cmp	4,r27
+000000a0 aa0d*           268 	bne	.L20
+                         269 --130:             {
+                         270 --131:                 p_rand_Job->p_ISD->service_result = SERV_IN_PROCESS;
+                         271 --line131
+                         272 ..lin.716ea100..4ad16ed8.0_12::
+                         273 .LDWlin12:
+000000a2 3cf70100        274 	ld.w	0[r28],ep
+000000a6 800effff        275 	ori	65535,zero,r1
+000000aa 070d            276 	sst.w	r1,12[ep]
+                         277 --132:                 g_usage_status = ON;
+000000ac 010a            278 	mov	1,r1
+000000ae 7a0f0100        279 	st.w	r1,0[r26]
+000000b2 9535*           280 	br	.L24
+                         281 .L20:
+                         282 --133:             }
+                         283 --134:             else
+                         284 --135:             {
+                         285 --136:                 p_rand_Job->p_ISD->service_result = SERV_OK;
+                         286 --line136
+                         287 ..lin.716ea100..4ad16ed8.0_13::
+                         288 .LDWlin13:
+000000b4 3cf70100        289 	ld.w	0[r28],ep
+000000b8 0705            290 	sst.w	zero,12[ep]
+                         291 --137:                 g_usage_status = ON;
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+000000ba 010a            292 	mov	1,r1
+000000bc 7a0f0100        293 	st.w	r1,0[r26]
+000000c0 a52d*           294 	br	.L24
+                         295 .L7:
+                         296 --138:             }
+                         297 --139:         }
+                         298 --140:         else
+                         299 --141:         {
+                         300 --142:             /* do nothing */
+                         301 --143:         }
+                         302 --144:     }
+                         303 --145:     else if(SERV_IN_PROCESS == p_rand_Job->p_ISD->service_result)
+                         304 --line145
+                         305 ..lin.716ea100..4ad16ed8.0_14::
+                         306 .LDWlin14:
+000000c2 3cf70100        307 	ld.w	0[r28],ep
+000000c6 060d            308 	sld.w	12[ep],r1
+000000c8 a106ffff        309 	xori	65535,r1,zero
+000000cc fa1d*           310 	bne	.L25
+                         311 --146:     {
+                         312 --147:         (void)ML_PRNG_GetTrngState(&trng_status);
+                         313 --line147
+                         314 ..lin.716ea100..4ad16ed8.0_15::
+                         315 .LDWlin15:
+000000ce 23360000        316 	movea	0,sp,r6
+                         317 .L251:
+                         318 	jarl	_ML_PRNG_GetTrngState,lp
+                         318 <EXPANSION BEGIN>
+                         318 jarl22 _ML_PRNG_GetTrngState , lp 
+000000d2 80ff0000*       318 <EXPANSION END>
+                         319 --148:         /* Error during seed generation */
+                         320 --149:         if (ML_PRNG_TRN_TEST_ERR == trng_status)
+                         321 --line149
+                         322 ..lin.716ea100..4ad16ed8.0_16::
+                         323 .LDWlin16:
+000000d6 230f0100        324 	ld.w	0[sp],r1
+000000da 620a            325 	cmp	2,r1
+000000dc 9a0d*           326 	bne	.L27
+                         327 --150:         {
+                         328 --151:             p_rand_Job->p_ISD->service_result = SERV_TRN_ERROR;
+                         329 --line151
+                         330 ..lin.716ea100..4ad16ed8.0_17::
+                         331 .LDWlin17:
+000000de 3cf70100        332 	ld.w	0[r28],ep
+000000e2 200e3500        333 	movea	53,zero,r1
+000000e6 070d            334 	sst.w	r1,12[ep]
+                         335 --152:             g_usage_status = OFF;
+000000e8 7a070100        336 	st.w	zero,0[r26]
+000000ec c515*           337 	br	.L24
+                         338 .L27:
+                         339 --153:         }
+                         340 --154:         else if (ML_PRNG_TRN_GENERATING == trng_status)
+                         341 --line154
+                         342 ..lin.716ea100..4ad16ed8.0_18::
+                         343 .LDWlin18:
+000000ee 230f0100        344 	ld.w	0[sp],r1
+000000f2 610a            345 	cmp	1,r1
+000000f4 fa05*           346 	bne	.L30
+                         347 --155:         {
+                         348 --156:             p_rand_Job->p_ISD->service_result = SERV_IN_PROCESS;
+                         349 --line156
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         350 ..lin.716ea100..4ad16ed8.0_19::
+                         351 .LDWlin19:
+000000f6 3cf70100        352 	ld.w	0[r28],ep
+000000fa 800effff        353 	ori	65535,zero,r1
+000000fe 070d            354 	sst.w	r1,12[ep]
+00000100 a50d*           355 	br	.L24
+                         356 .L30:
+                         357 --157:         }
+                         358 --158:         else
+                         359 --159:         {
+                         360 --160:             p_rand_Job->p_ISD->service_result = SERV_OK;
+                         361 --line160
+                         362 ..lin.716ea100..4ad16ed8.0_20::
+                         363 .LDWlin20:
+00000102 3cf70100        364 	ld.w	0[r28],ep
+00000106 0705            365 	sst.w	zero,12[ep]
+00000108 e505*           366 	br	.L24
+                         367 .L25:
+                         368 --161:         }
+                         369 --162:     }
+                         370 --163:     else
+                         371 --164:     {
+                         372 --165:         p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
+                         373 --line165
+                         374 ..lin.716ea100..4ad16ed8.0_21::
+                         375 .LDWlin21:
+0000010a 3cf70100        376 	ld.w	0[r28],ep
+0000010e 200e1100        377 	movea	17,zero,r1
+00000112 070d            378 	sst.w	r1,12[ep]
+                         379 .L24:
+                         380 --166:     }
+                         381 --167:     
+                         382 --168:     return ER_OK;
+00000114 0052            383 	mov	0,r10
+                         384 --	    .ef
+                         385 .LDW11:
+00000116 23ff1d00        386 	ld.w	28[sp],lp
+0000011a 23ef0500        387 	ld.w	4[sp],r29
+0000011e 23e70900        388 	ld.w	8[sp],r28
+00000122 23df0d00        389 	ld.w	12[sp],r27
+00000126 23d71100        390 	ld.w	16[sp],r26
+0000012a 23cf1500        391 	ld.w	20[sp],r25
+0000012e 23c71900        392 	ld.w	24[sp],r24
+00000132 031e2000        393 	addi	32,sp,sp
+                         394 .L253:
+                         395 	.jumptype return
+00000136 7f00            396 	jmp	[lp]
+                         397 --line165
+                         398 ..lin.716ea100..4ad16ed8.0_22::
+                         399 	.type	_s_02_RAND_InitCommon,@function
+                         400 	.size	_s_02_RAND_InitCommon,.-_s_02_RAND_InitCommon
+                         401 	.type	_s_02_RAND_InitCommon..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,@function
+                         402 	.size	_s_02_RAND_InitCommon..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,.-_s_02_RAND_InitCommon..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.
+                         403 	.align	2
+                         404 --_ret_err	r27	local
+                         405 --_trng_status	0[sp]	local
+                         406 
+                         407 --_trng_size	r25	param
+                         408 --_p_rand_Job	r28	param
+                         409 --_online_test	r24	param
+                         410 
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         411 	.section ".icum_service.data","aw"
+                         412 .L162:
+                         413 	.type	.L162,@object
+                         414 	.size	.L162,0
+                         415 	.section ".icum_service.bss","awb"
+                         416 	.align	4
+                         417 	.global	_g_trng_pre_init_start..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.
+                         418 _g_trng_pre_init_start..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.:
+00000000 00000000        419 _g_trng_pre_init_start:	.space	4
+                         420 	.type	_g_trng_pre_init_start..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,@object
+                         421 	.size	_g_trng_pre_init_start..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,4
+                         422 	.type	_g_trng_pre_init_start,@object
+                         423 	.size	_g_trng_pre_init_start,4
+                         424 	.global	_g_usage_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.
+                         425 _g_usage_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.:
+00000004 00000000        426 _g_usage_status:	.space	4
+                         427 	.type	_g_usage_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,@object
+                         428 	.size	_g_usage_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand.,4
+                         429 	.type	_g_usage_status,@object
+                         430 	.size	_g_usage_status,4
+                         431 	.section ".ghcalltbl",""
+                         432 	.align	4
+00000000 00000000*       433 .L250:	.word	.L249
+                         434 	.type	.L250,@object
+                         435 	.size	.L250,4
+00000004 00000000*       436 .L252:	.word	.L251
+                         437 	.type	.L252,@object
+                         438 	.size	.L252,4
+                         439 	.section ".ghrettbl",""
+                         440 	.align	4
+00000000 00000000*       441 .L254:	.word	.L253
+                         442 	.type	.L254,@object
+                         443 	.size	.L254,4
+                         444 	.data
+                         445 	.section ".icum_service.text","ax"
+                         446 
+                         447 --169: }
+                         448 
+                         449 --171: /***************************************************************************************
+                         450 --172: * Function ID  : [ICUMFW_CD_S_02_RNG_0001]:[ICUMFW_UD_S_02_RNG_0001]
+                         451 --173: * Function name: S_02_RAND_Init
+                         452 --174: * Description  : Initialize the service
+                         453 --175: * Arguments    : N/A
+                         454 --176: * Return Value : SERV_OK
+                         455 --177: ***************************************************************************************/
+                         456 --178: uint32_t S_02_RAND_Init(void)
+                         457 	.align	2
+                         458 	.align	2
+                         459 	.align	2
+                         460 ..gh.f.a.2.e.1:
+                         461 	.type	..gh.f.a.2.e.1,@object
+                         462 	.size	..gh.f.a.2.e.1,0
+                         463 	.global	_S_02_RAND_Init
+                         464 _S_02_RAND_Init:
+00000138 031eecff        465 	addi	-20,sp,sp
+0000013c 63ff1100        466 	st.w	lp,16[sp]
+                         467 --	    .bf
+                         468 .LDW21:
+                         469 --179: {
+                         470 --180:     sys_cfg_rand_t  sys_cfg;
+                         471 --182:     sys_cfg.rand_trng_pre_init_start = NUM0;
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+00000140 63070100        472 	st.w	zero,0[sp]
+                         473 --183:     sys_cfg.rand_olt_no_ds_reset = NUM0;
+00000144 63070500        474 	st.w	zero,4[sp]
+                         475 --184:     sys_cfg.rand_olt_ds_reset = NUM0;
+00000148 63070900        476 	st.w	zero,8[sp]
+                         477 --185:     sys_cfg.rand_first_init_type = NUM0;
+0000014c 63070d00        478 	st.w	zero,12[sp]
+                         479 --187:     (void)ML_CFG_GetSys(ML_CFG_SYS_RAND, (uint32_t*)&sys_cfg);
+00000150 233e0000        480 	movea	0,sp,r7
+00000154 0f32            481 	mov	15,r6
+                         482 .L323:
+                         483 	jarl	_ML_CFG_GetSys,lp
+                         483 <EXPANSION BEGIN>
+                         483 jarl22 _ML_CFG_GetSys , lp 
+00000156 80ff0000*       483 <EXPANSION END>
+                         484 --188:     g_trng_pre_init_start   = sys_cfg.rand_trng_pre_init_start;
+                         485 --line188
+                         486 ..lin.716ea100..fab875af.0_23::
+                         487 .LDWlin23:
+0000015a 230f0100        488 	ld.w	0[sp],r1
+0000015e 2b0600000000*   489 	mov	_g_trng_pre_init_start,r11
+00000164 6b0f0100        490 	st.w	r1,0[r11]
+                         491 --190:     return (uint32_t)SERV_OK;
+                         492 --line190
+                         493 ..lin.716ea100..fab875af.0_24::
+                         494 .LDWlin24:
+00000168 0052            495 	mov	0,r10
+                         496 --	    .ef
+                         497 .LDW31:
+0000016a 23ff1100        498 	ld.w	16[sp],lp
+0000016e 031e1400        499 	addi	20,sp,sp
+                         500 .L325:
+                         501 	.jumptype return
+00000172 7f00            502 	jmp	[lp]
+                         503 --line190
+                         504 ..lin.716ea100..fab875af.0_25::
+                         505 	.type	_S_02_RAND_Init,@function
+                         506 	.size	_S_02_RAND_Init,.-_S_02_RAND_Init
+                         507 	.align	2
+                         508 --_sys_cfg	0[sp]	local
+                         509 
+                         510 	.section ".ghcalltbl",""
+00000008 00000000*       511 .L324:	.word	.L323
+                         512 	.type	.L324,@object
+                         513 	.size	.L324,4
+                         514 	.section ".ghrettbl",""
+00000004 00000000*       515 .L326:	.word	.L325
+                         516 	.type	.L326,@object
+                         517 	.size	.L326,4
+                         518 	.data
+                         519 	.section ".icum_service.text","ax"
+                         520 
+                         521 --191: }
+                         522 
+                         523 --193: /***************************************************************************************
+                         524 --194: * Function ID  : [ICUMFW_CD_S_02_RNG_0002]:[ICUMFW_UD_S_02_RNG_0002]
+                         525 --195: * Function name: S_02_RAND_InitRng
+                         526 --196: * Description  : Service entry function of SERVICE_02_RAND_INIT_RNG
+                         527 --197: * Arguments    : p_rand_Job (Pointer to the job structure)
+                         528 --198: * Return Value : N/A
+                         529 --199: ***************************************************************************************/
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         530 --200: void S_02_RAND_InitRng(icum_job_t *p_rand_Job)
+                         531 	.assert 0x0 + (_g_usage_status - _g_trng_pre_init_start) +0 == 4
+                         532 	.align	2
+                         533 	.align	2
+                         534 	.align	2
+                         535 ..gh.f.a.2.e.2:
+                         536 	.type	..gh.f.a.2.e.2,@object
+                         537 	.size	..gh.f.a.2.e.2,0
+                         538 	.global	_S_02_RAND_InitRng
+                         539 _S_02_RAND_InitRng:
+00000174 031eccff        540 	addi	-52,sp,sp
+00000178 63ff3100        541 	st.w	lp,48[sp]
+0000017c 63ef1d00        542 	st.w	r29,28[sp]
+00000180 63cf2d00        543 	st.w	r25,44[sp]
+00000184 63e72100        544 	st.w	r28,32[sp]
+00000188 3d0600000000*   545 	mov	_g_trng_pre_init_start,r29
+0000018e 63d72900        546 	st.w	r26,40[sp]
+00000192 63df2500        547 	st.w	r27,36[sp]
+00000196 06e0            548 	mov	r6,r28
+00000198 3dce0400        549 	movea	4,r29,r25
+                         550 --	    .bf
+                         551 .LDW41:
+                         552 --201: {
+                         553 --202:     uint32_t secret_key[ANUM_PER_BLK];
+                         554 --203:     uint32_t resource_id;
+                         555 --204:     uint32_t ret_err;
+                         556 --205:     sys_cfg_vm_t vm_cfg;
+                         557 --206:     uint32_t skip_flg;
+                         558 --208:     /* Initialize local variable */
+                         559 --209:     L_Toolbox_MemSet((uint8_t *)&vm_cfg, 0x00u, (int16_t)sizeof(sys_cfg_vm_t));
+                         560 --line209
+                         561 ..lin.716ea100..e041b6b6.0_26::
+                         562 .LDWlin26:
+0000019c 23360400        563 	movea	4,sp,r6
+000001a0 003a            564 	mov	0,r7
+000001a2 0842            565 	mov	8,r8
+                         566 .L759:
+                         567 	jarl	_L_Toolbox_MemSet,lp
+                         567 <EXPANSION BEGIN>
+                         567 jarl22 _L_Toolbox_MemSet , lp 
+000001a4 80ff0000*       567 <EXPANSION END>
+                         568 --210:     skip_flg = FLG_OFF;
+                         569 --line210
+                         570 ..lin.716ea100..e041b6b6.0_27::
+                         571 .LDWlin27:
+000001a8 00d2            572 	mov	0,r26
+                         573 --212:     if (SERV_REQUEST == p_rand_Job->p_ISD->service_result)
+000001aa 3cf70100        574 	ld.w	0[r28],ep
+000001ae 060d            575 	sld.w	12[ep],r1
+000001b0 a106f0ff        576 	xori	65520,r1,zero
+000001b4 ba05*           577 	bne	.L331
+                         578 --213:     {
+                         579 --214:         p_rand_Job->prm.job_aes.rem = OFF;
+                         580 --line214
+                         581 ..lin.716ea100..e041b6b6.0_28::
+                         582 .LDWlin28:
+000001b6 5c071e00        583 	st.b	zero,30[r28]
+                         584 .L331:
+                         585 --215:     }
+                         586 --216:     else
+                         587 --217:     {
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         588 --218:         /* do nothing */
+                         589 --219:     }
+                         590 --221:     if (JOB_CANCEL_REQUESTED == (uint32_t)p_rand_Job->cancel_request)
+000001ba bc0f0b00        591 	ld.bu	11[r28],r1
+000001be 610a            592 	cmp	1,r1
+000001c0 ca0d*           593 	bne	.L332
+                         594 --222:     {
+                         595 --223:         p_rand_Job->p_ISD->service_result = SERV_OK;
+                         596 --line223
+                         597 ..lin.716ea100..e041b6b6.0_29::
+                         598 .LDWlin29:
+000001c2 3cf70100        599 	ld.w	0[r28],ep
+000001c6 0705            600 	sst.w	zero,12[ep]
+                         601 --224:         skip_flg = FLG_ON;
+000001c8 01d2            602 	mov	1,r26
+                         603 --226:         if (ON == (uint32_t)p_rand_Job->prm.job_aes.rem)
+000001ca 9c0f1f00        604 	ld.bu	30[r28],r1
+000001ce 610a            605 	cmp	1,r1
+000001d0 fa25*           606 	bne	.L337
+                         607 --227:         {
+                         608 --228:             /* If use RNG service in this job,  release status */
+                         609 --229:             g_usage_status = OFF;
+                         610 --line229
+                         611 ..lin.716ea100..e041b6b6.0_30::
+                         612 .LDWlin30:
+000001d2 7d070500        613 	st.w	zero,4[r29]
+000001d6 c525*           614 	br	.L337
+                         615 .L332:
+                         616 --230:         }
+                         617 --231:         else
+                         618 --232:         {
+                         619 --233:             /* do nothing */
+                         620 --234:         }
+                         621 --235:     }
+                         622 --236:      /* Online test selection in non-background */
+                         623 --237:     else if (NUM3 < (uint32_t)p_rand_Job->p_ISD->prm.RAND_INIT.online_test)
+                         624 --line237
+                         625 ..lin.716ea100..e041b6b6.0_31::
+                         626 .LDWlin31:
+000001d8 3cf70100        627 	ld.w	0[r28],ep
+000001dc 100d            628 	sld.w	32[ep],r1
+000001de 630a            629 	cmp	3,r1
+000001e0 e305*           630 	bnh	.L338
+                         631 --238:     {
+                         632 --239:         p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                         633 --line239
+                         634 ..lin.716ea100..e041b6b6.0_32::
+                         635 .LDWlin32:
+000001e2 3cf70100        636 	ld.w	0[r28],ep
+000001e6 040a            637 	mov	4,r1
+000001e8 070d            638 	sst.w	r1,12[ep]
+000001ea a51d*           639 	br	.L337
+                         640 .L338:
+                         641 --240:     }
+                         642 --241:     else if ((OFF == g_trng_pre_init_start)
+                         643 --line241
+                         644 ..lin.716ea100..e041b6b6.0_33::
+                         645 .LDWlin33:
+000001ec 210600000000*   646 	mov	_g_trng_pre_init_start,r1
+000001f2 210f0100        647 	ld.w	0[r1],r1
+000001f6 e009            648 	cmp	zero,r1
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+000001f8 ea0d*           649 	bne	.L341
+                         650 --line242
+                         651 ..lin.716ea100..e041b6b6.0_34::
+                         652 .LDWlin34:
+000001fa 3cf70100        653 	ld.w	0[r28],ep
+000001fe 100d            654 	sld.w	32[ep],r1
+00000200 e009            655 	cmp	zero,r1
+00000202 920d*           656 	be	.L341
+                         657 --242:         && (RAND_NO_TEST != p_rand_Job->p_ISD->prm.RAND_INIT.online_test))
+                         658 --243:     {
+                         659 --244:         (void)s_02_RAND_InitCommon(ML_TRNG_SIZE_TEST, p_rand_Job,
+                         660 --line244
+                         661 ..lin.716ea100..e041b6b6.0_35::
+                         662 .LDWlin35:
+00000204 3cf70100        663 	ld.w	0[r28],ep
+00000208 1c38            664 	mov	r28,r7
+0000020a 0a32            665 	mov	10,r6
+0000020c 1045            666 	sld.w	32[ep],r8
+                         667 .L761:
+                         668 	jarl	_s_02_RAND_InitCommon,lp
+                         668 <EXPANSION BEGIN>
+                         668 jarl22 _s_02_RAND_InitCommon , lp 
+0000020e bffff2fd*       668 <EXPANSION END>
+00000212 e505*           669 	br	.L337
+                         670 .L341:
+                         671 --245:                                    (uint32_t)p_rand_Job->p_ISD->prm.RAND_INIT.online_test);
+                         672 --246:     }
+                         673 --247:     else
+                         674 --248:     {
+                         675 --249:         (void)s_02_RAND_InitCommon(ML_TRNG_SIZE_SHE, p_rand_Job, NUM0);
+                         676 --line249
+                         677 ..lin.716ea100..e041b6b6.0_36::
+                         678 .LDWlin36:
+00000214 1c38            679 	mov	r28,r7
+00000216 0432            680 	mov	4,r6
+00000218 0042            681 	mov	0,r8
+                         682 .L763:
+                         683 	jarl	_s_02_RAND_InitCommon,lp
+                         683 <EXPANSION BEGIN>
+                         683 jarl22 _s_02_RAND_InitCommon , lp 
+0000021a bfffe6fd*       683 <EXPANSION END>
+                         684 .L337:
+                         685 --250:     }
+                         686 --252:     if ((FLG_OFF == skip_flg) 
+                         687 --line252
+                         688 ..lin.716ea100..e041b6b6.0_37::
+                         689 .LDWlin37:
+0000021e e0d1            690 	cmp	zero,r26
+00000220 ba15*           691 	bne	.L352
+                         692 --line253
+                         693 ..lin.716ea100..e041b6b6.0_38::
+                         694 .LDWlin38:
+00000222 3cf70100        695 	ld.w	0[r28],ep
+00000226 060d            696 	sld.w	12[ep],r1
+00000228 a106ffff        697 	xori	65535,r1,zero
+0000022c e205*           698 	be	.L346
+                         699 --line254
+                         700 ..lin.716ea100..e041b6b6.0_39::
+                         701 .LDWlin39:
+0000022e 3cf70100        702 	ld.w	0[r28],ep
+00000232 060d            703 	sld.w	12[ep],r1
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+00000234 e009            704 	cmp	zero,r1
+00000236 8a0d*           705 	bne	.L352
+                         706 .L346:
+                         707 --253:     && ((SERV_IN_PROCESS == p_rand_Job->p_ISD->service_result)
+                         708 --254:     || (SERV_OK == p_rand_Job->p_ISD->service_result)))
+                         709 --255:     {
+                         710 --256:         if (OFF == (uint32_t)p_rand_Job->prm.job_aes.rem)
+                         711 --line256
+                         712 ..lin.716ea100..e041b6b6.0_40::
+                         713 .LDWlin40:
+00000238 9c0f1f00        714 	ld.bu	30[r28],r1
+0000023c e009            715 	cmp	zero,r1
+0000023e ca05*           716 	bne	.L352
+                         717 --257:         {
+                         718 --258:             p_rand_Job->prm.job_aes.rem = ON;
+                         719 --line258
+                         720 ..lin.716ea100..e041b6b6.0_41::
+                         721 .LDWlin41:
+00000240 010a            722 	mov	1,r1
+00000242 5c0f1e00        723 	st.b	r1,30[r28]
+                         724 .L352:
+                         725 --259:         }
+                         726 --260:         else
+                         727 --261:         {
+                         728 --262:             /* do nothing */
+                         729 --263:         }
+                         730 --264:     }
+                         731 --265:     else
+                         732 --266:     {
+                         733 --267:         /* do nothing */
+                         734 --268:     }
+                         735 --270:     if ((FLG_OFF == skip_flg) && (SERV_OK == p_rand_Job->p_ISD->service_result))
+00000246 e0d1            736 	cmp	zero,r26
+00000248 ea070f01*       737 	bne	.L383
+0000024c 3cf70100        738 	ld.w	0[r28],ep
+00000250 060d            739 	sld.w	12[ep],r1
+00000252 e009            740 	cmp	zero,r1
+00000254 ea070301*       741 	bne	.L383
+                         742 --271:     {
+                         743 --272:         /* Complete seed generation : Get AES context */
+                         744 --273:         ret_err = ML_ABTR_GetResource(ABTR_RESOURCE_TYPE_AES, &resource_id);
+                         745 --line273
+                         746 ..lin.716ea100..e041b6b6.0_42::
+                         747 .LDWlin42:
+00000258 0132            748 	mov	1,r6
+0000025a 233e0000        749 	movea	0,sp,r7
+                         750 .L765:
+                         751 	jarl	_ML_ABTR_GetResource,lp
+                         751 <EXPANSION BEGIN>
+                         751 jarl22 _ML_ABTR_GetResource , lp 
+0000025e 80ff0000*       751 <EXPANSION END>
+00000262 0ad8            752 	mov	r10,r27
+                         753 --274:         if (ER_OK == ret_err)
+                         754 --line274
+                         755 ..lin.716ea100..e041b6b6.0_43::
+                         756 .LDWlin43:
+00000264 e0d9            757 	cmp	zero,r27
+00000266 da5d*           758 	bne	.L356
+                         759 --275:         {
+                         760 --276:             (void)ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
+                         761 --line276
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         762 ..lin.716ea100..e041b6b6.0_44::
+                         763 .LDWlin44:
+00000268 233e0400        764 	movea	4,sp,r7
+0000026c 20361800        765 	movea	24,zero,r6
+                         766 .L767:
+                         767 	jarl	_ML_CFG_GetSys,lp
+                         767 <EXPANSION BEGIN>
+                         767 jarl22 _ML_CFG_GetSys , lp 
+00000270 80ff0000*       767 <EXPANSION END>
+                         768 --277:             /* Done seed generation */
+                         769 --278:             ret_err = MH_KEY_GetSecretKey(vm_cfg.privilege_vm_id, secret_key);
+                         770 --line278
+                         771 ..lin.716ea100..e041b6b6.0_45::
+                         772 .LDWlin45:
+00000274 a3370900        773 	ld.bu	9[sp],r6
+00000278 233e0c00        774 	movea	12,sp,r7
+                         775 .L769:
+                         776 	jarl	_MH_KEY_GetSecretKey,lp
+                         776 <EXPANSION BEGIN>
+                         776 jarl22 _MH_KEY_GetSecretKey , lp 
+0000027c 80ff0000*       776 <EXPANSION END>
+00000280 0ad8            777 	mov	r10,r27
+                         778 --279:             if (ER_MH_KEY_AES_TIMEOUT_ERROR == ret_err)
+                         779 --line279
+                         780 ..lin.716ea100..e041b6b6.0_46::
+                         781 .LDWlin46:
+00000282 21060b009000    782 	mov	9437195,r1
+00000288 e1d9            783 	cmp	r1,r27
+0000028a fa05*           784 	bne	.L358
+                         785 --280:             {
+                         786 --281:                 p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
+                         787 --line281
+                         788 ..lin.716ea100..e041b6b6.0_47::
+                         789 .LDWlin47:
+0000028c 3cf70100        790 	ld.w	0[r28],ep
+00000290 200e3000        791 	movea	48,zero,r1
+00000294 070d            792 	sst.w	r1,12[ep]
+00000296 d53d*           793 	br	.L360
+                         794 .L358:
+                         795 --282:             }
+                         796 --283:             else if (ER_MH_KEY_AES_PRM_ERROR == ret_err)
+                         797 --line283
+                         798 ..lin.716ea100..e041b6b6.0_48::
+                         799 .LDWlin48:
+00000298 210615009000    800 	mov	9437205,r1
+0000029e e1d9            801 	cmp	r1,r27
+000002a0 fa05*           802 	bne	.L361
+                         803 --284:             {
+                         804 --285:                 p_rand_Job->p_ISD->service_result = SERV_AES_PRM_ERROR;
+                         805 --line285
+                         806 ..lin.716ea100..e041b6b6.0_49::
+                         807 .LDWlin49:
+000002a2 3cf70100        808 	ld.w	0[r28],ep
+000002a6 200e3200        809 	movea	50,zero,r1
+000002aa 070d            810 	sst.w	r1,12[ep]
+000002ac a535*           811 	br	.L360
+                         812 .L361:
+                         813 --286:             }
+                         814 --287:             else if (ER_PENDING == ret_err)
+                         815 --line287
+                         816 ..lin.716ea100..e041b6b6.0_50::
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         817 .LDWlin50:
+000002ae 63da            818 	cmp	3,r27
+000002b0 fa05*           819 	bne	.L364
+                         820 --288:             {
+                         821 --289:                 p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                         822 --line289
+                         823 ..lin.716ea100..e041b6b6.0_51::
+                         824 .LDWlin51:
+000002b2 3cf70100        825 	ld.w	0[r28],ep
+000002b6 800ef2ff        826 	ori	65522,zero,r1
+000002ba 070d            827 	sst.w	r1,12[ep]
+000002bc a52d*           828 	br	.L360
+                         829 .L364:
+                         830 --290:             }
+                         831 --291:             else if (ER_PARAM == ret_err)
+                         832 --line291
+                         833 ..lin.716ea100..e041b6b6.0_52::
+                         834 .LDWlin52:
+000002be 61da            835 	cmp	1,r27
+000002c0 ea05*           836 	bne	.L367
+                         837 --292:             {
+                         838 --293:                 p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                         839 --line293
+                         840 ..lin.716ea100..e041b6b6.0_53::
+                         841 .LDWlin53:
+000002c2 3cf70100        842 	ld.w	0[r28],ep
+000002c6 040a            843 	mov	4,r1
+000002c8 070d            844 	sst.w	r1,12[ep]
+000002ca b525*           845 	br	.L360
+                         846 .L367:
+                         847 --294:             }
+                         848 --295:             /* ret_err == ER_OK */
+                         849 --296:             else
+                         850 --297:             {
+                         851 --298:                 ret_err = ML_PRNG_InitSHE(secret_key);
+                         852 --line298
+                         853 ..lin.716ea100..e041b6b6.0_54::
+                         854 .LDWlin54:
+000002cc 23360c00        855 	movea	12,sp,r6
+                         856 .L771:
+                         857 	jarl	_ML_PRNG_InitSHE,lp
+                         857 <EXPANSION BEGIN>
+                         857 jarl22 _ML_PRNG_InitSHE , lp 
+000002d0 80ff0000*       857 <EXPANSION END>
+000002d4 0ad8            858 	mov	r10,r27
+                         859 --299:                 L_Toolbox_MemSet((uint8_t*)secret_key, (uint8_t)NUM0, (int16_t)sizeof(secret_key));
+                         860 --line299
+                         861 ..lin.716ea100..e041b6b6.0_55::
+                         862 .LDWlin55:
+000002d6 23360c00        863 	movea	12,sp,r6
+000002da 003a            864 	mov	0,r7
+000002dc 20461000        865 	movea	16,zero,r8
+                         866 .L773:
+                         867 	jarl	_L_Toolbox_MemSet,lp
+                         867 <EXPANSION BEGIN>
+                         867 jarl22 _L_Toolbox_MemSet , lp 
+000002e0 80ff0000*       867 <EXPANSION END>
+                         868 --300:                 if (ER_ML_PRNG_TIMEOUT == ret_err)
+                         869 --line300
+                         870 ..lin.716ea100..e041b6b6.0_56::
+                         871 .LDWlin56:
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+000002e4 21061200f000    872 	mov	15728658,r1
+000002ea e1d9            873 	cmp	r1,r27
+000002ec fa05*           874 	bne	.L370
+                         875 --301:                 {
+                         876 --302:                     p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
+                         877 --line302
+                         878 ..lin.716ea100..e041b6b6.0_57::
+                         879 .LDWlin57:
+000002ee 3cf70100        880 	ld.w	0[r28],ep
+000002f2 200e3000        881 	movea	48,zero,r1
+000002f6 070d            882 	sst.w	r1,12[ep]
+000002f8 c50d*           883 	br	.L360
+                         884 .L370:
+                         885 --303:                 }
+                         886 --304:                 else if (ER_PENDING == ret_err)
+                         887 --line304
+                         888 ..lin.716ea100..e041b6b6.0_58::
+                         889 .LDWlin58:
+000002fa 63da            890 	cmp	3,r27
+000002fc fa05*           891 	bne	.L373
+                         892 --305:                 {
+                         893 --306:                     p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                         894 --line306
+                         895 ..lin.716ea100..e041b6b6.0_59::
+                         896 .LDWlin59:
+000002fe 3cf70100        897 	ld.w	0[r28],ep
+00000302 800ef2ff        898 	ori	65522,zero,r1
+00000306 070d            899 	sst.w	r1,12[ep]
+00000308 c505*           900 	br	.L360
+                         901 .L373:
+                         902 --307:                 }
+                         903 --308:                 else
+                         904 --309:                 {
+                         905 --310:                     p_rand_Job->p_ISD->service_result = SERV_OK;
+                         906 --line310
+                         907 ..lin.716ea100..e041b6b6.0_60::
+                         908 .LDWlin60:
+0000030a 3cf70100        909 	ld.w	0[r28],ep
+0000030e 0705            910 	sst.w	zero,12[ep]
+                         911 .L360:
+                         912 --311:                 }
+                         913 --312:             }
+                         914 --313:             (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
+00000310 233f0100        915 	ld.w	0[sp],r7
+00000314 0132            916 	mov	1,r6
+                         917 .L775:
+                         918 	jarl	_ML_ABTR_FreeResource,lp
+                         918 <EXPANSION BEGIN>
+                         918 jarl22 _ML_ABTR_FreeResource , lp 
+00000316 80ff0000*       918 <EXPANSION END>
+                         919 --314:             g_usage_status = OFF;
+                         920 --line314
+                         921 ..lin.716ea100..e041b6b6.0_61::
+                         922 .LDWlin61:
+0000031a 7d070500        923 	st.w	zero,4[r29]
+0000031e c51d*           924 	br	.L383
+                         925 .L356:
+                         926 --315:         }
+                         927 --316:         else if (ER_ML_ABTR_EMPTY == ret_err)
+                         928 --line316
+                         929 ..lin.716ea100..e041b6b6.0_62::
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                         930 .LDWlin62:
+00000320 210601002000    931 	mov	2097153,r1
+00000326 e1d9            932 	cmp	r1,r27
+00000328 fa05*           933 	bne	.L377
+                         934 --317:         {
+                         935 --318:             p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                         936 --line318
+                         937 ..lin.716ea100..e041b6b6.0_63::
+                         938 .LDWlin63:
+0000032a 3cf70100        939 	ld.w	0[r28],ep
+0000032e 800ef2ff        940 	ori	65522,zero,r1
+00000332 070d            941 	sst.w	r1,12[ep]
+00000334 9515*           942 	br	.L383
+                         943 .L377:
+                         944 --319:         }
+                         945 --320:         else if(ER_PARAM == ret_err)
+                         946 --line320
+                         947 ..lin.716ea100..e041b6b6.0_64::
+                         948 .LDWlin64:
+00000336 61da            949 	cmp	1,r27
+00000338 8a0d*           950 	bne	.L380
+                         951 --321:         {
+                         952 --322:             p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                         953 --line322
+                         954 ..lin.716ea100..e041b6b6.0_65::
+                         955 .LDWlin65:
+0000033a 3cf70100        956 	ld.w	0[r28],ep
+0000033e 040a            957 	mov	4,r1
+00000340 070d            958 	sst.w	r1,12[ep]
+                         959 --323:             g_usage_status = OFF;
+00000342 7d070500        960 	st.w	zero,4[r29]
+00000346 850d*           961 	br	.L383
+                         962 .L380:
+                         963 --324:         }
+                         964 --325:         else
+                         965 --326:         {
+                         966 --327:             p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
+                         967 --line327
+                         968 ..lin.716ea100..e041b6b6.0_66::
+                         969 .LDWlin66:
+00000348 3cf70100        970 	ld.w	0[r28],ep
+0000034c 200e1100        971 	movea	17,zero,r1
+00000350 070d            972 	sst.w	r1,12[ep]
+                         973 --328:             g_usage_status = OFF;
+00000352 7d070500        974 	st.w	zero,4[r29]
+                         975 .L383:
+                         976 --329:         }
+                         977 --330:     }
+                         978 --331:     else
+                         979 --332:     {
+                         980 --333:         /* do nothing */
+                         981 --334:     }
+                         982 --335:     return;
+00000356 0000            983 	nop
+                         984 --	    .ef
+                         985 .LDW51:
+00000358 23ff3100        986 	ld.w	48[sp],lp
+0000035c 23ef1d00        987 	ld.w	28[sp],r29
+00000360 23e72100        988 	ld.w	32[sp],r28
+00000364 23df2500        989 	ld.w	36[sp],r27
+00000368 23d72900        990 	ld.w	40[sp],r26
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+0000036c 23cf2d00        991 	ld.w	44[sp],r25
+00000370 031e3400        992 	addi	52,sp,sp
+                         993 .L777:
+                         994 	.jumptype return
+00000374 7f00            995 	jmp	[lp]
+                         996 --line327
+                         997 ..lin.716ea100..e041b6b6.0_67::
+                         998 	.type	_S_02_RAND_InitRng,@function
+                         999 	.size	_S_02_RAND_InitRng,.-_S_02_RAND_InitRng
+                        1000 	.align	2
+                        1001 --_secret_key	12[sp]	local
+                        1002 --_resource_id	0[sp]	local
+                        1003 --_ret_err	r27	local
+                        1004 --_vm_cfg	4[sp]	local
+                        1005 --_skip_flg	r26	local
+                        1006 
+                        1007 --_p_rand_Job	r28	param
+                        1008 
+                        1009 	.section ".ghcalltbl",""
+0000000c 00000000*      1010 .L760:	.word	.L759
+                        1011 	.type	.L760,@object
+                        1012 	.size	.L760,4
+00000010 00000000*      1013 .L762:	.word	.L761
+                        1014 	.type	.L762,@object
+                        1015 	.size	.L762,4
+00000014 00000000*      1016 .L764:	.word	.L763
+                        1017 	.type	.L764,@object
+                        1018 	.size	.L764,4
+00000018 00000000*      1019 .L766:	.word	.L765
+                        1020 	.type	.L766,@object
+                        1021 	.size	.L766,4
+0000001c 00000000*      1022 .L768:	.word	.L767
+                        1023 	.type	.L768,@object
+                        1024 	.size	.L768,4
+00000020 00000000*      1025 .L770:	.word	.L769
+                        1026 	.type	.L770,@object
+                        1027 	.size	.L770,4
+00000024 00000000*      1028 .L772:	.word	.L771
+                        1029 	.type	.L772,@object
+                        1030 	.size	.L772,4
+00000028 00000000*      1031 .L774:	.word	.L773
+                        1032 	.type	.L774,@object
+                        1033 	.size	.L774,4
+0000002c 00000000*      1034 .L776:	.word	.L775
+                        1035 	.type	.L776,@object
+                        1036 	.size	.L776,4
+                        1037 	.section ".ghrettbl",""
+00000008 00000000*      1038 .L778:	.word	.L777
+                        1039 	.type	.L778,@object
+                        1040 	.size	.L778,4
+                        1041 	.data
+                        1042 	.section ".icum_service.text","ax"
+                        1043 
+                        1044 --336: }
+                        1045 
+                        1046 --338: /***************************************************************************************
+                        1047 --339: * Function ID  : [ICUMFW_CD_S_02_RNG_0004]:[ICUMFW_UD_S_02_RNG_0004]
+                        1048 --340: * Function name: S_02_RAND_ExtendSeed
+                        1049 --341: * Description  : Service entry function of SERVICE_02_RAND_EXTEND_SEED
+                        1050 --342: * Arguments    : p_rand_Job (Pointer to the job structure)
+                        1051 --343: * Return Value : N/A
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1052 --344: ***************************************************************************************/
+                        1053 --345: void S_02_RAND_ExtendSeed(icum_job_t *p_rand_Job)
+                        1054 	.assert 0x0 + (_g_usage_status - _g_usage_status) +0 == 0
+                        1055 	.align	2
+                        1056 	.align	2
+                        1057 	.align	2
+                        1058 ..gh.f.a.2.e.3:
+                        1059 	.type	..gh.f.a.2.e.3,@object
+                        1060 	.size	..gh.f.a.2.e.3,0
+                        1061 	.global	_S_02_RAND_ExtendSeed
+                        1062 _S_02_RAND_ExtendSeed:
+00000376 031ed8ff       1063 	addi	-40,sp,sp
+0000037a 63ff2500       1064 	st.w	lp,36[sp]
+0000037e 63ef0d00       1065 	st.w	r29,12[sp]
+00000382 63c72100       1066 	st.w	r24,32[sp]
+00000386 63e71100       1067 	st.w	r28,16[sp]
+0000038a 3d0600000000*  1068 	mov	_g_usage_status,r29
+00000390 63cf1d00       1069 	st.w	r25,28[sp]
+00000394 63d71900       1070 	st.w	r26,24[sp]
+00000398 63df1500       1071 	st.w	r27,20[sp]
+0000039c 06e0           1072 	mov	r6,r28
+0000039e 1dc0           1073 	mov	r29,r24
+                        1074 --	    .bf
+                        1075 .LDW61:
+                        1076 --346: {
+                        1077 --347:     uint32_t ret_err;
+                        1078 --348:     uint8_t mem_check_result;
+                        1079 --349:     uint32_t resource_id;
+                        1080 --350:     uint32_t skip_flg = FLG_OFF;
+                        1081 --line350
+                        1082 ..lin.716ea100..4a40bee4.0_68::
+                        1083 .LDWlin68:
+000003a0 00da           1084 	mov	0,r27
+                        1085 --351:     remap_ptr_manip_t   source_logical;
+                        1086 --352:     
+                        1087 --353:     resource_id = NUM0;
+000003a2 63070900       1088 	st.w	zero,8[sp]
+                        1089 --355:     if (JOB_CANCEL_REQUESTED == (uint32_t)p_rand_Job->cancel_request)
+000003a6 bc0f0b00       1090 	ld.bu	11[r28],r1
+000003aa 610a           1091 	cmp	1,r1
+000003ac ba0d*          1092 	bne	.L786
+                        1093 --356:     {
+                        1094 --357:         p_rand_Job->p_ISD->service_result = SERV_OK;
+                        1095 --line357
+                        1096 ..lin.716ea100..4a40bee4.0_69::
+                        1097 .LDWlin69:
+000003ae 3cf70100       1098 	ld.w	0[r28],ep
+000003b2 0705           1099 	sst.w	zero,12[ep]
+                        1100 --358:         skip_flg = FLG_ON;
+000003b4 01da           1101 	mov	1,r27
+                        1102 --360:         if (ON == (uint32_t)p_rand_Job->prm.job_aes.rem)
+000003b6 9c0f1f00       1103 	ld.bu	30[r28],r1
+000003ba 610a           1104 	cmp	1,r1
+000003bc ba05*          1105 	bne	.L786
+                        1106 --361:         {
+                        1107 --362:             /* If use RNG service in this job,  release status */
+                        1108 --363:             g_usage_status = OFF;
+                        1109 --line363
+                        1110 ..lin.716ea100..4a40bee4.0_70::
+                        1111 .LDWlin70:
+000003be 7d070100       1112 	st.w	zero,0[r29]
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1113 .L786:
+                        1114 --364:         }
+                        1115 --365:         else
+                        1116 --366:         {
+                        1117 --367:             /* do nothing */
+                        1118 --368:         }
+                        1119 --369:     }
+                        1120 --370:     else
+                        1121 --371:     {
+                        1122 --372:         /* do nothing */
+                        1123 --373:     }
+                        1124 --375:     if ((FLG_OFF == skip_flg) && (SERV_REQUEST == p_rand_Job->p_ISD->service_result))
+000003c2 e0d9           1125 	cmp	zero,r27
+000003c4 ca45*          1126 	bne	.L802
+000003c6 3cf70100       1127 	ld.w	0[r28],ep
+000003ca 060d           1128 	sld.w	12[ep],r1
+000003cc a106f0ff       1129 	xori	65520,r1,zero
+000003d0 ea3d*          1130 	bne	.L802
+                        1131 --376:     {
+                        1132 --377:         p_rand_Job->prm.job_aes.p_source = p_rand_Job->p_ISD->prm.RAND_EXTEND_SEED.p_entropy;
+                        1133 --line377
+                        1134 ..lin.716ea100..4a40bee4.0_71::
+                        1135 .LDWlin71:
+000003d2 3cf70100       1136 	ld.w	0[r28],ep
+000003d6 100d           1137 	sld.w	32[ep],r1
+000003d8 7c0f1100       1138 	st.w	r1,16[r28]
+                        1139 --378:         if (NUM0 != (ALIGN4 & (uint32_t)p_rand_Job->prm.job_aes.p_source))
+000003dc 3c0f1100       1140 	ld.w	16[r28],r1
+000003e0 c1060300       1141 	andi	3,r1,zero
+000003e4 f205*          1142 	be	.L790
+                        1143 --379:         {
+                        1144 --380:             p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                        1145 --line380
+                        1146 ..lin.716ea100..4a40bee4.0_72::
+                        1147 .LDWlin72:
+000003e6 3cf70100       1148 	ld.w	0[r28],ep
+000003ea 040a           1149 	mov	4,r1
+000003ec 070d           1150 	sst.w	r1,12[ep]
+                        1151 --381:             skip_flg = FLG_ON;
+000003ee 01da           1152 	mov	1,r27
+000003f0 d525*          1153 	br	.L792
+                        1154 .L790:
+                        1155 --382:         }
+                        1156 --383:         else
+                        1157 --384:         {
+                        1158 --385:             if ((uint32_t)FROM_NATIVE_SERVICE == (uint32_t)p_rand_Job->expansion_service)
+                        1159 --line385
+                        1160 ..lin.716ea100..4a40bee4.0_73::
+                        1161 .LDWlin73:
+000003f2 9c0f0d00       1162 	ld.bu	12[r28],r1
+000003f6 e009           1163 	cmp	zero,r1
+000003f8 fa0d*          1164 	bne	.L793
+                        1165 --386:             {
+                        1166 --387:                 (void)MM_FLS_CheckMemory((uint32_t)p_rand_Job->prm.job_aes.p_source, (uint32_t)AES_BLOCK_SIZE_IN_BYTES,
+                        1167 --line387
+                        1168 ..lin.716ea100..4a40bee4.0_74::
+                        1169 .LDWlin74:
+000003fa 3c371100       1170 	ld.w	16[r28],r6
+000003fe 9c4f0d00       1171 	ld.bu	12[r28],r9
+00000402 230e0700       1172 	movea	7,sp,r1
+00000406 630f0100       1173 	st.w	r1,0[sp]
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+0000040a 203e1000       1174 	movea	16,zero,r7
+0000040e 0042           1175 	mov	0,r8
+                        1176 .L1272:
+                        1177 	jarl	_MM_FLS_CheckMemory,lp
+                        1177 <EXPANSION BEGIN>
+                        1177 jarl22 _MM_FLS_CheckMemory , lp 
+00000410 80ff0000*      1177 <EXPANSION END>
+00000414 a50d*          1178 	br	.L795
+                        1179 .L793:
+                        1180 --388:                                           FLS_CHK_MEM_SOURCE, p_rand_Job->expansion_service, &mem_check_result);
+                        1181 --389:             }
+                        1182 --390:             else /* FROM_EXPANSION_SERVICE */
+                        1183 --391:             {
+                        1184 --392:                 (void)MM_FLS_CheckMemoryCISM((uint32_t)p_rand_Job->prm.job_aes.p_source, 
+                        1185 --line392
+                        1186 ..lin.716ea100..4a40bee4.0_75::
+                        1187 .LDWlin75:
+00000416 3c371100       1188 	ld.w	16[r28],r6
+0000041a 203e1000       1189 	movea	16,zero,r7
+0000041e 0042           1190 	mov	0,r8
+00000420 234e0700       1191 	movea	7,sp,r9
+                        1192 .L1274:
+                        1193 	jarl	_MM_FLS_CheckMemoryCISM,lp
+                        1193 <EXPANSION BEGIN>
+                        1193 jarl22 _MM_FLS_CheckMemoryCISM , lp 
+00000424 80ff0000*      1193 <EXPANSION END>
+                        1194 .L795:
+                        1195 --393:                                             (uint32_t)AES_BLOCK_SIZE_IN_BYTES,
+                        1196 --394:                                               FLS_CHK_MEM_SOURCE, &mem_check_result);
+                        1197 --395:             }
+                        1198 --396:             if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check_result)
+                        1199 --line396
+                        1200 ..lin.716ea100..4a40bee4.0_76::
+                        1201 .LDWlin76:
+00000428 a30f0700       1202 	ld.bu	7[sp],r1
+0000042c 610a           1203 	cmp	1,r1
+0000042e e205*          1204 	be	.L792
+                        1205 --397:             {
+                        1206 --398:                 p_rand_Job->p_ISD->service_result = SERV_SRC_MEM_ERROR;
+                        1207 --line398
+                        1208 ..lin.716ea100..4a40bee4.0_77::
+                        1209 .LDWlin77:
+00000430 3cf70100       1210 	ld.w	0[r28],ep
+00000434 0c0a           1211 	mov	12,r1
+00000436 070d           1212 	sst.w	r1,12[ep]
+                        1213 --399:                 skip_flg = FLG_ON;
+00000438 01da           1214 	mov	1,r27
+                        1215 .L792:
+                        1216 --400:             }
+                        1217 --401:             else
+                        1218 --402:             {
+                        1219 --403:                 /* do nothing */
+                        1220 --404:             }
+                        1221 --405:         }
+                        1222 --407:         if (FLG_OFF == skip_flg)
+0000043a e0d9           1223 	cmp	zero,r27
+0000043c 8a0d*          1224 	bne	.L802
+                        1225 --408:         {
+                        1226 --409:             p_rand_Job->prm.job_aes.rem = (uint8_t)OFF;
+                        1227 --line409
+                        1228 ..lin.716ea100..4a40bee4.0_78::
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1229 .LDWlin78:
+0000043e 5c071e00       1230 	st.b	zero,30[r28]
+                        1231 --410:             p_rand_Job->p_ISD->service_result = SERV_PENDING;
+00000442 3cf70100       1232 	ld.w	0[r28],ep
+00000446 800ef2ff       1233 	ori	65522,zero,r1
+0000044a 070d           1234 	sst.w	r1,12[ep]
+                        1235 .L802:
+                        1236 --411:         }
+                        1237 --412:         else
+                        1238 --413:         {
+                        1239 --414:             /* do nothing */
+                        1240 --415:         }
+                        1241 --416:     }
+                        1242 --417:     else
+                        1243 --418:     {
+                        1244 --419:         /* do nothing */
+                        1245 --420:     }
+                        1246 --422:     if ((FLG_OFF == skip_flg) && (SERV_PENDING == p_rand_Job->p_ISD->service_result))
+0000044c e0d9           1247 	cmp	zero,r27
+0000044e aa4d*          1248 	bne	.L825
+00000450 3cf70100       1249 	ld.w	0[r28],ep
+00000454 060d           1250 	sld.w	12[ep],r1
+00000456 a106f2ff       1251 	xori	65522,r1,zero
+0000045a ca45*          1252 	bne	.L825
+                        1253 --423:     {
+                        1254 --424:         /* Not use RNG service : Get AES context */
+                        1255 --425:         if (OFF == g_usage_status)
+                        1256 --line425
+                        1257 ..lin.716ea100..4a40bee4.0_79::
+                        1258 .LDWlin79:
+0000045c 3d0f0100       1259 	ld.w	0[r29],r1
+00000460 e009           1260 	cmp	zero,r1
+00000462 fa05*          1261 	bne	.L808
+                        1262 --426:         {
+                        1263 --427:             g_usage_status = ON;
+                        1264 --line427
+                        1265 ..lin.716ea100..4a40bee4.0_80::
+                        1266 .LDWlin80:
+00000464 010a           1267 	mov	1,r1
+00000466 7d0f0100       1268 	st.w	r1,0[r29]
+                        1269 --428:             p_rand_Job->prm.job_aes.rem = (uint8_t)ON;
+0000046a 010a           1270 	mov	1,r1
+0000046c 5c0f1e00       1271 	st.b	r1,30[r28]
+                        1272 .L808:
+                        1273 --429:         }
+                        1274 --430:         else
+                        1275 --431:         {
+                        1276 --432:             /* do nothing */
+                        1277 --433:         }
+                        1278 --434:         /* Top priority of the service */
+                        1279 --435:         if (OFF != (uint32_t)p_rand_Job->prm.job_aes.rem)
+00000470 9c0f1f00       1280 	ld.bu	30[r28],r1
+00000474 e009           1281 	cmp	zero,r1
+00000476 d22d*          1282 	be	.L820
+                        1283 --436:         {
+                        1284 --437:             /* Complete seed generation : Get AES context */
+                        1285 --438:             ret_err = ML_ABTR_GetResource(ABTR_RESOURCE_TYPE_AES, &resource_id);
+                        1286 --line438
+                        1287 ..lin.716ea100..4a40bee4.0_81::
+                        1288 .LDWlin81:
+00000478 0132           1289 	mov	1,r6
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+0000047a 233e0800       1290 	movea	8,sp,r7
+                        1291 .L1276:
+                        1292 	jarl	_ML_ABTR_GetResource,lp
+                        1292 <EXPANSION BEGIN>
+                        1292 jarl22 _ML_ABTR_GetResource , lp 
+0000047e 80ff0000*      1292 <EXPANSION END>
+00000482 0ad0           1293 	mov	r10,r26
+                        1294 --439:             if (ER_OK == ret_err)
+                        1295 --line439
+                        1296 ..lin.716ea100..4a40bee4.0_82::
+                        1297 .LDWlin82:
+00000484 e0d1           1298 	cmp	zero,r26
+00000486 fa05*          1299 	bne	.L811
+                        1300 --440:             {
+                        1301 --441:                 p_rand_Job->p_ISD->service_result = SERV_IN_PROCESS;
+                        1302 --line441
+                        1303 ..lin.716ea100..4a40bee4.0_83::
+                        1304 .LDWlin83:
+00000488 3cf70100       1305 	ld.w	0[r28],ep
+0000048c 800effff       1306 	ori	65535,zero,r1
+00000490 070d           1307 	sst.w	r1,12[ep]
+00000492 f51d*          1308 	br	.L820
+                        1309 .L811:
+                        1310 --442:             }
+                        1311 --443:             else if (ER_ML_ABTR_EMPTY == ret_err)
+                        1312 --line443
+                        1313 ..lin.716ea100..4a40bee4.0_84::
+                        1314 .LDWlin84:
+00000494 210601002000   1315 	mov	2097153,r1
+0000049a e1d1           1316 	cmp	r1,r26
+0000049c 8a0d*          1317 	bne	.L814
+                        1318 --444:             {
+                        1319 --445:                 p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                        1320 --line445
+                        1321 ..lin.716ea100..4a40bee4.0_85::
+                        1322 .LDWlin85:
+0000049e 3cf70100       1323 	ld.w	0[r28],ep
+000004a2 800ef2ff       1324 	ori	65522,zero,r1
+000004a6 070d           1325 	sst.w	r1,12[ep]
+                        1326 --446:                 skip_flg = FLG_ON;
+000004a8 01da           1327 	mov	1,r27
+000004aa b515*          1328 	br	.L820
+                        1329 .L814:
+                        1330 --447:             }
+                        1331 --448:             else if(ER_PARAM == ret_err)
+                        1332 --line448
+                        1333 ..lin.716ea100..4a40bee4.0_86::
+                        1334 .LDWlin86:
+000004ac 61d2           1335 	cmp	1,r26
+000004ae 9a0d*          1336 	bne	.L817
+                        1337 --449:             {
+                        1338 --450:                 p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                        1339 --line450
+                        1340 ..lin.716ea100..4a40bee4.0_87::
+                        1341 .LDWlin87:
+000004b0 3cf70100       1342 	ld.w	0[r28],ep
+000004b4 040a           1343 	mov	4,r1
+000004b6 070d           1344 	sst.w	r1,12[ep]
+                        1345 --451:                 g_usage_status = OFF;
+000004b8 7d070100       1346 	st.w	zero,0[r29]
+                        1347 --452:                 skip_flg = FLG_ON;
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+000004bc 01da           1348 	mov	1,r27
+000004be 950d*          1349 	br	.L820
+                        1350 .L817:
+                        1351 --453:             }
+                        1352 --454:             else
+                        1353 --455:             {
+                        1354 --456:                 p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
+                        1355 --line456
+                        1356 ..lin.716ea100..4a40bee4.0_88::
+                        1357 .LDWlin88:
+000004c0 3cf70100       1358 	ld.w	0[r28],ep
+000004c4 200e1100       1359 	movea	17,zero,r1
+000004c8 070d           1360 	sst.w	r1,12[ep]
+                        1361 --457:                 g_usage_status = OFF;
+000004ca 7d070100       1362 	st.w	zero,0[r29]
+                        1363 --458:                 skip_flg = FLG_ON;
+000004ce 01da           1364 	mov	1,r27
+                        1365 .L820:
+                        1366 --459:             }
+                        1367 --460:         }
+                        1368 --461:         else
+                        1369 --462:         {
+                        1370 --463:             /* do nothing */
+                        1371 --464:         }
+                        1372 --465:         if ((FLG_OFF == skip_flg) && (SERV_PENDING == p_rand_Job->p_ISD->service_result))
+000004d0 e0d9           1373 	cmp	zero,r27
+000004d2 8a0d*          1374 	bne	.L825
+000004d4 3cf70100       1375 	ld.w	0[r28],ep
+000004d8 060d           1376 	sld.w	12[ep],r1
+000004da a106f2ff       1377 	xori	65522,r1,zero
+000004de aa05*          1378 	bne	.L825
+                        1379 --466:         {
+                        1380 --467:             skip_flg = FLG_ON;
+                        1381 --line467
+                        1382 ..lin.716ea100..4a40bee4.0_89::
+                        1383 .LDWlin89:
+000004e0 01da           1384 	mov	1,r27
+                        1385 .L825:
+                        1386 --468:         }
+                        1387 --469:         else
+                        1388 --470:         {
+                        1389 --471:             /* do nothing */
+                        1390 --472:         }
+                        1391 --473:     }
+                        1392 --474:     else
+                        1393 --475:     {
+                        1394 --476:         /* do nothing */
+                        1395 --477:     }
+                        1396 --479:     if (FLG_OFF == skip_flg)
+000004e2 e0d9           1397 	cmp	zero,r27
+000004e4 8a35*          1398 	bne	.L837
+                        1399 --480:     {
+                        1400 --481: #if defined(FSW_REMAP_DRIVER)
+                        1401 --482:         /* Get Remap(Convert Physical address -> Logical Address) */
+                        1402 --483:         (void)D_REMAP_GetLogicalAddrs((uint32_t)p_rand_Job->prm.job_aes.p_source, &source_logical.val);
+                        1403 --484: #else   /* defined(FSW_REMAP_DRIVER) */
+                        1404 --485:         source_logical.p_ptr = (uint8_t *)p_rand_Job->prm.job_aes.p_source;
+                        1405 --line485
+                        1406 ..lin.716ea100..4a40bee4.0_90::
+                        1407 .LDWlin90:
+000004e6 3ccf1100       1408 	ld.w	16[r28],r25
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1409 --486: #endif  /* defined(FSW_REMAP_DRIVER) */
+                        1410 --488:         ret_err = ML_PRNG_ExtendSHE((const uint32_t *)source_logical.p_ptr);
+000004ea 1930           1411 	mov	r25,r6
+                        1412 .L1278:
+                        1413 	jarl	_ML_PRNG_ExtendSHE,lp
+                        1413 <EXPANSION BEGIN>
+                        1413 jarl22 _ML_PRNG_ExtendSHE , lp 
+000004ec 80ff0000*      1413 <EXPANSION END>
+000004f0 0ad0           1414 	mov	r10,r26
+                        1415 --489:         (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
+                        1416 --line489
+                        1417 ..lin.716ea100..4a40bee4.0_91::
+                        1418 .LDWlin91:
+000004f2 233f0900       1419 	ld.w	8[sp],r7
+000004f6 0132           1420 	mov	1,r6
+                        1421 .L1280:
+                        1422 	jarl	_ML_ABTR_FreeResource,lp
+                        1422 <EXPANSION BEGIN>
+                        1422 jarl22 _ML_ABTR_FreeResource , lp 
+000004f8 80ff0000*      1422 <EXPANSION END>
+                        1423 --490:         g_usage_status = OFF;
+                        1424 --line490
+                        1425 ..lin.716ea100..4a40bee4.0_92::
+                        1426 .LDWlin92:
+000004fc 7d070100       1427 	st.w	zero,0[r29]
+                        1428 --491:         if (ER_ML_PRNG_STATUS == ret_err)
+00000500 400ef000       1429 	movhi	hi(15728640),zero,r1
+00000504 e1d1           1430 	cmp	r1,r26
+00000506 fa05*          1431 	bne	.L828
+                        1432 --492:         {
+                        1433 --493:             p_rand_Job->p_ISD->service_result = SERV_NO_INIT_RNG;
+                        1434 --line493
+                        1435 ..lin.716ea100..4a40bee4.0_93::
+                        1436 .LDWlin93:
+00000508 3cf70100       1437 	ld.w	0[r28],ep
+0000050c 200e3400       1438 	movea	52,zero,r1
+00000510 070d           1439 	sst.w	r1,12[ep]
+00000512 951d*          1440 	br	.L837
+                        1441 .L828:
+                        1442 --494:         }
+                        1443 --495:         else if (ER_ML_PRNG_TIMEOUT == ret_err)
+                        1444 --line495
+                        1445 ..lin.716ea100..4a40bee4.0_94::
+                        1446 .LDWlin94:
+00000514 21061200f000   1447 	mov	15728658,r1
+0000051a e1d1           1448 	cmp	r1,r26
+0000051c fa05*          1449 	bne	.L831
+                        1450 --496:         {
+                        1451 --497:             p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
+                        1452 --line497
+                        1453 ..lin.716ea100..4a40bee4.0_95::
+                        1454 .LDWlin95:
+0000051e 3cf70100       1455 	ld.w	0[r28],ep
+00000522 200e3000       1456 	movea	48,zero,r1
+00000526 070d           1457 	sst.w	r1,12[ep]
+00000528 e50d*          1458 	br	.L837
+                        1459 .L831:
+                        1460 --498:         }
+                        1461 --499:         else if (ER_PENDING == ret_err)
+                        1462 --line499
+                        1463 ..lin.716ea100..4a40bee4.0_96::
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1464 .LDWlin96:
+0000052a 63d2           1465 	cmp	3,r26
+0000052c fa05*          1466 	bne	.L834
+                        1467 --500:         {
+                        1468 --501:             p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                        1469 --line501
+                        1470 ..lin.716ea100..4a40bee4.0_97::
+                        1471 .LDWlin97:
+0000052e 3cf70100       1472 	ld.w	0[r28],ep
+00000532 800ef2ff       1473 	ori	65522,zero,r1
+00000536 070d           1474 	sst.w	r1,12[ep]
+00000538 e505*          1475 	br	.L837
+                        1476 .L834:
+                        1477 --502:         }
+                        1478 --503:         else
+                        1479 --504:         {
+                        1480 --505:             p_rand_Job->p_ISD->service_result = SERV_OK;
+                        1481 --line505
+                        1482 ..lin.716ea100..4a40bee4.0_98::
+                        1483 .LDWlin98:
+0000053a 3cf70100       1484 	ld.w	0[r28],ep
+0000053e 0705           1485 	sst.w	zero,12[ep]
+                        1486 --506:             (void)MM_CR_InitCompletionNotice();
+                        1487 .L1282:
+                        1488 	jarl	_MM_CR_InitCompletionNotice,lp
+                        1488 <EXPANSION BEGIN>
+                        1488 jarl22 _MM_CR_InitCompletionNotice , lp 
+00000540 80ff0000*      1488 <EXPANSION END>
+                        1489 .L837:
+                        1490 --507:         }
+                        1491 --508:     }
+                        1492 --509:     else
+                        1493 --510:     {
+                        1494 --511:         /* do nothing */
+                        1495 --512:     }
+                        1496 --513:     
+                        1497 --514:     return;
+                        1498 --line514
+                        1499 ..lin.716ea100..4a40bee4.0_99::
+                        1500 .LDWlin99:
+00000544 0000           1501 	nop
+                        1502 --	    .ef
+                        1503 .LDW71:
+00000546 23ff2500       1504 	ld.w	36[sp],lp
+0000054a 23ef0d00       1505 	ld.w	12[sp],r29
+0000054e 23e71100       1506 	ld.w	16[sp],r28
+00000552 23df1500       1507 	ld.w	20[sp],r27
+00000556 23d71900       1508 	ld.w	24[sp],r26
+0000055a 23cf1d00       1509 	ld.w	28[sp],r25
+0000055e 23c72100       1510 	ld.w	32[sp],r24
+00000562 031e2800       1511 	addi	40,sp,sp
+                        1512 .L1284:
+                        1513 	.jumptype return
+00000566 7f00           1514 	jmp	[lp]
+                        1515 --line514
+                        1516 ..lin.716ea100..4a40bee4.0_100::
+                        1517 	.type	_S_02_RAND_ExtendSeed,@function
+                        1518 	.size	_S_02_RAND_ExtendSeed,.-_S_02_RAND_ExtendSeed
+                        1519 	.align	2
+                        1520 --_ret_err	r26	local
+                        1521 --_mem_check_result	7[sp]	local
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1522 --_resource_id	8[sp]	local
+                        1523 --_skip_flg	r27	local
+                        1524 --_source_logical	r25	local
+                        1525 
+                        1526 --_p_rand_Job	r28	param
+                        1527 
+                        1528 	.section ".ghcalltbl",""
+00000030 00000000*      1529 .L1273:	.word	.L1272
+                        1530 	.type	.L1273,@object
+                        1531 	.size	.L1273,4
+00000034 00000000*      1532 .L1275:	.word	.L1274
+                        1533 	.type	.L1275,@object
+                        1534 	.size	.L1275,4
+00000038 00000000*      1535 .L1277:	.word	.L1276
+                        1536 	.type	.L1277,@object
+                        1537 	.size	.L1277,4
+0000003c 00000000*      1538 .L1279:	.word	.L1278
+                        1539 	.type	.L1279,@object
+                        1540 	.size	.L1279,4
+00000040 00000000*      1541 .L1281:	.word	.L1280
+                        1542 	.type	.L1281,@object
+                        1543 	.size	.L1281,4
+00000044 00000000*      1544 .L1283:	.word	.L1282
+                        1545 	.type	.L1283,@object
+                        1546 	.size	.L1283,4
+                        1547 	.section ".ghrettbl",""
+0000000c 00000000*      1548 .L1285:	.word	.L1284
+                        1549 	.type	.L1285,@object
+                        1550 	.size	.L1285,4
+                        1551 	.data
+                        1552 	.section ".icum_service.text","ax"
+                        1553 
+                        1554 --515: }
+                        1555 
+                        1556 --517: /***************************************************************************************
+                        1557 --518: * Function ID  : [ICUMFW_CD_S_02_RNG_0005]:[ICUMFW_UD_S_02_RNG_0005]
+                        1558 --519: * Function name: S_02_RAND_GenerateRnd
+                        1559 --520: * Description  : Service entry function of SERVICE_02_RAND_RND
+                        1560 --521: * Arguments    : p_rand_Job (Pointer to the job structure)
+                        1561 --522: * Return Value : N/A
+                        1562 --523: ***************************************************************************************/
+                        1563 --524: void S_02_RAND_GenerateRnd(icum_job_t *p_rand_Job)
+                        1564 	.assert 0x0 + (_g_usage_status - _g_usage_status) +0 == 0
+                        1565 	.align	2
+                        1566 	.align	2
+                        1567 	.align	2
+                        1568 ..gh.f.a.2.e.4:
+                        1569 	.type	..gh.f.a.2.e.4,@object
+                        1570 	.size	..gh.f.a.2.e.4,0
+                        1571 	.global	_S_02_RAND_GenerateRnd
+                        1572 _S_02_RAND_GenerateRnd:
+00000568 031ed4ff       1573 	addi	-44,sp,sp
+0000056c 63ff2900       1574 	st.w	lp,40[sp]
+00000570 63ef0d00       1575 	st.w	r29,12[sp]
+00000574 63bf2500       1576 	st.w	r23,36[sp]
+00000578 63cf1d00       1577 	st.w	r25,28[sp]
+0000057c 63e71100       1578 	st.w	r28,16[sp]
+00000580 3d0600000000*  1579 	mov	_g_usage_status,r29
+00000586 63c72100       1580 	st.w	r24,32[sp]
+0000058a 63d71900       1581 	st.w	r26,24[sp]
+0000058e 63df1500       1582 	st.w	r27,20[sp]
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+00000592 06e0           1583 	mov	r6,r28
+00000594 1db8           1584 	mov	r29,r23
+00000596 40cef000       1585 	movhi	hi(15728640),zero,r25
+                        1586 --	    .bf
+                        1587 .LDW81:
+                        1588 --525: {
+                        1589 --526:     uint32_t ret_err;
+                        1590 --527:     uint8_t mem_check_result;
+                        1591 --528:     uint32_t resource_id;
+                        1592 --529:     uint32_t skip_flg = FLG_OFF;
+                        1593 --line529
+                        1594 ..lin.716ea100..c49ced0a.0_101::
+                        1595 .LDWlin101:
+0000059a 00da           1596 	mov	0,r27
+                        1597 --530:     remap_ptr_manip_t   dest_logical;
+                        1598 --532:     resource_id = NUM0;
+0000059c 63070900       1599 	st.w	zero,8[sp]
+                        1600 --534:     if (JOB_CANCEL_REQUESTED == (uint32_t)p_rand_Job->cancel_request)
+000005a0 bc0f0b00       1601 	ld.bu	11[r28],r1
+000005a4 610a           1602 	cmp	1,r1
+000005a6 ba0d*          1603 	bne	.L1293
+                        1604 --535:     {
+                        1605 --536:         p_rand_Job->p_ISD->service_result = SERV_OK;
+                        1606 --line536
+                        1607 ..lin.716ea100..c49ced0a.0_102::
+                        1608 .LDWlin102:
+000005a8 3cf70100       1609 	ld.w	0[r28],ep
+000005ac 0705           1610 	sst.w	zero,12[ep]
+                        1611 --537:         skip_flg = FLG_ON;
+000005ae 01da           1612 	mov	1,r27
+                        1613 --539:         if (ON == (uint32_t)p_rand_Job->prm.job_aes.rem)
+000005b0 9c0f1f00       1614 	ld.bu	30[r28],r1
+000005b4 610a           1615 	cmp	1,r1
+000005b6 ba05*          1616 	bne	.L1293
+                        1617 --540:         {
+                        1618 --541:             /* If use RNG service in this job,  release status */
+                        1619 --542:             g_usage_status = OFF;
+                        1620 --line542
+                        1621 ..lin.716ea100..c49ced0a.0_103::
+                        1622 .LDWlin103:
+000005b8 7d070100       1623 	st.w	zero,0[r29]
+                        1624 .L1293:
+                        1625 --543:         }
+                        1626 --544:         else
+                        1627 --545:         {
+                        1628 --546:             /* do nothing */
+                        1629 --547:         }
+                        1630 --548:     }
+                        1631 --549:     else
+                        1632 --550:     {
+                        1633 --551:         /* do nothing */
+                        1634 --552:     }
+                        1635 --554:     if ((FLG_OFF == skip_flg) && (SERV_REQUEST == p_rand_Job->p_ISD->service_result))
+000005bc e0d9           1636 	cmp	zero,r27
+000005be 9a5d*          1637 	bne	.L1311
+000005c0 3cf70100       1638 	ld.w	0[r28],ep
+000005c4 060d           1639 	sld.w	12[ep],r1
+000005c6 a106f0ff       1640 	xori	65520,r1,zero
+000005ca ba55*          1641 	bne	.L1311
+                        1642 --555:     {
+                        1643 --556:         p_rand_Job->prm.job_aes.p_dest       = p_rand_Job->p_ISD->prm.RAND_GENERATE.p_block_out;
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1644 --line556
+                        1645 ..lin.716ea100..c49ced0a.0_104::
+                        1646 .LDWlin104:
+000005cc 3cf70100       1647 	ld.w	0[r28],ep
+000005d0 100d           1648 	sld.w	32[ep],r1
+000005d2 7c0f1500       1649 	st.w	r1,20[r28]
+                        1650 --557:         p_rand_Job->prm.job_aes.nb_blocks    = p_rand_Job->p_ISD->prm.RAND_GENERATE.nb_blocks;
+000005d6 3cf70100       1651 	ld.w	0[r28],ep
+000005da 140d           1652 	sld.w	40[ep],r1
+000005dc 7c0f1900       1653 	st.w	r1,24[r28]
+                        1654 --558:         p_rand_Job->prm.job_aes.nb_slice     = p_rand_Job->p_ISD->prm.RAND_GENERATE.job_slice;
+000005e0 3c0f0100       1655 	ld.w	0[r28],r1
+000005e4 e10f2d00       1656 	ld.hu	44[r1],r1
+000005e8 7c0f1c00       1657 	st.h	r1,28[r28]
+                        1658 --560:         if ((NUM0 != (ALIGN4 & (uint32_t)p_rand_Job->prm.job_aes.p_dest))
+000005ec 3c0f1500       1659 	ld.w	20[r28],r1
+000005f0 c1060300       1660 	andi	3,r1,zero
+000005f4 9a0d*          1661 	bne	.L1298
+                        1662 --line561
+                        1663 ..lin.716ea100..c49ced0a.0_105::
+                        1664 .LDWlin105:
+000005f6 3c0f1900       1665 	ld.w	24[r28],r1
+000005fa 610a           1666 	cmp	1,r1
+000005fc da05*          1667 	bne	.L1298
+000005fe fc0f1d00       1668 	ld.hu	28[r28],r1
+00000602 610a           1669 	cmp	1,r1
+00000604 e305*          1670 	bnh	.L1301
+                        1671 .L1298:
+                        1672 --561:         || ((NUM1 != p_rand_Job->prm.job_aes.nb_blocks) || (NUM1 < (uint32_t)p_rand_Job->prm.job_aes.nb_slice)))
+                        1673 --562:         {
+                        1674 --563:             p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                        1675 --line563
+                        1676 ..lin.716ea100..c49ced0a.0_106::
+                        1677 .LDWlin106:
+00000606 3cf70100       1678 	ld.w	0[r28],ep
+0000060a 040a           1679 	mov	4,r1
+0000060c 070d           1680 	sst.w	r1,12[ep]
+                        1681 --564:             skip_flg = FLG_ON;
+0000060e 01da           1682 	mov	1,r27
+                        1683 .L1301:
+                        1684 --565:         }
+                        1685 --566:         else
+                        1686 --567:         {
+                        1687 --568:             /* do nothing */
+                        1688 --569:         }
+                        1689 --571:         if (FLG_OFF == skip_flg)
+00000610 e0d9           1690 	cmp	zero,r27
+00000612 fa2d*          1691 	bne	.L1311
+                        1692 --572:         {
+                        1693 --573:             if((uint32_t)FROM_NATIVE_SERVICE == (uint32_t)p_rand_Job->expansion_service)
+                        1694 --line573
+                        1695 ..lin.716ea100..c49ced0a.0_107::
+                        1696 .LDWlin107:
+00000614 9c0f0d00       1697 	ld.bu	12[r28],r1
+00000618 e009           1698 	cmp	zero,r1
+0000061a 8a15*          1699 	bne	.L1304
+                        1700 --574:             {
+                        1701 --575:                 (void)MM_FLS_CheckMemory((uint32_t)p_rand_Job->prm.job_aes.p_dest,
+                        1702 --line575
+                        1703 ..lin.716ea100..c49ced0a.0_108::
+                        1704 .LDWlin108:
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+0000061c 3c3f1900       1705 	ld.w	24[r28],r7
+00000620 3c371500       1706 	ld.w	20[r28],r6
+00000624 9c4f0d00       1707 	ld.bu	12[r28],r9
+00000628 230e0700       1708 	movea	7,sp,r1
+0000062c c43a           1709 	shl	4,r7
+0000062e 630f0100       1710 	st.w	r1,0[sp]
+00000632 0142           1711 	mov	1,r8
+                        1712 .L1819:
+                        1713 	jarl	_MM_FLS_CheckMemory,lp
+                        1713 <EXPANSION BEGIN>
+                        1713 jarl22 _MM_FLS_CheckMemory , lp 
+00000634 80ff0000*      1713 <EXPANSION END>
+00000638 b50d*          1714 	br	.L1306
+                        1715 .L1304:
+                        1716 --576:                                           (p_rand_Job->prm.job_aes.nb_blocks * (uint32_t)AES_BLOCK_SIZE_IN_BYTES),
+                        1717 --577:                                           FLS_CHK_MEM_DESTINATION, p_rand_Job->expansion_service, &mem_check_result);
+                        1718 --578:             }
+                        1719 --579:             else /* FROM_EXPANSION_SERVICE */
+                        1720 --580:             {
+                        1721 --581:                 (void)MM_FLS_CheckMemoryCISM((uint32_t)p_rand_Job->prm.job_aes.p_dest,
+                        1722 --line581
+                        1723 ..lin.716ea100..c49ced0a.0_109::
+                        1724 .LDWlin109:
+0000063a 3c3f1900       1725 	ld.w	24[r28],r7
+0000063e 3c371500       1726 	ld.w	20[r28],r6
+00000642 0142           1727 	mov	1,r8
+00000644 234e0700       1728 	movea	7,sp,r9
+00000648 c43a           1729 	shl	4,r7
+                        1730 .L1821:
+                        1731 	jarl	_MM_FLS_CheckMemoryCISM,lp
+                        1731 <EXPANSION BEGIN>
+                        1731 jarl22 _MM_FLS_CheckMemoryCISM , lp 
+0000064a 80ff0000*      1731 <EXPANSION END>
+                        1732 .L1306:
+                        1733 --582:                                           (p_rand_Job->prm.job_aes.nb_blocks * (uint32_t)AES_BLOCK_SIZE_IN_BYTES),
+                        1734 --583:                                           FLS_CHK_MEM_DESTINATION, &mem_check_result);
+                        1735 --584:             }
+                        1736 --585:             
+                        1737 --586:             if ((uint32_t)FLS_CHK_OK != (uint32_t)mem_check_result)
+                        1738 --line586
+                        1739 ..lin.716ea100..c49ced0a.0_110::
+                        1740 .LDWlin110:
+0000064e a30f0700       1741 	ld.bu	7[sp],r1
+00000652 610a           1742 	cmp	1,r1
+00000654 f205*          1743 	be	.L1307
+                        1744 --587:             {
+                        1745 --588:                 p_rand_Job->p_ISD->service_result = SERV_DEST_MEM_ERROR;
+                        1746 --line588
+                        1747 ..lin.716ea100..c49ced0a.0_111::
+                        1748 .LDWlin111:
+00000656 3cf70100       1749 	ld.w	0[r28],ep
+0000065a 0d0a           1750 	mov	13,r1
+0000065c 070d           1751 	sst.w	r1,12[ep]
+                        1752 --589:                 skip_flg = FLG_ON;
+0000065e 01da           1753 	mov	1,r27
+00000660 850d*          1754 	br	.L1311
+                        1755 .L1307:
+                        1756 --590:             }
+                        1757 --591:             else
+                        1758 --592:             {
+                        1759 --593:                 p_rand_Job->prm.job_aes.rem = (uint8_t)OFF;
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1760 --line593
+                        1761 ..lin.716ea100..c49ced0a.0_112::
+                        1762 .LDWlin112:
+00000662 5c071e00       1763 	st.b	zero,30[r28]
+                        1764 --594:                 p_rand_Job->p_ISD->service_result = SERV_PENDING;
+00000666 3cf70100       1765 	ld.w	0[r28],ep
+0000066a 800ef2ff       1766 	ori	65522,zero,r1
+0000066e 070d           1767 	sst.w	r1,12[ep]
+                        1768 .L1311:
+                        1769 --595:             }
+                        1770 --596:         }
+                        1771 --597:         else
+                        1772 --598:         {
+                        1773 --599:             /* do nothing */
+                        1774 --600:         }
+                        1775 --601:     }
+                        1776 --602:     else
+                        1777 --603:     {
+                        1778 --604:         /* do nothing */
+                        1779 --605:     }
+                        1780 --607:     if ((FLG_OFF == skip_flg) && (SERV_PENDING == p_rand_Job->p_ISD->service_result))
+00000670 e0d9           1781 	cmp	zero,r27
+00000672 aa4d*          1782 	bne	.L1334
+00000674 3cf70100       1783 	ld.w	0[r28],ep
+00000678 060d           1784 	sld.w	12[ep],r1
+0000067a a106f2ff       1785 	xori	65522,r1,zero
+0000067e ca45*          1786 	bne	.L1334
+                        1787 --608:     {
+                        1788 --609:         /* Not use RNG service : Get AES context */
+                        1789 --610:         if (OFF == g_usage_status)
+                        1790 --line610
+                        1791 ..lin.716ea100..c49ced0a.0_113::
+                        1792 .LDWlin113:
+00000680 3d0f0100       1793 	ld.w	0[r29],r1
+00000684 e009           1794 	cmp	zero,r1
+00000686 fa05*          1795 	bne	.L1317
+                        1796 --611:         {
+                        1797 --612:             g_usage_status = ON;
+                        1798 --line612
+                        1799 ..lin.716ea100..c49ced0a.0_114::
+                        1800 .LDWlin114:
+00000688 010a           1801 	mov	1,r1
+0000068a 7d0f0100       1802 	st.w	r1,0[r29]
+                        1803 --613:             p_rand_Job->prm.job_aes.rem = (uint8_t)ON;
+0000068e 010a           1804 	mov	1,r1
+00000690 5c0f1e00       1805 	st.b	r1,30[r28]
+                        1806 .L1317:
+                        1807 --614:         }
+                        1808 --615:         else
+                        1809 --616:         {
+                        1810 --617:             /* do nothing */
+                        1811 --618:         }
+                        1812 --619:         /* Top priority of the service */
+                        1813 --620:         if (OFF != (uint32_t)p_rand_Job->prm.job_aes.rem)
+00000694 9c0f1f00       1814 	ld.bu	30[r28],r1
+00000698 e009           1815 	cmp	zero,r1
+0000069a d22d*          1816 	be	.L1329
+                        1817 --621:         {
+                        1818 --622:             /* Complete seed generation : Get AES context */
+                        1819 --623:             ret_err = ML_ABTR_GetResource(ABTR_RESOURCE_TYPE_AES, &resource_id);
+                        1820 --line623
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1821 ..lin.716ea100..c49ced0a.0_115::
+                        1822 .LDWlin115:
+0000069c 0132           1823 	mov	1,r6
+0000069e 233e0800       1824 	movea	8,sp,r7
+                        1825 .L1823:
+                        1826 	jarl	_ML_ABTR_GetResource,lp
+                        1826 <EXPANSION BEGIN>
+                        1826 jarl22 _ML_ABTR_GetResource , lp 
+000006a2 80ff0000*      1826 <EXPANSION END>
+000006a6 0ad0           1827 	mov	r10,r26
+                        1828 --624:             if (ER_OK == ret_err)
+                        1829 --line624
+                        1830 ..lin.716ea100..c49ced0a.0_116::
+                        1831 .LDWlin116:
+000006a8 e0d1           1832 	cmp	zero,r26
+000006aa fa05*          1833 	bne	.L1320
+                        1834 --625:             {
+                        1835 --626:                 p_rand_Job->p_ISD->service_result = SERV_IN_PROCESS;
+                        1836 --line626
+                        1837 ..lin.716ea100..c49ced0a.0_117::
+                        1838 .LDWlin117:
+000006ac 3cf70100       1839 	ld.w	0[r28],ep
+000006b0 800effff       1840 	ori	65535,zero,r1
+000006b4 070d           1841 	sst.w	r1,12[ep]
+000006b6 f51d*          1842 	br	.L1329
+                        1843 .L1320:
+                        1844 --627:             }
+                        1845 --628:             else if (ER_ML_ABTR_EMPTY == ret_err)
+                        1846 --line628
+                        1847 ..lin.716ea100..c49ced0a.0_118::
+                        1848 .LDWlin118:
+000006b8 210601002000   1849 	mov	2097153,r1
+000006be e1d1           1850 	cmp	r1,r26
+000006c0 8a0d*          1851 	bne	.L1323
+                        1852 --629:             {
+                        1853 --630:                 p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                        1854 --line630
+                        1855 ..lin.716ea100..c49ced0a.0_119::
+                        1856 .LDWlin119:
+000006c2 3cf70100       1857 	ld.w	0[r28],ep
+000006c6 800ef2ff       1858 	ori	65522,zero,r1
+000006ca 070d           1859 	sst.w	r1,12[ep]
+                        1860 --631:                 skip_flg = FLG_ON;
+000006cc 01da           1861 	mov	1,r27
+000006ce b515*          1862 	br	.L1329
+                        1863 .L1323:
+                        1864 --632:             }
+                        1865 --633:             else if(ER_PARAM == ret_err)
+                        1866 --line633
+                        1867 ..lin.716ea100..c49ced0a.0_120::
+                        1868 .LDWlin120:
+000006d0 61d2           1869 	cmp	1,r26
+000006d2 9a0d*          1870 	bne	.L1326
+                        1871 --634:             {
+                        1872 --635:                 p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
+                        1873 --line635
+                        1874 ..lin.716ea100..c49ced0a.0_121::
+                        1875 .LDWlin121:
+000006d4 3cf70100       1876 	ld.w	0[r28],ep
+000006d8 040a           1877 	mov	4,r1
+000006da 070d           1878 	sst.w	r1,12[ep]
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1879 --636:                 g_usage_status = OFF;
+000006dc 7d070100       1880 	st.w	zero,0[r29]
+                        1881 --637:                 skip_flg = FLG_ON;
+000006e0 01da           1882 	mov	1,r27
+000006e2 950d*          1883 	br	.L1329
+                        1884 .L1326:
+                        1885 --638:             }
+                        1886 --639:             else
+                        1887 --640:             {
+                        1888 --641:                 p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
+                        1889 --line641
+                        1890 ..lin.716ea100..c49ced0a.0_122::
+                        1891 .LDWlin122:
+000006e4 3cf70100       1892 	ld.w	0[r28],ep
+000006e8 200e1100       1893 	movea	17,zero,r1
+000006ec 070d           1894 	sst.w	r1,12[ep]
+                        1895 --642:                 g_usage_status = OFF;
+000006ee 7d070100       1896 	st.w	zero,0[r29]
+                        1897 --643:                 skip_flg = FLG_ON;
+000006f2 01da           1898 	mov	1,r27
+                        1899 .L1329:
+                        1900 --644:             }
+                        1901 --645:         }
+                        1902 --646:         else
+                        1903 --647:         {
+                        1904 --648:             /* do nothing */
+                        1905 --649:         }
+                        1906 --651:         if ((FLG_OFF == skip_flg) && (SERV_PENDING == p_rand_Job->p_ISD->service_result))
+000006f4 e0d9           1907 	cmp	zero,r27
+000006f6 8a0d*          1908 	bne	.L1334
+000006f8 3cf70100       1909 	ld.w	0[r28],ep
+000006fc 060d           1910 	sld.w	12[ep],r1
+000006fe a106f2ff       1911 	xori	65522,r1,zero
+00000702 aa05*          1912 	bne	.L1334
+                        1913 --652:         {
+                        1914 --653:             skip_flg = FLG_ON;
+                        1915 --line653
+                        1916 ..lin.716ea100..c49ced0a.0_123::
+                        1917 .LDWlin123:
+00000704 01da           1918 	mov	1,r27
+                        1919 .L1334:
+                        1920 --654:         }
+                        1921 --655:         else
+                        1922 --656:         {
+                        1923 --657:             /* do nothing */
+                        1924 --658:         }
+                        1925 --659:     }
+                        1926 --660:     else
+                        1927 --661:     {
+                        1928 --662:         /* do nothing */
+                        1929 --663:     }
+                        1930 --664:     
+                        1931 --665:     if (FLG_OFF == skip_flg)
+00000706 e0d9           1932 	cmp	zero,r27
+00000708 da35*          1933 	bne	.L1349
+                        1934 --666:     {
+                        1935 --667: #if defined(FSW_REMAP_DRIVER)
+                        1936 --668:         /* Get Remap(Convert Physical address -> Logical Address) */
+                        1937 --669:         (void)D_REMAP_GetLogicalAddrs((uint32_t)p_rand_Job->prm.job_aes.p_dest, &dest_logical.val);
+                        1938 --670: #else   /* defined(FSW_REMAP_DRIVER) */
+                        1939 --671:         dest_logical.p_ptr = (uint8_t *)p_rand_Job->prm.job_aes.p_dest;
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+                        1940 --line671
+                        1941 ..lin.716ea100..c49ced0a.0_124::
+                        1942 .LDWlin124:
+0000070a 3cc71500       1943 	ld.w	20[r28],r24
+                        1944 --672: #endif  /* defined(FSW_REMAP_DRIVER) */
+                        1945 --674:         ret_err = ML_PRNG_GenSHE((uint32_t *)dest_logical.p_ptr);
+0000070e 1830           1946 	mov	r24,r6
+                        1947 .L1825:
+                        1948 	jarl	_ML_PRNG_GenSHE,lp
+                        1948 <EXPANSION BEGIN>
+                        1948 jarl22 _ML_PRNG_GenSHE , lp 
+00000710 80ff0000*      1948 <EXPANSION END>
+00000714 0ad0           1949 	mov	r10,r26
+                        1950 --675:         if (ER_ML_PRNG_STATUS == ret_err)
+                        1951 --line675
+                        1952 ..lin.716ea100..c49ced0a.0_125::
+                        1953 .LDWlin125:
+00000716 f9d1           1954 	cmp	r25,r26
+00000718 fa05*          1955 	bne	.L1337
+                        1956 --676:         {
+                        1957 --677:             p_rand_Job->p_ISD->service_result = SERV_NO_INIT_RNG;
+                        1958 --line677
+                        1959 ..lin.716ea100..c49ced0a.0_126::
+                        1960 .LDWlin126:
+0000071a 3cf70100       1961 	ld.w	0[r28],ep
+0000071e 200e3400       1962 	movea	52,zero,r1
+00000722 070d           1963 	sst.w	r1,12[ep]
+00000724 8525*          1964 	br	.L1339
+                        1965 .L1337:
+                        1966 --678:         }
+                        1967 --679:         else if (ER_ML_PRNG_RESEED == ret_err)
+                        1968 --line679
+                        1969 ..lin.716ea100..c49ced0a.0_127::
+                        1970 .LDWlin127:
+00000726 190e1000       1971 	addi	16,r25,r1
+0000072a e1d1           1972 	cmp	r1,r26
+0000072c fa05*          1973 	bne	.L1340
+                        1974 --680:         {
+                        1975 --681:             p_rand_Job->p_ISD->service_result = SERV_NEED_RESEED;
+                        1976 --line681
+                        1977 ..lin.716ea100..c49ced0a.0_128::
+                        1978 .LDWlin128:
+0000072e 3cf70100       1979 	ld.w	0[r28],ep
+00000732 200e3600       1980 	movea	54,zero,r1
+00000736 070d           1981 	sst.w	r1,12[ep]
+00000738 e515*          1982 	br	.L1339
+                        1983 .L1340:
+                        1984 --682:         }
+                        1985 --683:         else if (ER_ML_PRNG_TIMEOUT == ret_err)
+                        1986 --line683
+                        1987 ..lin.716ea100..c49ced0a.0_129::
+                        1988 .LDWlin129:
+0000073a 190e1200       1989 	addi	18,r25,r1
+0000073e e1d1           1990 	cmp	r1,r26
+00000740 fa05*          1991 	bne	.L1343
+                        1992 --684:         {
+                        1993 --685:             p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
+                        1994 --line685
+                        1995 ..lin.716ea100..c49ced0a.0_130::
+                        1996 .LDWlin130:
+00000742 3cf70100       1997 	ld.w	0[r28],ep
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+00000746 200e3000       1998 	movea	48,zero,r1
+0000074a 070d           1999 	sst.w	r1,12[ep]
+0000074c c50d*          2000 	br	.L1339
+                        2001 .L1343:
+                        2002 --686:         }
+                        2003 --687:         else if (ER_PENDING == ret_err)
+                        2004 --line687
+                        2005 ..lin.716ea100..c49ced0a.0_131::
+                        2006 .LDWlin131:
+0000074e 63d2           2007 	cmp	3,r26
+00000750 fa05*          2008 	bne	.L1346
+                        2009 --688:         {
+                        2010 --689:             p_rand_Job->p_ISD->service_result = SERV_PENDING;
+                        2011 --line689
+                        2012 ..lin.716ea100..c49ced0a.0_132::
+                        2013 .LDWlin132:
+00000752 3cf70100       2014 	ld.w	0[r28],ep
+00000756 800ef2ff       2015 	ori	65522,zero,r1
+0000075a 070d           2016 	sst.w	r1,12[ep]
+0000075c c505*          2017 	br	.L1339
+                        2018 .L1346:
+                        2019 --690:         }
+                        2020 --691:         else
+                        2021 --692:         {
+                        2022 --693:             p_rand_Job->p_ISD->service_result = SERV_OK;
+                        2023 --line693
+                        2024 ..lin.716ea100..c49ced0a.0_133::
+                        2025 .LDWlin133:
+0000075e 3cf70100       2026 	ld.w	0[r28],ep
+00000762 0705           2027 	sst.w	zero,12[ep]
+                        2028 .L1339:
+                        2029 --694:         }
+                        2030 --695:         (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
+00000764 233f0900       2031 	ld.w	8[sp],r7
+00000768 0132           2032 	mov	1,r6
+                        2033 .L1827:
+                        2034 	jarl	_ML_ABTR_FreeResource,lp
+                        2034 <EXPANSION BEGIN>
+                        2034 jarl22 _ML_ABTR_FreeResource , lp 
+0000076a 80ff0000*      2034 <EXPANSION END>
+                        2035 --696:         g_usage_status = OFF;
+                        2036 --line696
+                        2037 ..lin.716ea100..c49ced0a.0_134::
+                        2038 .LDWlin134:
+0000076e 7d070100       2039 	st.w	zero,0[r29]
+                        2040 .L1349:
+                        2041 --697:     }
+                        2042 --698:     else
+                        2043 --699:     {
+                        2044 --700:         /* do nothing */
+                        2045 --701:     }
+                        2046 --702:     return;
+00000772 0000           2047 	nop
+                        2048 --	    .ef
+                        2049 .LDW91:
+00000774 23ff2900       2050 	ld.w	40[sp],lp
+00000778 23ef0d00       2051 	ld.w	12[sp],r29
+0000077c 23e71100       2052 	ld.w	16[sp],r28
+00000780 23df1500       2053 	ld.w	20[sp],r27
+00000784 23d71900       2054 	ld.w	24[sp],r26
+00000788 23cf1d00       2055 	ld.w	28[sp],r25
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qis1.si
+0000078c 23c72100       2056 	ld.w	32[sp],r24
+00000790 23bf2500       2057 	ld.w	36[sp],r23
+00000794 031e2c00       2058 	addi	44,sp,sp
+                        2059 .L1829:
+                        2060 	.jumptype return
+00000798 7f00           2061 	jmp	[lp]
+                        2062 --line696
+                        2063 ..lin.716ea100..c49ced0a.0_135::
+                        2064 	.type	_S_02_RAND_GenerateRnd,@function
+                        2065 	.size	_S_02_RAND_GenerateRnd,.-_S_02_RAND_GenerateRnd
+                        2066 	.align	2
+                        2067 --_ret_err	r26	local
+                        2068 --_mem_check_result	7[sp]	local
+                        2069 --_resource_id	8[sp]	local
+                        2070 --_skip_flg	r27	local
+                        2071 --_dest_logical	r24	local
+                        2072 
+                        2073 --_p_rand_Job	r28	param
+                        2074 
+                        2075 	.section ".ghcalltbl",""
+00000048 00000000*      2076 .L1820:	.word	.L1819
+                        2077 	.type	.L1820,@object
+                        2078 	.size	.L1820,4
+0000004c 00000000*      2079 .L1822:	.word	.L1821
+                        2080 	.type	.L1822,@object
+                        2081 	.size	.L1822,4
+00000050 00000000*      2082 .L1824:	.word	.L1823
+                        2083 	.type	.L1824,@object
+                        2084 	.size	.L1824,4
+00000054 00000000*      2085 .L1826:	.word	.L1825
+                        2086 	.type	.L1826,@object
+                        2087 	.size	.L1826,4
+00000058 00000000*      2088 .L1828:	.word	.L1827
+                        2089 	.type	.L1828,@object
+                        2090 	.size	.L1828,4
+                        2091 	.section ".ghrettbl",""
+00000010 00000000*      2092 .L1830:	.word	.L1829
+                        2093 	.type	.L1830,@object
+                        2094 	.size	.L1830,4
+                        2095 	.data
+                        2096 	.section ".icum_service.text","ax"
+                        2097 
+                        2098 --703: }
+                        2099 	.align	2
+                        2100 --_g_trng_pre_init_start	_g_trng_pre_init_start	static
+                        2101 --_g_usage_status	_g_usage_status	static
+                        2102 
+                        2103 	.data
+                        2104 	.ghsnote version,30
+                        2105 	.ghsnote tools,3
+                        2106 	.ghsnote options,656
+                        2107 	.section ".icum_service.text","ax"
+                        2108 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_03.5Cicum_s_02_rand...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDF..0::
+                        2109 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

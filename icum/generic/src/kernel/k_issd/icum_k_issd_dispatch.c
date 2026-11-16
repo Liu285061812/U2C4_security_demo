@@ -42,6 +42,78 @@
 ***************************************************************************************/
 #define EXT_DEBUGGER_CONNECT   0x00000001uL
 
+static void k_ISSD_SetDemoKeySelection(r_icumif_isd_t *p_isd)
+{
+    switch (p_isd->service_id)
+    {
+        case SERVICE_01_AES_CIPHER:
+            p_isd->prm.AES_CIPHER.key_group = KEY_GRP_AES_RAM;
+            p_isd->prm.AES_CIPHER.key_group_2 = KEY_GRP_AES_RAM;
+            if (CIPHER_MOD_XTS == p_isd->prm.AES_CIPHER.cipher_mode)
+            {
+                p_isd->prm.AES_CIPHER.key_id = 0u;
+                p_isd->prm.AES_CIPHER.key_id_2 = 3u;
+            }
+            break;
+        case SERVICE_01_AES_AUTH_CIPHER:
+            p_isd->prm.AES_AUTH_CIPHER.key_group = KEY_GRP_AES_RAM;
+            break;
+        case SERVICE_01_AES_CMAC:
+            p_isd->prm.AES_CMAC.key_group = KEY_GRP_AES_RAM;
+            break;
+        case SERVICE_02_RSA_VERIFY:
+            p_isd->prm.RSA_VERIFY.key_group = KEY_GRP_RSA;
+            p_isd->prm.RSA_VERIFY.key_id = 0u;
+            break;
+        case SERVICE_02_RSA_SIGN:
+            p_isd->prm.RSA_SIGN.key_id = 0u;
+            break;
+        case SERVICE_02_RSA_ENCRYPT:
+            p_isd->prm.RSA_ENCRYPT.key_group = KEY_GRP_RSA;
+            p_isd->prm.RSA_ENCRYPT.key_id = 0u;
+            break;
+        case SERVICE_02_RSA_DECRYPT:
+            p_isd->prm.RSA_DECRYPT.key_id = 0u;
+            break;
+        case SERVICE_02_RSA_KEY_GENERATE:
+            p_isd->prm.RSA_KEY_GENERATE.key_id = 0u;
+            break;
+        case SERVICE_04_ECDSA_VERIFY:
+            p_isd->prm.ECDSA_VERIFY.key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.ECDSA_VERIFY.key_id = 0u;
+            break;
+        case SERVICE_04_ECDSA_SIGN:
+            p_isd->prm.ECDSA_SIGN.key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.ECDSA_SIGN.key_id = 0u;
+            break;
+        case SERVICE_04_ECDH:
+            p_isd->prm.ECDH.ecc_priv_key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.ECDH.ecc_priv_key_id = 0u;
+            p_isd->prm.ECDH.ecc_pub_key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.ECDH.ecc_pub_key_id = 0u;
+            p_isd->prm.ECDH.shared_key_group = KEY_GRP_AES_RAM;
+            p_isd->prm.ECDH.shared_key_id = 4u;
+            break;
+        case SERVICE_04_EDDSA_VERIFY:
+            p_isd->prm.EDDSA_VERIFY.key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.EDDSA_VERIFY.key_id = 1u;
+            break;
+        case SERVICE_04_EDDSA_SIGN:
+            p_isd->prm.EDDSA_SIGN.key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.EDDSA_SIGN.key_id = 1u;
+            break;
+        case SERVICE_04_ECC_KEY_GENERATE:
+            p_isd->prm.ECC_KEY_GENERATE.key_group = KEY_GRP_ECC_RAM;
+            p_isd->prm.ECC_KEY_GENERATE.key_id = 0u;
+            break;
+        case SERVICE_05_HMAC:
+            p_isd->prm.HMAC.key_id = 0u;
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma ghs section text   = ".icum_kernel_ram"
 #pragma ghs section rodata = ".icum_kernel_const_ram"
 /***************************************************************************************
@@ -260,6 +332,8 @@ uint32_t K_ISSD_HandleRequest(icum_comm_int_from_channel_t channel, r_icumif_isd
             if((SERV_OK == err) &&
                ((uint32_t)false == (uint32_t)highest_job_executed))
             {
+                k_ISSD_SetDemoKeySelection(p_isd);
+
                 /* is this the continuation of a previous job? */
                 p_ghost_job = NULL;
 
@@ -270,7 +344,8 @@ uint32_t K_ISSD_HandleRequest(icum_comm_int_from_channel_t channel, r_icumif_isd
                         case SERVICE_01_AES_CIPHER:
                         case SERVICE_01_AES_AUTH_CIPHER:
                         case SERVICE_01_AES_CMAC:
-                        case SERVICE_01_HASH:
+                        case SERVICE_05_HASH:
+                        case SERVICE_05_HMAC:
                             /* retrieve job ghost */
                             k_ISSD_GetJob(p_isd->job_id, &p_ghost_job);
                             break;

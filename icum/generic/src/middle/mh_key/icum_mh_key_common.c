@@ -124,17 +124,33 @@ uint32_t mh_KEY_ConvertErr( uint32_t base_err )
 ***************************************************************************************/
 uint32_t MH_KEY_Init(void)
 {
-    (void)mh_KEY_InitAes();
-    (void)mh_KEY_InitRsa();
-    (void)mh_KEY_InitEcc();
-    (void)mh_KEY_InitHmac();
-    (void)mh_KEY_InitMasterSecret();
+    uint32_t err;
 
-    (void)mh_KEY_WritingSet(ML_CFG_MASTER_VM_ID,
-                            LAST_ITEM_KEY_GRP,
-                            KEY_ID_LAST_ITEM);
+    err = mh_KEY_InitAes();
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitRsa();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitEcc();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitHmac();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitMasterSecret();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_WritingSet(ML_CFG_MASTER_VM_ID,
+                                LAST_ITEM_KEY_GRP,
+                                KEY_ID_LAST_ITEM);
+    }
 
-    return(ER_OK);
+    return err;
 }
 
 /***************************************************************************************
@@ -146,12 +162,23 @@ uint32_t MH_KEY_Init(void)
 ***************************************************************************************/
 uint32_t MH_KEY_InitRamCfg(void)
 {
-    (void)mh_KEY_InitAesRamCfg();
-    (void)mh_KEY_InitEccRamCfg();
-    (void)mh_KEY_InitHmac();
-    (void)mh_KEY_InitMasterSecret();
+    uint32_t err;
 
-    return(ER_OK);
+    err = mh_KEY_InitAesRamCfg();
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitEccRamCfg();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitHmac();
+    }
+    if (ER_OK == err)
+    {
+        err = mh_KEY_InitMasterSecret();
+    }
+
+    return err;
 }
 
 /***************************************************************************************

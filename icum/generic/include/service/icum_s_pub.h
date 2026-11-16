@@ -36,7 +36,7 @@
 * Define
 ***********************************************************************************/
 /* Internal service id */
-#define SERVICE_20_CR       ((r_icumif_service_id_t)((uint32_t)SERVICE_02_RAND_RND + 1))
+#define SERVICE_20_CR       ((r_icumif_service_id_t)((uint32_t)SERVICE_05_HMAC + 1))
 
 #define NUM0                ((uint32_t)0uL)          /* value : 0 */
 #define NUM1                ((uint32_t)1uL)          /* value : 1 */
@@ -81,10 +81,6 @@ uint32_t S_01_CIPHER_CallbackAes(uint32_t cry_result);
 void S_02_RAND_InitRng(icum_job_t *p_rand_Job);
 void S_02_RAND_ExtendSeed(icum_job_t *p_rand_Job);
 void S_02_RAND_GenerateRnd(icum_job_t *p_rand_Job);
-void S_03_UpdateAesKeyPlain(icum_job_t *p_job);
-void S_03_ImportPublicKey(icum_job_t *p_job);
 void S_03_GenerateRsaKey(icum_job_t *p_job);
 void S_03_GenerateEccKey(icum_job_t *p_job);
-void S_03_ImportHmacKey(icum_job_t *p_job);
-void S_04_CollectGarbage(icum_job_t *p_job);
 void S_20_CR_ExecuteProcess(icum_job_t *p_cr_Job);

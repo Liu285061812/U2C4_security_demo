@@ -45,6 +45,7 @@
  ..\..\pe\generic\src\pe1\src\pe1.int.h \
  ..\..\pe\target\u2cx\src\shared\src\shared.h \
  ..\..\pe\generic\src\l_vrun\l_vrun_cmd\vrun.api.h \
+ ..\..\pe\generic\src\l_vrun\l_vrun_cmd\sys.api.h \
  ..\..\pe\target\u2cx\src\driver\comm_drv\icum_d_comm_pe.h \
  C:\work\SW\RH850\ DF\Icudvf\U2C\update\inc_ghs\DR7F702613AI.dvf.h \
  ..\..\pe\target\u2cx\include\pe_target_device.h \

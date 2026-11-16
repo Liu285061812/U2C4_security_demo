@@ -245,7 +245,7 @@ void k_ISSD_AddJobQueue(r_icumif_isd_t *p_ISD, icum_job_t *p_ghost_job, r_icumif
         if(0 > i)
         {
             /* no slot available: try again without testing keep.job_ghost */
-            /* (doing some garbage collection) */
+            /* retry without requiring a cleared ghost marker */
             for(j = 0; j < ISSD_MAX_NB_OF_JOBS; j++)
             {
                 if(NULL == g_job_table[j].p_ISD)

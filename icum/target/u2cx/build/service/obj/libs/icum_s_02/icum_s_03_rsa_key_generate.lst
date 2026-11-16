@@ -1,0 +1,1404 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\icum\generic\include\common\ -I..\..\icum\target\u2cx\include\driver\ -I..\..\icum\generic\include\middle\ -I..\..\icum\generic\include\service\ -I..\..\icum\generic\include\kernel\ -I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\ -I..\..\icum\generic\src\service\ -I..\..\icum\generic\src\service\s_01\ -I..\..\icum\generic\src\service\s_03\ -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\device\ -I..\..\icum\target\u2cx\include\device\rfd -I..\..\icum\target\u2cx\src\driver\d_hash -I..\..\icum\target\u2cx\include\driver -I..\..\icum\target\u2cx\src\driver\d_fls -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include -IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd -I..\..\icum -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_03_rsa_key_generate.dbo -source=icum_s_03_rsa_key_generate.c -comp -o ..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\gh_00010k01.o -list=..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_03_rsa_key_generate.lst C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+Source File: icum_s_03_rsa_key_generate.c
+Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I..\..\icum\generic\include\common\
+                           2 --		-I..\..\icum\target\u2cx\include\driver\
+                           3 --		-I..\..\icum\generic\include\middle\
+                           4 --		-I..\..\icum\generic\include\service\
+                           5 --		-I..\..\icum\generic\include\kernel\
+                           6 --		-I..\..\icum\sal\include\library\ -I..\..\pe\generic\icumif\
+                           7 --		-I..\..\icum\generic\src\service\
+                           8 --		-I..\..\icum\generic\src\service\s_01\
+                           9 --		-I..\..\icum\generic\src\service\s_03\
+                          10 --		-IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          11 --		-I..\..\icum\target\u2cx\include\device\
+                          12 --		-I..\..\icum\target\u2cx\include\device\rfd
+                          13 --		-I..\..\icum\target\u2cx\src\driver\d_hash
+                          14 --		-I..\..\icum\target\u2cx\include\driver
+                          15 --		-I..\..\icum\target\u2cx\src\driver\d_fls
+                          16 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include
+                          17 --		-IC:\work\SW\RFD\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F_V1.02.00_for_U2C2_freepackage\RFD28F\include\rfd
+                          18 --		-I..\..\icum -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs
+                          19 --		-I..\..\icum\target\u2cx\include\driver -bsp generic -passsource
+                          20 --		-preprocess_assembly_files -DICUM_DEVICE_FILE="u2c4_device.h"
+                          21 --		-DDEVICE_FILE="DR7F702613AI.dvf.h" -DFSW_PKCC_ECC -DFSW_PKCC_RSA
+                          22 --		-DFSW_ECC_CURVE_ED -DFSW_SHAA_HASH -DFSW_DVC_HASH
+                          23 --		-DMM_FLASH_PUBLIC_H="icum_mm_flash_pub.h"
+                          24 --		-DL_FLASH_PUBLIC_H="icum_l_flash_pub.h" -DFSW_AESKEY_256
+                          25 --		-D__RH850_U2C4__ -D__RH850_U2C__ -DTARGET_DEVICE_U2C4 -DDEBUG
+                          26 --		--preprocess_linker_directive_full -DTARGET_DEVICE_U2C4
+                          27 --		-DIRQ_TABLE_START=0x200 -DFW_VERSION="" -large_sda -large_zda
+                          28 --		-D_PEID_=0x07 -DD_CF_BANK_NUM=2 -DD_DF_BLOCK_NUM=16 -D_DEBUG_
+                          29 --		-list -cpu=rh850g3k -Omoredebug -G -section
+                          30 --		.text=.icum_service.text -section .rodata=.icum_service.rodata
+                          31 --		-section .bss=.icum_service.bss -section .data=.icum_service.data
+                          32 --		-filetype.c
+                          33 --		..\..\icum\generic\src\service\s_03\icum_s_03_rsa_key_generate.c
+                          34 --		-o
+                          35 --		..\..\icum\target\u2cx\build\service\obj\libs\icum_s_02\icum_s_03_rsa_key_generate.o
+                          36 --Source File:   ..\..\icum\generic\src\service\s_03\icum_s_03_rsa_key_generate.c
+                          37 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
+                          38 --Compile Date:  Fri Nov 13 15:27:25 2026
+                          39 --Host OS:       Win64
+                          40 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          41 --Release:       Compiler v2023.5.4
+                          42 --Revision Date: Wed Sep 06 02:44:56 2023
+                          43 --Release Date:  Wed Sep 06 02:00:00 2023
+                          44 -- ecom  -g -w
+                          45 	.section ".icum_service.text","ax"
+                          46 
+                          47 --1: /******************************************************************************/
+                          48 --2: /* Component Name   ICU-M Service                                             */
+                          49 --3: /******************************************************************************/
+                          50 --4: /* Product      : ICU-M Low Level Driver (Demo Part)                          */
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                          51 --5: /******************************************************************************/
+                          52 --6: /***********************************************************************************************************************
+                          53 --7: * RENESAS ELECTRONICS CONFIDENTIAL AND PROPRIETARY
+                          54 --8: * 
+                          55 --9: * DISCLAIMER
+                          56 --10: * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products. No
+                          57 --11: * other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          58 --12: * applicable laws, including copyright laws.
+                          59 --13: * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING
+                          60 --14: * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY,
+                          61 --15: * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. TO THE MAXIMUM
+                          62 --16: * EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES
+                          63 --17: * SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS
+                          64 --18: * SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                          65 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          66 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          67 --21: * following link:
+                          68 --22: * www.renesas.com/disclaimer
+                          69 --23: *
+                          70 --24: * Copyright (C) 2021-2022 Renesas Electronics Corporation. All rights reserved.
+                          71 --25: ***********************************************************************************************************************/
+                          72 --27: /**********************************************************************************
+                          73 --28: * Header files
+                          74 --29: ***********************************************************************************/
+                          75 --30: #include "renesas_types.h"
+                          76 --31: #include "r_icumif_api.h"
+                          77 --32: /* For the used common define */
+                          78 --33: #include "icum_common_pub.h"
+                          79 --34: #include "icum_d_comm_pub.h"
+                          80 --35: #include "icum_k_issd_pub.h"
+                          81 --36: #include "icum_mh_sysinfo_pub.h"
+                          82 --37: #include MM_FLASH_PUBLIC_H
+                          83 --39: #include "icum_s_pub.h"
+                          84 --40: #include "icum_s_03_common.h"
+                          85 --42: #include "icum_ml_ctx_pub.h"
+                          86 --44: #include "icum_l_toolbox_pub.h"
+                          87 --45: #include "icum_l_cry_pk_pub.h"
+                          88 --47: #include "icum_service_common.h"
+                          89 --49: /**********************************************************************************
+                          90 --50: * Local defines
+                          91 --51: **********************************************************************************/
+                          92 --52: /* Common */
+                          93 --53: #define NUM2            ((uint32_t)2)       /* value : 2 */
+                          94 --54: #define NUM3            ((uint32_t)3u)      /* value : 3 */
+                          95 --55: #define NUM4            ((uint32_t)4u)      /* value : 4 */
+                          96 --56: #define NUM7            ((uint32_t)7u)      /* value : 7 */
+                          97 --57: #define NUM8            ((uint32_t)8u)      /* value : 8 */
+                          98 --58: #define NUM128          ((uint32_t)128u)    /* value : 128 */
+                          99 --59: #define NUM256          ((uint32_t)256u)    /* value : 256 */
+                         100 --60: #define NUM384          ((uint32_t)384u)    /* value : 384 */
+                         101 --61: #define NUM512          ((uint32_t)512u)    /* value : 512 */
+                         102 --63: /* to save space on stack */
+                         103 --64: #define SAVE_STACK_SIZE
+                         104 --65: #define PUB_EXP_SIZE_IN_BYTES   (16u)
+                         105 --67: /* the limitation of failure for key generation */
+                         106 --68: #define MAX_OF_TEST_NUM_1024    (0x0A00u)
+                         107 --69: #define MAX_OF_TEST_NUM_2048    (0x1400u)
+                         108 --70: #define MAX_OF_TEST_NUM_3072    (0x1E00u)
+                         109 --71: #define MAX_OF_TEST_NUM_4096    (0x2800u)
+                         110 --74: /*********************************************************************************
+                         111 --75:  * Local types
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         112 --76:  *********************************************************************************/
+                         113 --78: /* process_phase_t */
+                         114 --79: #define ON_HOLD                 (0x00u)
+                         115 --80: #define PROCESS_DF_WRITE        (0x01u)
+                         116 --82: /*===========================================================================
+                         117 --83:   [PRIVATE]
+                         118 --84:   ===========================================================================*/
+                         119 --86: #define GET_CTX_NONE    (0x00u)
+                         120 --87: #define GET_CTX_RSA     (0x01u)
+                         121 --88: #define GET_CTX_HASH    (0x02u)
+                         122 --89: #define GET_KEY_RSA     (0x04u)
+                         123 --91: /*********************************************************************************
+                         124 --92:  * Local variables
+                         125 --93:  *********************************************************************************/
+                         126 --94: static const pkc_small_data_t small_E =
+                         127 --95: {
+                         128 --96:     /* size  : 3 */             3u,
+                         129 --97:     /* value : 65537 */         {
+                         130 --98:                                     0x010001u
+                         131 --99:                                 }
+                         132 --100: };
+                         133 --102: /***************************************************************************************
+                         134 --103: * Function ID  : [ICUMFW_CD_S_03_RSA_KEY_GEN_0002]:[ICUMFW_UD_S_03_RSA_KEY_GEN_0002]
+                         135 --104: * Function name: s_03_GenerateRsaKeySub
+                         136 --105: * Description  : Sub routine of generation of RSA key service (service entry point)
+                         137 --106: * Arguments    : p_job           :[in/out]    : job parameter
+                         138 --107: *                p_key_param     :[in]        : RSA Key parameter
+                         139 --108: *                p_rsa_ctx       :[in/out]    : RSA context
+                         140 --109: * Return Value : ER_OK
+                         141 --110: *                ER_IN_PROCESS
+                         142 --111: *                ER_PENDING
+                         143 --112: *                ER_PARAM
+                         144 --113: *                ER_L_RSA_SYS_ERROR
+                         145 --114: *                ER_L_RSA_ERROR
+                         146 --115: *                ER_L_RSA_INVALID_ARG
+                         147 --116: *                ER_L_RSA_LENGTHERR
+                         148 --117: *                ER_ML_ABTR_EMPTY
+                         149 --118: *                ER_ML_ABTR_NOT_RELEASED
+                         150 --119: *                ER_ML_ABTR_NOT_INITIALIZED
+                         151 --120: *                ER_ML_ABTR_TIMER_SET_FAILURE
+                         152 --121: *                ER_ML_ABTR_SYS_ERROR
+                         153 --122: *                ER_ML_PRNG_OK
+                         154 --123: *                ER_ML_PRNG_TIMEOUT
+                         155 --124: *                ER_ML_PRNG_RESEED
+                         156 --125: *                ER_ML_PRNG_STATUS
+                         157 --126: *                ER_ML_PRNG_PARAMETER
+                         158 --127: *                ER_ML_PRNG_AES_PRM
+                         159 --128: *                ER_MH_KEY_INVALID_KEY_GROUP
+                         160 --129: *                ER_MH_KEY_INVALID_KEY_INDEX
+                         161 --130: *                ER_MH_KEY_IN_USE
+                         162 --131: *                ER_MH_KEY_NOT_USABLE
+                         163 --132: *                ER_MH_KEY_WRITE_PROTECTED
+                         164 --133: *                ER_MH_KEY_WRITING
+                         165 --134: *                ER_MH_KEY_NVM_SYS_CRITICAL
+                         166 --135: *                ER_MH_KEY_NVM_SYS
+                         167 --136: *                ER_MH_KEY_NVM_PROG
+                         168 --137: *                ER_MH_KEY_DATA_INVALID
+                         169 --138: *                ER_MH_KEY_SYS_ERROR
+                         170 --139: *                ER_MH_KEY_NVM_UNAVAILABLE
+                         171 --140: *                ER_MH_KEY_NVM_SIZE
+                         172 --141: *                ER_MH_KEY_SRC_MEM_ERROR
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         173 --142: *                ER_MH_KEY_DEST_MEM_ERROR
+                         174 --143: *                ER_MH_KEY_AES_TIMEOUT_ERROR
+                         175 --144: *                ER_MH_KEY_AES_PRM_ERROR
+                         176 --145: *                SERV_KEY_UPDATE_ERROR
+                         177 --146: ***************************************************************************************/
+                         178 --147: static uint32_t s_03_GenerateRsaKeySub(icum_job_t *p_job, st_pkcd_rsa_key_bin_t *p_key_param, rsa_ctx_t *p_rsa_ctx)
+                         179 	.align	2
+                         180 	.align	2
+                         181 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDE..0::
+                         182 	.align	2
+                         183 	.align	2
+                         184 ..gh.f.a.2.e.0:
+                         185 	.type	..gh.f.a.2.e.0,@object
+                         186 	.size	..gh.f.a.2.e.0,0
+                         187 	.global	_s_03_GenerateRsaKeySub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.
+                         188 _s_03_GenerateRsaKeySub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.:
+                         189 _s_03_GenerateRsaKeySub:
+00000000 031e70ff        190 	addi	-144,sp,sp
+00000004 63ff8d00        191 	st.w	lp,140[sp]
+00000008 63b78100        192 	st.w	r22,128[sp]
+0000000c 63bf7d00        193 	st.w	r23,124[sp]
+00000010 63d77100        194 	st.w	r26,112[sp]
+00000014 63a78900        195 	st.w	r20,136[sp]
+00000018 63af8500        196 	st.w	r21,132[sp]
+0000001c 63c77900        197 	st.w	r24,120[sp]
+00000020 63cf7500        198 	st.w	r25,116[sp]
+00000024 63df6d00        199 	st.w	r27,108[sp]
+00000028 63e76900        200 	st.w	r28,104[sp]
+0000002c 63ef6500        201 	st.w	r29,100[sp]
+00000030 06b8            202 	mov	r6,r23
+00000032 07b0            203 	mov	r7,r22
+00000034 08d0            204 	mov	r8,r26
+                         205 --	    .bf
+                         206 .LDW01:
+                         207 --148: {
+                         208 --149:     r_icumif_isd_t             *p_isd;
+                         209 --150:     ISD_RSA_KEY_GENERATE_t     *p_isd_param;
+                         210 --151:     job_rsa_t                  *p_job_param;
+                         211 --153:     uint32_t            err;
+                         212 --154:     rsa_key_t           key;
+                         213 --155:     rsa_key_prop_t      key_properties;
+                         214 --157:     /* PKC Lib Parameter */
+                         215 --158:     st_pkcd_rsa_key_bin_t pub_key;
+                         216 --159:     uint32_t key_len;
+                         217 --160:     uint32_t prime_test_num;
+                         218 --161:     uint32_t iteration_num;
+                         219 --162:     uint8_t  dummy_pub_exponent[PUB_EXP_SIZE_IN_BYTES];
+                         220 --164:     p_isd       = p_job->p_ISD;
+00000036 37af0100        221 	ld.w	0[r23],r21
+                         222 --165:     p_isd_param = &p_isd->prm.RSA_KEY_GENERATE;
+0000003a 15e62000        223 	addi	32,r21,r28
+                         224 --166:     p_job_param = &p_job->prm.job_rsa;
+0000003e 17a61000        225 	addi	16,r23,r20
+                         226 --168:     err = ER_OK;
+00000042 00ea            227 	mov	0,r29
+                         228 --170:     /* Initialize parameters for PKC API */
+                         229 --171:     L_Toolbox_MemSet((uint8_t *)&pub_key, DATA_ZERO, (int16_t)sizeof(st_pkcd_rsa_key_bin_t));
+00000044 23361000        230 	movea	16,sp,r6
+00000048 003a            231 	mov	0,r7
+0000004a 20462800        232 	movea	40,zero,r8
+                         233 .L701:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         234 	jarl	_L_Toolbox_MemSet,lp
+                         234 <EXPANSION BEGIN>
+                         234 jarl22 _L_Toolbox_MemSet , lp 
+0000004e 80ff0000*       234 <EXPANSION END>
+                         235 --172:     L_Toolbox_MemSet(dummy_pub_exponent, DATA_ZERO, (int16_t)sizeof(dummy_pub_exponent));
+                         236 --line172
+                         237 ..lin.b7768273..433ba3bc.0_1::
+                         238 .LDWlin1:
+00000052 23360000        239 	movea	0,sp,r6
+00000056 003a            240 	mov	0,r7
+00000058 20461000        241 	movea	16,zero,r8
+                         242 .L703:
+                         243 	jarl	_L_Toolbox_MemSet,lp
+                         243 <EXPANSION BEGIN>
+                         243 jarl22 _L_Toolbox_MemSet , lp 
+0000005c 80ff0000*       243 <EXPANSION END>
+                         244 --174:     /* in process */
+                         245 --175:     p_isd->service_result = SERV_IN_PROCESS;
+                         246 --line175
+                         247 ..lin.b7768273..433ba3bc.0_2::
+                         248 .LDWlin2:
+00000060 800effff        249 	ori	65535,zero,r1
+00000064 750f0d00        250 	st.w	r1,12[r21]
+                         251 --178:     (void)L_PKC_RsaContextSetup(p_rsa_ctx);
+00000068 1a30            252 	mov	r26,r6
+                         253 .L705:
+                         254 	jarl	_L_PKC_RsaContextSetup,lp
+                         254 <EXPANSION BEGIN>
+                         254 jarl22 _L_PKC_RsaContextSetup , lp 
+0000006a 80ff0000*       254 <EXPANSION END>
+                         255 --179:     key_len = (uint16_t)(((uint32_t)p_isd_param->modulus_size_in_bits + NUM7) / NUM8);
+                         256 --line179
+                         257 ..lin.b7768273..433ba3bc.0_3::
+                         258 .LDWlin3:
+0000006e fc0f0300        259 	ld.hu	2[r28],r1
+00000072 470a            260 	add	7,r1
+00000074 830a            261 	shr	3,r1
+00000076 c100            262 	zxh	r1
+00000078 01d8            263 	mov	r1,r27
+                         264 --180:     if (NUM128 == key_len)
+0000007a 1b0680ff        265 	addi	-128,r27,zero
+0000007e da05*           266 	bne	.L4
+                         267 --181:     {
+                         268 --182:         prime_test_num = MAX_OF_TEST_NUM_1024;
+                         269 --line182
+                         270 ..lin.b7768273..433ba3bc.0_4::
+                         271 .LDWlin4:
+00000080 20ce000a        272 	movea	2560,zero,r25
+                         273 --183:         iteration_num = NUM7;
+00000084 07c2            274 	mov	7,r24
+00000086 f515*           275 	br	.L6
+                         276 .L4:
+                         277 --184:     }
+                         278 --185:     else if (NUM256 == key_len)
+                         279 --line185
+                         280 ..lin.b7768273..433ba3bc.0_5::
+                         281 .LDWlin5:
+00000088 1b0600ff        282 	addi	-256,r27,zero
+0000008c da05*           283 	bne	.L7
+                         284 --186:     {
+                         285 --187:         prime_test_num = MAX_OF_TEST_NUM_2048;
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         286 --line187
+                         287 ..lin.b7768273..433ba3bc.0_6::
+                         288 .LDWlin6:
+0000008e 20ce0014        289 	movea	5120,zero,r25
+                         290 --188:         iteration_num = NUM4;
+00000092 04c2            291 	mov	4,r24
+00000094 8515*           292 	br	.L6
+                         293 .L7:
+                         294 --189:     }
+                         295 --190:     else if (NUM384 == key_len)
+                         296 --line190
+                         297 ..lin.b7768273..433ba3bc.0_7::
+                         298 .LDWlin7:
+00000096 1b0680fe        299 	addi	-384,r27,zero
+0000009a da05*           300 	bne	.L10
+                         301 --191:     {
+                         302 --192:         prime_test_num = MAX_OF_TEST_NUM_3072;
+                         303 --line192
+                         304 ..lin.b7768273..433ba3bc.0_8::
+                         305 .LDWlin8:
+0000009c 20ce001e        306 	movea	7680,zero,r25
+                         307 --193:         iteration_num = NUM3;
+000000a0 03c2            308 	mov	3,r24
+000000a2 950d*           309 	br	.L6
+                         310 .L10:
+                         311 --194:     }
+                         312 --195:     else if (NUM512 == key_len)
+                         313 --line195
+                         314 ..lin.b7768273..433ba3bc.0_9::
+                         315 .LDWlin9:
+000000a4 1b0600fe        316 	addi	-512,r27,zero
+000000a8 da05*           317 	bne	.L13
+                         318 --196:     {
+                         319 --197:         prime_test_num = MAX_OF_TEST_NUM_4096;
+                         320 --line197
+                         321 ..lin.b7768273..433ba3bc.0_10::
+                         322 .LDWlin10:
+000000aa 20ce0028        323 	movea	10240,zero,r25
+                         324 --198:         iteration_num = NUM2;
+000000ae 02c2            325 	mov	2,r24
+000000b0 a505*           326 	br	.L6
+                         327 .L13:
+                         328 --199:     }
+                         329 --200:     else
+                         330 --201:     {
+                         331 --202:         err = ER_PARAM;
+                         332 --line202
+                         333 ..lin.b7768273..433ba3bc.0_11::
+                         334 .LDWlin11:
+000000b2 01ea            335 	mov	1,r29
+                         336 .L6:
+                         337 --203:     }
+                         338 --205:     if (ER_OK == err)
+000000b4 e0e9            339 	cmp	zero,r29
+000000b6 9a0d*           340 	bne	.L18
+                         341 --206:     {
+                         342 --207:         err = L_PKC_RsaKeyGenInit(&p_rsa_ctx->pkc_ctx, key_len, prime_test_num, iteration_num);
+                         343 --line207
+                         344 ..lin.b7768273..433ba3bc.0_12::
+                         345 .LDWlin12:
+000000b8 1a365804        346 	addi	1112,r26,r6
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+000000bc 1b38            347 	mov	r27,r7
+000000be 1940            348 	mov	r25,r8
+000000c0 1848            349 	mov	r24,r9
+                         350 .L707:
+                         351 	jarl	_L_PKC_RsaKeyGenInit,lp
+                         351 <EXPANSION BEGIN>
+                         351 jarl22 _L_PKC_RsaKeyGenInit , lp 
+000000c2 80ff0000*       351 <EXPANSION END>
+000000c6 0ae8            352 	mov	r10,r29
+                         353 .L18:
+                         354 --208:     }
+                         355 --209:     else
+                         356 --210:     {
+                         357 --211:         /* Do nothing */
+                         358 --212:     }
+                         359 --213:     if (ER_OK == err)
+                         360 --line213
+                         361 ..lin.b7768273..433ba3bc.0_13::
+                         362 .LDWlin13:
+000000c8 e0e9            363 	cmp	zero,r29
+000000ca 9a0d*           364 	bne	.L24
+                         365 --214:     {
+                         366 --215:         do
+                         367 --line215
+                         368 ..lin.b7768273..433ba3bc.0_14::
+                         369 .LDWlin14:
+000000cc 0000            370 	nop
+                         371 .L23:
+                         372 --216:         {
+                         373 --217:             err = L_PKC_RsaKeyGenOperate(&p_rsa_ctx->pkc_ctx);
+000000ce 1a365804        374 	addi	1112,r26,r6
+                         375 .L709:
+                         376 	jarl	_L_PKC_RsaKeyGenOperate,lp
+                         376 <EXPANSION BEGIN>
+                         376 jarl22 _L_PKC_RsaKeyGenOperate , lp 
+000000d2 80ff0000*       376 <EXPANSION END>
+000000d6 0ae8            377 	mov	r10,r29
+                         378 --line218
+                         379 ..lin.b7768273..433ba3bc.0_15::
+                         380 .LDWlin15:
+000000d8 64ea            381 	cmp	4,r29
+000000da a2fd*           382 	be	.L23
+                         383 .L24:
+                         384 --218:         } while (ER_IN_PROCESS == err);
+                         385 --219:     }
+                         386 --220:     else
+                         387 --221:     {
+                         388 --222:         /* Do nothing */
+                         389 --223:     }
+                         390 --225:     if (ER_OK == err)
+                         391 --line225
+                         392 ..lin.b7768273..433ba3bc.0_16::
+                         393 .LDWlin16:
+000000dc e0e9            394 	cmp	zero,r29
+000000de 9a15*           395 	bne	.L27
+                         396 --226:     {
+                         397 --227:         pub_key.p_n = p_key_param->p_n;
+                         398 --line227
+                         399 ..lin.b7768273..433ba3bc.0_17::
+                         400 .LDWlin17:
+000000e0 360f0500        401 	ld.w	4[r22],r1
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+000000e4 630f1500        402 	st.w	r1,20[sp]
+                         403 --228:         pub_key.p_e = &dummy_pub_exponent[0u];
+000000e8 230e0000        404 	movea	0,sp,r1
+000000ec 630f3500        405 	st.w	r1,52[sp]
+                         406 --229:         err = L_PKC_RsaKeyGenFinal(&p_rsa_ctx->pkc_ctx, (void *)p_key_param, (void *)&pub_key);
+000000f0 1a365804        407 	addi	1112,r26,r6
+000000f4 1638            408 	mov	r22,r7
+000000f6 23461000        409 	movea	16,sp,r8
+                         410 .L711:
+                         411 	jarl	_L_PKC_RsaKeyGenFinal,lp
+                         411 <EXPANSION BEGIN>
+                         411 jarl22 _L_PKC_RsaKeyGenFinal , lp 
+000000fa 80ff0000*       411 <EXPANSION END>
+000000fe 0ae8            412 	mov	r10,r29
+                         413 .L27:
+                         414 --230:     }
+                         415 --231:     else
+                         416 --232:     {
+                         417 --233:         /* Do nothing */
+                         418 --234:     }
+                         419 --235:     (void)ML_CTX_Free(CTX_TYPE_RSA, (uint32_t *)p_rsa_ctx);
+                         420 --line235
+                         421 ..lin.b7768273..433ba3bc.0_18::
+                         422 .LDWlin18:
+00000100 1a38            423 	mov	r26,r7
+00000102 0132            424 	mov	1,r6
+                         425 .L713:
+                         426 	jarl	_ML_CTX_Free,lp
+                         426 <EXPANSION BEGIN>
+                         426 jarl22 _ML_CTX_Free , lp 
+00000104 80ff0000*       426 <EXPANSION END>
+                         427 --236:     p_job_param->resource_ctrl &= ~GET_CTX_RSA;
+                         428 --line236
+                         429 ..lin.b7768273..433ba3bc.0_19::
+                         430 .LDWlin19:
+00000108 d4870c00        431 	clr1	0,12[r20]
+                         432 --238:     if (ER_OK == err)
+0000010c e0e9            433 	cmp	zero,r29
+0000010e da5d*           434 	bne	.L45
+                         435 --239:     {
+                         436 --240:         /* initialize the key parameters */
+                         437 --241:         /* the write_protected field forced to 1. (not use parameter structure) */
+                         438 --242:         key.key_group       = KEY_GRP_RSA;
+                         439 --line242
+                         440 ..lin.b7768273..433ba3bc.0_20::
+                         441 .LDWlin20:
+00000110 040a            442 	mov	4,r1
+00000112 630f4d00        443 	st.w	r1,76[sp]
+                         444 --243:         key.key_id          = p_isd_param->key_id;
+00000116 9c0f0100        445 	ld.bu	0[r28],r1
+0000011a 430f5000        446 	st.b	r1,80[sp]
+                         447 --244:         key.p_properties    = &key_properties;
+0000011e 230e3800        448 	movea	56,sp,r1
+00000122 630f5500        449 	st.w	r1,84[sp]
+                         450 --245:         key.p_pub_exponent  = (uint8_t *)small_E.value;
+00000126 210600000000*   451 	mov	_small_E+4,r1
+0000012c 630f5d00        452 	st.w	r1,92[sp]
+                         453 --246:         key.p_priv_exponent = p_key_param->p_d;
+                         454 --line246
+                         455 ..lin.b7768273..433ba3bc.0_21::
+                         456 .LDWlin21:
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+00000130 360f0900        457 	ld.w	8[r22],r1
+00000134 630f5900        458 	st.w	r1,88[sp]
+                         459 --247:         key.p_modulus       = p_key_param->p_n;
+00000138 360f0500        460 	ld.w	4[r22],r1
+0000013c 630f6100        461 	st.w	r1,96[sp]
+                         462 --249:         key_properties.update_counter           = NUM0;
+00000140 63073900        463 	st.w	zero,56[sp]
+                         464 --250:         key_properties.modulus_size_in_bits     = p_isd_param->modulus_size_in_bits;
+00000144 fc0f0300        465 	ld.hu	2[r28],r1
+00000148 630f3c00        466 	st.h	r1,60[sp]
+                         467 --251:         key_properties.modulus_size_in_bytes    = (uint16_t)(((uint32_t)p_isd_param->modulus_size_in_bits + NUM7) / NUM8);
+0000014c fc0f0300        468 	ld.hu	2[r28],r1
+00000150 470a            469 	add	7,r1
+00000152 830a            470 	shr	3,r1
+00000154 630f3e00        471 	st.h	r1,62[sp]
+                         472 --252:         key_properties.priv_exp_size_in_bytes   = (uint16_t)(((uint32_t)p_isd_param->modulus_size_in_bits + NUM7) / NUM8);
+00000158 fc0f0300        473 	ld.hu	2[r28],r1
+0000015c 470a            474 	add	7,r1
+0000015e 830a            475 	shr	3,r1
+00000160 630f4000        476 	st.h	r1,64[sp]
+                         477 --253:         key_properties.pub_exp_size_in_bytes    = (uint16_t)small_E.size;
+00000164 030a            478 	mov	3,r1
+00000166 630f4200        479 	st.h	r1,66[sp]
+                         480 --255:         key_properties.flags.disable_on_debug   = p_isd_param->flags.disable_on_debug;
+0000016a dcc70400        481 	tst1	0,4[r28]
+0000016e ca05*           482 	bne	.L485
+00000170 c38f4400        483 	clr1	1,68[sp]
+00000174 b505*           484 	br	.L145
+                         485 .L485:
+00000176 c30f4400        486 	set1	1,68[sp]
+                         487 .L145:
+                         488 --256:         key_properties.flags.write_protected    = p_isd_param->flags.write_protected;
+                         489 --line256
+                         490 ..lin.b7768273..433ba3bc.0_22::
+                         491 .LDWlin22:
+0000017a dccf0400        492 	tst1	1,4[r28]
+0000017e ca05*           493 	bne	.L488
+00000180 c3874400        494 	clr1	0,68[sp]
+00000184 b505*           495 	br	.L146
+                         496 .L488:
+00000186 c3074400        497 	set1	0,68[sp]
+                         498 .L146:
+                         499 --257:         key_properties.flags.invalidate         = NUM0;
+                         500 --line257
+                         501 ..lin.b7768273..433ba3bc.0_23::
+                         502 .LDWlin23:
+0000018a c3974400        503 	clr1	2,68[sp]
+                         504 --259:         /* update the key in memory */
+                         505 --260:         err = MH_KEY_SetRsaRam(p_job, &key);
+0000018e 1730            506 	mov	r23,r6
+00000190 233e4800        507 	movea	72,sp,r7
+                         508 .L715:
+                         509 	jarl	_MH_KEY_SetRsaRam,lp
+                         509 <EXPANSION BEGIN>
+                         509 jarl22 _MH_KEY_SetRsaRam , lp 
+00000194 80ff0000*       509 <EXPANSION END>
+00000198 0ae8            510 	mov	r10,r29
+                         511 --262:     #if defined(SAVE_STACK_SIZE)
+                         512 --263:         (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_RSA_ROM_PUB, NUM0);
+                         513 --line263
+                         514 ..lin.b7768273..433ba3bc.0_24::
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         515 .LDWlin24:
+0000019a 1730            516 	mov	r23,r6
+0000019c 063a            517 	mov	6,r7
+0000019e 0042            518 	mov	0,r8
+                         519 .L717:
+                         520 	jarl	_MH_KEY_FreeKeyCache,lp
+                         520 <EXPANSION BEGIN>
+                         520 jarl22 _MH_KEY_FreeKeyCache , lp 
+000001a0 80ff0000*       520 <EXPANSION END>
+                         521 --264:         p_job_param->resource_ctrl &= ~GET_KEY_RSA;
+                         522 --line264
+                         523 ..lin.b7768273..433ba3bc.0_25::
+                         524 .LDWlin25:
+000001a4 d4970c00        525 	clr1	2,12[r20]
+                         526 --265:     #endif
+                         527 --267:         /* test for errors */
+                         528 --268:         if (ER_OK == err)
+000001a8 e0e9            529 	cmp	zero,r29
+000001aa ca05*           530 	bne	.L36
+                         531 --269:         {
+                         532 --270:             /* should never occur */
+                         533 --271:             p_job->process_phase = ON_HOLD;
+                         534 --line271
+                         535 ..lin.b7768273..433ba3bc.0_26::
+                         536 .LDWlin26:
+000001ac 57070a00        537 	st.b	zero,10[r23]
+000001b0 c50d*           538 	br	.L45
+                         539 .L36:
+                         540 --272:         }
+                         541 --273:         else if (ER_IN_PROCESS == err)
+                         542 --line273
+                         543 ..lin.b7768273..433ba3bc.0_27::
+                         544 .LDWlin27:
+000001b2 64ea            545 	cmp	4,r29
+000001b4 da05*           546 	bne	.L39
+                         547 --274:         {
+                         548 --275:             p_job->process_phase = PROCESS_DF_WRITE;
+                         549 --line275
+                         550 ..lin.b7768273..433ba3bc.0_28::
+                         551 .LDWlin28:
+000001b6 010a            552 	mov	1,r1
+000001b8 570f0a00        553 	st.b	r1,10[r23]
+000001bc e505*           554 	br	.L45
+                         555 .L39:
+                         556 --276:         }
+                         557 --277:         else if (ER_PENDING == err)
+                         558 --line277
+                         559 ..lin.b7768273..433ba3bc.0_29::
+                         560 .LDWlin29:
+000001be 63ea            561 	cmp	3,r29
+000001c0 ca05*           562 	bne	.L45
+                         563 --278:         {
+                         564 --279:             /* If isn't job_id , not retry */
+                         565 --280:             /* this error code will be converted */
+                         566 --281:             err = (uint32_t)ER_MH_KEY_UPDATE_ERROR;
+                         567 --line281
+                         568 ..lin.b7768273..433ba3bc.0_30::
+                         569 .LDWlin30:
+000001c2 3d060a009000    570 	mov	9437194,r29
+                         571 .L45:
+                         572 --282:         }
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         573 --283:         else
+                         574 --284:         {
+                         575 --285:             /* error : Error code will be converted by _ConvertErr() function */
+                         576 --286:         }
+                         577 --287:     }
+                         578 --288:     /* end of if (FLG_OFF == skip_flg) */
+                         579 --289:     else
+                         580 --290:     {
+                         581 --291:         /* Do nothing */
+                         582 --292:     }
+                         583 --294:     return err;
+                         584 --line294
+                         585 ..lin.b7768273..433ba3bc.0_31::
+                         586 .LDWlin31:
+000001c8 1d50            587 	mov	r29,r10
+                         588 --	    .ef
+                         589 .LDW11:
+000001ca 23ff8d00        590 	ld.w	140[sp],lp
+000001ce 23ef6500        591 	ld.w	100[sp],r29
+000001d2 23e76900        592 	ld.w	104[sp],r28
+000001d6 23df6d00        593 	ld.w	108[sp],r27
+000001da 23d77100        594 	ld.w	112[sp],r26
+000001de 23cf7500        595 	ld.w	116[sp],r25
+000001e2 23c77900        596 	ld.w	120[sp],r24
+000001e6 23bf7d00        597 	ld.w	124[sp],r23
+000001ea 23b78100        598 	ld.w	128[sp],r22
+000001ee 23af8500        599 	ld.w	132[sp],r21
+000001f2 23a78900        600 	ld.w	136[sp],r20
+000001f6 031e9000        601 	addi	144,sp,sp
+                         602 .L719:
+                         603 	.jumptype return
+000001fa 7f00            604 	jmp	[lp]
+                         605 --line294
+                         606 ..lin.b7768273..433ba3bc.0_32::
+                         607 	.type	_s_03_GenerateRsaKeySub,@function
+                         608 	.size	_s_03_GenerateRsaKeySub,.-_s_03_GenerateRsaKeySub
+                         609 	.type	_s_03_GenerateRsaKeySub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.,@function
+                         610 	.size	_s_03_GenerateRsaKeySub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.,.-_s_03_GenerateRsaKeySub..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.
+                         611 	.align	2
+                         612 --_p_isd	r21	local
+                         613 --_p_isd_param	r28	local
+                         614 --_p_job_param	r20	local
+                         615 --_err	r29	local
+                         616 --_key	72[sp]	local
+                         617 --_key_properties	56[sp]	local
+                         618 --_pub_key	16[sp]	local
+                         619 --_key_len	r27	local
+                         620 --_prime_test_num	r25	local
+                         621 --_iteration_num	r24	local
+                         622 --_dummy_pub_exponent	0[sp]	local
+                         623 
+                         624 --_p_job	r23	param
+                         625 --_p_key_param	r22	param
+                         626 --_p_rsa_ctx	r26	param
+                         627 
+                         628 	.section ".bss","awb"
+                         629 .L483:
+                         630 	.type	.L483,@object
+                         631 	.size	.L483,0
+                         632 	.section ".icum_service.rodata","a"
+                         633 	.align	4
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         634 	.global	_small_E..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.
+                         635 _small_E..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.:
+00000000 03000000        636 _small_E:	.byte	3,0,0,0
+00000004 01000100        637 	.byte	1,0,1,0
+00000008 000000000000    638 	.space	164
+0000000e 000000000000 
+00000014 000000000000 
+0000001a 000000000000 
+00000020 000000000000 
+00000026 000000000000 
+0000002c 000000000000 
+00000032 000000000000 
+00000038 000000000000 
+0000003e 000000000000 
+00000044 000000000000 
+0000004a 000000000000 
+00000050 000000000000 
+00000056 000000000000 
+0000005c 000000000000 
+00000062 000000000000 
+00000068 000000000000 
+0000006e 000000000000 
+00000074 000000000000 
+0000007a 000000000000 
+00000080 000000000000 
+00000086 000000000000 
+0000008c 000000000000 
+00000092 000000000000 
+00000098 000000000000 
+0000009e 000000000000 
+000000a4 000000000000 
+000000aa 0000 
+                         639 	.type	_small_E..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.,@object
+                         640 	.size	_small_E..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate.,172
+                         641 	.type	_small_E,@object
+                         642 	.size	_small_E,172
+                         643 	.section ".ghcalltbl",""
+                         644 	.align	4
+00000000 00000000*       645 .L702:	.word	.L701
+                         646 	.type	.L702,@object
+                         647 	.size	.L702,4
+00000004 00000000*       648 .L704:	.word	.L703
+                         649 	.type	.L704,@object
+                         650 	.size	.L704,4
+00000008 00000000*       651 .L706:	.word	.L705
+                         652 	.type	.L706,@object
+                         653 	.size	.L706,4
+0000000c 00000000*       654 .L708:	.word	.L707
+                         655 	.type	.L708,@object
+                         656 	.size	.L708,4
+00000010 00000000*       657 .L710:	.word	.L709
+                         658 	.type	.L710,@object
+                         659 	.size	.L710,4
+00000014 00000000*       660 .L712:	.word	.L711
+                         661 	.type	.L712,@object
+                         662 	.size	.L712,4
+00000018 00000000*       663 .L714:	.word	.L713
+                         664 	.type	.L714,@object
+                         665 	.size	.L714,4
+0000001c 00000000*       666 .L716:	.word	.L715
+                         667 	.type	.L716,@object
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         668 	.size	.L716,4
+00000020 00000000*       669 .L718:	.word	.L717
+                         670 	.type	.L718,@object
+                         671 	.size	.L718,4
+                         672 	.section ".ghrettbl",""
+                         673 	.align	4
+00000000 00000000*       674 .L720:	.word	.L719
+                         675 	.type	.L720,@object
+                         676 	.size	.L720,4
+                         677 	.data
+                         678 	.section ".icum_service.text","ax"
+                         679 
+                         680 --295: }
+                         681 
+                         682 --297: /***************************************************************************************
+                         683 --298: * Function ID  : [ICUMFW_CD_S_03_RSA_KEY_GEN_0001]:[ICUMFW_UD_S_03_RSA_KEY_GEN_0001]
+                         684 --299: * Function name: S_03_GenerateRsaKey
+                         685 --300: * Description  : Generate RSA key service (service entry point)
+                         686 --301: * Arguments    : p_job :[in/out]    : job parameter
+                         687 --302: * Return Value : none
+                         688 --303: ***************************************************************************************/
+                         689 --304: void S_03_GenerateRsaKey(icum_job_t *p_job)
+                         690 	.align	2
+                         691 	.align	2
+                         692 	.align	2
+                         693 ..gh.f.a.2.e.1:
+                         694 	.type	..gh.f.a.2.e.1,@object
+                         695 	.size	..gh.f.a.2.e.1,0
+                         696 	.global	_S_03_GenerateRsaKey
+                         697 _S_03_GenerateRsaKey:
+000001fc 031e78f8        698 	addi	-1928,sp,sp
+00000200 63ff8507        699 	st.w	lp,1924[sp]
+00000204 63b77907        700 	st.w	r22,1912[sp]
+00000208 63d76907        701 	st.w	r26,1896[sp]
+0000020c 63ef5d07        702 	st.w	r29,1884[sp]
+00000210 63a78107        703 	st.w	r20,1920[sp]
+00000214 63af7d07        704 	st.w	r21,1916[sp]
+00000218 63bf7507        705 	st.w	r23,1908[sp]
+0000021c 63c77107        706 	st.w	r24,1904[sp]
+00000220 63cf6d07        707 	st.w	r25,1900[sp]
+00000224 63df6507        708 	st.w	r27,1892[sp]
+00000228 63e76107        709 	st.w	r28,1888[sp]
+0000022c 06d0            710 	mov	r6,r26
+0000022e 3d0600000000*   711 	mov	.L998,r29
+00000234 360600000000*   712 	mov	.L1115,r22
+                         713 --	    .bf
+                         714 .LDW21:
+                         715 --305: {
+                         716 --306:     /* retrieve the service handler */
+                         717 --307:     r_icumif_isd_t             *p_isd;
+                         718 --308:     ISD_RSA_KEY_GENERATE_t     *p_isd_param;
+                         719 --309:     job_rsa_t                  *p_job_param;
+                         720 --311:     rsa_key_t          *p_key;
+                         721 --313: /* to save stack space, use the static RAM allocated to the RSA key copy */
+                         722 --314: #if !defined(SAVE_STACK_SIZE)
+                         723 --315:     pkc_data_t          d;
+                         724 --316:     pkc_data_t          n;
+                         725 --317:     pkc_data_t          p;
+                         726 --318: #else
+                         727 --319:     static pkc_data_t   p;
+                         728 --320: #endif
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         729 --321:     pkc_data_t          q;
+                         730 --322:     uint8_t             dp[NUM256];
+                         731 --323:     uint8_t             dq[NUM256];
+                         732 --324:     uint8_t             qinv[NUM256];
+                         733 --326:     uint8_t            *p_d;
+                         734 --327:     uint8_t            *p_n;
+                         735 --328:     uint8_t            *p_p;
+                         736 --329:     uint8_t            *p_q;
+                         737 --330:     st_pkcd_rsa_key_bin_t key_param;
+                         738 --332:     uint32_t            err;
+                         739 --333:     rsa_ctx_t          *p_rsa_ctx;
+                         740 --334:     uint32_t            skip_flg;
+                         741 --336:     p_isd       = p_job->p_ISD;
+                         742 --line336
+                         743 ..lin.b7768273..31cce852.0_33::
+                         744 .LDWlin33:
+0000023a 3ac70100        745 	ld.w	0[r26],r24
+                         746 --337:     p_isd_param = &p_isd->prm.RSA_KEY_GENERATE;
+0000023e 18be2000        747 	addi	32,r24,r23
+                         748 --338:     p_job_param = &p_job->prm.job_rsa;
+00000242 1ace1000        749 	addi	16,r26,r25
+                         750 --340:     p_rsa_ctx = NULL;
+00000246 63070500        751 	st.w	zero,4[sp]
+                         752 --341:     skip_flg = FLG_OFF;
+0000024a 00da            753 	mov	0,r27
+                         754 --342: #if defined(SAVE_STACK_SIZE)
+                         755 --343:     L_Toolbox_MemSet((uint8_t *)&p, DATA_ZERO, (int16_t)sizeof(p));
+0000024c 1630            756 	mov	r22,r6
+0000024e 003a            757 	mov	0,r7
+00000250 20462404        758 	movea	1060,zero,r8
+                         759 .L1173:
+                         760 	jarl	_L_Toolbox_MemSet,lp
+                         760 <EXPANSION BEGIN>
+                         760 jarl22 _L_Toolbox_MemSet , lp 
+00000254 80ff0000*       760 <EXPANSION END>
+                         761 --344: #endif
+                         762 --346:     /* second entry */
+                         763 --347:     if (PROCESS_DF_WRITE == (uint32_t)p_job->process_phase)
+                         764 --line347
+                         765 ..lin.b7768273..31cce852.0_34::
+                         766 .LDWlin34:
+00000258 9a0f0b00        767 	ld.bu	10[r26],r1
+0000025c 610a            768 	cmp	1,r1
+0000025e fa05*           769 	bne	.L725
+                         770 --348:     {
+                         771 --349:         err = ER_MH_KEY_SYS_ERROR;
+                         772 --line349
+                         773 ..lin.b7768273..31cce852.0_35::
+                         774 .LDWlin35:
+00000260 3c0614009000    775 	mov	9437204,r28
+                         776 --350:         p_job->process_phase = ON_HOLD;
+                         777 --line350
+                         778 ..lin.b7768273..31cce852.0_36::
+                         779 .LDWlin36:
+00000266 5a070a00        780 	st.b	zero,10[r26]
+                         781 --351:         skip_flg = FLG_ON;
+0000026a 01da            782 	mov	1,r27
+                         783 .L725:
+                         784 --352:     }
+                         785 --353:     /* end of if (PROCESS_DF_WRITE == p_job->process_phase) */
+                         786 --354:     else
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         787 --355:     {
+                         788 --356:         /* do nothing. goto first entry */
+                         789 --357:     }
+                         790 --359:     if (FLG_OFF == skip_flg)
+0000026c e0d9            791 	cmp	zero,r27
+0000026e fa1d*           792 	bne	.L737
+                         793 --360:     {
+                         794 --361:         /* first entry */
+                         795 --362:         p_job_param->resource_ctrl = GET_CTX_NONE;
+                         796 --line362
+                         797 ..lin.b7768273..31cce852.0_37::
+                         798 .LDWlin37:
+00000270 79070d00        799 	st.w	zero,12[r25]
+                         800 --364:         /* check modulus size */
+                         801 --365:         if (MIN_BIT_LEN_RSA_PRIV_KEY > (uint32_t)p_isd_param->modulus_size_in_bits)
+00000274 f70f0300        802 	ld.hu	2[r23],r1
+00000278 010600fc        803 	addi	-1024,r1,zero
+0000027c c105*           804 	bl	.L728
+                         805 --366:         {
+                         806 --367:             err = ER_PARAM;
+                         807 --line367
+                         808 ..lin.b7768273..31cce852.0_38::
+                         809 .LDWlin38:
+0000027e 01e2            810 	mov	1,r28
+                         811 --368:             skip_flg = FLG_ON;
+00000280 01da            812 	mov	1,r27
+00000282 d515*           813 	br	.L737
+                         814 .L728:
+                         815 --369:         }
+                         816 --370:         else
+                         817 --371:         {
+                         818 --372:             if (MAX_BIT_LEN_RSA_PRIV_KEY < (uint32_t)p_isd_param->modulus_size_in_bits)
+                         819 --line372
+                         820 ..lin.b7768273..31cce852.0_39::
+                         821 .LDWlin39:
+00000284 f70f0300        822 	ld.hu	2[r23],r1
+00000288 0106ffef        823 	addi	-4097,r1,zero
+0000028c c905*           824 	bnl	.L731
+                         825 --373:             {
+                         826 --374:                 err = ER_PARAM;
+                         827 --line374
+                         828 ..lin.b7768273..31cce852.0_40::
+                         829 .LDWlin40:
+0000028e 01e2            830 	mov	1,r28
+                         831 --375:                 skip_flg = FLG_ON;
+00000290 01da            832 	mov	1,r27
+00000292 d50d*           833 	br	.L737
+                         834 .L731:
+                         835 --376:             }
+                         836 --377:             else
+                         837 --378:             {
+                         838 --379:                 err = ML_CTX_Get(CTX_TYPE_RSA, (uint32_t **)&p_rsa_ctx);
+                         839 --line379
+                         840 ..lin.b7768273..31cce852.0_41::
+                         841 .LDWlin41:
+00000294 233e0400        842 	movea	4,sp,r7
+00000298 0132            843 	mov	1,r6
+                         844 .L1175:
+                         845 	jarl	_ML_CTX_Get,lp
+                         845 <EXPANSION BEGIN>
+                         845 jarl22 _ML_CTX_Get , lp 
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+0000029a 80ff0000*       845 <EXPANSION END>
+0000029e 0ae0            846 	mov	r10,r28
+                         847 --380:                 if (ER_OK != err)
+                         848 --line380
+                         849 ..lin.b7768273..31cce852.0_42::
+                         850 .LDWlin42:
+000002a0 e0e1            851 	cmp	zero,r28
+000002a2 b205*           852 	be	.L734
+                         853 --381:                 {
+                         854 --382:                     /* error : Error code will be converted by _ConvertErr() function */
+                         855 --383:                     skip_flg = FLG_ON;
+                         856 --line383
+                         857 ..lin.b7768273..31cce852.0_43::
+                         858 .LDWlin43:
+000002a4 01da            859 	mov	1,r27
+000002a6 b505*           860 	br	.L737
+                         861 .L734:
+                         862 --384:                 }
+                         863 --385:                 else
+                         864 --386:                 {
+                         865 --387:                     p_job_param->resource_ctrl |= GET_CTX_RSA;
+                         866 --line387
+                         867 ..lin.b7768273..31cce852.0_44::
+                         868 .LDWlin44:
+000002a8 d9070c00        869 	set1	0,12[r25]
+                         870 .L737:
+                         871 --388:                 }
+                         872 --389:             }
+                         873 --390:             /* end of else */
+                         874 --391:         }
+                         875 --392:         /* end of else */
+                         876 --393:     }
+                         877 --394:     /* end of if (FLG_OFF == skip_flg) */
+                         878 --395:     else
+                         879 --396:     {
+                         880 --397:         /* do nothing */
+                         881 --398:     }
+                         882 --400:     if (FLG_OFF == skip_flg)
+000002ac e0d9            883 	cmp	zero,r27
+000002ae da1d*           884 	bne	.L743
+                         885 --401:     {
+                         886 --402: /* to save stack space, use the static RAM allocated to the RSA key copy */
+                         887 --403: #if !defined(SAVE_STACK_SIZE)
+                         888 --404:     p_d = &d;
+                         889 --405:     p_n = &n;
+                         890 --406:     p_p = &p;
+                         891 --407:     p_q = &q;
+                         892 --408: #else
+                         893 --409:         p_key = NULL;
+                         894 --line409
+                         895 ..lin.b7768273..31cce852.0_45::
+                         896 .LDWlin45:
+000002b0 63070100        897 	st.w	zero,0[sp]
+                         898 --410:         err = MH_KEY_GetRsaKey(p_job, KEY_GRP_RSA_ROM_PUB, (r_key_index_t)NUM0, &p_key);
+000002b4 1a30            899 	mov	r26,r6
+000002b6 063a            900 	mov	6,r7
+000002b8 0042            901 	mov	0,r8
+000002ba 234e0000        902 	movea	0,sp,r9
+                         903 .L1177:
+                         904 	jarl	_MH_KEY_GetRsaKey,lp
+                         904 <EXPANSION BEGIN>
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         904 jarl22 _MH_KEY_GetRsaKey , lp 
+000002be 80ff0000*       904 <EXPANSION END>
+000002c2 0ae0            905 	mov	r10,r28
+                         906 --411:         if (ER_OK == err)
+                         907 --line411
+                         908 ..lin.b7768273..31cce852.0_46::
+                         909 .LDWlin46:
+000002c4 e0e1            910 	cmp	zero,r28
+000002c6 8a15*           911 	bne	.L740
+                         912 --412:         {
+                         913 --413:             p_job_param->resource_ctrl |= GET_KEY_RSA;
+                         914 --line413
+                         915 ..lin.b7768273..31cce852.0_47::
+                         916 .LDWlin47:
+000002c8 d9170c00        917 	set1	2,12[r25]
+                         918 --414:             
+                         919 --415:             p_d = p_key->p_priv_exponent;
+000002cc 23f70100        920 	ld.w	0[sp],ep
+000002d0 08ad            921 	sld.w	16[ep],r21
+                         922 --416:             p_n = p_key->p_modulus;
+000002d2 23f70100        923 	ld.w	0[sp],ep
+000002d6 0ca5            924 	sld.w	24[ep],r20
+                         925 --417:             p_p = (uint8_t *)&p;
+000002d8 63b70900        926 	st.w	r22,8[sp]
+                         927 --418:             p_q = (uint8_t *)q.value;
+000002dc 235e3c03        928 	movea	828,sp,r11
+000002e0 635f0d00        929 	st.w	r11,12[sp]
+000002e4 a505*           930 	br	.L743
+                         931 .L740:
+                         932 --419:         }
+                         933 --420:         /* end of if (ER_OK == err) */
+                         934 --421:         else
+                         935 --422:         {
+                         936 --423:             skip_flg = FLG_ON;
+                         937 --line423
+                         938 ..lin.b7768273..31cce852.0_48::
+                         939 .LDWlin48:
+000002e6 01da            940 	mov	1,r27
+                         941 .L743:
+                         942 --424:         }
+                         943 --425: #endif
+                         944 --426:     }
+                         945 --427:     /* end of if (FLG_OFF == skip_flg) */
+                         946 --428:     else
+                         947 --429:     {
+                         948 --430:         /* do nothing */
+                         949 --431:     }
+                         950 --433:     if (FLG_OFF == skip_flg)
+000002e8 e0d9            951 	cmp	zero,r27
+000002ea 8a3d*           952 	bne	.L746
+                         953 --434:     {
+                         954 --435:         key_param.p_d = p_d;
+                         955 --line435
+                         956 ..lin.b7768273..31cce852.0_49::
+                         957 .LDWlin49:
+000002ec 63af1900        958 	st.w	r21,24[sp]
+                         959 --436:         key_param.p_n = p_n;
+000002f0 63a71500        960 	st.w	r20,20[sp]
+                         961 --437:         key_param.p_p = p_p;
+000002f4 235f0900        962 	ld.w	8[sp],r11
+000002f8 635f1d00        963 	st.w	r11,28[sp]
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                         964 --438:         key_param.p_q = p_q;
+000002fc 235f0d00        965 	ld.w	12[sp],r11
+00000300 635f2100        966 	st.w	r11,32[sp]
+                         967 --439:         key_param.key_length = p_key->p_properties->modulus_size_in_bytes;
+00000304 23f70100        968 	ld.w	0[sp],ep
+00000308 06f5            969 	sld.w	12[ep],ep
+0000030a 7308            970 	sld.hu	6[ep],r1
+0000030c 630f1100        971 	st.w	r1,16[sp]
+                         972 --440:         key_param.p_dp = dp;
+00000310 230e3802        973 	movea	568,sp,r1
+00000314 630f2500        974 	st.w	r1,36[sp]
+                         975 --441:         key_param.p_dq = dq;
+00000318 230e3801        976 	movea	312,sp,r1
+0000031c 630f2900        977 	st.w	r1,40[sp]
+                         978 --442:         key_param.p_qinv = qinv;
+00000320 230e3800        979 	movea	56,sp,r1
+00000324 630f2d00        980 	st.w	r1,44[sp]
+                         981 --443:         key_param.e_length = p_key->p_properties->pub_exp_size_in_bytes;
+00000328 23f70100        982 	ld.w	0[sp],ep
+0000032c 06f5            983 	sld.w	12[ep],ep
+0000032e 7508            984 	sld.hu	10[ep],r1
+00000330 630f3100        985 	st.w	r1,48[sp]
+                         986 --444:         key_param.p_e = p_key->p_pub_exponent;
+00000334 23f70100        987 	ld.w	0[sp],ep
+00000338 0a0d            988 	sld.w	20[ep],r1
+0000033a 630f3500        989 	st.w	r1,52[sp]
+                         990 --445:         err = s_03_GenerateRsaKeySub(p_job, &key_param, p_rsa_ctx);
+0000033e 23470500        991 	ld.w	4[sp],r8
+00000342 1a30            992 	mov	r26,r6
+00000344 233e1000        993 	movea	16,sp,r7
+                         994 .L1179:
+                         995 	jarl	_s_03_GenerateRsaKeySub,lp
+                         995 <EXPANSION BEGIN>
+                         995 jarl22 _s_03_GenerateRsaKeySub , lp 
+00000348 bfffb8fc*       995 <EXPANSION END>
+0000034c 0ae0            996 	mov	r10,r28
+                         997 --446: #if defined(SAVE_STACK_SIZE)
+                         998 --447:         L_Toolbox_MemSet((uint8_t *)&p, DATA_ZERO, (int16_t)sizeof(p));
+                         999 --line447
+                        1000 ..lin.b7768273..31cce852.0_50::
+                        1001 .LDWlin50:
+0000034e 1630           1002 	mov	r22,r6
+00000350 003a           1003 	mov	0,r7
+00000352 20462404       1004 	movea	1060,zero,r8
+                        1005 .L1181:
+                        1006 	jarl	_L_Toolbox_MemSet,lp
+                        1006 <EXPANSION BEGIN>
+                        1006 jarl22 _L_Toolbox_MemSet , lp 
+00000356 80ff0000*      1006 <EXPANSION END>
+                        1007 .L746:
+                        1008 --448: #endif
+                        1009 --449:     }
+                        1010 --450:     else
+                        1011 --451:     {
+                        1012 --452:         /* do nothing */
+                        1013 --453:     }
+                        1014 --455:     /*  */
+                        1015 --456:     if ((uint32_t)ER_OK != err)
+                        1016 --line456
+                        1017 ..lin.b7768273..31cce852.0_51::
+                        1018 .LDWlin51:
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+0000035a e0e1           1019 	cmp	zero,r28
+0000035c b21d*          1020 	be	.L747
+                        1021 --457:     {
+                        1022 --458:         /* error: terminate the service */
+                        1023 --459:         (void)s_03_ConvertErr(err, &p_isd->service_result);
+                        1024 --line459
+                        1025 ..lin.b7768273..31cce852.0_52::
+                        1026 .LDWlin52:
+0000035e 1c30           1027 	mov	r28,r6
+00000360 183e0c00       1028 	addi	12,r24,r7
+                        1029 .L1183:
+                        1030 	jarl	_s_03_ConvertErr,lp
+                        1030 <EXPANSION BEGIN>
+                        1030 jarl22 _s_03_ConvertErr , lp 
+00000364 80ff0000*      1030 <EXPANSION END>
+                        1031 --461: #if defined(SAVE_STACK_SIZE)
+                        1032 --462:         if (GET_KEY_RSA == ((uint32_t)p_job_param->resource_ctrl & GET_KEY_RSA))
+                        1033 --line462
+                        1034 ..lin.b7768273..31cce852.0_53::
+                        1035 .LDWlin53:
+00000368 d9d70c00       1036 	tst1	2,12[r25]
+0000036c 820d*          1037 	be	.L751
+                        1038 --463:         {
+                        1039 --464:             (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_RSA_ROM_PUB, (r_key_index_t)NUM0);
+                        1040 --line464
+                        1041 ..lin.b7768273..31cce852.0_54::
+                        1042 .LDWlin54:
+0000036e 1a30           1043 	mov	r26,r6
+00000370 063a           1044 	mov	6,r7
+00000372 0042           1045 	mov	0,r8
+                        1046 .L1185:
+                        1047 	jarl	_MH_KEY_FreeKeyCache,lp
+                        1047 <EXPANSION BEGIN>
+                        1047 jarl22 _MH_KEY_FreeKeyCache , lp 
+00000374 80ff0000*      1047 <EXPANSION END>
+                        1048 --465:             p_job_param->resource_ctrl &= ~GET_KEY_RSA;
+                        1049 --line465
+                        1050 ..lin.b7768273..31cce852.0_55::
+                        1051 .LDWlin55:
+00000378 d9970c00       1052 	clr1	2,12[r25]
+                        1053 .L751:
+                        1054 --466:         }
+                        1055 --467:         else
+                        1056 --468:         {
+                        1057 --469:             /* do nothing */
+                        1058 --470:         }
+                        1059 --471: #endif
+                        1060 --472:         if (GET_CTX_RSA == ((uint32_t)p_job_param->resource_ctrl & GET_CTX_RSA))
+0000037c d9c70c00       1061 	tst1	0,12[r25]
+00000380 f20d*          1062 	be	.L721
+                        1063 --473:         {
+                        1064 --474:             (void)ML_CTX_Free(CTX_TYPE_RSA, (uint32_t *)p_rsa_ctx);
+                        1065 --line474
+                        1066 ..lin.b7768273..31cce852.0_56::
+                        1067 .LDWlin56:
+00000382 233f0500       1068 	ld.w	4[sp],r7
+00000386 0132           1069 	mov	1,r6
+                        1070 .L1187:
+                        1071 	jarl	_ML_CTX_Free,lp
+                        1071 <EXPANSION BEGIN>
+                        1071 jarl22 _ML_CTX_Free , lp 
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+00000388 80ff0000*      1071 <EXPANSION END>
+                        1072 --475:             p_job_param->resource_ctrl &= ~GET_CTX_RSA;
+                        1073 --line475
+                        1074 ..lin.b7768273..31cce852.0_57::
+                        1075 .LDWlin57:
+0000038c d9870c00       1076 	clr1	0,12[r25]
+00000390 f505*          1077 	br	.L721
+                        1078 .L747:
+                        1079 --476:         }
+                        1080 --477:         else
+                        1081 --478:         {
+                        1082 --479:             /* do nothing */
+                        1083 --480:         }
+                        1084 --481:     }
+                        1085 --482:     /* end of if ((uint32_t)ER_OK != err) */
+                        1086 --483:     else
+                        1087 --484:     {
+                        1088 --485:         if (ON_HOLD == (uint32_t)p_job->process_phase)
+                        1089 --line485
+                        1090 ..lin.b7768273..31cce852.0_58::
+                        1091 .LDWlin58:
+00000392 9a0f0b00       1092 	ld.bu	10[r26],r1
+00000396 e009           1093 	cmp	zero,r1
+00000398 ba05*          1094 	bne	.L721
+                        1095 --486:         {
+                        1096 --487:             p_isd->service_result = SERV_OK;
+                        1097 --line487
+                        1098 ..lin.b7768273..31cce852.0_59::
+                        1099 .LDWlin59:
+0000039a 78070d00       1100 	st.w	zero,12[r24]
+                        1101 .L721:
+                        1102 --488:         }
+                        1103 --489:         else
+                        1104 --490:         {
+                        1105 --491:             /* do nothing */
+                        1106 --492:         }
+                        1107 --493:     }
+                        1108 --494: }
+                        1109 --	    .ef
+                        1110 .LDW31:
+0000039e 23ff8507       1111 	ld.w	1924[sp],lp
+000003a2 23ef5d07       1112 	ld.w	1884[sp],r29
+000003a6 23e76107       1113 	ld.w	1888[sp],r28
+000003aa 23df6507       1114 	ld.w	1892[sp],r27
+000003ae 23d76907       1115 	ld.w	1896[sp],r26
+000003b2 23cf6d07       1116 	ld.w	1900[sp],r25
+000003b6 23c77107       1117 	ld.w	1904[sp],r24
+000003ba 23bf7507       1118 	ld.w	1908[sp],r23
+000003be 23b77907       1119 	ld.w	1912[sp],r22
+000003c2 23af7d07       1120 	ld.w	1916[sp],r21
+000003c6 23a78107       1121 	ld.w	1920[sp],r20
+000003ca 031e8807       1122 	addi	1928,sp,sp
+                        1123 .L1189:
+                        1124 	.jumptype return
+000003ce 7f00           1125 	jmp	[lp]
+                        1126 --line487
+                        1127 ..lin.b7768273..31cce852.0_60::
+                        1128 	.type	_S_03_GenerateRsaKey,@function
+                        1129 	.size	_S_03_GenerateRsaKey,.-_S_03_GenerateRsaKey
+                        1130 	.align	2
+                        1131 --_p	.L1115	static
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+                        1132 --_p_isd	r24	local
+                        1133 --_p_isd_param	r23	local
+                        1134 --_p_job_param	r25	local
+                        1135 --_p_key	0[sp]	local
+                        1136 --_q	824[sp]	local
+                        1137 --_dp	568[sp]	local
+                        1138 --_dq	312[sp]	local
+                        1139 --_qinv	56[sp]	local
+                        1140 --_p_d	r21	local
+                        1141 --_p_n	r20	local
+                        1142 --_p_p	8[sp]	local
+                        1143 --_p_q	12[sp]	local
+                        1144 --_key_param	16[sp]	local
+                        1145 --_err	r28	local
+                        1146 --_p_rsa_ctx	4[sp]	local
+                        1147 --_skip_flg	r27	local
+                        1148 
+                        1149 --_p_job	r26	param
+                        1150 
+                        1151 	.section ".icum_service.data","aw"
+                        1152 .L998:
+                        1153 	.type	.L998,@object
+                        1154 	.size	.L998,0
+                        1155 	.section ".icum_service.bss","awb"
+                        1156 	.align	4
+                        1157 .L1115:
+                        1158 	.global	_p.S_03_GenerateRsaKey.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate..1
+                        1159 _p.S_03_GenerateRsaKey.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate..1:
+00000000 000000000000   1160 	.space	1060
+00000006 000000000000 
+0000000c 000000000000 
+00000012 000000000000 
+00000018 000000000000 
+0000001e 000000000000 
+00000024 000000000000 
+0000002a 000000000000 
+00000030 000000000000 
+00000036 000000000000 
+0000003c 000000000000 
+00000042 000000000000 
+00000048 000000000000 
+0000004e 000000000000 
+00000054 000000000000 
+0000005a 000000000000 
+00000060 000000000000 
+00000066 000000000000 
+0000006c 000000000000 
+00000072 000000000000 
+00000078 000000000000 
+0000007e 000000000000 
+00000084 000000000000 
+0000008a 000000000000 
+00000090 000000000000 
+00000096 000000000000 
+0000009c 000000000000 
+000000a2 000000000000 
+000000a8 000000000000 
+000000ae 000000000000 
+000000b4 000000000000 
+000000ba 000000000000 
+000000c0 000000000000 
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010k01.si
+000000c6 000000000000 
+000000cc 000000000000 
+000000d2 000000000000 
+000000d8 000000000000 
+000000de 000000000000 
+000000e4 000000000000 
+000000ea 000000000000 
+000000f0 000000000000 
+000000f6 000000000000 
+000000fc 00000000 
+                        1161 	.type	_p.S_03_GenerateRsaKey.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate..1,@object
+                        1162 	.size	_p.S_03_GenerateRsaKey.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate..1,1060
+                        1163 	.type	.L1115,@object
+                        1164 	.size	.L1115,1060
+                        1165 	.section ".ghcalltbl",""
+00000024 00000000*      1166 .L1174:	.word	.L1173
+                        1167 	.type	.L1174,@object
+                        1168 	.size	.L1174,4
+00000028 00000000*      1169 .L1176:	.word	.L1175
+                        1170 	.type	.L1176,@object
+                        1171 	.size	.L1176,4
+0000002c 00000000*      1172 .L1178:	.word	.L1177
+                        1173 	.type	.L1178,@object
+                        1174 	.size	.L1178,4
+00000030 00000000*      1175 .L1180:	.word	.L1179
+                        1176 	.type	.L1180,@object
+                        1177 	.size	.L1180,4
+00000034 00000000*      1178 .L1182:	.word	.L1181
+                        1179 	.type	.L1182,@object
+                        1180 	.size	.L1182,4
+00000038 00000000*      1181 .L1184:	.word	.L1183
+                        1182 	.type	.L1184,@object
+                        1183 	.size	.L1184,4
+0000003c 00000000*      1184 .L1186:	.word	.L1185
+                        1185 	.type	.L1186,@object
+                        1186 	.size	.L1186,4
+00000040 00000000*      1187 .L1188:	.word	.L1187
+                        1188 	.type	.L1188,@object
+                        1189 	.size	.L1188,4
+                        1190 	.section ".ghrettbl",""
+00000004 00000000*      1191 .L1190:	.word	.L1189
+                        1192 	.type	.L1190,@object
+                        1193 	.size	.L1190,4
+                        1194 	.data
+                        1195 	.section ".icum_service.text","ax"
+                        1196 
+                        1197 	.align	2
+                        1198 --_small_E	_small_E	static
+                        1199 
+                        1200 	.data
+                        1201 	.ghsnote version,30
+                        1202 	.ghsnote tools,3
+                        1203 	.ghsnote options,656
+                        1204 	.section ".icum_service.text","ax"
+                        1205 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cicum.5Ctarget.5Cu2cx.5Cbuild.5Cservice.5Cobj.5Clibs.5Cicum_s_02.5Cicum_s_03_rsa_key_generate...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBDE..0::
+                        1206 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

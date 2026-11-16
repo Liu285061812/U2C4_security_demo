@@ -210,7 +210,7 @@
   /* NVM Data Warning occurred */
 #define NVM_DATA_WARNING                ((uint8_t)0x01u)
 
-/* Garbage Collection Warning information */
+/* Flash capacity warning information */
 #define FLS_NO_FULL_WARNING             (NVM_DATA_NO_WARNING)
 #define FLS_FULL_WARNING1               ((uint8_t)0x02u)
 #define FLS_FULL_WARNING2               ((uint8_t)0x03u)
@@ -223,9 +223,9 @@
   /* MAX NVM Warning Data buffer number */
 #define NVM_WARN_DATA_NUM               (16uL)
 
-/* GC warning level default value */
-#define FLS_DEFAULT_WARNING1_LEVEL      ((uint16_t)0x000Fu)
-#define FLS_DEFAULT_WARNING2_LEVEL      ((uint16_t)0x001Eu)
+/* Flash capacity warning level default value */
+#define FLS_DEFAULT_CAPACITY_WARNING1_LEVEL ((uint16_t)0x000Fu)
+#define FLS_DEFAULT_CAPACITY_WARNING2_LEVEL ((uint16_t)0x001Eu)
 
 /* Partition Infomation */
 #define FLS_PINFO_A                 (0x00u)
@@ -252,8 +252,8 @@ typedef uint16_t flash_block_idx_t;
 /* note: a word is the smallest writable unit in Flash */
 typedef uint16_t flash_word_idx_t;
 
-/* type of garbage collection warning information */
-typedef uint8_t gc_warning_t;
+/* type of flash capacity warning information */
+typedef uint8_t fls_warning_t;
 
 /**************************************************************************************/
 /* Structure Definition                                                               */
@@ -333,8 +333,6 @@ uint32_t MM_FLS_EraseCF(r_icumif_job_id_t job_id, r_icumif_service_priority_t se
 uint32_t MM_FLS_WriteCF(r_icumif_job_id_t job_id, r_icumif_service_priority_t service_priority, uint8_t target_area,
                         const uint32_t cf_addr, uint32_t size, const uint32_t *p_data);
 
-uint32_t MM_FLS_CollectGarbage(r_icumif_job_id_t job_id);
-uint32_t MM_FLS_CollectGarbageAll(r_icumif_job_id_t job_id);
 uint32_t MM_FLS_DeleteMapData(uint8_t ds_type, uint8_t slot_num);
 uint8_t MM_FLS_GET_FormatPhase(void);
 uint8_t MM_FLS_GET_WritePhase(void);

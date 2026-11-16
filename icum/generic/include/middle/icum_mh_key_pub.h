@@ -406,6 +406,7 @@ uint32_t MH_KEY_GetAesRam_fast(uint8_t vm_id, r_key_index_t key_id, aes_key_t **
 uint32_t MH_KEY_SetAesKey(icum_job_t *p_job, set_operation_t operation, aes_key_t *p_new_key);
 uint32_t MH_KEY_GetRsaKey(icum_job_t *p_job, r_key_group_t key_group, r_key_index_t key_id, rsa_key_t **p_key);
 uint32_t MH_KEY_SetRsaKey(icum_job_t *p_job, set_operation_t operation, rsa_key_t *p_new_key);
+uint32_t MH_KEY_SetRsaRam(icum_job_t *p_job, rsa_key_t *p_new_key);
 uint32_t MH_KEY_GetEccKey(icum_job_t *p_job, r_key_group_t key_group, r_key_index_t key_id, ecc_key_t **p_key);
 uint32_t MH_KEY_SetEccKey(icum_job_t *p_job, set_operation_t operation, ecc_key_t *p_new_key);
 uint32_t MH_KEY_SetRsaPubExt(icum_job_t *p_job,

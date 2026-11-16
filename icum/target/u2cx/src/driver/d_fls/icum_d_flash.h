@@ -233,7 +233,7 @@
 #define D_FLS_DF_BANKICUM_END_ADDRESS   ((uint32_t)__ghsbegin_end_DF_BANK_ICUM)
 
 #define D_FLS_CRAM_BANK_START_ADDRESS   ((uint32_t)__ghsbegin_start_gRAM)
-#define D_FLS_CRAM_BANK_END_ADDRESS     ((uint32_t)__ghsbegin_end_gRAM)
+#define D_FLS_CRAM_BANK_END_ADDRESS     ((uint32_t)__ghsbegin_end_gRAM_BANK_A)
 
 #define D_FLS_CISM_BSS_START_ADDRESS    ((uint32_t)__ghsbegin_cism_bss)
 #define D_FLS_CISM_BSS_END_ADDRESS      ((uint32_t)__ghsend_cism_bss)
@@ -259,7 +259,7 @@
 #define ADDR_UPPER_SCF_SIDEB            (D_FLS_SCF_SIDEB_END_ADDRESS - 1uL)
 
 #define ADDR_LOWER_CRAM                 ((uint32_t)__ghsbegin_start_gRAM)
-#define ADDR_UPPER_CRAM                 (((uint32_t)__ghsbegin_end_gRAM) - 1uL)
+#define ADDR_UPPER_CRAM                 (((uint32_t)__ghsbegin_end_gRAM_BANK_A) - 1uL)
 
 #define ADDR_LOWER_SLRAM                ((uint32_t)__ghsbegin_start_iRAM_Self)
 #define ADDR_UPPER_SLRAM                (((uint32_t)__ghsbegin_end_iRAM_Self) - 1uL)
@@ -913,6 +913,7 @@ extern uint8_t  __ghsbegin_end_DF_BANK_ICUM[];
 
 extern uint8_t  __ghsbegin_start_gRAM[];
 extern uint8_t  __ghsbegin_end_gRAM[];
+extern uint8_t  __ghsbegin_end_gRAM_BANK_A[];
 extern uint8_t  __ghsbegin_start_iRAM_Self[];
 extern uint8_t  __ghsbegin_end_iRAM_Self[];
 

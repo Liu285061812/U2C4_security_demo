@@ -203,6 +203,149 @@ void vrun_cmd_init(void)
     NL(); FLUSH();
 }
 
+static void icum_service_category_menu(int category)
+{
+    int selection;
+    r_icumif_service_id_t service_id;
+
+    while (1)
+    {
+        switch (category)
+        {
+            case 1:
+                printf("\n| service_01 AES\n");
+                printf("| 1 : 0x10 AES cipher (ECB/CBC/CFB/OFB/CTR/XTS)\n");
+                printf("| 2 : 0x11 AES authenticated cipher (GCM/CCM)\n");
+                printf("| 3 : 0x12 AES CMAC\n");
+                break;
+            case 2:
+                printf("\n| service_02 RSA\n");
+                printf("| 1 : 0x20 RSA verify (PSS/PKCS1 v1.5)\n");
+                printf("| 2 : 0x21 RSA sign (PSS/PKCS1 v1.5)\n");
+                printf("| 3 : 0x22 RSA encrypt (OAEP/PKCS1 v1.5)\n");
+                printf("| 4 : 0x23 RSA decrypt (OAEP/PKCS1 v1.5)\n");
+                printf("| 5 : 0x24 RSA key generation (2048-bit)\n");
+                break;
+            case 3:
+                printf("\n| service_03 random number\n");
+                printf("| 1 : 0x30 initialize RNG\n");
+                printf("| 2 : 0x31 extend seed\n");
+                printf("| 3 : 0x32 generate random data\n");
+                break;
+            case 4:
+                printf("\n| service_04 ECC/ECDSA/ECDH/EdDSA\n");
+                printf("| 1 : 0x40 ECDSA verify\n");
+                printf("| 2 : 0x41 ECDSA sign\n");
+                printf("| 3 : 0x42 ECDH\n");
+                printf("| 4 : 0x43 EdDSA verify\n");
+                printf("| 5 : 0x44 EdDSA sign\n");
+                printf("| 6 : 0x45 ECC key generation (P-256)\n");
+                break;
+            case 5:
+                printf("\n| service_05 HASH/HMAC\n");
+                printf("| 1 : 0x50 SHA-256 hash\n");
+                printf("| 2 : 0x51 HMAC-SHA256 generation/verification\n");
+                break;
+            default:
+                return;
+        }
+
+        printf("| 0 : Back\n| ?> ");
+        vrun_console_get();
+        if (*(char *)vrun_iobuff_readparam(0) == 'q')
+        {
+            return;
+        }
+        if (sscanf(vrun_iobuff_readparam(0), "%i", &selection) != 1)
+        {
+            printf("Invalid selection.\n");
+            continue;
+        }
+        if (selection == 0)
+        {
+            return;
+        }
+
+        service_id = LAST_ITEM_SERV_ID;
+        switch (category)
+        {
+            case 1:
+                if (selection == 1) service_id = SERVICE_01_AES_CIPHER;
+                else if (selection == 2) service_id = SERVICE_01_AES_AUTH_CIPHER;
+                else if (selection == 3) service_id = SERVICE_01_AES_CMAC;
+                break;
+            case 2:
+                if (selection == 1) service_id = SERVICE_02_RSA_VERIFY;
+                else if (selection == 2) service_id = SERVICE_02_RSA_SIGN;
+                else if (selection == 3) service_id = SERVICE_02_RSA_ENCRYPT;
+                else if (selection == 4) service_id = SERVICE_02_RSA_DECRYPT;
+                else if (selection == 5) service_id = SERVICE_02_RSA_KEY_GENERATE;
+                break;
+            case 3:
+                if (selection == 1) service_id = SERVICE_03_RAND_INIT_RNG;
+                else if (selection == 2) service_id = SERVICE_03_RAND_EXTEND_SEED;
+                else if (selection == 3) service_id = SERVICE_03_RAND_RND;
+                break;
+            case 4:
+                if (selection == 1) service_id = SERVICE_04_ECDSA_VERIFY;
+                else if (selection == 2) service_id = SERVICE_04_ECDSA_SIGN;
+                else if (selection == 3) service_id = SERVICE_04_ECDH;
+                else if (selection == 4) service_id = SERVICE_04_EDDSA_VERIFY;
+                else if (selection == 5) service_id = SERVICE_04_EDDSA_SIGN;
+                else if (selection == 6) service_id = SERVICE_04_ECC_KEY_GENERATE;
+                break;
+            case 5:
+                if (selection == 1) service_id = SERVICE_05_HASH;
+                else if (selection == 2) service_id = SERVICE_05_HMAC;
+                break;
+            default:
+                break;
+        }
+        if (service_id == LAST_ITEM_SERV_ID)
+        {
+            printf("Invalid selection.\n");
+            continue;
+        }
+        icum_crypto_service_test_service(service_id);
+    }
+}
+
+static void icum_service_test_menu(void)
+{
+    int category;
+
+    while (1)
+    {
+        printf("\n| ICUM service test menu\n");
+        printf("| 1 : service_01 AES\n");
+        printf("| 2 : service_02 RSA\n");
+        printf("| 3 : service_03 random number\n");
+        printf("| 4 : service_04 ECC/ECDSA/ECDH/EdDSA\n");
+        printf("| 5 : service_05 HASH/HMAC\n");
+        printf("| 0 or q : Back\n| ?> ");
+        vrun_console_get();
+        if (*(char *)vrun_iobuff_readparam(0) == 'q')
+        {
+            return;
+        }
+        if (sscanf(vrun_iobuff_readparam(0), "%i", &category) != 1)
+        {
+            printf("Invalid selection.\n");
+            continue;
+        }
+        if (category == 0)
+        {
+            return;
+        }
+        if ((category < 1) || (category > 5))
+        {
+            printf("Invalid selection.\n");
+            continue;
+        }
+        icum_service_category_menu(category);
+    }
+}
+
 /**
  [Overview]\n
  "icum" sub-menu
@@ -240,20 +383,14 @@ VRUN_USR_CMD(4, "icum")
         }
         else
         {
-            printf("\n\n| ICU-M Hello!\n");
-            printf("|----------------\n");
-            printf("| 141  : AES plain key update\n");
-            printf("| 171  : AES cipher 128bit key\n");
-            printf("| 200  : AES Auth cipher\n");
-            printf("| 243  : AES CMAC generation\n");
-            printf("| 301  : ecc key generate\n");
-            printf("| 302  : ecdsa sign\n");
-            printf("| 303  : ecdsa verify\n");
-            printf("| 304  : measure ecc\n");
-            printf("| 305  : icum ecdh\n");
-            printf("| 306  : icum ecc_key_pair import\n");
-            printf("| 307  : icum test hash\n");
-            printf("| 308  : AES/RSA service timing test\n");
+            printf("\n\n| ICUM service tests\n");
+            printf("|-------------------\n");
+            printf("| 1    : service_01 AES\n");
+            printf("| 2    : service_02 RSA\n");
+            printf("| 3    : service_03 random number\n");
+            printf("| 4    : service_04 ECC/ECDSA/ECDH/EdDSA\n");
+            printf("| 5    : service_05 HASH/HMAC\n");
+            printf("| 308  : open categorized service menu\n");
             printf("| q    : Quit\n\n");
             printf("  ?> ");
             vrun_console_get();
@@ -269,41 +406,15 @@ VRUN_USR_CMD(4, "icum")
         }
         switch(n)
         {
-            case 141:
-                icum_key_update_test();
-                break;
-            case 171:
-                icum_aes_cipher_test();
-                break;
-            case 200:
-                icum_test_aes_auth_cipher();
-                break;
-            case 243:
-                icum_aes_cmac_test();
-                break;
-            case 301:
-                icum_ecc_key_generate();
-                break;
-            case 302:
-                icum_ecdsa_sign();
-                break;
-            case 303:
-                show_submenu_for_ecdsa_verify();
-                break;
-            case 304:
-                measure_ecc();
-                break;
-            case 305:
-                icum_ecdh();
-                break;
-            case 306:
-                icum_ecc_key_pair_import();
-                break;
-            case 307:
-                icum_test_hash();
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                icum_service_category_menu(n);
                 break;
             case 308:
-                icum_crypto_service_test();
+                icum_service_test_menu();
                 break;
             default:
                 break;

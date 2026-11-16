@@ -153,6 +153,42 @@ static uint8_t g_current_idx_ecc;
 /* Used state management counter of the ecc key in the cache */
 static uint8_t g_in_use_counter_ecc[NB_RAM_COPIES_ECC_KEYS];
 
+static uint8_t g_demo_p256_private[32] =
+{
+    0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+    0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+    0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+    0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x01u
+};
+static uint8_t g_demo_p256_public_x[32] =
+{
+    0x6Bu, 0x17u, 0xD1u, 0xF2u, 0xE1u, 0x2Cu, 0x42u, 0x47u,
+    0xF8u, 0xBCu, 0xE6u, 0xE5u, 0x63u, 0xA4u, 0x40u, 0xF2u,
+    0x77u, 0x03u, 0x7Du, 0x81u, 0x2Du, 0xEBu, 0x33u, 0xA0u,
+    0xF4u, 0xA1u, 0x39u, 0x45u, 0xD8u, 0x98u, 0xC2u, 0x96u
+};
+static uint8_t g_demo_p256_public_y[32] =
+{
+    0x4Fu, 0xE3u, 0x42u, 0xE2u, 0xFEu, 0x1Au, 0x7Fu, 0x9Bu,
+    0x8Eu, 0xE7u, 0xEBu, 0x4Au, 0x7Cu, 0x0Fu, 0x9Eu, 0x16u,
+    0x2Bu, 0xCEu, 0x33u, 0x57u, 0x6Bu, 0x31u, 0x5Eu, 0xCEu,
+    0xCBu, 0xB6u, 0x40u, 0x68u, 0x37u, 0xBFu, 0x51u, 0xF5u
+};
+static uint8_t g_demo_ed25519_private[32] =
+{
+    0x9Du, 0x61u, 0xB1u, 0x9Du, 0xEFu, 0xFDu, 0x5Au, 0x60u,
+    0xBAu, 0x84u, 0x4Au, 0xF4u, 0x92u, 0xECu, 0x2Cu, 0xC4u,
+    0x44u, 0x49u, 0xC5u, 0x69u, 0x7Bu, 0x32u, 0x69u, 0x19u,
+    0x70u, 0x3Bu, 0xACu, 0x03u, 0x1Cu, 0xAEu, 0x7Fu, 0x60u
+};
+static uint8_t g_demo_ed25519_public[32] =
+{
+    0xD7u, 0x5Au, 0x98u, 0x01u, 0x82u, 0xB1u, 0x0Au, 0xB7u,
+    0xD5u, 0x4Bu, 0xFEu, 0xD3u, 0xC9u, 0x64u, 0x07u, 0x3Au,
+    0x0Eu, 0xE1u, 0x72u, 0xF3u, 0xDAu, 0xA6u, 0x23u, 0x25u,
+    0xAFu, 0x02u, 0x1Au, 0x68u, 0xF7u, 0x07u, 0x51u, 0x1Au
+};
+
 /**********************************************************************************
 * Function
 ***********************************************************************************/
@@ -175,13 +211,18 @@ uint32_t mh_KEY_InitEcc(void)
 {
     uint32_t i;
     uint8_t key_number;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
     key_number = 0u;
+    err = mh_KEY_InitEccRamCfg();
 
     /* init ECC Config RAM item */
-    (void)mh_KEY_InitEccRamCfg();
+    if (ER_OK != err)
+    {
+        return err;
+    }
 
     /* init copy of ECC keys */
     for (i = NUM0; i < (uint32_t)NB_RAM_COPIES_ECC_KEYS; i++)
@@ -229,6 +270,7 @@ uint32_t mh_KEY_InitEccRamCfg(void)
     uint8_t key_number;
     uint8_t *p_ecc_ram_use_cnt;
     ecc_key_t *p_ecc_ram_keys;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
@@ -236,6 +278,7 @@ uint32_t mh_KEY_InitEccRamCfg(void)
     key_number = 0u;
     p_ecc_ram_use_cnt = NULL;
     p_ecc_ram_keys = NULL;
+    err = ER_OK;
 
     /* init ECC RAM key */
     for (vm_id = NUM0; vm_id < (uint32_t)ML_CFG_TOTAL_NB_VMS_MAX; vm_id++)
@@ -258,9 +301,62 @@ uint32_t mh_KEY_InitEccRamCfg(void)
             /* init the use counter */
             *p_ecc_ram_use_cnt = 0x00u;
         }
+
+        if (key_number < 2u)
+        {
+            return ER_MH_KEY_INVALID_KEY_INDEX;
+        }
+
+        p_ecc_ram_keys = ECC_RAM_KEYS(vm_id, 0u);
+        p_ecc_ram_keys->key_group = KEY_GRP_ECC_RAM;
+        p_ecc_ram_keys->key_id = 0u;
+        p_ecc_ram_keys->vm_id = (uint8_t)vm_id;
+        p_ecc_ram_keys->p_properties->ecc_curve = ECC_CURVE_NIST_P256;
+        p_ecc_ram_keys->p_properties->priv_scalar_size_in_bits = 256u;
+        p_ecc_ram_keys->p_priv_scalar->size = (uint16_t)sizeof(g_demo_p256_private);
+        p_ecc_ram_keys->p_pub_point->x.size = (uint16_t)sizeof(g_demo_p256_public_x);
+        p_ecc_ram_keys->p_pub_point->y.size = (uint16_t)sizeof(g_demo_p256_public_y);
+        err = L_Toolbox_MemCpy_Sec((uint8_t *)p_ecc_ram_keys->p_priv_scalar->value,
+                                   g_demo_p256_private, (int16_t)sizeof(g_demo_p256_private));
+        if (ER_OK == err)
+        {
+            err = L_Toolbox_MemCpy_Sec((uint8_t *)p_ecc_ram_keys->p_pub_point->x.value,
+                                       g_demo_p256_public_x, (int16_t)sizeof(g_demo_p256_public_x));
+        }
+        if (ER_OK == err)
+        {
+            err = L_Toolbox_MemCpy_Sec((uint8_t *)p_ecc_ram_keys->p_pub_point->y.value,
+                                       g_demo_p256_public_y, (int16_t)sizeof(g_demo_p256_public_y));
+        }
+        if (ER_OK != err)
+        {
+            return err;
+        }
+        p_ecc_ram_keys->availability = E_AVAILABLE;
+
+        p_ecc_ram_keys = ECC_RAM_KEYS(vm_id, 1u);
+        p_ecc_ram_keys->key_group = KEY_GRP_ECC_RAM;
+        p_ecc_ram_keys->key_id = 1u;
+        p_ecc_ram_keys->vm_id = (uint8_t)vm_id;
+        p_ecc_ram_keys->p_properties->ecc_curve = ECC_CURVE_ED25519;
+        p_ecc_ram_keys->p_properties->priv_scalar_size_in_bits = 256u;
+        p_ecc_ram_keys->p_priv_scalar->size = (uint16_t)sizeof(g_demo_ed25519_private);
+        p_ecc_ram_keys->p_pub_point->x.size = (uint16_t)sizeof(g_demo_ed25519_public);
+        err = L_Toolbox_MemCpy_Sec((uint8_t *)p_ecc_ram_keys->p_priv_scalar->value,
+                                   g_demo_ed25519_private, (int16_t)sizeof(g_demo_ed25519_private));
+        if (ER_OK == err)
+        {
+            err = L_Toolbox_MemCpy_Sec((uint8_t *)p_ecc_ram_keys->p_pub_point->x.value,
+                                       g_demo_ed25519_public, (int16_t)sizeof(g_demo_ed25519_public));
+        }
+        if (ER_OK != err)
+        {
+            return err;
+        }
+        p_ecc_ram_keys->availability = E_AVAILABLE;
     }
 
-    return (ER_OK);
+    return err;
 }
 
 /***************************************************************************************

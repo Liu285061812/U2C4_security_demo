@@ -97,33 +97,47 @@ typedef enum
     SERVICE_01_AES_CIPHER               = 0x10,
     SERVICE_01_AES_AUTH_CIPHER,
     SERVICE_01_AES_CMAC,
-    SERVICE_01_RSA_VERIFY,
-    SERVICE_01_RSA_SIGN,
-    SERVICE_01_RSA_ENCRYPT,
-    SERVICE_01_RSA_DECRYPT,
-    SERVICE_01_ECDSA_VERIFY,
-    SERVICE_01_ECDSA_SIGN,
-    SERVICE_01_ECDH,
-    SERVICE_01_HASH,
-    SERVICE_01_HMAC,
-    
-    SERVICE_02_RAND_INIT_RNG            = 0x20,
-    SERVICE_02_RAND_EXTEND_SEED,
-    SERVICE_02_RAND_RND,
+    SERVICE_02_RSA_VERIFY               = 0x20,
+    SERVICE_02_RSA_SIGN,
+    SERVICE_02_RSA_ENCRYPT,
+    SERVICE_02_RSA_DECRYPT,
+    SERVICE_02_RSA_KEY_GENERATE,
 
-    SERVICE_03_AES_KEY_UPDATE_PLAIN     = 0x30,
-    SERVICE_03_PK_IMPORT,
-    SERVICE_03_RSA_KEY_GENERATE,
-    SERVICE_03_ECC_KEY_GENERATE,
-    SERVICE_03_HMAC_IMPORT,
+    SERVICE_03_RAND_INIT_RNG            = 0x30,
+    SERVICE_03_RAND_EXTEND_SEED,
+    SERVICE_03_RAND_RND,
 
-    SERVICE_04_ICUMDF_GC                = 0x40,
+    SERVICE_04_ECDSA_VERIFY              = 0x40,
+    SERVICE_04_ECDSA_SIGN,
+    SERVICE_04_ECDH,
+    SERVICE_04_EDDSA_VERIFY,
+    SERVICE_04_EDDSA_SIGN,
+    SERVICE_04_ECC_KEY_GENERATE,
 
-    SERVICE_01_EDDSA_VERIFY             = 0x50,
-    SERVICE_01_EDDSA_SIGN,
+    SERVICE_05_HASH                     = 0x50,
+    SERVICE_05_HMAC,
 
     LAST_ITEM_SERV_ID = 0x01000000
 } r_icumif_service_id_t;
+
+/* Legacy names for existing PE test sources; removed key-management IDs are
+ * deliberately outside the supported service groups. */
+#define SERVICE_01_RSA_VERIFY           SERVICE_02_RSA_VERIFY
+#define SERVICE_01_RSA_SIGN             SERVICE_02_RSA_SIGN
+#define SERVICE_01_RSA_ENCRYPT          SERVICE_02_RSA_ENCRYPT
+#define SERVICE_01_RSA_DECRYPT          SERVICE_02_RSA_DECRYPT
+#define SERVICE_01_ECDSA_VERIFY         SERVICE_04_ECDSA_VERIFY
+#define SERVICE_01_ECDSA_SIGN           SERVICE_04_ECDSA_SIGN
+#define SERVICE_01_ECDH                 SERVICE_04_ECDH
+#define SERVICE_01_EDDSA_VERIFY         SERVICE_04_EDDSA_VERIFY
+#define SERVICE_01_EDDSA_SIGN           SERVICE_04_EDDSA_SIGN
+#define SERVICE_01_HASH                 SERVICE_05_HASH
+#define SERVICE_01_HMAC                 SERVICE_05_HMAC
+#define SERVICE_02_RAND_INIT_RNG        SERVICE_03_RAND_INIT_RNG
+#define SERVICE_02_RAND_EXTEND_SEED     SERVICE_03_RAND_EXTEND_SEED
+#define SERVICE_02_RAND_RND             SERVICE_03_RAND_RND
+#define SERVICE_03_RSA_KEY_GENERATE     SERVICE_02_RSA_KEY_GENERATE
+#define SERVICE_03_ECC_KEY_GENERATE     SERVICE_04_ECC_KEY_GENERATE
 
 /*===========================================================================*/
 /* Enumerates: ICU-M service results                                         */
@@ -521,26 +535,12 @@ typedef struct service_descriptor
     };
     union service_parameters
     {
-        ISD_SYSTEM_INIT_t               SYSTEM_INIT;
-        ISD_SYSTEM_CONFIG_t             SYSTEM_CONFIG;
-        ISD_ECC_TEST_t                  ECC_TEST;
-        ISD_GET_INFO_t                  GET_INFO;
-        ISD_ACCESS_SECREG_t             ACCESS_SECREG;
-        ISD_SECREG_ACCESS_t             SECREG_ACCESS;
-        ISD_TEMPRELEASE_UPGP_t          TEMPRELEASE_UPGP;
-        ISD_KEY_UPDATE_PLAIN_t          KEY_UPDATE_PLAIN;
-        ISD_KEY_UPDATE_SHE_t            KEY_UPDATE_SHE;
-        ISD_KEY_AES_RAM_EXP_t           RAM_KEY_EXPORT_SHE;
         ISD_AES_CIPHER_t                AES_CIPHER;
         ISD_AES_AUTH_CIPHER_t           AES_AUTH_CIPHER;
         ISD_AES_CMAC_t                  AES_CMAC;
-        ISD_KEY_MNGT_t                  KEY_MGMT;
-        ISD_CANCEL_SHE_t                CANCEL_SHE;
         ISD_RAND_INIT_t                 RAND_INIT;
         ISD_RAND_EXTEND_SEED_t          RAND_EXTEND_SEED;
         ISD_RAND_GENERATE_t             RAND_GENERATE;
-        ISD_PK_IMPORT_t                 PK_IMPORT;
-        ISD_PK_EXPORT_t                 PK_EXPORT;
         ISD_RSA_KEY_GENERATE_t          RSA_KEY_GENERATE;
         ISD_ECC_KEY_GENERATE_t          ECC_KEY_GENERATE;
         ISD_RSA_VERIFY_t                RSA_VERIFY;
@@ -553,13 +553,7 @@ typedef struct service_descriptor
         ISD_EDDSA_VERIFY_t              EDDSA_VERIFY;
         ISD_EDDSA_SIGN_t                EDDSA_SIGN;
         ISD_HASH_t                      HASH;
-        ISD_SYSTEM_INFO_t               SYSTEM_INFO;
-        ISD_USER_FLASH_MGMT_t           USER_FLASH_MGMT;
         ISD_HMAC_t                      HMAC;
-        ISD_HMAC_IMPORT_t               HMAC_IMPORT;
-        ISD_PK_IMPORT_EXT_t             PK_IMPORT_EXT;
-        ISD_CMD_DEBUG_t                 CMD_DEBUG;
-        ISD_SECURE_FLASH_MGMT_t         SECURE_FLASH_MGMT;
     } prm;
 } r_icumif_isd_t;
 
