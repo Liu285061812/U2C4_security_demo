@@ -1676,10 +1676,17 @@ static uint32_t s_01_CIPHER_AtOnceAes(icum_job_t *p_job)
                 {
                     p_ctx->result = err;
                 }
+                /* XTS completes its final block in the DTF callback. */
+                if (CIPHER_MOD_XTS == p_ISD->prm.AES_CIPHER.cipher_mode)
+                {
+                    err = p_ctx->result;
+                }
+                else
+                {
+                    err = ER_OK;
+                }
                 /* re-enable interrupts (if necessary) */
                 ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
-
-                err = ER_OK;
             }
             else
             {

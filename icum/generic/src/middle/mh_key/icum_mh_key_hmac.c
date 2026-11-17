@@ -73,14 +73,6 @@
 /**************************************************************************************/
 static uint32_t mh_KEY_UpdateHmacRam(icum_job_t *p_job, hmac_key_t *p_new_key);
 
-static uint8_t g_demo_hmac_key[MH_KEY_HMAC_KEY_SIZE_IN_BYTES] =
-{
-    0x4Du, 0x9Au, 0xB1u, 0x27u, 0x63u, 0xE8u, 0x05u, 0x7Cu,
-    0x11u, 0xF2u, 0x36u, 0xA0u, 0xC5u, 0x48u, 0x9Du, 0x72u,
-    0x83u, 0x0Bu, 0xD6u, 0x41u, 0xFAu, 0x25u, 0x6Eu, 0x19u,
-    0xB7u, 0x50u, 0x3Cu, 0xD2u, 0x8Fu, 0x64u, 0xA9u, 0x0E
-};
-
 /*===========================================================================
   Initialization of the HMAC key slots in the ICU-M
   [PUBLIC]
@@ -99,7 +91,6 @@ uint32_t mh_KEY_InitHmac(void)
     uint8_t key_number;
     uint8_t *p_hmac_use_cnt;
     hmac_key_t *p_hmac_keys;
-    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
@@ -107,7 +98,6 @@ uint32_t mh_KEY_InitHmac(void)
     key_number = 0x00u;
     p_hmac_use_cnt = NULL;
     p_hmac_keys = NULL;
-    err = ER_OK;
 
     /* init RAM HMAC key */
     for (vm_id = NUM0; vm_id < (uint32_t)ML_CFG_TOTAL_NB_VMS_MAX; vm_id++)
@@ -119,32 +109,16 @@ uint32_t mh_KEY_InitHmac(void)
             p_hmac_keys->p_key = HMAC_KEYS_VALUE(vm_id, i);
             p_hmac_use_cnt = HMAC_KEYS_INUSE_COUNT(vm_id, i);
 
-            L_Toolbox_MemSet((uint8_t *)p_hmac_keys->p_key, 0x00u,
-                             (int16_t)MH_KEY_HMAC_KEY_SIZE_IN_BYTES);
+            L_Toolbox_MemSet((uint8_t *)p_hmac_keys->p_key, 0x00u, (int16_t)sizeof(ecc_key_prop_t));
 
             /* init availability */
             p_hmac_keys->availability = E_NOT_AVAILABLE;
             /* init the use frequency counter */
             *p_hmac_use_cnt = 0x00u;
-
-            if (0u == i)
-            {
-                p_hmac_keys->key_id = (r_key_index_t)i;
-                p_hmac_keys->vm_id = (uint8_t)vm_id;
-                p_hmac_keys->key_size_in_byte = (key_size_t)sizeof(g_demo_hmac_key);
-                err = L_Toolbox_MemCpy_Sec((uint8_t *)p_hmac_keys->p_key,
-                                           g_demo_hmac_key,
-                                           (int16_t)sizeof(g_demo_hmac_key));
-                if (ER_OK != err)
-                {
-                    return err;
-                }
-                p_hmac_keys->availability = E_AVAILABLE;
-            }
         }
     }
 
-    return err;
+    return (ER_OK);
 }
 
 

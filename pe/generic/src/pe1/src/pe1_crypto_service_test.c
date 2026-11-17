@@ -139,7 +139,7 @@ static void print_test_result(const char *name, int result)
     printf("%-24s return=%d (%s)\n", name, result, result ? "PASS" : "FAIL");
 }
 
-#if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH
+#if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH || PE1_TEST_AES_CMAC
 static int check_aes_output(const char *name, const char *output_name,
                             const uint8_t *actual, const uint8_t *expected, size_t size)
 {
@@ -182,6 +182,10 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
     }
     memcpy(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input));
     memcpy(BIG_BUFFER[2], s_aes_iv, sizeof(s_aes_iv));
+    if (mode == CIPHER_MOD_XTS)
+    {
+        memset(s_ciphertext, 0, sizeof(s_aes_input));
+    }
     p_isd = test_isd();
     p_isd->service_id = SERVICE_01_AES_CIPHER;
     p_isd->prm.AES_CIPHER.direction = CIPHER_DIR_ENCRYPTION;
@@ -213,6 +217,10 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
         return 0;
     }
 
+    if (mode == CIPHER_MOD_XTS)
+    {
+        memset(s_plaintext, 0, sizeof(s_aes_input));
+    }
     p_isd = test_isd();
     p_isd->service_id = SERVICE_01_AES_CIPHER;
     p_isd->prm.AES_CIPHER.direction = CIPHER_DIR_DECRYPTION;
@@ -343,6 +351,10 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
 #if PE1_TEST_AES_CMAC
 static int test_aes_cmac(void)
 {
+    static const uint8_t expected_cmac[16] = {
+        0x29, 0x22, 0xde, 0xf9, 0x95, 0xeb, 0x80, 0x3b,
+        0x14, 0x78, 0xf7, 0x6b, 0xc7, 0xad, 0x65, 0x9c
+    };
     r_icumif_isd_t *p_isd = test_isd();
 
     memcpy(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input));
@@ -358,6 +370,11 @@ static int test_aes_cmac(void)
     p_isd->prm.AES_CMAC.job_slice = job_slice[JOB_AES];
     p_isd->prm.AES_CMAC.job_cycle = JOB_ALL_AT_ONCE;
     if (!run_service("AES-CMAC generation", p_isd))
+    {
+        return 0;
+    }
+    if (!check_aes_output("AES-CMAC generation", "tag", s_auth_tag,
+                          expected_cmac, sizeof(expected_cmac)))
     {
         return 0;
     }

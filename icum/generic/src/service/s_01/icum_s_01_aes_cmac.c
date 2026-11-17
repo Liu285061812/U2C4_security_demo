@@ -942,13 +942,13 @@ static uint32_t s_01_CMAC_AtOnceAesCmac(icum_job_t *p_job)
             if (NULL == p_ctx)
             {
                 at_once_param.async = D_AES_TRANS_SYNC;
-                g_ContextAddress    = (uint32_t)p_ctx;
+                g_ContextAddress    = AES_STATE_INIT;
             }
             else
             {
                 /* If Context is specified and All processing is specified, specify asynchronous */
                 at_once_param.async = D_AES_TRANS_ASYNC;
-                g_ContextAddress    = AES_STATE_INIT;
+                g_ContextAddress    = (uint32_t)p_ctx;
             }
             err = MM_FLS_RemapStart((uint32_t)uiMsg_logical, (uint32_t**)&at_once_param.p_aes_src);
             err = D_AES_ExecutionAtOnce(&at_once_param);
@@ -962,10 +962,10 @@ static uint32_t s_01_CMAC_AtOnceAesCmac(icum_job_t *p_job)
                 {
                     p_ctx->result = err;
                 }
+                /* Keep the context and remapping until the callback completes. */
+                err = p_ctx->result;
                 /* re-enable interrupts (if necessary) */
                 ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
-
-                err = ER_OK;
             }
             else {
                 err = g_ContextAddress;

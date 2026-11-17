@@ -3,7 +3,8 @@
  C:\ghs\comp_202354\ansi\ghs_null.h C:\ghs\comp_202354\ansi\stdarg.h \
  C:\ghs\comp_202354\ansi\ghs_valist.h C:\ghs\comp_202354\ansi\ghs_annex_k.h \
  C:\ghs\comp_202354\ansi\string.h C:\ghs\comp_202354\ansi\stdlib.h \
- C:\ghs\comp_202354\ansi\ghs_wchar.h ..\..\pe\generic\icumif\r_icumif_api.h \
+ C:\ghs\comp_202354\ansi\ghs_wchar.h C:\ghs\comp_202354\ansi\time.h \
+ ..\..\pe\generic\icumif\r_icumif_api.h \
  ..\..\pe\generic\icumif\renesas_types.h \
  ..\..\pe\generic\icumif\r_icumif_api_sys_init.h \
  ..\..\pe\generic\icumif\r_icumif_api_get_info.h \

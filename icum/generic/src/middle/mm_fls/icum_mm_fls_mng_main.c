@@ -75,11 +75,12 @@ static uint32_t mm_FLS_ExecWriteDF(r_icumif_job_id_t job_id, uint32_t size, uint
 
 static uint32_t mm_FLS_CheckBlankCheckArea(uint32_t offset, uint32_t size, uint32_t *p_result_status);
 
-static uint32_t mm_FLS_CheckFormatState(fls_format_state_t *const p_format_state,
-                                        uint32_t *const p_reserve_block);
-static uint32_t mm_FLS_CountFormatFlags(fls_block_info_t block_info[], uint32_t *const p_counter_ssec,
-                                        uint32_t *const p_counter_sses, uint32_t *const p_counter_scec,
-                                        uint32_t *const p_counter_transfer, uint32_t *const p_num_scec);
+static uint32_t mm_FLS_CheckGCFlag(gc_state_t *const p_gc_state, uint32_t *const p_gc_source_block,
+                                   uint32_t *const p_gc_reserve_block);
+static uint32_t mm_FLS_CountGCFlag(fls_block_info_t block_info[], uint32_t *const p_counter_ssec,
+                                   uint32_t *const p_counter_sses, uint32_t *const p_counter_scec,
+                                   uint32_t *const p_counter_transfer, uint32_t *const p_num_ssec,
+                                   uint32_t *const p_num_scec, uint32_t *const p_num_transfer);
 static uint32_t mm_FLS_GetAfterFBlock(const uint32_t block_num);
 static uint32_t mm_FLS_GetBeforeFBlock(const uint32_t block_num);
 static uint32_t mm_FLS_DSWrite(r_icumif_job_id_t job_id, const uint16_t size, const flash_location_t *const p_index,
@@ -108,6 +109,14 @@ static uint8_t mm_FLS_CompareValue(const uint32_t value1, const uint32_t value2,
 static uint32_t mm_FLS_IncValue(const uint32_t value, const uint32_t max_value);
 static fls_warning_t mm_FLS_GetCapacityWarning(void);
 static uint32_t mm_FLS_GetFBlock(const flash_block_idx_t block_idx);
+static uint32_t mm_FLS_GetGCState(const r_icumif_job_id_t job_id, uint32_t *const p_source_block,
+                                  uint32_t *const p_reserve_block);
+static uint32_t mm_FLS_SetTransferFlag(r_icumif_job_id_t job_id, const uint32_t source_block,
+                                       const uint32_t reserve_block, const uint8_t *p_flag_buffer);
+static uint32_t mm_FLS_EraseGCDest(const r_icumif_job_id_t job_id, const uint32_t reserve_block);
+static uint32_t mm_FLS_WriteGCDest(r_icumif_job_id_t job_id, const uint32_t reserve_block);
+static uint32_t mm_FLS_EraseGCSrc(const r_icumif_job_id_t job_id, const uint32_t source_block);
+static uint32_t mm_FLS_CollectGarbageFull(r_icumif_job_id_t job_id);
 static uint32_t mm_FLS_GetLastMapData(const flash_block_idx_t limit_index, const uint32_t reserve_block,
                                       uint32_t *const p_last_num);
 static uint32_t mm_FLS_EraseFormatFBlkSt(const r_icumif_job_id_t job_id);
@@ -121,7 +130,7 @@ static uint32_t mm_FLS_WriteFCDestBlk(r_icumif_job_id_t job_id, const flash_bloc
 static uint32_t mm_FLS_CalculateDVC(dvc_calculate_t *p_dvc_param, uint8_t *const p_phase);
 static uint32_t mm_FLS_AESDSRead(const flash_location_t *const p_index, uint8_t *p_data);
 static void mm_FLS_EndPhaseInternal(uint32_t *const p_err, uint8_t *const p_phase);
-static void mm_FLS_EndPhaseFormat(uint32_t *const p_err, uint8_t *const p_phase);
+static void mm_FLS_EndPhaseGCWarning(uint32_t *const p_err, const uint8_t *const p_phase);
 static void mm_FLS_EndPhaseWrite(uint32_t *const p_err, const uint8_t *const p_phase, const uint32_t fblock,
                                  const uint8_t flash_full);
 static void mm_FLS_EndPhaseFC(uint32_t *const p_err, const uint8_t *const p_phase);
@@ -177,9 +186,11 @@ static fls_data_map_t       g_data_map[FLS_DATA_MAP_SIZE];
 #pragma ghs section bss = default
 #endif
 
+static uint8_t              g_phase_GC          = FLS_PHASE_0;
 static uint8_t              g_phase_ExErase     = FLS_PHASE_0;
 static uint8_t              g_phase_DsWrite     = FLS_PHASE_0;
 static uint8_t              g_phase_Format      = FLS_PHASE_0;
+static uint8_t              g_phase_GCAll       = FLS_PHASE_0;
 static uint8_t              g_phase_fcopy       = FLS_PHASE_0;
 static uint32_t             g_format_block      = FLS_ZERO_U32;
 
@@ -446,7 +457,7 @@ static uint32_t mm_FLS_CheckParam(const uint8_t target_flash, const uint8_t targ
 * Function ID  : [ICUMFW_CD_MM_FlashMNG_0020]:[ICUMFW_UD_MM_FlashMNG_0020]
 * Function name: mm_FLS_InitProcessVariable
 * Description  : Initialize variable of write process
-*                 g_phase_Write,g_phase_ExWrite,g_phase_DsWrite,
+*                 g_phase_Write,g_phase_ExWrite,g_phase_GC,g_phase_DsWrite,
 *                 g_phase_ExErase,g_phase_Format,g_phase_fcopy,g_format_block
 * Arguments    : none
 * Return Value : none
@@ -455,6 +466,7 @@ static void mm_FLS_InitProcessVariable(void)
 {
     g_phase_Write       = FLS_PHASE_0;
     g_phase_ExWrite     = FLS_PHASE_0;
+    g_phase_GC          = FLS_PHASE_0;
     g_phase_DsWrite     = FLS_PHASE_0;
     g_phase_ExErase     = FLS_PHASE_0;
     g_phase_Format      = FLS_PHASE_0;
@@ -991,6 +1003,7 @@ uint32_t MM_FLS_Init(void)
 {
     /* Initialization of process variables */
     mm_FLS_InitProcessVariable();
+    g_phase_GCAll = FLS_PHASE_0;
 
     /* sets 0 data to data set elements */
     mm_FLS_ClearMap();
@@ -1329,26 +1342,46 @@ uint32_t MM_FLS_Write(r_icumif_job_id_t job_id, uint8_t target_flash, uint8_t ta
 static uint32_t mm_FLS_GetProhibitBlk(uint32_t *const p_prohibited_block)
 {
     uint32_t err;
+    uint32_t source_block;
     uint32_t reserve_block;
-    fls_format_state_t format_state;
+    fls_format_state_t gc_state;
 
+    source_block = FLS_ZERO_U32;
     reserve_block = FLS_ZERO_U32;
-    err = mm_FLS_CheckFormatState(&format_state, &reserve_block);
+    /* check flash memory status */
+    err = mm_FLS_CheckFormatState(&gc_state, &source_block, &reserve_block);
     if (ER_OK != err)
     {
         /* Do nothing */
     }
-    else if (FLS_FORMAT_NORMAL == format_state)
-    {
-        *p_prohibited_block = reserve_block;
-    }
-    else if (FLS_FORMAT_ALL_BLANK == format_state)
-    {
-        err = ER_MM_FLS_ALL_BLANK;
-    }
     else
     {
-        err = ER_MM_FLS_FORMAT_ERR;
+        /* normal end */
+        if (FLS_FORMAT_NORMAL == gc_state)
+        {
+            /* When the power is not turned off during GC */
+            *p_prohibited_block = reserve_block;
+        }
+        else if (FLS_GC_DURING_1 == gc_state)
+        {
+            /* When the power is turned off during GC (during data transfer) */
+            *p_prohibited_block = reserve_block;
+        }
+        else if (FLS_GC_DURING_2 == gc_state)
+        {
+            /* When the power is turned off during GC (during erase) */
+            *p_prohibited_block = source_block;
+        }
+        else if (FLS_FORMAT_ALL_BLANK == gc_state)
+        {
+            /* When the flash memory is not yet formatted */
+            err = ER_MM_FLS_ALL_BLANK;
+        }
+        else
+        {
+            /* When other flash states */
+            err = ER_MM_FLS_FORMAT_ERR;
+        }
     }
     return (err);
 }
@@ -1488,8 +1521,10 @@ uint32_t MM_FLS_Erase(r_icumif_job_id_t job_id, uint8_t target_flash, uint8_t ta
 
     if ((ER_OK == err) || (ER_IN_PROCESS == err))
     {
-        /* Remove the entry from the in-memory data map; no compaction is performed. */
-        err = MM_FLS_DeleteMapData(ds_type, slot_num);
+        /* Deleting entries from the data map */
+        (void)MM_FLS_DeleteMapData(ds_type, slot_num);
+        /* All block garbage collection */
+        err = mm_FLS_CollectGarbageFull(job_id);
     }
     else
     {
@@ -2539,8 +2574,9 @@ static uint32_t mm_FLS_CheckBlankCheckArea(uint32_t offset, uint32_t size, uint3
 * Function ID  : [ICUMFW_CD_MM_FlashMNG_0025]:[ICUMFW_UD_MM_FlashMNG_0025]
 * Function name: mm_FLS_CheckFormatState
 * Description  : Check block information area
-* Arguments    : (out) fls_format_state_t* p_format_state : flash format status
-*                (out) uint32_t* p_reserve_block         : reserve block number
+* Arguments    : (out) fls_state_t* p_fls_state       : GC status of flash memory
+*                (out) uint32_t* p_gc_source_block  : GC source block number
+*                (out) uint32_t* p_gc_reserve_block : GC reserve block number
 * Return Value : ER_OK
 *                ER_PARAM
 *****************************************************************************************/
@@ -2552,7 +2588,9 @@ static uint32_t mm_FLS_CheckFormatState(fls_format_state_t *const p_format_state
     uint32_t counter_sses;
     uint32_t counter_scec;
     uint32_t counter_transfer;
+    uint32_t num_ssec;
     uint32_t num_scec;
+    uint32_t num_transfer;
     fls_block_info_t block_info[FLS_NB_BLOCK];
 
     if ((NULL == p_format_state) || (NULL == p_reserve_block))
@@ -2567,7 +2605,9 @@ static uint32_t mm_FLS_CheckFormatState(fls_format_state_t *const p_format_state
                                   &counter_sses,
                                   &counter_scec,
                                   &counter_transfer,
-                                  &num_scec);
+                                  &num_ssec,
+                                  &num_scec,
+                                  &num_transfer);
     if (ER_OK != err)
     {
         return (err);
@@ -2599,19 +2639,22 @@ static uint32_t mm_FLS_CheckFormatState(fls_format_state_t *const p_format_state
 /***************************************************************************************
 * Function ID  : [ICUMFW_CD_MM_FlashMNG_0100]:[ICUMFW_UD_MM_FlashMNG_0100]
 * Function name: mm_FLS_CountFormatFlags
-* Description  : Count flash format flags
-* Arguments    : (out) fls_block_info_t block_info[]    : format flags of each physical block
+* Description  : count GC Flag status
+* Arguments    : (out) fls_block_info_t block_info[]    : GC flag status of each physical block
 *                (out) uint32_t* p_counter_ssec         : Counter of blocks in NBES set and NBEE clear
 *                (out) uint32_t* p_counter_sses         : Counter of blocks in NBES set and NBEE set
 *                (out) uint32_t* p_counter_scec         : Counter of blocks in NBES clear and NBEE clear
 *                (out) uint32_t* p_counter_transfer     : Counter of blocks in transfer set
+*                (out) uint32_t* p_num_ssec             : Physical block number in which NBES is set and NBEE is clear
 *                (out) uint32_t* p_num_scec             : Physical block number in which NBES is clear and NBEE is clear
+*                (out) uint32_t* p_num_transfer         : Physical block number in which transfer is set
 * Return Value : ER_OK
 *                ER_PARAM
 ***************************************************************************************/
 static uint32_t mm_FLS_CountFormatFlags(fls_block_info_t block_info[], uint32_t *const p_counter_ssec,
                                    uint32_t *const p_counter_sses, uint32_t *const p_counter_scec,
-                                   uint32_t *const p_counter_transfer, uint32_t *const p_num_scec)
+                                   uint32_t *const p_counter_transfer, uint32_t *const p_num_ssec,
+                                   uint32_t *const p_num_scec, uint32_t *const p_num_transfer)
 {
     uint32_t err;
     uint32_t fblock;
@@ -2659,6 +2702,7 @@ static uint32_t mm_FLS_CountFormatFlags(fls_block_info_t block_info[], uint32_t 
                         {
                             /* Counter of blocks in NBES set and NBEE clear */
                             (*p_counter_ssec)++;
+                            *p_num_ssec = fblock;
                         }
                     }
                     else
@@ -2678,6 +2722,7 @@ static uint32_t mm_FLS_CountFormatFlags(fls_block_info_t block_info[], uint32_t 
                     {
                         /* Counter of blocks in transfer set */
                         (*p_counter_transfer)++;
+                        *p_num_transfer = fblock;
                     }
                     else
                     {
@@ -3088,12 +3133,14 @@ uint32_t MM_FLS_MapDataSet(void)
     uint32_t ret_val;
     uint32_t fblock;
     uint32_t counter;
-    fls_format_state_t format_state;
+    fls_format_state_t gc_state;
+    uint32_t source_block;
     uint32_t reserve_block;
     uint32_t nocheck_block;
     fls_warning_t capacity_warning;
     uint32_t lock_handle;
 
+    source_block   = FLS_ZERO_U32;
     reserve_block  = FLS_ZERO_U32;
     lock_handle = (uint32_t)FLS_DUMMY_CTX_ID;
 
@@ -3118,21 +3165,52 @@ uint32_t MM_FLS_MapDataSet(void)
     if (ER_OK == err)
     {
         /* Check block information area */
-        err = mm_FLS_CheckFormatState(&format_state, &reserve_block);
+        err = mm_FLS_CheckFormatState(&gc_state, &source_block, &reserve_block);
         if (ER_OK != err)
         {
             /* do nothing */
         }
-        else if (FLS_FORMAT_NORMAL == format_state)
-        {
-            nocheck_block = reserve_block;
-            mm_FLS_CheckAllFlash(nocheck_block, &err);
-        }
         else
         {
-            err = (FLS_FORMAT_ALL_BLANK == format_state) ? ER_MM_FLS_ALL_BLANK : ER_MM_FLS_FORMAT_ERR;
-        }
-        (void)L_FLS_FreeFlashResource_ram(AG_L_FLS_DATA, AG_L_FLS_BANK_ICUM);
+            if ((uint32_t)FLS_FORMAT_NORMAL == (uint32_t)gc_state)
+            {
+                /* When the power is not turned off during GC */
+                nocheck_block = reserve_block;
+            }
+            else if ((uint32_t)FLS_GC_DURING_1 == (uint32_t)gc_state)
+            {
+                /* When the power is turned off during GC (during data transfer) */
+                nocheck_block = reserve_block;
+            }
+            else if ((uint32_t)FLS_GC_DURING_2 == (uint32_t)gc_state)
+            {
+                /* When the power is turned off during GC (during erase) */
+                nocheck_block = source_block;
+            }
+            else if ((uint32_t)FLS_FORMAT_ALL_BLANK == (uint32_t)gc_state)
+            {
+                /* When the flash memory is not yet formatted */
+                err = ER_MM_FLS_ALL_BLANK;
+            }
+            else
+            {
+                /* When other flash states */
+                err = ER_MM_FLS_FORMAT_ERR;
+            }
+            if (((uint32_t)FLS_FORMAT_NORMAL != (uint32_t)gc_state)
+                && ((uint32_t)FLS_GC_DURING_1 != (uint32_t)gc_state)
+                && ((uint32_t)FLS_GC_DURING_2 != (uint32_t)gc_state))
+            {
+                /* Since it is unformatted, no data map is created. */
+            }
+            else
+            {
+                /* All block flash memory mount */
+                mm_FLS_CheckAllFlash(nocheck_block, &err);
+            }
+            /* Release flash resources */
+            (void)L_FLS_FreeFlashResource_ram(AG_L_FLS_DATA, AG_L_FLS_BANK_ICUM);
+        } /* end of else */
     } /* end of if (ER_OK == err) */
     else
     {
@@ -3774,7 +3852,7 @@ static uint32_t mm_FLS_GetLastMapData(const flash_block_idx_t limit_index, const
 /***************************************************************************************
 * Function ID   : [ICUMFW_CD_MM_FlashMNG_0043]:[ICUMFW_UD_MM_FlashMNG_0043]
 * Function name : mm_FLS_GetCapacityWarning
-* Description   : Calculate the capacity warning status from the number of free logical blocks
+* Description   : Calculate the GC warning status from the number of free logical blocks
 * Arguments     : none
 * Return Value  : FLS_NO_FULL_WARNING
 *                 FLS_FULL_WARNING1
@@ -4012,7 +4090,7 @@ uint32_t MM_FLS_Format(r_icumif_job_id_t job_id)
     }
 
     /* Phase of end process */
-    mm_FLS_EndPhaseFormat(&err, &g_phase_Format);
+    mm_FLS_EndPhaseGCWarning(&err, &g_phase_Format);
     return (err);
 }
 
@@ -4164,7 +4242,7 @@ uint32_t MM_FLS_Config(void)
     fls_cfg_pointer_t cfg_pnt;
 
     cfg_pnt.p_cfg_fls = &g_fls_cfg;
-    /* Flash capacity warning threshold */
+    /* GC warning threshold */
     err = ML_CFG_GetSys(ML_CFG_SYS_FLS, cfg_pnt.p_u32);
 
     return (err);
@@ -4352,18 +4430,15 @@ static uint32_t mm_FLS_GetFCReserveBlk(const r_icumif_job_id_t job_id, uint32_t 
                                        flash_block_idx_t *const p_checked_block_idx)
 {
     uint32_t err;
-    fls_format_state_t format_state;
+    uint32_t fblock;
+    fls_format_state_t gc_state;
 
     /* get flash resource & sets FACIACC flag */
     err = mm_FLS_GetFlashResource(job_id);
     if (ER_OK == err)
     {
         /* get reserve_block */
-        err = mm_FLS_CheckFormatState(&format_state, p_reserve_block);
-        if ((ER_OK == err) && (FLS_FORMAT_NORMAL != format_state))
-        {
-            err = (FLS_FORMAT_ALL_BLANK == format_state) ? ER_MM_FLS_ALL_BLANK : ER_MM_FLS_FORMAT_ERR;
-        }
+        err = mm_FLS_CheckFormatState(&gc_state, &fblock, p_reserve_block);
         if (ER_OK != err)
         {
             g_phase_fcopy = FLS_PHASE_9;
@@ -4590,24 +4665,6 @@ static void mm_FLS_EndPhaseInternal(uint32_t *const p_err, uint8_t *const p_phas
         {
             /* do nothing */
         }
-    }
-}
-
-/***************************************************************************************
-* Function name: mm_FLS_EndPhaseFormat
-* Description  : End a secure-flash format operation
-***************************************************************************************/
-static void mm_FLS_EndPhaseFormat(uint32_t *const p_err, uint8_t *const p_phase)
-{
-    if (FLS_PHASE_9 == *p_phase)
-    {
-        *p_err = mm_FLS_ConvertionError(*p_err);
-        mm_FLS_InitProcessVariable();
-        mm_FLS_FreeFlashResource();
-    }
-    else if (ER_OK == *p_err)
-    {
-        *p_err = ER_MM_FLS_IN_PROGRESS;
     }
 }
 

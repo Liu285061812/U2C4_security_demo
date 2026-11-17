@@ -31,6 +31,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
+
 #undef NULL
 #include "r_icumif_api.h"
 #include "r_icumif_pub.h"
@@ -41,7 +43,7 @@
 #include "shared.h"
 #include "vrun.api.h"
 
-extern unsigned long long cnt_other_request_error_pe2;
+static unsigned long long cnt_other_request_error_pe2;
 
 // ********************************************************************************
 // Global variables

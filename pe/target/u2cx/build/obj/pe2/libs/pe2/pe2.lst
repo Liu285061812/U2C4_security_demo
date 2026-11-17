@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\libs\pe2\pe2.dbo -source=pe2.c -comp -o ..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\gh_0000peg1.o -list=..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\pe2.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I..\..\pe\generic\include\device -I..\..\pe\generic\include\common -I..\..\pe\generic\icumif -I..\..\pe\generic\src\l_vrun\l_vrun_cmd -I..\..\pe\target\u2cx\include -I..\..\pe\target\u2cx\src\driver\comm_drv -I..\..\pe\target\u2cx\src\shared\src -I..\..\pe\generic\src\shared\src -I..\..\pe\generic\include -I..\..\pe\generic -IC:\work\SW\RH850 DF\Icudvf\U2C\update\inc_ghs -I..\..\icum\target\u2cx\include\driver -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g4kh -nofpu_double -no_v850_simd -no_rh850_fxu -nomacro -patch_dbo=C:\work\SW\demo\Security\U2C\u2c_demo_project\pe\target\u2cx\build\obj\pe2\libs\pe2\pe2.dbo -source=pe2.c -comp -o ..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\gh_00010s41.o -list=..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\pe2.lst C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
 Source File: pe2.c
 Directory: C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
 Host OS: Windows
@@ -36,7 +36,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           21 --		..\..\pe\target\u2cx\build\obj\pe2\libs\pe2\pe2.o
                           22 --Source File:   ..\..\pe\generic\src\pe2\src\pe2.c
                           23 --Directory:     C:\work\SW\demo\Security\U2C\u2c_demo_project\top\u2c
-                          24 --Compile Date:  Fri Nov 13 15:26:48 2026
+                          24 --Compile Date:  Tue Nov 17 16:30:00 2026
                           25 --Host OS:       Win64
                           26 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           27 --Release:       Compiler v2023.5.4
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           50 --19: * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
                           51 --20: * this software. By using this software, you agree to the additional terms and conditions found by accessing the
                           52 --21: * following link:
                           53 --22: * www.renesas.com/disclaimer
@@ -78,850 +78,861 @@ Release Date: Wed Sep 06 02:00:00 2023
                           60 --31: #include <stdio.h>
                           61 --32: #include <string.h>
                           62 --33: #include <stdlib.h>
-                          63 --34: #undef NULL
-                          64 --35: #include "r_icumif_api.h"
-                          65 --36: #include "r_icumif_pub.h"
-                          66 --37: #include "pe_target_device.h"
-                          67 --38: #include "pe2.h"
-                          68 --39: #include "pe2.int.h"
-                          69 --40: #include "pe_reg.h"
-                          70 --41: #include "shared.h"
-                          71 --42: #include "vrun.api.h"
-                          72 --44: extern unsigned long long cnt_other_request_error_pe2;
-                          73 --46: // ********************************************************************************
-                          74 --47: // Global variables
-                          75 --48: // ********************************************************************************
-                          76 --49: // variable to retrieve SYNC_PE register value
-                          77 --50: uint16_t notification_from_pe1;
-                          78 --52: /*===========================================================================*/
-                          79 --53: /* Error codes in text format                                                */
-                          80 --54: /*===========================================================================*/
-                          81 --55: #ifdef UNUSED
-                          82 --56: static const char str_error[][32] = 
-                          83 --57: {
-                          84 --58:     "SERV_OK",
-                          85 --59:     "SERV_SYS_CFG_NOT_INITIALIZED",
-                          86 --60:     "SERV_ID_ERROR",
-                          87 --61:     "SERV_REQUESTER_ID_ERROR",
-                          88 --62:     "SERV_PRM_ERROR",
-                          89 --63:     "SERV_KEY_INVALID",
-                          90 --64:     "SERV_KEY_NOT_USABLE",
-                          91 --65:     "SERV_INVALID_KEY_GROUP",
-                          92 --66:     "SERV_INVALID_KEY_INDEX",
-                          93 --67:     "SERV_KEY_SLOT_EMPTY",
-                          94 --68:     "SERV_KEY_WRITE_PROTECTED",
-                          95 --69:     "SERV_KEY_UPDATE_ERROR",
-                          96 --70:     "SERV_SRC_MEM_ERROR",
-                          97 --71:     "SERV_DEST_MEM_ERROR",
-                          98 --72:     "SERV_JOB_QUEUE_FULL",
-                          99 --73:     "SERV_UNAVAILABLE",
-                         100 --74:     "SERV_INSTANCE_ALREADY_RUNNING",
-                         101 --75:     "SERV_SYS_ERROR",
-                         102 --76:     "SERV_MPU_ERROR",
-                         103 --77:     "SERV_NVM_PROG_ERROR",
-                         104 --78:     "SERV_NVM_SYS_ERROR",
-                         105 --79:     "SERV_NVM_SYS_ERROR_CRITICAL",
-                         106 --80:     "SERV_NVM_UNAVAILABLE",
-                         107 --81:     "SERV_DATA_INVALID",
-                         108 --82:     "SERV_NVM_DATA_WARNING",
-                         109 --83:     "SERV_NVM_SIZE_ERROR",
-                         110 --84:     "SERV_CRYPT_ERROR",
-                         111 --85:     "SERV_CLUSTER_VERIF_STATUS_LOCK",
+                          63 --34: #include <time.h>
+                          64 --36: #undef NULL
+                          65 --37: #include "r_icumif_api.h"
+                          66 --38: #include "r_icumif_pub.h"
+                          67 --39: #include "pe_target_device.h"
+                          68 --40: #include "pe2.h"
+                          69 --41: #include "pe2.int.h"
+                          70 --42: #include "pe_reg.h"
+                          71 --43: #include "shared.h"
+                          72 --44: #include "vrun.api.h"
+                          73 --46: static unsigned long long cnt_other_request_error_pe2;
+                          74 --48: // ********************************************************************************
+                          75 --49: // Global variables
+                          76 --50: // ********************************************************************************
+                          77 --51: // variable to retrieve SYNC_PE register value
+                          78 --52: uint16_t notification_from_pe1;
+                          79 --54: /*===========================================================================*/
+                          80 --55: /* Error codes in text format                                                */
+                          81 --56: /*===========================================================================*/
+                          82 --57: #ifdef UNUSED
+                          83 --58: static const char str_error[][32] = 
+                          84 --59: {
+                          85 --60:     "SERV_OK",
+                          86 --61:     "SERV_SYS_CFG_NOT_INITIALIZED",
+                          87 --62:     "SERV_ID_ERROR",
+                          88 --63:     "SERV_REQUESTER_ID_ERROR",
+                          89 --64:     "SERV_PRM_ERROR",
+                          90 --65:     "SERV_KEY_INVALID",
+                          91 --66:     "SERV_KEY_NOT_USABLE",
+                          92 --67:     "SERV_INVALID_KEY_GROUP",
+                          93 --68:     "SERV_INVALID_KEY_INDEX",
+                          94 --69:     "SERV_KEY_SLOT_EMPTY",
+                          95 --70:     "SERV_KEY_WRITE_PROTECTED",
+                          96 --71:     "SERV_KEY_UPDATE_ERROR",
+                          97 --72:     "SERV_SRC_MEM_ERROR",
+                          98 --73:     "SERV_DEST_MEM_ERROR",
+                          99 --74:     "SERV_JOB_QUEUE_FULL",
+                         100 --75:     "SERV_UNAVAILABLE",
+                         101 --76:     "SERV_INSTANCE_ALREADY_RUNNING",
+                         102 --77:     "SERV_SYS_ERROR",
+                         103 --78:     "SERV_MPU_ERROR",
+                         104 --79:     "SERV_NVM_PROG_ERROR",
+                         105 --80:     "SERV_NVM_SYS_ERROR",
+                         106 --81:     "SERV_NVM_SYS_ERROR_CRITICAL",
+                         107 --82:     "SERV_NVM_UNAVAILABLE",
+                         108 --83:     "SERV_DATA_INVALID",
+                         109 --84:     "SERV_NVM_DATA_WARNING",
+                         110 --85:     "SERV_NVM_SIZE_ERROR",
+                         111 --86:     "SERV_CRYPT_ERROR",
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         112 --86:     "SERV_BKGROUND_CHECK_RUNNING",
-                         113 --87:     "SERV_FW_ACTIVATION_FAILED",
-                         114 --88:     "SERV_INVALID_ENCODING_FORMAT",
-                         115 --89:     "SERV_ISD_NOT_ACCESSIBLE",
-                         116 --90:     "SERV_INVALID_DATA_SIZE",
-                         117 --91:     "SERV_KEY_GENERATION_ERROR",
-                         118 --92:     "SERV_KEY_VERIFICATION_FAIL",
-                         119 --93:     "SERV_INVALID_CURVE_ID",
-                         120 --94:     "SERV_ECC_POINT_INVALID",
-                         121 --95:     "SERV_MEMORY_FULL",
-                         122 --96:     "SERV_INIT_DELAY",
-                         123 --97:     "SERV_MYDATA_SET_EMPTY",
-                         124 --98:     "SERV_MYDATA_SLOT_EMPTY",
-                         125 --99:     "SERV_MYDATA_SIZE_ERR",
-                         126 --100:     "SERV_MYDATA_INVALID_IDX",
-                         127 --101:     "SERV_REQUEST_QUEUE_FULL",
-                         128 --102:     "SERV_INVALID_OPERATION",
-                         129 --103:     "SERV_KEY_CACHE_FULL",
-                         130 --104:     "SERV_SEQUENCE_ERROR",
-                         131 --105:     "SERV_CR_VERIFY_FAIL",
-                         132 --106:     "SERV_AES_TIMEOUT_ERROR",
-                         133 --107:     "SERV_AES_STATUS_ERROR",
-                         134 --108:     "SERV_AES_PRM_ERROR",
-                         135 --109:     "SERV_NO_COMP_TRNG",
-                         136 --110:     "SERV_NO_INIT_RNG",
-                         137 --111:     "SERV_TRN_ERROR",
-                         138 --112:     "SERV_NEED_RESEED",
-                         139 --113:     "SERV_RESTRICTED",
-                         140 --114:     "SERV_NVM_DATA_FULL_WARNING1",
-                         141 --115:     "SERV_NVM_DATA_FULL_WARNING2",
-                         142 --116: };
-                         143 --117: #endif
-                         144 --119: // ********************************************************************************
-                         145 --120: // Exception handlers
-                         146 --121: // ********************************************************************************
-                         147 --123: /*===========================================================================
-                         148 --124:   Exception handler for interrupts coming from PE1
-                         149 --125:   [PUBLIC]
-                         150 --126:   ===========================================================================*/
-                         151 --127: #pragma ghs reference INTHAND_PE1
-                         152 --128: __interrupt void INTHAND_PE1(void)
-                         153 	.text
-                         154 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBBA..0::
-                         155 	.align	2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         112 --87:     "SERV_CLUSTER_VERIF_STATUS_LOCK",
+                         113 --88:     "SERV_BKGROUND_CHECK_RUNNING",
+                         114 --89:     "SERV_FW_ACTIVATION_FAILED",
+                         115 --90:     "SERV_INVALID_ENCODING_FORMAT",
+                         116 --91:     "SERV_ISD_NOT_ACCESSIBLE",
+                         117 --92:     "SERV_INVALID_DATA_SIZE",
+                         118 --93:     "SERV_KEY_GENERATION_ERROR",
+                         119 --94:     "SERV_KEY_VERIFICATION_FAIL",
+                         120 --95:     "SERV_INVALID_CURVE_ID",
+                         121 --96:     "SERV_ECC_POINT_INVALID",
+                         122 --97:     "SERV_MEMORY_FULL",
+                         123 --98:     "SERV_INIT_DELAY",
+                         124 --99:     "SERV_MYDATA_SET_EMPTY",
+                         125 --100:     "SERV_MYDATA_SLOT_EMPTY",
+                         126 --101:     "SERV_MYDATA_SIZE_ERR",
+                         127 --102:     "SERV_MYDATA_INVALID_IDX",
+                         128 --103:     "SERV_REQUEST_QUEUE_FULL",
+                         129 --104:     "SERV_INVALID_OPERATION",
+                         130 --105:     "SERV_KEY_CACHE_FULL",
+                         131 --106:     "SERV_SEQUENCE_ERROR",
+                         132 --107:     "SERV_CR_VERIFY_FAIL",
+                         133 --108:     "SERV_AES_TIMEOUT_ERROR",
+                         134 --109:     "SERV_AES_STATUS_ERROR",
+                         135 --110:     "SERV_AES_PRM_ERROR",
+                         136 --111:     "SERV_NO_COMP_TRNG",
+                         137 --112:     "SERV_NO_INIT_RNG",
+                         138 --113:     "SERV_TRN_ERROR",
+                         139 --114:     "SERV_NEED_RESEED",
+                         140 --115:     "SERV_RESTRICTED",
+                         141 --116:     "SERV_NVM_DATA_FULL_WARNING1",
+                         142 --117:     "SERV_NVM_DATA_FULL_WARNING2",
+                         143 --118: };
+                         144 --119: #endif
+                         145 --121: // ********************************************************************************
+                         146 --122: // Exception handlers
+                         147 --123: // ********************************************************************************
+                         148 --125: /*===========================================================================
+                         149 --126:   Exception handler for interrupts coming from PE1
+                         150 --127:   [PUBLIC]
+                         151 --128:   ===========================================================================*/
+                         152 --129: #pragma ghs reference INTHAND_PE1
+                         153 --130: __interrupt void INTHAND_PE1(void)
+                         154 	.text
+                         155 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AFC108A..0::
                          156 	.align	2
-                         157 ..gh.f.a.2.e.0:
-                         158 	.type	..gh.f.a.2.e.0,@object
-                         159 	.size	..gh.f.a.2.e.0,0
-                         160 	.global	_INTIPIR2
-                         161 _INTIPIR2:
-00000000 231efcff        162 	movea	-4,sp,sp
-00000004 63ff0100        163 	st.w	lp,0[sp]
-00000008 e1476011        164 	pushsp	r1-r2
-0000000c e6476099        165 	pushsp	r6-r19
-00000010 fd4760f1        166 	pushsp	r29-ep
-                         167 	stsr	1,r6 -- EIPSW
-                         167 <EXPANSION BEGIN>
-                         167 stsr 1 , r6 , 0
-00000014 e1374000        167 <EXPANSION END>
-                         168 	stsr	0,r7 -- EIPC
+                         157 	.align	2
+                         158 ..gh.f.a.2.e.0:
+                         159 	.type	..gh.f.a.2.e.0,@object
+                         160 	.size	..gh.f.a.2.e.0,0
+                         161 	.global	_INTIPIR2
+                         162 _INTIPIR2:
+00000000 231efcff        163 	movea	-4,sp,sp
+00000004 63ff0100        164 	st.w	lp,0[sp]
+00000008 e1476011        165 	pushsp	r1-r2
+0000000c e6476099        166 	pushsp	r6-r19
+00000010 fd4760f1        167 	pushsp	r29-ep
+                         168 	stsr	1,r6 -- EIPSW
                          168 <EXPANSION BEGIN>
+                         168 stsr 1 , r6 , 0
+00000014 e1374000        168 <EXPANSION END>
+                         169 	stsr	0,r7 -- EIPC
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         168 stsr 0 , r7 , 0
-00000018 e03f4000        168 <EXPANSION END>
-                         169 	stsr	17,r8 -- CTPSW
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
                          169 <EXPANSION BEGIN>
-                         169 stsr 17 , r8 , 0
-0000001c f1474000        169 <EXPANSION END>
-                         170 	stsr	16,r9 -- CTPC
+                         169 stsr 0 , r7 , 0
+00000018 e03f4000        169 <EXPANSION END>
+                         170 	stsr	17,r8 -- CTPSW
                          170 <EXPANSION BEGIN>
-                         170 stsr 16 , r9 , 0
-00000020 f04f4000        170 <EXPANSION END>
-                         171 	stsr	6,r10 -- FPSR
+                         170 stsr 17 , r8 , 0
+0000001c f1474000        170 <EXPANSION END>
+                         171 	stsr	16,r9 -- CTPC
                          171 <EXPANSION BEGIN>
-                         171 stsr 6 , r10 , 0
-00000024 e6574000        171 <EXPANSION END>
-                         172 	stsr	7,r11 -- FPEPC
+                         171 stsr 16 , r9 , 0
+00000020 f04f4000        171 <EXPANSION END>
+                         172 	stsr	6,r10 -- FPSR
                          172 <EXPANSION BEGIN>
-                         172 stsr 7 , r11 , 0
-00000028 e75f4000        172 <EXPANSION END>
-0000002c e6476059        173 	pushsp	r6-r11
-                         174 --	    .bf
-                         175 .LDW01:
-                         176 --129: {
-                         177 --130:     r_icumif_isd_t *p_ISD;
-                         178 --132:     // retrieve the ISD to be used here
-                         179 --133:     p_ISD = (r_icumif_isd_t *)SYNC_PE;
-00000030 210600000000*   180 	mov	___ghsbegin_start_gRAM_MEV,r1
-00000036 01f62800        181 	addi	40,r1,ep
-0000003a 00ed            182 	sld.w	0[ep],r29
-                         183 --134:     
-                         184 --135:     // trigger the service request
-                         185 --136:     R_ICUMIF_ServiceRequest(p_ISD);
-                         186 --line136
-                         187 ..lin.772452c4..c8962235.0_1::
-                         188 .LDWlin1:
-0000003c 1d30            189 	mov	r29,r6
-                         190 .L50:
-                         191 	jarl	_R_ICUMIF_ServiceRequest,lp
-                         191 <EXPANSION BEGIN>
-                         191 jarl22 _R_ICUMIF_ServiceRequest , lp 
-0000003e 80ff0000*       191 <EXPANSION END>
-                         192 --138:     // done: synchronize with PE1
-                         193 --139:     SYNC_PE = 0;
-                         194 --line139
-                         195 ..lin.772452c4..c8962235.0_2::
-                         196 .LDWlin2:
-00000042 210600000000*   197 	mov	___ghsbegin_start_gRAM_MEV,r1
-00000048 01f62800        198 	addi	40,r1,ep
-0000004c 0105            199 	sst.w	zero,0[ep]
-                         200 --140: }
-                         201 --	    .ef
-                         202 .LDW11:
-                         203 --line140
-                         204 ..lin.772452c4..c8962235.0_3::
-                         205 .LDWlin3:
-0000004e e6676059        206 	popsp	r6-r11
-                         207 	ldsr	r11,7 -- FPEPC
-                         207 <EXPANSION BEGIN>
-                         207 ldsr r11 , 7 , 0
-00000052 eb3f2000        207 <EXPANSION END>
-                         208 	ldsr	r10,6 -- FPSR
+                         172 stsr 6 , r10 , 0
+00000024 e6574000        172 <EXPANSION END>
+                         173 	stsr	7,r11 -- FPEPC
+                         173 <EXPANSION BEGIN>
+                         173 stsr 7 , r11 , 0
+00000028 e75f4000        173 <EXPANSION END>
+0000002c e6476059        174 	pushsp	r6-r11
+                         175 --	    .bf
+                         176 .LDW01:
+                         177 --131: {
+                         178 --132:     r_icumif_isd_t *p_ISD;
+                         179 --134:     // retrieve the ISD to be used here
+                         180 --135:     p_ISD = (r_icumif_isd_t *)SYNC_PE;
+00000030 210600000000*   181 	mov	___ghsbegin_start_gRAM_MEV,r1
+00000036 01f62800        182 	addi	40,r1,ep
+0000003a 00ed            183 	sld.w	0[ep],r29
+                         184 --136:     
+                         185 --137:     // trigger the service request
+                         186 --138:     R_ICUMIF_ServiceRequest(p_ISD);
+                         187 --line138
+                         188 ..lin.772452c4..c8962235.0_1::
+                         189 .LDWlin1:
+0000003c 1d30            190 	mov	r29,r6
+                         191 .L50:
+                         192 	jarl	_R_ICUMIF_ServiceRequest,lp
+                         192 <EXPANSION BEGIN>
+                         192 jarl22 _R_ICUMIF_ServiceRequest , lp 
+0000003e 80ff0000*       192 <EXPANSION END>
+                         193 --140:     // done: synchronize with PE1
+                         194 --141:     SYNC_PE = 0;
+                         195 --line141
+                         196 ..lin.772452c4..c8962235.0_2::
+                         197 .LDWlin2:
+00000042 210600000000*   198 	mov	___ghsbegin_start_gRAM_MEV,r1
+00000048 01f62800        199 	addi	40,r1,ep
+0000004c 0105            200 	sst.w	zero,0[ep]
+                         201 --142: }
+                         202 --	    .ef
+                         203 .LDW11:
+                         204 --line142
+                         205 ..lin.772452c4..c8962235.0_3::
+                         206 .LDWlin3:
+0000004e e6676059        207 	popsp	r6-r11
+                         208 	ldsr	r11,7 -- FPEPC
                          208 <EXPANSION BEGIN>
+                         208 ldsr r11 , 7 , 0
+00000052 eb3f2000        208 <EXPANSION END>
+                         209 	ldsr	r10,6 -- FPSR
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         208 ldsr r10 , 6 , 0
-00000056 ea372000        208 <EXPANSION END>
-                         209 	ldsr	r9,16 -- CTPC
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
                          209 <EXPANSION BEGIN>
-                         209 ldsr r9 , 16 , 0
-0000005a e9872000        209 <EXPANSION END>
-                         210 	ldsr	r8,17 -- CTPSW
+                         209 ldsr r10 , 6 , 0
+00000056 ea372000        209 <EXPANSION END>
+                         210 	ldsr	r9,16 -- CTPC
                          210 <EXPANSION BEGIN>
-                         210 ldsr r8 , 17 , 0
-0000005e e88f2000        210 <EXPANSION END>
-00000062 e0076001        211 	di
-                         212 	ldsr	r7,0 -- EIPC
-                         212 <EXPANSION BEGIN>
-                         212 ldsr r7 , 0 , 0
-00000066 e7072000        212 <EXPANSION END>
-                         213 	ldsr	r6,1 -- EIPSW
+                         210 ldsr r9 , 16 , 0
+0000005a e9872000        210 <EXPANSION END>
+                         211 	ldsr	r8,17 -- CTPSW
+                         211 <EXPANSION BEGIN>
+                         211 ldsr r8 , 17 , 0
+0000005e e88f2000        211 <EXPANSION END>
+00000062 e0076001        212 	di
+                         213 	ldsr	r7,0 -- EIPC
                          213 <EXPANSION BEGIN>
-                         213 ldsr r6 , 1 , 0
-0000006a e60f2000        213 <EXPANSION END>
-0000006e fd6760f1        214 	popsp	r29-ep
-00000072 e6676099        215 	popsp	r6-r19
-00000076 e1676011        216 	popsp	r1-r2
-0000007a 23ff0100        217 	ld.w	0[sp],lp
-0000007e 231e0400        218 	movea	4,sp,sp
-                         219 .L52:
-00000082 e0074801        220 	eiret
-                         221 	.type	_INTIPIR2,@function
-                         222 	.size	_INTIPIR2,.-_INTIPIR2
-                         223 	.align	2
-                         224 --_p_ISD	r29	local
-                         225 
-                         226 	.section ".ghcalltbl",""
-                         227 	.align	4
-00000000 00000000*       228 .L51:	.word	.L50
-                         229 	.type	.L51,@object
-                         230 	.size	.L51,4
-                         231 	.section ".ghrettbl",""
-                         232 	.align	4
-00000000 00000000*       233 .L53:	.word	.L52
-                         234 	.type	.L53,@object
-                         235 	.size	.L53,4
-                         236 	.data
-                         237 	.text
-                         238 
-                         239 
-                         240 --142: /*===========================================================================
-                         241 --143:   Exception handler for interrupts coming from PE1
-                         242 --144:   [PUBLIC]
-                         243 --145:   ===========================================================================*/
-                         244 --146: #pragma ghs reference EIINT2
-                         245 --147: __interrupt void EIINT2(void)
-                         246 	.align	2
-                         247 	.align	2
-                         248 	.align	2
-                         249 ..gh.f.a.2.e.1:
-                         250 	.type	..gh.f.a.2.e.1,@object
-                         251 	.size	..gh.f.a.2.e.1,0
-                         252 	.global	_EIINT2
-                         253 _EIINT2:
-00000086 231efcff        254 	movea	-4,sp,sp
-0000008a 630f0100        255 	st.w	r1,0[sp]
+                         213 ldsr r7 , 0 , 0
+00000066 e7072000        213 <EXPANSION END>
+                         214 	ldsr	r6,1 -- EIPSW
+                         214 <EXPANSION BEGIN>
+                         214 ldsr r6 , 1 , 0
+0000006a e60f2000        214 <EXPANSION END>
+0000006e fd6760f1        215 	popsp	r29-ep
+00000072 e6676099        216 	popsp	r6-r19
+00000076 e1676011        217 	popsp	r1-r2
+0000007a 23ff0100        218 	ld.w	0[sp],lp
+0000007e 231e0400        219 	movea	4,sp,sp
+                         220 .L52:
+00000082 e0074801        221 	eiret
+                         222 	.type	_INTIPIR2,@function
+                         223 	.size	_INTIPIR2,.-_INTIPIR2
+                         224 	.align	2
+                         225 --_p_ISD	r29	local
+                         226 
+                         227 	.section ".bss","awb"
+                         228 	.align	8
+                         229 	.global	_cnt_other_request_error_pe2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.
+                         230 _cnt_other_request_error_pe2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.:
+00000000 000000000000    231 _cnt_other_request_error_pe2:	.space	8
+00000006 0000 
+                         232 	.type	_cnt_other_request_error_pe2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,@object
+                         233 	.size	_cnt_other_request_error_pe2..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,8
+                         234 	.type	_cnt_other_request_error_pe2,@object
+                         235 	.size	_cnt_other_request_error_pe2,8
+                         236 	.section ".ghcalltbl",""
+                         237 	.align	4
+00000000 00000000*       238 .L51:	.word	.L50
+                         239 	.type	.L51,@object
+                         240 	.size	.L51,4
+                         241 	.section ".ghrettbl",""
+                         242 	.align	4
+00000000 00000000*       243 .L53:	.word	.L52
+                         244 	.type	.L53,@object
+                         245 	.size	.L53,4
+                         246 	.data
+                         247 	.text
+                         248 
+                         249 
+                         250 --144: /*===========================================================================
+                         251 --145:   Exception handler for interrupts coming from PE1
+                         252 --146:   [PUBLIC]
+                         253 --147:   ===========================================================================*/
+                         254 --148: #pragma ghs reference EIINT2
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-0000008e 231efcff        256 	movea	-4,sp,sp
-00000092 63f70100        257 	st.w	ep,0[sp]
-                         258 	stsr	6,ep -- FPSR
-                         258 <EXPANSION BEGIN>
-                         258 stsr 6 , ep , 0
-00000096 e6f74000        258 <EXPANSION END>
-0000009a 231efcff        259 	movea	-4,sp,sp
-0000009e 63f70100        260 	st.w	ep,0[sp]
-                         261 	stsr	7,ep -- FPEPC
-                         261 <EXPANSION BEGIN>
-                         261 stsr 7 , ep , 0
-000000a2 e7f74000        261 <EXPANSION END>
-000000a6 231efcff        262 	movea	-4,sp,sp
-000000aa 63f70100        263 	st.w	ep,0[sp]
-                         264 --	    .bf
-                         265 .LDW21:
-                         266 --148: {
-                         267 --149:     volatile uint8_t lul_dummy;
-                         268 --151:     // retrieve the ST_TYPE to be started here
-                         269 --152:     notification_from_pe1 = (uint16_t)SYNC_PE;
-000000ae 210600000000*   270 	mov	___ghsbegin_start_gRAM_MEV,r1
-000000b4 01f62800        271 	addi	40,r1,ep
-000000b8 000d            272 	sld.w	0[ep],r1
-000000ba c100            273 	zxh	r1
-000000bc 3e0600000000*   274 	mov	_notification_from_pe1,ep
-000000c2 800c            275 	sst.h	r1,0[ep]
-                         276 --153:     
-                         277 --154:     // done: synchronize with PE1
-                         278 --155:     SYNC_PE = SYNC_PE_COMPLETED;
-                         279 --line155
-                         280 ..lin.772452c4..3ae277af.0_4::
-                         281 .LDWlin4:
-000000c4 210600000000*   282 	mov	___ghsbegin_start_gRAM_MEV,r1
-000000ca 01f62800        283 	addi	40,r1,ep
-000000ce 0105            284 	sst.w	zero,0[ep]
-                         285 --157:     // PE0 -> PE1 Interrupt Request Clear
-                         286 --158:     REG_PE_IPIRIPI2RCLR0 = 0x01 << (D_PEID - 1);
-                         287 --line158
-                         288 ..lin.772452c4..3ae277af.0_5::
-                         289 .LDWlin5:
-000000d0 020a            290 	mov	2,r1
-000000d2 80074d0d30f7    291 	st.b	r1,4294678612[zero]
-                         292 --159:     /* Dummy Read */
-                         293 --160:     lul_dummy = REG_PE_IPIRIPI2RCLR0;
-                         294 --line160
-                         295 ..lin.772452c4..3ae277af.0_6::
-                         296 .LDWlin6:
-000000d8 a007450d30f7    297 	ld.bu	4294678612[zero],r1
-                         298 --161:     /* Synchronize */
-                         299 --162:     __SYNCP();
-                         300 --line162
-                         301 ..lin.772452c4..3ae277af.0_7::
-                         302 .LDWlin7:
-000000de 1f00            303 	syncp
-                         304 --163: }
-                         305 --	    .ef
-                         306 .LDW31:
-000000e0 23f70100        307 	ld.w	0[sp],ep
-000000e4 231e0400        308 	movea	4,sp,sp
-                         309 	ldsr	ep,7 -- FPEPC
-                         309 <EXPANSION BEGIN>
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         255 --149: __interrupt void EIINT2(void)
+                         256 	.align	2
+                         257 	.align	2
+                         258 	.align	2
+                         259 ..gh.f.a.2.e.1:
+                         260 	.type	..gh.f.a.2.e.1,@object
+                         261 	.size	..gh.f.a.2.e.1,0
+                         262 	.global	_EIINT2
+                         263 _EIINT2:
+00000086 231efcff        264 	movea	-4,sp,sp
+0000008a 630f0100        265 	st.w	r1,0[sp]
+0000008e 231efcff        266 	movea	-4,sp,sp
+00000092 63f70100        267 	st.w	ep,0[sp]
+                         268 	stsr	6,ep -- FPSR
+                         268 <EXPANSION BEGIN>
+                         268 stsr 6 , ep , 0
+00000096 e6f74000        268 <EXPANSION END>
+0000009a 231efcff        269 	movea	-4,sp,sp
+0000009e 63f70100        270 	st.w	ep,0[sp]
+                         271 	stsr	7,ep -- FPEPC
+                         271 <EXPANSION BEGIN>
+                         271 stsr 7 , ep , 0
+000000a2 e7f74000        271 <EXPANSION END>
+000000a6 231efcff        272 	movea	-4,sp,sp
+000000aa 63f70100        273 	st.w	ep,0[sp]
+                         274 --	    .bf
+                         275 .LDW21:
+                         276 --150: {
+                         277 --151:     volatile uint8_t lul_dummy;
+                         278 --153:     // retrieve the ST_TYPE to be started here
+                         279 --154:     notification_from_pe1 = (uint16_t)SYNC_PE;
+000000ae 210600000000*   280 	mov	___ghsbegin_start_gRAM_MEV,r1
+000000b4 01f62800        281 	addi	40,r1,ep
+000000b8 000d            282 	sld.w	0[ep],r1
+000000ba c100            283 	zxh	r1
+000000bc 3e0600000000*   284 	mov	_notification_from_pe1,ep
+000000c2 800c            285 	sst.h	r1,0[ep]
+                         286 --155:     
+                         287 --156:     // done: synchronize with PE1
+                         288 --157:     SYNC_PE = SYNC_PE_COMPLETED;
+                         289 --line157
+                         290 ..lin.772452c4..3ae277af.0_4::
+                         291 .LDWlin4:
+000000c4 210600000000*   292 	mov	___ghsbegin_start_gRAM_MEV,r1
+000000ca 01f62800        293 	addi	40,r1,ep
+000000ce 0105            294 	sst.w	zero,0[ep]
+                         295 --159:     // PE0 -> PE1 Interrupt Request Clear
+                         296 --160:     REG_PE_IPIRIPI2RCLR0 = 0x01 << (D_PEID - 1);
+                         297 --line160
+                         298 ..lin.772452c4..3ae277af.0_5::
+                         299 .LDWlin5:
+000000d0 020a            300 	mov	2,r1
+000000d2 80074d0d30f7    301 	st.b	r1,4294678612[zero]
+                         302 --161:     /* Dummy Read */
+                         303 --162:     lul_dummy = REG_PE_IPIRIPI2RCLR0;
+                         304 --line162
+                         305 ..lin.772452c4..3ae277af.0_6::
+                         306 .LDWlin6:
+000000d8 a007450d30f7    307 	ld.bu	4294678612[zero],r1
+                         308 --163:     /* Synchronize */
+                         309 --164:     __SYNCP();
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         309 ldsr ep , 7 , 0
-000000e8 fe3f2000        309 <EXPANSION END>
-000000ec 23f70100        310 	ld.w	0[sp],ep
-000000f0 231e0400        311 	movea	4,sp,sp
-                         312 	ldsr	ep,6 -- FPSR
-                         312 <EXPANSION BEGIN>
-                         312 ldsr ep , 6 , 0
-000000f4 fe372000        312 <EXPANSION END>
-000000f8 23f70100        313 	ld.w	0[sp],ep
-000000fc 231e0400        314 	movea	4,sp,sp
-00000100 230f0100        315 	ld.w	0[sp],r1
-00000104 231e0400        316 	movea	4,sp,sp
-                         317 .L108:
-00000108 e0074801        318 	eiret
-                         319 	.type	_EIINT2,@function
-                         320 	.size	_EIINT2,.-_EIINT2
-                         321 	.align	2
-                         322 --_lul_dummy	r1	local
-                         323 
-                         324 	.section ".ghrettbl",""
-00000004 00000000*       325 .L109:	.word	.L108
-                         326 	.type	.L109,@object
-                         327 	.size	.L109,4
-                         328 	.data
-                         329 	.text
-                         330 
-                         331 
-                         332 --165: /*===========================================================================
-                         333 --166:   Exception handler for interrupts coming from ICUP
-                         334 --167:   [PUBLIC]
-                         335 --168:   ===========================================================================*/
-                         336 --169: #pragma ghs reference INTHAND_ICUP
-                         337 --170: __interrupt void INTHAND_ICUP(void)
-                         338 	.align	2
-                         339 	.align	2
-                         340 	.align	2
-                         341 ..gh.f.a.2.e.2:
-                         342 	.type	..gh.f.a.2.e.2,@object
-                         343 	.size	..gh.f.a.2.e.2,0
-                         344 	.global	_INTIPIRINTCH_ICUP
-                         345 _INTIPIRINTCH_ICUP:
-0000010c 231efcff        346 	movea	-4,sp,sp
-00000110 63ff0100        347 	st.w	lp,0[sp]
-00000114 e1476011        348 	pushsp	r1-r2
-00000118 e6476099        349 	pushsp	r6-r19
-0000011c 231efcff        350 	movea	-4,sp,sp
-00000120 63f70100        351 	st.w	ep,0[sp]
-                         352 	stsr	1,r6 -- EIPSW
-                         352 <EXPANSION BEGIN>
-                         352 stsr 1 , r6 , 0
-00000124 e1374000        352 <EXPANSION END>
-                         353 	stsr	0,r7 -- EIPC
-                         353 <EXPANSION BEGIN>
-                         353 stsr 0 , r7 , 0
-00000128 e03f4000        353 <EXPANSION END>
-                         354 	stsr	17,r8 -- CTPSW
-                         354 <EXPANSION BEGIN>
-                         354 stsr 17 , r8 , 0
-0000012c f1474000        354 <EXPANSION END>
-                         355 	stsr	16,r9 -- CTPC
-                         355 <EXPANSION BEGIN>
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         310 --line164
+                         311 ..lin.772452c4..3ae277af.0_7::
+                         312 .LDWlin7:
+000000de 1f00            313 	syncp
+                         314 --165: }
+                         315 --	    .ef
+                         316 .LDW31:
+000000e0 23f70100        317 	ld.w	0[sp],ep
+000000e4 231e0400        318 	movea	4,sp,sp
+                         319 	ldsr	ep,7 -- FPEPC
+                         319 <EXPANSION BEGIN>
+                         319 ldsr ep , 7 , 0
+000000e8 fe3f2000        319 <EXPANSION END>
+000000ec 23f70100        320 	ld.w	0[sp],ep
+000000f0 231e0400        321 	movea	4,sp,sp
+                         322 	ldsr	ep,6 -- FPSR
+                         322 <EXPANSION BEGIN>
+                         322 ldsr ep , 6 , 0
+000000f4 fe372000        322 <EXPANSION END>
+000000f8 23f70100        323 	ld.w	0[sp],ep
+000000fc 231e0400        324 	movea	4,sp,sp
+00000100 230f0100        325 	ld.w	0[sp],r1
+00000104 231e0400        326 	movea	4,sp,sp
+                         327 .L108:
+00000108 e0074801        328 	eiret
+                         329 	.type	_EIINT2,@function
+                         330 	.size	_EIINT2,.-_EIINT2
+                         331 	.align	2
+                         332 --_lul_dummy	r1	local
+                         333 
+                         334 	.section ".ghrettbl",""
+00000004 00000000*       335 .L109:	.word	.L108
+                         336 	.type	.L109,@object
+                         337 	.size	.L109,4
+                         338 	.data
+                         339 	.text
+                         340 
+                         341 
+                         342 --167: /*===========================================================================
+                         343 --168:   Exception handler for interrupts coming from ICUP
+                         344 --169:   [PUBLIC]
+                         345 --170:   ===========================================================================*/
+                         346 --171: #pragma ghs reference INTHAND_ICUP
+                         347 --172: __interrupt void INTHAND_ICUP(void)
+                         348 	.align	2
+                         349 	.align	2
+                         350 	.align	2
+                         351 ..gh.f.a.2.e.2:
+                         352 	.type	..gh.f.a.2.e.2,@object
+                         353 	.size	..gh.f.a.2.e.2,0
+                         354 	.global	_INTIPIRINTCH_ICUP
+                         355 _INTIPIRINTCH_ICUP:
+0000010c 231efcff        356 	movea	-4,sp,sp
+00000110 63ff0100        357 	st.w	lp,0[sp]
+00000114 e1476011        358 	pushsp	r1-r2
+00000118 e6476099        359 	pushsp	r6-r19
+0000011c 231efcff        360 	movea	-4,sp,sp
+00000120 63f70100        361 	st.w	ep,0[sp]
+                         362 	stsr	1,r6 -- EIPSW
+                         362 <EXPANSION BEGIN>
+                         362 stsr 1 , r6 , 0
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         355 stsr 16 , r9 , 0
-00000130 f04f4000        355 <EXPANSION END>
-                         356 	stsr	6,r10 -- FPSR
-                         356 <EXPANSION BEGIN>
-                         356 stsr 6 , r10 , 0
-00000134 e6574000        356 <EXPANSION END>
-                         357 	stsr	7,r11 -- FPEPC
-                         357 <EXPANSION BEGIN>
-                         357 stsr 7 , r11 , 0
-00000138 e75f4000        357 <EXPANSION END>
-0000013c e6476059        358 	pushsp	r6-r11
-                         359 --	    .bf
-                         360 .LDW41:
-                         361 --171: {
-                         362 --172:     // handle the response
-                         363 --173:     R_ICUMIF_ServiceResponse();
-                         364 .L136:
-                         365 	jarl	_R_ICUMIF_ServiceResponse,lp
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+00000124 e1374000        362 <EXPANSION END>
+                         363 	stsr	0,r7 -- EIPC
+                         363 <EXPANSION BEGIN>
+                         363 stsr 0 , r7 , 0
+00000128 e03f4000        363 <EXPANSION END>
+                         364 	stsr	17,r8 -- CTPSW
+                         364 <EXPANSION BEGIN>
+                         364 stsr 17 , r8 , 0
+0000012c f1474000        364 <EXPANSION END>
+                         365 	stsr	16,r9 -- CTPC
                          365 <EXPANSION BEGIN>
-                         365 jarl22 _R_ICUMIF_ServiceResponse , lp 
-00000140 80ff0000*       365 <EXPANSION END>
-                         366 --174: }
-                         367 --	    .ef
-                         368 .LDW51:
-                         369 --line174
-                         370 ..lin.772452c4..43955b89.0_8::
-                         371 .LDWlin8:
-00000144 e6676059        372 	popsp	r6-r11
-                         373 	ldsr	r11,7 -- FPEPC
-                         373 <EXPANSION BEGIN>
-                         373 ldsr r11 , 7 , 0
-00000148 eb3f2000        373 <EXPANSION END>
-                         374 	ldsr	r10,6 -- FPSR
-                         374 <EXPANSION BEGIN>
-                         374 ldsr r10 , 6 , 0
-0000014c ea372000        374 <EXPANSION END>
-                         375 	ldsr	r9,16 -- CTPC
+                         365 stsr 16 , r9 , 0
+00000130 f04f4000        365 <EXPANSION END>
+                         366 	stsr	6,r10 -- FPSR
+                         366 <EXPANSION BEGIN>
+                         366 stsr 6 , r10 , 0
+00000134 e6574000        366 <EXPANSION END>
+                         367 	stsr	7,r11 -- FPEPC
+                         367 <EXPANSION BEGIN>
+                         367 stsr 7 , r11 , 0
+00000138 e75f4000        367 <EXPANSION END>
+0000013c e6476059        368 	pushsp	r6-r11
+                         369 --	    .bf
+                         370 .LDW41:
+                         371 --173: {
+                         372 --174:     // handle the response
+                         373 --175:     R_ICUMIF_ServiceResponse();
+                         374 .L136:
+                         375 	jarl	_R_ICUMIF_ServiceResponse,lp
                          375 <EXPANSION BEGIN>
-                         375 ldsr r9 , 16 , 0
-00000150 e9872000        375 <EXPANSION END>
-                         376 	ldsr	r8,17 -- CTPSW
-                         376 <EXPANSION BEGIN>
-                         376 ldsr r8 , 17 , 0
-00000154 e88f2000        376 <EXPANSION END>
-00000158 e0076001        377 	di
-                         378 	ldsr	r7,0 -- EIPC
-                         378 <EXPANSION BEGIN>
-                         378 ldsr r7 , 0 , 0
-0000015c e7072000        378 <EXPANSION END>
-                         379 	ldsr	r6,1 -- EIPSW
-                         379 <EXPANSION BEGIN>
-                         379 ldsr r6 , 1 , 0
-00000160 e60f2000        379 <EXPANSION END>
-00000164 23f70100        380 	ld.w	0[sp],ep
-00000168 231e0400        381 	movea	4,sp,sp
-0000016c e6676099        382 	popsp	r6-r19
-00000170 e1676011        383 	popsp	r1-r2
-00000174 23ff0100        384 	ld.w	0[sp],lp
-00000178 231e0400        385 	movea	4,sp,sp
-                         386 .L138:
-0000017c e0074801        387 	eiret
+                         375 jarl22 _R_ICUMIF_ServiceResponse , lp 
+00000140 80ff0000*       375 <EXPANSION END>
+                         376 --176: }
+                         377 --	    .ef
+                         378 .LDW51:
+                         379 --line176
+                         380 ..lin.772452c4..43955b89.0_8::
+                         381 .LDWlin8:
+00000144 e6676059        382 	popsp	r6-r11
+                         383 	ldsr	r11,7 -- FPEPC
+                         383 <EXPANSION BEGIN>
+                         383 ldsr r11 , 7 , 0
+00000148 eb3f2000        383 <EXPANSION END>
+                         384 	ldsr	r10,6 -- FPSR
+                         384 <EXPANSION BEGIN>
+                         384 ldsr r10 , 6 , 0
+0000014c ea372000        384 <EXPANSION END>
+                         385 	ldsr	r9,16 -- CTPC
+                         385 <EXPANSION BEGIN>
+                         385 ldsr r9 , 16 , 0
+00000150 e9872000        385 <EXPANSION END>
+                         386 	ldsr	r8,17 -- CTPSW
+                         386 <EXPANSION BEGIN>
+                         386 ldsr r8 , 17 , 0
+00000154 e88f2000        386 <EXPANSION END>
+00000158 e0076001        387 	di
+                         388 	ldsr	r7,0 -- EIPC
+                         388 <EXPANSION BEGIN>
+                         388 ldsr r7 , 0 , 0
+0000015c e7072000        388 <EXPANSION END>
+                         389 	ldsr	r6,1 -- EIPSW
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         388 	.type	_INTIPIRINTCH_ICUP,@function
-                         389 	.size	_INTIPIRINTCH_ICUP,.-_INTIPIRINTCH_ICUP
-                         390 	.align	2
-                         391 
-                         392 	.section ".ghcalltbl",""
-00000004 00000000*       393 .L137:	.word	.L136
-                         394 	.type	.L137,@object
-                         395 	.size	.L137,4
-                         396 	.section ".ghrettbl",""
-00000008 00000000*       397 .L139:	.word	.L138
-                         398 	.type	.L139,@object
-                         399 	.size	.L139,4
-                         400 	.data
-                         401 	.text
-                         402 
-                         403 	.section ".pe_rom","ax"
-                         404 
-                         405 --176: /*===========================================================================
-                         406 --177:   Waiting for the ICU-M firmware system to be initialized
-                         407 --178:   RAM execution required! (FPSYS initialized on ICU-M side)
-                         408 --179:   [PUBLIC]
-                         409 --180:   ===========================================================================*/
-                         410 --181: #pragma ghs section text=".pe_rom"
-                         411 --182: static void wait_for_icu(void)
-                         412 	.align	2
-                         413 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBBA..1::
-                         414 	.align	2
-                         415 	.align	2
-                         416 ..gh.f.a.2.e.3:
-                         417 	.type	..gh.f.a.2.e.3,@object
-                         418 	.size	..gh.f.a.2.e.3,0
-                         419 	.global	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.
-                         420 _wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.:
-                         421 _wait_for_icu:
-00000000 581a            422 	add	-8,sp
-00000002 63ff0500        423 	st.w	lp,4[sp]
-00000006 63ef0100        424 	st.w	r29,0[sp]
-                         425 --	    .bf
-                         426 .LDW61:
-                         427 --183: {
-                         428 --184:     r_icumif_sts_t *ptrICU2PES;
-                         429 --185:     // in debug mode, PEs are released after reset in all conditions
-                         430 --186:     // wait until the ICU-M system intialization is complete
-                         431 --187:     do
-0000000a 0000            432 	nop
-                         433 .L144:
-                         434 --188:     {
-                         435 --189:         ptrICU2PES = R_ICUMIF_GetStatus();
-                         436 .L178:
-                         437 	jarl	_R_ICUMIF_GetStatus,lp
-                         437 <EXPANSION BEGIN>
-                         437 jarl22 _R_ICUMIF_GetStatus , lp 
-0000000c 80ff0000*       437 <EXPANSION END>
-00000010 0ae8            438 	mov	r10,r29
-                         439 --190:         __asm("snooze");
-                         440 --line190
-                         441 ..lin.772452c4..fe8d4c3f.1_9::
-                         442 .LDWlin9:
-                         443 ..gh.beginasm.4:
-                         444 	.type	..gh.beginasm.4,@object
-                         445 	.size	..gh.beginasm.4,0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         389 <EXPANSION BEGIN>
+                         389 ldsr r6 , 1 , 0
+00000160 e60f2000        389 <EXPANSION END>
+00000164 23f70100        390 	ld.w	0[sp],ep
+00000168 231e0400        391 	movea	4,sp,sp
+0000016c e6676099        392 	popsp	r6-r19
+00000170 e1676011        393 	popsp	r1-r2
+00000174 23ff0100        394 	ld.w	0[sp],lp
+00000178 231e0400        395 	movea	4,sp,sp
+                         396 .L138:
+0000017c e0074801        397 	eiret
+                         398 	.type	_INTIPIRINTCH_ICUP,@function
+                         399 	.size	_INTIPIRINTCH_ICUP,.-_INTIPIRINTCH_ICUP
+                         400 	.align	2
+                         401 
+                         402 	.section ".ghcalltbl",""
+00000004 00000000*       403 .L137:	.word	.L136
+                         404 	.type	.L137,@object
+                         405 	.size	.L137,4
+                         406 	.section ".ghrettbl",""
+00000008 00000000*       407 .L139:	.word	.L138
+                         408 	.type	.L139,@object
+                         409 	.size	.L139,4
+                         410 	.data
+                         411 	.text
+                         412 
+                         413 	.section ".pe_rom","ax"
+                         414 
+                         415 --178: /*===========================================================================
+                         416 --179:   Waiting for the ICU-M firmware system to be initialized
+                         417 --180:   RAM execution required! (FPSYS initialized on ICU-M side)
+                         418 --181:   [PUBLIC]
+                         419 --182:   ===========================================================================*/
+                         420 --183: #pragma ghs section text=".pe_rom"
+                         421 --184: static void wait_for_icu(void)
+                         422 	.align	2
+                         423 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AFC108A..1::
+                         424 	.align	2
+                         425 	.align	2
+                         426 ..gh.f.a.2.e.3:
+                         427 	.type	..gh.f.a.2.e.3,@object
+                         428 	.size	..gh.f.a.2.e.3,0
+                         429 	.global	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.
+                         430 _wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.:
+                         431 _wait_for_icu:
+00000000 581a            432 	add	-8,sp
+00000002 63ff0500        433 	st.w	lp,4[sp]
+00000006 63ef0100        434 	st.w	r29,0[sp]
+                         435 --	    .bf
+                         436 .LDW61:
+                         437 --185: {
+                         438 --186:     r_icumif_sts_t *ptrICU2PES;
+                         439 --187:     // in debug mode, PEs are released after reset in all conditions
+                         440 --188:     // wait until the ICU-M system intialization is complete
+                         441 --189:     do
+0000000a 0000            442 	nop
+                         443 .L144:
+                         444 --190:     {
+                         445 --191:         ptrICU2PES = R_ICUMIF_GetStatus();
+                         446 .L178:
+                         447 	jarl	_R_ICUMIF_GetStatus,lp
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-00000012 e00f2001        446 snooze
-                         447 
-                         448 ..gh.endasm.5:
-                         449 	.type	..gh.endasm.5,@object
-                         450 	.size	..gh.endasm.5,0
-                         451 --line191
-                         452 ..lin.772452c4..fe8d4c3f.1_10::
-                         453 .LDWlin10:
-00000016 ddff0300        454 	tst1	7,3[r29]
-0000001a 92fd*           455 	be	.L144
-                         456 --191:     } while(ptrICU2PES->STARTPE == 0);
-                         457 --192: }
-                         458 --	    .ef
-                         459 .LDW71:
-                         460 --line192
-                         461 ..lin.772452c4..fe8d4c3f.1_11::
-                         462 .LDWlin11:
-0000001c 23ff0500        463 	ld.w	4[sp],lp
-00000020 23ef0100        464 	ld.w	0[sp],r29
-00000024 481a            465 	add	8,sp
-                         466 .L180:
-                         467 	.jumptype return
-00000026 7f00            468 	jmp	[lp]
-                         469 --line192
-                         470 ..lin.772452c4..fe8d4c3f.1_12::
-                         471 	.type	_wait_for_icu,@function
-                         472 	.size	_wait_for_icu,.-_wait_for_icu
-                         473 	.type	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,@function
-                         474 	.size	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,.-_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.
-                         475 	.align	2
-                         476 --_ptrICU2PES	r29	local
-                         477 
-                         478 	.section ".ghcalltbl",""
-00000008 00000000*       479 .L179:	.word	.L178
-                         480 	.type	.L179,@object
-                         481 	.size	.L179,4
-                         482 	.section ".ghrettbl",""
-0000000c 00000000*       483 .L181:	.word	.L180
-                         484 	.type	.L181,@object
-                         485 	.size	.L181,4
-                         486 	.data
-                         487 	.section ".pe_rom","ax"
-                         488 
-                         489 	.text
-                         490 
-                         491 --193: #pragma ghs section text=default
-                         492 --195: /*===========================================================================
-                         493 --196:   CallBack Function
-                         494 --197:   [PRIVATE]
-                         495 --198:   ===========================================================================*/
-                         496 --199: #define d_INT_PE2CH0       0x10
-                         497 --200: int *p_secure_tick_update_count_pe2_ch0 = (int *)&cnt_other_request_error_pe2;
-                         498 --201: void system_callback(void)
-                         499 	.align	2
-                         500 	.align	2
-                         501 	.align	2
-                         502 ..gh.f.a.2.e.6:
-                         503 	.type	..gh.f.a.2.e.6,@object
-                         504 	.size	..gh.f.a.2.e.6,0
-                         505 	.global	_system_callback
-                         506 _system_callback:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         447 <EXPANSION BEGIN>
+                         447 jarl22 _R_ICUMIF_GetStatus , lp 
+0000000c 80ff0000*       447 <EXPANSION END>
+00000010 0ae8            448 	mov	r10,r29
+                         449 --192:         __asm("snooze");
+                         450 --line192
+                         451 ..lin.772452c4..fe8d4c3f.1_9::
+                         452 .LDWlin9:
+                         453 ..gh.beginasm.4:
+                         454 	.type	..gh.beginasm.4,@object
+                         455 	.size	..gh.beginasm.4,0
+00000012 e00f2001        456 snooze
+                         457 
+                         458 ..gh.endasm.5:
+                         459 	.type	..gh.endasm.5,@object
+                         460 	.size	..gh.endasm.5,0
+                         461 --line193
+                         462 ..lin.772452c4..fe8d4c3f.1_10::
+                         463 .LDWlin10:
+00000016 ddff0300        464 	tst1	7,3[r29]
+0000001a 92fd*           465 	be	.L144
+                         466 --193:     } while(ptrICU2PES->STARTPE == 0);
+                         467 --194: }
+                         468 --	    .ef
+                         469 .LDW71:
+                         470 --line194
+                         471 ..lin.772452c4..fe8d4c3f.1_11::
+                         472 .LDWlin11:
+0000001c 23ff0500        473 	ld.w	4[sp],lp
+00000020 23ef0100        474 	ld.w	0[sp],r29
+00000024 481a            475 	add	8,sp
+                         476 .L180:
+                         477 	.jumptype return
+00000026 7f00            478 	jmp	[lp]
+                         479 --line194
+                         480 ..lin.772452c4..fe8d4c3f.1_12::
+                         481 	.type	_wait_for_icu,@function
+                         482 	.size	_wait_for_icu,.-_wait_for_icu
+                         483 	.type	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,@function
+                         484 	.size	_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.,.-_wait_for_icu..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2.
+                         485 	.align	2
+                         486 --_ptrICU2PES	r29	local
+                         487 
+                         488 	.section ".ghcalltbl",""
+00000008 00000000*       489 .L179:	.word	.L178
+                         490 	.type	.L179,@object
+                         491 	.size	.L179,4
+                         492 	.section ".ghrettbl",""
+0000000c 00000000*       493 .L181:	.word	.L180
+                         494 	.type	.L181,@object
+                         495 	.size	.L181,4
+                         496 	.data
+                         497 	.section ".pe_rom","ax"
+                         498 
+                         499 	.text
+                         500 
+                         501 --195: #pragma ghs section text=default
+                         502 --197: /*===========================================================================
+                         503 --198:   CallBack Function
+                         504 --199:   [PRIVATE]
+                         505 --200:   ===========================================================================*/
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-00000180 581a            507 	add	-8,sp
-00000182 63ff0500        508 	st.w	lp,4[sp]
-00000186 63ef0100        509 	st.w	r29,0[sp]
-                         510 --	    .bf
-                         511 .LDW81:
-                         512 --202: {
-                         513 --203:     uint32_t *status;
-                         514 --205:     status = (uint32_t *)R_ICUMIF_GetStatus();
-                         515 .L241:
-                         516 	jarl	_R_ICUMIF_GetStatus,lp
-                         516 <EXPANSION BEGIN>
-                         516 jarl22 _R_ICUMIF_GetStatus , lp 
-0000018a 80ff0000*       516 <EXPANSION END>
-0000018e 0ae8            517 	mov	r10,r29
-                         518 --207:     // error check
-                         519 --208:     if((*status & 0x00008000) == 0x00008000)
-                         520 --line208
-                         521 ..lin.772452c4..923c23b5.0_13::
-                         522 .LDWlin13:
-00000190 3d0f0100        523 	ld.w	0[r29],r1
-00000194 c10e0080        524 	andi	32768,r1,r1
-00000198 e009            525 	cmp	zero,r1
-0000019a f205*           526 	be	.L184
-                         527 --209:     {
-                         528 --210:         /* system error  */
-                         529 --211:         *(char *)d_SYSERR_LOG_ADDR |= d_INT_PE2CH0;
-                         530 --line211
-                         531 ..lin.772452c4..923c23b5.0_14::
-                         532 .LDWlin14:
-0000019c 2b0600000000*   533 	mov	___ghsbegin_start_rRAM,r11
-000001a2 cb270000        534 	set1	4,0[r11]
-000001a6 d515*           535 	br	.L186
-                         536 .L184:
-                         537 --213:     }
-                         538 --214:     else if((*status & 0x0000F800) == 0)
-                         539 --line214
-                         540 ..lin.772452c4..923c23b5.0_15::
-                         541 .LDWlin15:
-000001a8 3d0f0100        542 	ld.w	0[r29],r1
-000001ac c10e00f8        543 	andi	63488,r1,r1
-000001b0 e009            544 	cmp	zero,r1
-000001b2 fa0d*           545 	bne	.L186
-                         546 --215:     {
-                         547 --216:         /* secure tick timer interval */
-                         548 --217:         *(char *)d_TIMER_LOG_ADDR |= d_INT_PE2CH0;
-                         549 --line217
-                         550 ..lin.772452c4..923c23b5.0_16::
-                         551 .LDWlin16:
-000001b4 210600000000*   552 	mov	___ghsbegin_start_rRAM,r1
-000001ba 410a            553 	add	1,r1
-000001bc c1270000        554 	set1	4,0[r1]
-                         555 --218:         (*p_secure_tick_update_count_pe2_ch0)++;
-                         556 --line218
-                         557 ..lin.772452c4..923c23b5.0_17::
-                         558 .LDWlin17:
-000001c0 2b0600000000*   559 	mov	_p_secure_tick_update_count_pe2_ch0,r11
-000001c6 2bf70100        560 	ld.w	0[r11],ep
-000001ca 000d            561 	sld.w	0[ep],r1
-000001cc 410a            562 	add	1,r1
-000001ce 010d            563 	sst.w	r1,0[ep]
-                         564 .L186:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         506 --201: #define d_INT_PE2CH0       0x10
+                         507 --202: int *p_secure_tick_update_count_pe2_ch0 = (int *)&cnt_other_request_error_pe2;
+                         508 --203: void system_callback(void)
+                         509 	.align	2
+                         510 	.align	2
+                         511 	.align	2
+                         512 ..gh.f.a.2.e.6:
+                         513 	.type	..gh.f.a.2.e.6,@object
+                         514 	.size	..gh.f.a.2.e.6,0
+                         515 	.global	_system_callback
+                         516 _system_callback:
+00000180 581a            517 	add	-8,sp
+00000182 63ff0500        518 	st.w	lp,4[sp]
+00000186 63ef0100        519 	st.w	r29,0[sp]
+                         520 --	    .bf
+                         521 .LDW81:
+                         522 --204: {
+                         523 --205:     uint32_t *status;
+                         524 --207:     status = (uint32_t *)R_ICUMIF_GetStatus();
+                         525 .L241:
+                         526 	jarl	_R_ICUMIF_GetStatus,lp
+                         526 <EXPANSION BEGIN>
+                         526 jarl22 _R_ICUMIF_GetStatus , lp 
+0000018a 80ff0000*       526 <EXPANSION END>
+0000018e 0ae8            527 	mov	r10,r29
+                         528 --209:     // error check
+                         529 --210:     if((*status & 0x00008000) == 0x00008000)
+                         530 --line210
+                         531 ..lin.772452c4..923c23b5.0_13::
+                         532 .LDWlin13:
+00000190 3d0f0100        533 	ld.w	0[r29],r1
+00000194 c10e0080        534 	andi	32768,r1,r1
+00000198 e009            535 	cmp	zero,r1
+0000019a f205*           536 	be	.L184
+                         537 --211:     {
+                         538 --212:         /* system error  */
+                         539 --213:         *(char *)d_SYSERR_LOG_ADDR |= d_INT_PE2CH0;
+                         540 --line213
+                         541 ..lin.772452c4..923c23b5.0_14::
+                         542 .LDWlin14:
+0000019c 2b0600000000*   543 	mov	___ghsbegin_start_rRAM,r11
+000001a2 cb270000        544 	set1	4,0[r11]
+000001a6 d515*           545 	br	.L186
+                         546 .L184:
+                         547 --215:     }
+                         548 --216:     else if((*status & 0x0000F800) == 0)
+                         549 --line216
+                         550 ..lin.772452c4..923c23b5.0_15::
+                         551 .LDWlin15:
+000001a8 3d0f0100        552 	ld.w	0[r29],r1
+000001ac c10e00f8        553 	andi	63488,r1,r1
+000001b0 e009            554 	cmp	zero,r1
+000001b2 fa0d*           555 	bne	.L186
+                         556 --217:     {
+                         557 --218:         /* secure tick timer interval */
+                         558 --219:         *(char *)d_TIMER_LOG_ADDR |= d_INT_PE2CH0;
+                         559 --line219
+                         560 ..lin.772452c4..923c23b5.0_16::
+                         561 .LDWlin16:
+000001b4 210600000000*   562 	mov	___ghsbegin_start_rRAM,r1
+000001ba 410a            563 	add	1,r1
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         565 --219:     }
-                         566 --220:     else
-                         567 --221:     {
-                         568 --222:         /* error ocurred */
-                         569 --223:     }
-                         570 --224:     return;
-                         571 --line224
-                         572 ..lin.772452c4..923c23b5.0_18::
-                         573 .LDWlin18:
-000001d0 0000            574 	nop
-                         575 --	    .ef
-                         576 .LDW91:
-000001d2 23ff0500        577 	ld.w	4[sp],lp
-000001d6 23ef0100        578 	ld.w	0[sp],r29
-000001da 481a            579 	add	8,sp
-                         580 .L243:
-                         581 	.jumptype return
-000001dc 7f00            582 	jmp	[lp]
-                         583 --line224
-                         584 ..lin.772452c4..923c23b5.0_19::
-                         585 	.type	_system_callback,@function
-                         586 	.size	_system_callback,.-_system_callback
-                         587 	.align	2
-                         588 --_status	r29	local
-                         589 
-                         590 	.section ".ghcalltbl",""
-0000000c 00000000*       591 .L242:	.word	.L241
-                         592 	.type	.L242,@object
-                         593 	.size	.L242,4
-                         594 	.section ".ghrettbl",""
-00000010 00000000*       595 .L244:	.word	.L243
-                         596 	.type	.L244,@object
-                         597 	.size	.L244,4
-                         598 	.data
-                         599 	.text
-                         600 
-                         601 --225: }
-                         602 
-                         603 --227: /*===========================================================================
-                         604 --228:   PE2 entry point (reset vector)
-                         605 --229:   [PUBLIC]
-                         606 --230:   ===========================================================================*/
-                         607 --231: int main(void)
-                         608 	.align	2
-                         609 	.align	2
-                         610 	.align	2
-                         611 ..gh.f.a.2.e.7:
-                         612 	.type	..gh.f.a.2.e.7,@object
-                         613 	.size	..gh.f.a.2.e.7,0
-                         614 	.global	_main
-                         615 _main:
-000001de 541a            616 	add	-12,sp
-000001e0 63ff0900        617 	st.w	lp,8[sp]
-000001e4 63ef0500        618 	st.w	r29,4[sp]
-                         619 --	    .bf
-                         620 .LDW02:
-                         621 --232: {
-                         622 --233:     int32_t errno;
-                         623 --234:     R_ICUMIF_CB_REGIST_t cb_regist;
-                         624 --236:     // *** debug mode only ***
-                         625 --237:     // wait for the ICU to start-up
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+000001bc c1270000        564 	set1	4,0[r1]
+                         565 --220:         (*p_secure_tick_update_count_pe2_ch0)++;
+                         566 --line220
+                         567 ..lin.772452c4..923c23b5.0_17::
+                         568 .LDWlin17:
+000001c0 2b0600000000*   569 	mov	_p_secure_tick_update_count_pe2_ch0,r11
+000001c6 2bf70100        570 	ld.w	0[r11],ep
+000001ca 000d            571 	sld.w	0[ep],r1
+000001cc 410a            572 	add	1,r1
+000001ce 010d            573 	sst.w	r1,0[ep]
+                         574 .L186:
+                         575 --221:     }
+                         576 --222:     else
+                         577 --223:     {
+                         578 --224:         /* error ocurred */
+                         579 --225:     }
+                         580 --226:     return;
+                         581 --line226
+                         582 ..lin.772452c4..923c23b5.0_18::
+                         583 .LDWlin18:
+000001d0 0000            584 	nop
+                         585 --	    .ef
+                         586 .LDW91:
+000001d2 23ff0500        587 	ld.w	4[sp],lp
+000001d6 23ef0100        588 	ld.w	0[sp],r29
+000001da 481a            589 	add	8,sp
+                         590 .L243:
+                         591 	.jumptype return
+000001dc 7f00            592 	jmp	[lp]
+                         593 --line226
+                         594 ..lin.772452c4..923c23b5.0_19::
+                         595 	.type	_system_callback,@function
+                         596 	.size	_system_callback,.-_system_callback
+                         597 	.align	2
+                         598 --_status	r29	local
+                         599 
+                         600 	.section ".ghcalltbl",""
+0000000c 00000000*       601 .L242:	.word	.L241
+                         602 	.type	.L242,@object
+                         603 	.size	.L242,4
+                         604 	.section ".ghrettbl",""
+00000010 00000000*       605 .L244:	.word	.L243
+                         606 	.type	.L244,@object
+                         607 	.size	.L244,4
+                         608 	.data
+                         609 	.text
+                         610 
+                         611 --227: }
+                         612 
+                         613 --229: /*===========================================================================
+                         614 --230:   PE2 entry point (reset vector)
+                         615 --231:   [PUBLIC]
+                         616 --232:   ===========================================================================*/
+                         617 --233: int main(void)
+                         618 	.align	2
+                         619 	.align	2
+                         620 	.align	2
+                         621 ..gh.f.a.2.e.7:
+                         622 	.type	..gh.f.a.2.e.7,@object
+                         623 	.size	..gh.f.a.2.e.7,0
+                         624 	.global	_main
 
                                                                       Page 13
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         626 --238:     wait_for_icu();
-                         627 .L384:
-                         628 	jarl	_wait_for_icu,lp
-                         628 <EXPANSION BEGIN>
-                         628 jarl22 _wait_for_icu , lp 
-000001e8 80ff0000*       628 <EXPANSION END>
-                         629 --240:     // wait for the system init in PE1
-                         630 --241:     while(SYNC_PE != 1)
-                         631 --line241
-                         632 ..lin.772452c4..ef387e9.0_20::
-                         633 .LDWlin20:
-000001ec b505*           634 	br	.L247
-                         635 .L249:
-                         636 --242:     {
-                         637 --243:         __asm("snooze");
-                         638 --line243
-                         639 ..lin.772452c4..ef387e9.0_21::
-                         640 .LDWlin21:
-                         641 ..gh.beginasm.8:
-                         642 	.type	..gh.beginasm.8,@object
-                         643 	.size	..gh.beginasm.8,0
-000001ee e00f2001        644 snooze
-                         645 
-                         646 ..gh.endasm.9:
-                         647 	.type	..gh.endasm.9,@object
-                         648 	.size	..gh.endasm.9,0
-                         649 .L247:
-                         650 --line241
-                         651 ..lin.772452c4..ef387e9.0_22::
-                         652 .LDWlin22:
-000001f2 210600000000*   653 	mov	___ghsbegin_start_gRAM_MEV,r1
-000001f8 01f62800        654 	addi	40,r1,ep
-000001fc 000d            655 	sld.w	0[ep],r1
-000001fe 610a            656 	cmp	1,r1
-00000200 faf5*           657 	bne	.L249
-                         658 --244:     }
-                         659 --246:     // enable interrupt servicing
-                         660 --247:     __EI();
-                         661 --line247
-                         662 ..lin.772452c4..ef387e9.0_23::
-                         663 .LDWlin23:
-00000202 e0876001        664 	ei
-                         665 --248:     
-                         666 --249:     // interrupts coming from PE1
-                         667 --250:     // set priority level to 6, handler referenced on table, unmask interrupt
-                         668 --252:     // Initialize interface to ICU-M
-                         669 --253:     errno = R_ICUMIF_Init(ICUM_QUEUE);
-00000206 260600000000*   670 	mov	_ICUM_QUEUE,r6
-                         671 .L386:
-                         672 	jarl	_R_ICUMIF_Init,lp
-                         672 <EXPANSION BEGIN>
-                         672 jarl22 _R_ICUMIF_Init , lp 
-0000020c 80ff0000*       672 <EXPANSION END>
-00000210 0ae8            673 	mov	r10,r29
-                         674 --254:     if(errno != SERV_OK)
-                         675 --line254
-                         676 ..lin.772452c4..ef387e9.0_24::
-                         677 .LDWlin24:
-00000212 e0e9            678 	cmp	zero,r29
-                         679 .L250:
-                         680 --255:     {
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         625 _main:
+000001de 541a            626 	add	-12,sp
+000001e0 63ff0900        627 	st.w	lp,8[sp]
+000001e4 63ef0500        628 	st.w	r29,4[sp]
+                         629 --	    .bf
+                         630 .LDW02:
+                         631 --234: {
+                         632 --235:     int32_t errno;
+                         633 --236:     R_ICUMIF_CB_REGIST_t cb_regist;
+                         634 --238:     // *** debug mode only ***
+                         635 --239:     // wait for the ICU to start-up
+                         636 --240:     wait_for_icu();
+                         637 .L384:
+                         638 	jarl	_wait_for_icu,lp
+                         638 <EXPANSION BEGIN>
+                         638 jarl22 _wait_for_icu , lp 
+000001e8 80ff0000*       638 <EXPANSION END>
+                         639 --242:     // wait for the system init in PE1
+                         640 --243:     while(SYNC_PE != 1)
+                         641 --line243
+                         642 ..lin.772452c4..ef387e9.0_20::
+                         643 .LDWlin20:
+000001ec b505*           644 	br	.L247
+                         645 .L249:
+                         646 --244:     {
+                         647 --245:         __asm("snooze");
+                         648 --line245
+                         649 ..lin.772452c4..ef387e9.0_21::
+                         650 .LDWlin21:
+                         651 ..gh.beginasm.8:
+                         652 	.type	..gh.beginasm.8,@object
+                         653 	.size	..gh.beginasm.8,0
+000001ee e00f2001        654 snooze
+                         655 
+                         656 ..gh.endasm.9:
+                         657 	.type	..gh.endasm.9,@object
+                         658 	.size	..gh.endasm.9,0
+                         659 .L247:
+                         660 --line243
+                         661 ..lin.772452c4..ef387e9.0_22::
+                         662 .LDWlin22:
+000001f2 210600000000*   663 	mov	___ghsbegin_start_gRAM_MEV,r1
+000001f8 01f62800        664 	addi	40,r1,ep
+000001fc 000d            665 	sld.w	0[ep],r1
+000001fe 610a            666 	cmp	1,r1
+00000200 faf5*           667 	bne	.L249
+                         668 --246:     }
+                         669 --248:     // enable interrupt servicing
+                         670 --249:     __EI();
+                         671 --line249
+                         672 ..lin.772452c4..ef387e9.0_23::
+                         673 .LDWlin23:
+00000202 e0876001        674 	ei
+                         675 --250:     
+                         676 --251:     // interrupts coming from PE1
+                         677 --252:     // set priority level to 6, handler referenced on table, unmask interrupt
+                         678 --254:     // Initialize interface to ICU-M
+                         679 --255:     errno = R_ICUMIF_Init(ICUM_QUEUE);
+00000206 260600000000*   680 	mov	_ICUM_QUEUE,r6
+                         681 .L386:
+                         682 	jarl	_R_ICUMIF_Init,lp
 
                                                                       Page 14
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         681 --256:         // error
-                         682 --257:     }
-                         683 --259:     // Set System call back function
-                         684 --260:     cb_regist.p_func_addr = &system_callback;
-00000214 210600000000*   685 	mov	_system_callback,r1
-0000021a 630f0100        686 	st.w	r1,0[sp]
-                         687 --261:     errno = R_ICUMIF_SetSystemCallBackFunc(&cb_regist);
-                         688 --line261
-                         689 ..lin.772452c4..ef387e9.0_25::
-                         690 .LDWlin25:
-0000021e 23360000        691 	movea	0,sp,r6
-                         692 .L388:
-                         693 	jarl	_R_ICUMIF_SetSystemCallBackFunc,lp
-                         693 <EXPANSION BEGIN>
-                         693 jarl22 _R_ICUMIF_SetSystemCallBackFunc , lp 
-00000222 80ff0000*       693 <EXPANSION END>
-00000226 0ae8            694 	mov	r10,r29
-                         695 --262:     if(errno != SERV_OK)
-                         696 --line262
-                         697 ..lin.772452c4..ef387e9.0_26::
-                         698 .LDWlin26:
-00000228 e0e9            699 	cmp	zero,r29
-                         700 .L252:
-                         701 --263:     {
-                         702 --264:         // error
-                         703 --265:     }
-                         704 --267: #if   (D_PEID == 2)
-                         705 --268:     REG_PE_INTC1CPU1EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
-0000022a 200e4600        706 	movea	70,zero,r1
-0000022e a0074d0800f9    707 	st.h	r1,4294737924[zero]
-                         708 --269:     REG_PE_IPIRIPI2EN1   = 0x01;   // PE0 -> PE1 Interrupt Enable
-                         709 --line269
-                         710 ..lin.772452c4..ef387e9.0_27::
-                         711 .LDWlin27:
-00000234 010a            712 	mov	1,r1
-00000236 80070d0c32f7    713 	st.b	r1,4294678848[zero]
-                         714 --270: #elif (D_PEID == 3)
-                         715 --271:     REG_PE_INTC1CPU2EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
-                         716 --272:     REG_PE_IPIRIPI2EN2   = 0x01;   // PE0 -> PE1 Interrupt Enable
-                         717 --273: #elif (D_PEID == 4)
-                         718 --274:     REG_PE_INTC1CPU3EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
-                         719 --275:     REG_PE_IPIRIPI2EN3   = 0x01;   // PE0 -> PE1 Interrupt Enable
-                         720 --276: #elif (D_PEID == 5)
-                         721 --277:     REG_PE_INTC1CPU4EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
-                         722 --278:     REG_PE_IPIRIPI2EN4   = 0x01;   // PE0 -> PE1 Interrupt Enable
-                         723 --279: #elif (D_PEID == 6)
-                         724 --280:     REG_PE_INTC1CPU5EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
-                         725 --281:     REG_PE_IPIRIPI2EN5   = 0x01;   // PE0 -> PE1 Interrupt Enable
-                         726 --282: #endif
-                         727 --283:     notification_from_pe1 = 0;
-                         728 --line283
-                         729 ..lin.772452c4..ef387e9.0_28::
-                         730 .LDWlin28:
-0000023c 2b0600000000*   731 	mov	_notification_from_pe1,r11
-00000242 6b070000        732 	st.h	zero,0[r11]
-                         733 --285:     // infinite loop (waiting for wake-up)
-                         734 --286:     while(1)
-                         735 --line286
-                         736 ..lin.772452c4..ef387e9.0_29::
-                         737 .LDWlin29:
-00000246 0000            738 	nop
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         682 <EXPANSION BEGIN>
+                         682 jarl22 _R_ICUMIF_Init , lp 
+0000020c 80ff0000*       682 <EXPANSION END>
+00000210 0ae8            683 	mov	r10,r29
+                         684 --256:     if(errno != SERV_OK)
+                         685 --line256
+                         686 ..lin.772452c4..ef387e9.0_24::
+                         687 .LDWlin24:
+00000212 e0e9            688 	cmp	zero,r29
+                         689 .L250:
+                         690 --257:     {
+                         691 --258:         // error
+                         692 --259:     }
+                         693 --261:     // Set System call back function
+                         694 --262:     cb_regist.p_func_addr = &system_callback;
+00000214 210600000000*   695 	mov	_system_callback,r1
+0000021a 630f0100        696 	st.w	r1,0[sp]
+                         697 --263:     errno = R_ICUMIF_SetSystemCallBackFunc(&cb_regist);
+                         698 --line263
+                         699 ..lin.772452c4..ef387e9.0_25::
+                         700 .LDWlin25:
+0000021e 23360000        701 	movea	0,sp,r6
+                         702 .L388:
+                         703 	jarl	_R_ICUMIF_SetSystemCallBackFunc,lp
+                         703 <EXPANSION BEGIN>
+                         703 jarl22 _R_ICUMIF_SetSystemCallBackFunc , lp 
+00000222 80ff0000*       703 <EXPANSION END>
+00000226 0ae8            704 	mov	r10,r29
+                         705 --264:     if(errno != SERV_OK)
+                         706 --line264
+                         707 ..lin.772452c4..ef387e9.0_26::
+                         708 .LDWlin26:
+00000228 e0e9            709 	cmp	zero,r29
+                         710 .L252:
+                         711 --265:     {
+                         712 --266:         // error
+                         713 --267:     }
+                         714 --269: #if   (D_PEID == 2)
+                         715 --270:     REG_PE_INTC1CPU1EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
+0000022a 200e4600        716 	movea	70,zero,r1
+0000022e a0074d0800f9    717 	st.h	r1,4294737924[zero]
+                         718 --271:     REG_PE_IPIRIPI2EN1   = 0x01;   // PE0 -> PE1 Interrupt Enable
+                         719 --line271
+                         720 ..lin.772452c4..ef387e9.0_27::
+                         721 .LDWlin27:
+00000234 010a            722 	mov	1,r1
+00000236 80070d0c32f7    723 	st.b	r1,4294678848[zero]
+                         724 --272: #elif (D_PEID == 3)
+                         725 --273:     REG_PE_INTC1CPU2EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
+                         726 --274:     REG_PE_IPIRIPI2EN2   = 0x01;   // PE0 -> PE1 Interrupt Enable
+                         727 --275: #elif (D_PEID == 4)
+                         728 --276:     REG_PE_INTC1CPU3EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
+                         729 --277:     REG_PE_IPIRIPI2EN3   = 0x01;   // PE0 -> PE1 Interrupt Enable
+                         730 --278: #elif (D_PEID == 5)
+                         731 --279:     REG_PE_INTC1CPU4EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
+                         732 --280:     REG_PE_IPIRIPI2EN4   = 0x01;   // PE0 -> PE1 Interrupt Enable
+                         733 --281: #elif (D_PEID == 6)
+                         734 --282:     REG_PE_INTC1CPU5EIC2 = 0x46;   // EIINT2(INTIPIR2) Enable
+                         735 --283:     REG_PE_IPIRIPI2EN5   = 0x01;   // PE0 -> PE1 Interrupt Enable
+                         736 --284: #endif
+                         737 --285:     notification_from_pe1 = 0;
 
                                                                       Page 15
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         739 .L256:
-                         740 --287:     {
-                         741 --288:         HALT();
-                         742 ..gh.beginasm.10:
-                         743 	.type	..gh.beginasm.10,@object
-                         744 	.size	..gh.beginasm.10,0
-                         745 --ASM MACRO: Start
-                         746 
-00000248 0000            747     nop
-                         748 --ASM MACRO: End
-                         749 ..gh.endasm.11:
-                         750 	.type	..gh.endasm.11,@object
-                         751 	.size	..gh.endasm.11,0
-                         752 --289:         NOPS(10);
-                         753 --line289
-                         754 ..lin.772452c4..ef387e9.0_30::
-                         755 .LDWlin30:
-                         756 ..gh.beginasm.12:
-                         757 	.type	..gh.beginasm.12,@object
-                         758 	.size	..gh.beginasm.12,0
-                         759 --ASM MACRO: Start
-                         760 .rept 10
-                         761     nop
-0000024a 0000            762 .endr
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         738 --line285
+                         739 ..lin.772452c4..ef387e9.0_28::
+                         740 .LDWlin28:
+0000023c 2b0600000000*   741 	mov	_notification_from_pe1,r11
+00000242 6b070000        742 	st.h	zero,0[r11]
+                         743 --287:     // infinite loop (waiting for wake-up)
+                         744 --288:     while(1)
+                         745 --line288
+                         746 ..lin.772452c4..ef387e9.0_29::
+                         747 .LDWlin29:
+00000246 0000            748 	nop
+                         749 .L256:
+                         750 --289:     {
+                         751 --290:         HALT();
+                         752 ..gh.beginasm.10:
+                         753 	.type	..gh.beginasm.10,@object
+                         754 	.size	..gh.beginasm.10,0
+                         755 --ASM MACRO: Start
+                         756 
+00000248 0000            757     nop
+                         758 --ASM MACRO: End
+                         759 ..gh.endasm.11:
+                         760 	.type	..gh.endasm.11,@object
+                         761 	.size	..gh.endasm.11,0
+                         762 --291:         NOPS(10);
+                         763 --line291
+                         764 ..lin.772452c4..ef387e9.0_30::
+                         765 .LDWlin30:
+                         766 ..gh.beginasm.12:
+                         767 	.type	..gh.beginasm.12,@object
+                         768 	.size	..gh.beginasm.12,0
+                         769 --ASM MACRO: Start
+                         770 .rept 10
+                         771     nop
+0000024a 0000            772 .endr
 0000024c 0000 
 0000024e 0000 
 00000250 0000 
@@ -931,467 +942,466 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000258 0000 
 0000025a 0000 
 0000025c 0000 
-                         763 --ASM MACRO: End
-                         764 ..gh.endasm.13:
-                         765 	.type	..gh.endasm.13,@object
-                         766 	.size	..gh.endasm.13,0
-                         767 --290:         notification_from_pe1 = 0;
-                         768 --line290
-                         769 ..lin.772452c4..ef387e9.0_31::
-                         770 .LDWlin31:
-0000025e 2b0600000000*   771 	mov	_notification_from_pe1,r11
-00000264 6b070000        772 	st.h	zero,0[r11]
-                         773 --line286
-                         774 ..lin.772452c4..ef387e9.0_32::
-                         775 .LDWlin32:
-00000268 85f5*           776 	br	.L256
-                         777 --	    .ef
-                         778 .LDW12:
-                         779 --line292
-                         780 ..lin.772452c4..ef387e9.0_33::
-                         781 	.type	_main,@function
-                         782 	.size	_main,.-_main
-                         783 	.align	2
-                         784 --_errno	r29	local
-                         785 --_cb_regist	0[sp]	local
-                         786 
-                         787 	.section ".ghcalltbl",""
-00000010 00000000*       788 .L385:	.word	.L384
-                         789 	.type	.L385,@object
-                         790 	.size	.L385,4
+                         773 --ASM MACRO: End
+                         774 ..gh.endasm.13:
+                         775 	.type	..gh.endasm.13,@object
+                         776 	.size	..gh.endasm.13,0
+                         777 --292:         notification_from_pe1 = 0;
+                         778 --line292
+                         779 ..lin.772452c4..ef387e9.0_31::
+                         780 .LDWlin31:
+0000025e 2b0600000000*   781 	mov	_notification_from_pe1,r11
+00000264 6b070000        782 	st.h	zero,0[r11]
+                         783 --line288
+                         784 ..lin.772452c4..ef387e9.0_32::
+                         785 .LDWlin32:
+00000268 85f5*           786 	br	.L256
+                         787 --	    .ef
+                         788 .LDW12:
+                         789 --line294
 
                                                                       Page 16
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-00000014 00000000*       791 .L387:	.word	.L386
-                         792 	.type	.L387,@object
-                         793 	.size	.L387,4
-00000018 00000000*       794 .L389:	.word	.L388
-                         795 	.type	.L389,@object
-                         796 	.size	.L389,4
-                         797 	.data
-                         798 	.text
-                         799 
-                         800 --291:     }
-                         801 --292: }
-                         802 
-                         803 --294: void vrun_cmd_init(void) {}
-                         804 	.align	2
-                         805 	.align	2
-                         806 	.align	2
-                         807 ..gh.f.a.2.e.14:
-                         808 	.type	..gh.f.a.2.e.14,@object
-                         809 	.size	..gh.f.a.2.e.14,0
-                         810 	.global	_vrun_cmd_init
-                         811 _vrun_cmd_init:
-                         812 --	    .bf
-                         813 .LDW22:
-                         814 --	    .ef
-                         815 .LDW32:
-                         816 .L419:
-                         817 	.jumptype return
-0000026a 7f00            818 	jmp	[lp]
-                         819 --line294
-                         820 ..lin.772452c4..69b81315.0_34::
-                         821 	.type	_vrun_cmd_init,@function
-                         822 	.size	_vrun_cmd_init,.-_vrun_cmd_init
-                         823 	.align	2
-                         824 
-                         825 	.section ".ghrettbl",""
-00000014 00000000*       826 .L420:	.word	.L419
-                         827 	.type	.L420,@object
-                         828 	.size	.L420,4
-                         829 	.data
-                         830 	.text
-                         831 
-                         832 
-                         833 --295: void vrun_cmd_usr_1(void) {}
-                         834 	.align	2
-                         835 	.align	2
-                         836 	.align	2
-                         837 ..gh.f.a.2.e.15:
-                         838 	.type	..gh.f.a.2.e.15,@object
-                         839 	.size	..gh.f.a.2.e.15,0
-                         840 	.global	_vrun_cmd_usr_1
-                         841 _vrun_cmd_usr_1:
-                         842 --	    .bf
-                         843 .LDW42:
-                         844 --	    .ef
-                         845 .LDW52:
-                         846 .L451:
-                         847 	.jumptype return
-0000026c 7f00            848 	jmp	[lp]
-                         849 --line295
-                         850 ..lin.772452c4..a1967d6b.0_35::
-                         851 	.type	_vrun_cmd_usr_1,@function
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         790 ..lin.772452c4..ef387e9.0_33::
+                         791 	.type	_main,@function
+                         792 	.size	_main,.-_main
+                         793 	.align	2
+                         794 --_errno	r29	local
+                         795 --_cb_regist	0[sp]	local
+                         796 
+                         797 	.section ".ghcalltbl",""
+00000010 00000000*       798 .L385:	.word	.L384
+                         799 	.type	.L385,@object
+                         800 	.size	.L385,4
+00000014 00000000*       801 .L387:	.word	.L386
+                         802 	.type	.L387,@object
+                         803 	.size	.L387,4
+00000018 00000000*       804 .L389:	.word	.L388
+                         805 	.type	.L389,@object
+                         806 	.size	.L389,4
+                         807 	.data
+                         808 	.text
+                         809 
+                         810 --293:     }
+                         811 --294: }
+                         812 
+                         813 --296: void vrun_cmd_init(void) {}
+                         814 	.align	2
+                         815 	.align	2
+                         816 	.align	2
+                         817 ..gh.f.a.2.e.14:
+                         818 	.type	..gh.f.a.2.e.14,@object
+                         819 	.size	..gh.f.a.2.e.14,0
+                         820 	.global	_vrun_cmd_init
+                         821 _vrun_cmd_init:
+                         822 --	    .bf
+                         823 .LDW22:
+                         824 --	    .ef
+                         825 .LDW32:
+                         826 .L419:
+                         827 	.jumptype return
+0000026a 7f00            828 	jmp	[lp]
+                         829 --line296
+                         830 ..lin.772452c4..69b81315.0_34::
+                         831 	.type	_vrun_cmd_init,@function
+                         832 	.size	_vrun_cmd_init,.-_vrun_cmd_init
+                         833 	.align	2
+                         834 
+                         835 	.section ".ghrettbl",""
+00000014 00000000*       836 .L420:	.word	.L419
+                         837 	.type	.L420,@object
+                         838 	.size	.L420,4
+                         839 	.data
+                         840 	.text
+                         841 
+                         842 
+                         843 --297: void vrun_cmd_usr_1(void) {}
+                         844 	.align	2
+                         845 	.align	2
+                         846 	.align	2
+                         847 ..gh.f.a.2.e.15:
+                         848 	.type	..gh.f.a.2.e.15,@object
+                         849 	.size	..gh.f.a.2.e.15,0
+                         850 	.global	_vrun_cmd_usr_1
 
                                                                       Page 17
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         852 	.size	_vrun_cmd_usr_1,.-_vrun_cmd_usr_1
-                         853 	.align	2
-                         854 
-                         855 	.section ".ghrettbl",""
-00000018 00000000*       856 .L452:	.word	.L451
-                         857 	.type	.L452,@object
-                         858 	.size	.L452,4
-                         859 	.data
-                         860 	.text
-                         861 
-                         862 
-                         863 --296: void vrun_cmd_usr_2(void) {}
-                         864 	.align	2
-                         865 	.align	2
-                         866 	.align	2
-                         867 ..gh.f.a.2.e.16:
-                         868 	.type	..gh.f.a.2.e.16,@object
-                         869 	.size	..gh.f.a.2.e.16,0
-                         870 	.global	_vrun_cmd_usr_2
-                         871 _vrun_cmd_usr_2:
-                         872 --	    .bf
-                         873 .LDW62:
-                         874 --	    .ef
-                         875 .LDW72:
-                         876 .L483:
-                         877 	.jumptype return
-0000026e 7f00            878 	jmp	[lp]
-                         879 --line296
-                         880 ..lin.772452c4..a1967d6c.0_36::
-                         881 	.type	_vrun_cmd_usr_2,@function
-                         882 	.size	_vrun_cmd_usr_2,.-_vrun_cmd_usr_2
-                         883 	.align	2
-                         884 
-                         885 	.section ".ghrettbl",""
-0000001c 00000000*       886 .L484:	.word	.L483
-                         887 	.type	.L484,@object
-                         888 	.size	.L484,4
-                         889 	.data
-                         890 	.text
-                         891 
-                         892 
-                         893 --297: void vrun_cmd_usr_3(void) {}
-                         894 	.align	2
-                         895 	.align	2
-                         896 	.align	2
-                         897 ..gh.f.a.2.e.17:
-                         898 	.type	..gh.f.a.2.e.17,@object
-                         899 	.size	..gh.f.a.2.e.17,0
-                         900 	.global	_vrun_cmd_usr_3
-                         901 _vrun_cmd_usr_3:
-                         902 --	    .bf
-                         903 .LDW82:
-                         904 --	    .ef
-                         905 .LDW92:
-                         906 .L515:
-                         907 	.jumptype return
-00000270 7f00            908 	jmp	[lp]
-                         909 --line297
-                         910 ..lin.772452c4..a1967d6d.0_37::
-                         911 	.type	_vrun_cmd_usr_3,@function
-                         912 	.size	_vrun_cmd_usr_3,.-_vrun_cmd_usr_3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         851 _vrun_cmd_usr_1:
+                         852 --	    .bf
+                         853 .LDW42:
+                         854 --	    .ef
+                         855 .LDW52:
+                         856 .L451:
+                         857 	.jumptype return
+0000026c 7f00            858 	jmp	[lp]
+                         859 --line297
+                         860 ..lin.772452c4..a1967d6b.0_35::
+                         861 	.type	_vrun_cmd_usr_1,@function
+                         862 	.size	_vrun_cmd_usr_1,.-_vrun_cmd_usr_1
+                         863 	.align	2
+                         864 
+                         865 	.section ".ghrettbl",""
+00000018 00000000*       866 .L452:	.word	.L451
+                         867 	.type	.L452,@object
+                         868 	.size	.L452,4
+                         869 	.data
+                         870 	.text
+                         871 
+                         872 
+                         873 --298: void vrun_cmd_usr_2(void) {}
+                         874 	.align	2
+                         875 	.align	2
+                         876 	.align	2
+                         877 ..gh.f.a.2.e.16:
+                         878 	.type	..gh.f.a.2.e.16,@object
+                         879 	.size	..gh.f.a.2.e.16,0
+                         880 	.global	_vrun_cmd_usr_2
+                         881 _vrun_cmd_usr_2:
+                         882 --	    .bf
+                         883 .LDW62:
+                         884 --	    .ef
+                         885 .LDW72:
+                         886 .L483:
+                         887 	.jumptype return
+0000026e 7f00            888 	jmp	[lp]
+                         889 --line298
+                         890 ..lin.772452c4..a1967d6c.0_36::
+                         891 	.type	_vrun_cmd_usr_2,@function
+                         892 	.size	_vrun_cmd_usr_2,.-_vrun_cmd_usr_2
+                         893 	.align	2
+                         894 
+                         895 	.section ".ghrettbl",""
+0000001c 00000000*       896 .L484:	.word	.L483
+                         897 	.type	.L484,@object
+                         898 	.size	.L484,4
+                         899 	.data
+                         900 	.text
+                         901 
+                         902 
+                         903 --299: void vrun_cmd_usr_3(void) {}
+                         904 	.align	2
+                         905 	.align	2
+                         906 	.align	2
+                         907 ..gh.f.a.2.e.17:
+                         908 	.type	..gh.f.a.2.e.17,@object
+                         909 	.size	..gh.f.a.2.e.17,0
+                         910 	.global	_vrun_cmd_usr_3
+                         911 _vrun_cmd_usr_3:
 
                                                                       Page 18
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         913 	.align	2
-                         914 
-                         915 	.section ".ghrettbl",""
-00000020 00000000*       916 .L516:	.word	.L515
-                         917 	.type	.L516,@object
-                         918 	.size	.L516,4
-                         919 	.data
-                         920 	.text
-                         921 
-                         922 
-                         923 --298: void vrun_cmd_usr_4(void) {}
-                         924 	.align	2
-                         925 	.align	2
-                         926 	.align	2
-                         927 ..gh.f.a.2.e.18:
-                         928 	.type	..gh.f.a.2.e.18,@object
-                         929 	.size	..gh.f.a.2.e.18,0
-                         930 	.global	_vrun_cmd_usr_4
-                         931 _vrun_cmd_usr_4:
-                         932 --	    .bf
-                         933 .LDW03:
-                         934 --	    .ef
-                         935 .LDW13:
-                         936 .L547:
-                         937 	.jumptype return
-00000272 7f00            938 	jmp	[lp]
-                         939 --line298
-                         940 ..lin.772452c4..a1967d6e.0_38::
-                         941 	.type	_vrun_cmd_usr_4,@function
-                         942 	.size	_vrun_cmd_usr_4,.-_vrun_cmd_usr_4
-                         943 	.align	2
-                         944 
-                         945 	.section ".ghrettbl",""
-00000024 00000000*       946 .L548:	.word	.L547
-                         947 	.type	.L548,@object
-                         948 	.size	.L548,4
-                         949 	.data
-                         950 	.text
-                         951 
-                         952 
-                         953 --299: void vrun_cmd_usr_5(void) {}
-                         954 	.align	2
-                         955 	.align	2
-                         956 	.align	2
-                         957 ..gh.f.a.2.e.19:
-                         958 	.type	..gh.f.a.2.e.19,@object
-                         959 	.size	..gh.f.a.2.e.19,0
-                         960 	.global	_vrun_cmd_usr_5
-                         961 _vrun_cmd_usr_5:
-                         962 --	    .bf
-                         963 .LDW23:
-                         964 --	    .ef
-                         965 .LDW33:
-                         966 .L579:
-                         967 	.jumptype return
-00000274 7f00            968 	jmp	[lp]
-                         969 --line299
-                         970 ..lin.772452c4..a1967d6f.0_39::
-                         971 	.type	_vrun_cmd_usr_5,@function
-                         972 	.size	_vrun_cmd_usr_5,.-_vrun_cmd_usr_5
-                         973 	.align	2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         912 --	    .bf
+                         913 .LDW82:
+                         914 --	    .ef
+                         915 .LDW92:
+                         916 .L515:
+                         917 	.jumptype return
+00000270 7f00            918 	jmp	[lp]
+                         919 --line299
+                         920 ..lin.772452c4..a1967d6d.0_37::
+                         921 	.type	_vrun_cmd_usr_3,@function
+                         922 	.size	_vrun_cmd_usr_3,.-_vrun_cmd_usr_3
+                         923 	.align	2
+                         924 
+                         925 	.section ".ghrettbl",""
+00000020 00000000*       926 .L516:	.word	.L515
+                         927 	.type	.L516,@object
+                         928 	.size	.L516,4
+                         929 	.data
+                         930 	.text
+                         931 
+                         932 
+                         933 --300: void vrun_cmd_usr_4(void) {}
+                         934 	.align	2
+                         935 	.align	2
+                         936 	.align	2
+                         937 ..gh.f.a.2.e.18:
+                         938 	.type	..gh.f.a.2.e.18,@object
+                         939 	.size	..gh.f.a.2.e.18,0
+                         940 	.global	_vrun_cmd_usr_4
+                         941 _vrun_cmd_usr_4:
+                         942 --	    .bf
+                         943 .LDW03:
+                         944 --	    .ef
+                         945 .LDW13:
+                         946 .L547:
+                         947 	.jumptype return
+00000272 7f00            948 	jmp	[lp]
+                         949 --line300
+                         950 ..lin.772452c4..a1967d6e.0_38::
+                         951 	.type	_vrun_cmd_usr_4,@function
+                         952 	.size	_vrun_cmd_usr_4,.-_vrun_cmd_usr_4
+                         953 	.align	2
+                         954 
+                         955 	.section ".ghrettbl",""
+00000024 00000000*       956 .L548:	.word	.L547
+                         957 	.type	.L548,@object
+                         958 	.size	.L548,4
+                         959 	.data
+                         960 	.text
+                         961 
+                         962 
+                         963 --301: void vrun_cmd_usr_5(void) {}
+                         964 	.align	2
+                         965 	.align	2
+                         966 	.align	2
+                         967 ..gh.f.a.2.e.19:
+                         968 	.type	..gh.f.a.2.e.19,@object
+                         969 	.size	..gh.f.a.2.e.19,0
+                         970 	.global	_vrun_cmd_usr_5
+                         971 _vrun_cmd_usr_5:
+                         972 --	    .bf
 
                                                                       Page 19
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                         974 
-                         975 	.section ".ghrettbl",""
-00000028 00000000*       976 .L580:	.word	.L579
-                         977 	.type	.L580,@object
-                         978 	.size	.L580,4
-                         979 	.data
-                         980 	.text
-                         981 
-                         982 
-                         983 --300: void vrun_cmd_usr_6(void) {}
-                         984 	.align	2
-                         985 	.align	2
-                         986 	.align	2
-                         987 ..gh.f.a.2.e.20:
-                         988 	.type	..gh.f.a.2.e.20,@object
-                         989 	.size	..gh.f.a.2.e.20,0
-                         990 	.global	_vrun_cmd_usr_6
-                         991 _vrun_cmd_usr_6:
-                         992 --	    .bf
-                         993 .LDW43:
-                         994 --	    .ef
-                         995 .LDW53:
-                         996 .L611:
-                         997 	.jumptype return
-00000276 7f00            998 	jmp	[lp]
-                         999 --line300
-                        1000 ..lin.772452c4..a1967d70.0_40::
-                        1001 	.type	_vrun_cmd_usr_6,@function
-                        1002 	.size	_vrun_cmd_usr_6,.-_vrun_cmd_usr_6
-                        1003 	.align	2
-                        1004 
-                        1005 	.section ".ghrettbl",""
-0000002c 00000000*      1006 .L612:	.word	.L611
-                        1007 	.type	.L612,@object
-                        1008 	.size	.L612,4
-                        1009 	.data
-                        1010 	.text
-                        1011 
-                        1012 
-                        1013 --301: void vrun_cmd_usr_7(void) {}
-                        1014 	.align	2
-                        1015 	.align	2
-                        1016 	.align	2
-                        1017 ..gh.f.a.2.e.21:
-                        1018 	.type	..gh.f.a.2.e.21,@object
-                        1019 	.size	..gh.f.a.2.e.21,0
-                        1020 	.global	_vrun_cmd_usr_7
-                        1021 _vrun_cmd_usr_7:
-                        1022 --	    .bf
-                        1023 .LDW63:
-                        1024 --	    .ef
-                        1025 .LDW73:
-                        1026 .L643:
-                        1027 	.jumptype return
-00000278 7f00           1028 	jmp	[lp]
-                        1029 --line301
-                        1030 ..lin.772452c4..a1967d71.0_41::
-                        1031 	.type	_vrun_cmd_usr_7,@function
-                        1032 	.size	_vrun_cmd_usr_7,.-_vrun_cmd_usr_7
-                        1033 	.align	2
-                        1034 
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                         973 .LDW23:
+                         974 --	    .ef
+                         975 .LDW33:
+                         976 .L579:
+                         977 	.jumptype return
+00000274 7f00            978 	jmp	[lp]
+                         979 --line301
+                         980 ..lin.772452c4..a1967d6f.0_39::
+                         981 	.type	_vrun_cmd_usr_5,@function
+                         982 	.size	_vrun_cmd_usr_5,.-_vrun_cmd_usr_5
+                         983 	.align	2
+                         984 
+                         985 	.section ".ghrettbl",""
+00000028 00000000*       986 .L580:	.word	.L579
+                         987 	.type	.L580,@object
+                         988 	.size	.L580,4
+                         989 	.data
+                         990 	.text
+                         991 
+                         992 
+                         993 --302: void vrun_cmd_usr_6(void) {}
+                         994 	.align	2
+                         995 	.align	2
+                         996 	.align	2
+                         997 ..gh.f.a.2.e.20:
+                         998 	.type	..gh.f.a.2.e.20,@object
+                         999 	.size	..gh.f.a.2.e.20,0
+                        1000 	.global	_vrun_cmd_usr_6
+                        1001 _vrun_cmd_usr_6:
+                        1002 --	    .bf
+                        1003 .LDW43:
+                        1004 --	    .ef
+                        1005 .LDW53:
+                        1006 .L611:
+                        1007 	.jumptype return
+00000276 7f00           1008 	jmp	[lp]
+                        1009 --line302
+                        1010 ..lin.772452c4..a1967d70.0_40::
+                        1011 	.type	_vrun_cmd_usr_6,@function
+                        1012 	.size	_vrun_cmd_usr_6,.-_vrun_cmd_usr_6
+                        1013 	.align	2
+                        1014 
+                        1015 	.section ".ghrettbl",""
+0000002c 00000000*      1016 .L612:	.word	.L611
+                        1017 	.type	.L612,@object
+                        1018 	.size	.L612,4
+                        1019 	.data
+                        1020 	.text
+                        1021 
+                        1022 
+                        1023 --303: void vrun_cmd_usr_7(void) {}
+                        1024 	.align	2
+                        1025 	.align	2
+                        1026 	.align	2
+                        1027 ..gh.f.a.2.e.21:
+                        1028 	.type	..gh.f.a.2.e.21,@object
+                        1029 	.size	..gh.f.a.2.e.21,0
+                        1030 	.global	_vrun_cmd_usr_7
+                        1031 _vrun_cmd_usr_7:
+                        1032 --	    .bf
+                        1033 .LDW63:
 
                                                                       Page 20
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                        1035 	.section ".ghrettbl",""
-00000030 00000000*      1036 .L644:	.word	.L643
-                        1037 	.type	.L644,@object
-                        1038 	.size	.L644,4
-                        1039 	.data
-                        1040 	.text
-                        1041 
-                        1042 
-                        1043 --302: void vrun_cmd_usr_8(void) {}
-                        1044 	.align	2
-                        1045 	.align	2
-                        1046 	.align	2
-                        1047 ..gh.f.a.2.e.22:
-                        1048 	.type	..gh.f.a.2.e.22,@object
-                        1049 	.size	..gh.f.a.2.e.22,0
-                        1050 	.global	_vrun_cmd_usr_8
-                        1051 _vrun_cmd_usr_8:
-                        1052 --	    .bf
-                        1053 .LDW83:
-                        1054 --	    .ef
-                        1055 .LDW93:
-                        1056 .L675:
-                        1057 	.jumptype return
-0000027a 7f00           1058 	jmp	[lp]
-                        1059 --line302
-                        1060 ..lin.772452c4..a1967d72.0_42::
-                        1061 	.type	_vrun_cmd_usr_8,@function
-                        1062 	.size	_vrun_cmd_usr_8,.-_vrun_cmd_usr_8
-                        1063 	.align	2
-                        1064 
-                        1065 	.section ".ghrettbl",""
-00000034 00000000*      1066 .L676:	.word	.L675
-                        1067 	.type	.L676,@object
-                        1068 	.size	.L676,4
-                        1069 	.data
-                        1070 	.text
-                        1071 
-                        1072 
-                        1073 --303: void vrun_cmd_usr_9(void) {}
-                        1074 	.align	2
-                        1075 	.align	2
-                        1076 	.align	2
-                        1077 ..gh.f.a.2.e.23:
-                        1078 	.type	..gh.f.a.2.e.23,@object
-                        1079 	.size	..gh.f.a.2.e.23,0
-                        1080 	.global	_vrun_cmd_usr_9
-                        1081 _vrun_cmd_usr_9:
-                        1082 --	    .bf
-                        1083 .LDW04:
-                        1084 --	    .ef
-                        1085 .LDW14:
-                        1086 .L707:
-                        1087 	.jumptype return
-0000027c 7f00           1088 	jmp	[lp]
-                        1089 --line303
-                        1090 ..lin.772452c4..a1967d73.0_43::
-                        1091 	.type	_vrun_cmd_usr_9,@function
-                        1092 	.size	_vrun_cmd_usr_9,.-_vrun_cmd_usr_9
-                        1093 	.align	2
-                        1094 
-                        1095 	.section ".ghrettbl",""
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                        1034 --	    .ef
+                        1035 .LDW73:
+                        1036 .L643:
+                        1037 	.jumptype return
+00000278 7f00           1038 	jmp	[lp]
+                        1039 --line303
+                        1040 ..lin.772452c4..a1967d71.0_41::
+                        1041 	.type	_vrun_cmd_usr_7,@function
+                        1042 	.size	_vrun_cmd_usr_7,.-_vrun_cmd_usr_7
+                        1043 	.align	2
+                        1044 
+                        1045 	.section ".ghrettbl",""
+00000030 00000000*      1046 .L644:	.word	.L643
+                        1047 	.type	.L644,@object
+                        1048 	.size	.L644,4
+                        1049 	.data
+                        1050 	.text
+                        1051 
+                        1052 
+                        1053 --304: void vrun_cmd_usr_8(void) {}
+                        1054 	.align	2
+                        1055 	.align	2
+                        1056 	.align	2
+                        1057 ..gh.f.a.2.e.22:
+                        1058 	.type	..gh.f.a.2.e.22,@object
+                        1059 	.size	..gh.f.a.2.e.22,0
+                        1060 	.global	_vrun_cmd_usr_8
+                        1061 _vrun_cmd_usr_8:
+                        1062 --	    .bf
+                        1063 .LDW83:
+                        1064 --	    .ef
+                        1065 .LDW93:
+                        1066 .L675:
+                        1067 	.jumptype return
+0000027a 7f00           1068 	jmp	[lp]
+                        1069 --line304
+                        1070 ..lin.772452c4..a1967d72.0_42::
+                        1071 	.type	_vrun_cmd_usr_8,@function
+                        1072 	.size	_vrun_cmd_usr_8,.-_vrun_cmd_usr_8
+                        1073 	.align	2
+                        1074 
+                        1075 	.section ".ghrettbl",""
+00000034 00000000*      1076 .L676:	.word	.L675
+                        1077 	.type	.L676,@object
+                        1078 	.size	.L676,4
+                        1079 	.data
+                        1080 	.text
+                        1081 
+                        1082 
+                        1083 --305: void vrun_cmd_usr_9(void) {}
+                        1084 	.align	2
+                        1085 	.align	2
+                        1086 	.align	2
+                        1087 ..gh.f.a.2.e.23:
+                        1088 	.type	..gh.f.a.2.e.23,@object
+                        1089 	.size	..gh.f.a.2.e.23,0
+                        1090 	.global	_vrun_cmd_usr_9
+                        1091 _vrun_cmd_usr_9:
+                        1092 --	    .bf
+                        1093 .LDW04:
+                        1094 --	    .ef
 
                                                                       Page 21
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-00000038 00000000*      1096 .L708:	.word	.L707
-                        1097 	.type	.L708,@object
-                        1098 	.size	.L708,4
-                        1099 	.data
-                        1100 	.text
-                        1101 
-                        1102 
-                        1103 --304: void vrun_cmd_usr_10(void) {}
-                        1104 	.align	2
-                        1105 	.align	2
-                        1106 	.align	2
-                        1107 ..gh.f.a.2.e.24:
-                        1108 	.type	..gh.f.a.2.e.24,@object
-                        1109 	.size	..gh.f.a.2.e.24,0
-                        1110 	.global	_vrun_cmd_usr_10
-                        1111 _vrun_cmd_usr_10:
-                        1112 --	    .bf
-                        1113 .LDW24:
-                        1114 --	    .ef
-                        1115 .LDW34:
-                        1116 .L739:
-                        1117 	.jumptype return
-0000027e 7f00           1118 	jmp	[lp]
-                        1119 --line304
-                        1120 ..lin.772452c4..d4662afb.0_44::
-                        1121 	.type	_vrun_cmd_usr_10,@function
-                        1122 	.size	_vrun_cmd_usr_10,.-_vrun_cmd_usr_10
-                        1123 	.align	2
-                        1124 
-                        1125 	.section ".ghrettbl",""
-0000003c 00000000*      1126 .L740:	.word	.L739
-                        1127 	.type	.L740,@object
-                        1128 	.size	.L740,4
-                        1129 	.data
-                        1130 	.text
-                        1131 
-                        1132 	.align	2
-                        1133 --___ghsbegin_start_rRAM	___ghsbegin_start_rRAM	import
-                        1134 --_ICUM_QUEUE	_ICUM_QUEUE	import
-                        1135 --___ghsbegin_start_gRAM_MEV	___ghsbegin_start_gRAM_MEV	import
-                        1136 --_cnt_other_request_error_pe2	_cnt_other_request_error_pe2	import
-                        1137 
-                        1138 	.data
-                        1139 	.align	4
-                        1140 	.global	_p_secure_tick_update_count_pe2_ch0
-00000000 00000000*      1141 _p_secure_tick_update_count_pe2_ch0:	.word	_cnt_other_request_error_pe2
-                        1142 	.type	_p_secure_tick_update_count_pe2_ch0,@object
-                        1143 	.size	_p_secure_tick_update_count_pe2_ch0,4
-                        1144 	.section ".rodata","a"
-                        1145 	.global	_CMD_USR_1
-00000000 00             1146 _CMD_USR_1:	.byte	0
-                        1147 	.type	_CMD_USR_1,@object
-                        1148 	.size	_CMD_USR_1,1
-                        1149 	.global	_CMD_USR_2
-00000001 00             1150 _CMD_USR_2:	.byte	0
-                        1151 	.type	_CMD_USR_2,@object
-                        1152 	.size	_CMD_USR_2,1
-                        1153 	.global	_CMD_USR_3
-00000002 00             1154 _CMD_USR_3:	.byte	0
-                        1155 	.type	_CMD_USR_3,@object
-                        1156 	.size	_CMD_USR_3,1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+                        1095 .LDW14:
+                        1096 .L707:
+                        1097 	.jumptype return
+0000027c 7f00           1098 	jmp	[lp]
+                        1099 --line305
+                        1100 ..lin.772452c4..a1967d73.0_43::
+                        1101 	.type	_vrun_cmd_usr_9,@function
+                        1102 	.size	_vrun_cmd_usr_9,.-_vrun_cmd_usr_9
+                        1103 	.align	2
+                        1104 
+                        1105 	.section ".ghrettbl",""
+00000038 00000000*      1106 .L708:	.word	.L707
+                        1107 	.type	.L708,@object
+                        1108 	.size	.L708,4
+                        1109 	.data
+                        1110 	.text
+                        1111 
+                        1112 
+                        1113 --306: void vrun_cmd_usr_10(void) {}
+                        1114 	.align	2
+                        1115 	.align	2
+                        1116 	.align	2
+                        1117 ..gh.f.a.2.e.24:
+                        1118 	.type	..gh.f.a.2.e.24,@object
+                        1119 	.size	..gh.f.a.2.e.24,0
+                        1120 	.global	_vrun_cmd_usr_10
+                        1121 _vrun_cmd_usr_10:
+                        1122 --	    .bf
+                        1123 .LDW24:
+                        1124 --	    .ef
+                        1125 .LDW34:
+                        1126 .L739:
+                        1127 	.jumptype return
+0000027e 7f00           1128 	jmp	[lp]
+                        1129 --line306
+                        1130 ..lin.772452c4..d4662afb.0_44::
+                        1131 	.type	_vrun_cmd_usr_10,@function
+                        1132 	.size	_vrun_cmd_usr_10,.-_vrun_cmd_usr_10
+                        1133 	.align	2
+                        1134 
+                        1135 	.section ".ghrettbl",""
+0000003c 00000000*      1136 .L740:	.word	.L739
+                        1137 	.type	.L740,@object
+                        1138 	.size	.L740,4
+                        1139 	.data
+                        1140 	.text
+                        1141 
+                        1142 	.align	2
+                        1143 --___ghsbegin_start_rRAM	___ghsbegin_start_rRAM	import
+                        1144 --_ICUM_QUEUE	_ICUM_QUEUE	import
+                        1145 --___ghsbegin_start_gRAM_MEV	___ghsbegin_start_gRAM_MEV	import
+                        1146 --_cnt_other_request_error_pe2	_cnt_other_request_error_pe2	static
+                        1147 
+                        1148 	.data
+                        1149 	.align	4
+                        1150 	.global	_p_secure_tick_update_count_pe2_ch0
+00000000 00000000*      1151 _p_secure_tick_update_count_pe2_ch0:	.word	_cnt_other_request_error_pe2
+                        1152 	.type	_p_secure_tick_update_count_pe2_ch0,@object
+                        1153 	.size	_p_secure_tick_update_count_pe2_ch0,4
+                        1154 	.section ".rodata","a"
+                        1155 	.global	_CMD_USR_1
 
                                                                       Page 22
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000peg1.si
-                        1157 	.global	_CMD_USR_4
-00000003 00             1158 _CMD_USR_4:	.byte	0
-                        1159 	.type	_CMD_USR_4,@object
-                        1160 	.size	_CMD_USR_4,1
-                        1161 	.global	_CMD_USR_5
-00000004 00             1162 _CMD_USR_5:	.byte	0
-                        1163 	.type	_CMD_USR_5,@object
-                        1164 	.size	_CMD_USR_5,1
-                        1165 	.global	_CMD_USR_6
-00000005 00             1166 _CMD_USR_6:	.byte	0
-                        1167 	.type	_CMD_USR_6,@object
-                        1168 	.size	_CMD_USR_6,1
-                        1169 	.global	_CMD_USR_7
-00000006 00             1170 _CMD_USR_7:	.byte	0
-                        1171 	.type	_CMD_USR_7,@object
-                        1172 	.size	_CMD_USR_7,1
-                        1173 	.global	_CMD_USR_8
-00000007 00             1174 _CMD_USR_8:	.byte	0
-                        1175 	.type	_CMD_USR_8,@object
-                        1176 	.size	_CMD_USR_8,1
-                        1177 	.global	_CMD_USR_9
-00000008 00             1178 _CMD_USR_9:	.byte	0
-                        1179 	.type	_CMD_USR_9,@object
-                        1180 	.size	_CMD_USR_9,1
-                        1181 	.global	_CMD_USR_10
-00000009 00             1182 _CMD_USR_10:	.byte	0
-                        1183 	.type	_CMD_USR_10,@object
-                        1184 	.size	_CMD_USR_10,1
-                        1185 	.data
-                        1186 	.section ".bss","awb"
-                        1187 	.align	2
-                        1188 	.align	2
-                        1189 	.global	_notification_from_pe1
-00000000 0000           1190 _notification_from_pe1:	.space	2
-                        1191 	.type	_notification_from_pe1,@object
-                        1192 	.size	_notification_from_pe1,2
-                        1193 	.data
-                        1194 	.need	_EIINT2
-                        1195 	.need	_INTIPIR2
-                        1196 	.need	_INTIPIRINTCH_ICUP
-                        1197 	.ghsnote version,30
-                        1198 	.ghsnote tools,8195
-                        1199 	.ghsnote options,656
-                        1200 	.text
-                        1201 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBBA..0::
-                        1202 	.section ".pe_rom","ax"
-                        1203 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AF6BBBA..1::
-                        1204 	.text
-                        1205 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010s41.si
+00000000 00             1156 _CMD_USR_1:	.byte	0
+                        1157 	.type	_CMD_USR_1,@object
+                        1158 	.size	_CMD_USR_1,1
+                        1159 	.global	_CMD_USR_2
+00000001 00             1160 _CMD_USR_2:	.byte	0
+                        1161 	.type	_CMD_USR_2,@object
+                        1162 	.size	_CMD_USR_2,1
+                        1163 	.global	_CMD_USR_3
+00000002 00             1164 _CMD_USR_3:	.byte	0
+                        1165 	.type	_CMD_USR_3,@object
+                        1166 	.size	_CMD_USR_3,1
+                        1167 	.global	_CMD_USR_4
+00000003 00             1168 _CMD_USR_4:	.byte	0
+                        1169 	.type	_CMD_USR_4,@object
+                        1170 	.size	_CMD_USR_4,1
+                        1171 	.global	_CMD_USR_5
+00000004 00             1172 _CMD_USR_5:	.byte	0
+                        1173 	.type	_CMD_USR_5,@object
+                        1174 	.size	_CMD_USR_5,1
+                        1175 	.global	_CMD_USR_6
+00000005 00             1176 _CMD_USR_6:	.byte	0
+                        1177 	.type	_CMD_USR_6,@object
+                        1178 	.size	_CMD_USR_6,1
+                        1179 	.global	_CMD_USR_7
+00000006 00             1180 _CMD_USR_7:	.byte	0
+                        1181 	.type	_CMD_USR_7,@object
+                        1182 	.size	_CMD_USR_7,1
+                        1183 	.global	_CMD_USR_8
+00000007 00             1184 _CMD_USR_8:	.byte	0
+                        1185 	.type	_CMD_USR_8,@object
+                        1186 	.size	_CMD_USR_8,1
+                        1187 	.global	_CMD_USR_9
+00000008 00             1188 _CMD_USR_9:	.byte	0
+                        1189 	.type	_CMD_USR_9,@object
+                        1190 	.size	_CMD_USR_9,1
+                        1191 	.global	_CMD_USR_10
+00000009 00             1192 _CMD_USR_10:	.byte	0
+                        1193 	.type	_CMD_USR_10,@object
+                        1194 	.size	_CMD_USR_10,1
+                        1195 	.data
+                        1196 	.section ".bss","awb"
+                        1197 	.align	2
+                        1198 	.global	_notification_from_pe1
+00000008 0000           1199 _notification_from_pe1:	.space	2
+                        1200 	.type	_notification_from_pe1,@object
+                        1201 	.size	_notification_from_pe1,2
+                        1202 	.data
+                        1203 	.need	_EIINT2
+                        1204 	.need	_INTIPIR2
+                        1205 	.need	_INTIPIRINTCH_ICUP
+                        1206 	.ghsnote version,30
+                        1207 	.ghsnote tools,8195
+                        1208 	.ghsnote options,656
+                        1209 	.text
+                        1210 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AFC108A..0::
+                        1211 	.section ".pe_rom","ax"
+                        1212 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Cpe.5Ctarget.5Cu2cx.5Cbuild.5Cobj.5Cpe2.5Clibs.5Cpe2.5Cpe2...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CU2C.5Cu2c_demo_project.5Ctop.5Cu2c..6AFC108A..1::
+                        1213 	.text
+                        1214 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G4KH,SDA_EXTRA_REGS_0

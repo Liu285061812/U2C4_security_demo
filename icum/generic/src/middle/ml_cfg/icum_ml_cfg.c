@@ -785,11 +785,27 @@ uint32_t ML_CFG_GetKeyMappingData(sys_cfg_key_mapping_t *p_key_map)
 uint32_t ML_CFG_SetIndexMappingVM(void)
 {
     uint32_t err;
+    uint32_t vm_id;
     sys_cfg_key_mapping_t key_map;
 
     /* Initialize local variable */
     err = ER_OK;
     L_Toolbox_MemSet((uint8_t *)&key_map, 0x00u, (int16_t)sizeof(sys_cfg_key_mapping_t));
+
+    if ((g_sys_cfg.vm_cfg.nb_vms == 0u) ||
+        (g_sys_cfg.vm_cfg.nb_vms > ML_CFG_TOTAL_NB_VMS_MAX))
+    {
+        return ER_PARAM;
+    }
+
+    /* Older Data Flash configurations may not reserve the demo AES RAM slots. */
+    for (vm_id = 0u; vm_id < g_sys_cfg.vm_cfg.nb_vms; vm_id++)
+    {
+        if (g_sys_cfg.key_mapping[vm_id].nb_aes_ram_keys < CFG_INIT_KEY_MAP_AES_RAM_KEYS)
+        {
+            g_sys_cfg.key_mapping[vm_id].nb_aes_ram_keys = CFG_INIT_KEY_MAP_AES_RAM_KEYS;
+        }
+    }
 
     /* Update keys index map of each VM by getting key mapping data */
     err = ML_CFG_GetKeyMappingData(&key_map);

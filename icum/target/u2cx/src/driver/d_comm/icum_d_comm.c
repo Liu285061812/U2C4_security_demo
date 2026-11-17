@@ -1107,26 +1107,17 @@ void ICPES(void)
             /* is the requester ID of ISD valid? */
             if ((int32_t)TOTAL_PE_NUM > (int32_t)p_isd->requester_id)
             {
-                /* Check service request is FastCMAC  */
-                if (((uint32_t)R_ICUMIF_SERV_PRIORITY_HIGHEST == (uint32_t)p_isd->service_priority) && 
-                    ((uint32_t)SERVICE_01_AES_CMAC == (uint32_t)p_isd->service_id))
+                /* The single-interrupt path must enqueue CMAC as well. */
+                if (NULL != s_cb_isd_AddJobQue_t.p_cbfunc)
                 {
-                    /* Do nothing */
+                    (*s_cb_isd_AddJobQue_t.p_cbfunc)(s_cb_isd_AddJobQue_t.channel, (r_icumif_isd_t *)p_isd);
                 }
                 else
                 {
-                    /* Service is pending. Add job in queue. */ 
-                    if (NULL != s_cb_isd_AddJobQue_t.p_cbfunc)
-                    {
-                        (*s_cb_isd_AddJobQue_t.p_cbfunc)(s_cb_isd_AddJobQue_t.channel, (r_icumif_isd_t *)p_isd);
-                    }
-                    else
-                    {
-                        /* Callback function is not registed. */
-                        p_isd->service_result = SERV_SYS_ERROR;
-                    }
-                    err = ER_IN_PROCESS;
+                    /* Callback function is not registed. */
+                    p_isd->service_result = SERV_SYS_ERROR;
                 }
+                err = ER_IN_PROCESS;
             }
             else
             {
@@ -1306,26 +1297,17 @@ void ICPES_RAM(void)
             /* is the requester ID of ISD valid? */
             if ((int32_t)TOTAL_PE_NUM > (int32_t)p_isd->requester_id)
             {
-                /* Check service request is FastCMAC  */
-                if (((uint32_t)R_ICUMIF_SERV_PRIORITY_HIGHEST == (uint32_t)p_isd->service_priority) && 
-                    ((uint32_t)SERVICE_01_AES_CMAC == (uint32_t)p_isd->service_id))
+                /* The single-interrupt path must enqueue CMAC as well. */
+                if (NULL != s_cb_isd_AddJobQue_t.p_cbfunc)
                 {
-                    /* Do nothing */
+                    (*s_cb_isd_AddJobQue_t.p_cbfunc)(s_cb_isd_AddJobQue_t.channel, (r_icumif_isd_t *)p_isd);
                 }
                 else
                 {
-                    /* Service is pending. Add job in queue. */ 
-                    if (NULL != s_cb_isd_AddJobQue_t.p_cbfunc)
-                    {
-                        (*s_cb_isd_AddJobQue_t.p_cbfunc)(s_cb_isd_AddJobQue_t.channel, (r_icumif_isd_t *)p_isd);
-                    }
-                    else
-                    {
-                        /* Callback function is not registed. */
-                        p_isd->service_result = SERV_SYS_ERROR;
-                    }
-                    err = ER_IN_PROCESS;
+                    /* Callback function is not registed. */
+                    p_isd->service_result = SERV_SYS_ERROR;
                 }
+                err = ER_IN_PROCESS;
             }
             else
             {

@@ -129,6 +129,7 @@ static aes_in_use_mng_table_t g_aes_in_use_mng_table[NB_AES_IN_USE_MNG_TABLE];
   ===========================================================================*/
 static uint8_t g_nb_aes_ram[ML_CFG_TOTAL_NB_VMS_MAX];
 
+/* Public test vectors only; these fixed keys must not be used in production. */
 static uint8_t g_demo_aes_keys[4][MH_KEY_AES_KEY_SIZE_IN_BYTES_COMMON] =
 {
     {
@@ -222,9 +223,9 @@ uint32_t mh_KEY_InitAes(void)
     /* Initialize local variable */
     i = NUM0;
     key_number = 0x00u;
-    err = mh_KEY_InitAesRamCfg();
 
     /* init Config RAM item */
+    err = mh_KEY_InitAesRamCfg();
     if (ER_OK != err)
     {
         return err;
@@ -275,24 +276,30 @@ uint32_t mh_KEY_InitAesRamCfg(void)
     vm_id = NUM0;
     key_number = 0x00u;
     p_ram_aes_keys = NULL;
-    err = ER_OK;
     L_Toolbox_MemSet((uint8_t *)&vm_cfg, 0x00u, (int16_t)sizeof(sys_cfg_vm_t));
 
-    (void)ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
+    err = ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
+    if (ER_OK != err)
+    {
+        return err;
+    }
     for (vm_id = NUM0; vm_id < (uint32_t)vm_cfg.nb_vms; vm_id++)
     {
         /* init AES RAM key */
-        (void)mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_AES_RAM, &key_number);
+        err = mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_AES_RAM, &key_number);
+        if (ER_OK != err)
+        {
+            return err;
+        }
+        if (key_number < 5u)
+        {
+            return ER_MH_KEY_INVALID_KEY_INDEX;
+        }
         for (i = NUM0; i < (uint32_t)key_number; i++)
         {
             /* init availability */
             p_ram_aes_keys = RAM_AES_KEYS(vm_id, i);
             p_ram_aes_keys->availability = E_NOT_AVAILABLE;
-        }
-
-        if (key_number < 5u)
-        {
-            return ER_MH_KEY_INVALID_KEY_INDEX;
         }
 
         for (i = NUM0; i < 4u; i++)
@@ -321,7 +328,11 @@ uint32_t mh_KEY_InitAesRamCfg(void)
         g_nb_aes_ram[vm_id] = key_number;
 
         /* init copy of AES keys(fix) */
-        (void)mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_AES_BUFFER, &key_number);
+        err = mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_AES_BUFFER, &key_number);
+        if (ER_OK != err)
+        {
+            return err;
+        }
         for(i = MH_KEY_AES_BUFFER_KEY_ID_START; i < ((uint32_t)key_number + MH_KEY_AES_BUFFER_KEY_ID_START); i++)
         {
             /* init availability */
@@ -329,7 +340,7 @@ uint32_t mh_KEY_InitAesRamCfg(void)
         }
     } /* end of for (vm_id = NUM0; vm_id < (uint32_t)vm_cfg.nb_vms; vm_id++) */
 
-    return err;
+    return(ER_OK);
 }
 
 /***************************************************************************************

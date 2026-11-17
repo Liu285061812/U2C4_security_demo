@@ -56,7 +56,7 @@ typedef struct
     uint8_t                     used_ac[32];
     uint8_t                     start_pe_set;
     uint8_t                     test_lock;
-    sys_cfg_fls_t               capacity_warning_threshold;
+    sys_cfg_fls_t               gc_warning_threshold;
     sys_cfg_sys_int_t           sys_interrupt;
     sys_cfg_vm_t                vm_cfg;
     uint8_t                     reserved[26];
@@ -74,7 +74,7 @@ typedef struct
 #define CFG_INIT_KEY_MAP_ECC_PUB_EXT_KEYS (0u)          /* Initial value of number of ECC public extend keys  */
 #define CFG_INIT_KEY_MAP_AES_RAM_KEYS     (5u)          /* AES profiles, XTS key, and ECDH output slot          */
 #define CFG_INIT_KEY_MAP_AES_BUFFER_KEYS  (0u)          /* Initial value of number of AES buffer keys         */
-#define CFG_INIT_KEY_MAP_ECC_RAM_KEYS     (2u)          /* Initial value of number of ECC RAM keys            */
+#define CFG_INIT_KEY_MAP_ECC_RAM_KEYS     (1u)          /* Initial value of number of ECC RAM keys            */
 #define CFG_INIT_KEY_MAP_HMAC_KEYS        (1u)          /* Initial value of number of HMAC keys               */
 #define CFG_INIT_KEY_MAP_TLS_MASTER_KEYS  (0u)          /* Initial value of number of TLS master secret keys  */
 #define CFG_INIT_MAC_LEN_MIN_VAL        (128u)          /* Initial value of MAC length minimum value          */
@@ -82,8 +82,8 @@ typedef struct
 #define CFG_INIT_BOOT_NSBF_PSM          (1u)            /* Initial value of secure boot executability status  */
 #define CFG_INIT_S_TIMER_FREQ           (10000u)        /* Initial value of secure tick timer interrupt time  */
 #define CFG_INIT_TEST_ECC_LOCK          (1u)            /* Initial value of ECC Test Lock (protect on)        */
-#define CFG_INIT_FLS_WARNING1_LEVEL     (30u)           /* Initial value of flash capacity warning 1 threshold */
-#define CFG_INIT_FLS_WARNING2_LEVEL     (15u)           /* Initial value of flash capacity warning 2 threshold */
+#define CFG_INIT_FLS_WARNING1_LEVEL     (30u)           /* Initial value of garbage collection warning 1 threshold  */
+#define CFG_INIT_FLS_WARNING2_LEVEL     (15u)           /* Initial value of garbage collection warning 2 threshold  */
 #define CFG_INIT_MAP_BOOTMODE           (0xFFFFFFFFuL)  /* Initial value of BootMode (BothMode)               */
 #define CFG_INIT_NB_VMS                 (1u)            /* Initial value of number of VM in each PE           */
 #define CFG_INIT_PRIVILEGE_VM_ID        (0x00u)         /* Initial value of privileged VM                     */

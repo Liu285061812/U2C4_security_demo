@@ -780,8 +780,14 @@ uint32_t D_INT_Init(ICUM_INT_CB_REGIST_t *p_regist_info)
                         }
                         else
                         {
+#if defined(TARGET_DEVICE_U2C4)
+                            /* Channel 32 is reserved; the first named EIC is channel 33. */
+                            pICUM_EIC = (volatile uint16_t *)&ICUM_INTC2 +
+                                        (iLoop - ICUM_INT_CHANNELMAX);
+#else
                             pICUM_EIC = (volatile uint16_t *)&ICUM_INTC2ICUM_ICRHSIFILA + 
                                         (iLoop - ICUM_INT_CHANNELMAX);
+#endif
 
                             /* 10. 1 is shifted to the left by (loopcountvalue-32) */
                             /*     value and the result is inverted, set in the    */
@@ -1025,7 +1031,11 @@ uint32_t D_INT_GetRequestFlag(uint32_t channel, uint32_t *p_Result)
             }
             else
             {
+#if defined(TARGET_DEVICE_U2C4)
+                pICUM_EIC = (volatile uint16_t *)&ICUM_INTC2 + (channel - ICUM_INT_CHANNELMAX);
+#else
                 pICUM_EIC = (volatile uint16_t *)&ICUM_INTC2ICUM_ICPKCCA0SUSP + (channel - ICUM_INT_CHANNELMAX);
+#endif
             }
             uiEicSave = *pICUM_EIC;
 
