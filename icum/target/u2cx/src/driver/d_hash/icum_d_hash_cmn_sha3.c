@@ -435,17 +435,24 @@ void d_hash_cmn_sha3_set_idat(const uint8_t* const p_data, const uint32_t len)
 {
     uint32_t         loop_max;
     uint32_t         i;
-    ptr_manip_sha3_t ptr_addr;
+    uint32_t         word;
+    uint32_t         copy_len;
 
     loop_max = (r_hash_cmn_roundup_4(len) / HASH_WORD_SIZE);
     i = VARIABLE_INIT;
-    ptr_addr.p_ptr_8 = p_data;
 
     /* set the data to IDAT register */
     for(; i < loop_max; i++)
     {
+        copy_len = len - (i * HASH_WORD_SIZE);
+        if (copy_len > HASH_WORD_SIZE)
+        {
+            copy_len = HASH_WORD_SIZE;
+        }
+        word = 0U;
+        r_hash_cmn_cpy_byte((uint8_t *)&word, &p_data[i * HASH_WORD_SIZE], copy_len);
         /* Define macro ICUM_SHA3A0IDAT is cast to access a register */
-        ICUM_SHA3A0IDAT = ptr_addr.p_temp[i];
+        ICUM_SHA3A0IDAT = word;
     }
 }
 
@@ -463,11 +470,10 @@ e_r_hash_ret_t d_hash_cmn_sha3_get_output_data(const uint32_t hash_len, uint8_t*
 {
     e_r_hash_ret_t   ret;
     uint32_t         i;
-    ptr_manip_sha3_t ptr_addr;
+    uint32_t         word;
 
     ret = HASH_RET_OK;
     i = VARIABLE_INIT;
-    ptr_addr.p_ptr_8 = p_out;
 
     /* NULL check */
     if (NULL != p_out)
@@ -481,7 +487,8 @@ e_r_hash_ret_t d_hash_cmn_sha3_get_output_data(const uint32_t hash_len, uint8_t*
             /* get output data */
             for (; i < (hash_len / HASH_WORD_SIZE); i++)
             {
-                ptr_addr.p_out_buf[i] = ICUM_SHA3A0ODAT;
+                word = ICUM_SHA3A0ODAT;
+                r_hash_cmn_cpy_byte(&p_out[i * HASH_WORD_SIZE], (const uint8_t *)&word, HASH_WORD_SIZE);
             }
         }
         else

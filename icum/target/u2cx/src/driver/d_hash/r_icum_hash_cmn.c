@@ -767,15 +767,9 @@ e_r_hash_ret_t r_hash_cmn_get_intermediate(uint32_t* const p_im_data, uint32_t* 
  *      - Set data in the #ICUM_SHAIDAT register.
  * 
  * Pseudo-code for the function can be found below. 
- * -# Set the argument p_data to p_temp
  * -# Set calculate of (r_hash_cmn_roundup_4(len) / HASH_WORD_SIZE) value to loop_max
- * -# If p_data != NULL
- *   -# Loop while i is loop_max or less<br>
- *      Increment i for each loop
- *     -# Set p_temp[i] to #ICUM_SHAIDAT
- * -# Else
- *   -# Do nothing
- * -# Return ret
+ * -# For each word, copy up to HASH_WORD_SIZE remaining bytes into an aligned word.
+ * -# Write the word to #ICUM_SHAIDAT; unused bytes in the last word are zero.
  *
  * \callgraph
  *********************************************************************************************************************/
@@ -784,9 +778,10 @@ void r_hash_cmn_set_idat(const uint8_t* const p_data, const uint32_t len)
     /*-----------------------------------------------------------------------------------------------------------------
      Local variables
     -----------------------------------------------------------------------------------------------------------------*/
-    const uint32_t* const p_temp = (const uint32_t*)p_data;
     const uint32_t        loop_max = (r_hash_cmn_roundup_4(len) / HASH_WORD_SIZE);
     uint32_t              i;
+    uint32_t              word;
+    uint32_t              copy_len;
 
     /*-----------------------------------------------------------------------------------------------------------------
      Function body
@@ -794,8 +789,15 @@ void r_hash_cmn_set_idat(const uint8_t* const p_data, const uint32_t len)
     /* set the data to IDAT register */
     for(i = 0U; i < loop_max; i++)
     {
+        copy_len = len - (i * HASH_WORD_SIZE);
+        if (copy_len > HASH_WORD_SIZE)
+        {
+            copy_len = HASH_WORD_SIZE;
+        }
+        word = 0U;
+        r_hash_cmn_cpy_byte((uint8_t *)&word, &p_data[i * HASH_WORD_SIZE], copy_len);
         /* Define macro ICUM_SHAIDAT is cast to access a register */
-        ICUM_SHAIDAT = p_temp[i];
+        ICUM_SHAIDAT = word;
     }
 }
 /**********************************************************************************************************************
@@ -997,7 +999,6 @@ e_r_hash_ret_t r_hash_cmn_wait_for_idata_ready(void)
  *        This process is called from a hash operation or an HMAC operation.
  * 
  * Pseudo-code for the function can be found below. 
- * -# Set the argument p_out to p_out_buf
  * -# If p_out != NULL
  *   -# Wait ODATA_VALID is 1 with #r_hash_cmn_wait_sts
  *   -# If ret == HASH_RET_OK
@@ -1005,7 +1006,7 @@ e_r_hash_ret_t r_hash_cmn_wait_for_idata_ready(void)
  *     -# If ret == HASH_RET_OK
  *       -# Loop while i is (hash_len/HASH_WORD_SIZE) or less<br>
  *        Increment i for each loop
- *         -# Set p_out_buf[i] to #ICUM_SHAODAT
+ *         -# Read #ICUM_SHAODAT into an aligned word and copy its bytes to p_out.
  *       -# 1 is set to the ODATA_VALCLR bit of the register #ICUM_SHASTSC
  *     -# Else
  *       -# Do nothing
@@ -1024,9 +1025,7 @@ e_r_hash_ret_t r_hash_cmn_get_output_data(const uint32_t hash_len, uint8_t* cons
     -----------------------------------------------------------------------------------------------------------------*/
     e_r_hash_ret_t  ret;
     uint32_t        i;
-
-    /* This variable is cast to receive a value from a register */
-    uint32_t* const p_out_buf = (uint32_t*)p_out;
+    uint32_t        word;
 
     /*-----------------------------------------------------------------------------------------------------------------
      Function body
@@ -1050,7 +1049,8 @@ e_r_hash_ret_t r_hash_cmn_get_output_data(const uint32_t hash_len, uint8_t* cons
                 for(i=0U; i<(hash_len/HASH_WORD_SIZE); i++)
                 {
                     /* Define macro ICUM_SHAODAT is cast to access a register */
-                    p_out_buf[i] = ICUM_SHAODAT;
+                    word = ICUM_SHAODAT;
+                    r_hash_cmn_cpy_byte(&p_out[i * HASH_WORD_SIZE], (const uint8_t *)&word, HASH_WORD_SIZE);
                 }
 
                 /* clear odata valid */

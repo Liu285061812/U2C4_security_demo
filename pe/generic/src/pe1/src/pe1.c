@@ -384,9 +384,23 @@ void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
 
     /* trigger the service request*/
     errno = R_ICUMIF_ServiceRequest(p_ISD);
-    if(errno != SERV_OK)
+    if(errno != R_ICUMIF_ER_OK)
     {
-        /* error */
+        printf("ICUM request 0x%02lX failed: interface error %ld\n",
+               (unsigned long)p_ISD->service_id, (long)errno);
+        if (R_ICUMIF_ER_REQ_QUEUE_FULL == errno)
+        {
+            p_ISD->service_result = SERV_REQUEST_QUEUE_FULL;
+        }
+        else if ((R_ICUMIF_ER_PARAM_ALIGNMENT == errno) || (R_ICUMIF_ER_ADDR_NOT_G_RAM == errno))
+        {
+            p_ISD->service_result = SERV_PRM_ERROR;
+        }
+        else
+        {
+            p_ISD->service_result = SERV_SYS_ERROR;
+        }
+        return;
     }
     /* go in HALT mode */
     /* wait for interrupt */

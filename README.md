@@ -86,6 +86,48 @@ request and response overhead and is valid for intervals shorter than one
 The AES encryption tests compare the ciphertext against fixed expected values
 for the demo RAM keys and inputs; GCM and CCM also compare the authentication
 tag. They then perform the existing decryption and verification checks.
+The RSA key-generation, sign/verify and encrypt/decrypt tests initialize RNG
+and extend its seed before preparing their shared request descriptors/buffers.
+The menu and batch key-generation tests use the same preparation helper, so
+0x24 can be selected immediately after a cold reset. RNG preparation failures
+stop the test before key generation; the ICUM service itself still requires an
+initialized, seeded RNG and reports `SERV_NO_INIT_RNG` otherwise.
+PSS, PKCS#1 v1.5 signatures, and OAEP use SHA-256;
+PSS uses a 32-byte salt. SHA-1 is not supported by the current ICUM hash mapping.
+The initial RSA RAM key is 2048 bits (256-byte modulus and private exponent),
+with the public exponent 65537 encoded as four big-endian bytes. The larger
+array capacities are reserved for generated keys, not part of this key's length.
+RSA key generation uses a separate aligned RAM workspace while holding the
+single RSA/ECC context; it does not borrow or overwrite the active key cache.
+Only a completed generation is installed into RAM key ID 0, using the driver's
+output lengths and big-endian public exponent. Temporary key material is
+cleared before the context is released, including generation-failure paths.
+RSA contexts explicitly bind the watchdog callback used by the PKC driver's
+long-running loops. If key generation yields for RNG resource arbitration,
+its PKC state is cleared before the synchronous service releases its context,
+so the dispatcher can retry from initialization rather than reuse freed state.
+RNG initialization/seed-extension errors and PE request-submission errors are
+reported as failures, not successful preparation or an indefinite response wait.
+For board acceptance, cold-reset both PE and ICUM, select 0x24, and check that
+RNG initialization and seed extension succeed before key generation returns
+`SERV_OK`. Then run RSA sign/verify (PSS and PKCS#1 v1.5) and encrypt/decrypt
+(OAEP and PKCS#1 v1.5) using generated RAM key ID 0, and repeat generation.
+These board checks are still required: simulated peripheral/prime-generation
+results validate software contracts and key storage, not real PKCC/TRNG operation.
+These fixed demo keys must not be used in production.
+Synchronous PKCC waits service the watchdog using its existing 75% request
+flag. The PKCC polling limit and error returns remain active; the watchdog
+is not disabled or extended for RSA key generation.
+The PKC library's byte-copy helper accepts unaligned sub-buffer addresses,
+as required by RSA padding; public API buffer-alignment requirements still apply.
+SHA-2 and SHA-3 CPU-fed data paths treat input and digest buffers as byte arrays:
+input bytes are staged into aligned register words, and output register words
+are copied back as bytes. This includes PKC callback buffers inside RSA
+PSS/PKCS#1/OAEP padding; aligning just the top-level PE buffers is insufficient.
+Partial final input words are zero-filled without reading beyond the supplied
+input length. Contexts retain their typed alignment and DMA requirements are
+unchanged. An alignment exception followed by watchdog NMI is a primary MAEX
+fault followed by a secondary watchdog timeout, not evidence to disable the WDT.
 On U2C4, service response interrupts use
 INTC2 channel 236 for PE0 and channel 540 for PE1.
 The current data-set backend uses RAM, not persistent data flash. It is reset

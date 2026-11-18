@@ -695,6 +695,7 @@ uint32_t L_PKC_RsaContextSetup(rsa_ctx_t *p_rsa_ctx)
         p_pkc_ctx->sec_mod_exp = PKC_BOOL_FALSE;
         s_pkc_prng.err = ER_OK;
         p_pkc_ctx->p_drbg_api = (PKC_DRBG_T)l_PKC_GenerateRandom;
+        p_pkc_ctx->p_callback_api = D_WDT_StartIfNeeded;
         err = ER_OK;
     }
     else
@@ -1444,6 +1445,15 @@ uint32_t L_PKC_RsaKeyGenOperate(st_pkc_rsa_ctx_t* const p_ctx)
 
     pkc_ret = R_PKCL_RsaKeyGenOperate(p_ctx);
     err = l_PKC_ConvertRsaCode(pkc_ret);
+    if ((ER_PENDING == err) || (ER_PENDING_ARB == err))
+    {
+        /* The synchronous service releases its context before retrying. */
+        pkc_ret = R_PKCL_ClearState();
+        if (PKCL_RET_OK != pkc_ret)
+        {
+            err = l_PKC_ConvertRsaCode(pkc_ret);
+        }
+    }
     (void)l_PKC_FinishProcess(err);
 
     return (err);

@@ -602,27 +602,11 @@ void r_pkcl_cmn_set_byte(uint8_t* const p_dest, const uint8_t val, const uint32_
  *********************************************************************************************************************/
 void r_pkcl_cmn_cpy_byte(uint8_t* const p_dest, const uint8_t* const p_src, const uint32_t len)
 {
-    const uint32_t * const p_src32 =  (const uint32_t*)p_src;  /* No problem with casting to pointer size */
-    uint32_t * const p_dest32 = (uint32_t*)p_dest;
-    const uint32_t word_len = (len / PKCL_CMN_WORD_BYTE_SIZE) * PKCL_CMN_WORD_BYTE_SIZE;
-    const uint32_t rem_len = (len % PKCL_CMN_WORD_BYTE_SIZE);
     uint32_t i;
 
-    if (0U != word_len)
+    for (i = 0U; i < len; i++ )
     {
-        for (i = 0U; i < (word_len / PKCL_CMN_WORD_BYTE_SIZE); i++ )
-        {
-            p_dest32[i] = p_src32[i];
-        }
-    }
-    else
-    {
-        /* Do nothing */
-    }
-
-    for (i = 0U; i < rem_len; i++ )
-    {
-        p_dest[word_len + i] = p_src[word_len + i];
+        p_dest[i] = p_src[i];
     }
 }
 /**********************************************************************************************************************

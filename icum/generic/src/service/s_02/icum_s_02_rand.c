@@ -80,6 +80,23 @@ static uint32_t g_usage_status;
 static uint32_t s_02_RAND_InitCommon(uint32_t trng_size, const icum_job_t *p_rand_Job,
                                      const uint32_t online_test);
 
+static r_icumif_service_result_t s_02_RAND_ConvertPrngResult(uint32_t err)
+{
+    switch (err)
+    {
+        case ER_ML_PRNG_OK:        return SERV_OK;
+        case ER_ML_PRNG_STATUS:    return SERV_NO_INIT_RNG;
+        case ER_ML_PRNG_TRN:       return SERV_TRN_ERROR;
+        case ER_ML_PRNG_RESEED:    return SERV_NEED_RESEED;
+        case ER_ML_PRNG_TIMEOUT:   return SERV_AES_TIMEOUT_ERROR;
+        case ER_ML_PRNG_PARAMETER: return SERV_PRM_ERROR;
+        case ER_ML_PRNG_AES_PRM:   return SERV_AES_PRM_ERROR;
+        case ER_PENDING:
+        case ER_PENDING_ARB:      return SERV_PENDING;
+        default:                  return SERV_SYS_ERROR;
+    }
+}
+
 /***************************************************************************************
 * Function ID  : [ICUMFW_CD_S_02_RNG_0003]:[ICUMFW_UD_S_02_RNG_0003]
 * Function name: s_02_RAND_InitCommon
@@ -131,10 +148,14 @@ static uint32_t s_02_RAND_InitCommon(uint32_t trng_size, const icum_job_t *p_ran
                 p_rand_Job->p_ISD->service_result = SERV_IN_PROCESS;
                 g_usage_status = ON;
             }
-            else
+            else if (ER_ML_PRNG_OK == ret_err)
             {
                 p_rand_Job->p_ISD->service_result = SERV_OK;
                 g_usage_status = ON;
+            }
+            else
+            {
+                p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
             }
         }
         else
@@ -292,24 +313,16 @@ void S_02_RAND_InitRng(icum_job_t *p_rand_Job)
             {
                 p_rand_Job->p_ISD->service_result = SERV_PRM_ERROR;
             }
-            /* ret_err == ER_OK */
-            else
+            else if (ER_OK == ret_err)
             {
                 ret_err = ML_PRNG_InitSHE(secret_key);
-                L_Toolbox_MemSet((uint8_t*)secret_key, (uint8_t)NUM0, (int16_t)sizeof(secret_key));
-                if (ER_ML_PRNG_TIMEOUT == ret_err)
-                {
-                    p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
-                }
-                else if (ER_PENDING == ret_err)
-                {
-                    p_rand_Job->p_ISD->service_result = SERV_PENDING;
-                }
-                else
-                {
-                    p_rand_Job->p_ISD->service_result = SERV_OK;
-                }
+                p_rand_Job->p_ISD->service_result = s_02_RAND_ConvertPrngResult(ret_err);
             }
+            else
+            {
+                p_rand_Job->p_ISD->service_result = SERV_SYS_ERROR;
+            }
+            L_Toolbox_MemSet((uint8_t*)secret_key, (uint8_t)NUM0, (int16_t)sizeof(secret_key));
             (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
             g_usage_status = OFF;
         }
@@ -488,21 +501,9 @@ void S_02_RAND_ExtendSeed(icum_job_t *p_rand_Job)
         ret_err = ML_PRNG_ExtendSHE((const uint32_t *)source_logical.p_ptr);
         (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
         g_usage_status = OFF;
-        if (ER_ML_PRNG_STATUS == ret_err)
+        p_rand_Job->p_ISD->service_result = s_02_RAND_ConvertPrngResult(ret_err);
+        if (SERV_OK == p_rand_Job->p_ISD->service_result)
         {
-            p_rand_Job->p_ISD->service_result = SERV_NO_INIT_RNG;
-        }
-        else if (ER_ML_PRNG_TIMEOUT == ret_err)
-        {
-            p_rand_Job->p_ISD->service_result = SERV_AES_TIMEOUT_ERROR;
-        }
-        else if (ER_PENDING == ret_err)
-        {
-            p_rand_Job->p_ISD->service_result = SERV_PENDING;
-        }
-        else
-        {
-            p_rand_Job->p_ISD->service_result = SERV_OK;
             (void)MM_CR_InitCompletionNotice();
         }
     }

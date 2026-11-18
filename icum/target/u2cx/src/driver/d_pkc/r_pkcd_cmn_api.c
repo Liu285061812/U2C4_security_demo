@@ -53,6 +53,7 @@
 #include "r_pkcd_api.h"
 #include "r_pkcd_dev_api.h"
 #include "r_pkcd_cmn.h"
+#include "icum_d_wdt_pub.h"
 
 /*!********************************************************************
  * \addtogroup    PKCDCommon
@@ -816,6 +817,8 @@ pkcd_ret_t r_pkcd_cmn_run(const uint32_t mode, const e_pkc_sync_opt_t sync_optio
         while ((PKCD_CMN_PKCD_OPE_TIMEOUT > timeout_cnt) &&
                 ((PKCD_CMN_ICUM_PKCCB0CR & PKCD_CMN_PKCC_START) == PKCD_CMN_PKCC_START))
         {
+            /* A synchronous operation cannot return to the dispatcher's WDT service. */
+            D_WDT_StartIfNeeded();
             timeout_cnt += 1U;
         }
 

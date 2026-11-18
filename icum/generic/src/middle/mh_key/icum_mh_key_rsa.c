@@ -129,6 +129,7 @@ static uint8_t g_current_idx_rsa;
   ===========================================================================*/
 static uint8_t g_in_use_conter_rsa[NB_RAM_COPIES_RSA_KEYS];
 
+#pragma alignvar(4)
 static uint8_t g_demo_rsa_modulus[MODULUS_SIZE_IN_BYTES] =
 {
     0xb1u, 0x0cu, 0xfcu, 0x21u, 0x20u, 0x4eu, 0x38u, 0x74u, 0xb9u, 0x44u, 0x54u, 0xb2u, 0xc1u, 0x4cu, 0xf1u, 0x0fu,
@@ -148,6 +149,7 @@ static uint8_t g_demo_rsa_modulus[MODULUS_SIZE_IN_BYTES] =
     0x53u, 0x4bu, 0x6eu, 0x37u, 0xb1u, 0x90u, 0x28u, 0x56u, 0xb5u, 0x32u, 0x52u, 0x23u, 0xd3u, 0xa6u, 0xffu, 0x00u,
     0xfau, 0xbbu, 0xcdu, 0xf3u, 0xfbu, 0x97u, 0xd0u, 0xa6u, 0xa9u, 0x5du, 0xa3u, 0x48u, 0xeeu, 0x6cu, 0x46u, 0x35u
 };
+#pragma alignvar(4)
 static uint8_t g_demo_rsa_private_exponent[PRIV_EXP_SIZE_IN_BYTES] =
 {
     0x18u, 0x4du, 0x93u, 0xfeu, 0x68u, 0x14u, 0xd4u, 0xa3u, 0x11u, 0x1bu, 0x54u, 0x15u, 0x05u, 0x7bu, 0xaeu, 0x4bu,
@@ -167,7 +169,8 @@ static uint8_t g_demo_rsa_private_exponent[PRIV_EXP_SIZE_IN_BYTES] =
     0xb5u, 0xccu, 0x85u, 0x6bu, 0xa9u, 0x4eu, 0x62u, 0xd6u, 0x57u, 0x5fu, 0x13u, 0xbdu, 0x13u, 0x01u, 0x81u, 0x93u,
     0x13u, 0x92u, 0x66u, 0x61u, 0x9cu, 0x1fu, 0xbfu, 0x00u, 0xcau, 0xe3u, 0xe0u, 0x83u, 0x80u, 0xa7u, 0x92u, 0xb1u
 };
-static uint8_t g_demo_rsa_public_exponent[PUB_EXP_SIZE_IN_BYTES] = {0x01u, 0x00u, 0x01u};
+#pragma alignvar(4)
+static uint8_t g_demo_rsa_public_exponent[PUB_EXP_SIZE_IN_BYTES] = {0x00u, 0x01u, 0x00u, 0x01u};
 
 /**************************************************************************************/
 /* Prototypes                                                                         */
@@ -205,10 +208,10 @@ uint32_t mh_KEY_InitRsa(void)
     g_copy_rsa_keys[0].key_group = KEY_GRP_RSA;
     g_copy_rsa_keys[0].key_id = 0u;
     g_copy_rsa_keys[0].vm_id = 0u;
-    g_copy_rsa_keys[0].p_properties->modulus_size_in_bits = 2048u;
-    g_copy_rsa_keys[0].p_properties->modulus_size_in_bytes = MODULUS_SIZE_IN_BYTES;
-    g_copy_rsa_keys[0].p_properties->priv_exp_size_in_bytes = PRIV_EXP_SIZE_IN_BYTES;
-    g_copy_rsa_keys[0].p_properties->pub_exp_size_in_bytes = (uint16_t)sizeof(g_demo_rsa_public_exponent);
+    g_copy_rsa_keys[0].p_properties->modulus_size_in_bits = NUM2048;
+    g_copy_rsa_keys[0].p_properties->modulus_size_in_bytes = NUM2048 / 8u;
+    g_copy_rsa_keys[0].p_properties->priv_exp_size_in_bytes = NUM2048 / 8u;
+    g_copy_rsa_keys[0].p_properties->pub_exp_size_in_bytes = 4u;
     g_copy_rsa_keys[0].p_properties->flags.write_protected = 1u;
     g_copy_rsa_keys[0].p_modulus = g_demo_rsa_modulus;
     g_copy_rsa_keys[0].p_priv_exponent = g_demo_rsa_private_exponent;

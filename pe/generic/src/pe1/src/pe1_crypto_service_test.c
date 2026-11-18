@@ -35,6 +35,7 @@
 #if PE1_TEST_RSA_KEY_GENERATE || PE1_TEST_RSA_CRYPT || PE1_TEST_RSA_SIGNATURE
 #define TEST_RSA_KEY_ID       (0u)
 #define TEST_RSA_KEY_BITS     (2048u)
+static int prepare_rng(void);
 #endif
 #if PE1_TEST_RSA_CRYPT || PE1_TEST_RSA_SIGNATURE
 #define TEST_RSA_BUFFER_BITS  (4096u)
@@ -408,13 +409,19 @@ static int test_aes_cmac(void)
 static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *name,
                                r_icumif_service_id_t selected_service)
 {
-    r_icumif_isd_t *p_isd = test_isd();
+    r_icumif_isd_t *p_isd;
     uint32_t message_size = sizeof(s_rsa_message) - 1u;
     uint16_t encrypted_size_in_bits;
+
+    if (!prepare_rng())
+    {
+        return 0;
+    }
 
     memset(BIG_BUFFER[1], 0, SIZE_OF_BIG_BUFFER);
     memset(BIG_BUFFER[2], 0, SIZE_OF_BIG_BUFFER);
     memcpy(BIG_BUFFER[0], s_rsa_message, message_size);
+    p_isd = test_isd();
     p_isd->service_id = SERVICE_02_RSA_ENCRYPT;
     p_isd->prm.RSA_ENCRYPT.p_message = BIG_BUFFER[0];
     p_isd->prm.RSA_ENCRYPT.message_size_in_bytes = message_size;
@@ -422,7 +429,7 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
     p_isd->prm.RSA_ENCRYPT.encrypted_message_size_in_bits = TEST_RSA_KEY_BITS;
     p_isd->prm.RSA_ENCRYPT.p_label = NULL;
     p_isd->prm.RSA_ENCRYPT.label_size_in_bytes = 0u;
-    p_isd->prm.RSA_ENCRYPT.hash_primitive = HASH_PRIMITIVE_SHA1;
+    p_isd->prm.RSA_ENCRYPT.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.RSA_ENCRYPT.message_encoding_format = mode;
     p_isd->prm.RSA_ENCRYPT.key_group = KEY_GRP_RSA;
     p_isd->prm.RSA_ENCRYPT.key_id = TEST_RSA_KEY_ID;
@@ -446,7 +453,7 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
     p_isd->prm.RSA_DECRYPT.message_size_in_bytes = TEST_RSA_BUFFER_SIZE;
     p_isd->prm.RSA_DECRYPT.p_label = NULL;
     p_isd->prm.RSA_DECRYPT.label_size_in_bytes = 0u;
-    p_isd->prm.RSA_DECRYPT.hash_primitive = HASH_PRIMITIVE_SHA1;
+    p_isd->prm.RSA_DECRYPT.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.RSA_DECRYPT.message_encoding_format = mode;
     p_isd->prm.RSA_DECRYPT.key_id = TEST_RSA_KEY_ID;
     p_isd->prm.RSA_DECRYPT.encrypted_message_format = FORMAT_BINARY_PLAIN;
@@ -469,17 +476,23 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
 static int test_rsa_signature_mode(r_hash_encoding_format_t mode, const char *name,
                                    r_icumif_service_id_t selected_service)
 {
-    r_icumif_isd_t *p_isd = test_isd();
-    uint16_t salt_size = (mode == ENCODING_FORMAT_EMSA_PSS) ? 20u : 0u;
+    r_icumif_isd_t *p_isd;
+    uint16_t salt_size = (mode == ENCODING_FORMAT_EMSA_PSS) ? 32u : 0u;
     uint16_t signature_size_in_bits;
+
+    if (!prepare_rng())
+    {
+        return 0;
+    }
 
     memset(BIG_BUFFER[1], 0, SIZE_OF_BIG_BUFFER);
     memcpy(BIG_BUFFER[0], s_rsa_message, sizeof(s_rsa_message) - 1u);
+    p_isd = test_isd();
     p_isd->service_id = SERVICE_02_RSA_SIGN;
     p_isd->prm.RSA_SIGN.p_source = BIG_BUFFER[0];
     p_isd->prm.RSA_SIGN.p_signature = BIG_BUFFER[1];
     p_isd->prm.RSA_SIGN.source_size_in_bytes = sizeof(s_rsa_message) - 1u;
-    p_isd->prm.RSA_SIGN.hash_primitive = HASH_PRIMITIVE_SHA1;
+    p_isd->prm.RSA_SIGN.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.RSA_SIGN.hash_encoding_format = mode;
     p_isd->prm.RSA_SIGN.signature_format = FORMAT_BINARY_PLAIN;
     p_isd->prm.RSA_SIGN.key_id = TEST_RSA_KEY_ID;
@@ -504,7 +517,7 @@ static int test_rsa_signature_mode(r_hash_encoding_format_t mode, const char *na
     p_isd->prm.RSA_VERIFY.source_size_in_bytes = sizeof(s_rsa_message) - 1u;
     p_isd->prm.RSA_VERIFY.signature_size_in_bits = signature_size_in_bits;
     p_isd->prm.RSA_VERIFY.salt_size_in_bytes = salt_size;
-    p_isd->prm.RSA_VERIFY.hash_primitive = HASH_PRIMITIVE_SHA1;
+    p_isd->prm.RSA_VERIFY.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.RSA_VERIFY.hash_encoding_format = mode;
     p_isd->prm.RSA_VERIFY.signature_format = FORMAT_BINARY_PLAIN;
     p_isd->prm.RSA_VERIFY.key_group = KEY_GRP_RSA;
@@ -562,6 +575,24 @@ static int prepare_rng(void)
 {
     return run_rng_init() && run_rng_extend_seed();
 }
+
+#if PE1_TEST_RSA_KEY_GENERATE
+static int test_rsa_key_generate(void)
+{
+    r_icumif_isd_t *p_isd;
+
+    if (!prepare_rng())
+    {
+        return 0;
+    }
+
+    p_isd = test_isd();
+    p_isd->service_id = SERVICE_02_RSA_KEY_GENERATE;
+    p_isd->prm.RSA_KEY_GENERATE.key_id = TEST_RSA_KEY_ID;
+    p_isd->prm.RSA_KEY_GENERATE.modulus_size_in_bits = TEST_RSA_KEY_BITS;
+    return run_service("RSA 2048-bit keygen", p_isd);
+}
+#endif
 
 static int test_rng_service(r_icumif_service_id_t service_id)
 {
@@ -895,14 +926,8 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
             break;
         case SERVICE_02_RSA_KEY_GENERATE:
 #if PE1_TEST_RSA_KEY_GENERATE
-        {
-            r_icumif_isd_t *p_isd = test_isd();
-            p_isd->service_id = SERVICE_02_RSA_KEY_GENERATE;
-            p_isd->prm.RSA_KEY_GENERATE.key_id = TEST_RSA_KEY_ID;
-            p_isd->prm.RSA_KEY_GENERATE.modulus_size_in_bits = TEST_RSA_KEY_BITS;
-            print_test_result("RSA 2048-bit keygen", run_service("RSA 2048-bit keygen", p_isd));
+            print_test_result("RSA 2048-bit keygen", test_rsa_key_generate());
             break;
-        }
 #else
             printf("RSA key-generation test is disabled by PE1_TEST_RSA_KEY_GENERATE.\n");
             break;
@@ -952,10 +977,6 @@ void icum_crypto_service_test(void)
             PE1_TEST_RSA_KEY_GENERATE || PE1_TEST_RSA_CRYPT || PE1_TEST_RSA_SIGNATURE)
         printf("No AES/RSA service tests are enabled.\n");
 #else
-#if PE1_TEST_RSA_KEY_GENERATE
-    r_icumif_isd_t *p_isd;
-#endif
-
     printf("\nICUM AES/RSA service tests (OSTM0 time to service return)\n");
 #if PE1_TEST_AES_CIPHER
     print_test_result("AES-ECB enc/dec", test_aes_cipher_mode(CIPHER_MOD_ECB, "AES-ECB enc/dec"));
@@ -974,11 +995,7 @@ void icum_crypto_service_test(void)
 #endif
 
 #if PE1_TEST_RSA_KEY_GENERATE
-    p_isd = test_isd();
-    p_isd->service_id = SERVICE_02_RSA_KEY_GENERATE;
-    p_isd->prm.RSA_KEY_GENERATE.key_id = TEST_RSA_KEY_ID;
-    p_isd->prm.RSA_KEY_GENERATE.modulus_size_in_bits = TEST_RSA_KEY_BITS;
-    print_test_result("RSA 2048-bit keygen", run_service("RSA 2048-bit keygen", p_isd));
+    print_test_result("RSA 2048-bit keygen", test_rsa_key_generate());
 #endif
 #if PE1_TEST_RSA_CRYPT
     print_test_result("RSA-OAEP enc/dec",
