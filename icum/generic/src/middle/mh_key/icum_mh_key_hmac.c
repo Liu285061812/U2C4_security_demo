@@ -60,6 +60,12 @@
 * Local const
 ***********************************************************************************/
 
+/* RFC 4231 test case 1; demonstration use only. */
+static const uint8_t g_demo_hmac_key[20] = {
+    0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu,
+    0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu, 0x0bu
+};
+
 /*********************************************************************************
 * Local type definition
 **********************************************************************************/
@@ -91,6 +97,8 @@ uint32_t mh_KEY_InitHmac(void)
     uint8_t key_number;
     uint8_t *p_hmac_use_cnt;
     hmac_key_t *p_hmac_keys;
+    sys_cfg_vm_t vm_cfg;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
@@ -99,22 +107,47 @@ uint32_t mh_KEY_InitHmac(void)
     p_hmac_use_cnt = NULL;
     p_hmac_keys = NULL;
 
-    /* init RAM HMAC key */
-    for (vm_id = NUM0; vm_id < (uint32_t)ML_CFG_TOTAL_NB_VMS_MAX; vm_id++)
+    err = ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
+    if (ER_OK != err)
     {
-        (void)mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_HMAC, &key_number);
+        return err;
+    }
+
+    /* init RAM HMAC key */
+    for (vm_id = NUM0; vm_id < (uint32_t)vm_cfg.nb_vms; vm_id++)
+    {
+        err = mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_HMAC, &key_number);
+        if (ER_OK != err)
+        {
+            return err;
+        }
+        if (key_number == 0u)
+        {
+            return ER_MH_KEY_INVALID_KEY_INDEX;
+        }
         for (i = NUM0; i < (uint32_t)key_number; i++)
         {
             p_hmac_keys = HMAC_KEYS(vm_id, i);
             p_hmac_keys->p_key = HMAC_KEYS_VALUE(vm_id, i);
             p_hmac_use_cnt = HMAC_KEYS_INUSE_COUNT(vm_id, i);
 
-            L_Toolbox_MemSet((uint8_t *)p_hmac_keys->p_key, 0x00u, (int16_t)sizeof(ecc_key_prop_t));
+            L_Toolbox_MemSet((uint8_t *)p_hmac_keys->p_key, 0x00u, (int16_t)MH_KEY_HMAC_KEY_SIZE_IN_BYTES);
 
             /* init availability */
             p_hmac_keys->availability = E_NOT_AVAILABLE;
+            p_hmac_keys->key_id = (r_key_index_t)i;
+            p_hmac_keys->vm_id = (uint8_t)vm_id;
+            p_hmac_keys->key_size_in_byte = 0u;
             /* init the use frequency counter */
             *p_hmac_use_cnt = 0x00u;
+
+            if (i == NUM0)
+            {
+                L_Toolbox_MemCpy((uint8_t *)p_hmac_keys->p_key,
+                                g_demo_hmac_key, (int16_t)sizeof(g_demo_hmac_key));
+                p_hmac_keys->key_size_in_byte = sizeof(g_demo_hmac_key);
+                p_hmac_keys->availability = E_AVAILABLE;
+            }
         }
     }
 

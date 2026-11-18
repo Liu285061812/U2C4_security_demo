@@ -685,11 +685,6 @@ static int test_ecc_signature_service(int eddsa, int verify)
     {
         return 0;
     }
-    if (!verify)
-    {
-        return 1;
-    }
-
     p_isd = test_isd();
     p_isd->service_id = verify_service;
     if (eddsa)
@@ -730,9 +725,30 @@ static int test_ecc_signature_service(int eddsa, int verify)
     {
         return 0;
     }
-    return eddsa ?
+    if (!(eddsa ?
         (p_isd->prm.EDDSA_VERIFY.verification_result == VERIFICATION_PASS) :
-        (p_isd->prm.ECDSA_VERIFY.verification_result == VERIFICATION_PASS);
+        (p_isd->prm.ECDSA_VERIFY.verification_result == VERIFICATION_PASS)))
+    {
+        printf("  signature verification failed\n");
+        return 0;
+    }
+
+    BIG_BUFFER[0][0] ^= 1u;
+    if (!run_service(eddsa ? "EdDSA tampered verify" : "ECDSA tampered verify", p_isd))
+    {
+        BIG_BUFFER[0][0] ^= 1u;
+        return 0;
+    }
+    BIG_BUFFER[0][0] ^= 1u;
+    if (!(eddsa ?
+        (p_isd->prm.EDDSA_VERIFY.verification_result == VERIFICATION_FAIL) :
+        (p_isd->prm.ECDSA_VERIFY.verification_result == VERIFICATION_FAIL)))
+    {
+        printf("  modified message was incorrectly accepted\n");
+        return 0;
+    }
+    printf("  %s verification: PASS; modified message: rejected\n", algorithm_name);
+    return 1;
 }
 
 static int test_ecc_key_generate(void)
@@ -754,14 +770,14 @@ static int test_ecc_key_generate(void)
     return run_service("ECC P-256 keygen", p_isd);
 }
 
-static int test_ecdh_service(void)
+static int run_ecdh_direction(r_key_index_t private_id, r_key_index_t public_id)
 {
     r_icumif_isd_t *p_isd = test_isd();
     p_isd->service_id = SERVICE_04_ECDH;
     p_isd->prm.ECDH.ecc_priv_key_group = KEY_GRP_ECC_RAM;
-    p_isd->prm.ECDH.ecc_priv_key_id = 0u;
+    p_isd->prm.ECDH.ecc_priv_key_id = private_id;
     p_isd->prm.ECDH.ecc_pub_key_group = KEY_GRP_ECC_RAM;
-    p_isd->prm.ECDH.ecc_pub_key_id = 0u;
+    p_isd->prm.ECDH.ecc_pub_key_id = public_id;
     p_isd->prm.ECDH.shared_key_group = KEY_GRP_AES_RAM;
     p_isd->prm.ECDH.shared_key_id = 4u;
     p_isd->prm.ECDH.kdf_algo = KDF_ALGO_KDF1;
@@ -772,6 +788,48 @@ static int test_ecdh_service(void)
     p_isd->prm.ECDH.info_size_in_bytes = 0u;
     p_isd->prm.ECDH.key_size_in_bytes = 16u;
     return run_service("ECDH", p_isd);
+}
+
+static int test_ecdh_service(void)
+{
+    uint8_t first_ciphertext[16];
+    uint32_t direction;
+    r_icumif_isd_t *p_isd;
+
+    for (direction = 0u; direction < 2u; direction++)
+    {
+        if (!run_ecdh_direction(direction ? 2u : 0u, direction ? 0u : 2u))
+        {
+            return 0;
+        }
+        memset(BIG_BUFFER[0], 0, sizeof(first_ciphertext));
+        memset(BIG_BUFFER[1], 0, sizeof(first_ciphertext));
+        p_isd = test_isd();
+        p_isd->service_id = SERVICE_01_AES_CIPHER;
+        p_isd->prm.AES_CIPHER.direction = CIPHER_DIR_ENCRYPTION;
+        p_isd->prm.AES_CIPHER.cipher_mode = CIPHER_MOD_ECB;
+        p_isd->prm.AES_CIPHER.key_group = KEY_GRP_AES_RAM;
+        p_isd->prm.AES_CIPHER.key_id = 4u;
+        p_isd->prm.AES_CIPHER.p_block_in = (const uint32_t *)BIG_BUFFER[0];
+        p_isd->prm.AES_CIPHER.p_block_out = (uint32_t *)BIG_BUFFER[1];
+        p_isd->prm.AES_CIPHER.size.nb_blocks = 1u;
+        p_isd->prm.AES_CIPHER.job_cycle = JOB_ALL_AT_ONCE;
+        if (!run_service("ECDH derived-key AES", p_isd))
+        {
+            return 0;
+        }
+        if (direction == 0u)
+        {
+            memcpy(first_ciphertext, BIG_BUFFER[1], sizeof(first_ciphertext));
+        }
+        else if (memcmp(first_ciphertext, BIG_BUFFER[1], sizeof(first_ciphertext)) != 0)
+        {
+            printf("  ECDH derived keys do not agree\n");
+            return 0;
+        }
+    }
+    printf("  ECDH bidirectional derived-key comparison: PASS\n");
+    return 1;
 }
 
 static int test_hash_service(void)
@@ -809,7 +867,13 @@ static int test_hash_service(void)
 
 static int test_hmac_service(void)
 {
-    static const uint8_t message[] = "ICUM HMAC service test";
+    static const uint8_t message[] = "Hi There";
+    static const uint8_t expected_hmac[32] = {
+        0xb0u, 0x34u, 0x4cu, 0x61u, 0xd8u, 0xdbu, 0x38u, 0x53u,
+        0x5cu, 0xa8u, 0xafu, 0xceu, 0xafu, 0x0bu, 0xf1u, 0x2bu,
+        0x88u, 0x1du, 0xc2u, 0x00u, 0xc9u, 0x83u, 0x3du, 0xa7u,
+        0x26u, 0xe9u, 0x37u, 0x6cu, 0x2eu, 0x32u, 0xcfu, 0xf7u
+    };
     r_icumif_isd_t *p_isd;
 
     memcpy(BIG_BUFFER[0], message, sizeof(message) - 1u);
@@ -828,6 +892,12 @@ static int test_hmac_service(void)
     {
         return 0;
     }
+    if ((p_isd->prm.HMAC.hmac_size_in_bytes != sizeof(expected_hmac)) ||
+        (memcmp(BIG_BUFFER[1], expected_hmac, sizeof(expected_hmac)) != 0))
+    {
+        printf("HMAC-SHA256 known-answer comparison failed\n");
+        return 0;
+    }
 
     p_isd = test_isd();
     p_isd->service_id = SERVICE_05_HMAC;
@@ -844,7 +914,27 @@ static int test_hmac_service(void)
     {
         return 0;
     }
-    return p_isd->prm.HMAC.verification_result == VERIFICATION_PASS;
+    if (p_isd->prm.HMAC.verification_result != VERIFICATION_PASS)
+    {
+        printf("HMAC-SHA256 verification failed\n");
+        return 0;
+    }
+
+    BIG_BUFFER[1][0] ^= 1u;
+    p_isd->prm.HMAC.verification_result = VERIFICATION_PASS;
+    if (!run_service("HMAC verification (modified tag)", p_isd))
+    {
+        BIG_BUFFER[1][0] ^= 1u;
+        return 0;
+    }
+    BIG_BUFFER[1][0] ^= 1u;
+    if (p_isd->prm.HMAC.verification_result != VERIFICATION_FAIL)
+    {
+        printf("HMAC-SHA256 modified tag was incorrectly accepted\n");
+        return 0;
+    }
+    printf("  HMAC-SHA256 known answer: PASS; modified tag: rejected\n");
+    return 1;
 }
 
 void icum_crypto_service_test_service(r_icumif_service_id_t service_id)

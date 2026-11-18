@@ -74,7 +74,7 @@ typedef struct
 #define CFG_INIT_KEY_MAP_ECC_PUB_EXT_KEYS (0u)          /* Initial value of number of ECC public extend keys  */
 #define CFG_INIT_KEY_MAP_AES_RAM_KEYS     (5u)          /* AES profiles, XTS key, and ECDH output slot          */
 #define CFG_INIT_KEY_MAP_AES_BUFFER_KEYS  (0u)          /* Initial value of number of AES buffer keys         */
-#define CFG_INIT_KEY_MAP_ECC_RAM_KEYS     (1u)          /* Initial value of number of ECC RAM keys            */
+#define CFG_INIT_KEY_MAP_ECC_RAM_KEYS     (3u)          /* P-256 local, Ed25519, and P-256 peer demo keys       */
 #define CFG_INIT_KEY_MAP_HMAC_KEYS        (1u)          /* Initial value of number of HMAC keys               */
 #define CFG_INIT_KEY_MAP_TLS_MASTER_KEYS  (0u)          /* Initial value of number of TLS master secret keys  */
 #define CFG_INIT_MAC_LEN_MIN_VAL        (128u)          /* Initial value of MAC length minimum value          */

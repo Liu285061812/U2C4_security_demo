@@ -150,6 +150,75 @@ static ecc_pub_ext_key_slot_t   g_storage_keys_ecc_ext;
 /* Index in table copy_ecc_keys[] */
 static uint8_t g_current_idx_ecc;
 
+/* Fixed non-production keys: P-256 local, Ed25519 seed/public key, P-256 peer. */
+static const struct
+{
+    r_ecc_curve_t curve;
+    uint8_t scalar[32];
+    uint8_t x[32];
+    uint8_t y[32];
+} g_demo_ecc_keys[3] =
+{
+    {
+        ECC_CURVE_NIST_P256,
+        {
+            0xc8u, 0x8fu, 0x01u, 0xf5u, 0x10u, 0xd9u, 0xacu, 0x3fu,
+            0x70u, 0xa2u, 0x92u, 0xdau, 0xa2u, 0x31u, 0x6du, 0xe5u,
+            0x44u, 0xe9u, 0xaau, 0xb8u, 0xafu, 0xe8u, 0x40u, 0x49u,
+            0xc6u, 0x2au, 0x9cu, 0x57u, 0x86u, 0x2du, 0x14u, 0x33u
+        },
+        {
+            0xdau, 0xd0u, 0xb6u, 0x53u, 0x94u, 0x22u, 0x1cu, 0xf9u,
+            0xb0u, 0x51u, 0xe1u, 0xfeu, 0xcau, 0x57u, 0x87u, 0xd0u,
+            0x98u, 0xdfu, 0xe6u, 0x37u, 0xfcu, 0x90u, 0xb9u, 0xefu,
+            0x94u, 0x5du, 0x0cu, 0x37u, 0x72u, 0x58u, 0x11u, 0x80u
+        },
+        {
+            0x52u, 0x71u, 0xa0u, 0x46u, 0x1cu, 0xdbu, 0x82u, 0x52u,
+            0xd6u, 0x1fu, 0x1cu, 0x45u, 0x6fu, 0xa3u, 0xe5u, 0x9au,
+            0xb1u, 0xf4u, 0x5bu, 0x33u, 0xacu, 0xcfu, 0x5fu, 0x58u,
+            0x38u, 0x9eu, 0x05u, 0x77u, 0xb8u, 0x99u, 0x0bu, 0xb3u
+        }
+    },
+    {
+        ECC_CURVE_ED25519,
+        {
+            0x9du, 0x61u, 0xb1u, 0x9du, 0xefu, 0xfdu, 0x5au, 0x60u,
+            0xbau, 0x84u, 0x4au, 0xf4u, 0x92u, 0xecu, 0x2cu, 0xc4u,
+            0x44u, 0x49u, 0xc5u, 0x69u, 0x7bu, 0x32u, 0x69u, 0x19u,
+            0x70u, 0x3bu, 0xacu, 0x03u, 0x1cu, 0xaeu, 0x7fu, 0x60u
+        },
+        {
+            0xd7u, 0x5au, 0x98u, 0x01u, 0x82u, 0xb1u, 0x0au, 0xb7u,
+            0xd5u, 0x4bu, 0xfeu, 0xd3u, 0xc9u, 0x64u, 0x07u, 0x3au,
+            0x0eu, 0xe1u, 0x72u, 0xf3u, 0xdau, 0xa6u, 0x23u, 0x25u,
+            0xafu, 0x02u, 0x1au, 0x68u, 0xf7u, 0x07u, 0x51u, 0x1au
+        },
+        {0u}
+    },
+    {
+        ECC_CURVE_NIST_P256,
+        {
+            0xc6u, 0xefu, 0x9cu, 0x5du, 0x78u, 0xaeu, 0x01u, 0x2au,
+            0x01u, 0x11u, 0x64u, 0xacu, 0xb3u, 0x97u, 0xceu, 0x20u,
+            0x88u, 0x68u, 0x5du, 0x8fu, 0x06u, 0xbfu, 0x9bu, 0xe0u,
+            0xb2u, 0x83u, 0xabu, 0x46u, 0x47u, 0x6bu, 0xeeu, 0x53u
+        },
+        {
+            0xd1u, 0x2du, 0xfbu, 0x52u, 0x89u, 0xc8u, 0xd4u, 0xf8u,
+            0x12u, 0x08u, 0xb7u, 0x02u, 0x70u, 0x39u, 0x8cu, 0x34u,
+            0x22u, 0x96u, 0x97u, 0x0au, 0x0bu, 0xccu, 0xb7u, 0x4cu,
+            0x73u, 0x6fu, 0xc7u, 0x55u, 0x44u, 0x94u, 0xbfu, 0x63u
+        },
+        {
+            0x56u, 0xfbu, 0xf3u, 0xcau, 0x36u, 0x6cu, 0xc2u, 0x3eu,
+            0x81u, 0x57u, 0x85u, 0x4cu, 0x13u, 0xc5u, 0x8du, 0x6au,
+            0xacu, 0x23u, 0xf0u, 0x46u, 0xadu, 0xa3u, 0x0fu, 0x83u,
+            0x53u, 0xe7u, 0x4fu, 0x33u, 0x03u, 0x98u, 0x72u, 0xabu
+        }
+    }
+};
+
 /* Used state management counter of the ecc key in the cache */
 static uint8_t g_in_use_counter_ecc[NB_RAM_COPIES_ECC_KEYS];
 
@@ -175,13 +244,18 @@ uint32_t mh_KEY_InitEcc(void)
 {
     uint32_t i;
     uint8_t key_number;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
     key_number = 0u;
 
     /* init ECC Config RAM item */
-    (void)mh_KEY_InitEccRamCfg();
+    err = mh_KEY_InitEccRamCfg();
+    if (ER_OK != err)
+    {
+        return err;
+    }
 
     /* init copy of ECC keys */
     for (i = NUM0; i < (uint32_t)NB_RAM_COPIES_ECC_KEYS; i++)
@@ -229,6 +303,8 @@ uint32_t mh_KEY_InitEccRamCfg(void)
     uint8_t key_number;
     uint8_t *p_ecc_ram_use_cnt;
     ecc_key_t *p_ecc_ram_keys;
+    sys_cfg_vm_t vm_cfg;
+    uint32_t err;
 
     /* Initialize local variable */
     i = NUM0;
@@ -237,10 +313,24 @@ uint32_t mh_KEY_InitEccRamCfg(void)
     p_ecc_ram_use_cnt = NULL;
     p_ecc_ram_keys = NULL;
 
-    /* init ECC RAM key */
-    for (vm_id = NUM0; vm_id < (uint32_t)ML_CFG_TOTAL_NB_VMS_MAX; vm_id++)
+    err = ML_CFG_GetSys(ML_CFG_SYS_VM, (uint32_t *)&vm_cfg);
+    if (ER_OK != err)
     {
-        (void)mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_ECC_RAM, &key_number);
+        return err;
+    }
+
+    /* init ECC RAM key */
+    for (vm_id = NUM0; vm_id < (uint32_t)vm_cfg.nb_vms; vm_id++)
+    {
+        err = mh_KEY_MapSizeVM((uint8_t)vm_id, KEY_MAPPING_ECC_RAM, &key_number);
+        if (ER_OK != err)
+        {
+            return err;
+        }
+        if (key_number < (sizeof(g_demo_ecc_keys) / sizeof(g_demo_ecc_keys[0])))
+        {
+            return ER_MH_KEY_INVALID_KEY_INDEX;
+        }
         for (i = NUM0; i < (uint32_t)key_number; i++)
         {
             p_ecc_ram_keys = ECC_RAM_KEYS(vm_id, i);
@@ -257,6 +347,26 @@ uint32_t mh_KEY_InitEccRamCfg(void)
             p_ecc_ram_keys->availability  = E_NOT_AVAILABLE;
             /* init the use counter */
             *p_ecc_ram_use_cnt = 0x00u;
+
+            if (i < (sizeof(g_demo_ecc_keys) / sizeof(g_demo_ecc_keys[0])))
+            {
+                p_ecc_ram_keys->key_group = KEY_GRP_ECC_RAM;
+                p_ecc_ram_keys->key_id = (r_key_index_t)i;
+                p_ecc_ram_keys->vm_id = (uint8_t)vm_id;
+                p_ecc_ram_keys->p_properties->ecc_curve = g_demo_ecc_keys[i].curve;
+                p_ecc_ram_keys->p_properties->priv_scalar_size_in_bits = NUM256;
+                p_ecc_ram_keys->p_priv_scalar->size = sizeof(g_demo_ecc_keys[i].scalar);
+                p_ecc_ram_keys->p_pub_point->x.size = sizeof(g_demo_ecc_keys[i].x);
+                p_ecc_ram_keys->p_pub_point->y.size =
+                    (ECC_CURVE_ED25519 == g_demo_ecc_keys[i].curve) ? NUM0 : sizeof(g_demo_ecc_keys[i].y);
+                L_Toolbox_MemCpy((uint8_t *)p_ecc_ram_keys->p_priv_scalar->value,
+                                g_demo_ecc_keys[i].scalar, (int16_t)sizeof(g_demo_ecc_keys[i].scalar));
+                L_Toolbox_MemCpy((uint8_t *)p_ecc_ram_keys->p_pub_point->x.value,
+                                g_demo_ecc_keys[i].x, (int16_t)sizeof(g_demo_ecc_keys[i].x));
+                L_Toolbox_MemCpy((uint8_t *)p_ecc_ram_keys->p_pub_point->y.value,
+                                g_demo_ecc_keys[i].y, (int16_t)sizeof(g_demo_ecc_keys[i].y));
+                p_ecc_ram_keys->availability = E_AVAILABLE;
+            }
         }
     }
 

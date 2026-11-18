@@ -86,6 +86,28 @@ request and response overhead and is valid for intervals shorter than one
 The AES encryption tests compare the ciphertext against fixed expected values
 for the demo RAM keys and inputs; GCM and CCM also compare the authentication
 tag. They then perform the existing decryption and verification checks.
+ECC RAM slots 0 and 2 contain distinct P-256 key pairs; slot 1 contains an
+Ed25519 seed and its matching compressed public key. Initialization reserves
+all three slots, including when an older key mapping is loaded, and copies
+the fixed demo arrays directly into ICUM RAM without key-import services.
+The 0x40/0x41 and 0x43/0x44 tests prepare RNG before constructing their shared
+message/signature buffers, sign, verify, and check rejection of a modified
+message. Signing tests therefore also perform verification.
+For the modified-message check, `SERV_OK` means verification executed;
+`verification_result` must be `VERIFICATION_FAIL`.
+The 0x42 test uses ECC slots 0 and 2 as different parties, derives into the
+reserved AES RAM slot 4 in each direction, and compares AES-ECB encryption
+of the same block with both derived keys. It does not expose the shared key.
+ECC operations retain contexts while the PKC library is still processing or
+preserving a pending operation. Failed preparation or cleared PKC state
+restarts from initialization and reacquires key references; EdDSA accesses
+the context pointer only after successful allocation.
+HMAC RAM slot 0 is initialized for each active VM with the RFC 4231 test-case-1
+key (20 bytes of `0x0b`), including its length, VM/key IDs, and availability.
+Older mappings reserve at least one HMAC slot before RAM layout calculation.
+The 0x51 HMAC-SHA256 test uses `Hi There`, compares the full 32-byte tag with
+the standard expected value, verifies it, and checks rejection of a modified
+tag. No key-import service or RNG preparation is required.
 The RSA key-generation, sign/verify and encrypt/decrypt tests initialize RNG
 and extend its seed before preparing their shared request descriptors/buffers.
 The menu and batch key-generation tests use the same preparation helper, so

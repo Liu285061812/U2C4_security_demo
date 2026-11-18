@@ -875,6 +875,13 @@ static void s_01_ECDH_Finish(icum_job_t *p_job, const uint32_t err)
     p_JOB_PARAM   = &p_job->prm.job_ecc;
     p_ISD_PARAM   = &p_ISD->prm.ECDH;
 
+    if (((ER_IN_PROCESS == err) || (ER_PENDING == err) || (ER_PENDING_ARB == err)) &&
+        (ON_HOLD != (uint32_t)p_job->process_phase))
+    {
+        (void)s_01_ConvertErr(err, &p_ISD->service_result);
+        return;
+    }
+
     if ((uint32_t)SERV_OK != err)
     {
         /* error: terminate the service */

@@ -544,7 +544,6 @@ void S_01_VerifyEddsaSignature(icum_job_t *p_job)
 
     ret = ER_OK;
     p_job_param    = &p_job->prm.job_ecc;
-    p_ecc_ctx      = (ecc_ctx_t *)p_job->prm.job_ecc.p_ecc_ctx;
 
     /* set initial value */
     p_job->p_ISD->service_result = SERV_REQUEST;
@@ -570,6 +569,7 @@ void S_01_VerifyEddsaSignature(icum_job_t *p_job)
             ret = s_01_PrepareProcessEddsa(p_job);
             if (ER_OK == ret)
             {
+                p_ecc_ctx = (ecc_ctx_t *)p_job_param->p_ecc_ctx;
                 /* set hash parameters for signature.R */
                 p_job_param->hash_source_index = ZERO;
                 if (ECC_CURVE_ED448 == p_ecc_ctx->curve_id)
@@ -585,7 +585,7 @@ void S_01_VerifyEddsaSignature(icum_job_t *p_job)
             else
             {
                 /* abort for error or pending */
-                p_job->process_phase = PHASE_PREPARE_PROCESS;
+                p_job->process_phase = PHASE_ON_HOLD;
                 break;
             }
 
@@ -649,6 +649,11 @@ void S_01_VerifyEddsaSignature(icum_job_t *p_job)
     }
     if (SERV_IN_PROCESS != p_job->p_ISD->service_result)
     {
+        if ((ER_PENDING == ret) || (ER_PENDING_ARB == ret))
+        {
+            return;
+        }
+        p_job->process_phase = PHASE_ON_HOLD;
         (void)s_01_PostProcessEddsa(p_job,
                                     p_job->p_ISD->prm.EDDSA_VERIFY.key_group,
                                     p_job->p_ISD->prm.EDDSA_VERIFY.key_id);

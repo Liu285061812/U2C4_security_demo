@@ -798,12 +798,20 @@ uint32_t ML_CFG_SetIndexMappingVM(void)
         return ER_PARAM;
     }
 
-    /* Older Data Flash configurations may not reserve the demo AES RAM slots. */
+    /* Reserve the demo slots even when loading an older key mapping. */
     for (vm_id = 0u; vm_id < g_sys_cfg.vm_cfg.nb_vms; vm_id++)
     {
         if (g_sys_cfg.key_mapping[vm_id].nb_aes_ram_keys < CFG_INIT_KEY_MAP_AES_RAM_KEYS)
         {
             g_sys_cfg.key_mapping[vm_id].nb_aes_ram_keys = CFG_INIT_KEY_MAP_AES_RAM_KEYS;
+        }
+        if (g_sys_cfg.key_mapping[vm_id].nb_ecc_ram_keys < CFG_INIT_KEY_MAP_ECC_RAM_KEYS)
+        {
+            g_sys_cfg.key_mapping[vm_id].nb_ecc_ram_keys = CFG_INIT_KEY_MAP_ECC_RAM_KEYS;
+        }
+        if (g_sys_cfg.key_mapping[vm_id].nb_hmac_keys < CFG_INIT_KEY_MAP_HMAC_KEYS)
+        {
+            g_sys_cfg.key_mapping[vm_id].nb_hmac_keys = CFG_INIT_KEY_MAP_HMAC_KEYS;
         }
     }
 

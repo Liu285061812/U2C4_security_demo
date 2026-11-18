@@ -695,10 +695,6 @@ static uint32_t s_01_ECDSA_SIGN_CalcSignInit(icum_job_t *p_job)
             {
                 p_job->process_phase = PHASE_4;
             }
-            else
-            {
-                err = (uint32_t)SERV_CRYPT_ERROR;
-            }
         }
         else
         {
@@ -958,6 +954,15 @@ static void s_01_ECDSA_SIGN_Finish(icum_job_t *p_job, const uint32_t err)
     p_JOB_PARAM    = &p_job->prm.job_ecc;
     p_ISD_PARAM    = &p_ISD->prm.ECDSA_SIGN;
     
+    /* PHASE_3 may have finalized the hash; a failed Init must restart it. */
+    if (((ER_IN_PROCESS == err) || (ER_PENDING == err) || (ER_PENDING_ARB == err)) &&
+        (ON_HOLD != (uint32_t)p_job->process_phase) &&
+        (PHASE_3 != (uint32_t)p_job->process_phase))
+    {
+        (void)s_01_ConvertErr(err, &p_ISD->service_result);
+        return;
+    }
+
     if (err != ER_OK)
     {
         /* error: terminate the service */
@@ -989,6 +994,7 @@ static void s_01_ECDSA_SIGN_Finish(icum_job_t *p_job, const uint32_t err)
             /* Do nothing */
         }
         p_JOB_PARAM->resource_ctrl = GET_CTX_NONE;
+        p_job->process_phase = ON_HOLD;
     }
     else
     {
