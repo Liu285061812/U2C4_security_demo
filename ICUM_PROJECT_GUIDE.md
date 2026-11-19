@@ -66,7 +66,8 @@ PE 通过共享 RAM 中的服务描述符 ISD、请求/响应队列和双向中�
 
 | 编码 | 功能 | 主要参数/结果 |
 | --- | --- | --- |
-| `0x01` | 演示测试边界通知 | `TEST_MARKER.event`：BEGIN/END；由 ICUM 翻转 P17_0，不是算法菜单入口 |
+| `0x01` | 保留，已移除旧测试边界通知 | 不分发 |
+| `0x02` | ACEU 初始化和演示供钥 | `ACEU_PREPARE.prng_key_bits`：128/192/256；不接收或返回密钥字节 |
 | `0x10` | AES cipher | `AES_CIPHER`：模式、方向、密钥组/ID、IV、输入输出、长度、job_cycle/job_slice |
 | `0x11` | AES GCM/CCM | `AES_AUTH_CIPHER`：数据、AAD、IV、认证 tag、认证结果 |
 | `0x12` | AES CMAC | `AES_CMAC`：消息、密钥、生成/校验、MAC 和校验结果 |
@@ -87,7 +88,8 @@ PE 通过共享 RAM 中的服务描述符 ISD、请求/响应队列和双向中�
 | `0x50` | HASH | `HASH`：消息、HASH 类型、输出摘要、分段参数 |
 | `0x51` | HMAC | `HMAC`：RAM key ID、消息、生成/校验、tag 及校验结果 |
 
-本表覆盖当前菜单公开的 19 个服务入口。分发表中另外保留的 CR 扩展项不在这 19 项菜单回归内；
+本表覆盖当前 `icum` 菜单公开的 19 个算法入口，并列出独立 `aceu` 菜单的准备服务。
+ACEU 准备服务和分发表中另外保留的 CR 扩展项不在这 19 项菜单回归内；
 不能因为某段历史源码仍存在，就认为它属于公开演示接口。
 模式的枚举定义位于 [PE/ICUM 共用接口头文件目录](pe/generic/icumif)。
 例如当前 HASH 映射不支持 SHA-1，RSA 演示使用 SHA-256，而不是照搬手册旧示例的 SHA-1。
@@ -310,6 +312,49 @@ P17_0 使用 `SECOUT0/ICUMGPIO0`，由 ICUM 的 `ICUM_GPIO` 控制，不由 PE �
 顶层一键测试仍为 29 项结果，但只有实际进入算法核心的操作才产生脉冲，前置检查失败没有脉冲。
 GPIO 不包含服务层处理、核间握手或串口打印；OSTM 保持 PE 提交到最终响应的端到端口径。
 若硬件挂死且核心未报告完成，不能保证结束沿；保持高电平可辅助定位，此时应先排查再复位。
+
+### 7.3 ACEU KEYRAM provisioning
+
+ACEU is a separate PE-accessible AES engine, not ICUM's AES engine and not the
+four-channel ICUM DMA. The `aceu`/`aecu` command first sends
+`SERVICE_00_ACEU_PREPARE` (`0x02`); normal ICUM startup and existing algorithm
+services do not depend on ACEU being enabled.
+
+[MH_KEY_PrepareAceu](icum/generic/src/middle/mh_key/icum_mh_key_aes.c) performs:
+
+1. Configure and lock PBG91 channel 1 for secure ICUM SPID26 only, and channel 2
+   for ICUM plus the current PE bus-master SPIDs. Verify both guard settings.
+2. Unlock `ICUMKCPROT0`, clear `MSR_ACEU` bit 0, relock and check readback.
+   Never write a stopped-clock request (0-to-1 transition).
+3. Reject an active/suspended engine without changing its keys.
+4. Invalidate all 128 slot flags, write all KEYRAM words to initialize ECC,
+   then populate six public demo slots and set their valid flags last.
+5. Keep `SECCNT.DISKMF=0` (key management enabled) and `SEC=0`
+   (nonsecure DTF / PE interrupt routing). The PE driver uses polling, not IRQs.
+6. Initialize the dedicated PRNG context #3 with the requested key length
+   and public seed bytes `00..0F`. No key is placed in a PE buffer.
+
+| Slot | Demo key / use | KEYLEN |
+| --- | --- | --- |
+| 0 | Existing ICUM RAM key `00..0F` | 128 |
+| 1 | Existing ICUM RAM key `00..17` | 192 |
+| 2 | Existing ICUM RAM key `00..1F` | 256 |
+| 3 | Existing ICUM XTS tweak key `20..2F` | 128 |
+| 4 | All-zero initial MP chaining key | 128 |
+| 5 | XTS tweak key `20..3F` | 256 |
+
+Slots use `KEYV=1`, `SHE=0`; unused slots remain invalid and zeroed.
+`KEYm_0` receives the least significant key word; unused high words are zero.
+KEYRAM starts at `0xFF1EA000`, KEYCTRL at `0xFF1E9000`, ACEU0 at `0xFF1E8000`.
+Guard or clock failures return `SERV_SYS_ERROR`; an active engine returns
+`SERV_UNAVAILABLE`; unsupported PRNG key lengths return `SERV_PRM_ERROR`.
+Do not invoke preparation concurrently with a PE ACEU operation.
+
+The fixed keys and deterministic PRNG are **test fixtures, not production
+secrets or random entropy**. A production design must replace this provisioning
+and seed policy. The removed import/update services are not restored.
+Reference: security hardware manual R01UH1024EJ0100, sections 1.8.2.4,
+1.9.1.4, 1.9.1.6 and 3.3--3.8; normal hardware manual PBG91 guard registers.
 
 ## 8. 测试逻辑与验收
 

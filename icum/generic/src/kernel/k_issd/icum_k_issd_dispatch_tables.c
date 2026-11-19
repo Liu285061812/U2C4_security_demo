@@ -38,12 +38,22 @@
 #include MM_FLASH_PUBLIC_H
 #include "icum_mh_sysinfo_pub.h"
 #include "icum_k_issd.h"
+#include "icum_mh_key_pub.h"
 
 /***************************************************************************************
 * Service Configuration                                                                *
 ***************************************************************************************/
 
 #define S_00_EccTest    NULL
+
+static void S_00_PrepareAceu(icum_job_t *p_job)
+{
+    uint32_t result = MH_KEY_PrepareAceu(p_job->p_ISD->prm.ACEU_PREPARE.prng_key_bits);
+    if (result == ER_OK) p_job->p_ISD->service_result = SERV_OK;
+    else if (result == ER_PARAM) p_job->p_ISD->service_result = SERV_PRM_ERROR;
+    else if (result == ER_MH_KEY_IN_USE) p_job->p_ISD->service_result = SERV_UNAVAILABLE;
+    else p_job->p_ISD->service_result = SERV_SYS_ERROR;
+}
 
 #define TEST_GPIO_DOUT0  (0x00000001UL)
 #define TEST_GPIO_EOUT0  (0x00000002UL)
@@ -58,10 +68,12 @@ static uint32_t s_test_gpio_active_count;
 #pragma ghs section rodata = ".icum_kernel_const_ram"
 
 /* Service Group #00 */
-static service_t g_ism_table_00[1] =
+static service_t g_ism_table_00[3] =
 {
     /* SERVICE ID                            Function                       Function at RAM execution       High priority Function  Permission   */
     { /* SERVICE_00_ECC_TEST */              S_00_EccTest,                  S_00_EccTest,                   NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_RAMEXE | ISSD_PERMIT_ADMIN) },
+    { /* reserved 0x01 */                    NULL,                          NULL,                           NULL,                   0u },
+    { /* SERVICE_00_ACEU_PREPARE */          S_00_PrepareAceu,               NULL,                           NULL,                   ISSD_PERMIT_NORMAL },
 };
 
 /* Service Group #01: AES */

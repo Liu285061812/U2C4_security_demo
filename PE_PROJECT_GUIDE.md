@@ -283,6 +283,110 @@ ICUM test summary: passed=29 failed=0 skipped-services=0 (PASS)
 - 没有失败但存在禁用入口时，汇总为 `INCOMPLETE`。
 - 这一继续执行机制不处理硬件挂死：若 ICUM 不响应，现有同步等待仍需调试定位。
 
+### 8.1 PE ACEU tests
+
+The hardware's official name is ACEU. UART accepts both spellings:
+
+```text
+aceu 0
+aecu 0
+```
+
+`aceu` without a parameter opens the menu. `icum 6` remains unchanged and does
+not include this independent PE engine.
+
+| Selection | Mode |
+| --- | --- |
+| 0 | All ACEU tests |
+| 1 / 2 / 3 | ECB / CBC / CTR |
+| 4 / 5 / 6 | CFB-128 / OFB / GCM |
+| 7 / 8 / 9 | XTS / CCM / CMAC |
+| 10 / 11 / 12 | GMAC / MP / native PRNG |
+
+Driver: [aceu.c](pe/target/u2cx/src/driver/aceu/aceu.c), public
+[r_aceu.h](pe/generic/icumif/r_aceu.h), board tests:
+[pe1_aceu_test.c](pe/generic/src/pe1/src/pe1_aceu_test.c).
+All PE register operations and algorithm sequencing are in the single driver
+C file. First request ICUM service `0x02` with `ACEU_PREPARE.prng_key_bits`
+set to 128, 192 or 256; the UART test command does this automatically.
+See [protected key provisioning](ICUM_PROJECT_GUIDE.md#73-aceu-keyram-provisioning).
+
+`R_ACEU_Execute` is synchronous and returns an explicit `aceu_result_t`.
+Lengths are bytes. Select a KEYRAM slot, never a PE plaintext key pointer.
+The API is for the PE1 foreground owner only; do not call it concurrently
+from PE2, interrupt handlers or ICUM preparation. `BUSY` detects re-entry,
+not a cross-core lock.
+
+- ECB/CBC require a nonempty multiple of 16 bytes; CTR/CFB-128/OFB accept a
+  partial last block. Non-ECB IVs are 16 bytes.
+- AES keys support 128/192/256 bits. XTS uses distinct equal-sized 128/256-bit
+  data/tweak keys, a 16-byte tweak and data units of at least 16 bytes, including CTS.
+- GCM/GMAC accept 12-byte nonces and 4-, 8-, or 12--16-byte tags.
+  GMAC has no payload; its authenticated message is `aad`.
+- CCM accepts 7--13-byte nonces, even tag lengths 4--16, and AAD shorter than
+  65280 bytes. Payload length must fit the nonce-dependent CCM length field.
+- CMAC accepts empty/partial messages and 1--16-byte tags; `decrypt=1` verifies.
+- MP accepts nonempty whole 16-byte blocks and produces a 16-byte raw
+  Miyaguchi-Preneel compression result. Use zero-key slot 4; callers must apply
+  any higher-level SHE/message padding themselves.
+- PRNG uses dedicated context #3, CPU transfers and whole 16-byte output blocks.
+  `key_slot=0/1/2` must match the 128/192/256-bit key length last provisioned
+  by ICUM. Set `prng_restart=1` for the first call after preparation and `0`
+  on subsequent calls to continue the stream. Preparation deliberately
+  reseeds the deterministic board KAT; it is **not a production entropy API**.
+
+Inputs/outputs may be byte-unaligned. Exact in-place payload operation is
+supported; partial input/output overlap, tag/payload overlap and AAD/output
+overlap are rejected. IVs, AAD and tags must remain stable during the call.
+GCM/CCM authentication failure clears the complete plaintext output.
+On any other error the output is invalid and must not be used.
+
+DTF is selected for at least two blocks in 4-byte-aligned Cluster RAM buffers
+within `0xFE000000..0xFE06FFFF`. Other buffers use safe CPU word copies.
+Block-aligned GCM/CCM/CMAC/GMAC phases use native DTF; a partial authenticated
+phase uses CPU throughout, because DTF finalizes that phase automatically.
+Formatting, tags, XTS's final two blocks, MP and PRNG use CPU transfers.
+No padding bytes outside the caller's buffers are read or written.
+`cpu_blocks` and `dtf_blocks` report actual engine block counts, including
+formatting/authentication steps and CCM's second authentication pass.
+
+Polling is bounded. An engine/DTF timeout or AXI error latches a driver fault;
+further operations return `FAULT` and require device reset, rather than
+resetting a possibly active transfer and returning plausible output.
+DTF starts by writing **bit 16** (`0x00010000`) of `AESE0DTFSTT`.
+The driver masks `INTACEU0DTFEND` (INTC2 channel 317), clears its stale
+`EIRF317` request before starting, then requires a new completion request
+and `DTF_RUN=0`. It does not install an ISR or change interrupt binding.
+This rejects a never-started transfer without missing a fast transfer whose
+entire RUN pulse completed before the first status read.
+For GCM encryption, CPU non-final payload blocks wait for `GHSTS`;
+the final payload block uses `STS=0`, or the proven DTF completion above.
+`GHSTS` is not required for the final payload block.
+
+The tests retain the three existing 16KiB buffers and 10KB input size.
+Known-answer checks compare every ciphertext/PRNG output byte with independently
+generated expected bytes stored as ROM constants, and compare complete tags,
+not just CRC32 values or round trips. Output failures report the first differing
+byte offset and actual/expected values. Small, empty, CTS and tampered-tag cases run
+quietly unless they fail; each 10KB forward/reverse operation prints one line
+after timing stops, followed by a PASS/FAIL summary. PRNG reports `ms/ops`;
+operations with payload report decimal MB/s, and zero-length operations omit it.
+OSTM measures the synchronous PE driver call, including register/key selection
+and transfer setup but excluding ICUM provisioning, output verification and UART.
+The ICUM P17_0 markers do not measure this separate PE engine.
+
+Offline regression (GHS simulator, PyCryptodome and cryptography required):
+
+```powershell
+python .\tools\test_aceu_driver.py --ghs C:\ghs\comp_202354
+python .\tools\generate_aceu_vectors.py
+```
+
+The first command exercises the actual driver and ICUM provisioning function
+against modeled MMIO and independent AES oracles. The second regenerates the
+checked-in board-test vectors. Simulation does not replace board validation
+of access guards, clock enable, byte lanes or DTF bus transactions.
+
 ## 9. 耗时、ms/ops 与 MB/s 口径
 
 每条服务结果不再打印原始 ticks，但内部仍使用 OSTM0 原始计数作精确换算。

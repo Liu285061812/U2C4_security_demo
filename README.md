@@ -60,6 +60,31 @@ Reference: RH850/U2C Hardware Manual R01UH1018EJ0100, Table 13.7 (pages
 917-918), sections 13.5.5.4-13.5.5.6 (pages 965-972), section 13.6.4 (page
 1005), and sections 53.12.15-53.12.16 (pages 6785-6787).
 
+## PE ACEU engine tests
+
+The hardware name is **ACEU** (the `aecu` spelling is also accepted by UART).
+Program the matching PE and ICUM images, then enter `aceu 0` to run all modes,
+or `aceu` to open the menu. Existing `icum` commands are unchanged.
+
+- ECB, CBC, CTR, CFB-128, OFB, GCM, XTS, CCM, CMAC, GMAC, MP compression and PRNG.
+- The PE driver is entirely in
+  [aceu.c](pe/target/u2cx/src/driver/aceu/aceu.c);
+  its API is [r_aceu.h](pe/generic/icumif/r_aceu.h).
+- ICUM service `0x02` provisions public demo keys into protected ACEU_KEYRAM
+  and initializes PRNG context #3; PE never receives key bytes.
+- Aligned 10KB operations use ACEU's own DTF. Formatting, short authenticated
+  phases, XTS final blocks and MP/PRNG use CPU transfers. Each printed operation
+  reports its actual CPU/DTF block counts and OSTM elapsed time.
+- Tests compare full ciphertext/PRNG output and tags with independent expected
+  bytes, and check decryption, short/empty
+  messages and plaintext erasure after failed GCM/CCM authentication.
+
+GCM/GMAC currently accept 96-bit nonces. MP is the raw, unpadded 16-byte-block
+compression function, not a padded SHE hash. PRNG uses public deterministic
+test keys/seeds and **must not be used as an entropy source**.
+See the [PE ACEU interface and limits](PE_PROJECT_GUIDE.md#81-pe-aceu-tests)
+and [ICUM provisioning](ICUM_PROJECT_GUIDE.md#73-aceu-keyram-provisioning).
+
 ## ICUM crypto services
 
 The service groups are organized by algorithm:
@@ -73,7 +98,7 @@ The service groups are organized by algorithm:
 Demo keys are initialized in ICUM RAM; generated RSA/ECC keys are RAM-only.
 Key import and update services are not dispatched.
 The shared service descriptor contains the parameters for the active
-AES, RSA, RNG, ECC, HASH, HMAC, and demo test-marker services; legacy import/update and GC test
+AES, RSA, RNG, ECC, HASH, HMAC, and ACEU preparation services; legacy import/update and GC test
 flows are excluded from the PE builds.
 
 The PE crypto-service tests use `ISD_BUFFER` for request descriptors and

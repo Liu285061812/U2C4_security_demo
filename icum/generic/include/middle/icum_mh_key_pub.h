@@ -395,6 +395,7 @@ extern const uint8_t E[3];
 /* Prototypes                                                                         */
 /**************************************************************************************/
 uint32_t MH_KEY_Init(void);
+uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits);
 uint32_t MH_KEY_InitRamCfg(void);
 uint32_t MH_KEY_GetAesKey(icum_job_t *p_job,
                           r_key_group_t key_group,

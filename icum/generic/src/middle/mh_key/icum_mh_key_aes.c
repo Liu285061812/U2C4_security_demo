@@ -37,6 +37,7 @@
 #include "icum_d_misc_pub.h"
 #include "icum_d_wdt_pub.h"
 #include "icum_d_cry_aes_pub.h"
+#include "r_aceu.h"
 
 /**********************************************************************************
 * Local defines
@@ -152,6 +153,99 @@ static uint8_t g_demo_aes_keys[4][MH_KEY_AES_KEY_SIZE_IN_BYTES_COMMON] =
         0x28u, 0x29u, 0x2Au, 0x2Bu, 0x2Cu, 0x2Du, 0x2Eu, 0x2Fu
     }
 };
+
+#define ACEU_REG(address) (*(volatile uint32_t *)(address))
+
+uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits)
+{
+    uint32_t slot, word, count, value, key_code, engine_spids;
+    uint32_t key_bytes;
+    uint32_t guard = 0xFF0A1500UL;
+    uint32_t protection = 0xFF0A1618UL;
+    uint32_t sys_key = 0xFF986700UL;
+    uint32_t clock = 0xFF986820UL;
+    uint32_t keyram_guard = 0x80000100UL;
+    uint32_t engine_guard = 0x80000180UL;
+
+    if (prng_key_bits != 128u && prng_key_bits != 192u && prng_key_bits != 256u)
+        return ER_PARAM;
+    key_code = (prng_key_bits - 128u) / 64u;
+    engine_spids = (1UL << (ACEU_REG(0xFF0A8000UL) & 31u)) |
+                   (1UL << (ACEU_REG(0xFF0A8004UL) & 31u)) | 0x04000000UL;
+    ACEU_REG(protection) = 0xA5A5A501UL;
+    if ((ACEU_REG(guard + 8u) & 0x80000000UL) == 0u)
+    {
+        ACEU_REG(guard + 12u) = 0x04000000UL;
+        ACEU_REG(guard + 8u) = keyram_guard;
+    }
+    if ((ACEU_REG(guard + 16u) & 0x80000000UL) == 0u)
+    {
+        ACEU_REG(guard + 20u) = engine_spids;
+        ACEU_REG(guard + 16u) = engine_guard;
+    }
+    ACEU_REG(protection) = 0xA5A5A500UL;
+    if (ACEU_REG(guard + 8u) != keyram_guard ||
+        ACEU_REG(guard + 12u) != 0x04000000UL ||
+        ACEU_REG(guard + 16u) != engine_guard ||
+        ACEU_REG(guard + 20u) != engine_spids)
+        return ER_MH_KEY_SYS_ERROR;
+    ACEU_REG(sys_key) = 0xA5A5A501UL;
+    ACEU_REG(clock) = 0u;
+    ACEU_REG(sys_key) = 0xA5A5A500UL;
+    if ((ACEU_REG(clock) & 1u) != 0u) return ER_MH_KEY_SYS_ERROR;
+    if ((ACEU_REG(ACEU_BASE + 0x10u) & 0x11000001UL) != 0u)
+        return ER_MH_KEY_IN_USE;
+    /* FLAGS are invalidated before any key changes. All slots receive valid ECC. */
+    for (slot = 0u; slot < 128u; slot++)
+    {
+        ACEU_REG(ACEU_KEYRAM_BASE + 0x1000u + slot * 4u) = 0u;
+        for (word = 0u; word < 8u; word++)
+            ACEU_REG(ACEU_KEYRAM_BASE + slot * 32u + word * 4u) = 0u;
+    }
+    for (slot = 0u; slot < 6u; slot++)
+    {
+        uint32_t code = slot <= 2u ? slot : (slot == ACEU_DEMO_TWEAK256 ? 2u : 0u);
+        key_bytes = 16u + code * 8u;
+        for (word = 0u; word < key_bytes / 4u; word++)
+        {
+            uint32_t offset = key_bytes - 4u - word * 4u;
+            value = 0u;
+            for (count = 0u; count < 4u; count++)
+            {
+                uint32_t byte = 0u;
+                if (slot <= 2u) byte = g_demo_aes_keys[slot][offset + count];
+                else if (slot == ACEU_DEMO_TWEAK128) byte = g_demo_aes_keys[3][offset + count];
+                else if (slot == ACEU_DEMO_TWEAK256) byte = 0x20u + offset + count;
+                value = (value << 8) | byte;
+            }
+            ACEU_REG(ACEU_KEYRAM_BASE + slot * 32u + word * 4u) = value;
+        }
+        ACEU_REG(ACEU_KEYRAM_BASE + 0x1000u + slot * 4u) = 8u | (code << 8);
+    }
+    ACEU_REG(ACEU_KEYRAM_BASE + 0x180Cu) = 0u;
+    if (ACEU_REG(ACEU_KEYRAM_BASE + 0x180Cu) != 0u) return ER_MH_KEY_SYS_ERROR;
+    /* Public deterministic PRNG test key/seed, not an entropy source. */
+    ACEU_REG(ACEU_BASE) = 0x0007020Fu;
+    ACEU_REG(ACEU_BASE) = 0x01070200UL;
+    ACEU_REG(ACEU_BASE + 0x1Cu) = key_code;
+    key_bytes = prng_key_bits / 8u;
+    for (word = 0u; word < key_bytes; word += 4u)
+    {
+        value = ((uint32_t)g_demo_aes_keys[key_code][word] << 24) |
+                ((uint32_t)g_demo_aes_keys[key_code][word + 1u] << 16) |
+                ((uint32_t)g_demo_aes_keys[key_code][word + 2u] << 8) |
+                g_demo_aes_keys[key_code][word + 3u];
+        ACEU_REG(ACEU_BASE + 0x20u) = value;
+    }
+    ACEU_REG(ACEU_BASE) = 0x02070200UL;
+    for (word = 0u; word < 16u; word += 4u)
+        ACEU_REG(ACEU_BASE + 0x20u) = (word << 24) | ((word + 1u) << 16) |
+                                     ((word + 2u) << 8) | (word + 3u);
+    ACEU_REG(ACEU_BASE) = 0x00070200UL;
+    return ER_OK;
+}
+
+#undef ACEU_REG
 
 /**************************************************************************************/
 /* Prototypes                                                                         */

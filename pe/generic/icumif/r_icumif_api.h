@@ -93,6 +93,7 @@
 typedef enum
 {
     SERVICE_00_ECC_TEST                 = 0x00,
+    SERVICE_00_ACEU_PREPARE             = 0x02,
 
     SERVICE_01_AES_CIPHER               = 0x10,
     SERVICE_01_AES_AUTH_CIPHER,
@@ -535,6 +536,10 @@ typedef struct service_descriptor
     };
     union service_parameters
     {
+        struct
+        {
+            uint32_t prng_key_bits;
+        } ACEU_PREPARE;
         ISD_AES_CIPHER_t                AES_CIPHER;
         ISD_AES_AUTH_CIPHER_t           AES_AUTH_CIPHER;
         ISD_AES_CMAC_t                  AES_CMAC;

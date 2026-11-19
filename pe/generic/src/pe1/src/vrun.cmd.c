@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 #undef NULL
 #include "r_icumif_api.h"
@@ -21,13 +23,12 @@
 #include "shared.h"
 
 #include "vrun.api.h"
+#include "r_aceu.h"
 
 /**********************************************************************************
 * vrun commands
 ***********************************************************************************/
 
-VRUN_USR_CMD_UNUSED(1)
-VRUN_USR_CMD_UNUSED(2)
 VRUN_USR_CMD_UNUSED(3)
 VRUN_USR_CMD_UNUSED(5)
 VRUN_USR_CMD_UNUSED(6)
@@ -35,6 +36,49 @@ VRUN_USR_CMD_UNUSED(7)
 VRUN_USR_CMD_UNUSED(8)
 VRUN_USR_CMD_UNUSED(9)
 VRUN_USR_CMD_UNUSED(10)
+
+static void run_aceu_command(void)
+{
+    char *end;
+    const char *argument = vrun_iobuff_readparam(1);
+    long selection;
+    if (argument == NULL)
+    {
+        printf("\nACEU: 0=all 1=ECB 2=CBC 3=CTR 4=CFB128 5=OFB 6=GCM\n"
+               "      7=XTS 8=CCM 9=CMAC 10=GMAC 11=MP 12=PRNG (q=quit)\n?> ");
+        vrun_console_get();
+        argument = vrun_iobuff_readparam(0);
+        if (argument != NULL && strcmp(argument, "q") == 0) return;
+    }
+    if (argument == NULL || vrun_iobuff_readparam(2) != NULL)
+    {
+        printf("Usage: aceu [0..12] (alias: aecu)\n");
+        return;
+    }
+    selection = strtol(argument, &end, 10);
+    if (end == argument)
+    {
+        printf("ACEU invalid selection\n");
+        return;
+    }
+    while (isspace((unsigned char)*end)) end++;
+    if (*end != '\0' || selection < 0 || selection > 12)
+    {
+        printf("ACEU selection must be 0..12\n");
+        return;
+    }
+    aceu_test_command((int)selection);
+}
+
+VRUN_USR_CMD(1, "aceu")
+{
+    run_aceu_command();
+}
+
+VRUN_USR_CMD(2, "aecu")
+{
+    run_aceu_command();
+}
 
 /*===========================================================================
   Global variable
