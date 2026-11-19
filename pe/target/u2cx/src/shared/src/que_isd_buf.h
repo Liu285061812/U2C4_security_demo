@@ -33,7 +33,7 @@
 
 #include "renesas_types.h"
 
-#define SIZE_OF_BIG_BUFFER      (64*4*16)
+#define SIZE_OF_BIG_BUFFER      (16*1024)
 #define SIZE_OF_ISD_BUFFER      (128*25)
 #define SIZE_OF_COM_BUFFER      (512)
 

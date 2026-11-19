@@ -60,6 +60,7 @@
 #define PKCD_CMN_PKCCBOUNDARYSIZE    (0x08U)       /**< PKCD_CMN_PKCCRAM data boundary is 8-byte */
 
 #define PKCD_CMN_PKCC_START          (0x00000001U) /**< When set in the PKCC Control Register, start PKCC */
+#define PKCD_CMN_PKCC_DMA_SELECT     (0x00100000U) /**< PKCRSEL: DMA, rather than ICUP, accesses PKCC RAM. */
 
 #if (PKCD_CFG_OVF_WORKAROUND_ENABLE == 0x1U)
 #define PKCD_CMN_PKCC_BEME_0         (0x00000000U) /**< BEME = 0. */

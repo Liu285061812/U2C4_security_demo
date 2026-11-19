@@ -156,6 +156,7 @@ static uint32_t s_01_InitHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx)
 
                 /* in process */
                 p_ISD->service_result = SERV_IN_PROCESS;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = L_HASH_Init(p_hash_ctx, hash_type);
                 if (ER_OK != err)
                 {
@@ -229,6 +230,7 @@ static uint32_t s_01_FinalizeHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx)
         (void)D_REMAP_GetLogicalAddrs((uint32_t)p_ISD->prm.HASH.p_hash, &hash_logical.val);
         /* terminate: get the hash value */
         err = L_HASH_Finish(p_hash_ctx, hash_logical.p_ptr);
+        K_ISSD_EndAlgorithm(p_job);
 
         /* indicate the size of the hash */
         p_ISD->prm.HASH.hash_size_in_bytes = (uint16_t)(p_hash_desc->hash_bitlen / 8UL);
@@ -241,6 +243,7 @@ static uint32_t s_01_FinalizeHash(icum_job_t *p_job, hash_ctx_t *p_hash_ctx)
     }
 
     /* free the hash context */
+    K_ISSD_EndAlgorithm(p_job);
     (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
 
     if (ER_OK == err)
@@ -353,6 +356,7 @@ static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
             if(result != FLS_CHK_OK)
             {
                 p_ISD->service_result = SERV_SRC_MEM_ERROR;
+                K_ISSD_EndAlgorithm(p_job);
                 (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
                 skip_flg = FLG_ON;
             }
@@ -388,11 +392,13 @@ static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
                 if (remaining_byte_size > 0uL)
                 {
                     /* process the hash all at once */
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, remaining_byte_size);
                     if (ER_OK != err)
                     {
                         /* error on hash processing */
                         p_ISD->service_result = SERV_CRYPT_ERROR;
+                        K_ISSD_EndAlgorithm(p_job);
                         (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
                         skip_flg = FLG_ON;
                     }
@@ -437,11 +443,13 @@ static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
                     if (remaining_byte_size > 0uL)
                     {
                         /* last job round */
+                        K_ISSD_BeginAlgorithm(p_job);
                         err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, remaining_byte_size);
                         if (ER_OK != err)
                         {
                             /* error on hash processing */
                             p_ISD->service_result = SERV_CRYPT_ERROR;
+                            K_ISSD_EndAlgorithm(p_job);
                             (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
                             skip_flg = FLG_ON;
                         }
@@ -478,11 +486,13 @@ static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
                 else
                 {
                     /* next job round */
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = L_HASH_Update((hash_ctx_t *)p_hash_ctx, source_logical.p_ptr, job_slice_size);
                     if (ER_OK != err)
                     {
                         /* error on hash processing */
                         p_ISD->service_result = SERV_CRYPT_ERROR;
+                        K_ISSD_EndAlgorithm(p_job);
                         (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
                         skip_flg = FLG_ON;
                     }
@@ -505,6 +515,7 @@ static uint32_t s_01_GenerateHashSub(icum_job_t *p_job, r_job_cycle_t job_cycle)
         else
         {
             p_ISD->service_result = SERV_PRM_ERROR;
+            K_ISSD_EndAlgorithm(p_job);
             (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
         }
     } /* end of if (FLG_OFF == skip_flg) */
@@ -618,6 +629,7 @@ void S_01_GenerateHash(icum_job_t *p_job)
                 /* test for errors after the initialization phase */
                 if (SERV_IN_PROCESS != p_isd->service_result)
                 {
+                    K_ISSD_EndAlgorithm(p_job);
                     (void)ML_CTX_Free(CTX_TYPE_HASH, p_hash_ctx);
                     skip_flg = FLG_ON;
                 }

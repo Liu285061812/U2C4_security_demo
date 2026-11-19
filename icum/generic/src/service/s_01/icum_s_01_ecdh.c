@@ -617,6 +617,7 @@ static uint32_t s_01_ECDH_CalcScalar(icum_job_t *p_job)
                 if (ER_OK == err)
                 {
                     /* Perform ECDHX initial processing for PKC library */
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = L_PKC_EcdhXInit(&p_ecc_ctx->scalar_bin,
                                         &p_ecc_ctx->point_bin,
                                         &p_ecc_ctx->ctx.ecdhx);
@@ -633,6 +634,7 @@ static uint32_t s_01_ECDH_CalcScalar(icum_job_t *p_job)
                 if (ER_OK == err)
                 {
                     /* Perform ECDH initial processing for PKC library */
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = L_PKC_EcdhInit(&p_ecc_ctx->scalar_bin,
                                         &p_ecc_ctx->point_bin,
                                         &p_ecc_ctx->ctx.ec);
@@ -813,6 +815,7 @@ static uint32_t s_01_ECDH_DeriveSharedKey(icum_job_t *p_job)
         err = L_PKC_EcdhFinal(&p_ecc_ctx->ctx.ec, &shared_key_data);
     }
 
+    K_ISSD_EndAlgorithm(p_job);
     if (ER_OK == err)
     {
             /* ************************************************************************* */
@@ -884,6 +887,7 @@ static void s_01_ECDH_Finish(icum_job_t *p_job, const uint32_t err)
 
     if ((uint32_t)SERV_OK != err)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         (void)s_01_ConvertErr(err, &p_ISD->service_result);
         p_job->process_phase = ON_HOLD;

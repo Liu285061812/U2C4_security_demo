@@ -440,6 +440,7 @@ uint32_t s_01_PostProcessEddsa(icum_job_t *p_job, r_key_group_t key_group, r_key
 {
     job_ecc_t *p_job_param;
 
+    K_ISSD_EndAlgorithm(p_job);
     p_job_param = &p_job->prm.job_ecc;
 
     if (GET_KEY_ECC == ((uint32_t)p_job_param->resource_ctrl & GET_KEY_ECC))

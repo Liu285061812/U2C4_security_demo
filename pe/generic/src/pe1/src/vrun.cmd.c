@@ -322,6 +322,7 @@ static void icum_service_test_menu(void)
         printf("| 3 : service_03 random number\n");
         printf("| 4 : service_04 ECC/ECDSA/ECDH/EdDSA\n");
         printf("| 5 : service_05 HASH/HMAC\n");
+        printf("| 6 : Test all algorithms (0x10 -> 0x51)\n");
         printf("| 0 or q : Back\n| ?> ");
         vrun_console_get();
         if (*(char *)vrun_iobuff_readparam(0) == 'q')
@@ -336,6 +337,11 @@ static void icum_service_test_menu(void)
         if (category == 0)
         {
             return;
+        }
+        if (category == 6)
+        {
+            icum_crypto_service_test();
+            continue;
         }
         if ((category < 1) || (category > 5))
         {
@@ -390,6 +396,7 @@ VRUN_USR_CMD(4, "icum")
             printf("| 3    : service_03 random number\n");
             printf("| 4    : service_04 ECC/ECDSA/ECDH/EdDSA\n");
             printf("| 5    : service_05 HASH/HMAC\n");
+            printf("| 6    : Test all algorithms (0x10 -> 0x51)\n");
             printf("| 308  : open categorized service menu\n");
             printf("| q    : Quit\n\n");
             printf("  ?> ");
@@ -415,6 +422,9 @@ VRUN_USR_CMD(4, "icum")
                 break;
             case 308:
                 icum_service_test_menu();
+                break;
+            case 6:
+                icum_crypto_service_test();
                 break;
             default:
                 break;

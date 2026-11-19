@@ -503,6 +503,7 @@ void test_ICUM_only(void)
 
 int main(void)
 {
+    k_ISSD_InitTestGpio();
 #if TEST_INIT || TEST_ICUM_ONLY
     ICUM_CTLREGICUM_GPIO |= 0x707; 
 #endif

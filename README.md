@@ -72,20 +72,78 @@ The service groups are organized by algorithm:
 
 Demo keys are initialized in ICUM RAM; generated RSA/ECC keys are RAM-only.
 Key import and update services are not dispatched.
-The shared service descriptor contains only the parameters for the active
-AES, RSA, RNG, ECC, HASH, and HMAC services; legacy import/update and GC test
+The shared service descriptor contains the parameters for the active
+AES, RSA, RNG, ECC, HASH, HMAC, and demo test-marker services; legacy import/update and GC test
 flows are excluded from the PE builds.
 
 The PE crypto-service tests use `ISD_BUFFER` for request descriptors and
 `BIG_BUFFER` for shared crypto data. The PE service wrapper reports the algorithm
-and mode (for example, `AES-CBC encrypt`), result, elapsed OSTM0 ticks, and
-elapsed time in microseconds, using the configured OSTM0 clock (80 MHz with the
+and mode (for example, `AES-CBC encrypt`), result, elapsed time in microseconds,
+and RSA latency in ms/ops or non-RSA payload throughput in decimal MB/s,
+using the configured OSTM0 clock (80 MHz with the
 required Option Bytes). Timing includes
 request and response overhead and is valid for intervals shorter than one
 32-bit counter period (approximately 53.7 seconds at 80 MHz).
-The AES encryption tests compare the ciphertext against fixed expected values
-for the demo RAM keys and inputs; GCM and CCM also compare the authentication
-tag. They then perform the existing decryption and verification checks.
+Raw ticks are no longer printed. All RSA services, including key generation,
+report milliseconds per operation rather than calculating MB/s.
+Other payload throughput uses the input-message length, or output length for RNG generation;
+AES authenticated-cipher measurements exclude AAD/IV/tag. Bit lengths round
+up to bytes. Services without payload omit the throughput field entirely.
+Failed measured services, an uninitialized
+timer clock, or a zero timer delta also report `N/A`; valid empty messages report
+zero MB/s. Rates use 64-bit fixed-point arithmetic with six decimal places.
+
+Run `icum 6`, or select option 6 in the ICUM/grouped menu, to run all existing
+algorithm tests in ascending service-ID order: 0x10-0x12, 0x20-0x24, 0x30-0x32,
+0x40-0x45, 0x50-0x51. Preparation requests retain their dependency order, so
+individual RNG/signature/AES requests inside a test need not be ascending.
+This reuses the current menu coverage rather than adding all hash variants.
+Key generation replaces RAM keys. The default configuration runs 19 service
+entries with 29 test results; failures do not suppress later tests. The final
+summary counts passed/failed tests and skipped service entries, reporting
+`INCOMPLETE` if any tests were disabled and none failed.
+ICUM drives P17_0 (`ICUMGPIO0`) low at startup and marks algorithm execution
+directly within ICUM. PE BEGIN/END notifications and demo service `0x01`
+have been removed.
+Encryption/decryption, signing/verification, MAC generation/verification,
+and preparation requests each produce separate pulses; asynchronous re-entry
+within one request does not. The 29 top-level results are unchanged, but pulse
+counts follow operations that enter the cryptographic core, not top-level tests.
+Preflight failures have no pulse. Actual `ICUM_OPBT4.ICUMOPGPIO`
+must be enabled; the firmware reports an error instead of silently omitting
+markers. GPIO excludes service-layer preparation, output formatting, final
+cleanup, inter-core notifications and UART output. Complete cryptographic
+operations retain necessary internal hashing, padding, KDF and driver work;
+GPIO is not a pure hardware BUSY signal. OSTM still measures the end-to-end
+algorithm-request interval.
+See [GPIO prerequisites and timing scope](ICUM_PROJECT_GUIDE.md#72-p17_0-逐操作标记).
+Message-based menu tests use a common 10240-byte (10KB) binary data source, made by
+repeating `s_test_message_pattern[32]` 320 times in shared RAM. This covers AES
+cipher/authenticated cipher/CMAC, RSA signatures, ECDSA/EdDSA,
+SHA-256 and HMAC-SHA256. RNG, key generation, ECDH and its auxiliary one-block
+AES comparison retain their existing sizes.
+AES tests retain fixed ciphertext-prefix checks (32 bytes for ordinary modes,
+16 for GCM/CCM), compare the complete updated authentication tags, clear the
+plaintext destination, and verify recovery of all 10240 bytes. CMAC and SHA-256
+compare full reference tags/digests for the 10240-byte message.
+RSA-2048 encryption takes one maximum legal plaintext directly from the start
+of `BIG_BUFFER[0]`: 190 bytes for OAEP-SHA256 or 245 bytes for PKCS#1 v1.5.
+Each produces one 256-byte ciphertext in `BIG_BUFFER[1]`. Decryption prepares
+one ciphertext silently, decrypts into the start of `BIG_BUFFER[2]`, checks the
+returned length, and compares the recovered prefix. There is no chunk loop or
+PE reassembly/staging area. The encryption-only entry does not add decryption
+requests. Each selected RSA operation reports `latency=... ms/ops`, excluding
+preparation encryption. PSS and PKCS#1 v1.5 signature messages remain 10KB.
+The RSA driver now uses the four-channel ICUM_DMAC for bulk PKCC operand/result
+transfers in ordinary, protected and CRT modular exponentiation. CPU conversion
+preserves the PKCC 64-bit limb layout; scalar words, internal PKCC moves and
+other existing software arithmetic copies remain on the CPU. DMA uses polling,
+bounded waits and watchdog-window servicing. RSA and HASH share channel leases;
+AES DTF is a separate engine. See the ICUM guide for constraints and board checks.
+Each of the three shared data buffers now has 16384-byte capacity. PE1 and PE2
+have separate queue/buffer sections starting at `0xFE003000` and `0xFE015000`,
+respectively, to avoid cross-core overlap. Both sections fit before the
+synchronization region at `0xFE027800`; reflash the complete multicore image.
 ECC RAM slots 0 and 2 contain distinct P-256 key pairs; slot 1 contains an
 Ed25519 seed and its matching compressed public key. Initialization reserves
 all three slots, including when an older key mapping is loaded, and copies
@@ -105,8 +163,8 @@ the context pointer only after successful allocation.
 HMAC RAM slot 0 is initialized for each active VM with the RFC 4231 test-case-1
 key (20 bytes of `0x0b`), including its length, VM/key IDs, and availability.
 Older mappings reserve at least one HMAC slot before RAM layout calculation.
-The 0x51 HMAC-SHA256 test uses `Hi There`, compares the full 32-byte tag with
-the standard expected value, verifies it, and checks rejection of a modified
+The 0x51 HMAC-SHA256 test uses the common 10240-byte message, compares the full
+32-byte tag with an independently calculated reference, verifies it, and checks rejection of a modified
 tag. No key-import service or RNG preparation is required.
 The RSA key-generation, sign/verify and encrypt/decrypt tests initialize RNG
 and extend its seed before preparing their shared request descriptors/buffers.

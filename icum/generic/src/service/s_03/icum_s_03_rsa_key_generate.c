@@ -204,6 +204,7 @@ static uint32_t s_03_GenerateRsaKeySub(icum_job_t *p_job, st_pkcd_rsa_key_bin_t 
 
     if (ER_OK == err)
     {
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_PKC_RsaKeyGenInit(&p_rsa_ctx->pkc_ctx, key_len, prime_test_num, iteration_num);
     }
     else
@@ -232,6 +233,7 @@ static uint32_t s_03_GenerateRsaKeySub(icum_job_t *p_job, st_pkcd_rsa_key_bin_t 
     {
         /* Do nothing */
     }
+    K_ISSD_EndAlgorithm(p_job);
     if (ER_OK == err)
     {
         /* initialize the key parameters */

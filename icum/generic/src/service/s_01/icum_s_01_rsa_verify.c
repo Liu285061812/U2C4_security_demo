@@ -461,6 +461,7 @@ static uint32_t s_01_RSA_VERIFY_GenHash(icum_job_t *p_job)
             /* ************************************************************************* */
             /* Start a hash job */
             /* ************************************************************************* */
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_HASH_Init(p_hash_ctx, hash_type);
             if (ER_OK != err)
             {
@@ -756,6 +757,7 @@ static uint32_t s_01_RSA_VERIFY_RsaInit(icum_job_t *p_job)
         digest.len = (uint32_t)hash_size;
         sign.len = p_rsa_ctx->W.size;
         sign.p_data = (uint8_t *)&p_rsa_ctx->W.value;
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_PKC_RsaVerifyInit(&digest, &sign, (void *)&rsa_key, rsa_key.key_length, &p_rsa_ctx->pkc_ctx);
         if (ER_OK == err)
         {
@@ -914,6 +916,7 @@ static uint32_t s_01_RSA_VERIFY_VerifySign(icum_job_t *p_job)
             /* Compare the encoded hash and the plain hash calculated over the message */
             /* ************************************************************************* */
             err = L_PKC_RsaVerifyFinal(&p_rsa_ctx->pkc_ctx);
+            K_ISSD_EndAlgorithm(p_job);
             if (ER_OK == err)
             {
                 p_ISD_PARAM->verification_result = VERIFICATION_PASS;
@@ -976,6 +979,7 @@ static void s_01_RSA_VERIFY_Finish(icum_job_t *p_job, const uint32_t err)
     
     if ((uint32_t)SERV_OK != err)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         p_ISD->service_result = (r_icumif_service_result_t)err;
         p_job->process_phase = ON_HOLD;

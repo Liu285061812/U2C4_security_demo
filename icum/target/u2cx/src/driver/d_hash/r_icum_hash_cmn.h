@@ -104,74 +104,7 @@
 /* SHA DMA Suspend Register */
 #define ICUM_SHADMASUSP          (*(volatile uint32_t*)0xFF1FC828UL)
 
-typedef struct
-{
-    /* Global Registers */
-    uint8_t     dummy814[NUM16];
-    /* DMA address error notification status register   */
-    uint32_t    ICUM_DMAESTA;
-    uint8_t     dummy815[NUM12];
-    /* DMA interrupt status register                    */
-    uint32_t    ICUM_DMAISTA;
-    uint8_t     dummy816[NUM28];
-    /* DMA channel request priority register            */
-    uint32_t    channel_priority;
-    uint8_t     dummy817[NUM28];
-    /* DMA operation register                           */
-    uint16_t    ICUM_DMAOR;
-    uint8_t     dummy818[NUM30];
-    /* DMA channel reset register                       */
-    uint32_t    channel_reset;
-    uint8_t     dummy819[NUM104];
-    /* DMA version register                             */
-    uint32_t    version;
-} REG_ICUM_DMAC_t;
-
-typedef struct
-{
-    /* Channel Registers */
-    /* DMA source address register      */
-    uint32_t    ICUM_DMASAR;
-    /* DMA destination address register */
-    uint32_t    ICUM_DMADAR;
-    /* DMA transfer size register       */
-    uint32_t    ICUM_DMATSR;
-    /* DMA transfer size register B     */
-    uint32_t    ICUM_DMATSRB;
-    /* DMA transfer mode register       */
-    uint32_t    ICUM_DMATMR;
-    /* DMA channel control register     */
-    uint16_t    ICUM_DMACHCR;
-    /* DMA channel stop register        */
-    uint16_t    ICUM_DMACHSTP;
-    /* DMA channel status register      */
-    uint32_t    ICUM_DMACHSTA;
-    /* DMA channel flag clear register  */
-    uint32_t    ICUM_DMACHFCR;
-    uint8_t     dummy821[NUM32];
-    /* DAM resource select register     */
-    uint32_t    ICUM_DMARS;
-    uint8_t     dummy822[NUM4];
-    /* DMA buffer control register      */
-    uint32_t    ICUM_DMABUFCR;
-    uint8_t     dummy823[NUM52];
-} REG_ICUM_DMAC_CH_t;
-
-/* Number of channels */
-#define ICUM_DMAC_CH_NUM (4U)
-
-/* DMAC Global Registers Base Address */
-#if defined(TARGET_DEVICE_S4X) || defined(TARGET_DEVICE_V4H)
-#define REG_ICUM_DMAC_BASE       (0xFF600000U)
-#else   /* TARGET_DEVICE_S4H */
-#define REG_ICUM_DMAC_BASE       (0xFF1FA000U)
-#endif
-
-/* DMAC Channel Registers Base Address */
-#define REG_ICUM_DMAC_CH_BASE    (REG_ICUM_DMAC_BASE + 0x2000U)
-
-#define REG_ICUM_DMAC            (*(volatile REG_ICUM_DMAC_t *)REG_ICUM_DMAC_BASE)
-#define REG_ICUM_DMAC_CH         (*(volatile REG_ICUM_DMAC_CH_t (*)[ICUM_DMAC_CH_NUM])REG_ICUM_DMAC_CH_BASE)
+#include "icum_d_dma_pub.h"
 
 #define CNT_INIT_POS             (31U)  /**< Bit position of INIT field in SHA Control Register */
 #define CNT_ENDIAN_POS           (15U)  /**< Bit position of ENDIAN field in SHA Control Register */

@@ -57,6 +57,8 @@
 #include "r_pkcd_dev_api.h"
 #include "r_pkcd_cmn.h"
 #include "r_pkcd_rsa.h"
+#include "icum_d_dma_pub.h"
+#include "icum_d_misc_pub.h"
 
 /*!********************************************************************
  * \addtogroup    PKCDRSA
@@ -300,6 +302,85 @@ static pkcd_ret_t r_pkcd_rsa_check_q (uint8_t * const p_wk_q, const uint8_t * co
 static pkcd_ret_t r_pkcd_rsa_generate_n_d(st_pkcd_rsa_key_bin_t* const p_key_bin,
                                         uint8_t* const p_buf);
 static inline void r_pkcd_rsa_call_wdtclr(void);
+
+#pragma alignvar(8)
+static uint8_t s_rsa_dma_stage[PKCD_RSA_KEY_LEN_MAX];
+
+static pkcd_ret_t r_pkcd_rsa_copy(uint8_t *p_dest, const uint8_t *p_src, uint32_t len)
+{
+    const uintptr_t src = (uintptr_t)p_src;
+    const uintptr_t dest = (uintptr_t)p_dest;
+    const bool src_pkcc = (src >= PKCD_CMN_PKCCRAM) && (src < PKCD_CMN_PKCCRAM + PKCD_CMN_PKCCRAMSIZE);
+    const bool dest_pkcc = (dest >= PKCD_CMN_PKCCRAM) && (dest < PKCD_CMN_PKCCRAM + PKCD_CMN_PKCCRAMSIZE);
+    uint32_t i;
+    uint32_t j;
+    uint32_t dma_result;
+    uint32_t pkcc_control;
+
+    if (D_DMA_IsFaulted())
+    {
+        return PKCD_RET_PKCCERR;
+    }
+    if (((src_pkcc) && (len > PKCD_CMN_PKCCRAM + PKCD_CMN_PKCCRAMSIZE - src)) ||
+        ((dest_pkcc) && (len > PKCD_CMN_PKCCRAM + PKCD_CMN_PKCCRAMSIZE - dest)))
+    {
+        return PKCD_RET_PARAMERR;
+    }
+    /* Scalar words and PKCC-internal moves retain the existing 64-bit lane handling. */
+    if ((src_pkcc == dest_pkcc) || (len < 8u) || ((len & 7u) != 0u) ||
+        ((src_pkcc ? src : dest) & 7u) != 0u)
+    {
+        r_pkcd_cmn_cpy_by_64bounds(p_dest, p_src, len);
+        return PKCD_RET_OK;
+    }
+    if (len > sizeof(s_rsa_dma_stage))
+    {
+        return PKCD_RET_LENGTHERR;
+    }
+    pkcc_control = PKCD_CMN_ICUM_PKCCB0CR;
+    if ((pkcc_control & (PKCD_CMN_PKCC_START | PKCD_CMN_PKCC_DMA_SELECT)) != 0u)
+    {
+        return PKCD_RET_PKCCERR;
+    }
+    if (dest_pkcc)
+    {
+        /* PKCC stores each big-endian 64-bit message limb in little-endian byte order. */
+        for (i = 0u; i < len; i += 8u)
+        {
+            for (j = 0u; j < 8u; j++)
+            {
+                s_rsa_dma_stage[i + j] = p_src[i + 7u - j];
+            }
+        }
+    }
+    /* PKCC RAM has separate ICUP and DMA access ports (manual section 1.9.4.2). */
+    PKCD_CMN_ICUM_PKCCB0CR = pkcc_control | PKCD_CMN_PKCC_DMA_SELECT;
+    SYNC_MEMORY();
+    dma_result = D_DMA_Copy(dest_pkcc ? p_dest : s_rsa_dma_stage,
+                            dest_pkcc ? s_rsa_dma_stage : p_src, len);
+    if (!D_DMA_IsFaulted())
+    {
+        /* D_DMA_Copy has drained the channel; only now may ICUP access PKCC RAM again. */
+        PKCD_CMN_ICUM_PKCCB0CR = pkcc_control;
+        SYNC_MEMORY();
+        if ((dma_result == ER_OK) && src_pkcc)
+        {
+            for (i = 0u; i < len; i += 8u)
+            {
+                for (j = 0u; j < 8u; j++)
+                {
+                    p_dest[i + j] = s_rsa_dma_stage[i + 7u - j];
+                }
+            }
+        }
+        r_pkcd_cmn_ram_clr(s_rsa_dma_stage, sizeof(s_rsa_dma_stage));
+    }
+    if (dma_result == ER_OK)
+    {
+        return PKCD_RET_OK;
+    }
+    return (dma_result == D_DMA_TIMEOUT) ? PKCD_RET_PKCCTIMEOUTERR : PKCD_RET_PKCCERR;
+}
 
 /**********************************************************************************************************************
 * Function Name : R_PKCD_RsaModExpInit
@@ -1043,15 +1124,27 @@ static pkcd_ret_t r_pkcd_rsa_modexp_operate(st_rsa_prm_modexp_t* const p_prm, co
     r_pkcd_cmn_set_dl(p_prm->mod_len, p_prm->exp_len);
 
     /* Copy data */
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(p_prm->msg_len),
+    ret = r_pkcd_rsa_copy(PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(p_prm->msg_len),
                                 p_prm->msg, p_prm->msg_len);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK2->full + PKCD_RSA_OFFSET_VAL(p_prm->exp_len),
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
+    ret = r_pkcd_rsa_copy(PKCD_RSA_WORK2->full + PKCD_RSA_OFFSET_VAL(p_prm->exp_len),
                                 p_prm->exp, p_prm->exp_len);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK3->full + PKCD_RSA_OFFSET_VAL(p_prm->mod_len),
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
+    ret = r_pkcd_rsa_copy(PKCD_RSA_WORK3->full + PKCD_RSA_OFFSET_VAL(p_prm->mod_len),
                                 p_prm->mod, p_prm->mod_len);
 
     /* Clear the value that may be the private key stored in p_prm */
     r_pkcd_cmn_ram_clr(p_prm->exp, p_prm->exp_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
 
     /* Calc S = A^B mod C */
     if (PKC_BOOL_TRUE == p_prm->is_constant)
@@ -1132,23 +1225,31 @@ static pkcd_ret_t r_pkcd_rsa_modexp_sec(st_rsa_prm_modexp_t* const p_prm, const 
     /* prepare operation */
     PKCD_CMN_ICUM_PKCCB0DPW = PKCD_RSA_FORMAT_DP_DPW(PKCD_RSA_WWORK);
     PKCD_CMN_ICUM_PKCCB0DPT = PKCD_RSA_FORMAT_DP_DPT(PKCD_RSA_PDT_1);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK2->full + PKCD_RSA_OFFSET_VAL(p_prm->mod_len), p_prm->mod, p_prm->mod_len);
+    ret = r_pkcd_rsa_copy(PKCD_RSA_WORK2->full + PKCD_RSA_OFFSET_VAL(p_prm->mod_len), p_prm->mod, p_prm->mod_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
     ret = r_pkcd_cmn_MinusCInv(PKCD_RSA_WORK2->full,
                                 /* No problem with casting to pointer size */
                                 (uint8_t*)PKCD_RSA_FORMAT_DP_DPT(PKCD_RSA_PDT_1), PKCD_RSA_WORKUNIT);
 
     /* Copy data */
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK1->half.h + PKCD_RSA_OFFSET_VALHALF(p_prm->pq_len),
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK1->half.h + PKCD_RSA_OFFSET_VALHALF(p_prm->pq_len),
                                 p_prm->p1, p_prm->pq_len);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK1->half.l + PKCD_RSA_OFFSET_VALHALF(p_prm->pq_len),
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK1->half.l + PKCD_RSA_OFFSET_VALHALF(p_prm->pq_len),
                                 p_prm->q1, p_prm->pq_len);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK3->full + PKCD_RSA_OFFSET_VAL(sizeof(p_prm->random)),
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK3->full + PKCD_RSA_OFFSET_VAL(sizeof(p_prm->random)),
                                 p_prm->random, sizeof(p_prm->random));
 
     /* Clear the value that may be the private key stored in p_prm */
     r_pkcd_cmn_ram_clr(p_prm->p1, p_prm->pq_len);
     r_pkcd_cmn_ram_clr(p_prm->q1, p_prm->pq_len);
     r_pkcd_cmn_ram_clr(p_prm->random, sizeof(p_prm->random));
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
 
     /* Calculate random(64-bit) * (p-1)(q-1), and set PKCD_RSA_WORK1->full to the result */
     r_pkcd_cmn_set_dl(p_prm->pq_len, p_prm->pq_len);
@@ -1159,14 +1260,22 @@ static pkcd_ret_t r_pkcd_rsa_modexp_sec(st_rsa_prm_modexp_t* const p_prm, const 
     /* Calculate exp + random(64-bit) * (p-1)(q-1), and set PKCD_RSA_WORK3->full to the result */
     r_pkcd_cmn_set_dl(p_prm->mod_len + (sizeof(p_prm->random)), p_prm->mod_len + (sizeof(p_prm->random)));
     ret |= r_pkcd_cmn_clr_work_unit(PKCD_RSA_WORK4->full, PKCD_RSA_WORKUNIT);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK4->full + PKCD_RSA_OFFSET_VAL(p_prm->exp_len), p_prm->exp, p_prm->exp_len);
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK4->full + PKCD_RSA_OFFSET_VAL(p_prm->exp_len), p_prm->exp, p_prm->exp_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
     ret |= r_pkcd_cmn_APlusB(PKCD_RSA_WORK4->full, PKCD_RSA_WORK1->full, PKCD_RSA_WORK3->full, PKCD_RSA_WORKUNIT);
 
     /* Calculate m^(exp + random(64-bit)*(p-1)(q-1)) mod n */
     r_pkcd_cmn_set_dl(p_prm->mod_len, p_prm->mod_len + ((sizeof(p_prm->random)) + 1U));
     ret |= r_pkcd_cmn_clr_work_unit(PKCD_RSA_WORK1->full, PKCD_RSA_WORKUNIT);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(p_prm->msg_len),
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(p_prm->msg_len),
                                 p_prm->msg, p_prm->msg_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
 
     if (PKC_BOOL_TRUE == p_prm->is_constant)
     {
@@ -1224,9 +1333,14 @@ static pkcd_ret_t r_pkcd_rsa_modexp_final(const st_rsa_prm_modexp_t* const p_prm
                                             uint32_t* const p_msg_out_len)
 {
     const uint32_t mod_len = p_prm->mod_len;
+    pkcd_ret_t ret;
 
     /* copy result */
-    r_pkcd_cmn_cpy_by_64bounds(p_msg_out, PKCD_RSA_WORK4->full + PKCD_RSA_OFFSET_VAL(mod_len), mod_len);
+    ret = r_pkcd_rsa_copy(p_msg_out, PKCD_RSA_WORK4->full + PKCD_RSA_OFFSET_VAL(mod_len), mod_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
 
     *p_msg_out_len = mod_len;
 
@@ -1580,7 +1694,12 @@ static pkcd_ret_t r_pkcd_rsa_modexp_crt_final(st_rsa_prm_modexp_crt_t* const p_p
     r_pkcd_cmn_ram_clr(PKCD_RSA_WORK2->half.l, PKCD_RSA_WORKUNITHALF);
     r_pkcd_cmn_ram_clr(PKCD_RSA_SPAREWORK1->half.h, PKCD_RSA_WORKUNITHALF);
     r_pkcd_cmn_ram_clr(PKCD_RSA_WORK3->half.l, PKCD_RSA_WORKUNITHALF);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK3->half.l + PKCD_RSA_OFFSET_VALHALF(pq_len), p_qinv, pq_len);
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK3->half.l + PKCD_RSA_OFFSET_VALHALF(pq_len), p_qinv, pq_len);
+    if (ret != PKCD_RET_OK)
+    {
+        r_pkcd_cmn_ram_clr(p_prm->qinv, sizeof(p_prm->qinv));
+        return r_pkcd_cmn_extract_result(ret);
+    }
     ret |= r_pkcd_cmn_ABRInvModC(PKCD_RSA_WORK3->half.l, PKCD_RSA_WORK3->half.h, PKCD_RSA_WORK1->half.h,
                                     PKCD_RSA_WORK2->half.l, PKCD_RSA_WORKUNITHALF);
     ret |= r_pkcd_cmn_ABRInvModC(PKCD_RSA_WORK2->half.l, PKCD_RSA_WORK2->half.h, PKCD_RSA_WORK1->half.h,
@@ -1597,7 +1716,11 @@ static pkcd_ret_t r_pkcd_rsa_modexp_crt_final(st_rsa_prm_modexp_crt_t* const p_p
     r_pkcd_cmn_set_dl(mod_len, pq_len);
     r_pkcd_cmn_ram_clr(PKCD_RSA_WORK4->half.h, PKCD_RSA_WORKUNITHALF);
     ret |= r_pkcd_cmn_APlusB(PKCD_RSA_WORK4->full, PKCD_RSA_WORK3->full, PKCD_RSA_WORK1->full, PKCD_RSA_WORKUNIT);
-    r_pkcd_cmn_cpy_by_64bounds(p_msg_out, PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(mod_len), mod_len);
+    ret |= r_pkcd_rsa_copy(p_msg_out, PKCD_RSA_WORK1->full + PKCD_RSA_OFFSET_VAL(mod_len), mod_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
 
     *p_msg_out_len = mod_len;
 
@@ -2300,7 +2423,11 @@ static pkcd_ret_t r_pkcd_rsa_calc_m(const uint8_t* const p_msg, const uint32_t m
     r_pkcd_cmn_set_dl(pq_len, pq_len);
 
     /* Prepare C mod p (or q) */
-    r_pkcd_cmn_cpy_by_64bounds(p_wk_pq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_pq, pq_len);
+    ret = r_pkcd_rsa_copy(p_wk_pq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_pq, pq_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
     ret = r_pkcd_cmn_MinusCInv(p_wk_pq,
                                 (uint8_t*)PKCD_RSA_FORMAT_DP_DPT(p_dpt), /* No problem with casting to pointer size */
                                 PKCD_RSA_WORKUNITHALF);
@@ -2309,7 +2436,11 @@ static pkcd_ret_t r_pkcd_rsa_calc_m(const uint8_t* const p_msg, const uint32_t m
                                             PKCD_RSA_WORK3->half.h, PKCD_RSA_WORK3->half.l, p_wk_cmodpq);
 
     /* Calc m1 = (C mod p)^dp mod p or m2 = (C mod q)^dq mod q */
-    r_pkcd_cmn_cpy_by_64bounds(p_wk_dpq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_dpq, pq_len);
+    ret |= r_pkcd_rsa_copy(p_wk_dpq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_dpq, pq_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
     ret |= r_pkcd_cmn_AExpBModCCon(p_wk_cmodpq, p_wk_dpq, p_wk_pq, p_wk_m, PKCD_RSA_WORKUNITHALF, sync_option);
 
     /* Extract the return value from the ORed result */
@@ -2434,7 +2565,11 @@ static pkcd_ret_t r_pkcd_rsa_calc_m_sec(const uint8_t* const p_msg, const uint32
     /* Calculate p-1 (or q-1) */
     /* Use p_wk_r2mod as a buffer for 0x00000001, and use p_wk_m as a buffer for p-1 (or q-1) */
     r_pkcd_cmn_set_dl(pq_len, pq_len);
-    r_pkcd_cmn_cpy_by_64bounds(p_wk_pq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_pq, pq_len);
+    ret = r_pkcd_rsa_copy(p_wk_pq + PKCD_RSA_OFFSET_VALHALF(pq_len), p_pq, pq_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return ret;
+    }
     r_pkcd_cmn_cpy_by_64bounds(p_wk_r2mod + PKCD_RSA_OFFSET_VALHALF(sizeof(g_rsa_one)), g_rsa_one, sizeof(g_rsa_one));
     ret = r_pkcd_cmn_AMinusB(p_wk_pq, p_wk_r2mod, p_wk_m, PKCD_RSA_WORKUNITHALF);
 
@@ -2443,12 +2578,20 @@ static pkcd_ret_t r_pkcd_rsa_calc_m_sec(const uint8_t* const p_msg, const uint32
 
     /* Calculate random*(p-1) (or random*(q-1)) */
     /* Use p_wk_r2mod as a buffer for random number */
-    r_pkcd_cmn_cpy_by_64bounds(p_wk_r2mod + PKCD_RSA_OFFSET_VALHALF(PKCD_CMN_BITS64), p_random, PKCD_CMN_BITS64);
+    ret |= r_pkcd_rsa_copy(p_wk_r2mod + PKCD_RSA_OFFSET_VALHALF(PKCD_CMN_BITS64), p_random, PKCD_CMN_BITS64);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
     ret |= r_pkcd_cmn_AB64(p_wk_r2mod, p_wk_m, PKCD_RSA_WORK3->half.h, PKCD_RSA_WORKUNITHALF);
 
     /* Calculate random*(p-1) + dp or random*(q-1) + dq  */
     r_pkcd_cmn_set_dl(pq_len + PKCD_CMN_BITS64, pq_len);
-    r_pkcd_cmn_cpy_by_64bounds(PKCD_RSA_WORK3->half.l + PKCD_RSA_OFFSET_VALHALF(pq_len), p_dpq, pq_len);
+    ret |= r_pkcd_rsa_copy(PKCD_RSA_WORK3->half.l + PKCD_RSA_OFFSET_VALHALF(pq_len), p_dpq, pq_len);
+    if (ret != PKCD_RET_OK)
+    {
+        return r_pkcd_cmn_extract_result(ret);
+    }
     ret |= r_pkcd_cmn_APlusB(PKCD_RSA_WORK3->half.h, PKCD_RSA_WORK3->half.l, p_wk_exp, PKCD_RSA_WORKUNITHALF);
 
     /* Prepare C mod p (or q) */

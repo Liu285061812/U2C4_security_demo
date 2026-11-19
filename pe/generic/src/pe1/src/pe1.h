@@ -40,6 +40,14 @@ typedef struct
     r_key_index_t key_id;
 } test_key_t;
 
+typedef struct
+{
+    uint64_t payload_bytes;
+    uint32_t elapsed_ticks;
+    int32_t interface_error;
+    int has_payload;
+} pe1_service_response_t;
+
 /*===========================================================================
   Available commands
   ===========================================================================*/
@@ -116,6 +124,12 @@ void pe_flash_initialize(void);
 void print_throughput(int data_size);
 char * get_cipher_mode_name(uint8_t cipher_mode);
 void trigger_service_and_wait(r_icumif_isd_t *p_ISD);
+uint32_t trigger_service_and_wait_quiet(r_icumif_isd_t *p_ISD);
+void trigger_service_and_wait_deferred(r_icumif_isd_t *p_ISD, pe1_service_response_t *p_response);
+void print_service_response(const r_icumif_isd_t *p_ISD,
+                            const pe1_service_response_t *p_response, int quiet);
+void print_crypto_service_statistics(const r_icumif_isd_t *p_ISD, uint64_t elapsed_ticks,
+                                    uint64_t payload_bytes, int has_payload);
 void trigger_2service_and_wait(r_icumif_isd_t *p_ISD, r_icumif_isd_t *p_ISD2);
 void trigger_3service_and_wait(r_icumif_isd_t *p_ISD, r_icumif_isd_t *p_ISD2, r_icumif_isd_t *p_ISD3);
 

@@ -525,6 +525,7 @@ static uint32_t s_01_CalcExpModDecryptByRsa(icum_job_t *p_job)
             rsa_key.p_n = p_key->p_modulus;
             rsa_key.p_d = p_key->p_priv_exponent;
 
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_PKC_RsaDecryptInit(&cipher, &rsa_key, rsa_key.key_length, &p_rsa_ctx->pkc_ctx);
             if (ER_OK == err)
             {
@@ -603,6 +604,7 @@ static uint32_t s_01_CalcExpModDecryptByRsa(icum_job_t *p_job)
             plain_data.p_data = (uint8_t *)&p_rsa_ctx->W.value;
             plain_data.len = (uint32_t)p_rsa_ctx->W.size;
             err = L_PKC_RsaDecryptFinal(&p_rsa_ctx->pkc_ctx, &plain_data);
+            K_ISSD_EndAlgorithm(p_job);
             if (ER_OK == err)
             {
                 (void)D_REMAP_GetLogicalAddrs((uint32_t)p_isd_param->p_message, &message_logical.val);
@@ -658,6 +660,7 @@ static void s_01_FinishDecryptByRsa(icum_job_t *p_job, const uint32_t err)
     
     if ((uint32_t)SERV_OK != err)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         p_ISD->service_result = (r_icumif_service_result_t)err;
         p_job->process_phase = ON_HOLD;

@@ -361,8 +361,16 @@ void k_ISSD_ProcessJob(icum_job_t *p_job)
     /* 2. jump to corresponding service handler */
     if(ER_OK == result)
     {
-        /* process the function associated to the current job */
-        p_service_func(p_job);
+        if ((p_job->p_ISD->service_id >= SERVICE_01_AES_CIPHER) &&
+            (p_job->p_ISD->service_id <= SERVICE_05_HMAC) &&
+            !K_ISSD_AlgorithmGpioReady())
+        {
+            p_job->p_ISD->service_result = SERV_UNAVAILABLE;
+        }
+        else
+        {
+            p_service_func(p_job);
+        }
     }
     else if(ER_SERV_ID_ERROR == result)
     {
@@ -381,6 +389,12 @@ void k_ISSD_ProcessJob(icum_job_t *p_job)
         /* dispatch table) */
         /* action: simply return that the service is unavailable */
         p_job->p_ISD->service_result = SERV_UNAVAILABLE;
+    }
+    if ((p_job->p_ISD->service_result < SERV_REQUEST) ||
+        (p_job->p_ISD->service_result > SERV_IN_PROCESS))
+    {
+        /* Error/cancellation fallback; normal paths end before result cleanup. */
+        K_ISSD_EndAlgorithm(p_job);
     }
 }
 

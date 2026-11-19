@@ -7,6 +7,12 @@
 #include "pe1.h"
 #include "shared.h"
 
+#define TEST_MESSAGE_SIZE (10u * 1024u)
+
+#if TEST_MESSAGE_SIZE > SIZE_OF_BIG_BUFFER
+#error "Crypto test message exceeds the shared buffer capacity"
+#endif
+
 #ifndef PE1_TEST_AES_CIPHER
 #define PE1_TEST_AES_CIPHER 1
 #endif
@@ -42,18 +48,19 @@ static int prepare_rng(void);
 #define TEST_RSA_BUFFER_SIZE  (TEST_RSA_BUFFER_BITS / 8u)
 #endif
 
-#if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH || PE1_TEST_AES_CMAC
 #pragma alignvar(8)
-static const uint8_t s_aes_iv[16] = {
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
-};
-#pragma alignvar(8)
-static const uint8_t s_aes_input[32] = {
+static const uint8_t s_test_message_pattern[32] = {
     0x6b, 0xc1, 0xbe, 0xe2, 0x2e, 0x40, 0x9f, 0x96,
     0xe9, 0x3d, 0x7e, 0x11, 0x73, 0x93, 0x17, 0x2a,
     0xae, 0x2d, 0x8a, 0x57, 0x1e, 0x03, 0xac, 0x9c,
     0x9e, 0xb7, 0x6f, 0xac, 0x45, 0xaf, 0x8e, 0x51
+};
+
+#if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH
+#pragma alignvar(8)
+static const uint8_t s_aes_iv[16] = {
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
 };
 #endif
 #if PE1_TEST_AES_CIPHER
@@ -100,20 +107,46 @@ static const struct {
 } s_aes_auth_expected[] = {
     { AUTH_CIPHER_MOD_GCM,
       { 0xc1, 0x69, 0x2d, 0x7c, 0xb7, 0xc2, 0x56, 0x55, 0x18, 0x85, 0x69, 0x7f, 0xf7, 0xec, 0xbf, 0xd5 },
-      { 0x4b, 0xd7, 0x11, 0xe3, 0x1d, 0x01, 0x77, 0x20, 0x07, 0xaf, 0x1f, 0x56, 0x8d, 0x36, 0x81, 0x17 } },
+      { 0xd9, 0x6b, 0x64, 0xd3, 0x82, 0x7d, 0xc7, 0xf1, 0x2e, 0x84, 0x44, 0x82, 0xb3, 0xf2, 0x6a, 0x5d } },
     { AUTH_CIPHER_MOD_CCM,
       { 0x58, 0xd4, 0x4d, 0x85, 0xf2, 0xc0, 0x5b, 0x27, 0x98, 0x2e, 0xb7, 0xf1, 0x71, 0x79, 0x92, 0xaa },
-      { 0x52, 0x97, 0x08, 0xe2, 0xa8, 0xc3, 0x82, 0x7d, 0x88, 0xb0, 0x54, 0xf8, 0x01, 0x6b, 0x2a, 0x68 } }
+      { 0x32, 0xa3, 0x4a, 0x9c, 0x71, 0x8d, 0x01, 0x7c, 0xfe, 0xf4, 0xb2, 0x62, 0xd9, 0x23, 0x05, 0xaf } }
 };
-#endif
-#if PE1_TEST_RSA_CRYPT || PE1_TEST_RSA_SIGNATURE
-#pragma alignvar(8)
-static const uint8_t s_rsa_message[] = "ICUM RSA service test";
 #endif
 
 #define s_ciphertext       BIG_BUFFER[1]
 #define s_plaintext        BIG_BUFFER[0]
 #define s_auth_tag         (BIG_BUFFER[2] + 32u)
+
+static void prepare_test_message(void)
+{
+    size_t i;
+
+    for (i = 0u; i < TEST_MESSAGE_SIZE; i++)
+    {
+        BIG_BUFFER[0][i] = s_test_message_pattern[i % sizeof(s_test_message_pattern)];
+    }
+}
+
+#if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH || PE1_TEST_RSA_CRYPT
+static int check_test_message(const uint8_t *actual)
+{
+    size_t i;
+
+    for (i = 0u; i < TEST_MESSAGE_SIZE; i++)
+    {
+        uint8_t expected = s_test_message_pattern[i % sizeof(s_test_message_pattern)];
+        if (actual[i] != expected)
+        {
+            printf("  %u-byte message mismatch at byte %lu (actual=%02X expected=%02X)\n",
+                   TEST_MESSAGE_SIZE, (unsigned long)i,
+                   (unsigned int)actual[i], (unsigned int)expected);
+            return 0;
+        }
+    }
+    return 1;
+}
+#endif
 
 static r_icumif_isd_t *test_isd(void)
 {
@@ -135,9 +168,21 @@ static int run_service(const char *name, r_icumif_isd_t *p_isd)
     return 1;
 }
 
+static unsigned int s_test_passed;
+static unsigned int s_test_failed;
+static unsigned int s_test_skipped;
+
 static void print_test_result(const char *name, int result)
 {
     printf("%-24s return=%d (%s)\n", name, result, result ? "PASS" : "FAIL");
+    if (result)
+    {
+        s_test_passed++;
+    }
+    else
+    {
+        s_test_failed++;
+    }
 }
 
 #if PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH || PE1_TEST_AES_CMAC
@@ -181,12 +226,9 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
         printf("  %s: no expected ciphertext for mode %d\n", name, (int)mode);
         return 0;
     }
-    memcpy(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input));
+    prepare_test_message();
     memcpy(BIG_BUFFER[2], s_aes_iv, sizeof(s_aes_iv));
-    if (mode == CIPHER_MOD_XTS)
-    {
-        memset(s_ciphertext, 0, sizeof(s_aes_input));
-    }
+    memset(s_ciphertext, 0, TEST_MESSAGE_SIZE);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_01_AES_CIPHER;
     p_isd->prm.AES_CIPHER.direction = CIPHER_DIR_ENCRYPTION;
@@ -200,11 +242,11 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
     p_isd->prm.AES_CIPHER.p_block_out = (uint32_t *)s_ciphertext;
     if (mode == CIPHER_MOD_XTS)
     {
-        p_isd->prm.AES_CIPHER.size.data_size_in_bits = sizeof(s_aes_input) * 8u;
+        p_isd->prm.AES_CIPHER.size.data_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     }
     else
     {
-        p_isd->prm.AES_CIPHER.size.nb_blocks = 2u;
+        p_isd->prm.AES_CIPHER.size.nb_blocks = TEST_MESSAGE_SIZE / 16u;
     }
     p_isd->prm.AES_CIPHER.job_slice = job_slice[JOB_AES];
     p_isd->prm.AES_CIPHER.job_cycle = JOB_ALL_AT_ONCE;
@@ -213,15 +255,13 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
         return 0;
     }
     if (!check_aes_output(name, "ciphertext", s_ciphertext,
-                          s_aes_cipher_expected[vector_index].ciphertext, sizeof(s_aes_input)))
+                          s_aes_cipher_expected[vector_index].ciphertext,
+                          sizeof(s_aes_cipher_expected[vector_index].ciphertext)))
     {
         return 0;
     }
 
-    if (mode == CIPHER_MOD_XTS)
-    {
-        memset(s_plaintext, 0, sizeof(s_aes_input));
-    }
+    memset(s_plaintext, 0, TEST_MESSAGE_SIZE);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_01_AES_CIPHER;
     p_isd->prm.AES_CIPHER.direction = CIPHER_DIR_DECRYPTION;
@@ -235,11 +275,11 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
     p_isd->prm.AES_CIPHER.p_block_out = (uint32_t *)s_plaintext;
     if (mode == CIPHER_MOD_XTS)
     {
-        p_isd->prm.AES_CIPHER.size.data_size_in_bits = sizeof(s_aes_input) * 8u;
+        p_isd->prm.AES_CIPHER.size.data_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     }
     else
     {
-        p_isd->prm.AES_CIPHER.size.nb_blocks = 2u;
+        p_isd->prm.AES_CIPHER.size.nb_blocks = TEST_MESSAGE_SIZE / 16u;
     }
     p_isd->prm.AES_CIPHER.job_slice = job_slice[JOB_AES];
     p_isd->prm.AES_CIPHER.job_cycle = JOB_ALL_AT_ONCE;
@@ -247,12 +287,7 @@ static int test_aes_cipher_mode(cipher_modes_t mode, const char *name)
     {
         return 0;
     }
-    if (memcmp(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input)) != 0)
-    {
-        printf("  plaintext comparison failed\n");
-        return 0;
-    }
-    return 1;
+    return check_test_message(s_plaintext);
 }
 #endif
 
@@ -277,10 +312,9 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
         return 0;
     }
     p_isd = test_isd();
-    memset(BIG_BUFFER[0], 0, 32u);
-    memset(BIG_BUFFER[1], 0, 32u);
+    prepare_test_message();
+    memset(BIG_BUFFER[1], 0, TEST_MESSAGE_SIZE);
     memset(BIG_BUFFER[2], 0, 48u);
-    memcpy(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input));
     memcpy(BIG_BUFFER[2], s_aes_iv, sizeof(s_aes_iv));
     memcpy(BIG_BUFFER[2] + 16u, s_auth_data, sizeof(s_auth_data));
     p_isd->service_id = SERVICE_01_AES_AUTH_CIPHER;
@@ -291,7 +325,7 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
     p_isd->prm.AES_AUTH_CIPHER.p_data_in = (const uint32_t *)BIG_BUFFER[0];
     p_isd->prm.AES_AUTH_CIPHER.p_data_out = (uint32_t *)s_ciphertext;
     p_isd->prm.AES_AUTH_CIPHER.p_auth_tag = (uint32_t *)s_auth_tag;
-    p_isd->prm.AES_AUTH_CIPHER.data_size_in_bits = 128u;
+    p_isd->prm.AES_AUTH_CIPHER.data_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     p_isd->prm.AES_AUTH_CIPHER.auth_tag_size_in_bits = 128u;
     p_isd->prm.AES_AUTH_CIPHER.key_group = KEY_GRP_AES_RAM;
     p_isd->prm.AES_AUTH_CIPHER.key_id = TEST_AES_KEY_ID;
@@ -316,6 +350,7 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
         return 0;
     }
 
+    memset(s_plaintext, 0, TEST_MESSAGE_SIZE);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_01_AES_AUTH_CIPHER;
     p_isd->prm.AES_AUTH_CIPHER.p_iv = (const uint32_t *)BIG_BUFFER[2];
@@ -325,7 +360,7 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
     p_isd->prm.AES_AUTH_CIPHER.p_data_in = (const uint32_t *)s_ciphertext;
     p_isd->prm.AES_AUTH_CIPHER.p_data_out = (uint32_t *)s_plaintext;
     p_isd->prm.AES_AUTH_CIPHER.p_auth_tag = (uint32_t *)s_auth_tag;
-    p_isd->prm.AES_AUTH_CIPHER.data_size_in_bits = 128u;
+    p_isd->prm.AES_AUTH_CIPHER.data_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     p_isd->prm.AES_AUTH_CIPHER.auth_tag_size_in_bits = 128u;
     p_isd->prm.AES_AUTH_CIPHER.key_group = KEY_GRP_AES_RAM;
     p_isd->prm.AES_AUTH_CIPHER.key_id = TEST_AES_KEY_ID;
@@ -339,7 +374,7 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
         return 0;
     }
     if ((p_isd->prm.AES_AUTH_CIPHER.verification_result != VERIFICATION_PASS) ||
-        (memcmp(BIG_BUFFER[0], s_aes_input, 16u) != 0))
+        !check_test_message(s_plaintext))
     {
         printf("  authentication/decryption verification failed\n");
         printf("  authentication/decryption comparison failed\n");
@@ -353,17 +388,17 @@ static int test_aes_auth_mode(auth_cipher_modes_t mode, const char *name)
 static int test_aes_cmac(void)
 {
     static const uint8_t expected_cmac[16] = {
-        0x29, 0x22, 0xde, 0xf9, 0x95, 0xeb, 0x80, 0x3b,
-        0x14, 0x78, 0xf7, 0x6b, 0xc7, 0xad, 0x65, 0x9c
+        0xab, 0x20, 0x57, 0x55, 0xab, 0x42, 0x41, 0xd3,
+        0x92, 0x50, 0x59, 0x9e, 0x90, 0x49, 0xff, 0xc9
     };
     r_icumif_isd_t *p_isd = test_isd();
 
-    memcpy(BIG_BUFFER[0], s_aes_input, sizeof(s_aes_input));
+    prepare_test_message();
     memset(BIG_BUFFER[2] + 32u, 0, 16u);
     p_isd->service_id = SERVICE_01_AES_CMAC;
     p_isd->prm.AES_CMAC.p_msg = (const uint32_t *)BIG_BUFFER[0];
     p_isd->prm.AES_CMAC.p_cmac = (uint32_t *)s_auth_tag;
-    p_isd->prm.AES_CMAC.msg_size_in_bits = sizeof(s_aes_input) * 8u;
+    p_isd->prm.AES_CMAC.msg_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     p_isd->prm.AES_CMAC.key_group = KEY_GRP_AES_RAM;
     p_isd->prm.AES_CMAC.key_id = TEST_AES_KEY_ID;
     p_isd->prm.AES_CMAC.cmac_size_in_bits = 128u;
@@ -384,7 +419,7 @@ static int test_aes_cmac(void)
     p_isd->service_id = SERVICE_01_AES_CMAC;
     p_isd->prm.AES_CMAC.p_msg = (const uint32_t *)BIG_BUFFER[0];
     p_isd->prm.AES_CMAC.p_cmac = (uint32_t *)s_auth_tag;
-    p_isd->prm.AES_CMAC.msg_size_in_bits = sizeof(s_aes_input) * 8u;
+    p_isd->prm.AES_CMAC.msg_size_in_bits = TEST_MESSAGE_SIZE * 8u;
     p_isd->prm.AES_CMAC.key_group = KEY_GRP_AES_RAM;
     p_isd->prm.AES_CMAC.key_id = TEST_AES_KEY_ID;
     p_isd->prm.AES_CMAC.cmac_size_in_bits = 128u;
@@ -410,9 +445,21 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
                                r_icumif_service_id_t selected_service)
 {
     r_icumif_isd_t *p_isd;
-    uint32_t message_size = sizeof(s_rsa_message) - 1u;
-    uint16_t encrypted_size_in_bits;
+    uint32_t message_size;
 
+    if (mode == ENCODING_FORMAT_EME_OAEP)
+    {
+        message_size = TEST_RSA_KEY_BITS / 8u - 2u * 32u - 2u;
+    }
+    else if (mode == ENCODING_FORMAT_EME_PKCS1_V15)
+    {
+        message_size = TEST_RSA_KEY_BITS / 8u - 11u;
+    }
+    else
+    {
+        printf("  unsupported RSA message encoding: %d\n", (int)mode);
+        return 0;
+    }
     if (!prepare_rng())
     {
         return 0;
@@ -420,7 +467,9 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
 
     memset(BIG_BUFFER[1], 0, SIZE_OF_BIG_BUFFER);
     memset(BIG_BUFFER[2], 0, SIZE_OF_BIG_BUFFER);
-    memcpy(BIG_BUFFER[0], s_rsa_message, message_size);
+    prepare_test_message();
+    printf("  %s: plaintext=%lu bytes, ciphertext=%u bytes, operations=1\n",
+           name, (unsigned long)message_size, TEST_RSA_KEY_BITS / 8u);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_02_RSA_ENCRYPT;
     p_isd->prm.RSA_ENCRYPT.p_message = BIG_BUFFER[0];
@@ -435,11 +484,28 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
     p_isd->prm.RSA_ENCRYPT.key_id = TEST_RSA_KEY_ID;
     p_isd->prm.RSA_ENCRYPT.encrypted_message_format = FORMAT_BINARY_PLAIN;
     p_isd->prm.RSA_ENCRYPT.job_slice_mod_exp = job_slice[JOB_RSA];
-    if (!run_service(name, p_isd))
+    if (selected_service == SERVICE_02_RSA_ENCRYPT)
     {
+        if (!run_service(name, p_isd))
+        {
+            return 0;
+        }
+    }
+    else
+    {
+        (void)trigger_service_and_wait_quiet(p_isd);
+        if (p_isd->service_result != SERV_OK)
+        {
+            printf("  RSA ciphertext preparation failed: %s\n",
+                   R_ICUMIF_GetErrorCodeName(p_isd->service_result));
+            return 0;
+        }
+    }
+    if (p_isd->prm.RSA_ENCRYPT.encrypted_message_size_in_bits != TEST_RSA_KEY_BITS)
+    {
+        printf("  unexpected RSA ciphertext size\n");
         return 0;
     }
-    encrypted_size_in_bits = p_isd->prm.RSA_ENCRYPT.encrypted_message_size_in_bits;
     if (selected_service == SERVICE_02_RSA_ENCRYPT)
     {
         return 1;
@@ -448,7 +514,7 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
     p_isd = test_isd();
     p_isd->service_id = SERVICE_02_RSA_DECRYPT;
     p_isd->prm.RSA_DECRYPT.p_encrypted_message = BIG_BUFFER[1];
-    p_isd->prm.RSA_DECRYPT.encrypted_message_size_in_bits = encrypted_size_in_bits;
+    p_isd->prm.RSA_DECRYPT.encrypted_message_size_in_bits = TEST_RSA_KEY_BITS;
     p_isd->prm.RSA_DECRYPT.p_message = BIG_BUFFER[2];
     p_isd->prm.RSA_DECRYPT.message_size_in_bytes = TEST_RSA_BUFFER_SIZE;
     p_isd->prm.RSA_DECRYPT.p_label = NULL;
@@ -462,10 +528,14 @@ static int test_rsa_crypt_mode(r_message_encoding_format_t mode, const char *nam
     {
         return 0;
     }
-    if ((p_isd->prm.RSA_DECRYPT.message_size_in_bytes != message_size) ||
-        (memcmp(BIG_BUFFER[2], s_rsa_message, message_size) != 0))
+    if (p_isd->prm.RSA_DECRYPT.message_size_in_bytes != message_size)
     {
-        printf("  RSA plaintext comparison failed\n");
+        printf("  unexpected RSA plaintext size\n");
+        return 0;
+    }
+    if (memcmp(BIG_BUFFER[2], BIG_BUFFER[0], message_size) != 0)
+    {
+        printf("  RSA recovered plaintext mismatch\n");
         return 0;
     }
     return 1;
@@ -486,12 +556,12 @@ static int test_rsa_signature_mode(r_hash_encoding_format_t mode, const char *na
     }
 
     memset(BIG_BUFFER[1], 0, SIZE_OF_BIG_BUFFER);
-    memcpy(BIG_BUFFER[0], s_rsa_message, sizeof(s_rsa_message) - 1u);
+    prepare_test_message();
     p_isd = test_isd();
     p_isd->service_id = SERVICE_02_RSA_SIGN;
     p_isd->prm.RSA_SIGN.p_source = BIG_BUFFER[0];
     p_isd->prm.RSA_SIGN.p_signature = BIG_BUFFER[1];
-    p_isd->prm.RSA_SIGN.source_size_in_bytes = sizeof(s_rsa_message) - 1u;
+    p_isd->prm.RSA_SIGN.source_size_in_bytes = TEST_MESSAGE_SIZE;
     p_isd->prm.RSA_SIGN.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.RSA_SIGN.hash_encoding_format = mode;
     p_isd->prm.RSA_SIGN.signature_format = FORMAT_BINARY_PLAIN;
@@ -514,7 +584,7 @@ static int test_rsa_signature_mode(r_hash_encoding_format_t mode, const char *na
     p_isd->service_id = SERVICE_02_RSA_VERIFY;
     p_isd->prm.RSA_VERIFY.p_source = BIG_BUFFER[0];
     p_isd->prm.RSA_VERIFY.p_signature = BIG_BUFFER[1];
-    p_isd->prm.RSA_VERIFY.source_size_in_bytes = sizeof(s_rsa_message) - 1u;
+    p_isd->prm.RSA_VERIFY.source_size_in_bytes = TEST_MESSAGE_SIZE;
     p_isd->prm.RSA_VERIFY.signature_size_in_bits = signature_size_in_bits;
     p_isd->prm.RSA_VERIFY.salt_size_in_bytes = salt_size;
     p_isd->prm.RSA_VERIFY.hash_primitive = HASH_PRIMITIVE_SHA2_256;
@@ -623,7 +693,6 @@ static int test_rng_service(r_icumif_service_id_t service_id)
 
 static int test_ecc_signature_service(int eddsa, int verify)
 {
-    static const uint8_t message[] = "ICUM ECC service test";
     r_icumif_isd_t *p_isd;
     r_icumif_service_id_t sign_service;
     r_icumif_service_id_t verify_service;
@@ -642,10 +711,9 @@ static int test_ecc_signature_service(int eddsa, int verify)
         return 0;
     }
 
-    memset(BIG_BUFFER[0], 0, 32u);
+    prepare_test_message();
     memset(BIG_BUFFER[1], 0, 32u);
     memset(BIG_BUFFER[2], 0, 32u);
-    memcpy(BIG_BUFFER[0], message, sizeof(message) - 1u);
 
     p_isd = test_isd();
     p_isd->service_id = sign_service;
@@ -654,7 +722,7 @@ static int test_ecc_signature_service(int eddsa, int verify)
         p_isd->prm.EDDSA_SIGN.p_source = BIG_BUFFER[0];
         p_isd->prm.EDDSA_SIGN.signature[0].p_data = BIG_BUFFER[1];
         p_isd->prm.EDDSA_SIGN.signature[1].p_data = BIG_BUFFER[2];
-        p_isd->prm.EDDSA_SIGN.source_size_in_bytes = sizeof(message) - 1u;
+        p_isd->prm.EDDSA_SIGN.source_size_in_bytes = TEST_MESSAGE_SIZE;
         p_isd->prm.EDDSA_SIGN.hash_primitive = hash_primitive;
         p_isd->prm.EDDSA_SIGN.signature_format = FORMAT_BINARY_PLAIN;
         p_isd->prm.EDDSA_SIGN.key_group = KEY_GRP_ECC_RAM;
@@ -670,7 +738,7 @@ static int test_ecc_signature_service(int eddsa, int verify)
         p_isd->prm.ECDSA_SIGN.p_source = BIG_BUFFER[0];
         p_isd->prm.ECDSA_SIGN.signature[0].p_data = BIG_BUFFER[1];
         p_isd->prm.ECDSA_SIGN.signature[1].p_data = BIG_BUFFER[2];
-        p_isd->prm.ECDSA_SIGN.source_size_in_bytes = sizeof(message) - 1u;
+        p_isd->prm.ECDSA_SIGN.source_size_in_bytes = TEST_MESSAGE_SIZE;
         p_isd->prm.ECDSA_SIGN.hash_primitive = hash_primitive;
         p_isd->prm.ECDSA_SIGN.signature_format = FORMAT_BINARY_PLAIN;
         p_isd->prm.ECDSA_SIGN.key_group = KEY_GRP_ECC_RAM;
@@ -692,7 +760,7 @@ static int test_ecc_signature_service(int eddsa, int verify)
         p_isd->prm.EDDSA_VERIFY.p_source = BIG_BUFFER[0];
         p_isd->prm.EDDSA_VERIFY.signature[0].p_data = BIG_BUFFER[1];
         p_isd->prm.EDDSA_VERIFY.signature[1].p_data = BIG_BUFFER[2];
-        p_isd->prm.EDDSA_VERIFY.source_size_in_bytes = sizeof(message) - 1u;
+        p_isd->prm.EDDSA_VERIFY.source_size_in_bytes = TEST_MESSAGE_SIZE;
         p_isd->prm.EDDSA_VERIFY.signature_size_in_bits[0] = 256u;
         p_isd->prm.EDDSA_VERIFY.signature_size_in_bits[1] = 256u;
         p_isd->prm.EDDSA_VERIFY.hash_primitive = hash_primitive;
@@ -709,7 +777,7 @@ static int test_ecc_signature_service(int eddsa, int verify)
         p_isd->prm.ECDSA_VERIFY.p_source = BIG_BUFFER[0];
         p_isd->prm.ECDSA_VERIFY.signature[0].p_data = BIG_BUFFER[1];
         p_isd->prm.ECDSA_VERIFY.signature[1].p_data = BIG_BUFFER[2];
-        p_isd->prm.ECDSA_VERIFY.source_size_in_bytes = sizeof(message) - 1u;
+        p_isd->prm.ECDSA_VERIFY.source_size_in_bytes = TEST_MESSAGE_SIZE;
         p_isd->prm.ECDSA_VERIFY.signature_size_in_bits[0] = 256u;
         p_isd->prm.ECDSA_VERIFY.signature_size_in_bits[1] = 256u;
         p_isd->prm.ECDSA_VERIFY.hash_primitive = hash_primitive;
@@ -733,13 +801,13 @@ static int test_ecc_signature_service(int eddsa, int verify)
         return 0;
     }
 
-    BIG_BUFFER[0][0] ^= 1u;
+    BIG_BUFFER[0][TEST_MESSAGE_SIZE - 1u] ^= 1u;
     if (!run_service(eddsa ? "EdDSA tampered verify" : "ECDSA tampered verify", p_isd))
     {
-        BIG_BUFFER[0][0] ^= 1u;
+        BIG_BUFFER[0][TEST_MESSAGE_SIZE - 1u] ^= 1u;
         return 0;
     }
-    BIG_BUFFER[0][0] ^= 1u;
+    BIG_BUFFER[0][TEST_MESSAGE_SIZE - 1u] ^= 1u;
     if (!(eddsa ?
         (p_isd->prm.EDDSA_VERIFY.verification_result == VERIFICATION_FAIL) :
         (p_isd->prm.ECDSA_VERIFY.verification_result == VERIFICATION_FAIL)))
@@ -834,22 +902,21 @@ static int test_ecdh_service(void)
 
 static int test_hash_service(void)
 {
-    static const uint8_t message[] = { 0x61u, 0x62u, 0x63u };
     static const uint8_t expected_hash[32] = {
-        0xbau, 0x78u, 0x16u, 0xbfu, 0x8fu, 0x01u, 0xcfu, 0xeau,
-        0x41u, 0x41u, 0x40u, 0xdeu, 0x5du, 0xaeu, 0x22u, 0x23u,
-        0xb0u, 0x03u, 0x61u, 0xa3u, 0x96u, 0x17u, 0x7au, 0x9cu,
-        0xb4u, 0x10u, 0xffu, 0x61u, 0xf2u, 0x00u, 0x15u, 0xadu
+        0x32u, 0xa2u, 0xa2u, 0xeeu, 0x39u, 0x4fu, 0xdeu, 0x20u,
+        0x23u, 0xe9u, 0x42u, 0x4eu, 0x24u, 0x7du, 0x06u, 0x7cu,
+        0x47u, 0x7bu, 0x6cu, 0x6fu, 0x69u, 0x96u, 0x2bu, 0xd0u,
+        0xa6u, 0xccu, 0xebu, 0x35u, 0xddu, 0x4eu, 0x43u, 0xd8u
     };
     r_icumif_isd_t *p_isd;
 
-    memcpy(BIG_BUFFER[0], message, sizeof(message));
+    prepare_test_message();
     memset(BIG_BUFFER[1], 0, 32u);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_05_HASH;
     p_isd->prm.HASH.p_message = BIG_BUFFER[0];
     p_isd->prm.HASH.p_hash = BIG_BUFFER[1];
-    p_isd->prm.HASH.message_size_in_bytes = sizeof(message);
+    p_isd->prm.HASH.message_size_in_bytes = TEST_MESSAGE_SIZE;
     p_isd->prm.HASH.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.HASH.job_slice = job_slice[JOB_H];
     p_isd->prm.HASH.job_cycle = JOB_ALL_AT_ONCE;
@@ -867,16 +934,15 @@ static int test_hash_service(void)
 
 static int test_hmac_service(void)
 {
-    static const uint8_t message[] = "Hi There";
     static const uint8_t expected_hmac[32] = {
-        0xb0u, 0x34u, 0x4cu, 0x61u, 0xd8u, 0xdbu, 0x38u, 0x53u,
-        0x5cu, 0xa8u, 0xafu, 0xceu, 0xafu, 0x0bu, 0xf1u, 0x2bu,
-        0x88u, 0x1du, 0xc2u, 0x00u, 0xc9u, 0x83u, 0x3du, 0xa7u,
-        0x26u, 0xe9u, 0x37u, 0x6cu, 0x2eu, 0x32u, 0xcfu, 0xf7u
+        0x67u, 0xe8u, 0x3au, 0x24u, 0x1eu, 0x8bu, 0x1bu, 0xbbu,
+        0x55u, 0x79u, 0x67u, 0x7cu, 0x9au, 0x3eu, 0x62u, 0x23u,
+        0x5du, 0x2du, 0x41u, 0xb9u, 0x1du, 0x43u, 0x9fu, 0x90u,
+        0x8au, 0x6du, 0x52u, 0x9cu, 0x71u, 0xbfu, 0x9cu, 0xa0u
     };
     r_icumif_isd_t *p_isd;
 
-    memcpy(BIG_BUFFER[0], message, sizeof(message) - 1u);
+    prepare_test_message();
     memset(BIG_BUFFER[1], 0, 32u);
     p_isd = test_isd();
     p_isd->service_id = SERVICE_05_HMAC;
@@ -884,7 +950,7 @@ static int test_hmac_service(void)
     p_isd->prm.HMAC.hmac_operation = HMAC_GENERATION;
     p_isd->prm.HMAC.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.HMAC.p_msg = BIG_BUFFER[0];
-    p_isd->prm.HMAC.msg_size_in_bytes = sizeof(message) - 1u;
+    p_isd->prm.HMAC.msg_size_in_bytes = TEST_MESSAGE_SIZE;
     p_isd->prm.HMAC.p_hmac = BIG_BUFFER[1];
     p_isd->prm.HMAC.hmac_size_in_bytes = 32u;
     p_isd->prm.HMAC.job_slice = job_slice[JOB_H];
@@ -905,7 +971,7 @@ static int test_hmac_service(void)
     p_isd->prm.HMAC.hmac_operation = HMAC_VERIFICATION;
     p_isd->prm.HMAC.hash_primitive = HASH_PRIMITIVE_SHA2_256;
     p_isd->prm.HMAC.p_msg = BIG_BUFFER[0];
-    p_isd->prm.HMAC.msg_size_in_bytes = sizeof(message) - 1u;
+    p_isd->prm.HMAC.msg_size_in_bytes = TEST_MESSAGE_SIZE;
     p_isd->prm.HMAC.p_hmac = BIG_BUFFER[1];
     p_isd->prm.HMAC.hmac_size_in_bytes = 32u;
     p_isd->prm.HMAC.job_slice = job_slice[JOB_H];
@@ -951,6 +1017,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
             print_test_result("AES-XTS enc/dec", test_aes_cipher_mode(CIPHER_MOD_XTS, "AES-XTS enc/dec"));
 #else
             printf("AES cipher test is disabled by PE1_TEST_AES_CIPHER.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_01_AES_AUTH_CIPHER:
@@ -959,6 +1026,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
             print_test_result("AES-CCM enc/dec", test_aes_auth_mode(AUTH_CIPHER_MOD_CCM, "AES-CCM enc/dec"));
 #else
             printf("AES authenticated-cipher test is disabled by PE1_TEST_AES_AUTH.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_01_AES_CMAC:
@@ -966,6 +1034,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
             print_test_result("AES-CMAC", test_aes_cmac());
 #else
             printf("AES-CMAC test is disabled by PE1_TEST_AES_CMAC.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_02_RSA_VERIFY:
@@ -977,6 +1046,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
                                                       SERVICE_02_RSA_VERIFY));
 #else
             printf("RSA signature test is disabled by PE1_TEST_RSA_SIGNATURE.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_02_RSA_SIGN:
@@ -988,6 +1058,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
                                                       SERVICE_02_RSA_SIGN));
 #else
             printf("RSA signature test is disabled by PE1_TEST_RSA_SIGNATURE.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_02_RSA_ENCRYPT:
@@ -1000,6 +1071,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
                                                   SERVICE_02_RSA_ENCRYPT));
 #else
             printf("RSA encryption test is disabled by PE1_TEST_RSA_CRYPT.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_02_RSA_DECRYPT:
@@ -1012,6 +1084,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
                                                   SERVICE_02_RSA_DECRYPT));
 #else
             printf("RSA encryption test is disabled by PE1_TEST_RSA_CRYPT.\n");
+            s_test_skipped++;
 #endif
             break;
         case SERVICE_02_RSA_KEY_GENERATE:
@@ -1020,6 +1093,7 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
             break;
 #else
             printf("RSA key-generation test is disabled by PE1_TEST_RSA_KEY_GENERATE.\n");
+            s_test_skipped++;
             break;
 #endif
         case SERVICE_03_RAND_INIT_RNG:
@@ -1063,44 +1137,31 @@ void icum_crypto_service_test_service(r_icumif_service_id_t service_id)
 
 void icum_crypto_service_test(void)
 {
-#if !(PE1_TEST_AES_CIPHER || PE1_TEST_AES_AUTH || PE1_TEST_AES_CMAC || \
-            PE1_TEST_RSA_KEY_GENERATE || PE1_TEST_RSA_CRYPT || PE1_TEST_RSA_SIGNATURE)
-        printf("No AES/RSA service tests are enabled.\n");
-#else
-    printf("\nICUM AES/RSA service tests (OSTM0 time to service return)\n");
-#if PE1_TEST_AES_CIPHER
-    print_test_result("AES-ECB enc/dec", test_aes_cipher_mode(CIPHER_MOD_ECB, "AES-ECB enc/dec"));
-    print_test_result("AES-CBC enc/dec", test_aes_cipher_mode(CIPHER_MOD_CBC, "AES-CBC enc/dec"));
-    print_test_result("AES-CFB enc/dec", test_aes_cipher_mode(CIPHER_MOD_CFB, "AES-CFB enc/dec"));
-    print_test_result("AES-OFB enc/dec", test_aes_cipher_mode(CIPHER_MOD_OFB, "AES-OFB enc/dec"));
-    print_test_result("AES-CTR enc/dec", test_aes_cipher_mode(CIPHER_MOD_CTR, "AES-CTR enc/dec"));
-    print_test_result("AES-XTS enc/dec", test_aes_cipher_mode(CIPHER_MOD_XTS, "AES-XTS enc/dec"));
-#endif
-#if PE1_TEST_AES_AUTH
-    print_test_result("AES-GCM enc/dec", test_aes_auth_mode(AUTH_CIPHER_MOD_GCM, "AES-GCM enc/dec"));
-    print_test_result("AES-CCM enc/dec", test_aes_auth_mode(AUTH_CIPHER_MOD_CCM, "AES-CCM enc/dec"));
-#endif
-#if PE1_TEST_AES_CMAC
-    print_test_result("AES-CMAC", test_aes_cmac());
-#endif
+    static const r_icumif_service_id_t services[] = {
+        SERVICE_01_AES_CIPHER, SERVICE_01_AES_AUTH_CIPHER, SERVICE_01_AES_CMAC,
+        SERVICE_02_RSA_VERIFY, SERVICE_02_RSA_SIGN, SERVICE_02_RSA_ENCRYPT,
+        SERVICE_02_RSA_DECRYPT, SERVICE_02_RSA_KEY_GENERATE,
+        SERVICE_03_RAND_INIT_RNG, SERVICE_03_RAND_EXTEND_SEED, SERVICE_03_RAND_RND,
+        SERVICE_04_ECDSA_VERIFY, SERVICE_04_ECDSA_SIGN, SERVICE_04_ECDH,
+        SERVICE_04_EDDSA_VERIFY, SERVICE_04_EDDSA_SIGN, SERVICE_04_ECC_KEY_GENERATE,
+        SERVICE_05_HASH, SERVICE_05_HMAC
+    };
+    unsigned int i;
+    unsigned int count = sizeof(services) / sizeof(services[0]);
 
-#if PE1_TEST_RSA_KEY_GENERATE
-    print_test_result("RSA 2048-bit keygen", test_rsa_key_generate());
-#endif
-#if PE1_TEST_RSA_CRYPT
-    print_test_result("RSA-OAEP enc/dec",
-                      test_rsa_crypt_mode(ENCODING_FORMAT_EME_OAEP, "RSA-OAEP enc/dec", LAST_ITEM_SERV_ID));
-    print_test_result("RSA-PKCS1 enc/dec",
-                      test_rsa_crypt_mode(ENCODING_FORMAT_EME_PKCS1_V15, "RSA-PKCS1 enc/dec",
-                                          LAST_ITEM_SERV_ID));
-#endif
-#if PE1_TEST_RSA_SIGNATURE
-    print_test_result("RSA-PSS sign/verify",
-                      test_rsa_signature_mode(ENCODING_FORMAT_EMSA_PSS, "RSA-PSS sign/verify",
-                                              LAST_ITEM_SERV_ID));
-    print_test_result("RSA-PKCS1 sign/verify",
-                      test_rsa_signature_mode(ENCODING_FORMAT_EMSA_PKCS1_V15, "RSA-PKCS1 sign/verify",
-                                              LAST_ITEM_SERV_ID));
-#endif
-#endif
+    s_test_passed = 0u;
+    s_test_failed = 0u;
+    s_test_skipped = 0u;
+    printf("\nICUM all-algorithm tests (ascending service ID)\n");
+    printf("Message-based tests use %u bytes; RSA encryption/decryption uses one legal padded block.\n",
+           TEST_MESSAGE_SIZE);
+    printf("Preparation requests may use other service IDs; keygen replaces RAM keys.\n");
+    for (i = 0u; i < count; i++)
+    {
+        printf("\n[%u/%u] service 0x%02X\n", i + 1u, count, (unsigned int)services[i]);
+        icum_crypto_service_test_service(services[i]);
+    }
+    printf("\nICUM test summary: passed=%u failed=%u skipped-services=%u (%s)\n",
+           s_test_passed, s_test_failed, s_test_skipped,
+           s_test_failed ? "FAIL" : (s_test_skipped ? "INCOMPLETE" : "PASS"));
 }

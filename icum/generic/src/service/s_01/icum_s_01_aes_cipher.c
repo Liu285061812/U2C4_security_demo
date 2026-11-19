@@ -531,6 +531,7 @@ static uint32_t s_01_CIPHER_InitAesCipher(icum_job_t *p_job)
             init_param.key_length  = p_key1->properties.size_in_bytes;
             init_param.p_aes_iv    = (uint32_t *)iv_logical;
             init_param.p_context   = p_ctx->context;
+            K_ISSD_BeginAlgorithm(p_job);
             err = D_AES_InitJob(&init_param);
             p_ctx->block_info = D_AES_FIRST_CIPHER;
         }
@@ -544,6 +545,7 @@ static uint32_t s_01_CIPHER_InitAesCipher(icum_job_t *p_job)
             init_param_xts.key_length = p_key1->properties.size_in_bytes;
             init_param_xts.p_aes_iv   = (uint32_t *)iv_logical;
             init_param_xts.p_context  = p_ctx->context;
+            K_ISSD_BeginAlgorithm(p_job);
             err = D_AES_InitJobXts(&init_param_xts);
             p_ctx->block_info = D_AES_FIRST_CIPHER;
         }
@@ -637,6 +639,7 @@ static uint32_t s_01_CIPHER_ProcessUpdate(icum_job_t *p_job, uint16_t finish)
         update_param.p_aes_src  = (uint32_t*)uiSource_logical;
         update_param.p_context  = p_ctx->context;
         update_param.p_aes_dest = (uint32_t*)uiDest_logical;
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_UpdateJob(&update_param);
         p_ctx->block_info = D_AES_NOT_FIRST_CIPHER;
 
@@ -725,7 +728,12 @@ static uint32_t s_01_CIPHER_ProcessFinish(icum_job_t *p_job)
         finish_param.p_context  = p_ctx->context;
         finish_param.p_aes_dest = (uint32_t*)NULL;
         finish_param.last_block_in_bits = (uint16_t)NUM0;
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_FinishJob(&finish_param);
+        if (err != ER_IN_PROCESS)
+        {
+            K_ISSD_EndAlgorithm(p_job);
+        }
 
         if (ER_OK == err)
         {
@@ -815,6 +823,7 @@ static uint32_t s_01_CIPHER_ProcessUpdateXts(icum_job_t *p_job, uint16_t finish)
         update_param.p_aes_src  = (uint32_t*)uiSource_logical;
         update_param.p_context  = p_ctx->context;
         update_param.p_aes_dest = (uint32_t*)uiDest_logical;
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_UpdateJobXts(&update_param);
         p_ctx->block_info = D_AES_NOT_FIRST_CIPHER;
 
@@ -932,6 +941,7 @@ static uint32_t s_01_CIPHER_ProcessFinishXts(icum_job_t *p_job)
                 update_param.p_aes_src  = (uint32_t*)uiSource_logical;
                 update_param.p_context  = p_ctx->context;
                 update_param.p_aes_dest = (uint32_t*)uiDest_logical;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_UpdateJobXts(&update_param);
                 p_ctx->block_info = D_AES_NOT_FIRST_CIPHER;
 
@@ -975,7 +985,12 @@ static uint32_t s_01_CIPHER_ProcessFinishXts(icum_job_t *p_job)
                 finish_param.p_aes_src  = (uint32_t*)uiSource_logical;
                 finish_param.p_context  = p_ctx->context;
                 finish_param.p_aes_dest = (uint32_t*)cipher_data;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_FinishJobXts(&finish_param);
+                if (err != ER_IN_PROCESS)
+                {
+                    K_ISSD_EndAlgorithm(p_job);
+                }
 
                 /* Padding invalid data of the last block with 0 */
                 (void)s_01_CIPHER_Sizing((uint8_t*)&cipher_data[4], p_job->prm.job_aes.rem);
@@ -1010,7 +1025,12 @@ static uint32_t s_01_CIPHER_ProcessFinishXts(icum_job_t *p_job)
             finish_param.p_aes_src  = (uint32_t*)uiSource_logical;
             finish_param.p_context  = p_ctx->context;
             finish_param.p_aes_dest = (uint32_t*)uiDest_logical;
+            K_ISSD_BeginAlgorithm(p_job);
             err = D_AES_FinishJobXts(&finish_param);
+            if (err != ER_IN_PROCESS)
+            {
+                K_ISSD_EndAlgorithm(p_job);
+            }
         }
     }
     else
@@ -1626,7 +1646,12 @@ static uint32_t s_01_CIPHER_AtOnceAes(icum_job_t *p_job)
                     at_once_param.async = D_AES_TRANS_ASYNC;
                     g_ContextAddress    = (uint32_t)p_ctx;
                 }
+                s_01_CIPHER_BeginAsyncAlgorithm(p_job);
                 err = D_AES_ExecutionAtOnce(&at_once_param);
+                if (err != ER_IN_PROCESS)
+                {
+                    s_01_CIPHER_EndAsyncAlgorithm();
+                }
             }
             else
             {
@@ -1663,7 +1688,12 @@ static uint32_t s_01_CIPHER_AtOnceAes(icum_job_t *p_job)
                     at_once_param_xts.async = D_AES_TRANS_ASYNC;
                     g_ContextAddress        = (uint32_t)p_ctx;
                 }
+                s_01_CIPHER_BeginAsyncAlgorithm(p_job);
                 err = D_AES_ExecutionAtOnceXts(&at_once_param_xts);
+                if (err != ER_IN_PROCESS)
+                {
+                    s_01_CIPHER_EndAsyncAlgorithm();
+                }
             }
 
             if (NULL != p_ctx)
@@ -1676,15 +1706,7 @@ static uint32_t s_01_CIPHER_AtOnceAes(icum_job_t *p_job)
                 {
                     p_ctx->result = err;
                 }
-                /* XTS completes its final block in the DTF callback. */
-                if (CIPHER_MOD_XTS == p_ISD->prm.AES_CIPHER.cipher_mode)
-                {
-                    err = p_ctx->result;
-                }
-                else
-                {
-                    err = ER_OK;
-                }
+                err = p_ctx->result;
                 /* re-enable interrupts (if necessary) */
                 ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
             }
@@ -2106,6 +2128,10 @@ void S_01_CipherAes(icum_job_t *p_job)
 
     err = s_01_CIPHER_ConvertErr(err);
 
+    if ((err != (uint32_t)SERV_IN_PROCESS) && (err != (uint32_t)SERV_PENDING))
+    {
+        K_ISSD_EndAlgorithm(p_job);
+    }
     if(p_job->cancel_request == JOB_CANCEL_REQUESTED)
     {
         p_job->keep.job_cycle = 0u;

@@ -364,30 +364,123 @@ static const char *pe1_crypto_service_name(const r_icumif_isd_t *p_isd,
     }
 }
 
+static int pe1_crypto_payload_bytes(const r_icumif_isd_t *p_isd, uint64_t *p_bytes)
+{
+    switch (p_isd->service_id)
+    {
+        case SERVICE_01_AES_CIPHER:
+            *p_bytes = (p_isd->prm.AES_CIPHER.cipher_mode == CIPHER_MOD_XTS)
+                ? ((uint64_t)p_isd->prm.AES_CIPHER.size.data_size_in_bits + 7u) / 8u
+                : (uint64_t)p_isd->prm.AES_CIPHER.size.nb_blocks * 16u;
+            break;
+        case SERVICE_01_AES_AUTH_CIPHER:
+            *p_bytes = ((uint64_t)p_isd->prm.AES_AUTH_CIPHER.data_size_in_bits + 7u) / 8u;
+            break;
+        case SERVICE_01_AES_CMAC:
+            *p_bytes = ((uint64_t)p_isd->prm.AES_CMAC.msg_size_in_bits + 7u) / 8u;
+            break;
+        case SERVICE_02_RSA_VERIFY: *p_bytes = p_isd->prm.RSA_VERIFY.source_size_in_bytes; break;
+        case SERVICE_02_RSA_SIGN: *p_bytes = p_isd->prm.RSA_SIGN.source_size_in_bytes; break;
+        case SERVICE_02_RSA_ENCRYPT: *p_bytes = p_isd->prm.RSA_ENCRYPT.message_size_in_bytes; break;
+        case SERVICE_02_RSA_DECRYPT:
+            *p_bytes = ((uint64_t)p_isd->prm.RSA_DECRYPT.encrypted_message_size_in_bits + 7u) / 8u;
+            break;
+        case SERVICE_03_RAND_RND: *p_bytes = (uint64_t)p_isd->prm.RAND_GENERATE.nb_blocks * 16u; break;
+        case SERVICE_04_ECDSA_VERIFY: *p_bytes = p_isd->prm.ECDSA_VERIFY.source_size_in_bytes; break;
+        case SERVICE_04_ECDSA_SIGN: *p_bytes = p_isd->prm.ECDSA_SIGN.source_size_in_bytes; break;
+        case SERVICE_04_EDDSA_VERIFY: *p_bytes = p_isd->prm.EDDSA_VERIFY.source_size_in_bytes; break;
+        case SERVICE_04_EDDSA_SIGN: *p_bytes = p_isd->prm.EDDSA_SIGN.source_size_in_bytes; break;
+        case SERVICE_05_HASH: *p_bytes = p_isd->prm.HASH.message_size_in_bytes; break;
+        case SERVICE_05_HMAC: *p_bytes = p_isd->prm.HMAC.msg_size_in_bytes; break;
+        default: *p_bytes = 0u; return 0;
+    }
+    return 1;
+}
+
 /*===========================================================================
   Trigger an ICU-M service and wait for the response
   [PUBLIC]
   ===========================================================================*/
-void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
+void print_crypto_service_statistics(const r_icumif_isd_t *p_ISD, uint64_t elapsed_ticks,
+                                    uint64_t payload_bytes, int has_payload)
+{
+    uint64_t elapsed_us;
+    uint64_t speed_scaled;
+    const char *service_prefix;
+    const char *service_operation;
+    const char *service_name = pe1_crypto_service_name(p_ISD, &service_prefix, &service_operation);
+    const int is_rsa = (p_ISD->service_id >= SERVICE_02_RSA_VERIFY) &&
+                       (p_ISD->service_id <= SERVICE_02_RSA_KEY_GENERATE);
+    const char *metric = is_rsa ? "latency" : "throughput";
+
+    if (service_name == NULL)
+    {
+        return;
+    }
+    printf("ICUM %s%s%s%s (0x%02lX) result=%s",
+           service_prefix, service_name, (*service_operation != '\0') ? " " : "",
+           service_operation, (unsigned long)p_ISD->service_id,
+           R_ICUMIF_GetErrorCodeName(p_ISD->service_result));
+    if (VTIMER0_CLK == 0u)
+    {
+        printf(" elapsed=N/A");
+        if (is_rsa || has_payload)
+        {
+            printf(" %s=N/A", metric);
+        }
+        printf(" (OSTM0 clock not initialized)\n");
+        return;
+    }
+    elapsed_us = elapsed_ticks / VTIMER0_CLK;
+    printf(" elapsed=%llu.%03lu us", (unsigned long long)elapsed_us,
+           (unsigned long)((elapsed_ticks % VTIMER0_CLK) * 1000u / VTIMER0_CLK));
+    if (!is_rsa && !has_payload)
+    {
+        printf("\n");
+    }
+    else if (p_ISD->service_result != SERV_OK)
+    {
+        printf(" %s=N/A (service not successful)\n", metric);
+    }
+    else if (elapsed_ticks == 0u)
+    {
+        printf(" %s=N/A (timer resolution)\n", metric);
+    }
+    else if (is_rsa)
+    {
+        printf(" latency=%llu.%06lu ms/ops\n",
+               (unsigned long long)(elapsed_us / 1000u),
+               (unsigned long)((elapsed_us % 1000u) * 1000u +
+                               (elapsed_ticks % VTIMER0_CLK) * 1000u / VTIMER0_CLK));
+    }
+    else
+    {
+        speed_scaled = payload_bytes * (uint64_t)VTIMER0_CLK * 1000000u / elapsed_ticks;
+        printf(" throughput=%llu.%06lu MB/s\n",
+               (unsigned long long)(speed_scaled / 1000000u),
+               (unsigned long)(speed_scaled % 1000000u));
+    }
+}
+
+void trigger_service_and_wait_deferred(r_icumif_isd_t *p_ISD, pe1_service_response_t *p_response)
 {
     int32_t errno;
     uint32_t start_count;
-    uint32_t elapsed_ticks;
-    unsigned long elapsed_us;
-    time_t elapsed_time;
     const char *service_name;
     const char *service_prefix;
     const char *service_operation;
 
     service_name = pe1_crypto_service_name(p_ISD, &service_prefix, &service_operation);
+    p_response->has_payload = pe1_crypto_payload_bytes(p_ISD, &p_response->payload_bytes);
+    p_response->elapsed_ticks = 0u;
+    p_response->interface_error = R_ICUMIF_ER_OK;
     start_count = (service_name != NULL) ? (uint32_t)sys_vtimer0_get_pclk_counter() : 0u;
 
     /* trigger the service request*/
     errno = R_ICUMIF_ServiceRequest(p_ISD);
     if(errno != R_ICUMIF_ER_OK)
     {
-        printf("ICUM request 0x%02lX failed: interface error %ld\n",
-               (unsigned long)p_ISD->service_id, (long)errno);
+        p_response->interface_error = errno;
         if (R_ICUMIF_ER_REQ_QUEUE_FULL == errno)
         {
             p_ISD->service_result = SERV_REQUEST_QUEUE_FULL;
@@ -424,36 +517,47 @@ void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
 
     if (service_name != NULL)
     {
-        elapsed_ticks = (uint32_t)sys_vtimer0_get_pclk_counter() - start_count;
-        printf("ICUM %s%s%s%s",
-               service_prefix,
-               service_name,
-               (*service_operation != '\0') ? " " : "",
-               service_operation);
-        printf(" (0x%02lX) result=%s OSTM0=%lu ticks",
-               (unsigned long)p_ISD->service_id,
-               R_ICUMIF_GetErrorCodeName(p_ISD->service_result),
-               (unsigned long)elapsed_ticks);
-        if (VTIMER0_CLK != 0u)
-        {
-            (void)sys_vtimer0_cnv_pclk2time(elapsed_ticks, &elapsed_time);
-            elapsed_us = elapsed_time.sec * 1000000ul +
-                         (unsigned long)elapsed_time.msec * 1000ul +
-                         (unsigned long)elapsed_time.usec;
-            printf(" elapsed=%lu.%03u us\n", elapsed_us, (unsigned int)elapsed_time.nsec);
-        }
-        else
-        {
-            printf(" elapsed=unavailable (OSTM0 clock not initialized)\n");
-        }
+        p_response->elapsed_ticks = (uint32_t)sys_vtimer0_get_pclk_counter() - start_count;
     }
+}
 
+void print_service_response(const r_icumif_isd_t *p_ISD,
+                            const pe1_service_response_t *p_response, int quiet)
+{
+    if (p_response->interface_error != R_ICUMIF_ER_OK)
+    {
+        printf("ICUM request 0x%02lX failed: interface error %ld\n",
+               (unsigned long)p_ISD->service_id, (long)p_response->interface_error);
+        return;
+    }
+    if (!quiet)
+    {
+        print_crypto_service_statistics(p_ISD, p_response->elapsed_ticks,
+                                        p_response->payload_bytes, p_response->has_payload);
+    }
     /* test for possible error */
     if(p_ISD->service_result != SERV_OK)
     {
         printf("Service error: %d (", p_ISD->service_result);
         printf(") *****\a\n");
     }
+}
+
+void trigger_service_and_wait(r_icumif_isd_t *p_ISD)
+{
+    pe1_service_response_t response;
+
+    trigger_service_and_wait_deferred(p_ISD, &response);
+    print_service_response(p_ISD, &response, 0);
+}
+
+uint32_t trigger_service_and_wait_quiet(r_icumif_isd_t *p_ISD)
+{
+    pe1_service_response_t response;
+
+    trigger_service_and_wait_deferred(p_ISD, &response);
+    print_service_response(p_ISD, &response, 1);
+    return response.elapsed_ticks;
 }
 
 #pragma ghs section text=default

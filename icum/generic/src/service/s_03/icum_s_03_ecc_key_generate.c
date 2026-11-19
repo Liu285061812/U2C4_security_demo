@@ -60,13 +60,13 @@
 * Function
 ***********************************************************************************/
 static uint32_t s_03_ECC_KEYGEN_Init(icum_job_t *p_job, ecc_ctx_t **p_ecc_ctx, hash_ctx_t **p_hash_ctx);
-static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
+static uint32_t s_03_EccKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx,
                                       pkc_small_data_t *p_priv_scalar,
                                       ecc_point_affine_t *p_pub_point);
-static uint32_t s_03_EddsaKeygenProcess(ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash_ctx,
+static uint32_t s_03_EddsaKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash_ctx,
                                         pkc_small_data_t *p_priv_scalar,
                                         ecc_point_affine_t *p_pub_point);
-static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
+static uint32_t s_03_EcdhXKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx,
                                         pkc_small_data_t *p_priv_scalar,
                                         ecc_point_affine_t *p_pub_point);
 /****************************************************************************************
@@ -176,7 +176,7 @@ static uint32_t s_03_ECC_KEYGEN_Init(icum_job_t *p_job, ecc_ctx_t **p_ecc_ctx, h
 *                ER_ML_PRNG_PARAMETER
 *                ER_ML_PRNG_AES_PRM
 ****************************************************************************************/
-static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
+static uint32_t s_03_EccKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx,
                                       pkc_small_data_t *p_priv_scalar,
                                       ecc_point_affine_t *p_pub_point)
 {
@@ -198,6 +198,7 @@ static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
     if (ER_OK == err)
     {
         /* perform init process for ecc key generate */
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_PKC_EcKeyGenInit(&p_ecc_ctx->ctx.ec);
         if (ER_OK == err)
         {
@@ -214,6 +215,7 @@ static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
                 ec_pub_key.p_qy = (uint8_t *)&dummy_key_point.y.value;
                 /* perform final process for ecc key generate */
                 err = L_PKC_EcKeyGenFinal(&p_ecc_ctx->ctx.ec, (void *)&ec_pri_key, (void *)&ec_pub_key);
+                K_ISSD_EndAlgorithm(p_job);
 
                 /* Set the key length of after perform ecc key generate */
                 p_priv_scalar->size = ec_pri_key.key_length;
@@ -235,6 +237,7 @@ static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
         /* error case : do nothing */
     }
 
+    K_ISSD_EndAlgorithm(p_job);
     /* Free ECC context */
     (void)ML_CTX_Free(CTX_TYPE_ECC, (uint32_t *)p_ecc_ctx);
 
@@ -266,7 +269,7 @@ static uint32_t s_03_EccKeygenProcess(ecc_ctx_t *p_ecc_ctx,
 *                ER_ML_PRNG_PARAMETER
 *                ER_ML_PRNG_AES_PRM
 ****************************************************************************************/
-static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
+static uint32_t s_03_EcdhXKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx,
                                         pkc_small_data_t *p_priv_scalar,
                                         ecc_point_affine_t *p_pub_point)
 {
@@ -288,6 +291,7 @@ static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
     if (ER_OK == err)
     {
         /* perform initialize process for ecdhx key generate */
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_PKC_EcdhXKeyGenInit(&p_ecc_ctx->ctx.ecdhx);
         if (ER_OK == err)
         {
@@ -306,6 +310,7 @@ static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
                 ecdhx_pub_key.p_public  = &dummy_pub_key_point[0];
                 /* perform final process for ecdhx key generate */
                 err = L_PKC_EcdhXKeyGenFinal(&p_ecc_ctx->ctx.ecdhx, (void *)&ecdhx_pri_key, (void *)&ecdhx_pub_key);
+                K_ISSD_EndAlgorithm(p_job);
 
                 /* Set the key length of after perform ecdhx key generate */
                 p_priv_scalar->size = ecdhx_pri_key.key_length;
@@ -326,6 +331,7 @@ static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
         /* error case : do nothing */
     }
 
+    K_ISSD_EndAlgorithm(p_job);
     /* Free ECC context */
     (void)ML_CTX_Free(CTX_TYPE_ECC, (uint32_t *)p_ecc_ctx);
 
@@ -362,7 +368,7 @@ static uint32_t s_03_EcdhXKeygenProcess(ecc_ctx_t *p_ecc_ctx,
 *                ER_L_BIGNUM_BUFFER_OVERFLOW
 *                ER_L_BIGNUM_INVALID_ARG
 ****************************************************************************************/
-static uint32_t s_03_EddsaKeygenProcess(ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash_ctx,
+static uint32_t s_03_EddsaKeygenProcess(icum_job_t *p_job, ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash_ctx,
                                         pkc_small_data_t *p_priv_scalar,
                                         ecc_point_affine_t *p_pub_point)
 {
@@ -384,6 +390,7 @@ static uint32_t s_03_EddsaKeygenProcess(ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash
     if (ER_OK == err)
     {
         /* Perform initialize process for edwards key generate */
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_PKC_EddsaKeyGenInit(&p_ecc_ctx->ctx.eddsa);
         if (ER_OK == err)
         {
@@ -403,6 +410,7 @@ static uint32_t s_03_EddsaKeygenProcess(ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash
                 ed_pub_key.p_public   = &dummy_pub_key_point[0];
                 /* Perform final process for edwards key generate */
                 err = L_PKC_EddsaKeyGenFinal(&p_ecc_ctx->ctx.eddsa, (void *)&ed_priv_key, (void *)&ed_pub_key);
+                K_ISSD_EndAlgorithm(p_job);
 
                 /* Set the key length of after perform edwards key generate */
                 p_priv_scalar->size = ed_priv_key.key_length;
@@ -423,6 +431,7 @@ static uint32_t s_03_EddsaKeygenProcess(ecc_ctx_t *p_ecc_ctx, hash_ctx_t *p_hash
         /* error case : do nothing */
     }
 
+    K_ISSD_EndAlgorithm(p_job);
     /* Free ECC and hash context */
     (void)ML_CTX_Free(CTX_TYPE_ECC, (uint32_t *)p_ecc_ctx);
     (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
@@ -470,7 +479,7 @@ void S_03_GenerateEccKey(icum_job_t *p_job)
             if ((ECC_CURVE_ED25519 == p_ISD->prm.ECC_KEY_GENERATE.curve_id) ||
                 (ECC_CURVE_ED448 == p_ISD->prm.ECC_KEY_GENERATE.curve_id))
             {
-                err = s_03_EddsaKeygenProcess(p_ecc_ctx, p_hash_ctx,
+                err = s_03_EddsaKeygenProcess(p_job, p_ecc_ctx, p_hash_ctx,
                                               &priv_scalar,
                                               &pub_point);
             }
@@ -478,14 +487,14 @@ void S_03_GenerateEccKey(icum_job_t *p_job)
             else if ((ECC_CURVE_CURVE25519 == p_ISD->prm.ECC_KEY_GENERATE.curve_id) ||
                      (ECC_CURVE_CURVE448 == p_ISD->prm.ECC_KEY_GENERATE.curve_id))
             {
-                err = s_03_EcdhXKeygenProcess(p_ecc_ctx,
+                err = s_03_EcdhXKeygenProcess(p_job, p_ecc_ctx,
                                               &priv_scalar,
                                               &pub_point);
             }
             /* Other than those above, perform the ecc key generate */
             else
             {
-                err = s_03_EccKeygenProcess(p_ecc_ctx,
+                err = s_03_EccKeygenProcess(p_job, p_ecc_ctx,
                                             &priv_scalar,
                                             &pub_point);
             }

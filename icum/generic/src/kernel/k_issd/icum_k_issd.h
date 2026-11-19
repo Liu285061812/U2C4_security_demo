@@ -124,6 +124,7 @@ void k_ISSD_SetBackgroundVerifyState(uint32_t state);
 
 /* Service dispatcher functions */
 void k_ISSD_MainDispatch(void);
+void k_ISSD_InitTestGpio(void);
 void k_ISSD_RamDispatch(void);
 uint32_t k_ISSD_HandleResponse(r_icumif_isd_t *p_isd);
 void k_ISSD_ProcessJob(icum_job_t *p_job);

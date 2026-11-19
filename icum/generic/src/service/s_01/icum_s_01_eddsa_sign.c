@@ -473,6 +473,7 @@ static uint32_t s_01_MakeEddsaSignatureInit(icum_job_t *p_job)
     {
         p_ecc_ctx->ctx.eddsa.eddsa_variant = PKC_EDDSA_VARIANT_PURE;
         /* EdDSA signature generation initial processing for PKC library */
+        K_ISSD_BeginAlgorithm(p_job);
         ret = L_PKC_EddsaSignInit(&message,
                                   (const void *)&p_ecc_ctx->eddsa_priv_key,
                                   (const void *)&p_ecc_ctx->eddsa_pub_key,
@@ -571,6 +572,7 @@ static uint32_t s_01_MakeEddsaSignatureFinish(icum_job_t *p_job)
 
     /* EdDSA signature generation termination processing for PKC library */
     ret = L_PKC_EddsaSignFinal(&p_ecc_ctx->ctx.eddsa, &signature);
+    K_ISSD_EndAlgorithm(p_job);
     if (ER_OK == ret)
     {
         /* Get signature R / S after execution is completed */

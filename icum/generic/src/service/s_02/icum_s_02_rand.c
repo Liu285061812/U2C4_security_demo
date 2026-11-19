@@ -315,7 +315,9 @@ void S_02_RAND_InitRng(icum_job_t *p_rand_Job)
             }
             else if (ER_OK == ret_err)
             {
+                K_ISSD_BeginAlgorithm(p_rand_Job);
                 ret_err = ML_PRNG_InitSHE(secret_key);
+                K_ISSD_EndAlgorithm(p_rand_Job);
                 p_rand_Job->p_ISD->service_result = s_02_RAND_ConvertPrngResult(ret_err);
             }
             else
@@ -498,7 +500,9 @@ void S_02_RAND_ExtendSeed(icum_job_t *p_rand_Job)
         source_logical.p_ptr = (uint8_t *)p_rand_Job->prm.job_aes.p_source;
 #endif  /* defined(FSW_REMAP_DRIVER) */
 
+        K_ISSD_BeginAlgorithm(p_rand_Job);
         ret_err = ML_PRNG_ExtendSHE((const uint32_t *)source_logical.p_ptr);
+        K_ISSD_EndAlgorithm(p_rand_Job);
         (void)ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, resource_id);
         g_usage_status = OFF;
         p_rand_Job->p_ISD->service_result = s_02_RAND_ConvertPrngResult(ret_err);
@@ -672,7 +676,9 @@ void S_02_RAND_GenerateRnd(icum_job_t *p_rand_Job)
         dest_logical.p_ptr = (uint8_t *)p_rand_Job->prm.job_aes.p_dest;
 #endif  /* defined(FSW_REMAP_DRIVER) */
 
+        K_ISSD_BeginAlgorithm(p_rand_Job);
         ret_err = ML_PRNG_GenSHE((uint32_t *)dest_logical.p_ptr);
+        K_ISSD_EndAlgorithm(p_rand_Job);
         if (ER_ML_PRNG_STATUS == ret_err)
         {
             p_rand_Job->p_ISD->service_result = SERV_NO_INIT_RNG;

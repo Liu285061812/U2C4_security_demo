@@ -459,6 +459,7 @@ static uint32_t s_01_RSA_SIGN_GenHash(icum_job_t *p_job)
             /* ************************************************************************* */
             /* Start a hash job */
             /* ************************************************************************* */
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_HASH_Init(p_hash_ctx, hash_type);
             if (ER_OK != err)
             {
@@ -767,6 +768,7 @@ static void s_01_RSA_SIGN_Finish(icum_job_t *p_job, const uint32_t error)
     }
     if ((uint32_t)SERV_OK != err)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         p_ISD->service_result = (r_icumif_service_result_t)err;
         p_job->process_phase = ON_HOLD;
@@ -967,6 +969,7 @@ static uint32_t s_01_InitExpMod(icum_job_t *p_job)
     rsa_key.p_n = p_key->p_modulus;
     rsa_key.p_d = p_key->p_priv_exponent;
 
+    K_ISSD_BeginAlgorithm(p_job);
     err = L_PKC_RsaSignInit(&digest, (void *)&rsa_key, rsa_key.key_length, &p_rsa_ctx->pkc_ctx);
     if (ER_OK == err)
     {
@@ -1101,6 +1104,7 @@ static uint32_t s_01_FinishExpMod(icum_job_t *p_job)
     sign_data.len = (uint32_t)sizeof(p_rsa_ctx->W.value);
     sign_data.p_data = (uint8_t *)&p_rsa_ctx->W.value;
     err = L_PKC_RsaSignFinal(&p_rsa_ctx->pkc_ctx, &sign_data);
+    K_ISSD_EndAlgorithm(p_job);
     p_rsa_ctx->W.size = sign_data.len;
     p_isd_param->signature_size_in_bits = (uint16_t)(sign_data.len * NUM8);
 

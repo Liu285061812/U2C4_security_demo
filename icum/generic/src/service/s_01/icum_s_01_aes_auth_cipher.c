@@ -157,7 +157,12 @@ static uint32_t s_01_AUTH_ReleaseKeyContext(icum_job_t *p_job)
             /* Common Parameter */
             g_ContextAddress       = AES_STATE_INIT;
             finish_param.operation = D_AES_OPE_CANCEL;
+            K_ISSD_BeginAlgorithm(p_job);
             err = D_AES_FinishJobCcm(&finish_param);
+            if (err != ER_IN_PROCESS)
+            {
+                K_ISSD_EndAlgorithm(p_job);
+            }
         }
         else
         {
@@ -413,6 +418,7 @@ static uint32_t s_01_AUTH_InitAesCipherGcm(icum_job_t *p_job)
                 init_param.p_iv_size_in_bits = &p_ISD->prm.AES_AUTH_CIPHER.iv_size_in_bits;
                 init_param.p_ctr_j0   = p_ctx->gcm_j0;
                 init_param.p_context  = p_ctx->context;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_InitJobGcm(&init_param);
                 p_ctx->block_info     = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_FIRST));
                 p_ctx->block_info     = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_SIZE));
@@ -638,6 +644,7 @@ static uint32_t s_01_AUTH_ProcessUpdateGcm(icum_job_t *p_job, uint8_t step, uint
                     update_param.p_context         = p_ctx->context;
                     update_param.p_ctr_j0   = NULL;
                     update_param.p_aes_dest = (uint32_t*)p_dst;
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = D_AES_UpdateJobGcm(&update_param);
                     p_ctx->block_info = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_FIRST));
                     p_ctx->block_info = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_LAST));
@@ -692,6 +699,7 @@ static uint32_t s_01_AUTH_ProcessUpdateGcm(icum_job_t *p_job, uint8_t step, uint
                     update_param.p_context         = p_ctx->context;
                     update_param.p_ctr_j0          = NULL;
                     update_param.p_aes_dest        = (uint32_t*)p_dst;
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = D_AES_UpdateJobGcm(&update_param);
                     p_ctx->block_info = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_FIRST));
                 }
@@ -895,6 +903,7 @@ static uint32_t s_01_AUTH_ProcessFinishGcm(icum_job_t *p_job)
                             update_param.p_context         = p_ctx->context;
                             update_param.p_ctr_j0          = NULL;
                             update_param.p_aes_dest        = (uint32_t*)dest_logical;
+                            K_ISSD_BeginAlgorithm(p_job);
                             err = D_AES_UpdateJobGcm(&update_param);
                             p_ctx->block_info = (uint16_t)((uint32_t)p_ctx->block_info & (uint32_t)(~D_AES_BLOCK_INFO_FIRST));
                         }
@@ -980,7 +989,12 @@ static uint32_t s_01_AUTH_ProcessFinishGcm(icum_job_t *p_job)
                     finish_param.p_context  = p_ctx->context;
                     finish_param.p_aes_dest = (uint32_t*)cipher_data;
                     finish_param.p_auth_tag = auth_tag;
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = D_AES_FinishJobGcm(&finish_param);
+                    if (err != ER_IN_PROCESS)
+                    {
+                        K_ISSD_EndAlgorithm(p_job);
+                    }
                 }
                 else
                 {
@@ -1033,7 +1047,12 @@ static uint32_t s_01_AUTH_ProcessFinishGcm(icum_job_t *p_job)
                 finish_param.p_context  = p_ctx->context;
                 finish_param.p_aes_dest = (uint32_t*)dest_logical;
                 finish_param.p_auth_tag = auth_tag;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_FinishJobGcm(&finish_param);
+                if (err != ER_IN_PROCESS)
+                {
+                    K_ISSD_EndAlgorithm(p_job);
+                }
             }
             else
             {
@@ -1677,7 +1696,12 @@ static uint32_t s_01_AUTH_AtOnceAesGcm(icum_job_t *p_job)
             at_once_param.p_auth_tag = (uint32_t *)tag_logical;
         }
         /* Process 10 : Call AES_GCM All_at_Once */
+        s_01_CIPHER_BeginAsyncAlgorithm(p_job);
         err = D_AES_ExecutionAtOnceGcm(&at_once_param);
+        if (err != ER_IN_PROCESS)
+        {
+            s_01_CIPHER_EndAsyncAlgorithm();
+        }
         if (NULL != p_ctx)
         {
             /* In case of asynchronous processing, store the operation result in Context */
@@ -2238,6 +2262,7 @@ static uint32_t s_01_AUTH_InitAesCipherCcm(icum_job_t *p_job)
                     init_param.key_length  = p_key->properties.size_in_bytes;
                     init_param.p_aes_iv    = (uint32_t*)iv_data;
                     init_param.p_context   = p_ctx->context;
+                    K_ISSD_BeginAlgorithm(p_job);
                     err = D_AES_InitJobCcm(&init_param);
                     
                     if ((uint32_t)D_AES_DIR_ENCRYPTION == (uint32_t)p_job->prm.job_aes_auth.direction)
@@ -2770,6 +2795,7 @@ static uint32_t s_01_AUTH_ProcessUpdateCcm(icum_job_t *p_job, uint8_t step, uint
                 ccm_prm.direction   = p_job->prm.job_aes_auth.direction;
                 ccm_prm.p_aes_dest  = NULL;
                 g_ContextAddress = AES_STATE_INIT;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = s_01_AUTH_UpdateStepCcm(&ccm_prm, p_ctx);
             }
             else
@@ -2796,6 +2822,7 @@ static uint32_t s_01_AUTH_ProcessUpdateCcm(icum_job_t *p_job, uint8_t step, uint
                         ccm_prm.p_aes_dest = (uint32_t*)dest_logical;
                         ccm_prm.direction  = p_job->prm.job_aes_auth.direction;
                         g_ContextAddress = AES_STATE_INIT;
+                        K_ISSD_BeginAlgorithm(p_job);
                         err = s_01_AUTH_UpdateStepCcm(&ccm_prm, p_ctx);
                     }
                     else
@@ -3023,6 +3050,7 @@ static uint32_t s_01_AUTH_ProcessFinishCcm(icum_job_t *p_job)
                 update_param.step       = D_AES_CCM_STEP_P;
                 update_param.p_context  = p_ctx->context;
                 update_param.p_aes_dest = NULL;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_UpdateJobCcm(&update_param);
             }
             else
@@ -3035,7 +3063,12 @@ static uint32_t s_01_AUTH_ProcessFinishCcm(icum_job_t *p_job)
                 finish_param.p_aes_src  = (uint32_t*)auth_tag;
                 finish_param.p_context  = p_ctx->context;
                 finish_param.p_auth_tag = auth_tag;
+                K_ISSD_BeginAlgorithm(p_job);
                 err = D_AES_FinishJobCcm(&finish_param);
+                if (err != ER_IN_PROCESS)
+                {
+                    K_ISSD_EndAlgorithm(p_job);
+                }
             }
             else
             {
@@ -3708,7 +3741,12 @@ static uint32_t s_01_AUTH_AtOnceAesCcm(icum_job_t *p_job)
         at_once_param.auth_tag_size_in_bits = p_ISD->prm.AES_AUTH_CIPHER.auth_tag_size_in_bits;
         at_once_param.p_aes_dest = (uint32_t*)dest_logical;
         at_once_param.p_context  =  p_ctx->context;
+        s_01_CIPHER_BeginAsyncAlgorithm(p_job);
         err = D_AES_ExecutionAtOnceCcm(&at_once_param);
+        if (err != ER_IN_PROCESS)
+        {
+            s_01_CIPHER_EndAsyncAlgorithm();
+        }
         if (NULL != p_ctx)
         {
             /* In case of asynchronous processing, store the operation result in Context */
@@ -4029,6 +4067,10 @@ void S_01_AuthenticateAes(icum_job_t *p_job)
     /* Process 4 : Job completion, continuous processing */
     err = s_01_CIPHER_ConvertErr(err);
 
+    if ((err != (uint32_t)SERV_IN_PROCESS) && (err != (uint32_t)SERV_PENDING))
+    {
+        K_ISSD_EndAlgorithm(p_job);
+    }
     if(p_job->cancel_request == JOB_CANCEL_REQUESTED)
     {
         p_job->keep.job_cycle = 0u;

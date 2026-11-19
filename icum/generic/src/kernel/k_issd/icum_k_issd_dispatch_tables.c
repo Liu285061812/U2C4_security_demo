@@ -28,6 +28,7 @@
 #include "renesas_types.h"
 #include "r_icumif_api.h"
 #include "icum_common_pub.h"
+#include ICUM_DEVICE_FILE
 #include "icum_d_misc_pub.h"
 #include "icum_d_comm_pub.h"
 #include "icum_d_int_pub.h"
@@ -44,6 +45,13 @@
 
 #define S_00_EccTest    NULL
 
+#define TEST_GPIO_DOUT0  (0x00000001UL)
+#define TEST_GPIO_EOUT0  (0x00000002UL)
+#define TEST_GPIO_CTLEN0 (0x00000004UL)
+
+static bool s_test_gpio_ready;
+static uint32_t s_test_gpio_active_count;
+
 /***************************************************************************************
 * Global Variable                                                                      *
 ***************************************************************************************/
@@ -53,7 +61,7 @@
 static service_t g_ism_table_00[1] =
 {
     /* SERVICE ID                            Function                       Function at RAM execution       High priority Function  Permission   */
-    { /* SERVICE_00_ECC_TEST */              S_00_EccTest,                  S_00_EccTest,                   NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_RAMEXE | ISSD_PERMIT_ADMIN) }
+    { /* SERVICE_00_ECC_TEST */              S_00_EccTest,                  S_00_EccTest,                   NULL,                   (ISSD_PERMIT_NORMAL | ISSD_PERMIT_RAMEXE | ISSD_PERMIT_ADMIN) },
 };
 
 /* Service Group #01: AES */
@@ -140,6 +148,67 @@ static uint8_t g_max_ism_index[6] =
 
 #pragma ghs section text = ".icum_kernel_ram"
 #pragma ghs section rodata = ".icum_kernel_const_ram"
+
+void k_ISSD_InitTestGpio(void)
+{
+    uint32_t enabled;
+    uint32_t gpio;
+
+    s_test_gpio_ready = false;
+    s_test_gpio_active_count = 0u;
+    if ((D_INFO_GetInfo(INFO_ICUMOPGPIO, &enabled) == ER_OK) && (enabled == 1u))
+    {
+        /* Set DOUT0/CTLEN0 before enabling output (hardware manual section 1.15.4.1). */
+        gpio = (ICUM_CTLREGICUM_GPIO & ~(TEST_GPIO_DOUT0 | TEST_GPIO_EOUT0)) | TEST_GPIO_CTLEN0;
+        ICUM_CTLREGICUM_GPIO = gpio;
+        SYNC_MEMORY();
+        ICUM_CTLREGICUM_GPIO = gpio | TEST_GPIO_EOUT0;
+        SYNC_MEMORY();
+        s_test_gpio_ready = true;
+    }
+}
+
+bool K_ISSD_AlgorithmGpioReady(void)
+{
+    return s_test_gpio_ready;
+}
+
+void K_ISSD_BeginAlgorithm(icum_job_t *p_job)
+{
+    uint32_t saved_psw;
+
+    DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+    if (p_job->algorithm_active == 0u)
+    {
+        p_job->algorithm_active = 1u;
+        if (s_test_gpio_active_count == 0u)
+        {
+            ICUM_CTLREGICUM_GPIO |= TEST_GPIO_DOUT0;
+            SYNC_MEMORY();
+        }
+        s_test_gpio_active_count++;
+    }
+    ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+}
+
+void K_ISSD_EndAlgorithm(icum_job_t *p_job)
+{
+    uint32_t saved_psw;
+
+    DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+    if (p_job->algorithm_active != 0u)
+    {
+        p_job->algorithm_active = 0u;
+        s_test_gpio_active_count--;
+        if (s_test_gpio_active_count == 0u)
+        {
+            ICUM_CTLREGICUM_GPIO &= ~TEST_GPIO_DOUT0;
+            SYNC_MEMORY();
+        }
+    }
+    ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+}
+
 /***************************************************************************************
 * Function ID  : [ICUMFW_CD_K_ISSD_0028]:[ICUMFW_UD_K_ISSD_0028]
 * Function name: k_ISSD_GetServiceDispatch

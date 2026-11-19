@@ -951,7 +951,12 @@ static uint32_t s_01_CMAC_AtOnceAesCmac(icum_job_t *p_job)
                 g_ContextAddress    = (uint32_t)p_ctx;
             }
             err = MM_FLS_RemapStart((uint32_t)uiMsg_logical, (uint32_t**)&at_once_param.p_aes_src);
+            s_01_CIPHER_BeginAsyncAlgorithm(p_job);
             err = D_AES_ExecutionAtOnce(&at_once_param);
+            if (err != ER_IN_PROCESS)
+            {
+                s_01_CIPHER_EndAsyncAlgorithm();
+            }
             if (NULL != p_ctx)
             {
                 /* In case of asynchronous processing, store the operation result in Context */
@@ -1542,6 +1547,7 @@ static uint32_t s_01_CMAC_InitAesCmac(icum_job_t *p_job)
         init_param.p_aes_iv    = NULL;
         init_param.p_context   = p_ctx->context;
 
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_InitJob(&init_param);
         p_ctx->block_info = D_AES_FIRST_CIPHER;
         if (ER_OK == err)
@@ -1625,6 +1631,7 @@ static uint32_t s_01_CMAC_ProcessUpdate(icum_job_t *p_job, uint16_t finish)
         update_param.p_aes_src  = (uint32_t*)uiMsg_logical;
         update_param.p_context  = p_ctx->context;
         update_param.p_aes_dest = NULL;
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_UpdateJob(&update_param);
         p_ctx->block_info = D_AES_NOT_FIRST_CIPHER;
         /* any error? */
@@ -1745,7 +1752,12 @@ static uint32_t s_01_CMAC_ProcessFinish(icum_job_t *p_job)
         finish_param.p_aes_src  = (uint32_t*)uiMsg_logical;
         finish_param.p_context  = p_ctx->context;
         finish_param.p_aes_dest = (uint32_t*)temp;
+        K_ISSD_BeginAlgorithm(p_job);
         err = D_AES_FinishJob(&finish_param);
+        if (err != ER_IN_PROCESS)
+        {
+            K_ISSD_EndAlgorithm(p_job);
+        }
         if (ER_OK == err)
         {
             err = ML_ABTR_FreeResource(ABTR_RESOURCE_TYPE_AES, p_resource_id);
@@ -2047,6 +2059,10 @@ void S_01_ProcessAesCmac(icum_job_t *p_job)
 
     err = s_01_CMAC_ConvertErr(err);
 
+    if ((err != (uint32_t)SERV_IN_PROCESS) && (err != (uint32_t)SERV_PENDING))
+    {
+        K_ISSD_EndAlgorithm(p_job);
+    }
     if ((uint32_t)p_job->cancel_request == (uint32_t)JOB_CANCEL_REQUESTED)
     {
         p_job->keep.job_cycle = 0u;

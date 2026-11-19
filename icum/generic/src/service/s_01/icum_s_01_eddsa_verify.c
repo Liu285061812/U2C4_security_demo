@@ -414,6 +414,7 @@ static uint32_t s_01_VerifyEddsaSignatureInit(icum_job_t *p_job)
     {
         p_ecc_ctx->ctx.eddsa.eddsa_variant = PKC_EDDSA_VARIANT_PURE;
         /* Perform EdDSA signature verification initial processing for PKC library */
+        K_ISSD_BeginAlgorithm(p_job);
         ret = L_PKC_EddsaVerifyInit(&message,
                                     &signature,
                                     (const void *)&p_ecc_ctx->eddsa_pub_key,
@@ -511,6 +512,7 @@ static uint32_t s_01_VerifyEddsaSignatureFinish(icum_job_t *p_job)
 
     /* Perform EdDSA signature verification termination processing for PKC library */
     ret = L_PKC_EddsaVerifyFinal(&p_ecc_ctx->ctx.eddsa);
+    K_ISSD_EndAlgorithm(p_job);
     if (ER_OK == ret)
     {
         p_srv_param->verification_result = VERIFICATION_PASS;

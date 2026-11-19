@@ -179,7 +179,7 @@ SECTIONS
   .sldata       align(4)                :>.          /* user defined segment for initialized data located in Cluster RAM */
   .slbss        align(4)                :>.          /* user defined segment for uninitialized data located in Cluster RAM */
 
-  .que_isd_buf.bss (ADDR(.start.gRAM_BK_CONN) + 48k )   align(4)  :>.
+  .que_isd_buf.bss (ADDR(.start.gRAM_BK_CONN) + 12k )   align(4)  :>.
 
   .end.gRAM_BK_CONN                     :>gRAM_BANK_A_ed
 

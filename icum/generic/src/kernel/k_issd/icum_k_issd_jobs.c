@@ -290,6 +290,7 @@ void k_ISSD_AddJobQueue(r_icumif_isd_t *p_ISD, icum_job_t *p_ghost_job, r_icumif
 
             /* init job in slot */
             g_job_table[i].p_ISD = p_ISD;
+            g_job_table[i].algorithm_active = 0u;
 
             /* save requester id */
             g_job_table[i].requester_id = p_ISD->requester_id;

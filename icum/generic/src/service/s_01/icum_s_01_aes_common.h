@@ -93,5 +93,7 @@ typedef struct s_01_com_key_param
 uint32_t s_01_CIPHER_ConvertErr(uint32_t base_err);
 uint32_t s_01_CIPHER_GetAESKey(icum_job_t *p_job, s_01_com_key_param_t *p_KeyParam);
 uint32_t s_01_CIPHER_Sizing(uint8_t *lastb, uint8_t length);
+void s_01_CIPHER_BeginAsyncAlgorithm(icum_job_t *p_job);
+void s_01_CIPHER_EndAsyncAlgorithm(void);
 
 #endif /* ICUM_S_01_AES_COMMON_H */

@@ -54,6 +54,7 @@
 #include "r_pkcd_dev_api.h"
 #include "r_pkcd_cmn.h"
 #include "icum_d_wdt_pub.h"
+#include "icum_d_dma_pub.h"
 
 /*!********************************************************************
  * \addtogroup    PKCDCommon
@@ -112,6 +113,10 @@ pkcd_ret_t   R_PKCD_Initialize(void)
 {
     const pkcd_ret_t ret = PKCD_RET_OK;
 
+    if (D_DMA_IsFaulted())
+    {
+        return PKCD_RET_PKCCERR;
+    }
     /* clear PKCCRAM */
     r_pkcd_cmn_ram_clr((uint8_t*)PKCD_CMN_PKCCRAM, PKCD_CMN_PKCCRAMSIZE);
 
@@ -164,6 +169,10 @@ pkcd_ret_t   R_PKCD_ClearState(void)
 {
     const pkcd_ret_t ret = PKCD_RET_OK;
 
+    if (D_DMA_IsFaulted())
+    {
+        return PKCD_RET_PKCCERR;
+    }
     /* clear PKCCRAM */
     r_pkcd_cmn_ram_clr((uint8_t*)PKCD_CMN_PKCCRAM, PKCD_CMN_PKCCRAMSIZE);
 

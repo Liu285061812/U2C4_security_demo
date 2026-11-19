@@ -241,9 +241,11 @@ static uint32_t s_01_InitHmac(icum_job_t *p_job)
     if (skip_flg == FLG_OFF)
     {
         /* initialize the hmac */
+        K_ISSD_BeginAlgorithm(p_job);
         err = L_HMAC_Init(p_hash_ctx, (uint8_t*)((hmac_key_t *)p_key)->p_key, ((hmac_key_t *)p_key)->key_size_in_byte);
         if (ER_OK!= err)
         {
+            K_ISSD_EndAlgorithm(p_job);
             (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
             err = (uint32_t)SERV_CRYPT_ERROR;
             skip_flg = FLG_ON;
@@ -321,6 +323,7 @@ static uint32_t s_01_FinalizeHmac(icum_job_t *p_job)
             hmac_gen = hmac_logical.p_ptr;
 
             cmp_result = L_Toolbox_MemCmp(hmac_gen, p_hmac, (int16_t)p_ISD->prm.HMAC.hmac_size_in_bytes);
+            K_ISSD_EndAlgorithm(p_job);
             /* Results are only 0 or 1 */
             if (cmp_result == (uint8_t)1)
             {
@@ -336,6 +339,7 @@ static uint32_t s_01_FinalizeHmac(icum_job_t *p_job)
     {
         /* terminate: get the hmac value */
         err = L_HMAC_Finish(p_hash_ctx, hmac_logical.p_ptr, &(hmac_size));
+        K_ISSD_EndAlgorithm(p_job);
 
         if (ER_OK != err)
         {
@@ -347,6 +351,7 @@ static uint32_t s_01_FinalizeHmac(icum_job_t *p_job)
         }
     }
 
+    K_ISSD_EndAlgorithm(p_job);
     return (err);
 }
 
@@ -432,6 +437,7 @@ void S_01_ProcessHmac(icum_job_t *p_job)
                 if (ER_OK != err)
                 {
                     /* error on hash processing */
+                    K_ISSD_EndAlgorithm(p_job);
                     p_ISD->service_result = SERV_CRYPT_ERROR;
                     (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
                     (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);
@@ -471,6 +477,7 @@ void S_01_ProcessHmac(icum_job_t *p_job)
             if (ER_OK != err)
             {
                 /* error on hash processing */
+                K_ISSD_EndAlgorithm(p_job);
                 p_ISD->service_result = SERV_CRYPT_ERROR;
                 (void)MH_KEY_FreeKeyCache(p_job, KEY_GRP_HMAC, p_ISD->prm.HMAC.key_id);
                 (void)ML_CTX_Free(CTX_TYPE_HASH, (uint32_t *)p_hash_ctx);

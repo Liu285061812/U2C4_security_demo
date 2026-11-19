@@ -258,6 +258,7 @@ typedef struct icum_job
     uint8_t                  process_phase;
     uint8_t                  cancel_request;
     uint8_t                  expansion_service;
+    uint8_t                  algorithm_active;
     struct
     {
         uint8_t job_ghost:1;       /* set to 1 to keep the job image in the queue */
@@ -328,6 +329,9 @@ uint32_t K_ISSD_GetServiceID(r_icumif_job_id_t job_id, r_icumif_service_id_t *p_
 uint32_t K_ISSD_SetCancelRequest(r_icumif_job_id_t cancel_job_id);
 uint32_t K_ISSD_GetSanctionADMIN(uint8_t *p_state);
 uint32_t K_ISSD_GetECCTestState(uint8_t *p_state);
+bool K_ISSD_AlgorithmGpioReady(void);
+void K_ISSD_BeginAlgorithm(icum_job_t *p_job);
+void K_ISSD_EndAlgorithm(icum_job_t *p_job);
 
 void K_ISSD_StartVerifyAuto(void);
 

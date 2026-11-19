@@ -36,6 +36,7 @@
 * common variable
 ***********************************************************************************/
 uint32_t g_ContextAddress;
+static icum_job_t *s_aes_algorithm_job;
 
 static const uint32_t AES_ERR_CORRESPOND[AES_CIPHER_NB_ERR][ERR_IDX_MAX] =
 {
@@ -345,6 +346,29 @@ uint32_t s_01_CIPHER_Sizing(uint8_t *lastb, uint8_t length)
 
 CHANGE_SEC(text, ".icum_library_ram")
 CHANGE_SEC(rodata, ".icum_library_const_ram")
+void s_01_CIPHER_BeginAsyncAlgorithm(icum_job_t *p_job)
+{
+    uint32_t saved_psw;
+
+    DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+    s_aes_algorithm_job = p_job;
+    K_ISSD_BeginAlgorithm(p_job);
+    ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+}
+
+void s_01_CIPHER_EndAsyncAlgorithm(void)
+{
+    uint32_t saved_psw;
+
+    DISABLE_INTERRUPT_WITH_CHECK(saved_psw);
+    if (s_aes_algorithm_job != NULL)
+    {
+        K_ISSD_EndAlgorithm(s_aes_algorithm_job);
+        s_aes_algorithm_job = NULL;
+    }
+    ENABLE_INTERRUPT_WITH_CHECK(saved_psw);
+}
+
 /***************************************************************************************
 * Function ID  : [ICUMFW_CD_UnifiedAPI_C2_0034]:[ICUMFW_UD_UnifiedAPI_C2_0034]
 * Function name: S_01_CIPHER_CallbackAes
@@ -358,6 +382,7 @@ uint32_t S_01_CIPHER_CallbackAes(uint32_t cry_result)
 {
     ml_ctx_aes_context_t *p_ctx;
 
+    s_01_CIPHER_EndAsyncAlgorithm();
     if (AES_STATE_INIT != g_ContextAddress)
     {
         /* Callback during asynchronous processing */

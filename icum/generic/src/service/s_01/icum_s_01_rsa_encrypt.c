@@ -502,6 +502,7 @@ static uint32_t s_01_CalcExpModEncryptByRsa(icum_job_t *p_job)
             rsa_key.e_length = (uint32_t)p_key->p_properties->pub_exp_size_in_bytes;
             rsa_key.p_e = p_key->p_pub_exponent;
 
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_PKC_RsaEncryptInit(&plain_data, &rsa_key, rsa_key.key_length, &p_rsa_ctx->pkc_ctx);
             if (ER_OK == err)
             {
@@ -585,6 +586,7 @@ static uint32_t s_01_CalcExpModEncryptByRsa(icum_job_t *p_job)
             cipher.p_data = (uint8_t *)&p_rsa_ctx->W.value;
             cipher.len = p_key->p_properties->modulus_size_in_bytes;
             err = L_PKC_RsaEncryptFinal(&p_rsa_ctx->pkc_ctx, &cipher);
+            K_ISSD_EndAlgorithm(p_job);
             p_rsa_ctx->W.size = cipher.len;
 
             /* --- Free RSA_Key -------- */
@@ -779,6 +781,7 @@ static void s_01_FinishEncryptByRsa(icum_job_t *p_job, const uint32_t err)
     
     if (err != (uint32_t)SERV_OK)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         p_ISD->service_result = (r_icumif_service_result_t)err;
         p_job->process_phase = ON_HOLD;

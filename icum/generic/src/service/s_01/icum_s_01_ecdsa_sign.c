@@ -540,6 +540,7 @@ static uint32_t s_01_ECDSA_SIGN_GenHash(icum_job_t *p_job)
             /* ************************************************************************* */
             (void)L_HASH_GetInternalHashType(p_ISD_PARAM->hash_primitive, &hash_type, &dmy_hash_size);
 
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_HASH_Init(p_hash_ctx, hash_type);
             if (ER_OK != err)
             {
@@ -690,6 +691,7 @@ static uint32_t s_01_ECDSA_SIGN_CalcSignInit(icum_job_t *p_job)
         if (ER_OK == err)
         {
             /* Perform ECDSA signature generation initial processing for PKC library */
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_PKC_EcdsaSignInit(&digest_data, &p_ecc_ctx->ecc_key, &p_ecc_ctx->ctx.ec);
             if (ER_OK == err)
             {
@@ -822,6 +824,7 @@ static uint32_t s_01_ECDSA_SIGN_CalcSign(icum_job_t *p_job)
             sign_data.p_data = (uint8_t *)sign;
             /* Perform ECDSA signature generation termination processing for PKC library */
             err = L_PKC_EcdsaSignFinal(&p_ecc_ctx->ctx.ec, &sign_data);
+            K_ISSD_EndAlgorithm(p_job);
             L_Toolbox_MemCpy((uint8_t *)r.value,
                                 (const uint8_t *)sign_data.p_data,
                                 (int16_t)(sign_data.len / NUM2));
@@ -965,6 +968,7 @@ static void s_01_ECDSA_SIGN_Finish(icum_job_t *p_job, const uint32_t err)
 
     if (err != ER_OK)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         (void)s_01_ConvertErr(err, &p_ISD->service_result);
             

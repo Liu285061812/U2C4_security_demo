@@ -541,6 +541,7 @@ static uint32_t s_01_ECDSA_VERIFY_GenHash(icum_job_t *p_job)
             /* ************************************************************************* */
             (void)L_HASH_GetInternalHashType(p_ISD_PARAM->hash_primitive, &hash_type, &dmy_hash_size);
 
+            K_ISSD_BeginAlgorithm(p_job);
             err = L_HASH_Init(p_hash_ctx, hash_type);
             if (ER_OK != err)
             {
@@ -792,6 +793,7 @@ static uint32_t s_01_ECDSA_VERIFY_InitSign(icum_job_t *p_job)
             if (ER_OK == err)
             {
                 /* Perform ECDSA signature verification initial processing for PKC library */
+                K_ISSD_BeginAlgorithm(p_job);
                 err = L_PKC_EcdsaVerifyInit((const st_pkc_data_t *)&digest_data,
                                             (const st_pkc_data_t *)&sign_data,
                                             &p_ecc_ctx->ecc_key,
@@ -928,6 +930,7 @@ static uint32_t s_01_ECDSA_VERIFY_VerifySign(icum_job_t *p_job)
         case PHASE_6:
             /* Perform ECDSA signature verification termination processing for PKC library */
             err = L_PKC_EcdsaVerifyFinal(&p_ecc_ctx->ctx.ec);
+            K_ISSD_EndAlgorithm(p_job);
             if (ER_OK == err)
             {
                 p_ISD_PARAM->verification_result = VERIFICATION_PASS;
@@ -997,6 +1000,7 @@ static void s_01_ECDSA_VERIFY_Finish(icum_job_t *p_job, const uint32_t err)
 
     if (ER_OK != err)
     {
+        K_ISSD_EndAlgorithm(p_job);
         /* error: terminate the service */
         (void)s_01_ConvertErr(err, &p_ISD->service_result);
         p_ISD->prm.ECDSA_VERIFY.verification_result = VERIFICATION_FAIL;

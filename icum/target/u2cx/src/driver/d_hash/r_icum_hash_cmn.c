@@ -91,7 +91,7 @@ static void           r_hash_cmn_set_intermediate(const uint32_t* const p_im_dat
 static e_r_hash_ret_t r_hash_cmn_wait_sts(volatile const uint32_t* const p_reg,
                                             const uint32_t pos, const uint32_t break_sts);
 static uint32_t       d_hash_cmn_get_dma_mng_index(const e_r_hash_type_t type);
-static void           d_hash_cmn_alloc_dma_channel(const uint32_t index);
+static e_r_hash_ret_t d_hash_cmn_alloc_dma_channel(const uint32_t index);
 static void           d_hash_cmn_start_wdt_if_need(void);
 
 /*=====================================================================================================================
@@ -1202,9 +1202,11 @@ e_r_hash_ret_t d_hash_cmn_set_dma_status(const e_r_hash_type_t type, const uint3
             case DMA_STATUS_RUNNING:
                 if (DMA_STATUS_NON_EXEC == dma_mng[index].dma_transfer_status)
                 {
-                    dma_mng[index].dma_transfer_status = status;
-                    d_hash_cmn_alloc_dma_channel(index);
-                    ret = HASH_RET_OK;
+                    ret = d_hash_cmn_alloc_dma_channel(index);
+                    if (ret == HASH_RET_OK)
+                    {
+                        dma_mng[index].dma_transfer_status = status;
+                    }
                 }
                 else
                 {
@@ -1227,6 +1229,19 @@ e_r_hash_ret_t d_hash_cmn_set_dma_status(const e_r_hash_type_t type, const uint3
                 break;
 
             case DMA_STATUS_NON_EXEC:
+                if (dma_mng[index].dma_src_channel != HASH_DMA_CH_UNUSED)
+                {
+                    if (D_DMA_Stop((1u << dma_mng[index].dma_src_channel) |
+                                   (1u << dma_mng[index].dma_dst_channel)) != ER_OK)
+                    {
+                        break;
+                    }
+                    if (D_DMA_Release((1u << dma_mng[index].dma_src_channel) |
+                                      (1u << dma_mng[index].dma_dst_channel)) != ER_OK)
+                    {
+                        break;
+                    }
+                }
                 dma_mng[index].dma_transfer_status = status;
                 dma_mng[index].dma_src_channel = HASH_DMA_CH_UNUSED;
                 dma_mng[index].dma_dst_channel = HASH_DMA_CH_UNUSED;
@@ -2013,32 +2028,20 @@ static uint32_t d_hash_cmn_get_dma_mng_index(const e_r_hash_type_t type)
 * Arguments    : (IN)  index : Index of management information table for DMA transfer
 * Return Value : None
 ***************************************************************************************/
-static void d_hash_cmn_alloc_dma_channel(const uint32_t index)
+static e_r_hash_ret_t d_hash_cmn_alloc_dma_channel(const uint32_t index)
 {
-    uint32_t    other_index;
+    uint32_t channel;
 
-    other_index = (index + NUM1) % MNG_ELEMENT_NUM;
-
-    switch (dma_mng[other_index].dma_src_channel)
+    for (channel = 0u; channel < ICUM_DMAC_CH_NUM; channel += 2u)
     {
-        case HASH_DMA_CH_UNUSED:
-        case NUM2:
-            dma_mng[index].dma_src_channel = NUM0;
-            dma_mng[index].dma_dst_channel = NUM1;
-            break;
-
-        case NUM0:
-            dma_mng[index].dma_src_channel = NUM2;
-            dma_mng[index].dma_dst_channel = NUM3;
-            break;
-
-        default:
-            dma_mng[index].dma_src_channel = HASH_DMA_CH_UNUSED;
-            dma_mng[index].dma_dst_channel = HASH_DMA_CH_UNUSED;
-            break;
+        if (D_DMA_Reserve(3u << channel) == ER_OK)
+        {
+            dma_mng[index].dma_src_channel = channel;
+            dma_mng[index].dma_dst_channel = channel + 1u;
+            return HASH_RET_OK;
+        }
     }
-
-    return;
+    return HASH_RET_PARAMERR;
 }
 
 /***************************************************************************************
