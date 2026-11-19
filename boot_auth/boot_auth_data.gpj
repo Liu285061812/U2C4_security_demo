@@ -1,0 +1,16 @@
+#!gbuild
+[Program]
+    :binDirRelative=.
+    :outputDirRelative=build
+    -cpu=rh850g4mh
+    -I../pe/generic/icumif
+    -nostartfiles
+    -nostdlib
+    -e 0
+    -map
+    -keepmap
+    -o boot_auth_data.out
+    :postexecSafe="gsrec -o ${boot_auth_folder}/boot_auth_data.mot ${boot_auth_folder}/boot_auth_data.out"
+
+boot_auth_data.c
+boot_auth_data.ld

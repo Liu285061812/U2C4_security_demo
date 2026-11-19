@@ -77,7 +77,8 @@ MEMORY
 
   DF_BANK_A         : ORIGIN = 0xFF200000,  LENGTH = 128k       // Data Flash DATA AREA 0
   DF_BANK_A_end     : ORIGIN = .         ,  LENGTH = 0          // End of Data Flash DATA AREA 0
-  DF_BANK_B         : ORIGIN = 0xFF220000,  LENGTH = 128k       // Data Flash DATA AREA 1
+  DF_BANK_B         : ORIGIN = 0xFF220000,  LENGTH = 112k       // Last 16K reserved for boot_auth_data.mot
+  BOOT_AUTH_DF      : ORIGIN = 0xFF23C000,  LENGTH = 16k
   DF_BANK_B_end     : ORIGIN = .         ,  LENGTH = 0          // End of Data Flash DATA AREA 1
   DF_BANK_ICUM      : ORIGIN = 0xFF280000,  LENGTH = 64k        // Data Flash DATA AREA 2
   DF_BANK_ICUM_end  : ORIGIN = .         ,  LENGTH = 0          // End of Data Flash DATA AREA 2

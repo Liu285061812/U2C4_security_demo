@@ -51,7 +51,8 @@ MEMORY
   rRAM            : ORIGIN = 0x12000000,  LENGTH = 32k                    // Retention RAM
 
   DF_BANK_A       : ORIGIN = 0xFF200000,  LENGTH = 128k                   // Data Flash Bank A
-  DF_BANK_B       : ORIGIN = 0xFF220000,  LENGTH = 128k                   // Data Flash Bank B
+  DF_BANK_B       : ORIGIN = 0xFF220000,  LENGTH = 112k                   // Data Flash Bank B; last 16K reserved for boot_auth_data.mot
+  BOOT_AUTH_DF    : ORIGIN = 0xFF23C000,  LENGTH = 16k
   DF_BANK_ICUM    : ORIGIN = 0xFF280000,  LENGTH = 64k                    // ICUM Data Flash 
 
   DF_end          : ORIGIN = .         ,  LENGTH = 0                      // End of internal Data Flash

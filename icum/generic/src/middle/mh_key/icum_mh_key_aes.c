@@ -38,6 +38,8 @@
 #include "icum_d_wdt_pub.h"
 #include "icum_d_cry_aes_pub.h"
 #include "r_aceu.h"
+#include "boot_auth.h"
+#include "boot_auth_demo_keys.h"
 
 /**********************************************************************************
 * Local defines
@@ -158,6 +160,7 @@ static uint8_t g_demo_aes_keys[4][MH_KEY_AES_KEY_SIZE_IN_BYTES_COMMON] =
 
 uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits)
 {
+    static const uint8_t boot_key[16] = {BOOT_AUTH_PE_KEY_BYTES};
     uint32_t slot, word, count, value, key_code, engine_spids;
     uint32_t key_bytes;
     uint32_t guard = 0xFF0A1500UL;
@@ -202,7 +205,7 @@ uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits)
         for (word = 0u; word < 8u; word++)
             ACEU_REG(ACEU_KEYRAM_BASE + slot * 32u + word * 4u) = 0u;
     }
-    for (slot = 0u; slot < 6u; slot++)
+    for (slot = 0u; slot <= BOOT_AUTH_ACEU_SLOT; slot++)
     {
         uint32_t code = slot <= 2u ? slot : (slot == ACEU_DEMO_TWEAK256 ? 2u : 0u);
         key_bytes = 16u + code * 8u;
@@ -216,6 +219,7 @@ uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits)
                 if (slot <= 2u) byte = g_demo_aes_keys[slot][offset + count];
                 else if (slot == ACEU_DEMO_TWEAK128) byte = g_demo_aes_keys[3][offset + count];
                 else if (slot == ACEU_DEMO_TWEAK256) byte = 0x20u + offset + count;
+                else if (slot == BOOT_AUTH_ACEU_SLOT) byte = boot_key[offset + count];
                 value = (value << 8) | byte;
             }
             ACEU_REG(ACEU_KEYRAM_BASE + slot * 32u + word * 4u) = value;

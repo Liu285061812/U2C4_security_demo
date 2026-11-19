@@ -121,6 +121,7 @@ ACEU 准备服务和分发表中另外保留的 CR 扩展项不在这 19 项菜�
 | Cluster RAM 0 | `0xFE000000～0xFE070000` | 448 KiB；共享缓冲区及 PE 分区需遵守 guard |
 | ICUM CRAM guard | `0xFE06C000～0xFE070000` | 16 KiB；由用户链接配置指定 |
 | ICUM Data Flash 物理窗口 | `0xFF280000～0xFF290000` | 地址定义仍保留，但当前数据集后端不是物理 Flash 存储 |
+| Dedicated boot data | `0xFF23C000..0xFF240000` | Last 16KiB of nonsecure Data Flash Bank B; separate boot_auth_data.mot |
 
 本次构建 `.icum_config_ram` 为 `0xFEDFAF94～0xFEDFC394`，容量 5 KiB。
 它不是整个 ICUM RAM，也不包含全部 RSA 数组及所有 context。
@@ -317,8 +318,9 @@ GPIO 不包含服务层处理、核间握手或串口打印；OSTM 保持 PE 提
 
 ACEU is a separate PE-accessible AES engine, not ICUM's AES engine and not the
 four-channel ICUM DMA. The `aceu`/`aecu` command first sends
-`SERVICE_00_ACEU_PREPARE` (`0x02`); normal ICUM startup and existing algorithm
-services do not depend on ACEU being enabled.
+`SERVICE_00_ACEU_PREPARE` (`0x02`). Startup now also provisions ACEU after
+the mandatory boot-data CMAC succeeds, before releasing the PE cores.
+Existing ICUM algorithm services still use ICUM's own engines.
 
 [MH_KEY_PrepareAceu](icum/generic/src/middle/mh_key/icum_mh_key_aes.c) performs:
 
@@ -328,7 +330,8 @@ services do not depend on ACEU being enabled.
    Never write a stopped-clock request (0-to-1 transition).
 3. Reject an active/suspended engine without changing its keys.
 4. Invalidate all 128 slot flags, write all KEYRAM words to initialize ECC,
-   then populate six public demo slots and set their valid flags last.
+   then populate six existing demo slots plus boot-authentication slot 6,
+   setting their valid flags last.
 5. Keep `SECCNT.DISKMF=0` (key management enabled) and `SEC=0`
    (nonsecure DTF / PE interrupt routing). The PE driver uses polling, not IRQs.
 6. Initialize the dedicated PRNG context #3 with the requested key length
@@ -342,6 +345,7 @@ services do not depend on ACEU being enabled.
 | 3 | Existing ICUM XTS tweak key `20..2F` | 128 |
 | 4 | All-zero initial MP chaining key | 128 |
 | 5 | XTS tweak key `20..3F` | 256 |
+| 6 | Dedicated PE boot-data CMAC key `E0..EF` | 128 |
 
 Slots use `KEYV=1`, `SHE=0`; unused slots remain invalid and zeroed.
 `KEYm_0` receives the least significant key word; unused high words are zero.
@@ -355,6 +359,48 @@ secrets or random entropy**. A production design must replace this provisioning
 and seed policy. The removed import/update services are not restored.
 Reference: security hardware manual R01UH1024EJ0100, sections 1.8.2.4,
 1.9.1.4, 1.9.1.6 and 3.3--3.8; normal hardware manual PBG91 guard registers.
+
+### 7.4 Mandatory dedicated boot-data check
+
+[BootAuth_VerifyIcum](icum/generic/src/middle/mh_init/icum_mh_boot_auth.c)
+is called at the start of `MH_INIT_StartPE()`, before `D_COMM_StartupPE()`
+and before setting STARTPE/SERVAVAIL.
+It blank-checks all 10,272 bytes of the separate Data Flash image in 4-byte
+programming units through the read-only mirror at `0xFF43C000..0xFF43E81F`.
+Only BF bit 15 is tested; nonzero ECC bits do not mean blank.
+No flash initialization, FACI command or P/E-mode transition is performed
+(normal hardware manual 53.10.2; ICUM hardware manual 1.19.7.4).
+It then uses `D_AES_InitJob()`/`D_AES_FinishJob()` (CMAC,
+640 full blocks, CPU transfers) to authenticate only the 10KB plaintext.
+The ICUM key is the public demo key `D0..DF`, held in ICUM local RAM.
+After a full 16-byte tag match, ICUM provisions ACEU, including the different
+PE boot key `E0..EF` in slot 6.
+
+Any flash, AES, CMAC or provisioning failure is fatal: a polled RLIN31
+115200-baud message identifies the stage, `g_boot_auth_error` latches the code,
+and ICUM stays in a watchdog-serviced `while (1)` without releasing PE cores.
+All UART polling waits also service the watchdog and remain bounded.
+System-error handlers may release PE only after both authentication and ACEU
+key provisioning have passed; an exception cannot bypass this gate.
+Debug by symbol, not a hardcoded RAM address:
+
+| Symbol | Meaning |
+|---|---|
+| `g_boot_auth_stage` | 0 reset, 1 blank scan, 2 CMAC, 3 provisioning, 4 passed, 5 failed |
+| `g_boot_auth_address` | Data Flash programming unit being checked; plaintext base during CMAC |
+| `g_boot_auth_error` | Original error; bit 31 additionally flags a UART timeout |
+| `g_boot_auth_uart_step` | 1 clock, 2 module enable, 3 reset, 4 release, 5 pins, 6 ready, 7 transmit, 8 drained |
+
+Error `0x30A` in the previous startup implementation meant a Flash P/E-mode
+ready timeout, not a CMAC mismatch; the read-only mirror avoids that path.
+The expected ICUM/PE tags reside at `0xFF23E800`/`0xFF23E810`; both cover
+exactly `0xFF23C000..0xFF23E7FF`, using different keys.
+
+PE1 performs the second check with ACEU before notifying PE2 or accepting
+commands. Existing algorithm test data, expected ciphertexts and signatures
+are unchanged. Both firmware and the separate data MOT must be downloaded
+before reset; see [layout, build and flashing](PE_PROJECT_GUIDE.md#82-dedicated-boot-data-authentication).
+This is a demo data-integrity gate, not authentication of the PE firmware.
 
 ## 8. 测试逻辑与验收
 

@@ -387,6 +387,66 @@ against modeled MMIO and independent AES oracles. The second regenerates the
 checked-in board-test vectors. Simulation does not replace board validation
 of access guards, clock enable, byte lanes or DTF bus transactions.
 
+### 8.2 Dedicated boot-data authentication
+
+This is a separate startup fixture; existing ICUM/ACEU algorithm inputs and
+expected outputs are not moved or regenerated.
+
+| Nonsecure Data Flash addresses (inclusive) | Contents |
+| --- | --- |
+| `0xFF23C000..0xFF23E7FF` | New, deterministic 10KB plaintext |
+| `0xFF23E800..0xFF23E80F` | ICUM AES-128-CMAC over exactly the plaintext |
+| `0xFF23E810..0xFF23E81F` | PE ACEU AES-128-CMAC over exactly the same plaintext, with a different key |
+
+The last 16KiB of Data Flash Bank B are reserved in all four firmware linker
+maps. The standalone data image contains only the 10,272 bytes above, with no
+keys, metadata or existing algorithm vectors. CMACs do not cover each other.
+ICUM keeps its own key in local RAM and provisions the PE key into ACEU slot 6;
+the PE receives no key bytes. Slots 0..5 and existing algorithm tests are unchanged.
+Subsequent `aceu` commands re-provision the same slot 6 as well as demo slots.
+
+1. ICUM checks every 4-byte programming unit for blank data, including both
+   tags, through the read-only BF mirror at `0xFF43C000..0xFF43E81F` before
+   reading Data Flash; blank/unprogrammed data can cause ECC errors.
+   This checks bit 15 without initializing Flash or switching to P/E mode.
+2. Before `D_COMM_StartupPE()`, ICUM uses its AES CPU CMAC path to verify all
+   10KB, then enables/provisions ACEU. No PE is released on failure.
+3. PE1 initializes its clock/UART, then uses `R_ACEU_Execute()` with CMAC
+   verification and slot 6 to read/authenticate the complete plaintext.
+   Data Flash is outside ACEU's DTF RAM window, so this check uses CPU transfers.
+4. Only after success does PE1 notify PE2 and enter the UART interpreter.
+   It prints `PE ACEU boot CMAC PASS (10240 bytes)`.
+
+On failure, ICUM configures polled RLIN31 TX on P17_2 at 115200 baud,
+prints the failing stage/error code and never releases PE, including through
+system-error handlers. Both bounded UART waits and the halt loop refresh
+ICUM WDT so an error message cannot cause a secondary watchdog timeout.
+`g_boot_auth_error` also latches the error for debugging; bit 31 indicates
+that UART initialization/transmission failed, in which case output is not possible.
+`g_boot_auth_stage`, `g_boot_auth_address` and `g_boot_auth_uart_step` expose
+the current check/diagnostic progress; see [ICUM diagnostics](ICUM_PROJECT_GUIDE.md#74-mandatory-dedicated-boot-data-check).
+PE failures print `PE ACEU boot CMAC FAIL: ...; halted` and stay in `while (1)`;
+PE2 remains waiting for PE1 synchronization. This gate does not authenticate
+PE firmware or the existing test vectors. Public demo keys must be replaced
+for production use.
+
+Build/download:
+
+```powershell
+# Regenerate only when changing dedicated data or its public demo keys.
+python .\tools\generate_boot_auth_data.py
+# Standalone data-only build (also included by top\u2c\top.U2C.gpj).
+& C:\ghs\comp_202354\gbuild.exe -noparallel -top .\boot_auth\top.gpj
+# After the full firmware build, verify the exported image and boot failure paths.
+python .\tools\test_boot_auth.py
+```
+
+Download both [firmware MCA](top/u2c/U2C4_firm.mca) (or the usual firmware MOT)
+and [boot data MOT](boot_auth/boot_auth_data.mot), then reset normally.
+Do not erase the reserved data window or resume PE manually past the boot gate.
+The simulator tests do not replace board checks of the read-only blank mirror,
+ICUM UART access and ACEU KEYRAM/guard permissions.
+
 ## 9. 耗时、ms/ops 与 MB/s 口径
 
 每条服务结果不再打印原始 ticks，但内部仍使用 OSTM0 原始计数作精确换算。

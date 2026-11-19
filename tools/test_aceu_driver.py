@@ -142,7 +142,8 @@ def generate_provisioning(path):
     keys = source[start:source.index("\n};", start) + 3]
     start = source.index("uint32_t MH_KEY_PrepareAceu(uint32_t prng_key_bits)\n{")
     function = source[start:source.index("\n}\n", start) + 3]
-    path.write_text(keys + "\n" + function, encoding="ascii")
+    path.write_text('#include "boot_auth.h"\n#include "boot_auth_demo_keys.h"\n' +
+                    keys + "\n" + function, encoding="ascii")
 
 
 def main():
@@ -164,6 +165,7 @@ def main():
             [str(args.ghs / "ccrh850.exe"), "-cpu=rh850g4mh",
              "-I" + str(ROOT / r"pe\generic\icumif"),
              "-I" + str(ROOT / r"pe\target\u2cx\src\driver\aceu"),
+             "-I" + str(ROOT / "boot_auth"),
              "-I" + str(work), "-o", str(output),
              str(ROOT / r"tools\aceu_driver_test.c")],
             cwd=work, check=True, timeout=180)

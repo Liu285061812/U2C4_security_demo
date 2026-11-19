@@ -85,6 +85,29 @@ test keys/seeds and **must not be used as an entropy source**.
 See the [PE ACEU interface and limits](PE_PROJECT_GUIDE.md#81-pe-aceu-tests)
 and [ICUM provisioning](ICUM_PROJECT_GUIDE.md#73-aceu-keyram-provisioning).
 
+## Mandatory boot-data CMAC checks
+
+Download **both** the usual firmware and the separate
+[boot_auth_data.mot](boot_auth/boot_auth_data.mot) before resetting.
+The normal top-level build also builds this data-only MOT; it is deliberately
+not embedded in the firmware MCA/MOT. Its reserved nonsecure Data Flash window
+is `0xFF23C000..0xFF23FFFF`.
+
+The new, independent 10KB plaintext and two AES-128-CMAC values occupy
+`0xFF23C000..0xFF23E81F`. Existing ICUM and ACEU test data are unchanged.
+ICUM checks BF bit 15 in the read-only blank mirror (`0xFF43C000`), without
+entering Flash P/E mode, then authenticates the plaintext using
+its own key, provisions the different PE CMAC key into ACEU slot 6, and only
+then releases PE cores. PE1 verifies the same plaintext with ACEU before
+notifying PE2 or entering the UART interpreter. Failures print an error and
+remain in `while (1)`; missing boot data therefore blocks startup.
+ICUM services its watchdog during bounded error-UART waits and the halt loop;
+system-error handlers cannot release PE before authentication/provisioning passes.
+
+These are public demonstration keys, not production secrets. This authenticates
+only the dedicated plaintext, not PE firmware or the existing test vectors.
+See [boot-data layout and build](PE_PROJECT_GUIDE.md#82-dedicated-boot-data-authentication).
+
 ## ICUM crypto services
 
 The service groups are organized by algorithm:

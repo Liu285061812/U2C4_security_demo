@@ -18,6 +18,7 @@
 #include "shared.h"
 #include "icum_d_comm_pe_pub.h"
 #include "pe_reg.h"
+#include "boot_auth.h"
 
 /**
  [Overview]\n
@@ -110,6 +111,8 @@ int main(void)
 
     /* initialization */
     vrun_init();
+
+    BootAuth_VerifyPe();
 
     /* sync with next PE */
     SYNC_PE = GET_MY_PEID + 1;

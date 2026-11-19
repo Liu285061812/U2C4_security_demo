@@ -78,6 +78,7 @@
 
 /* KERNEL */
 #include "icum_k_issd_pub.h"
+#include "boot_auth.h"
 
 /**************************************************************************************/
 /* Definition                                                                         */
@@ -406,6 +407,8 @@ uint32_t MH_INIT_StartPE(void)
 {
     uint32_t err;
     sys_cfg_rand_t sys_cfg_rand;
+
+    BootAuth_VerifyIcum();
 
     sys_cfg_rand.rand_olt_no_ds_reset = CLR;
     sys_cfg_rand.rand_first_init_type = CLR;

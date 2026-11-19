@@ -38,6 +38,7 @@
 #include "icum_ml_cfg_pub.h"
 #include "icum_mh_sysinfo_pub.h"
 #include "icum_mh_sysinfo.h"
+#include "boot_auth.h"
 /* To use macro functions */
 #include "icum_d_misc_pub.h"
 
@@ -116,7 +117,8 @@ static uint32_t mh_SYSINFO_Interrupt(uint32_t system_err)
         /* get start PE property */
         (void)ML_CFG_GetSys_ram(ML_CFG_SYS_START_PE, (uint32_t*)&start_pe);
         /* enable start PE state */
-        if((uint32_t)start_pe == SYSINFO_START_PE)
+        if (((uint32_t)start_pe == SYSINFO_START_PE) &&
+            (g_boot_auth_stage == BOOT_AUTH_STAGE_PASSED))
         {
             /* Instruct startup PE0 */
             (void)D_COMM_StartupPE();

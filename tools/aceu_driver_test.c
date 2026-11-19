@@ -572,13 +572,14 @@ static void provisioning(void)
             uint32_t key_code = slot <= 2u ? slot : (slot == 5u ? 2u : 0u);
             uint32_t size = 16u + key_code * 8u;
             check(provision_keyram[(0x1000u + slot * 4u) / 4u] ==
-                  (slot < 6u ? 8u | (key_code << 8) : 0u), "KEYRAM slot flag");
+                  (slot <= BOOT_AUTH_ACEU_SLOT ? 8u | (key_code << 8) : 0u), "KEYRAM slot flag");
             for (word = 0u; word < 8u; word++)
             {
                 uint32_t expected = 0u;
-                if (slot < 6u && slot != 4u && word * 4u < size)
+                if (slot <= BOOT_AUTH_ACEU_SLOT && slot != 4u && word * 4u < size)
                 {
-                    uint32_t offset = size - 4u - word * 4u + (slot >= 3u ? 0x20u : 0u);
+                    uint32_t offset = size - 4u - word * 4u +
+                        (slot == BOOT_AUTH_ACEU_SLOT ? 0xE0u : (slot >= 3u ? 0x20u : 0u));
                     expected = (offset << 24) | ((offset + 1u) << 16) |
                                ((offset + 2u) << 8) | (offset + 3u);
                 }
